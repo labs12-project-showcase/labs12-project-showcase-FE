@@ -1,0 +1,15 @@
+// Mixins
+
+/* Example
+Variables example
+$primary-color: #333;
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+.box { @include transform(rotate(30deg)); }
+
+*/
