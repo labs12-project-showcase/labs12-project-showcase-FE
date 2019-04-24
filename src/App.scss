@@ -1,0 +1,16 @@
+// Variables
+@import './styles/colors-fonts';
+@import './styles/mixins';
+@import './styles/extend';
+
+// General 
+@import './styles/reset';
+@import './styles/global';
+
+// Components
+@import './styles/top-bar';
+@import './styles/footer';
+@import './components/admin/dashboard/adminDashboard.scss';
+@import './components/home/home.scss';
+@import './components/register/register.scss';
+@import './components/student/dashboard/studentDashboard.scss';
