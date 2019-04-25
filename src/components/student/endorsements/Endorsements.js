@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Endorsement = (props) => {
+const Endorsements = (props) => {
     return ( 
-        <div>
+        <div className = 'endorsements'>
             <h2>Endorsement</h2>
             <p>Endorsements from others</p>
         </div>
      );
 }
  
-export default Endorsement;
+export default Endorsements;
