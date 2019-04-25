@@ -4,6 +4,8 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
 
+import Profileqs from '../components/student/profileqs/Profileqs';
+
 const Routes = props => {
 	let handleAuthentication = ({ location }) => {
 		if (/access_token|id_token|error/.test(location.hash)) {
@@ -20,6 +22,7 @@ const Routes = props => {
 					return <Callback {...props} />;
 				}}
 			/>
+			<Route path="/profile-quick-start" component={Profileqs} />
 		</>
 	);
 };
