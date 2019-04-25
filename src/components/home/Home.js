@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const Home = props => {
 
@@ -11,9 +12,9 @@ const Home = props => {
 };
 
 const mapStateToProps = state => {
-  return {
-    ...state.home
-  };
+	return {
+		...state.home
+	};
 };
 
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));
