@@ -51,12 +51,26 @@ export default class Auth {
       });
   }
 
+  getLinkedIn(token) {
+    var config = {
+      headers: {'Authorization': "Bearer " + token}
+    };
+    axios.get('https://api.linkedin.com/v2/me', config)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       console.log('auth result', authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         this.register(authResult.idTokenPayload);
+        this.getLinkedIn(authResult.accessToken);
       } else if (err) {
         history.replace('/home');
         console.log(err);
