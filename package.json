@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^0.18.0",
+=======
+    "auth0-js": "^9.10.2",
+>>>>>>> fe476c2e2d0edf18ecc54e53306e9eaf6cc5f90e
     "dotenv": "^7.0.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",

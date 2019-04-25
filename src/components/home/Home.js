@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const Home = props => {
-	return <div className="home">{props.welcome}</div>;
+
+  return (
+    <div className="home">
+      {props.welcome}
+    </div>
+  );
 };
 
 const mapStateToProps = state => {
