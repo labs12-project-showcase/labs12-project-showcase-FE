@@ -1,18 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const StudentDashboard = props => {
-  return (
-    <div className="studentDashboard">
-    
-    </div>
-  );
-};
+class StudentDashboard extends React.Component {
+	render() {
+		return <div className="studentDashboard" />;
+	}
+}
 
 const mapStateToProps = state => {
-  return {
-    ...state.studentDashboard
-  };
+	return {
+		...state.studentDashboard
+	};
 };
 
 export default connect(mapStateToProps)(StudentDashboard);
