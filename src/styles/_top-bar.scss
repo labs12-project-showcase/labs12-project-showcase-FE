@@ -4,7 +4,10 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: $lambdaRed;
+
   .topBarIconContainer {
+    width: 800px;
     display:flex;
     justify-content: space-between;
   }

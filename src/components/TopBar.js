@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TopBar = props => {
-  const { isAuthenticated, login, logout } = props;
+  const { isAuthenticated, login, logout } = props.auth;
   return (
     <div className="topBar">
       <div className="topBarIconContainer">
