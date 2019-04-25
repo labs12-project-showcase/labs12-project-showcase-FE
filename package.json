@@ -36,5 +36,17 @@
   },
   "devDependencies": {
     "redux-logger": "^3.0.6"
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/labs12-project-showcase/labs12-project-showcase-FE.git"
+  },
+  "author": "Team Web17_jake",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/labs12-project-showcase/labs12-project-showcase-FE/issues"
+  },
+  "homepage": "https://github.com/labs12-project-showcase/labs12-project-showcase-FE#readme"
 }
