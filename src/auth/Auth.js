@@ -2,7 +2,7 @@ import history from '../history';
 import auth0 from 'auth0-js';
 import axios from 'axios';
 
-const backendUrl = 'lambdashowcase.heroku.com';
+const backendUrl = 'https://halg-backend.herokuapp.com';
 
 export default class Auth {
   accessToken;
@@ -40,10 +40,11 @@ export default class Auth {
       role_id: 1,
       sub_id: payload.sub
     }
-    axios.post(backendUrl, send)
+    console.log('send payload', send);
+    axios.post(`${backendUrl}/api/auth/login`, send)
       .then(res => {
         console.log('response from registering', res);
-        localStorage.setItem('backendToken', res.data.token);
+        localStorage.setItem('backendToken', res.data);
       })
       .catch(err => {
         console.log(err);
@@ -106,6 +107,7 @@ export default class Auth {
 
     // Remove isLoggedIn flag from localStorage
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('backendToken');
 
     this.auth0.logout({
       returnTo: window.location.origin
