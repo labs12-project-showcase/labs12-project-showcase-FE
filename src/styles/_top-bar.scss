@@ -1,1 +1,11 @@
-// Top bar - logo and Navigation 
+// Top bar - logo and Navigation
+
+.topBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .topBarIconContainer {
+    display:flex;
+    justify-content: space-between;
+  }
+}

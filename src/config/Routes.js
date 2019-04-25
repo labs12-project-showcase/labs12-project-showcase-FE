@@ -1,14 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import Auth from '../auth/Auth.js';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
 import Register from '../components/register/Register.js';
 
-const auth = new Auth();
-
-const handleAuthentication = ({location}) => {
+const handleAuthentication = ({location, auth}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
     auth.handleAuthentication();
   }
