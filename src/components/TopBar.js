@@ -1,14 +1,16 @@
 import React from 'react';
 
+import whiteLambdaLogo from "../assets/Hire-lambda-logo-white.png";
+
 const TopBar = props => {
   const { isAuthenticated, login, logout } = props.auth;
   return (
-    <div className="topBar">
-      <div className="topBarIconContainer">
-        <div>Hire Lambda</div>
-        <div>
-          { !isAuthenticated() && ( <button onClick={login}>Login!</button> ) }
-          { isAuthenticated() && ( <button onClick={logout}>Logout!</button> ) }
+    <div className="TopBar">
+      <div className="TopBar-container">
+        <img className="TopBar-hire-lambda-logo" src={whiteLambdaLogo} alt="white lambda logo"/>
+        <div className="TopBar-btn-container">
+          { !isAuthenticated() && ( <button className="TopBar-login-btn" onClick={login}>Login</button> ) }
+          { isAuthenticated() && ( <button className="TopBar-logout-btn" onClick={logout}>Logout</button> ) }
         </div>
       </div>
     </div>
