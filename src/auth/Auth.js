@@ -1,5 +1,8 @@
 import history from '../history';
 import auth0 from 'auth0-js';
+import axios from 'axios';
+
+const backendUrl = 'lambdashowcase.heroku.com';
 
 export default class Auth {
   accessToken;
@@ -11,7 +14,7 @@ export default class Auth {
     clientID: 'o3k0Zn0QhhLv7KdWupY8I9j9uAIlqwDQ',
     redirectUri: 'http://localhost:3000/callback',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid email profile'
   });
 
   constructor() {
@@ -28,10 +31,31 @@ export default class Auth {
     this.auth0.authorize();
   }
 
+  register(payload) {
+    console.log('register payload', payload)
+    const send = {
+      email: payload.email,
+      first_name: payload.given_name,
+      last_name: payload.family_name,
+      role_id: 1,
+      sub_id: payload.sub
+    }
+    axios.post(backendUrl, send)
+      .then(res => {
+        console.log('response from registering', res);
+        localStorage.setItem('backendToken', res.data.token);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
+      console.log('auth result', authResult);
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
+        this.register(authResult.idTokenPayload);
       } else if (err) {
         history.replace('/home');
         console.log(err);
