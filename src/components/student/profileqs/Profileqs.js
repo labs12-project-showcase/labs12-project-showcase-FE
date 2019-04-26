@@ -21,7 +21,7 @@ const Profileqs = props => {
       <div className="profileqs">
         <h3>Profile Quick Start</h3>
         <p>Please complete the following basic information</p>
-        <ProfileqsForm initialData={fakedInitialData} />
+        <ProfileqsForm history={props.history} initialData={fakedInitialData} />
       </div>
     </div>
   );
