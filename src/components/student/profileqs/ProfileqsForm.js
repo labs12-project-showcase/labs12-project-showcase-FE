@@ -2,6 +2,8 @@ import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
+// import axiosAuth from '../../../auth/axiosAuth'
+
 // faked import of axiosAuth()
 import axios from 'axios';
 function axiosAuth() {
@@ -15,42 +17,13 @@ function axiosAuth() {
   });
 }
 
-// Handle Form Submit, `PUT` request
-const handleSubmit = values => {
-  const backEndURL = 'https://halg-backend.herokuapp.com/api/students/update';
-  
-  // match Object keys to what back end expects
-  const formattedObj = {
-    student: {
-      about: values.summary,
-      acclaim: values.acclaimBadgeURL,
-      // desired_title: values.desiredTitle,
-      github: values.gitHubURL,
-      linkedin: values.linkedInURL,
-      location: values.location,
-      twitter: values.twitterURL,
-      website: values.portfolioURL
-    }
-  };
-
-  // Remove empty strings from Object
-  const removeEmpty = obj =>
-    Object.keys(obj)
-      .filter(f => Boolean(obj[f]) !== false)
-      .reduce(
-        (r, i) =>
-          typeof obj[i] === 'object'
-            ? { ...r, [i]: removeEmpty(obj[i]) } // recurse if nested Object
-            : { ...r, [i]: obj[i] },
-        {}
-      );
-
-  console.log('format strip obj: ', removeEmpty(formattedObj));
-
-  axiosAuth()
-    .put(backEndURL, removeEmpty(formattedObj))
-    .then(result => console.log('successful POST request – result: ', result))
-    .catch(error => console.error(error));
+const handleSubmitError = error => {
+  console.error(error);
+  const submitButtonError = document.createElement('div');
+  submitButtonError.classList.add('submission-error');
+  submitButtonError.textContent = 'There was a problem creating your profile';
+  const submitButtonDiv = document.getElementById('quick-start-create-profile');
+  submitButtonDiv.appendChild(submitButtonError);
 };
 
 // Render the Formik form
@@ -121,9 +94,11 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
       <ErrorMessage name="summary" component="div" />
     </label>
 
-    <button type="submit" disabled={isSubmitting}>
-      Create Profile
-    </button>
+    <div id="quick-start-create-profile">
+      <button type="submit" disabled={isSubmitting}>
+        Create Profile
+      </button>
+    </div>
   </Form>
 );
 
@@ -174,8 +149,10 @@ const ProfileqsForm = props => {
   return (
     <Formik
       initialValues={initialFormValues}
+      validationSchema={ProfileQsSchema}
+      render={renderForm}
       onSubmit={
-        handleSubmit
+        // handleSubmit
         // replace testing function with data submit function
         // (values, actions) => {
         //   setTimeout(() => {
@@ -183,9 +160,59 @@ const ProfileqsForm = props => {
         //     actions.setSubmitting(false);
         //   }, 1000);
         // }
+        // Handle Form Submit, `PUT` request
+        // const handleSubmit =
+        values => {
+          const backEndURL =
+            'https://halg-backend.herokuapp.com/api/students/update';
+
+          // match Object keys to what back end expects
+          const formattedObj = {
+            student: {
+              about: values.summary,
+              acclaim: values.acclaimBadgeURL,
+              // desired_title: values.desiredTitle,
+              github: values.gitHubURL,
+              linkedin: values.linkedInURL,
+              location: values.location,
+              // name: values.name,
+              twitter: values.twitterURL,
+              website: values.portfolioURL
+            }
+          };
+
+          // Remove empty strings from Object
+          const removeEmpty = obj =>
+            Object.keys(obj)
+              .filter(f => Boolean(obj[f]) !== false)
+              .reduce(
+                (r, i) =>
+                  typeof obj[i] === 'object'
+                    ? { ...r, [i]: removeEmpty(obj[i]) } // recurse if nested Object
+                    : { ...r, [i]: obj[i] },
+                {}
+              );
+
+          console.log('format strip obj: ', removeEmpty(formattedObj));
+
+          // Make `PUT` request
+          axiosAuth()
+            .put(backEndURL, removeEmpty(formattedObj))
+            .then(result => {
+              if (result.status === '200') {
+                console.log('successful POST request – result: ', result);
+                props.history.push('/student/dashboard');
+              } else {
+                // handleSubmitError(result);
+                console.log(props.history);
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              // handleSubmitError(error);
+            });
+        }
       }
-      validationSchema={ProfileQsSchema}
-      render={renderForm}
     />
   );
 };

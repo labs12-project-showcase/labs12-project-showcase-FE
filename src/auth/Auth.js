@@ -70,7 +70,7 @@ export default class Auth {
 		this.auth0.parseHash((err, authResult) => {
 			console.log('auth result', authResult);
 			if (authResult && authResult.accessToken && authResult.idToken) {
-				this.setSession(authResult);
+        this.setSession(authResult);
 				this.register(authResult.idTokenPayload);
 				this.getLinkedIn(authResult.accessToken);
 			} else if (err) {
@@ -101,7 +101,7 @@ export default class Auth {
 
 		// navigate to the home route
     // history.replace('/student/dashboard');
-    
+
 		// navigate to the Profile Quick Start
     history.replace('/profile-quick-start');
     
