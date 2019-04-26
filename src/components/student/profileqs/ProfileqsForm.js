@@ -99,7 +99,7 @@ const ProfileQsSchema = Yup.object().shape({
   .trim()
   .url(),
   summary: Yup.string()
-    .max(1000, `Maximum 500 characters`)
+    .max(1000, `Maximum 1,000 characters`)
     .trim(),
   twitterURL: Yup.string()
     .trim()
