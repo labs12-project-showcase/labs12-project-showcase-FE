@@ -106,21 +106,21 @@
   }
 
   .previousButton {
-    left: 0;
+    left: 20px;
     -webkit-transform: rotate(180deg) translateY(calc(50% + 0px));
     transform: rotate(180deg) translateY(calc(50% + 0px));
   }
 
   .previousButton:hover {
-    left: -10px;
+    left: 12px;
   }
 
   .nextButton {
-    right: 0;
+    right: 20px;
   }
 
   .nextButton:hover {
-    right: -10px;
+    right: 12px;
   }
 
   .slider-content {

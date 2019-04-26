@@ -4,7 +4,7 @@ import 'react-animated-slider/build/horizontal.css';
 import 'normalize.css/normalize.css';
 
 
-const content = [
+const projects = [
 	{
 		title: 'Picasso Painted It',
 		description:
@@ -46,7 +46,7 @@ class Carousel extends React.Component {
         return (
             <div className="Carousel">
                 <Slider className="slider-wrapper">
-                    {content.map((item, index) => (
+                    {projects.map((item, index) => (
                         <div
                             key={index}
                             className="slider-content"
