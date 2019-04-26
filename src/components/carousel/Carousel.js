@@ -21,7 +21,7 @@ const content = [
 		description:
 		'Eliminating poverty around the world, one entrepreneur at a time.',
 		button: 'View Project',
-        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306320/mentors_axlkfn.png',
+        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306772/mentors_students_tkovzi.png',
         project_url: 'https://pacific-dusk-14025.herokuapp.com',
 		user_name: 'Tico Thepsourinthone',
 		user_image: 'https://media.licdn.com/dms/image/C4D03AQF7SiNESVIHKg/profile-displayphoto-shrink_200_200/0?e=1561593600&v=beta&t=jq3a93PDuqk0PAKTv6s0-vm8PGnneVLaAD3ghbFwXww'
