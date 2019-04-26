@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
-import 'normalize.css/normalize.css';
+// import 'normalize.css/normalize.css';
 
 
 const projects = [
