@@ -2,8 +2,7 @@ import React from 'react';
 import Slider from 'react-animated-slider';
 import 'react-animated-slider/build/horizontal.css';
 import 'normalize.css/normalize.css';
-import './slider-animations.css';
-import './slider-styles.css';
+
 
 const content = [
 	{
@@ -46,8 +45,12 @@ class Carousel extends React.Component {
                                 <a href={item.project_url} target="_blank" rel="noopener noreferrer"><button>{item.button}</button></a>
                             </div>
                             <section>
-                                <span>
-                                    Built by: <img src={item.user_image} alt={item.user_name} />
+                                <span className="built-by-container">
+                                    <strong>Built by:</strong> 
+                                    <div className="student-container">
+                                        <img src={item.user_image} alt={item.user_name} />
+                                        <p>{item.user_name}</p>
+                                    </div>
                                 </span>
                             </section>
                         </div>
