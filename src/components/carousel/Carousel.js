@@ -12,8 +12,9 @@ const content = [
 		button: 'View Project',
         project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306221/picasso_project_ynohmb.png',
         project_url: 'https://picasso-frontend.netlify.com/',
-		user_name: 'A. Lowell Richardson',
-		user_image: 'https://media.licdn.com/dms/image/C5603AQFwVh3DyrUiaA/profile-displayphoto-shrink_800_800/0?e=1561593600&v=beta&t=sMfz7iv71WGjlDfUo086EFs0fO6nQsxYP1LKNdg4vdE'
+        student_name: 'A. Lowell Richardson',
+        student_github_url: 'https://github.com/andrewlowell',
+		student_image: 'https://media.licdn.com/dms/image/C5603AQFwVh3DyrUiaA/profile-displayphoto-shrink_800_800/0?e=1561593600&v=beta&t=sMfz7iv71WGjlDfUo086EFs0fO6nQsxYP1LKNdg4vdE'
 	},
 	{
 		title: 'Mentors International Training Reminders',
@@ -22,8 +23,9 @@ const content = [
 		button: 'View Project',
         project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306772/mentors_students_tkovzi.png',
         project_url: 'https://pacific-dusk-14025.herokuapp.com',
-		user_name: 'Tico Thepsourinthone',
-		user_image: 'https://media.licdn.com/dms/image/C4D03AQF7SiNESVIHKg/profile-displayphoto-shrink_200_200/0?e=1561593600&v=beta&t=jq3a93PDuqk0PAKTv6s0-vm8PGnneVLaAD3ghbFwXww'
+        student_name: 'Tico Thepsourinthone',
+        student_github_url: 'https://github.com/ticotheps',
+		student_image: 'https://media.licdn.com/dms/image/C4D03AQF7SiNESVIHKg/profile-displayphoto-shrink_200_200/0?e=1561593600&v=beta&t=jq3a93PDuqk0PAKTv6s0-vm8PGnneVLaAD3ghbFwXww'
 	},
 ];
 
@@ -47,10 +49,13 @@ class Carousel extends React.Component {
                             <section>
                                 <span className="built-by-container">
                                     <strong>Built by:</strong> 
-                                    <div className="student-container">
-                                        <img src={item.user_image} alt={item.user_name} />
-                                        <p>{item.user_name}</p>
-                                    </div>
+                                    
+                                        <div className="student-container">
+                                            <a href={item.student_github_url}>
+                                                <img src={item.student_image} alt={item.student_name} />
+                                            </a>
+                                            <p>{item.student_name}</p>
+                                        </div>
                                 </span>
                             </section>
                         </div>

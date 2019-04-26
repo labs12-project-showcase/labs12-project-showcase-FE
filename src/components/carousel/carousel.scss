@@ -174,8 +174,8 @@
     left: 20px;
   }
 
-  .slider-content section span {
-        color: #ffffff;
+  .slider-content section span p {
+        color: #ffffff;  
   }
 
   .slider-content section span {
@@ -191,7 +191,7 @@
   .slider-content section img {
     width: 60px;
     height: 60px;
-    border: solid 2px rgba(255, 255, 255, 0.5);
+    border: solid 2px $lambdaLightBlue;
     border-radius: 100%;
     vertical-align: middle;
     margin: 0 10px;
