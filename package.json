@@ -9,7 +9,6 @@
     "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
-    "react-coverflow": "^0.2.20",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
     "react-router-dom": "^5.0.0",
