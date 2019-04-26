@@ -1,5 +1,7 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
+// import { Switch, Route, withRouter } from 'react-router-dom';
+// ^^^uncomment when ready to use 'Switch' method for the code at the bottom
 
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';

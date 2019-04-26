@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Auth from './auth/Auth.js';
 import Routes from './config/Routes.js';
 import Footer from './components/Footer';
-import TopBar from './components/TopBar.js';
+import TopBar from './components/TopBar';
 
 const auth = new Auth();
 
