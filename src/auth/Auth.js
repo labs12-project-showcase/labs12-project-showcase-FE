@@ -100,7 +100,11 @@ export default class Auth {
 		this.expiresAt = expiresAt;
 
 		// navigate to the home route
-		history.replace('/student/dashboard');
+    // history.replace('/student/dashboard');
+    
+		// navigate to the Profile Quick Start
+    history.replace('/profile-quick-start');
+    
 	}
 
 	renewSession() {
