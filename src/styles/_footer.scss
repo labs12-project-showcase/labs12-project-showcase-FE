@@ -1,10 +1,13 @@
 // Footer
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: $darkcolor;
-    min-height: 100px;
+    min-height: 13vh;
     @include box-align();
 
     img {
-        max-width: 100px;
+        max-width: 130px;
     }
 }
