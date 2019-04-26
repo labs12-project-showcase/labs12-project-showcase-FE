@@ -93,13 +93,13 @@ const ProfileQsSchema = Yup.object().shape({
   location: Yup.string().trim(),
   name: Yup.string()
   .max(100, `Maximum 100 characters`)
-  .required()
+  .required('Name is required')
   .trim(),
   portfolioURL: Yup.string()
   .trim()
   .url(),
   summary: Yup.string()
-    .max(500, `Maximum 500 characters`)
+    .max(1000, `Maximum 500 characters`)
     .trim(),
   twitterURL: Yup.string()
     .trim()
