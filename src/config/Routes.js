@@ -7,6 +7,8 @@ import StudentDashboard from '../components/student/dashboard/StudentDashboard';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
 
+import Profileqs from '../components/student/profileqs/Profileqs';
+
 const Routes = props => {
 	let handleAuthentication = ({ location }) => {
 		if (/access_token|id_token|error/.test(location.hash)) {
@@ -31,6 +33,7 @@ const Routes = props => {
 				path="/student/dashboard"
 				render={props => <StudentDashboard auth={props.auth} {...props} />}
 			/>
+			<Route path="/profile-quick-start" component={Profileqs} />
 		</>
 	);
 };
