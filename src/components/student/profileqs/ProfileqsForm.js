@@ -80,24 +80,24 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
 const ProfileQsSchema = Yup.object().shape({
   acclaimBadgeURL: Yup.string()
   .trim()
-  .url(),
+  .url('Must be a valid URL'),
   desiredTitle: Yup.string()
   .max(100, `Maximum 100 characters`)
-  .trim(),
+  .trim('Must be a valid URL'),
   gitHubURL: Yup.string()
   .trim()
-  .url(),
+  .url('Must be a valid URL'),
   linkedInURL: Yup.string()
   .trim()
-  .url(),
+  .url('Must be a valid URL'),
   location: Yup.string().trim(),
   name: Yup.string()
   .max(100, `Maximum 100 characters`)
   .required('Name is required')
-  .trim(),
+  .trim('Must be a valid URL'),
   portfolioURL: Yup.string()
   .trim()
-  .url(),
+  .url('Must be a valid URL'),
   summary: Yup.string()
     .max(1000, `Maximum 1,000 characters`)
     .trim(),
