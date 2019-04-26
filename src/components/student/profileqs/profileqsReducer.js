@@ -1,4 +1,4 @@
-import {} from './profileqsActions.js/index.js';
+import {} from './profileqsActions.js/index.js.js';
 
 const initialState = {};
 
