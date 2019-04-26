@@ -6,15 +6,15 @@ import ProfileqsForm from './ProfileqsForm';
 
 const Profileqs = props => {
   const fakedInitialData = {
-    acclaimBadgeURL: '',
+    acclaimBadgeURL: null,
     desiredTitle: 'Super Duper Developer',
     gitHubURL: 'https://github.com',
     linkedInURL: 'https://linkedin.com',
-    location: 'Ohio',
+    location: null,
     name: 'Bartholemew',
     portfolioURL: '',
     summary: 'hello, this is about',
-    twitterURL: ''
+    twitterURL: null
   };
   return (
     <div className="profileqs-container">
