@@ -53,8 +53,10 @@
     &.stretch-input {
       margin: 1.6rem 0;
       width: 100%;
-      input {
+      textarea {
+        font-family: inherit;
         height: 16rem;
+        padding: 1.6rem;
         width: 100%;
       }
     }
