@@ -9,7 +9,6 @@
     "formik": "^1.5.3",
     "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.11.0",
-    "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-animated-slider": "^1.1.4",
     "react-dom": "^16.8.6",
