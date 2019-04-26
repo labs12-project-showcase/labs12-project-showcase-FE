@@ -78,29 +78,29 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
 
 // Validation Schema, feels similar to React PropTypes
 const ProfileQsSchema = Yup.object().shape({
-  about: Yup.string()
-    .max(500, `Maximum 500 characters`)
-    .trim(),
   acclaimBadgeURL: Yup.string()
-    .trim()
-    .url(),
+  .trim()
+  .url(),
   desiredTitle: Yup.string()
-    .max(100, `Maximum 100 characters`)
-    .trim(),
+  .max(100, `Maximum 100 characters`)
+  .trim(),
   gitHubURL: Yup.string()
-    .trim()
-    .url(),
+  .trim()
+  .url(),
   linkedInURL: Yup.string()
-    .trim()
-    .url(),
+  .trim()
+  .url(),
   location: Yup.string().trim(),
   name: Yup.string()
-    .max(100, `Maximum 100 characters`)
-    .required()
-    .trim(),
+  .max(100, `Maximum 100 characters`)
+  .required()
+  .trim(),
   portfolioURL: Yup.string()
-    .trim()
-    .url(),
+  .trim()
+  .url(),
+  summary: Yup.string()
+    .max(500, `Maximum 500 characters`)
+    .trim(),
   twitterURL: Yup.string()
     .trim()
     .url('Must be a valid URL')
