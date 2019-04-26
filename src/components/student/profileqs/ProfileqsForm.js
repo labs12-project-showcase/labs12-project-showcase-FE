@@ -66,8 +66,8 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
       <br />
       <span className="input-label">Summary</span>
       <br />
-      <Field name="about" type="text" />
-      <ErrorMessage name="about" component="div" />
+      <Field name="summary" component="textarea" />
+      <ErrorMessage name="summary" component="div" />
     </label>
 
     <button type="submit" disabled={isSubmitting}>
