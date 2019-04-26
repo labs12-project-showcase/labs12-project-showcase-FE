@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -134,17 +134,40 @@ const ProfileQsSchema = Yup.object().shape({
 
 const ProfileqsForm = props => {
   // May not need all of the `|| ''` in these depending on `props`
-  const initialFormValues = {
-    acclaimBadgeURL: props.initialData.acclaimBadgeURL || '',
-    desiredTitle: props.initialData.desiredTitle || '',
-    gitHubURL: props.initialData.gitHubURL || '',
-    linkedInURL: props.initialData.linkedInURL || '',
-    location: props.initialData.location || '',
-    name: props.initialData.name || '',
-    portfolioURL: props.initialData.portfolioURL || '',
-    summary: props.initialData.summary || '',
-    twitterURL: props.initialData.twitterURL || ''
-  };
+  let initialFormValues;
+
+  // const pullInitialData =
+  setTimeout(
+    axiosAuth()
+      .get('https://halg-backend.herokuapp.com/api/auth/login/initial')
+      .then(result => {
+        initialFormValues = {
+          acclaimBadgeURL: result.acclaimBadgeURL || '',
+          desiredTitle: result.desiredTitle || '',
+          gitHubURL: result.gitHubURL || '',
+          linkedInURL: result.linkedInURL || '',
+          location: result.location || '',
+          name: result.name || '',
+          portfolioURL: result.portfolioURL || '',
+          summary: result.summary || '',
+          twitterURL: result.twitterURL || ''
+        };
+      })
+      .catch(error => console.error(error)),
+    1000
+  );
+
+  // initialFormValues = {
+  //   acclaimBadgeURL: pullInitialData.acclaimBadgeURL || '',
+  //   desiredTitle: pullInitialData.desiredTitle || '',
+  //   gitHubURL: pullInitialData.gitHubURL || '',
+  //   linkedInURL: pullInitialData.linkedInURL || '',
+  //   location: pullInitialData.location || '',
+  //   name: pullInitialData.name || '',
+  //   portfolioURL: pullInitialData.portfolioURL || '',
+  //   summary: pullInitialData.summary || '',
+  //   twitterURL: pullInitialData.twitterURL || ''
+  // };
 
   return (
     <Formik
@@ -199,7 +222,7 @@ const ProfileqsForm = props => {
           axiosAuth()
             .put(backEndURL, removeEmpty(formattedObj))
             .then(result => {
-              if (result.status === '200') {
+              if (result.status == '200') {
                 console.log('successful POST request – result: ', result);
                 props.history.push('/student/dashboard');
               } else {
