@@ -15,7 +15,11 @@ const Routes = props => {
 	};
 	return (
 		<>
-			<Route path="/" render={props => <Home auth={props.auth} {...props} />} />
+			<Route
+				exact
+				path="/"
+				render={props => <Home auth={props.auth} {...props} />}
+			/>
 			<Route
 				path="/callback"
 				render={props => {

@@ -1,45 +1,73 @@
 // Top bar - logo and Navigation
 
 .TopBar {
-	width: 100%;
-	height: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: $lambdaRed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $lambdaRed;
 
-	.TopBar-container {
-		width: 800px;
-		display:flex;
-		justify-content: space-between;
+    .TopBar-container {
+        width: 100%;
+        max-width: 1000px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 5px 0;
 
-		.TopBar-hire-lambda-logo {
-			height: 30px;
-		}
+        .TopBar-hire-lambda-logo {
+            height: 30px;
+        }
 
-		.TopBar-btn-container {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+        .TopBar-btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-			.TopBar-login-btn, .TopBar-logout-btn {
-				height: 25px;
-				width: 90px;
-				border-radius: 15px;
-				color: $lambdaRed;
+            .TopBar-login-btn,
+            .TopBar-logout-btn {
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                background: none;
 
-				&:hover {
-					cursor: pointer;
-					color: white;
-					background-color: $lambdaRed;
-				}
-			}
-		};
+                img {
+                    width: 30px;
+                    height: auto;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    background: darken(($lambdaRed), 10%);
+                }
+            }
+        }
+
+        ;
 
 
-	}
+    }
+}
 
+.subNav {
+    background: darken(($lambdaRed), 10%);
+    padding: 20px 0;
+    @include box-align();
 
+    nav {
 
+        @include box-align(flex-end, center);
+        width: 100%;
+        max-width: 1024px;
+
+        a {
+            text-decoration: none;
+            color: $lightcolor;
+            margin: 0 5px;
+
+            &:last-child {}
+        }
+
+    }
 
 }

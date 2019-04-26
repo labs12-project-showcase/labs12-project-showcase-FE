@@ -1,1 +1,10 @@
 // Footer
+footer {
+    background-color: $darkcolor;
+    min-height: 100px;
+    @include box-align();
+
+    img {
+        max-width: 100px;
+    }
+}
