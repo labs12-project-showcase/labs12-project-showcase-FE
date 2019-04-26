@@ -17,6 +17,17 @@ const content = [
 		student_image: 'https://media.licdn.com/dms/image/C5603AQFwVh3DyrUiaA/profile-displayphoto-shrink_800_800/0?e=1561593600&v=beta&t=sMfz7iv71WGjlDfUo086EFs0fO6nQsxYP1LKNdg4vdE'
 	},
 	{
+		title: 'Black Hole',
+		description:
+		'Have you ever had a bad experience and wanted to say something without them hearing what you said?',
+		button: 'View Project',
+        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556312941/black_hole_o9nmdl.png',
+        project_url: 'https://black-hole-build-week.netlify.com/',
+        student_name: '	Javontay McElroy',
+        student_github_url: 'https://github.com/javontaymcelroy',
+		student_image: 'https://avatars1.githubusercontent.com/u/46494741?s=460&v=4'
+    },
+    {
 		title: 'Mentors International Training Reminders',
 		description:
 		'Eliminating poverty around the world, one entrepreneur at a time.',
@@ -26,7 +37,7 @@ const content = [
         student_name: 'Tico Thepsourinthone',
         student_github_url: 'https://github.com/ticotheps',
 		student_image: 'https://media.licdn.com/dms/image/C4D03AQF7SiNESVIHKg/profile-displayphoto-shrink_200_200/0?e=1561593600&v=beta&t=jq3a93PDuqk0PAKTv6s0-vm8PGnneVLaAD3ghbFwXww'
-	},
+    },
 ];
 
 
@@ -51,7 +62,7 @@ class Carousel extends React.Component {
                                     <strong>Built by:</strong> 
                                     
                                         <div className="student-container">
-                                            <a href={item.student_github_url}>
+                                            <a href={item.student_github_url} target="_blank" rel="noopener noreferrer">
                                                 <img src={item.student_image} alt={item.student_name} />
                                             </a>
                                             <p>{item.student_name}</p>
