@@ -3,6 +3,7 @@ import auth0 from 'auth0-js';
 import axios from 'axios';
 
 const backendUrl = 'https://halg-backend.herokuapp.com';
+const frontendUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://lambdashowcase.netlify.com';
 
 export default class Auth {
 	accessToken;
@@ -12,9 +13,10 @@ export default class Auth {
 	auth0 = new auth0.WebAuth({
 		domain: 'lambdashowcase.auth0.com',
 		clientID: 'o3k0Zn0QhhLv7KdWupY8I9j9uAIlqwDQ',
-		redirectUri: 'http://localhost:3000/callback',
+		redirectUri: `${frontendUrl}/callback`,
 		responseType: 'token id_token',
-		scope: 'openid email profile'
+		scope: 'openid email profile',
+		audience: 'https://lambdashowcase.auth0.com/api/v2/'
 	});
 
 	constructor() {
