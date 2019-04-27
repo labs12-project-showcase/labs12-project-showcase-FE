@@ -3,6 +3,10 @@ import auth0 from 'auth0-js';
 import axios from 'axios';
 
 const backendUrl = 'https://halg-backend.herokuapp.com';
+const frontendUrl =
+	process.env.NODE_ENV === 'development'
+		? 'http://localhost:3000'
+		: 'https://lambdashowcase.netlify.com';
 
 export default class Auth {
 	accessToken;
@@ -12,7 +16,7 @@ export default class Auth {
 	auth0 = new auth0.WebAuth({
 		domain: 'lambdashowcase.auth0.com',
 		clientID: 'o3k0Zn0QhhLv7KdWupY8I9j9uAIlqwDQ',
-		redirectUri: 'http://localhost:3000/callback',
+		redirectUri: `${frontendUrl}/callback`,
 		responseType: 'token id_token',
 		scope: 'openid email profile',
 		audience: 'https://lambdashowcase.auth0.com/api/v2/'
@@ -36,8 +40,7 @@ export default class Auth {
 		console.log('register payload', payload);
 		const send = {
 			email: payload.email,
-			first_name: payload.given_name,
-			last_name: payload.family_name,
+			name: payload.name,
 			role_id: 1,
 			sub_id: payload.sub
 		};
@@ -53,29 +56,14 @@ export default class Auth {
 			});
 	}
 
-	getLinkedIn(token) {
-		var config = {
-			headers: { Authorization: 'Bearer ' + token }
-		};
-		axios
-			.get('https://api.linkedin.com/v2/me', config)
-			.then(res => {
-				console.log(res);
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}
-
 	handleAuthentication() {
 		this.auth0.parseHash((err, authResult) => {
 			console.log('auth result', authResult);
 			if (authResult && authResult.accessToken && authResult.idToken) {
 				this.setSession(authResult);
 				this.register(authResult.idTokenPayload);
-				this.getLinkedIn(authResult.accessToken);
 			} else if (err) {
-				history.replace('/home');
+				history.replace('/');
 				console.log(err);
 				alert(`Error: ${err.error}. Check the console for further details.`);
 			}
@@ -101,7 +89,7 @@ export default class Auth {
 		this.expiresAt = expiresAt;
 
 		// navigate to the home route
-		history.replace('/student/dashboard');
+		history.replace('/profile-quick-start');
 	}
 
 	renewSession() {
