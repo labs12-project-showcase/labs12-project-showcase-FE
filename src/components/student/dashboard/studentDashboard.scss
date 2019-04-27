@@ -94,8 +94,15 @@
                     margin: 0 10px;
                     background-color: $lambdaRed;
                     color: $lightcolor;
-                    padding: 10px;
+                    width: 34px;
+                    height: 34px;
+                    padding: 9px;
                     border-radius: 50%;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: darken($lambdaRed, 10%);
+                    }
                 }
             }
         }
@@ -113,5 +120,14 @@
             width: 100%;
         }
 
+        .hobbies {
+            font-size: 1.6rem;
+
+            h2 {
+                font-weight: 700;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+        }
     }
 }

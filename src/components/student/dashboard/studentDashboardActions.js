@@ -1,18 +1,28 @@
 import axios from 'axios';
-export const FETCH_student = 'FETCH_student';
-export const FETCH_student_SUCCESS = 'FETCH_student_SUCCESS';
-export const FETCH_student_FAILURE = 'FETCH_student_FAILURE';
+export const FETCH_PROFILE = 'FETCH_PROFILE';
+export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
+export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
 
 export const getData = () => dispatch => {
-	console.log('fetching');
+	const headers = {
+		authorization: localStorage.getItem('backendToken')
+	};
 	axios
-		.get(`https://halg-backend.herokuapp.com/api/students/profile`)
+		.get(`https://halg-backend.herokuapp.com/api/students/profile`, {
+			headers
+		})
 		.then(res => res.data)
 
-		.then(student =>
+		.then(profile =>
 			dispatch({
-				type: FETCH_student,
-				payload: student
+				type: FETCH_PROFILE_SUCCESS,
+				payload: profile
+			})
+		)
+		.catch(err =>
+			dispatch({
+				type: FETCH_PROFILE_FAILURE,
+				payload: err.res
 			})
 		);
 };
