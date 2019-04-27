@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Carousel from '../carousel/Carousel';
 
 const Home = props => {
 
   return (
     <div className="home">
-      {props.welcome}
+      <Carousel />
     </div>
   );
 };
