@@ -1,6 +1,7 @@
-import React from 'react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 
 // Render the Formik form
 const renderForm = ({ errors, status, touched, isSubmitting }) => (
@@ -15,8 +16,8 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
     <label>
       <span className="input-label">Desired Title</span>
       <br />
-      <Field name="desiredTitle" type="text" />
-      <ErrorMessage name="desiredTitle" component="div" />
+      <Field name="desired_title" type="text" />
+      <ErrorMessage name="desired_title" component="div" />
     </label>
 
     <label>
@@ -29,45 +30,45 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
     <label>
       <span className="input-label">Portfolio URL</span>
       <br />
-      <Field name="portfolioURL" type="text" />
-      <ErrorMessage name="portfolioURL" component="div" />
+      <Field name="website" type="text" />
+      <ErrorMessage name="website" component="div" />
     </label>
 
     <label>
       <span className="input-label">GitHub Profile URL</span>
       <br />
-      <Field name="gitHubURL" type="text" />
-      <ErrorMessage name="gitHubURL" component="div" />
+      <Field name="github" type="text" />
+      <ErrorMessage name="github" component="div" />
     </label>
 
     <label>
       <span className="input-label">LinkedIn Profile URL</span>
       <br />
-      <Field name="linkedInURL" type="text" />
-      <ErrorMessage name="linkedInURL" component="div" />
+      <Field name="linkedin" type="text" />
+      <ErrorMessage name="linkedin" component="div" />
     </label>
 
     <label>
       <span className="input-label">Twitter Profile URL</span>
       <br />
-      <Field type="text" name="twitterURL" />
-      <ErrorMessage name="twitterURL" component="div" />
+      <Field type="text" name="twitter" />
+      <ErrorMessage name="twitter" component="div" />
     </label>
 
     <label>
       <span className="input-label">Acclaim Badge URL</span>
       <br />
-      <Field name="acclaimBadgeURL" type="text" />
-      <ErrorMessage name="acclaimBadgeURL" component="div" />
+      <Field name="acclaim" type="text" />
+      <ErrorMessage name="acclaim" component="div" />
     </label>
 
     <label className="stretch-input">
       Tell prospective employers about yourself (500 words)
       <br />
-      <span className="input-label">Summary</span>
+      <span className="input-label">About</span>
       <br />
-      <Field name="summary" component="textarea" />
-      <ErrorMessage name="summary" component="div" />
+      <Field name="about" component="textarea" />
+      <ErrorMessage name="about" component="div" />
     </label>
 
     <button type="submit" disabled={isSubmitting}>
@@ -78,47 +79,67 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
 
 // Validation Schema, feels similar to React PropTypes
 const ProfileQsSchema = Yup.object().shape({
-  acclaimBadgeURL: Yup.string()
-  .trim()
-  .url('Must be a valid URL'),
-  desiredTitle: Yup.string()
-  .max(100, `Maximum 100 characters`)
-  .trim('Must be a valid URL'),
-  gitHubURL: Yup.string()
-  .trim()
-  .url('Must be a valid URL'),
-  linkedInURL: Yup.string()
-  .trim()
-  .url('Must be a valid URL'),
+  acclaim: Yup.string()
+    .trim()
+    .url("Must be a valid URL"),
+  desired_title: Yup.string()
+    .max(100, `Maximum 100 characters`)
+    .trim("Must be a valid URL"),
+  github: Yup.string()
+    .trim()
+    .url("Must be a valid URL"),
+  linkedin: Yup.string()
+    .trim()
+    .url("Must be a valid URL"),
   location: Yup.string().trim(),
   name: Yup.string()
-  .max(100, `Maximum 100 characters`)
-  .required('Name is required')
-  .trim('Must be a valid URL'),
-  portfolioURL: Yup.string()
-  .trim()
-  .url('Must be a valid URL'),
-  summary: Yup.string()
+    .max(100, `Maximum 100 characters`)
+    .required("Name is required")
+    .trim("Must be a valid URL"),
+  portfolio: Yup.string()
+    .trim()
+    .url("Must be a valid URL"),
+  about: Yup.string()
     .max(1000, `Maximum 1,000 characters`)
     .trim(),
-  twitterURL: Yup.string()
+  twitter: Yup.string()
     .trim()
-    .url('Must be a valid URL')
+    .url("Must be a valid URL")
 });
 
 const ProfileqsForm = props => {
   // May not need all of the `|| ''` in these depending on `props`
-  const initialFormValues = {
-    acclaimBadgeURL: props.initialData.acclaimBadgeURL || '',
-    desiredTitle: props.initialData.desiredTitle || '',
-    gitHubURL: props.initialData.gitHubURL || '',
-    linkedInURL: props.initialData.linkedInURL || '',
-    location: props.initialData.location || '',
-    name: props.initialData.name || '',
-    portfolioURL: props.initialData.portfolioURL || '',
-    summary: props.initialData.summary || '',
-    twitterURL: props.initialData.twitterURL || ''
-  };
+  const [initialFormValues, updateValues] = useState({
+    acclaim: "",
+    desired_title: "",
+    github: "",
+    linkedin: "",
+    location: "",
+    name: "",
+    website: "",
+    about: "",
+    twitter: ""
+  });
+
+  useEffect(() => {
+    const headers = {
+      authorization: localStorage.getItem("backendToken")
+    };
+    axios
+      .get("https://halg-backend.herokuapp.com/api/auth/login/initial", {
+        headers
+      })
+      .then(({ data }) => {
+        console.log(data);
+        updateValues({
+          ...initialFormValues,
+          ...data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Formik
@@ -133,6 +154,7 @@ const ProfileqsForm = props => {
         }
       }
       validationSchema={ProfileQsSchema}
+      enableReinitialize
       render={renderForm}
     />
   );
