@@ -30,6 +30,7 @@ const Routes = props => {
 				}}
 			/>
 			<Route
+				exact
 				path="/student/dashboard"
 				render={props => <StudentDashboard auth={props.auth} {...props} />}
 			/>

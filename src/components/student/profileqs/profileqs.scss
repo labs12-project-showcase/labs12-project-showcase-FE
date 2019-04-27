@@ -1,75 +1,86 @@
 .profileqs-container {
+    min-height: 85vh;
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 5vh auto; // will likely need to be changed later
+    margin: 50px auto; // will likely need to be changed later
 }
 
 .profileqs {
     width: 100%;
     max-width: 600px;
-}
-
-.profile-quick-start-form {
     background-color: $lightcolor;
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    border-radius: 5px;
 
-    button {
-        background-color: $lambdaRed;
-        border: 1px solid $lambdaRed;
-        border-radius: 5px;
-        color: $lightcolor;
-        font-size: 1.6rem;
-        margin: 2rem auto;
-        padding: 10px 15px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: darken($lambdaRed, 10%);
-        }
+    h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
     }
 
-    label {
-        margin: 0.4rem 0;
+    .profile-quick-start-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
 
-        // this styles the inline error
-        // e.g. "Name is required"
-        div {
-            color: $lambdaRed;
-            padding: 0.8rem;
-        }
-
-        input {
-            border: 1px solid lightgray;
+        button {
+            background-color: $lambdaRed;
+            border: 1px solid $lambdaRed;
             border-radius: 5px;
-            font-size: 1.5rem;
-            padding: 1.4rem 1rem 1.2rem 2rem;
+            color: $lightcolor;
+            font-size: 1.6rem;
+            margin: 2rem auto;
+            padding: 10px 15px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken($lambdaRed, 10%);
+            }
         }
 
-        .input-label {
-            background: $lightcolor;
-            font-size: 1.4rem;
-            left: 1rem;
-            padding: 0.4rem;
-            position: relative;
-            top: 0.8rem;
-        }
+        label {
+            margin: 0.4rem 0;
 
-        &.stretch-input {
-            margin: 1.6rem 0;
-            width: 100%;
+            // this styles the inline error
+            // e.g. "Name is required"
+            div {
+                color: $lambdaRed;
+                padding: 0.8rem;
+                text-align: center;
+            }
 
-            textarea {
-                margin-top: 20px;
-                font-family: inherit;
-                height: 16rem;
-                padding: 1.6rem;
-                width: 100%;
-                border-radius: 5px;
+            input {
                 border: 1px solid lightgray;
+                border-radius: 5px;
+                font-size: 1.6rem;
+                padding: 1.4rem 1rem 1.2rem 2rem;
+            }
+
+            .input-label {
+                color: gray;
+                background: $lightcolor;
+                font-size: 1.4rem;
+                left: 1rem;
+                padding: 0.4rem;
+                position: relative;
+                top: 0.8rem;
+            }
+
+            &.stretch-input {
+                margin: 1.6rem 0;
+                width: 100%;
+
+                textarea {
+                    margin-top: 20px;
+                    height: 16rem;
+                    font-size: 1.6rem;
+                    padding: 1.6rem;
+                    width: 100%;
+                    border-radius: 5px;
+                    border: 1px solid lightgray;
+                }
             }
         }
     }

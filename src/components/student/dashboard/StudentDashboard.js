@@ -7,6 +7,10 @@ import AboutMe from '../aboutMe/AboutMe';
 import Endorsements from '../endorsements/Endorsements';
 
 class StudentDashboard extends React.Component {
+	// componentWillMount() {
+
+	// }
+
 	render() {
 		return (
 			<div className="student-dashboard">
