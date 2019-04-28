@@ -14,8 +14,12 @@ const Projectqs = props => {
 					</NavLink>
 				</nav>
 			</div>
-			<h2>Please Delete this when you are going to start</h2>
-			<NavLink to="/student/project-edit">Submit New Project</NavLink>
+			<main>
+				<h2>Please Delete this when you are going to start</h2>
+				<NavLink to="/student/project-edit">
+					<button>Submit New Project</button>
+				</NavLink>
+			</main>
 		</div>
 	);
 };
