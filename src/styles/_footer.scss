@@ -1,17 +1,15 @@
 // Footer
 footer {
-    position: fixed;
     display: flex;
     flex-direction: column;
-    bottom: 0;
     width: 100%;
-    background-color: $lambdaDarkBlue;
+    background-color: $darkcolor;
     height: 15vh;
     @include box-align();
 
     nav a {
         text-decoration: none;
-        color: grey;
+        color: lighten($darkcolor, 20%);
         margin: 0 15px;
         font-size: 1.4rem;
 
@@ -26,6 +24,6 @@ footer {
 
     img {
         max-width: 150px;
-        margin-top: 15px;
+        margin-top: 30px;
     }
 }

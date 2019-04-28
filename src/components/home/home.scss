@@ -1,0 +1,107 @@
+.home {
+
+    header {
+        min-height: 350px;
+        background-color: $lightcolor;
+        text-align: center;
+    }
+
+    main {
+        @include box-align(flex-start, flex-start);
+        width: 100%;
+        max-width: 1024px;
+        margin: 0 auto;
+        padding-bottom: 100px;
+
+        .search-bar {
+            width: 100%;
+            max-width: 300px;
+            padding: 50px;
+        }
+
+        .cards-display {
+            width: 100%;
+            max-width: 680px;
+            padding-bottom: 50px;
+            @include box-align(center, flex-start);
+
+            .cards {
+                max-width: 210px;
+                height: 350px;
+                width: 100%;
+                margin: 20px 5px;
+
+                .profile-pic {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    margin: 0 auto;
+                    transform: translateY(50px);
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .details {
+                    padding: 60px 10px 20px;
+                    text-align: center;
+                    background-color: $lightcolor;
+                    border-radius: 3px;
+
+                    h2 {
+                        font-weight: 700;
+                        font-size: 2.5rem;
+                        margin-bottom: 20px;
+                        height: 50px;
+                    }
+
+                    h3 {
+                        height: 20px;
+                        font-size: 1.4rem;
+                    }
+
+                    p {
+                        height: 30px;
+                        margin: 20px auto;
+                    }
+
+                    a {
+                        font-size: 2rem;
+                        color: lighten($darkcolor, 50%);
+                        cursor: pointer;
+                        margin: 10px;
+
+                        &:hover {
+                            color: $darkcolor;
+                        }
+                    }
+
+                    .prof-link {
+                        color: $lightcolor;
+                        text-decoration: none;
+                        border: none;
+                        font-size: 1.4rem;
+                        width: 100%;
+                        padding: 10px;
+                        background-color: lighten($darkcolor, 50%);
+                        margin-bottom: 10px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: $darkcolor;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .carousel-section {
+        width: 100%;
+    }
+
+}
