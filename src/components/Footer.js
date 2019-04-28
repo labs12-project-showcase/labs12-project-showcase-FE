@@ -7,42 +7,42 @@ export default function Footer() {
 		<>
 			<footer>
 				<nav>
-					<NavLink to="/">
+					<a href="https://lambdaschool.com/courses/cs/web/">
 						COURSES
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/about/">
 						ABOUT
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/blog/">
 						BLOG
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/apply/">
 						APPLY
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/careers/">
 						CAREERS
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/privacy/">
 						LEGAL
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/contact/">
 						CONTACT
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/courses/cs/web/bootcamp/">
 						FREE CODE BOOTCAMP 
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://lambdaschool.com/referral/">
 						REFERRAL
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://twitter.com/lambdaschool">
 						<i className="fab fa-twitter"></i>
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://www.facebook.com/LambdaSchoolOnline/">
 						<i className="fab fa-facebook"></i>
-					</NavLink>
-					<NavLink to="/">
+					</a>
+					<a href="https://github.com/LambdaSchool">
 						<i className="fab fa-github"></i>
-					</NavLink>
+					</a>
 				</nav>
 				<NavLink exact to="/">
 					<img
