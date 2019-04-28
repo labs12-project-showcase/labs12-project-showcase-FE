@@ -56,14 +56,14 @@
   }
 
   .slider-wrapper {
+    top: 50px;
     position: relative;
     height: 90vh;
     overflow: hidden;
   }
 
   .slide {
-    top: 50px;
-    height: 85vh;
+    height: 80vh;
     background-size: cover !important;
   }
 
