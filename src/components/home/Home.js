@@ -17,8 +17,7 @@ class Home extends React.Component {
 				{this.props.home.cards.map((cards, index) => (
 					<Cards {...this.props} cards={cards} key={index} />
 				))}
-
-				{/* <Carousel /> */}
+				<Carousel />
 			</div>
 		);
 	}
