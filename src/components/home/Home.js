@@ -14,10 +14,26 @@ class Home extends React.Component {
 	render() {
 		return (
 			<div className="home">
-				{this.props.home.cards.map((cards, index) => (
-					<Cards {...this.props} cards={cards} key={index} />
-				))}
-				<Carousel />
+				<header>
+					<h1>Title and Image coming soon</h1>
+				</header>
+				<main>
+					<div className="search-bar">
+						{/* Please use this section to implement the serch */}
+						<p>Filters</p>
+						<input type={Text} />
+						<br />
+						<button>Submit</button>
+					</div>
+					<div className="cards-display">
+						{this.props.home.cards.map((cards, index) => (
+							<Cards {...this.props} cards={cards} key={index} />
+						))}
+					</div>
+				</main>
+				<div className="carousel-section">
+					<Carousel />
+				</div>
 			</div>
 		);
 	}

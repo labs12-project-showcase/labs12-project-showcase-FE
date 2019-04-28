@@ -4,7 +4,7 @@ import StudentDashboard from '../components/student/dashboard/StudentDashboard';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
 import Projectqs from '../components/student/projectqs/Projectqs';
-
+import ProjectEdit from '../components/student/projects/ProjectEdit';
 import Profileqs from '../components/student/profileqs/Profileqs';
 
 const Routes = props => {
@@ -38,6 +38,10 @@ const Routes = props => {
 					exact
 					path="/student/new-project"
 					render={props => <Projectqs auth={props.auth} {...props} />}
+				/>
+				<Route
+					path="/student/project-edit"
+					render={props => <ProjectEdit auth={props.auth} {...props} />}
 				/>
 			</Switch>
 		</>
