@@ -4,7 +4,7 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: $darkcolor;
-    min-height: 13vh;
+    height: 10vh;
     @include box-align();
 
     img {

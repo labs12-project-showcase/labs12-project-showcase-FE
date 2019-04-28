@@ -44,7 +44,7 @@ class Carousel extends React.Component {
     render() {
         return (
             <div className="Carousel">
-                <Slider autoplay={3000} className="slider-wrapper">
+                <Slider autoplay={6000} className="slider-wrapper">
                     {projects.map((item, index) => (
                         <div
                             key={index}
