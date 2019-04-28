@@ -55,15 +55,15 @@
     margin-left: 0;
   }
 
-//   .slider-wrapper {
-//     position: relative;
-//     height: 95vh;
-//     overflow: hidden;
-//   }
+  .slider-wrapper {
+    top: 50px;
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+  }
 
   .slide {
-    top: 50px;
-    height: 82vh;
+    height: 80vh;
     background-size: cover !important;
   }
 
