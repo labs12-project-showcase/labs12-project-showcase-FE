@@ -9,7 +9,7 @@ const projects = [
 		description:
 		'Transform any image into a Picasso-esque Masterpiece.',
 		button: 'View Project',
-        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306221/picasso_project_ynohmb.png',
+        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306221/HireLambdaStudents.com/picasso_project_ynohmb.png',
         project_url: 'https://picasso-frontend.netlify.com/',
         student_name: 'A. Lowell Richardson',
         student_github_url: 'https://github.com/andrewlowell',
@@ -20,7 +20,7 @@ const projects = [
 		description:
 		'Have you ever had a bad experience and wanted to say something without them hearing what you said?',
 		button: 'View Project',
-        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556312941/black_hole_o9nmdl.png',
+        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556312941/HireLambdaStudents.com/black_hole_o9nmdl.png',
         project_url: 'https://black-hole-build-week.netlify.com/',
         student_name: '	Javontay McElroy',
         student_github_url: 'https://github.com/javontaymcelroy',
@@ -31,7 +31,7 @@ const projects = [
 		description:
 		'Eliminating poverty around the world, one entrepreneur at a time.',
 		button: 'View Project',
-        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306772/mentors_students_tkovzi.png',
+        project_image: 'https://res.cloudinary.com/tico-cloudinary/image/upload/v1556306772/HireLambdaStudents.com/mentors_students_tkovzi.png',
         project_url: 'https://pacific-dusk-14025.herokuapp.com',
         student_name: 'Tico Thepsourinthone',
         student_github_url: 'https://github.com/ticotheps',
