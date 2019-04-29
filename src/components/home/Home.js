@@ -30,10 +30,10 @@ class Home extends React.Component {
 							<Cards {...this.props} cards={cards} key={index} />
 						))}
 					</div>
+					<div className="carousel-section">
+						<Carousel />
+					</div>
 				</main>
-				<div className="carousel-section">
-					<Carousel />
-				</div>
 			</div>
 		);
 	}

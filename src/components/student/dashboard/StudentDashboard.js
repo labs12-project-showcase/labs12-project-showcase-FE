@@ -19,15 +19,21 @@ class StudentDashboard extends React.Component {
   render() {
     const {
       name,
-      desired_title,
+      about,
+      desired_locations,
       endorsed,
+      endorsements,
+      skills,
+      top_skills,
       location,
       linkedin,
       twitter,
       github,
       website,
       acclaim,
-      hobbies
+      hobbies,
+      cohort,
+      desired_position
     } = this.props.studentDashboard.profile;
 
     return (
@@ -50,7 +56,7 @@ class StudentDashboard extends React.Component {
             </div>
             <div className="name-cont">
               <h1>{name}</h1>
-              <h2>{desired_title}</h2>
+              <h2>{desired_position}</h2>
               <h3>{location}</h3>
             </div>
             <div className="badge">
@@ -78,14 +84,18 @@ class StudentDashboard extends React.Component {
           </div>
         </header>
         <main>
-          <AboutMe {...this.props} />
-          <Endorsements />
+          <AboutMe about={about} />
+          <Endorsements endorsements={endorsements} />
           <hr />
           <h1>PROJECTS HERE</h1>
           <hr />
           <div className="status-skills">
-            <Status />
-            <Skills />
+            <Status
+              cohort={cohort}
+              desired_locations={desired_locations}
+              desired_position={desired_position}
+            />
+            <Skills skills={skills} top_skills={top_skills} />
           </div>
           <hr />
           <div className="hobbies">
