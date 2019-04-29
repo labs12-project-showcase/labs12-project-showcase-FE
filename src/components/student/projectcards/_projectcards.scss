@@ -24,11 +24,12 @@
     color: #ffffff;
     padding: 10px;
     margin: 5px;
-    background-color: #8d0e26;
+    background-color: $lambdaRed;
     cursor: pointer;
 
     &:hover {
       box-shadow: 0 0 6px 3px #cccccc;
+      background: #8d0e26;
     }
   }
 
