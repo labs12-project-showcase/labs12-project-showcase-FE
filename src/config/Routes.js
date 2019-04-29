@@ -4,6 +4,7 @@ import StudentDashboard from '../components/student/dashboard/StudentDashboard';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
 import Projectqs from '../components/student/projectqs/Projectqs';
+import ProjectView from '../components/student/projects/ProjectView';
 import ProjectEdit from '../components/student/projects/ProjectEdit';
 import Profileqs from '../components/student/profileqs/Profileqs';
 
@@ -40,6 +41,12 @@ const Routes = props => {
 					render={props => <Projectqs auth={props.auth} {...props} />}
 				/>
 				<Route
+					exact
+					path="/student/project-view"
+					render={props => <ProjectView auth={props.auth} {...props} />}
+				/>
+				<Route
+					exact
 					path="/student/project-edit"
 					render={props => <ProjectEdit auth={props.auth} {...props} />}
 				/>
@@ -52,7 +59,7 @@ export default withRouter(Routes);
 
 // we can add or delete later
 //
-// import ProjectEdit from '../components/student/projects/ProjectEdit';
+
 // import ProjectView from '../components/student/projects/ProjectView';
 
 // 		<>

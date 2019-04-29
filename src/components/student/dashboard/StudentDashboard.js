@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getData } from "./studentDashboardActions";
 import badge from "../../../assets/lambda-badge.png";
 import tony from "../../../assets/tony.jpg";
+import Projects from "../projectcards/ProjectCards";
 import NotEndorsed from "../notEndorsed/NotEndorsed";
 import AboutMe from "../aboutMe/AboutMe";
 import Endorsements from "../endorsements/Endorsements";
@@ -33,7 +34,9 @@ class StudentDashboard extends React.Component {
       acclaim,
       hobbies,
       cohort,
-      desired_position
+      desired_position,
+      projects,
+      top_projects
     } = this.props.studentDashboard.profile;
 
     return (
@@ -87,7 +90,7 @@ class StudentDashboard extends React.Component {
           <AboutMe about={about} />
           <Endorsements endorsements={endorsements} />
           <hr />
-          <h1>PROJECTS HERE</h1>
+          <Projects projects={projects} top_projects={top_projects} />
           <hr />
           <div className="status-skills">
             <Status
