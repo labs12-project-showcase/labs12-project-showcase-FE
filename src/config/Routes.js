@@ -41,7 +41,6 @@ const Routes = props => {
 					render={props => <Projectqs auth={props.auth} {...props} />}
 				/>
 				<Route
-					exact
 					path="/student/project-view"
 					render={props => <ProjectView auth={props.auth} {...props} />}
 				/>

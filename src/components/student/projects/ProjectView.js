@@ -28,8 +28,8 @@ const ProjectView = props => {
 		<div className="project-view">
 			<div className="subNav">
 				<nav>
-					<Link exact to="/student/new-project">
-						Add New Project
+					<Link exact to="/student/project-edit">
+						Edit Project
 					</Link>
 					<Link exact to="/student/profile-edit">
 						Edit Profile

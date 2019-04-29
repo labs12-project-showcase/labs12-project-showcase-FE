@@ -86,7 +86,7 @@ const ProjectCards = ({ top_projects, projects }) => {
       <a
         key={proj.project_id}
         className="project-card"
-        href={`/projects/${proj.project_id}`}
+        href={`/student/project-view/${proj.project_id}`}
       >
         <img src={proj.media[0]} alt="Project media" />
         <h3>{proj.name}</h3>
