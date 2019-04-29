@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-
-const ProjectEdit= props => {
-
+const ProjectEdit = props => {
 	return (
 		<div className="project-edit">
 			<h1>PROJECT EDIT PAGE</h1>
