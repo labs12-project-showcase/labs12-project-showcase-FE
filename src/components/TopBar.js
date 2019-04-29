@@ -9,7 +9,6 @@ import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
 	render() {
-		console.log('top bar props', this.props);
 		const { isLoggedIn, login, logout } = this.props;
 		return (
 			<div className="TopBar">

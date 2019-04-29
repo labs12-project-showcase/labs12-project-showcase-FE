@@ -34,11 +34,9 @@ export const logout = params => dispatch => {
 };
 
 export const handleAuth = () => dispatch => {
-  console.log('action login');
 
   auth.parseHash((err, results) => {
 
-    console.log('handle auth stuff', results);
     const send = {
       email: results.idTokenPayload.email,
       name: results.idTokenPayload.name,
@@ -49,11 +47,10 @@ export const handleAuth = () => dispatch => {
     axios
     .post(`${backendUrl}/api/auth/login`, send)
     .then(res => {
-      console.log('response from registering', res);
+
       localStorage.setItem('backendToken', res.data);
       history.replace('/profile-quick-start');
 
-      console.log('action setSession');
       let expiresAt = results.expiresIn * 1000 + new Date().getTime();
       dispatch({
         type: SET_SESSION,
