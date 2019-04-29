@@ -1,6 +1,9 @@
 // Top bar - logo and Navigation
 
 .TopBar {
+    // position: fixed;
+    height: 50px;
+    top: 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -65,7 +68,9 @@
             color: $lightcolor;
             margin: 0 5px;
 
-            &:last-child {}
+            &:last-child {
+                margin-right: 0
+            }
         }
 
     }

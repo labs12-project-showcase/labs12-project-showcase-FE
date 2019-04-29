@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -28,216 +29,159 @@ const handleSubmitError = error => {
 
 // Render the Formik form
 const renderForm = ({ errors, status, touched, isSubmitting }) => (
-  <Form className="profile-quick-start-form">
-    <label>
-      <span className="input-label">Name</span>
-      <br />
-      <Field name="name" type="text" />
-      <ErrorMessage name="name" component="div" />
-    </label>
+	<Form className="profile-quick-start-form">
+		<label>
+			<span className="input-label">Name</span>
+			<br />
+			<Field name="name" type="text" />
+			<ErrorMessage name="name" component="div" />
+		</label>
 
-    <label>
-      <span className="input-label">Desired Title</span>
-      <br />
-      <Field name="desiredTitle" type="text" />
-      <ErrorMessage name="desiredTitle" component="div" />
-    </label>
+		<label>
+			<span className="input-label">Desired Title</span>
+			<br />
+			<Field name="desired_title" type="text" />
+			<ErrorMessage name="desired_title" component="div" />
+		</label>
 
-    <label>
-      <span className="input-label">Location</span>
-      <br />
-      <Field name="location" type="text" />
-      <ErrorMessage name="location" component="div" />
-    </label>
+		<label>
+			<span className="input-label">Location</span>
+			<br />
+			<Field name="location" type="text" />
+			<ErrorMessage name="location" component="div" />
+		</label>
 
-    <label>
-      <span className="input-label">Portfolio URL</span>
-      <br />
-      <Field name="portfolioURL" type="text" />
-      <ErrorMessage name="portfolioURL" component="div" />
-    </label>
+		<label>
+			<span className="input-label">Portfolio URL</span>
+			<br />
+			<Field name="website" type="text" />
+			<ErrorMessage name="website" component="div" />
+		</label>
 
-    <label>
-      <span className="input-label">GitHub Profile URL</span>
-      <br />
-      <Field name="gitHubURL" type="text" />
-      <ErrorMessage name="gitHubURL" component="div" />
-    </label>
+		<label>
+			<span className="input-label">GitHub Profile URL</span>
+			<br />
+			<Field name="github" type="text" />
+			<ErrorMessage name="github" component="div" />
+		</label>
 
-    <label>
-      <span className="input-label">LinkedIn Profile URL</span>
-      <br />
-      <Field name="linkedInURL" type="text" />
-      <ErrorMessage name="linkedInURL" component="div" />
-    </label>
+		<label>
+			<span className="input-label">LinkedIn Profile URL</span>
+			<br />
+			<Field name="linkedin" type="text" />
+			<ErrorMessage name="linkedin" component="div" />
+		</label>
 
-    <label>
-      <span className="input-label">Twitter Profile URL</span>
-      <br />
-      <Field type="text" name="twitterURL" />
-      <ErrorMessage name="twitterURL" component="div" />
-    </label>
+		<label>
+			<span className="input-label">Twitter Profile URL</span>
+			<br />
+			<Field type="text" name="twitter" />
+			<ErrorMessage name="twitter" component="div" />
+		</label>
 
-    <label>
-      <span className="input-label">Acclaim Badge URL</span>
-      <br />
-      <Field name="acclaimBadgeURL" type="text" />
-      <ErrorMessage name="acclaimBadgeURL" component="div" />
-    </label>
+		<label>
+			<span className="input-label">Acclaim Badge URL</span>
+			<br />
+			<Field name="acclaim" type="text" />
+			<ErrorMessage name="acclaim" component="div" />
+		</label>
 
-    <label className="stretch-input">
-      Tell prospective employers about yourself (500 words)
-      <br />
-      <span className="input-label">Summary</span>
-      <br />
-      <Field name="summary" component="textarea" />
-      <ErrorMessage name="summary" component="div" />
-    </label>
+		<label className="stretch-input">
+			Tell prospective employers about yourself (500 words)
+			<br />
+			<span className="input-label">About</span>
+			<br />
+			<Field name="about" component="textarea" />
+			<ErrorMessage name="about" component="div" />
+		</label>
 
-    <div id="quick-start-create-profile">
-      <button type="submit" disabled={isSubmitting}>
-        Create Profile
-      </button>
-    </div>
-  </Form>
+		<button type="submit" disabled={isSubmitting}>
+			Create Profile
+		</button>
+	</Form>
 );
 
 // Validation Schema, feels similar to React PropTypes
 const ProfileQsSchema = Yup.object().shape({
-  acclaimBadgeURL: Yup.string()
-    .trim()
-    .url('Must be a valid URL'),
-  desiredTitle: Yup.string()
-    .max(100, `Maximum 100 characters`)
-    .trim('Must be a valid URL'),
-  gitHubURL: Yup.string()
-    .trim()
-    .url('Must be a valid URL'),
-  linkedInURL: Yup.string()
-    .trim()
-    .url('Must be a valid URL'),
-  location: Yup.string().trim(),
-  name: Yup.string()
-    .max(100, `Maximum 100 characters`)
-    .required('Name is required')
-    .trim('Must be a valid URL'),
-  portfolioURL: Yup.string()
-    .trim()
-    .url('Must be a valid URL'),
-  summary: Yup.string()
-    .max(1000, `Maximum 1,000 characters`)
-    .trim(),
-  twitterURL: Yup.string()
-    .trim()
-    .url('Must be a valid URL')
+	acclaim: Yup.string()
+		.trim()
+		.url('Must be a valid URL'),
+	desired_title: Yup.string()
+		.max(100, `Maximum 100 characters`)
+		.trim('Must be a valid URL'),
+	github: Yup.string()
+		.trim()
+		.url('Must be a valid URL'),
+	linkedin: Yup.string()
+		.trim()
+		.url('Must be a valid URL'),
+	location: Yup.string().trim(),
+	name: Yup.string()
+		.max(100, `Maximum 100 characters`)
+		.required('Name is required')
+		.trim('Must be a valid URL'),
+	portfolio: Yup.string()
+		.trim()
+		.url('Must be a valid URL'),
+	about: Yup.string()
+		.max(1000, `Maximum 1,000 characters`)
+		.trim(),
+	twitter: Yup.string()
+		.trim()
+		.url('Must be a valid URL')
 });
 
 const ProfileqsForm = props => {
-  // May not need all of the `|| ''` in these depending on `props`
-  let initialFormValues;
+	// May not need all of the `|| ''` in these depending on `props`
+	const [initialFormValues, updateValues] = useState({
+		acclaim: '',
+		desired_title: '',
+		github: '',
+		linkedin: '',
+		location: '',
+		name: '',
+		website: '',
+		about: '',
+		twitter: ''
+	});
 
-  // const pullInitialData =
-  setTimeout(
-    axiosAuth()
-      .get('https://halg-backend.herokuapp.com/api/auth/login/initial')
-      .then(result => {
-        initialFormValues = {
-          acclaimBadgeURL: result.acclaimBadgeURL || '',
-          desiredTitle: result.desiredTitle || '',
-          gitHubURL: result.gitHubURL || '',
-          linkedInURL: result.linkedInURL || '',
-          location: result.location || '',
-          name: result.name || '',
-          portfolioURL: result.portfolioURL || '',
-          summary: result.summary || '',
-          twitterURL: result.twitterURL || ''
-        };
-      })
-      .catch(error => console.error(error)),
-    1000
-  );
+	useEffect(() => {
+		const headers = {
+			authorization: localStorage.getItem('backendToken')
+		};
+		axios
+			.get('https://halg-backend.herokuapp.com/api/auth/login/initial', {
+				headers
+			})
+			.then(({ data }) => {
+				console.log(data);
+				updateValues({
+					...initialFormValues,
+					...data
+				});
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}, []);
 
-  // initialFormValues = {
-  //   acclaimBadgeURL: pullInitialData.acclaimBadgeURL || '',
-  //   desiredTitle: pullInitialData.desiredTitle || '',
-  //   gitHubURL: pullInitialData.gitHubURL || '',
-  //   linkedInURL: pullInitialData.linkedInURL || '',
-  //   location: pullInitialData.location || '',
-  //   name: pullInitialData.name || '',
-  //   portfolioURL: pullInitialData.portfolioURL || '',
-  //   summary: pullInitialData.summary || '',
-  //   twitterURL: pullInitialData.twitterURL || ''
-  // };
-
-  return (
-    <Formik
-      initialValues={initialFormValues}
-      validationSchema={ProfileQsSchema}
-      render={renderForm}
-      onSubmit={
-        // handleSubmit
-        // replace testing function with data submit function
-        // (values, actions) => {
-        //   setTimeout(() => {
-        //     alert(JSON.stringify(values, null, 2));
-        //     actions.setSubmitting(false);
-        //   }, 1000);
-        // }
-        // Handle Form Submit, `PUT` request
-        // const handleSubmit =
-        values => {
-          const backEndURL =
-            'https://halg-backend.herokuapp.com/api/students/update';
-
-          // match Object keys to what back end expects
-          const formattedObj = {
-            student: {
-              about: values.summary,
-              acclaim: values.acclaimBadgeURL,
-              // desired_title: values.desiredTitle,
-              github: values.gitHubURL,
-              linkedin: values.linkedInURL,
-              location: values.location,
-              // name: values.name,
-              twitter: values.twitterURL,
-              website: values.portfolioURL
-            }
-          };
-
-          // Remove empty strings from Object
-          const removeEmpty = obj =>
-            Object.keys(obj)
-              .filter(f => Boolean(obj[f]) !== false)
-              .reduce(
-                (r, i) =>
-                  typeof obj[i] === 'object'
-                    ? { ...r, [i]: removeEmpty(obj[i]) } // recurse if nested Object
-                    : { ...r, [i]: obj[i] },
-                {}
-              );
-
-          console.log('format strip obj: ', removeEmpty(formattedObj));
-
-          // Make `PUT` request
-          axiosAuth()
-            .put(backEndURL, removeEmpty(formattedObj))
-            .then(result => {
-              if (result.status == '200') {
-                console.log('successful POST request – result: ', result);
-                props.history.push('/student/dashboard');
-              } else {
-                // handleSubmitError(result);
-                console.log(props.history);
-              }
-            })
-            .catch(error => {
-              console.error(error);
-              // handleSubmitError(error);
-            });
-        }
-      }
-    />
-  );
+	return (
+		<Formik
+			initialValues={initialFormValues}
+			onSubmit={
+				// replace testing function with data submit function
+				(values, actions) => {
+					setTimeout(() => {
+						alert(JSON.stringify(values, null, 2));
+						actions.setSubmitting(false);
+					}, 1000);
+				}
+			}
+			validationSchema={ProfileQsSchema}
+			enableReinitialize
+			render={renderForm}
+		/>
+	);
 };
 
 export default ProfileqsForm;
