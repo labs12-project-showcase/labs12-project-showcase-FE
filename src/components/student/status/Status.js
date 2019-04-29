@@ -7,24 +7,24 @@ const Status = ({ cohort, desired_locations, desired_position }) => {
   desired_position = "Software Engineer";
 
   return (
-    <div className="status">
-      <h1>Status</h1>
-      <div className="status-section">
+    <div className="status-container">
+      <h2>Status</h2>
+      <section className="status-section">
         <p>Graduate of:</p>
         <p>{cohort}</p>
-      </div>
-      <div className="status-section">
+      </section>
+      <section className="status-section">
         <p>Looking for Work in:</p>
         <ul>
           {desired_locations.map(loc => (
             <li>{loc}</li>
           ))}
         </ul>
-      </div>
-      <div className="status-section">
+      </section>
+      <section className="status-section">
         <p>Looking for:</p>
         <p>{desired_position}</p>
-      </div>
+      </section>
     </div>
   );
 };
