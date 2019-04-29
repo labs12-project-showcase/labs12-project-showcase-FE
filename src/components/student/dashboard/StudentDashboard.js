@@ -32,7 +32,7 @@ class StudentDashboard extends React.Component {
 			linkedin,
 			twitter,
 			github,
-			website,
+			// website,
 			acclaim,
 			hobbies,
 			cohort,
