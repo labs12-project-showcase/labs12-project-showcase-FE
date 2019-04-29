@@ -27,11 +27,18 @@ const ProjectView = props => {
 	return (
 		<div className="project-view">
 			<div className="subNav">
-				<nav>
-					<NavLink exact to="/student/dashboard">
-						<i class="fas fa-arrow-left"></i> Back to Student Profile
-					</NavLink>
+				<nav className="NavLinks-container">
 					<div>
+						<NavLink 
+							exact
+							className="NavLinks-container-left"  
+							to="/student/dashboard"
+						>
+							<i class="fas fa-arrow-left"></i> 
+							<p>Back to Student Profile</p>
+						</NavLink>
+					</div>
+					<div className="NavLinks-container-right">
 						<NavLink exact to="/student/project-edit">
 							Edit Project
 						</NavLink>
