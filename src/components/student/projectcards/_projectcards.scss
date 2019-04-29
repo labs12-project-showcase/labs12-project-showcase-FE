@@ -17,6 +17,21 @@
     color: black;
   }
 
+  button {
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px;
+    margin: 5px;
+    background-color: #8d0e26;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 6px 3px #cccccc;
+    }
+  }
+
   .projects-inner-wrapper {
     display: flex;
     justify-content: space-between;
@@ -28,7 +43,7 @@
       flex-direction: column;
       align-items: center;
       width: 240px;
-      margin-bottom: 20px;
+      margin: 0 40px 20px 40px;
       border-radius: 5px;
       box-shadow: 0 0 6px 3px #cccccc;
 

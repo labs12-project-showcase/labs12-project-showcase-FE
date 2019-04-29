@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Fade from "react-reveal/Fade";
 
 const ProjectCards = ({ top_projects, projects }) => {
   const [hide, toggleHide] = useState(true);
@@ -14,7 +15,7 @@ const ProjectCards = ({ top_projects, projects }) => {
     },
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 2,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -22,7 +23,7 @@ const ProjectCards = ({ top_projects, projects }) => {
     },
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 3,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -32,7 +33,7 @@ const ProjectCards = ({ top_projects, projects }) => {
   projects = [
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 4,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -40,7 +41,7 @@ const ProjectCards = ({ top_projects, projects }) => {
     },
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 5,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -48,7 +49,7 @@ const ProjectCards = ({ top_projects, projects }) => {
     },
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 6,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -56,7 +57,7 @@ const ProjectCards = ({ top_projects, projects }) => {
     },
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 7,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -64,7 +65,7 @@ const ProjectCards = ({ top_projects, projects }) => {
     },
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 8,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -72,7 +73,7 @@ const ProjectCards = ({ top_projects, projects }) => {
     },
     {
       name: "Brandons project",
-      project_id: 1,
+      project_id: 9,
       type: "React Application with cool stuff",
       media: [
         "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
@@ -95,8 +96,13 @@ const ProjectCards = ({ top_projects, projects }) => {
   return (
     <div className="projects-wrapper">
       <h2>Projects</h2>
-      <div className="projects-inner-wrapper">{map(top_projects)}</div>
-      <button onClick={() => toggleHide(!hide)}>
+      <div className="projects-inner-wrapper">
+        {map(top_projects)}
+        <Fade collapse when={!hide}>
+          {map(projects)}
+        </Fade>
+      </div>
+      <button type="button" onClick={() => toggleHide(!hide)}>
         {hide ? "Show More" : "Show Less"}
       </button>
     </div>
