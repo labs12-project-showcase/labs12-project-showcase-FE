@@ -69,7 +69,7 @@ class StudentDashboard extends React.Component {
 								<img src={badge} alt="Lambda Badge" />
 							</a>
 							<div className="contact-btn">
-								<Link to="/">Contact Me</Link>
+								<Link to="/contact-me">Contact Me</Link>
 								<Link path="/">
 									<i className="fas fa-share-alt" />
 								</Link>
