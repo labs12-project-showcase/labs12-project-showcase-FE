@@ -14,20 +14,26 @@ class ContactForm extends React.Component {
         return ( 
             <div className = 'contactForm'>
 
-                <form>
+                <form className = 'contact'>
                     <input
+                    className='name'
                     placeholder='Name'
                     />
                     
                     <input
+                    className='email'
                     placeholder='Email'
                     />
                     
                     <input
+                    className='message'
                     placeholder='Message...'
                     />
 
-                    <button onClick={() => this.onSubmit()} />
+                    <button 
+                    type = 'submit' 
+                    value = 'Submit'> 
+                    Submit </button>
                 
                 </form>
          
