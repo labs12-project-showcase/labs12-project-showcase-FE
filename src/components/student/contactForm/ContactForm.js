@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ContactForm extends Component {
+class ContactForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -8,10 +8,12 @@ class ContactForm extends Component {
             email: '',
             message: ''
          };
+
     };
     render() { 
         return ( 
             <div className = 'contactForm'>
+
                 <form>
                     <input
                     placeholder='Name'
@@ -28,9 +30,11 @@ class ContactForm extends Component {
                     <button onClick={() => this.onSubmit()} />
                 
                 </form>
+         
             </div>
          );
     }
+
 }
  
 export default ContactForm;
