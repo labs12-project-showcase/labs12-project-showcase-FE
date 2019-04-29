@@ -58,7 +58,7 @@ const ProjectView = props => {
 			</div>
 			<header>
 				<div className="img-des">
-					<img src={project} alt="Project Image" />
+					<img src={project} alt="Project" />
 					<div className="overlay" />
 					<h1>Machine-Brain Interface</h1>
 					<h2>Web App</h2>
@@ -66,7 +66,7 @@ const ProjectView = props => {
 					<a href="https://google.com">Read the Story on M</a>
 				</div>
 				<div className="media-display">
-					<div className="big-img">
+					<div className="big-gallery">
 						<iframe
 							width="100%"
 							height="350"
@@ -78,13 +78,13 @@ const ProjectView = props => {
 						/>
 					</div>
 					<div className="img-one">
-						<img src={one} alt="Project Image" />
+						<img src={one} alt="Project" />
 					</div>
 					<div className="img-two">
-						<img src={two} alt="Project Image" />
+						<img src={two} alt="Project" />
 					</div>
 					<div className="img-three">
-						<img src={three} alt="Project Image" />
+						<img src={three} alt="Project" />
 					</div>
 				</div>
 			</header>
@@ -109,23 +109,23 @@ const ProjectView = props => {
 				<h2>Who Built This?</h2>
 				<div className="students-names">
 					<div className="s-link">
-						<img src={s1} alt="Project Image" />
+						<img src={s1} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s2} alt="Project Image" />
+						<img src={s2} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s3} alt="Project Image" />
+						<img src={s3} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s4} alt="Project Image" />
+						<img src={s4} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s5} alt="Project Image" />
+						<img src={s5} alt="Project" />
 						<p>Student Name</p>
 					</div>
 				</div>
