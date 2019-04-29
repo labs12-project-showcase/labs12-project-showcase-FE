@@ -40,8 +40,9 @@ const Routes = props => {
 					render={props => <Projectqs auth={props.auth} {...props} />}
 				/>
 				<Route
-					path="/student/project-edit"
-					render={props => <ProjectEdit auth={props.auth} {...props} />}
+					exact
+					path="/student/project-view"
+					render={props => <ProjectView auth={props.auth} {...props} />}
 				/>
 			</Switch>
 		</>
