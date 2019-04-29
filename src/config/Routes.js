@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { handleAuth } from '../auth/authActions.js';
 import StudentDashboard from '../components/student/dashboard/StudentDashboard';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
@@ -7,48 +9,58 @@ import Projectqs from '../components/student/projectqs/Projectqs';
 import ProjectEdit from '../components/student/projects/ProjectEdit';
 import Profileqs from '../components/student/profileqs/Profileqs';
 
-const Routes = props => {
-	let handleAuthentication = ({ location }) => {
+class Routes extends Component {
+	
+	handleAuth = ({ location }) => {
 		if (/access_token|id_token|error/.test(location.hash)) {
-			props.auth.handleAuthentication();
+			this.props.handleAuth();
 		}
 	};
+
+	render() {
 	return (
 		<>
 			<Switch>
 				<Route
 					exact
 					path="/"
-					render={props => <Home auth={props.auth} {...props} />}
+					render={props => <Home {...props} />}
 				/>
 				<Route
 					path="/callback"
 					render={props => {
-						handleAuthentication(props);
+						this.handleAuth(props);
 						return <Callback {...props} />;
 					}}
 				/>
 				<Route
 					exact
 					path="/student/dashboard"
-					render={props => <StudentDashboard auth={props.auth} {...props} />}
+					render={props => <StudentDashboard {...props} />}
 				/>
 				<Route path="/profile-quick-start" component={Profileqs} />
 				<Route
 					exact
 					path="/student/new-project"
-					render={props => <Projectqs auth={props.auth} {...props} />}
+					render={props => <Projectqs {...props} />}
 				/>
 				<Route
 					path="/student/project-edit"
-					render={props => <ProjectEdit auth={props.auth} {...props} />}
+					render={props => <ProjectEdit {...props} />}
 				/>
 			</Switch>
 		</>
 	);
+	}
 };
 
-export default withRouter(Routes);
+const mapStateToProps = state => {
+	return {
+		...state.auth
+	};
+};
+
+export default withRouter(connect(mapStateToProps, { handleAuth })(Routes));
 
 // we can add or delete later
 //
