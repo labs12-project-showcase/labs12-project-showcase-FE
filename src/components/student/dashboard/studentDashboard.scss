@@ -1,133 +1,137 @@
 .student-dashboard {
-    min-height: 85vh;
+  min-height: 85vh;
 
-    header {
-        background-color: $lambdaRed;
-        height: 280px;
+  header {
+    background-color: $lambdaRed;
+    height: 280px;
 
-        .profile-container {
-            width: 100%;
-            max-width: 1024px;
-            margin: 0 auto;
-            @include box-align(space-between, flex-end);
+    .profile-container {
+      width: 100%;
+      max-width: 1024px;
+      margin: 0 auto;
+      @include box-align(space-between, flex-end);
 
-            .picture {
-                width: 250px;
-                height: 250px;
-                border-radius: 50%;
-                overflow: hidden;
-                border: 10px solid $lightcolor;
-                margin: 0 auto;
-                transform: translateY(130px);
+      .picture {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 10px solid $lightcolor;
+        margin: 0 auto;
+        transform: translateY(130px);
 
-                img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-
-            .name-cont {
-                width: 100%;
-                max-width: 350px;
-                min-width: 300px;
-                color: $lightcolor;
-                transform: translateY(20px);
-
-                h1 {
-                    font-size: 3.8rem;
-                    font-weight: 700;
-                    margin-bottom: 15px;
-                }
-
-                h2,
-                h3 {
-                    font-size: 1.6rem;
-                    font-weight: 400;
-                    margin-bottom: 5px;
-                }
-
-            }
-
-            .badge {
-                width: 100%;
-                max-width: 350px;
-
-
-                img {
-                    display: block;
-                    width: 150px;
-                    height: auto;
-                    margin: 0 0 0 auto;
-
-                }
-
-                .contact-btn {
-                    width: 100%;
-                    max-width: 450px;
-                    @include box-align(flex-start, center);
-                    margin-bottom: 20px;
-
-                    a {
-                        text-decoration: none;
-                        border-radius: 5px;
-                        color: $lightcolor;
-                        padding: 10px;
-                        margin: 5px;
-                        background-color: darken($lambdaRed, 10%);
-                        cursor: pointer;
-
-                        &:hover {
-                            -webkit-box-shadow: 0 0 3px 3px #722227;
-                            box-shadow: 0 0 3px 3px #722227;
-                        }
-                    }
-                }
-            }
-
-            .social-links {
-                width: 100%;
-                max-width: 830px;
-                margin-top: 50px;
-                @include box-align(flex-end, center);
-
-                i {
-                    margin: 0 10px;
-                    background-color: $lambdaRed;
-                    color: $lightcolor;
-                    width: 34px;
-                    height: 34px;
-                    padding: 9px;
-                    border-radius: 50%;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: darken($lambdaRed, 10%);
-                    }
-                }
-            }
+        img {
+          width: 100%;
+          height: auto;
         }
-    }
+      }
 
-    main {
-        margin: 100px auto;
+      .name-cont {
         width: 100%;
-        max-width: 1024px;
-        @include box-align(space-around, flex-start);
+        max-width: 350px;
+        min-width: 300px;
+        color: $lightcolor;
+        transform: translateY(20px);
 
-        hr {
-            margin: 20px auto;
-            border: 1px solid $lambdaRed;
-            width: 100%;
+        h1 {
+          font-size: 3.8rem;
+          font-weight: 700;
+          margin-bottom: 15px;
         }
 
-        .hobbies {
-            font-size: 1.6rem;
+        h2,
+        h3 {
+          font-size: 1.6rem;
+          font-weight: 400;
+          margin-bottom: 5px;
+        }
+      }
 
-            h2 {
-                font-weight: 700;
-                font-size: 1.8rem;
-                margin-bottom: 20px;
+      .badge {
+        width: 100%;
+        max-width: 350px;
+
+        img {
+          display: block;
+          width: 150px;
+          height: auto;
+          margin: 0 0 0 auto;
+        }
+
+        .contact-btn {
+          width: 100%;
+          max-width: 450px;
+          @include box-align(flex-start, center);
+          margin-bottom: 20px;
+
+          a {
+            text-decoration: none;
+            border-radius: 5px;
+            color: $lightcolor;
+            padding: 10px;
+            margin: 5px;
+            background-color: darken($lambdaRed, 10%);
+            cursor: pointer;
+
+            &:hover {
+              -webkit-box-shadow: 0 0 3px 3px #722227;
+              box-shadow: 0 0 3px 3px #722227;
             }
+          }
         }
+      }
+
+      .social-links {
+        width: 100%;
+        max-width: 830px;
+        margin-top: 50px;
+        @include box-align(flex-end, center);
+
+        i {
+          margin: 0 10px;
+          background-color: $lambdaRed;
+          color: $lightcolor;
+          width: 34px;
+          height: 34px;
+          padding: 9px;
+          border-radius: 50%;
+          cursor: pointer;
+
+          &:hover {
+            background-color: darken($lambdaRed, 10%);
+          }
+        }
+      }
     }
+  }
+
+  main {
+    margin: 100px auto;
+    width: 100%;
+    max-width: 1024px;
+    @include box-align(space-around, flex-start);
+
+    hr {
+      margin: 20px auto;
+      border: 1px solid $lambdaRed;
+      width: 100%;
+    }
+
+    .status-skills {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 2%;
+    }
+
+    .hobbies {
+      font-size: 1.6rem;
+
+      h2 {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+    }
+  }
 }

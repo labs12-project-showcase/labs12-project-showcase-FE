@@ -7,6 +7,8 @@ import tony from "../../../assets/tony.jpg";
 import NotEndorsed from "../notEndorsed/NotEndorsed";
 import AboutMe from "../aboutMe/AboutMe";
 import Endorsements from "../endorsements/Endorsements";
+import Status from "../status/Status";
+import Skills from "../skills/Skills";
 
 class StudentDashboard extends React.Component {
   componentDidMount() {
@@ -80,6 +82,11 @@ class StudentDashboard extends React.Component {
           <Endorsements />
           <hr />
           <h1>PROJECTS HERE</h1>
+          <hr />
+          <div className="status-skills">
+            <Status />
+            <Skills />
+          </div>
           <hr />
           <div className="hobbies">
             <h2>Hobbies &amp; Interests</h2>
