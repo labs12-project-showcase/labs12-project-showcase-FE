@@ -6,6 +6,8 @@ import badge from '../../../assets/lambda-badge.png';
 import tony from '../../../assets/tony.jpg';
 import AboutMe from '../aboutMe/AboutMe';
 import Endorsements from '../endorsements/Endorsements';
+import Status from '../status/Status';
+import Skills from '../skills/Skills';
 
 class StudentDashboard extends React.Component {
 	componentDidMount() {
@@ -74,7 +76,9 @@ class StudentDashboard extends React.Component {
 				</header>
 				<main>
 					<AboutMe {...this.props} />
-					<Endorsements />
+					<Endorsements {...this.props}/>
+					<Status {...this.props}/>
+					<Skills {...this.props}/>
 					<hr />
 					<h1>PROJECTS HERE</h1>
 					<hr />
