@@ -4,7 +4,7 @@ import StudentDashboard from '../components/student/dashboard/StudentDashboard';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
 import Projectqs from '../components/student/projectqs/Projectqs';
-import ProjectEdit from '../components/student/projects/ProjectEdit';
+import ProjectView from '../components/student/projects/ProjectView';
 import Profileqs from '../components/student/profileqs/Profileqs';
 
 const Routes = props => {
