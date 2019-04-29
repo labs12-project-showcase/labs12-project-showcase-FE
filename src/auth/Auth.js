@@ -1,12 +1,9 @@
 import history from '../history';
 import auth0 from 'auth0-js';
 import axios from 'axios';
-
-const backendUrl = 'https://halg-backend.herokuapp.com';
-const frontendUrl =
-	process.env.NODE_ENV === 'development'
-		? 'http://localhost:3000'
-		: 'https://lambdashowcase.netlify.com';
+import { connect } from 'react-redux';
+import { login, setSession } from './authActions.js';
+import { frontendUrl, backendUrl } from '../config/urls.js';
 
 export default class Auth {
 	accessToken;
@@ -38,30 +35,37 @@ export default class Auth {
 
 	register(payload) {
 		console.log('register payload', payload);
-		const send = {
-			email: payload.email,
-			name: payload.name,
-			role_id: 1,
-			sub_id: payload.sub
-		};
-		console.log('send payload', send);
-		axios
-			.post(`${backendUrl}/api/auth/login`, send)
-			.then(res => {
-				console.log('response from registering', res);
-				localStorage.setItem('backendToken', res.data);
-			})
-			.catch(err => {
-				console.log(err);
-			});
+
+		// authLogin(payload);
+
+		// const send = {
+		// 	email: payload.email,
+		// 	name: payload.name,
+		// 	role_id: 1,
+		// 	sub_id: payload.sub
+		// };
+		// console.log('send payload', send);
+		// axios
+		// 	.post(`${backendUrl}/api/auth/login`, send)
+		// 	.then(res => {
+		// 		console.log('response from registering', res);
+		// 		localStorage.setItem('backendToken', res.data);
+		// 	})
+		// 	.catch(err => {
+		// 		console.log(err);
+		// 	});
 	}
 
 	handleAuthentication() {
 		this.auth0.parseHash((err, authResult) => {
 			console.log('auth result', authResult);
 			if (authResult && authResult.accessToken && authResult.idToken) {
-				this.setSession(authResult);
+
 				this.register(authResult.idTokenPayload);
+				this.setSession(authResult);
+
+				history.replace('profile-quick-start');
+
 			} else if (err) {
 				history.replace('/');
 				console.log(err);
@@ -87,6 +91,8 @@ export default class Auth {
 		this.accessToken = authResult.accessToken;
 		this.idToken = authResult.idToken;
 		this.expiresAt = expiresAt;
+
+		// authSetSession(authResult);
 
 		// navigate to the home route
 		history.replace('/profile-quick-start');
