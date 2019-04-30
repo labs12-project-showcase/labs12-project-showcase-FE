@@ -9,6 +9,7 @@
     "draft-js": "^0.10.5",
     "formik": "^1.5.3",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-animated-slider": "^1.1.4",

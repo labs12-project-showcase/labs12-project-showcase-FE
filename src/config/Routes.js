@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PrivateRoute from './PrivateRoute.js';
 import { handleAuth } from '../auth/authActions.js';
 import StudentDashboard from '../components/student/dashboard/StudentDashboard';
 import Callback from '../auth/Callback.js';
@@ -17,7 +18,7 @@ class Routes extends Component {
 			this.props.handleAuth();
 		}
 	};
-
+	
 	render() {
 	return (
 		<>
@@ -47,7 +48,7 @@ class Routes extends Component {
 				/>
 				<Route
 					path="/student/project-view"
-					render={props => <ProjectView auth={props.auth} {...props} />}
+					render={props => <ProjectView {...props} />}
 				/>
 				<Route
 					exact
