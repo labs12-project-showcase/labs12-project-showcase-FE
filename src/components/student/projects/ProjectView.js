@@ -70,6 +70,7 @@ const ProjectView = props => {
 				<div className="media-display">
 					<div className="big-gallery">
 						<iframe
+							title="project preview video"
 							width="100%"
 							height="350"
 							src={`https://www.youtube.com/embed/${
