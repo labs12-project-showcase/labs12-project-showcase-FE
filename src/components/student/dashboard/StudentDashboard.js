@@ -11,6 +11,7 @@ import Endorsements from "../endorsements/Endorsements";
 import Share from "../share/Share";
 import Status from "../status/Status";
 import Skills from "../skills/Skills";
+import Progress from "../progress/Progress";
 
 // yarn add react-id-swiper@latest swiper@latest
 
@@ -108,6 +109,7 @@ class StudentDashboard extends React.Component {
             <p>{hobbies}</p>
           </div>
         </main>
+        <Progress />
       </div>
     );
   }

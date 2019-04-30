@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 const EditCards = ({ submit, cancel, id }) => {
+  //New Top Projects should initialize with the list of top projects from props
   const [newTopProjs, updateTopProjs] = useState(top_projects);
   //New Projects should initialize with the list of projects from props
   const [newProjs, updateProjs] = useState(projects);
   const [dragged, updateDragged] = useState({});
-  //New Top Projects should initialize with the list of top projects from props
 
   const handleSubmit = () => {
     const top_projects = newTopProjs.map(proj => ({
