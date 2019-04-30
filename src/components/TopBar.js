@@ -11,8 +11,6 @@ import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 class TopBar extends Component {
 	render() {
 		const { login, logout } = this.props;
-		// const isLoggedIn = validateJwt();
-		console.log('validate jwt', validateJwt());
 		return (
 			<div className="TopBar">
 				<div className="TopBar-container">
