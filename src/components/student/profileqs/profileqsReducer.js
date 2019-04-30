@@ -17,6 +17,7 @@ const initialState = {
     account_id: null,
     approved: false,
     cohort_id: null,
+    cohort_options: [],
     cohort_name: '',
     desired_locations: [],
     desired_title: '',
@@ -39,6 +40,7 @@ const initialState = {
     top_skills: [],
     track: '',
     track_id: null,
+    track_options: [],
     twitter: '',
     website: ''
   },
