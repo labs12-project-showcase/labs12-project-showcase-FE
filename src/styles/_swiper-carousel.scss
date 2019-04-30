@@ -250,7 +250,7 @@
 }
 
 .swiper-pagination {
-    position: absolute;
+    position: initial;
     text-align: center;
     -webkit-transition: 300ms opacity;
     -o-transition: 300ms opacity;
@@ -345,7 +345,7 @@ button.swiper-pagination-bullet {
 
 .swiper-pagination-bullet-active {
     opacity: 1;
-    background: #007aff;
+    background: $lambdaRed;
 }
 
 .swiper-container-vertical>.swiper-pagination-bullets {
