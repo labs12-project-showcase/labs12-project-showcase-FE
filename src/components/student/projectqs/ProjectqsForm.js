@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -70,34 +69,14 @@ const ProjectQsSchema = Yup.object().shape({
 
 const ProjectqsForm = props => {
 	// May not need all of the `|| ''` in these depending on `props`
-	const [initialFormValues, updateValues] = useState({
-		project_title: '',
-		project_type: '',
-		live_demo_url: '',
-		medium_article_url: '',
-		customer_sales_pitch: '',
-		technical_sales_pitch: ''
+	const [initialFormValues] = useState({
+		project_title: props.projects.name || '',
+		project_type: 'Web App',
+		live_demo_url: props.projects.website || '',
+		medium_article_url: props.project.medium || '',
+		customer_sales_pitch: props.projects.customer_pitch || '',
+		technical_sales_pitch: props.projects.tech_pitch || '',
 	});
-
-	useEffect(() => {
-		const headers = {
-			authorization: localStorage.getItem('backendToken')
-		};
-		axios
-			.get('https://halg-backend.herokuapp.com/api/auth/login/initial', {
-				headers
-			})
-			.then(({ data }) => {
-				console.log(data);
-				updateValues({
-					...initialFormValues,
-					...data
-				});
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}, []);
 
 	return (
 		<Formik
