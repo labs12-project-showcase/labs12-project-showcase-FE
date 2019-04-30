@@ -1,8 +1,6 @@
+import history from '../../../history.js';
 import axios from 'axios';
 
-// const authHeaders = {
-//   authorization: localStorage.getItem('backendToken')
-// };
 const token = localStorage.getItem('backendToken');
 
 const backendURL = 'https://halg-backend.herokuapp.com';
@@ -22,7 +20,6 @@ export const getProfileData = () => dispatch => {
       }
     })
     .then(res => {
-      console.log('getProfileData res.data: ', res.data)
       // remove nulls from the response
       let noNulls = {};
       for (let item in res.data) {
@@ -30,34 +27,10 @@ export const getProfileData = () => dispatch => {
           noNulls[item] = res.data[item];
         }
       }
-      console.log('noNulls', noNulls);
       dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
     })
     .catch(error => {
       dispatch({ type: GET_PROFILE_DATA_FAILURE, payload: error });
-    });
-};
-
-//
-export const GET_SOCIAL_DATA_FAILURE = 'GET_SOCIAL_DATA_FAILURE';
-export const GET_SOCIAL_DATA_START = 'GET_SOCIAL_DATA_START';
-export const GET_SOCIAL_DATA_SUCCESS = 'GET_SOCIAL_DATA_SUCCESS';
-
-/** Calls back-end for GitHub data */
-export const getSocialData = () => dispatch => {
-  dispatch({ type: GET_SOCIAL_DATA_START });
-  axios
-    .get(`${backendURL}/api/auth/login/initial`, {
-      headers: {
-        authorization: token
-      }
-    })
-    .then(res => {
-      console.log('getSocialData data: ', res.data);
-      dispatch({ type: GET_SOCIAL_DATA_SUCCESS, payload: res.data });
-    })
-    .catch(error => {
-      dispatch({ type: GET_SOCIAL_DATA_FAILURE, payload: error });
     });
 };
 
@@ -71,24 +44,8 @@ export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
  * in `ProfileqsForm.js` to API endpoint
  */
 export const updateProfile = formValues => dispatch => {
-  // match formValues keys to the format the API expects
-  // const formattedObj = {
-  //   account: {
-  //     name: formValues.name
-  //   },
-  //   student: {
-  //     about: formValues.summary,
-  //     acclaim: formValues.acclaimBadgeURL,
-  //     // desired_title: formValues.desiredTitle,
-  //     github: formValues.gitHubURL,
-  //     linkedin: formValues.linkedInURL,
-  //     location: formValues.location,
-  //     // name: formValues.name,
-  //     twitter: formValues.twitterURL,
-  //     website: formValues.portfolioURL
-  //   }
-  // };
 
+  // *** Match form values to the shape the backend API expects
   const send = {
     account: {
       name: formValues.name
@@ -96,17 +53,15 @@ export const updateProfile = formValues => dispatch => {
     student: {
       about: formValues.about,
       acclaim: formValues.acclaim,
-      // desired_title: formValues.desiredTitle,
+      desired_title: formValues.desired_title,
       github: formValues.github,
       linkedin: formValues.linkedin,
       location: formValues.location,
-      // name: formValues.name,
+      profile_pic: formValues.profile_pic,
       twitter: formValues.twitter,
       website: formValues.website
     }
   };
-
-  console.log('updating profile', send);
 
   dispatch({ type: UPDATE_PROFILE_START });
   axios
@@ -114,6 +69,7 @@ export const updateProfile = formValues => dispatch => {
       headers: { authorization: token }
     })
     .then(res => {
+      history.push('/student/dashboard');
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data });
     })
     .catch(error => {
