@@ -74,13 +74,6 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
 		</label>
 
 		<label>
-			<span className="input-label">Desired Title</span>
-			<br />
-			<Field name="desired_title" type="text" />
-			<ErrorMessage name="desired_title" component="div" />
-		</label>
-
-		<label>
 			<span className="input-label">Portfolio URL</span>
 			<br />
 			<Field name="website" type="text" />
