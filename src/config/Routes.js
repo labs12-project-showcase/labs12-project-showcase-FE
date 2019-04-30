@@ -36,29 +36,29 @@ class Routes extends Component {
 						return <Callback {...props} />;
 					}}
 				/>
-				<Route
+				<PrivateRoute
 					exact
 					path="/student/dashboard"
-					render={props => <StudentDashboard {...props} />}
+					component={StudentDashboard}
 				/>
-				<Route path="/profile-quick-start" component={Profileqs} />
-				<Route
+				<PrivateRoute path="/profile-quick-start" component={Profileqs} />
+				<PrivateRoute
 					exact
 					path="/student/new-project"
-					render={props => <Projectqs {...props} />}
+					component={Projectqs}
 				/>
-				<Route
+				<PrivateRoute
 					path="/student/project-view"
-					render={props => <ProjectView {...props} />}
+					component={ProjectView}
 				/>
 				<Route
 					path="/contact-me"
 					render={props => <ContactForm auth={props.auth} {...props} />}
 				/>
-				<Route
+				<PrivateRoute
 					exact
 					path="/student/project-edit"
-					render={props => <ProjectEdit {...props} />}
+					component={ProjectEdit}
 				/>
 			</Switch>
 		</>
