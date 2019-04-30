@@ -15,14 +15,10 @@ import { updateProfile } from './profileqsActions';
 // };
 
 const ProfileqsForm = ({ dispatch, ...props}) => {
-  // console.log(props.initialFormValues);
+  console.log('initial form values: ', props.initialFormValues);
   return (
     <Formik
 			initialValues={props.initialFormValues}
-			// @TODO: hook up Redux to the function below
-			// function is now named `updateProfile()
-			// I think I need to get `dispatch()` in there
-			// From Redux
       onSubmit={(values) => dispatch(updateProfile(values))}
       validationSchema={ProfileQsSchema}
       enableReinitialize
