@@ -2,6 +2,7 @@
 @import "./styles/colors-fonts";
 @import "./styles/mixins";
 @import "./styles/extend";
+@import "./styles/swiper-carousel";
 
 // General
 @import "./styles/reset";
@@ -21,3 +22,6 @@
 @import "./components/student/projectqs/projectqs.scss";
 @import "./components/student/projects/project.scss";
 @import "./components/student/notEndorsed/notEndorsed";
+@import "./components/student/skills/skills";
+@import "./components/student/status/status";
+@import "./components/student/projectcards/projectcards";
