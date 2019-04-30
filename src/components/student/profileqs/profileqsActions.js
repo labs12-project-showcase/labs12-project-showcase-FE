@@ -10,11 +10,17 @@ export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
 export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
 export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
 
-/** Calls back-end for Profile data */
-export const getProfileData = () => dispatch => {
+/**
+ * Calls back-end for Profile data
+ * @param {*} queryUpdate Whether the Back End should lookup and send `cohort` and `track` lists
+ */
+export const getProfileData = (queryUpdate = false) => dispatch => {
   dispatch({ type: GET_PROFILE_DATA_START });
+  let url = `${backendURL}/api/students/profile${
+    queryUpdate ? '?update=true' : ''
+  }`;
   axios
-    .get(`${backendURL}/api/students/profile`, {
+    .get(url, {
       headers: {
         Authorization: token
       }
