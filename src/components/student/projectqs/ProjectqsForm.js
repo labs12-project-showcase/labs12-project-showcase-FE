@@ -1,100 +1,40 @@
-import React, { useState } from 'react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Formik } from 'formik';
 
-// Render the Formik form
-const renderForm = ({ errors, status, touched, isSubmitting }) => (
-	<Form className="project-quick-start-form">
-		<label>
-			<span className="input-label">Project Title</span>
-			<br />
-			<Field name="project_title" type="text" className="project-title-text-area" />
-			<ErrorMessage name="project_title" component="div" />
-		</label>
-		<label>
-			<span className="input-label">Project Type</span>
-			<br />
-			<Field name="project_type" type="text" className="project-type-text-area"/>
-			<ErrorMessage name="project_type" component="div" />
-		</label>
+import { ProjectQsSchema, formSchema } from './ProjectQsFormSchema';
+import { updateProject } from './projectqsActions';
 
-		<label>
-			<span className="input-label">Live Demo URL</span>
-			<br />
-			<Field name="live_demo_url" type="text" className="live-demo-text-area" />
-			<ErrorMessage name="live_demo_url" component="div" />
-		</label>
+// function handleSubmitError(error) {
+//   console.error(error);
+//   const submitButtonError = document.createElement('div');
+//   submitButtonError.classList.add('submission-error');
+//   submitButtonError.textContent = 'There was a problem creating your profile';
+//   const submitButtonDiv = document.getElementById('quick-start-create-profile');
+//   submitButtonDiv.appendChild(submitButtonError);
+// };
 
-        <label>
-			<span className="input-label">Medium Article URL</span>
-			<br />
-			<Field name="medium_article_url" type="text" className="medium-article-text-area" />
-			<ErrorMessage name="medium_article_url" component="div" />
-		</label>
+const ProjectqsForm = ({ dispatch, ...props}) => {
+	console.log('initial form values: ', props.initialFormValues);
 
-		<label>
-			<span className="input-label">Customer Sales Pitch</span>
-			<br />
-			<Field name="customer_sales_pitch" type="text" className="pitch-text-area" />
-			<ErrorMessage name="customer_sales_pitch" component="div" />
-		</label>
-
-		<label>
-			<span className="input-label">Technical Sales Pitch</span>
-			<br />
-			<Field name="technical_sales_pitch" type="text" className="pitch-text-area" />
-			<ErrorMessage name="technical_sales_pitch" component="div" />
-		</label>
-
-		<button type="submit" disabled={isSubmitting}>
-			Create Project
-		</button>
-	</Form>
-);
-
-// Validation Schema, feels similar to React PropTypes
-const ProjectQsSchema = Yup.object().shape({
-	project_title: Yup.string().trim(),
-	project_type: Yup.string()
-		.max(100, `Maximum 100 characters`),
-	live_demo_url: Yup.string()
-		.trim()
-		.url('Must be a valid URL'),
-	medium_article_url: Yup.string()
-		.trim()
-		.url('Must be a valid URL'),
-	customer_sales_pitch: Yup.string().trim(),
-	technical_sales_pitch: Yup.string().trim()
-});
-
-const ProjectqsForm = props => {
-	// May not need all of the `|| ''` in these depending on `props`
-	const [initialFormValues] = useState({
-		project_title: props.projects.name || '',
-		project_type: 'Web App',
-		live_demo_url: props.projects.website || '',
-		medium_article_url: props.project.medium || '',
-		customer_sales_pitch: props.projects.customer_pitch || '',
-		technical_sales_pitch: props.projects.tech_pitch || '',
-	});
+	// const [initialFormValues] = useState({
+	// 	project_title: props.projects.name || '',
+	// 	project_type: 'Web App',
+	// 	live_demo_url: props.projects.website || '',
+	// 	medium_article_url: props.project.medium || '',
+	// 	customer_sales_pitch: props.projects.customer_pitch || '',
+	// 	technical_sales_pitch: props.projects.tech_pitch || '',
+	// });
 
 	return (
 		<Formik
-			initialValues={initialFormValues}
-			onSubmit={
-				// replace testing function with data submit function
-				(values, actions) => {
-					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2));
-						actions.setSubmitting(false);
-					}, 1000);
-				}
-			}
+			initialValues={props.initialFormValues}
+			onSubmit={(values) => dispatch(updateProject(values))}
 			validationSchema={ProjectQsSchema}
 			enableReinitialize
-			render={renderForm}
+			render={formSchema}
 		/>
 	);
 };
 
-export default ProjectqsForm;
+export default connect()(ProjectqsForm);
