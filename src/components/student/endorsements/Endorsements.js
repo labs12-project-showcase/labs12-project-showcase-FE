@@ -1,9 +1,10 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
-// import { Pagination, Navigation } from 'swiper/dist/js/swiper.esm';
+import { Pagination } from 'swiper/dist/js/swiper.esm';
 
 const Endorsements = props => {
 	const params = {
+		modules: [Pagination],
 		effect: 'coverflow',
 		grabCursor: true,
 		centeredSlides: true,
@@ -20,6 +21,11 @@ const Endorsements = props => {
 			type: 'bullets',
 			clickable: true
 		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev'
+		},
+		spaceBetween: 30,
 		loop: true
 	};
 
