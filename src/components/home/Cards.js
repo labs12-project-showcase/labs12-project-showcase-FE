@@ -9,6 +9,7 @@ export default function Cards(props) {
 		linkedin,
 		twitter,
 		github,
+		desired_title,
 		profile_pic
 	} = props.cards;
 
@@ -22,7 +23,7 @@ export default function Cards(props) {
 				<div className="details">
 					<h2>{name}</h2>
 					<h3>
-						Full Stack Web Developer and Computer Science
+						{desired_title}
 						<br />
 						{track}
 					</h3>
