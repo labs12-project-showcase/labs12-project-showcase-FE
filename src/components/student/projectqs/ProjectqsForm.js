@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 
-import { ProjectQsSchema, formSchema } from './ProjectQsFormSchema';
+import { ProjectQsSchema, formSchema } from './ProjectqsFormSchema';
 import { updateProject } from './projectqsActions';
 
 // function handleSubmitError(error) {
@@ -16,16 +16,6 @@ import { updateProject } from './projectqsActions';
 
 const ProjectqsForm = ({ dispatch, ...props}) => {
 	console.log('initial form values: ', props.initialFormValues);
-
-	// const [initialFormValues] = useState({
-	// 	project_title: props.projects.name || '',
-	// 	project_type: 'Web App',
-	// 	live_demo_url: props.projects.website || '',
-	// 	medium_article_url: props.project.medium || '',
-	// 	customer_sales_pitch: props.projects.customer_pitch || '',
-	// 	technical_sales_pitch: props.projects.tech_pitch || '',
-	// });
-
 	return (
 		<Formik
 			initialValues={props.initialFormValues}

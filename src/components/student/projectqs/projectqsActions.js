@@ -10,7 +10,7 @@ export const GET_PROJECT_DATA_FAILURE = 'GET_PROJECT_DATA_FAILURE';
 export const GET_PROJECT_DATA_START = 'GET_PROJECT_DATA_START';
 export const GET_PROJECT_DATA_SUCCESS = 'GET_PROJECT_DATA_SUCCESS';
 
-/** Calls back-end for Profile data */
+/** Calls back-end for Project data */
 export const getProjectData = () => dispatch => {
   dispatch({ type: GET_PROJECT_DATA_START });
   axios
@@ -47,16 +47,12 @@ export const updateProject = formValues => dispatch => {
 
   // *** Match form values to the shape the backend API expects
   const send = {
-    account: {
-      name: formValues.name
-    },
     project: {
-      project_title: formValues.name,
-      project_type: "Web App",
-      live_demo_url: formValues.website,
-      medium_article_url: formValues.medium,
-      customer_sales_pitch: formValues.customer_pitch,
-      technical_sales_pitch: formValues.tech_pitch
+        name: formValues.name,
+        website: formValues.website,
+        medium: formValues.medium,
+        customer_pitch: formValues.customer_pitch,
+        tech_pitch: formValues.tech_pitch
     }
   };
 
