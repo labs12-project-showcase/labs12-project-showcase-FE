@@ -1,8 +1,9 @@
 import history from '../history.js';
 import auth0 from 'auth0-js';
 import axios from 'axios';
-// import axiosAuth from './axiosAuth.js';
+import axiosAuth from './axiosAuth.js';
 import { frontendUrl, backendUrl } from '../config/urls.js';
+import { GET_PROFILE_DATA_START, GET_PROFILE_DATA_FAILURE, GET_PROFILE_DATA_SUCCESS } from '../components/student/profileqs/profileqsActions.js';
 
 const auth = new auth0.WebAuth({
   domain: 'lambdashowcase.auth0.com',
@@ -30,15 +31,25 @@ export const logout = params => dispatch => {
     returnTo: window.location.origin
   });
 
+  localStorage.removeItem('backendToken');
+
   history.replace('/home');
 };
 
 export const handleAuth = () => dispatch => {
-  console.log('action login');
 
   auth.parseHash((err, results) => {
 
-    console.log('handle auth stuff', results);
+    history.push('/callback');
+    console.log('parse hash', err, results);
+    dispatch({
+      type: SET_SESSION,
+      payload: {
+        accessToken: results.accessToken,
+        idToken: results.idToken
+      }
+    });
+
     const send = {
       email: results.idTokenPayload.email,
       name: results.idTokenPayload.name,
@@ -48,20 +59,29 @@ export const handleAuth = () => dispatch => {
 
     axios
     .post(`${backendUrl}/api/auth/login`, send)
-    .then(res => {
-      console.log('response from registering', res);
-      localStorage.setItem('backendToken', res.data);
-      history.replace('/profile-quick-start');
+    .then(resLogin => {
 
-      console.log('action setSession');
-      let expiresAt = results.expiresIn * 1000 + new Date().getTime();
-      dispatch({
-        type: SET_SESSION,
-        payload: {
-          accessToken: results.accessToken,
-          idToken: results.idToken,
-          expiresAt: expiresAt
+      localStorage.setItem('backendToken', resLogin.data);
+
+      dispatch({ type: GET_PROFILE_DATA_START });
+      axiosAuth().get(`${backendUrl}/api/students/profile`)
+      .then(resGetProf => {
+        console.log('resGetProf', resGetProf);
+        let noNulls = {};
+        for (let item in resGetProf.data) {
+          if (resGetProf.data[item] !== null) {
+            noNulls[item] = resGetProf.data[item];
+          }
         }
+        dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
+        if (resGetProf.data.exists) {
+          history.push('/student/dashboard');
+        } else {
+          history.push('/profile-quick-start');
+        }
+      })
+      .catch(err => {
+        dispatch({ type: GET_PROFILE_DATA_FAILURE, payload: err });
       });
 
     })

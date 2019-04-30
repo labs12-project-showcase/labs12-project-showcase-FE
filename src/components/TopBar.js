@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login, logout } from '../auth/authActions.js';
 import { NavLink } from 'react-router-dom';
+import { validateJwt } from '../config/utilities.js';
 import loginIcon from '../assets/login.png';
 import logoutIcon from '../assets/logout.png';
 
@@ -9,8 +10,7 @@ import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
 	render() {
-		console.log('top bar props', this.props);
-		const { isLoggedIn, login, logout } = this.props;
+		const { login, logout } = this.props;
 		return (
 			<div className="TopBar">
 				<div className="TopBar-container">
@@ -23,12 +23,12 @@ class TopBar extends Component {
 					</NavLink>
 	
 					<div className="TopBar-btn-container">
-						{!isLoggedIn && (
+						{!validateJwt() && (
 							<button className="TopBar-login-btn" onClick={login}>
 								<img src={loginIcon} alt="Logout icon" />
 							</button>
 						)}
-						{isLoggedIn && (
+						{validateJwt() && (
 							<button className="TopBar-logout-btn" onClick={logout}>
 								<img src={logoutIcon} alt="Logout icon" />
 							</button>
@@ -41,9 +41,7 @@ class TopBar extends Component {
 };
 
 const mapStateToProps = state => {
-	return {
-		isLoggedIn: state.auth.isLoggedIn
-	};
+	return {};
 };
 
 export default connect(mapStateToProps, { login, logout })(TopBar);
