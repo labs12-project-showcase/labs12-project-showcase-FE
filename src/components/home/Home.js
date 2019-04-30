@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { homeData } from './homeActions';
 import Cards from './Cards';
-import Carousel from '../carousel/Carousel';
+import ProjectViewHome from './ProjectViewHome';
 
 class Home extends React.Component {
 	componentDidMount() {
@@ -30,8 +30,21 @@ class Home extends React.Component {
 							<Cards {...this.props} cards={cards} key={index} />
 						))}
 					</div>
+
+					<hr />
+
 					<div className="carousel-section">
-						<Carousel />
+						<h2>Super Cool Lambda Projects</h2>
+						<p>
+							Some description about labs. Lorem ipsum dolor sit amet,
+							consectetur adipiscing elit. Nunc cursus nulla magna, eget egestas
+							diam fringilla ut. Suspendisse ut aliquet nunc. Nunc sed feugiat
+							ante. Suspendisse sem purus, gravida sit amet elit nec, suscipit
+							vestibulum leo. Orci varius natoque penatibus et magnis dis
+							parturient montes, nascetur ridiculus mus. In tincidunt at nibh
+							cursus vestibulum.
+						</p>
+						<ProjectViewHome {...this.props} />
 					</div>
 				</main>
 			</div>

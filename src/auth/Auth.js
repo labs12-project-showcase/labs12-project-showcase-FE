@@ -60,7 +60,6 @@ export default class Auth {
 		this.auth0.parseHash((err, authResult) => {
 			console.log('auth result', authResult);
 			if (authResult && authResult.accessToken && authResult.idToken) {
-
 				this.register(authResult.idTokenPayload);
 				this.setSession(authResult);
 
