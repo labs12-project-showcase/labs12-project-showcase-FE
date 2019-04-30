@@ -22,7 +22,7 @@ export const getProfileData = () => dispatch => {
       }
     })
     .then(res => {
-      console.log('getProfileData data: ', res.data);
+      // console.log('getProfileData data: ', res.data);
       dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: res.data });
     })
     .catch(error => {
@@ -64,30 +64,47 @@ export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
  */
 export const updateProfile = formValues => dispatch => {
   // match formValues keys to the format the API expects
-  const formattedObj = {
+  // const formattedObj = {
+  //   account: {
+  //     name: formValues.name
+  //   },
+  //   student: {
+  //     about: formValues.summary,
+  //     acclaim: formValues.acclaimBadgeURL,
+  //     // desired_title: formValues.desiredTitle,
+  //     github: formValues.gitHubURL,
+  //     linkedin: formValues.linkedInURL,
+  //     location: formValues.location,
+  //     // name: formValues.name,
+  //     twitter: formValues.twitterURL,
+  //     website: formValues.portfolioURL
+  //   }
+  // };
+
+  const send = {
     account: {
       name: formValues.name
     },
     student: {
-      about: formValues.summary,
-      acclaim: formValues.acclaimBadgeURL,
+      about: formValues.about,
+      acclaim: formValues.acclaim,
       // desired_title: formValues.desiredTitle,
-      github: formValues.gitHubURL,
-      linkedin: formValues.linkedInURL,
+      github: formValues.github,
+      linkedin: formValues.linkedin,
       location: formValues.location,
       // name: formValues.name,
-      twitter: formValues.twitterURL,
-      website: formValues.portfolioURL
+      twitter: formValues.twitter,
+      website: formValues.website
     }
-  };
+  }
 
-  console.log('updating profile', formattedObj);
+  console.log('updating profile', send);
 
   dispatch({ type: UPDATE_PROFILE_START });
   axios
     .put(
     `${backendURL}/api/students/update`,
-    removeEmptyValues(formattedObj),
+    removeEmptyValues(send),
     {
       headers: { authorization: token }
     }

@@ -15,6 +15,7 @@ import { updateProfile } from './profileqsActions';
 // };
 
 const ProfileqsForm = ({ dispatch, ...props}) => {
+  // console.log(props.initialFormValues);
   return (
     <Formik
 			initialValues={props.initialFormValues}

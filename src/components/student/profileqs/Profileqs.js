@@ -50,6 +50,7 @@ const Profileqs = ({ dispatch, ...props }) => {
 };
 
 const mapStateToProps = state => {
+	// console.log('map state to props', state);
 	return {
 		...state.profileqs,
 		profile: state.profile
