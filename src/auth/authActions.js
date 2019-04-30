@@ -74,8 +74,8 @@ export const handleAuth = () => dispatch => {
           }
         }
         dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
-        if (resGetProf.exists) {
-          history.push('/student/profile');
+        if (resGetProf.data.exists) {
+          history.push('/student/dashboard');
         } else {
           history.push('/profile-quick-start');
         }
