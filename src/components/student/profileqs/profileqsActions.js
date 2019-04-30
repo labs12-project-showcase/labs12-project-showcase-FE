@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-const authHeaders = {
-  authorization: localStorage.getItem('backendToken')
-};
+// const authHeaders = {
+//   authorization: localStorage.getItem('backendToken')
+// };
+const token = localStorage.getItem('backendToken');
+
 const backendURL = 'https://halg-backend.herokuapp.com';
 
 // 
@@ -15,7 +17,9 @@ export const getProfileData = () => dispatch => {
   dispatch({ type: GET_PROFILE_DATA_START });
   axios
     .get(`${backendURL}/api/students/profile`, {
-      authHeaders
+      headers: {
+        authorization: token
+      }
     })
     .then(res => {
       console.log('getProfileData data: ', res.data);
@@ -36,7 +40,9 @@ export const getSocialData = () => dispatch => {
   dispatch({ type: GET_SOCIAL_DATA_START });
   axios
     .get(`${backendURL}/api/auth/login/initial`, {
-      authHeaders
+      headers: {
+        authorization: token
+      }
     })
     .then(res => {
       console.log('getSocialData data: ', res.data);
@@ -59,6 +65,9 @@ export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
 export const updateProfile = formValues => dispatch => {
   // match formValues keys to the format the API expects
   const formattedObj = {
+    account: {
+      name: formValues.name
+    },
     student: {
       about: formValues.summary,
       acclaim: formValues.acclaimBadgeURL,
@@ -72,12 +81,16 @@ export const updateProfile = formValues => dispatch => {
     }
   };
 
+  console.log('updating profile', formattedObj);
+
   dispatch({ type: UPDATE_PROFILE_START });
   axios
     .put(
-      `${backendURL}/api/students/update`,
-      { authHeaders },
-      removeEmptyValues(formattedObj)
+    `${backendURL}/api/students/update`,
+    removeEmptyValues(formattedObj),
+    {
+      headers: { authorization: token }
+    }
     )
     .then(res => {
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data });
