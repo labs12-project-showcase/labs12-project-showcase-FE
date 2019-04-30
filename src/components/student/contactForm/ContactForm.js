@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 
 class ContactForm extends Component {
 
   state = {
     email: {
-      recipient: '',
       sender: '',
       subject: '',
       text: ''
@@ -13,9 +13,17 @@ class ContactForm extends Component {
   }
 
   sendEmail = _ => {
+    const id = 1;
     const { email } = this.state;
-    fetch(`http://127.0.0.1:7000/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
-      .catch(err => console.error(err))
+    // fetch(`http://127.0.0.1:7000/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
+    //   .catch(err => console.error(err))
+
+    axios.post(`https://halg-backend.herokuapp.com/api/students/contact/${id}`, email)
+    .then(res => {
+      alert('It sent!');
+    }).catch(() => {
+      alert('It did not send');
+    })
   }
 
   render() {
@@ -23,13 +31,13 @@ class ContactForm extends Component {
    
     return (
       <div className="App">
-        <div style={{ marginTop: 10 }} >
+        <div>
           <h2> Send Email </h2>
-          <label> Recipient </label>
+          {/* <label> Recipient </label>
           <br />
           <input value={email.recipient}
             onChange={e => this.setState({ email: { ...email, recipient: e.target.value } })} />
-          <div/>
+          <div/> */}
           <label> Sender </label>
           <br />
           <input value={email.sender}
@@ -52,4 +60,8 @@ class ContactForm extends Component {
   }
 }
 
+/* 
+lambdashowcase.com/students/something id in url
+prop => student.id
+*/
 export default ContactForm;

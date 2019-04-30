@@ -1,10 +1,99 @@
-.projectqs {
+.projectqs-container {
     min-height: 85vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto; // will likely need to be changed later
+}
 
-    main {
-        width: 100%;
-        max-width: 1024px;
-        margin: 0 auto;
-        padding: 20px;
+.projectqs {
+    width: 100%;
+    max-width: 700px;
+    background-color: $lightcolor;
+    padding: 20px;
+    border-radius: 5px;
+
+    h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .project-quick-start-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 15px;
+
+        button {
+            background-color: $lambdaRed;
+            border: 1px solid $lambdaRed;
+            border-radius: 5px;
+            color: $lightcolor;
+            font-size: 1.6rem;
+            margin: 2rem auto;
+            padding: 10px 15px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken($lambdaRed, 10%);
+            }
+        }
+
+        label {
+            margin: 0.4rem 0;
+
+            // this styles the inline error
+            // e.g. "Name is required"
+            div {
+                color: $lambdaRed;
+                padding: 0.8rem;
+                text-align: center;
+            }
+
+            input {
+                border: 1px solid lightgray;
+                border-radius: 5px;
+                font-size: 1.6rem;
+                padding: 1.4rem 1rem 1.2rem 2rem;
+            }
+
+            .input-label {
+                color: gray;
+                background: $lightcolor;
+                font-size: 1.4rem;
+                left: 1rem;
+                padding: 0.4rem;
+                position: relative;
+                top: 0.8rem;
+            }
+
+            .project-title-text-area, 
+            .project-type-text-area, 
+            .live-demo-text-area, 
+            .medium-article-text-area {
+                width: 300px;
+            }
+
+            .pitch-text-area {
+                width: 660px;
+                height: 150px;
+            }
+
+            &.stretch-input {
+                margin: 1.6rem 0;
+                width: 100%;
+
+                textarea {
+                    margin-top: 20px;
+                    height: 16rem;
+                    font-size: 1.6rem;
+                    padding: 1.6rem;
+                    width: 100%;
+                    border-radius: 5px;
+                    border: 1px solid lightgray;
+                }
+            }
+        }
     }
 }

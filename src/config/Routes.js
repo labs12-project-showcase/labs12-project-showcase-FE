@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PrivateRoute from './PrivateRoute.js';
 import { handleAuth } from '../auth/authActions.js';
 import StudentDashboard from '../components/student/dashboard/StudentDashboard';
 import Callback from '../auth/Callback.js';
@@ -18,7 +19,7 @@ class Routes extends Component {
 			this.props.handleAuth();
 		}
 	};
-
+	
 	render() {
 	return (
 		<>
@@ -35,29 +36,29 @@ class Routes extends Component {
 						return <Callback {...props} />;
 					}}
 				/>
-				<Route
+				<PrivateRoute
 					exact
 					path="/student/dashboard"
-					render={props => <StudentDashboard {...props} />}
+					component={StudentDashboard}
 				/>
-				<Route path="/profile-quick-start" component={Profileqs} />
-				<Route
+				<PrivateRoute path="/profile-quick-start" component={Profileqs} />
+				<PrivateRoute
 					exact
 					path="/student/new-project"
-					render={props => <Projectqs {...props} />}
+					component={Projectqs}
 				/>
-				<Route
+				<PrivateRoute
 					path="/student/project-view"
-					render={props => <ProjectView auth={props.auth} {...props} />}
+					component={ProjectView}
 				/>
 				<Route
 					path="/contact-me"
 					render={props => <ContactForm auth={props.auth} {...props} />}
 				/>
-				<Route
+				<PrivateRoute
 					exact
 					path="/student/project-edit"
-					render={props => <ProjectEdit {...props} />}
+					component={ProjectEdit}
 				/>
 			</Switch>
 		</>
