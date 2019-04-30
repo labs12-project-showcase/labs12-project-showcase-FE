@@ -7,7 +7,7 @@ const token = localStorage.getItem('backendToken');
 
 const backendURL = 'https://halg-backend.herokuapp.com';
 
-// 
+//
 export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
 export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
 export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
@@ -18,19 +18,27 @@ export const getProfileData = () => dispatch => {
   axios
     .get(`${backendURL}/api/students/profile`, {
       headers: {
-        authorization: token
+        Authorization: token
       }
     })
     .then(res => {
-      // console.log('getProfileData data: ', res.data);
-      dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: res.data });
+      console.log('getProfileData res.data: ', res.data)
+      // remove nulls from the response
+      let noNulls = {};
+      for (let item in res.data) {
+        if (res.data[item] !== null) {
+          noNulls[item] = res.data[item];
+        }
+      }
+      console.log('noNulls', noNulls);
+      dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
     })
     .catch(error => {
       dispatch({ type: GET_PROFILE_DATA_FAILURE, payload: error });
     });
 };
 
-// 
+//
 export const GET_SOCIAL_DATA_FAILURE = 'GET_SOCIAL_DATA_FAILURE';
 export const GET_SOCIAL_DATA_START = 'GET_SOCIAL_DATA_START';
 export const GET_SOCIAL_DATA_SUCCESS = 'GET_SOCIAL_DATA_SUCCESS';
@@ -53,13 +61,13 @@ export const getSocialData = () => dispatch => {
     });
 };
 
-// 
+//
 export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
 export const UPDATE_PROFILE_START = 'UPDATE_PROFILE_START';
 export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
 
-/** 
- * Submits values from Create/Edit Profile form 
+/**
+ * Submits values from Create/Edit Profile form
  * in `ProfileqsForm.js` to API endpoint
  */
 export const updateProfile = formValues => dispatch => {
@@ -96,19 +104,15 @@ export const updateProfile = formValues => dispatch => {
       twitter: formValues.twitter,
       website: formValues.website
     }
-  }
+  };
 
   console.log('updating profile', send);
 
   dispatch({ type: UPDATE_PROFILE_START });
   axios
-    .put(
-    `${backendURL}/api/students/update`,
-    removeEmptyValues(send),
-    {
+    .put(`${backendURL}/api/students/update`, removeEmptyValues(send), {
       headers: { authorization: token }
-    }
-    )
+    })
     .then(res => {
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data });
     })

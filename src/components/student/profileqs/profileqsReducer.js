@@ -75,31 +75,31 @@ const profileqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         gettingProfileData: false,
-        profileData: action.payload
+        profileData: { ...state.profileData, ...action.payload }
       };
     case GET_PROFILE_DATA_FAILURE:
       return {
-				...state,
-				error: action.payload,
-				gettingProfileData: false
+        ...state,
+        error: action.payload,
+        gettingProfileData: false
       };
     case UPDATE_PROFILE_START:
       return {
-				...state,
-				updatingProfileData: true
+        ...state,
+        updatingProfileData: true
       };
     case UPDATE_PROFILE_SUCCESS:
       return {
-				...state,
-				error: null,
-				profileData: action.payload,
-				updatingProfileData: false
+        ...state,
+        error: null,
+        profileData: action.payload,
+        updatingProfileData: false
       };
     case UPDATE_PROFILE_FAILURE:
       return {
-				...state,
-				error: action.payload,
-				updatingProfileData: false
+        ...state,
+        error: action.payload,
+        updatingProfileData: false
       };
     default:
       return state;
