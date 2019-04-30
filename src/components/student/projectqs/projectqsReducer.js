@@ -20,15 +20,7 @@ const initialState = {
 		tech_pitch: '',
 		approved: false
 	},
-		// projectData: {
-		// 	project_title: props.projects.name || '',
-		// 	project_type: 'Web App',
-		// 	live_demo_url: props.projects.website || '',
-		// 	medium_article_url: props.project.medium || '',
-		// 	customer_sales_pitch: props.projects.customer_pitch || '',
-		// 	technical_sales_pitch: props.projects.tech_pitch || '',
-		// },
-		updatingProjectData: false
+	updatingProjectData: false
   };
   
   const projectqsReducer = (state = initialState, action) => {

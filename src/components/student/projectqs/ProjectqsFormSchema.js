@@ -2,15 +2,6 @@ import React from 'react';
 import { ErrorMessage, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
-const exampleProjectData = {
-    name: '',
-    github: '',
-	website: '',
-	medium: '',
-    customer_pitch: '',
-    tech_pitch: ''
-}
-
 // Formik form for rendering
 export const formSchema = ({ errors, status, touched, isSubmitting }) => (
 	<Form className="project-quick-start-form">
