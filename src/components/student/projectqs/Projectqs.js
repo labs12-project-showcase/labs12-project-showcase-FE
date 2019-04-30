@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import ProjectqsForm from './ProfileqsForm';
+import ProjectqsForm from './ProjectqsForm';
 
 const Projectqs = props => {
 	return (
