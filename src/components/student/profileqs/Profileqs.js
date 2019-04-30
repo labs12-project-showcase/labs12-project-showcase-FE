@@ -1,11 +1,6 @@
 //Profile Quick Start
 
-<<<<<<< HEAD
 import React from 'react';
-=======
-import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
->>>>>>> master
 import { connect } from 'react-redux';
 import ProfileqsForm from './ProfileqsForm';
 
