@@ -44,6 +44,7 @@
       flex-direction: column;
       align-items: center;
       width: 240px;
+      height: 180px;
       margin: 0 40px 20px 40px;
       border-radius: 5px;
       box-shadow: 0 0 6px 3px #cccccc;
@@ -67,6 +68,38 @@
       p {
         margin-bottom: 10px;
       }
+    }
+
+    .drag-drop-target {
+      position: relative;
+
+      .drop-target-cover,
+      .drag-target-cover {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .drop-target-cover {
+        outline: 5px dashed $lambdaDarkBlue;
+      }
+    }
+
+    .edit-project-message {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0 40px 0;
+      padding-bottom: 5px;
+      font-weight: bold;
+      border-bottom: 2px solid $lambdaRed;
     }
   }
 }
