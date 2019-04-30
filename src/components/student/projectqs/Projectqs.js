@@ -3,12 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ProjectqsForm from './ProjectqsForm';
-import { getProjectData } from './projectqsActions';
+import { createProject } from './projectqsActions';
 
 const Projectqs = props => {
-	useEffect(() => {
-		props.getProjectData();
-	  }, []);
 
 	return (
 		<div className="projectqs-container">
@@ -23,13 +20,13 @@ const Projectqs = props => {
 };
 
 const mapStateToProps = state => {
+	console.log('map state to props', state);
 	return {
-		...state.projectqs,
-		project: state.project
+		profile: state.profile
 	};
 };
 
 export default connect(
 	mapStateToProps,
-	{ getProjectData }
+	{ createProject }
 )(Projectqs);

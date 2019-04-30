@@ -3,7 +3,8 @@ import { ErrorMessage, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
 const exampleProjectData = {
-	name: '',
+    name: '',
+    github: '',
 	website: '',
 	medium: '',
     customer_pitch: '',
@@ -19,12 +20,12 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
 			<Field name="name" type="text" className="project-title-text-area" />
 			<ErrorMessage name="name" component="div" />
 		</label>
-		{/* <label>
-			<span className="input-label">Project Type</span>
+		<label>
+			<span className="input-label">GitHub URL</span>
 			<br />
-			<Field name="project_type" type="text" className="project-type-text-area"/>
-			<ErrorMessage name="project_type" component="div" />
-		</label> */}
+			<Field name="github" type="text" className="project-type-text-area"/>
+			<ErrorMessage name="github" component="div" />
+		</label>
 
 		<label>
 			<span className="input-label">Live Demo URL</span>
@@ -62,7 +63,10 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
 
 // Validation Schema, feels similar to React PropTypes
 export const ProjectQsSchema = Yup.object().shape({
-	name: Yup.string().trim(),
+    name: Yup.string().trim(),
+    github: Yup.string()
+		.trim()
+		.url('Must be a valid URL'),
 	website: Yup.string()
 		.trim()
 		.url('Must be a valid URL'),
