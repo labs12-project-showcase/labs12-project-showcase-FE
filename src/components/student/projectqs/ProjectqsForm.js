@@ -9,42 +9,41 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
 		<label>
 			<span className="input-label">Project Title</span>
 			<br />
-			<Field name="project_title" type="text" />
+			<Field name="project_title" type="text" className="project-title-text-area" />
 			<ErrorMessage name="project_title" component="div" />
 		</label>
-
 		<label>
 			<span className="input-label">Project Type</span>
 			<br />
-			<Field name="project_type" type="text" />
+			<Field name="project_type" type="text" className="project-type-text-area"/>
 			<ErrorMessage name="project_type" component="div" />
 		</label>
 
 		<label>
 			<span className="input-label">Live Demo URL</span>
 			<br />
-			<Field name="live_demo_url" type="text" />
+			<Field name="live_demo_url" type="text" className="live-demo-text-area" />
 			<ErrorMessage name="live_demo_url" component="div" />
 		</label>
 
         <label>
 			<span className="input-label">Medium Article URL</span>
 			<br />
-			<Field name="medium_article_url" type="text" />
+			<Field name="medium_article_url" type="text" className="medium-article-text-area" />
 			<ErrorMessage name="medium_article_url" component="div" />
 		</label>
 
 		<label>
 			<span className="input-label">Customer Sales Pitch</span>
 			<br />
-			<Field name="customer_sales_pitch" type="text" />
+			<Field name="customer_sales_pitch" type="text" className="pitch-text-area" />
 			<ErrorMessage name="customer_sales_pitch" component="div" />
 		</label>
 
 		<label>
 			<span className="input-label">Technical Sales Pitch</span>
 			<br />
-			<Field name="technical_sales_pitch" type="text" />
+			<Field name="technical_sales_pitch" type="text" className="pitch-text-area" />
 			<ErrorMessage name="technical_sales_pitch" component="div" />
 		</label>
 

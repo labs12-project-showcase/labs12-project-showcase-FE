@@ -3,12 +3,12 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 50px auto; // will likely need to be changed later
+    margin: 20px auto; // will likely need to be changed later
 }
 
 .projectqs {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     background-color: $lightcolor;
     padding: 20px;
     border-radius: 5px;
@@ -23,7 +23,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 30px;
+        margin-top: 15px;
 
         button {
             background-color: $lambdaRed;
@@ -66,6 +66,18 @@
                 padding: 0.4rem;
                 position: relative;
                 top: 0.8rem;
+            }
+
+            .project-title-text-area, 
+            .project-type-text-area, 
+            .live-demo-text-area, 
+            .medium-article-text-area {
+                width: 300px;
+            }
+
+            .pitch-text-area {
+                width: 660px;
+                height: 150px;
             }
 
             &.stretch-input {
