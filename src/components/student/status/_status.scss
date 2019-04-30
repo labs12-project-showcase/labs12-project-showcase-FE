@@ -1,20 +1,21 @@
 .status-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 35%;
-
-  h2 {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  .status-section {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
+    min-width: 35%;
 
-    ul {
-      margin-right: 2.8rem;
+    h2 {
+        font-weight: bold;
+        margin-bottom: 5px;
     }
-  }
+
+    .status-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        ul {
+            margin-right: 2.8rem;
+            line-height: 1.3;
+        }
+    }
 }

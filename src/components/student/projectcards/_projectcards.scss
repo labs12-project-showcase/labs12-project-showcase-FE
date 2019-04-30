@@ -1,106 +1,134 @@
 .projects-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 2%;
-  width: 100%;
-
-  h2 {
-    font-weight: bold;
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-  }
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
-  button {
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    color: #ffffff;
-    padding: 10px;
-    margin: 5px;
-    background-color: $lambdaRed;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0 0 6px 3px #cccccc;
-      background: #8d0e26;
-    }
-  }
-
-  .projects-inner-wrapper {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2%;
     width: 100%;
 
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 240px;
-      height: 180px;
-      margin: 0 40px 20px 40px;
-      border-radius: 5px;
-      box-shadow: 0 0 6px 3px #cccccc;
-
-      img {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        max-width: 100%;
-        overflow: hidden;
-      }
-
-      h3,
-      p {
-        margin: 5px 0;
-      }
-
-      h3 {
+    h2 {
         font-weight: bold;
-      }
-
-      p {
-        margin-bottom: 10px;
-      }
+        font-size: 1.6rem;
+        margin-bottom: 20px;
     }
 
-    .drag-drop-target {
-      position: relative;
+    a {
+        text-decoration: none;
+        color: black;
+    }
 
-      .drop-target-cover,
-      .drag-target-cover {
+    button {
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        color: #ffffff;
+        padding: 10px;
+        margin: 5px;
+        background-color: $lambdaRed;
         cursor: pointer;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+
+        &:hover {
+            box-shadow: 0 0 6px 3px #cccccc;
+            background: #8d0e26;
+        }
+    }
+
+    .projects-inner-wrapper {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
 
-      .drop-target-cover {
-        outline: 5px dashed $lambdaDarkBlue;
-      }
-    }
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            width: 270px;
+            height: 210px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 6px 3px #cccccc;
+            background-color: $backg-light;
 
-    .edit-project-message {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px 0 40px 0;
-      padding-bottom: 5px;
-      font-weight: bold;
-      border-bottom: 2px solid $lambdaRed;
+            img {
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            h3,
+            p {
+                margin: 5px 0;
+            }
+
+            h3 {
+                font-weight: bold;
+            }
+
+            p {
+                margin-bottom: 10px;
+            }
+        }
+
+        .drag-drop-target {
+            position: relative;
+            padding: 5px;
+            box-shadow: 0 0 6px 3px #cccccc;
+
+
+            .drag-target-cover {
+                cursor: grab;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .drop-target-cover {
+                cursor: grab;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+
+            }
+
+            .card-content {
+                outline: 3px dashed lightgray;
+                padding: 3px;
+                width: 100%;
+                height: 100%;
+                // background-color:orange;
+            }
+
+            .drop-target-cover {
+                // outline: 3px dashed lightgray;
+
+            }
+        }
+
+        .edit-project-message {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 5px;
+            font-weight: bold;
+            border-bottom: 2px solid $lambdaRed;
+        }
     }
-  }
 }
