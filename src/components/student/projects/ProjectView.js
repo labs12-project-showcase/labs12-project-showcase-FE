@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import project from '../../../assets/project-img.jpg';
 import one from '../../../assets/one.jpg';
 import two from '../../../assets/two.jpg';
@@ -29,25 +29,27 @@ const ProjectView = props => {
 			<div className="subNav">
 				<nav className="NavLinks-container">
 					<div>
-						<NavLink 
-							exact  
+						<Link
+							exact
 							to="/student/dashboard"
 							className="NavLinks-container-left"
 						>
-							<i class="fas fa-arrow-left"></i> 
+							<div className="arrow-circle">
+								<i class="fas fa-arrow-left" />
+							</div>
 							<p>Back to Student Profile</p>
-						</NavLink>
+						</Link>
 					</div>
 					<div className="NavLinks-container-right">
-						<NavLink 
-							exact 
-							to="/student/project-edit" 
+						<NavLink
+							exact
+							to="/student/project-edit"
 							className="edit-project-btn"
 						>
 							Edit Project
 						</NavLink>
-						<NavLink 
-							exact 
+						<NavLink
+							exact
 							to="/student/profile-edit"
 							className="edit-profile-btn"
 						>
