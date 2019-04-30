@@ -10,6 +10,7 @@ import Projectqs from '../components/student/projectqs/Projectqs';
 import ProjectView from '../components/student/projects/ProjectView';
 import ProjectEdit from '../components/student/projects/ProjectEdit';
 import Profileqs from '../components/student/profileqs/Profileqs';
+import ContactForm from '../components/student/contactForm/ContactForm';
 
 class Routes extends Component {
 	
@@ -49,6 +50,10 @@ class Routes extends Component {
 				<Route
 					path="/student/project-view"
 					render={props => <ProjectView {...props} />}
+				/>
+				<Route
+					path="/contact-me"
+					render={props => <ContactForm auth={props.auth} {...props} />}
 				/>
 				<Route
 					exact

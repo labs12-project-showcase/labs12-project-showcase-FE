@@ -8,8 +8,11 @@ import Projects from "../projectcards/ProjectCards";
 import NotEndorsed from "../notEndorsed/NotEndorsed";
 import AboutMe from "../aboutMe/AboutMe";
 import Endorsements from "../endorsements/Endorsements";
+import Share from "../share/Share";
 import Status from "../status/Status";
 import Skills from "../skills/Skills";
+
+// yarn add react-id-swiper@latest swiper@latest
 
 class StudentDashboard extends React.Component {
   componentDidMount() {
@@ -19,6 +22,7 @@ class StudentDashboard extends React.Component {
 
   render() {
     const {
+      id,
       name,
       about,
       desired_locations,
@@ -30,7 +34,7 @@ class StudentDashboard extends React.Component {
       linkedin,
       twitter,
       github,
-      website,
+      // website,
       acclaim,
       hobbies,
       cohort,
@@ -68,9 +72,7 @@ class StudentDashboard extends React.Component {
               </a>
               <div className="contact-btn">
                 <Link to="/">Contact Me</Link>
-                <Link path="/">
-                  <i className="fas fa-share-alt" />
-                </Link>
+                <Share studentId={id} name={name} />
               </div>
             </div>
             <div className="social-links">

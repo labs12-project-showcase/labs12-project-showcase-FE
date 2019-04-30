@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import project from '../../../assets/project-img.jpg';
 import one from '../../../assets/one.jpg';
 import two from '../../../assets/two.jpg';
@@ -27,18 +27,38 @@ const ProjectView = props => {
 	return (
 		<div className="project-view">
 			<div className="subNav">
-				<nav>
-					<Link exact to="/student/project-edit">
-						Edit Project
-					</Link>
-					<Link exact to="/student/profile-edit">
-						Edit Profile
-					</Link>
+				<nav className="NavLinks-container">
+					<div>
+						<NavLink 
+							exact  
+							to="/student/dashboard"
+							className="NavLinks-container-left"
+						>
+							<i class="fas fa-arrow-left"></i> 
+							<p>Back to Student Profile</p>
+						</NavLink>
+					</div>
+					<div className="NavLinks-container-right">
+						<NavLink 
+							exact 
+							to="/student/project-edit" 
+							className="edit-project-btn"
+						>
+							Edit Project
+						</NavLink>
+						<NavLink 
+							exact 
+							to="/student/profile-edit"
+							className="edit-profile-btn"
+						>
+							Edit Profile
+						</NavLink>
+					</div>
 				</nav>
 			</div>
 			<header>
 				<div className="img-des">
-					<img src={project} alt="Project Image" />
+					<img src={project} alt="Project" />
 					<div className="overlay" />
 					<h1>Machine-Brain Interface</h1>
 					<h2>Web App</h2>
@@ -46,7 +66,7 @@ const ProjectView = props => {
 					<a href="https://google.com">Read the Story on M</a>
 				</div>
 				<div className="media-display">
-					<div className="big-img">
+					<div className="big-gallery">
 						<iframe
 							width="100%"
 							height="350"
@@ -58,13 +78,13 @@ const ProjectView = props => {
 						/>
 					</div>
 					<div className="img-one">
-						<img src={one} alt="Project Image" />
+						<img src={one} alt="Project" />
 					</div>
 					<div className="img-two">
-						<img src={two} alt="Project Image" />
+						<img src={two} alt="Project" />
 					</div>
 					<div className="img-three">
-						<img src={three} alt="Project Image" />
+						<img src={three} alt="Project" />
 					</div>
 				</div>
 			</header>
@@ -89,23 +109,23 @@ const ProjectView = props => {
 				<h2>Who Built This?</h2>
 				<div className="students-names">
 					<div className="s-link">
-						<img src={s1} alt="Project Image" />
+						<img src={s1} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s2} alt="Project Image" />
+						<img src={s2} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s3} alt="Project Image" />
+						<img src={s3} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s4} alt="Project Image" />
+						<img src={s4} alt="Project" />
 						<p>Student Name</p>
 					</div>
 					<div className="s-link">
-						<img src={s5} alt="Project Image" />
+						<img src={s5} alt="Project" />
 						<p>Student Name</p>
 					</div>
 				</div>

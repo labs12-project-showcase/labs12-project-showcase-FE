@@ -1,4 +1,40 @@
 .project-view {
+    .subNav {
+        .NavLinks-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .NavLinks-container-left {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                .fa-arrow-left {
+                    font-size: 3rem;
+                    color: $lambdaLightBlue;
+                    margin-right: 10px;
+                    border-radius: 50%;
+                    padding: 7px;
+                    background-color: white;
+                }
+            }
+
+            .NavLinks-container-right {
+                .edit-project-btn {
+                    margin-right: 25px;
+                }
+
+                .edit-profile-btn {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+
     header {
         @include box-align(flex-start, flex-start);
         max-width: 1024px;
@@ -86,7 +122,7 @@
             width: 100%;
             margin: 10px;
 
-            .big-img {
+            .big-gallery {
                 width: 100%;
                 max-width: 560px;
             }
