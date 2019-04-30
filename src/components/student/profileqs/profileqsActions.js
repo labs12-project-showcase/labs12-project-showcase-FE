@@ -44,7 +44,6 @@ export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
  * in `ProfileqsForm.js` to API endpoint
  */
 export const updateProfile = formValues => dispatch => {
-
   // *** Match form values to the shape the backend API expects
   const send = {
     account: {
@@ -62,7 +61,6 @@ export const updateProfile = formValues => dispatch => {
       website: formValues.website
     }
   };
-
   dispatch({ type: UPDATE_PROFILE_START });
   axios
     .put(`${backendURL}/api/students/update`, removeEmptyValues(send), {
