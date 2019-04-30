@@ -1,26 +1,36 @@
 //Profile Quick Start
 
-import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import ProfileqsForm from './ProfileqsForm';
+import { getProfileData } from './profileqsActions';
 
 const Profileqs = props => {
-	return (
-		<div className="profileqs-container">
-			<div className="profileqs">
-				<h3>Profile Quick Start</h3>
-				<p>Please complete the following basic information</p>
-				<ProfileqsForm />
-			</div>
-		</div>
-	);
+  useEffect(() => {
+    props.getProfileData();
+  }, []);
+
+  return (
+    <div className="profileqs-container">
+      <div className="profileqs">
+        {/* @TODO: Make the `document.title` and <h3> dynamic */}
+        <h3>Profile Quick Start</h3>
+        <p>Please complete the following basic information</p>
+        <ProfileqsForm initialFormValues={props.profile.profileData} />
+      </div>
+    </div>
+  );
 };
 
 const mapStateToProps = state => {
-	return {
-		...state.profileqs
-	};
+  // console.log('map state to props', state);
+  return {
+    ...state.profileqs,
+    profile: state.profile
+  };
 };
 
-export default connect(mapStateToProps)(Profileqs);
+export default connect(
+  mapStateToProps,
+  { getProfileData }
+)(Profileqs);
