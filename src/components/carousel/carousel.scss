@@ -60,7 +60,7 @@
         position: relative;
         height: 90vh;
         overflow: hidden;
-        z-index: -1;
+        z-index: 0;
     }
 
     .slide {
@@ -89,12 +89,12 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 10;
         background: url("http://svgshare.com/i/41_.svg") no-repeat center center / 16px;
         width: 32px;
         height: 32px;
         text-indent: -9999px;
         cursor: pointer;
+        z-index: 2;
     }
 
     .previousButton:hover,
