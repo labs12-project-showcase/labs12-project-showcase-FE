@@ -105,8 +105,8 @@ const ProjectViewHome = ({ projects_shocase }) => {
 	return (
 		<div>
 			<Swiper {...params}>
-				{dataEx.map(x => (
-					<div className="cover-img">
+				{dataEx.map((x, index) => (
+					<div className="cover-img" key={index}>
 						<a
 							key={x.project_id}
 							className="project-card"

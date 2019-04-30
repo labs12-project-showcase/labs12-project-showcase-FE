@@ -98,6 +98,11 @@
             }
         }
 
+    }
+
+    section {
+        background-color: darken($darkcolor, 5%);
+
         hr {
             margin: 20px auto;
             border: 1px solid $lambdaRed;
@@ -108,16 +113,18 @@
             margin: 0 auto;
             max-width: 1024px;
             width: 100%;
-            padding-top: 50px;
+            padding: 50px 10px;
+            color: $lightcolor;
 
             h2 {
-                font-weight: 700;
+                font-weight: 300;
                 font-size: 3.8rem;
                 margin-bottom: 20px;
             }
 
             p {
                 margin-bottom: 60px;
+                line-height: 1.5;
             }
 
             .cover-img {
@@ -129,7 +136,7 @@
                     text-decoration: none;
 
                     & h3 {
-                        color: $darkcolor;
+                        color: $lightcolor;
                         font-weight: 700;
                     }
                 }
@@ -160,6 +167,5 @@
 
         }
     }
-
 
 }
