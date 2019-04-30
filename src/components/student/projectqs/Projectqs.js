@@ -16,7 +16,7 @@ const Projectqs = props => {
 				{/* @TODO: Make the `document.title` and <h3> dynamic */}
 				<h3>Project Quick Start</h3>
 				<p>Please submit the following details about your new project </p>
-				<ProjectqsForm initialFormValues={props.project.projectData} />
+				<ProjectqsForm />
 			</div>
 		</div>
 	);
