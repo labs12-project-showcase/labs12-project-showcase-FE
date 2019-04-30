@@ -1,32 +1,24 @@
-// Project Quick Start
+//Project Quick Start Form
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import ProjectqsForm from './ProfileqsForm';
 
 const Projectqs = props => {
 	return (
-		<div className="projectqs">
-			<div className="subNav">
-				<nav>
-					<NavLink exact to="#">
-						Edit Profile
-					</NavLink>
-				</nav>
+		<div className="projectqs-container">
+			<div className="projectqs">
+				<h3>Project Quick Start</h3>
+				<p>Please submit the following details about your new project </p>
+				<ProjectqsForm />
 			</div>
-			<main>
-				<h2>Please Delete this when you are going to start</h2>
-				<NavLink to="/student/project-edit">
-					<button>Submit New Project</button>
-				</NavLink>
-			</main>
 		</div>
 	);
 };
 
 const mapStateToProps = state => {
 	return {
-		...state.projectqs
+		...state.profileqs
 	};
 };
 
