@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 
-const EditCards = ({ submit, cancel }) => {
+const EditCards = ({ submit, cancel, id }) => {
   const [newTopProjs, updateTopProjs] = useState(top_projects);
   //New Projects should initialize with the list of projects from props
   const [newProjs, updateProjs] = useState(projects);
   const [dragged, updateDragged] = useState({});
   //New Top Projects should initialize with the list of top projects from props
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    const top_projects = newTopProjs.map(proj => ({
+      project_id: proj.project_id,
+      student_id: id
+    }));
+    const projects = newProjs.map(proj => ({
+      project_id: proj.project_id,
+      student_id: id
+    }));
+
+    submit({ top_projects, projects });
+  };
 
   const beginDrag = (e, index) => {
     e.preventDefault();
@@ -15,10 +26,14 @@ const EditCards = ({ submit, cancel }) => {
   };
 
   const handleDrop = e => {
+    //Convert dataset to a number
     const topIndex = Number(e.target.dataset.index);
+
+    //Find the correct projects from each array
     const newTop = newProjs[dragged];
     const newBottom = newTopProjs[topIndex];
 
+    //Reduce each array with new projects in place of old ones
     const newTops = newTopProjs.reduce((arr, cur, index) => {
       if (index === topIndex) {
         return [...arr, newTop];
@@ -33,6 +48,7 @@ const EditCards = ({ submit, cancel }) => {
       return [...arr, cur];
     }, []);
 
+    //Update state of top projects and projects. Also clear dragged index.
     updateTopProjs(newTops);
     updateProjs(newBottoms);
     updateDragged({});
@@ -41,31 +57,6 @@ const EditCards = ({ submit, cancel }) => {
   const handleDragOver = e => {
     e.preventDefault();
   };
-
-  /*When a project is dragged from newProjs, to newTopProjs, there should be a filter on each array
-  newProjs => filter !target
-  newTopProjs => filter !target2
-  
-  After the filter we need to push the new targets into each array.
-  newProjs => push target2
-  newTopProjs => push target
-  
-  This should repeat until the user is satisfied.
-  Submit button should call an action with both of the current arrays.
-  They will need to be formatted prior to update.
-  projects = newProjs.map proj => { project_id: proj.project_id, student_id: id }
-  top_projects = newTopProjs.map proj => { project_id: proj.project_id, student_id: id }
-  update => {
-      top_projects [{
-          project_id,
-          student_id
-        }],
-        projects [{
-            project_id,
-            student_id
-        }]
-    }
-    */
 
   //Dragging should only be available from lower project => upper project area
   const draggableMap = arr =>
