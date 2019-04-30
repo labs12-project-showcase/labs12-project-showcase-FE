@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { homeData } from './homeActions';
 import Cards from './Cards';
-import Carousel from '../carousel/Carousel';
 import ProjectViewHome from './ProjectViewHome';
 
 class Home extends React.Component {
@@ -35,7 +34,7 @@ class Home extends React.Component {
 					<hr />
 
 					<div className="carousel-section">
-						<h2>Super Cool Lambda Prokect</h2>
+						<h2>Super Cool Lambda Projects</h2>
 						<p>
 							Some description about labs. Lorem ipsum dolor sit amet,
 							consectetur adipiscing elit. Nunc cursus nulla magna, eget egestas
@@ -46,7 +45,6 @@ class Home extends React.Component {
 							cursus vestibulum.
 						</p>
 						<ProjectViewHome {...this.props} />
-						{/* <Carousel /> */}
 					</div>
 				</main>
 			</div>
