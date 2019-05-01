@@ -92,8 +92,6 @@ class StudentDashboard extends React.Component {
           <Endorsements endorsements={endorsements} />
           <Progress />
           <hr />
-          <Projects projects={projects} top_projects={top_projects} />
-          <hr />
           <div className="status-skills">
             <Status
               cohort={cohort}
@@ -103,10 +101,7 @@ class StudentDashboard extends React.Component {
             <Skills skills={skills} top_skills={top_skills} />
           </div>
           <hr />
-          <div className="hobbies">
-            <h2>Hobbies &amp; Interests</h2>
-            <p>{hobbies}</p>
-          </div>
+          <Projects projects={projects} top_projects={top_projects} />
         </main>
       </div>
     );
