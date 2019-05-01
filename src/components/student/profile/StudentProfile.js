@@ -21,6 +21,7 @@ class StudentProfile extends React.Component {
   }
 
   render() {
+    console.log('student profile props', this.props);
     const {
       id,
       name,
@@ -42,9 +43,11 @@ class StudentProfile extends React.Component {
       top_projects
     } = this.props.studentProfile.profile;
 
+    const sameUser = (id === this.props.loggedInProfile.id);
+
     return (
       <div className="student-dashboard">
-        {!endorsed && <NotEndorsed />}
+        {sameUser && !endorsed && <NotEndorsed />}
         <header>
           <div className="profile-container">
             <div className="picture">
@@ -88,7 +91,7 @@ class StudentProfile extends React.Component {
         <main>
           <AboutMe about={about} />
           <Endorsements endorsements={endorsements} />
-          <Progress />
+          { sameUser && <Progress /> }
           <hr />
           <div className="status-skills">
             <Status
@@ -108,6 +111,7 @@ class StudentProfile extends React.Component {
 
 const mapStateToProps = state => ({
   ...state,
+  loggedInProfile: state.profile.profileData,
   studentProfile: state.studentProfile
 });
 
