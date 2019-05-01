@@ -13,10 +13,16 @@ const initialState = {
 	gettingProjectData: false,
 	projectData: {
 		name: '',
-		short_description: '',
 		github: '',
+		fe_link: '',
+		be_link: '',
+		mobile_link: '',
+		market_link: '',
+		design_link: '',
+		youtube_url: '',
 		website: '',
 		medium: '',
+		short_description: '',
 		customer_pitch: '',
 		tech_pitch: '',
 		approved: false
