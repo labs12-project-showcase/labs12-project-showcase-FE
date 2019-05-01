@@ -45,7 +45,7 @@
 
             // this styles the inline error
             // e.g. "Name is required"
-            div {
+            div.inline-error {
                 color: $lambdaRed;
                 padding: 0.8rem;
                 text-align: center;
