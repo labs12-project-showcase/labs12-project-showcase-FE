@@ -21,7 +21,6 @@ class StudentProfile extends React.Component {
   }
 
   render() {
-    console.log('student profile props', this.props);
     const {
       id,
       name,
