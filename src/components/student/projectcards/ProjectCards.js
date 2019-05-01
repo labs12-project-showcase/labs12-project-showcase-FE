@@ -5,17 +5,6 @@ import EditCards from "./EditCards";
 
 const ProjectCards = ({ top_projects, projects }) => {
   const [hide, toggleHide] = useState(true);
-  const [edit, toggleEdit] = useState(false);
-
-  const submitProjects = update => {
-    /*dispatch action here*/
-    /*.then*/
-    toggleEdit(!edit);
-  };
-
-  const cancel = () => {
-    toggleEdit(!edit);
-  };
 
   top_projects = [
     {
@@ -109,29 +98,17 @@ const ProjectCards = ({ top_projects, projects }) => {
   return (
     <div className="projects-wrapper">
       <h2>Projects</h2>
-      {!edit && (
-        <React.Fragment>
-          <div className="projects-inner-wrapper">
-            {map(top_projects)}
-            <Fade collapse when={!hide}>
-              {map(projects)}
-            </Fade>
-          </div>
-          <div className="projects-buttons-container">
-            <button type="button" onClick={() => toggleHide(!hide)}>
-              {hide ? "Show More" : "Show Less"}
-            </button>
-            <button type="button" onClick={() => toggleEdit(!edit)}>
-              Edit Projects
-            </button>
-          </div>
-        </React.Fragment>
-      )}
-      {edit && (
-        <React.Fragment>
-          <EditCards submit={submitProjects} cancel={cancel} />
-        </React.Fragment>
-      )}
+      <div className="projects-inner-wrapper">
+        {map(top_projects)}
+        <Fade collapse when={!hide}>
+          {map(projects)}
+        </Fade>
+      </div>
+      <div className="projects-buttons-container">
+        <button type="button" onClick={() => toggleHide(!hide)}>
+          {hide ? "Show More" : "Show Less"}
+        </button>
+      </div>
     </div>
   );
 };
