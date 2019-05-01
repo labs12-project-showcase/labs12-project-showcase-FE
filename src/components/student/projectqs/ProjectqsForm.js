@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import { Formik } from "formik";
 
 import { ProjectQsSchema, formSchema } from "./ProjectqsFormSchema";
-import { createProject, getProject } from "./projectqsActions";
+import {
+  createProject,
+  getProject,
+  clearProjectData
+} from "./projectqsActions";
 
 const ProjectqsForm = ({ dispatch, ...props }) => {
   useEffect(() => {
@@ -15,6 +19,8 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         .catch(err => {
           console.log("Failed to fetch.");
         });
+    } else {
+      dispatch(clearProjectData);
     }
   }, [dispatch, props.id]);
   return (
