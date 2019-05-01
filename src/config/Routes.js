@@ -36,9 +36,9 @@ class Routes extends Component {
 						return <Callback {...props} />;
 					}}
 				/>
-				<PrivateRoute
+				<Route
 					exact
-					path="/student/dashboard"
+					path="/student/public-profile/id"
 					component={StudentDashboard}
 				/>
 				<PrivateRoute path="/profile-quick-start" component={Profileqs} />
@@ -60,10 +60,6 @@ class Routes extends Component {
 					path="/student/project-edit"
 					component={ProjectEdit}
 				/>
-				<Route 
-					path="/student/public-profile/id"
-					component={PublicProfile}
-					/>
 			</Switch>
 		</>
 	);
