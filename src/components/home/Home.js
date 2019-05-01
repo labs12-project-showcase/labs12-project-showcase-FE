@@ -8,7 +8,6 @@ import Carousel from "./Carousel";
 class Home extends React.Component {
   componentDidMount() {
     this.props.homeData();
-    console.log("fetching here", homeData);
   }
 
   render() {
