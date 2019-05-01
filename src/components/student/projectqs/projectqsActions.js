@@ -1,7 +1,6 @@
 import history from '../../../history.js';
-import axios from 'axios';
+import axiosAuth from '../../../auth/axiosAuth';
 
-const token = localStorage.getItem('backendToken');
 
 const backendURL = 'https://halg-backend.herokuapp.com';
 
@@ -29,10 +28,8 @@ export const createProject = formValues => dispatch => {
   };
 
   dispatch({ type: CREATE_PROJECT_START });
-  axios
-    .post(`${backendURL}/api/projects`, removeEmptyValues(send), {
-      headers: { authorization: token }
-    })
+  axiosAuth()
+    .post(`${backendURL}/api/projects`, removeEmptyValues(send))
     .then(res => {
       history.push('/student/dashboard');
       dispatch({ type: CREATE_PROJECT_SUCCESS, payload: res.data });
