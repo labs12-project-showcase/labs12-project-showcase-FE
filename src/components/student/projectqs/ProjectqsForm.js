@@ -16,7 +16,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
           console.log("Failed to fetch.");
         });
     }
-  }, []);
+  }, [dispatch, props.id]);
   return (
     <Formik
       initialValues={props.initialFormValues}
