@@ -20,7 +20,6 @@ const Projectqs = props => {
 };
 
 const mapStateToProps = state => {
-	console.log('map state to props', state);
 	return {
 		profile: state.profile
 	};
