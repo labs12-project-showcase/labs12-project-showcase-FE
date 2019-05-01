@@ -11,7 +11,7 @@ import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
 	state = {
-		id: 0,
+		id: 1,
 		isLoggedIn: false
 	}
 
