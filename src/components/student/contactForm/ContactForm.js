@@ -6,14 +6,14 @@ class ContactForm extends Component {
 
   state = {
     email: {
-      sender: '',
-      subject: '',
+      from: '',
+      topic: '',
       text: ''
     }
   }
 
   sendEmail = _ => {
-    const id = 1;
+    const id = 5;
     const { email } = this.state;
     // fetch(`http://127.0.0.1:7000/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
     //   .catch(err => console.error(err))
@@ -40,13 +40,13 @@ class ContactForm extends Component {
           <div/> */}
           <label> Sender </label>
           <br />
-          <input value={email.sender}
-            onChange={e => this.setState({ email: { ...email, sender: e.target.value } })} />
+          <input value={email.from}
+            onChange={e => this.setState({ email: { ...email, from: e.target.value } })} />
           <div />
           <label> Subject </label>
           <br />
-          <input value={email.subject}
-            onChange={e => this.setState({ email: { ...email, subject: e.target.value } })} />
+          <input value={email.topic}
+            onChange={e => this.setState({ email: { ...email, topic: e.target.value } })} />
           <div />
           <label> Message </label>
           <br />
