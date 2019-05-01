@@ -42,28 +42,6 @@ class ContactForm extends Component {
           <input value={email.recipient}
             onChange={e => this.setState({ email: { ...email, recipient: e.target.value } })} />
           <div/> */}
-<<<<<<< HEAD
-          <label> Sender </label>
-          <br />
-          <input value={email.from}
-            onChange={e => this.setState({ email: { ...email, from: e.target.value } })} />
-          <div />
-          <label> Subject </label>
-          <br />
-          <input value={email.topic}
-            onChange={e => this.setState({ email: { ...email, topic: e.target.value } })} />
-          <div />
-          <label> Message </label>
-          <br />
-          <textarea rows={3} value={email.text}
-            onChange={e => this.setState({ email: { ...email, text: e.target.value } })} />
-          <div />
-          <button onClick={this.sendEmail}> Send Email </button>
-        </div>
-      </div>
-    );
-  }
-=======
 					<label>
 						<span className="input-label"> Sender </span>
 					</label>
@@ -103,7 +81,6 @@ class ContactForm extends Component {
 			</div>
 		);
 	}
->>>>>>> f73371ddf07b859e610429af18c2c20c7fa8b12c
 }
 
 /* 
