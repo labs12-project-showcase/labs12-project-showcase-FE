@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const EditCards = ({ submit, cancel, id }) => {
+const EditCards = ({ id }) => {
   //New Top Projects should initialize with the list of top projects from props
   const [newTopProjs, updateTopProjs] = useState(top_projects);
   //New Projects should initialize with the list of projects from props
@@ -17,8 +17,10 @@ const EditCards = ({ submit, cancel, id }) => {
       student_id: id
     }));
 
-    submit({ top_projects, projects });
+    //#TODO Submit Action here for projects page
   };
+
+  //#TODO Cancel changes action here maybe??
 
   const beginDrag = (e, index) => {
     e.preventDefault();
@@ -102,7 +104,12 @@ const EditCards = ({ submit, cancel, id }) => {
         <button type="button" onClick={handleSubmit}>
           Submit Projects
         </button>
-        <button type="button" onClick={cancel}>
+        <button
+          type="button"
+          onClick={() => {
+            console.log("Need cancel changes handler");
+          }}
+        >
           Cancel
         </button>
       </div>
