@@ -18,7 +18,7 @@ class ContactForm extends Component {
     // fetch(`http://127.0.0.1:7000/send-email?recipient=${email.recipient}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
     //   .catch(err => console.error(err))
 
-    axios.post(`https://halg-backend.herokuapp.com/api/students/contact/${id}`, email)
+    axios.post(`https://halg-backend.herokuapp.com/api/students/contact-me/${id}`, email)
     .then(res => {
       alert('It sent!');
     }).catch(() => {
@@ -32,7 +32,7 @@ class ContactForm extends Component {
     return (
       <div className="App">
         <div>
-          <h2> Send Email </h2>
+          <h2> Send Message </h2><br/>
           {/* <label> Recipient </label>
           <br />
           <input value={email.recipient}
