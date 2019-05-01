@@ -7,9 +7,9 @@ import { createProject } from './projectqsActions';
 
 
 const ProjectqsForm = ({ dispatch, ...props}) => {
-	console.log(props.profile);
 	return (
 		<Formik
+			initialValues={props.initialFormValues}
 			onSubmit={(values) => dispatch(createProject({...values, student_id: props.profile.id}))}
 			validationSchema={ProjectQsSchema}
 			enableReinitialize
@@ -19,9 +19,9 @@ const ProjectqsForm = ({ dispatch, ...props}) => {
 };
 
 const mapStateToProps = state => {
-	console.log('map state to props', state);
 	return {
-		profile: state.profile.profileData
+		profile: state.profile.profileData,
+		initialFormValues: state.project.projectData
 	};
 };
 
