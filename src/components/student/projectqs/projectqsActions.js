@@ -17,8 +17,7 @@ export const createProject = formValues => dispatch => {
 
   // *** Match form values to the shape the backend API expects
   const send = {
-        track_id: 1,
-        student_id: 6,
+        student_id: formValues.student_id,
         name: formValues.name,
         github: formValues.github,
         website: formValues.website,

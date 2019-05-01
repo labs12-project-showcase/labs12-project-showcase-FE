@@ -1,23 +1,61 @@
-.contactForm{
-    width: 30%;
-    margin: 0 auto;
+.contact-form {
+	width: 100%;
+	min-width: 1024px;
+	min-height: 80vh;
+	margin: 0 auto;
 
-    .contact{
-        display: flex;
-        flex-direction: column;
-        margin: 20px 0; 
+	.contact {
+		display: flex;
+		max-width: 600px;
+		flex-direction: column;
+		margin: 50px auto;
+		background-color: $lightcolor;
+		padding: 20px;
+		border-radius: 3px;
 
-        .button{
-            padding: 5px;
-            border-radius: 5px;
-            border: none;
-            background: none;
+		h2 {
+			font-weight: 700;
+			font-size: 1.8rem;
+		}
+		input {
+			border: 1px solid lightgray;
+			border-radius: 5px;
+			font-size: 1.6rem;
+			padding: 1.4rem 1rem 1.2rem 2rem;
+		}
 
-            &:hover {
-                cursor: pointer;
-                background: darken(($lambdaRed), 10%);
-            }
-        }
-    }
+		.input-label {
+			color: gray;
+			background: $lightcolor;
+			font-size: 1.4rem;
+			left: 1rem;
+			padding: 0.4rem;
+			position: relative;
+			top: 0.8rem;
+		}
 
+		textarea {
+			height: 16rem;
+			font-size: 1.6rem;
+			padding: 1.6rem;
+			width: 100%;
+			border-radius: 5px;
+			border: 1px solid lightgray;
+		}
+
+		button {
+			background-color: $lambdaRed;
+			border: 1px solid $lambdaRed;
+			border-radius: 5px;
+			color: $lightcolor;
+			font-size: 1.6rem;
+			margin: 2rem auto;
+			padding: 10px 15px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: darken($lambdaRed, 10%);
+			}
+		}
+	}
 }
