@@ -1,3 +1,23 @@
 .contactForm{
-   
+    width: 30%;
+    margin: 0 auto;
+
+    .contact{
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0; 
+
+        .button{
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            background: none;
+
+            &:hover {
+                cursor: pointer;
+                background: darken(($lambdaRed), 10%);
+            }
+        }
+    }
+
 }
