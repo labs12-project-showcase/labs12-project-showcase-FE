@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, NavLink, withRouter } from "react-router-dom";
-import tony from '../../assets/tony.jpg';
+import { Link } from "react-router-dom";
 
 export default function Cards(props) {
 	const {
@@ -20,7 +19,7 @@ export default function Cards(props) {
 			<div className="cards">
 				{/* <img src={profile_pic} alt="Profile Picture" /> */}
 				<div className="profile-pic">
-					<img src={tony} alt="Profile Picture" />
+					<img src={profile_pic} alt="Profile" />
 				</div>
 				<div className="details">
 					<h2>{name}</h2>
@@ -34,7 +33,7 @@ export default function Cards(props) {
 						Skills:
 						<br /> {top_skills}{' '}
 					</p>
-					<Link to={`/student/dashboard${id}`}>
+					<Link to={`/student/profile/${id}`}>
 					<button className="prof-link">Profile &amp; Projects</button>
 					</Link>
 					<br />
