@@ -109,7 +109,7 @@
         margin: 100px auto;
         width: 100%;
         max-width: 1024px;
-        @include box-align(space-around, flex-start);
+        @include box-align(space-between, center);
 
         hr {
             margin: 20px auto;
