@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link, NavLink, withRouter } from "react-router-dom";
 import tony from '../../assets/tony.jpg';
 
 export default function Cards(props) {
 	const {
+		id,
 		name,
 		track,
 		top_skills,
@@ -32,7 +34,9 @@ export default function Cards(props) {
 						Skills:
 						<br /> {top_skills}{' '}
 					</p>
+					<Link to={`/student/dashboard${id}`}>
 					<button className="prof-link">Profile &amp; Projects</button>
+					</Link>
 					<br />
 					<a href={github} target="_blank" rel="noopener noreferrer">
 						<i className="fab fa-github" />

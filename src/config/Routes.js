@@ -60,6 +60,10 @@ class Routes extends Component {
 					path="/student/project-edit"
 					component={ProjectEdit}
 				/>
+				<Route 
+					path="/student/public-profile/id"
+					component={PublicProfile}
+					/>
 			</Switch>
 		</>
 	);
