@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getData } from "./studentProfileActions";
 import badge from "../../../assets/lambda-badge.png";
@@ -36,7 +36,6 @@ class StudentProfile extends React.Component {
       github,
       website,
       acclaim,
-      hobbies,
       cohort,
       desired_position,
       projects,
