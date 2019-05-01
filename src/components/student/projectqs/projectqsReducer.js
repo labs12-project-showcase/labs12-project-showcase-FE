@@ -13,6 +13,7 @@ const initialState = {
 	gettingProjectData: false,
 	projectData: {
 		name: '',
+		short_description: '',
 		github: '',
 		website: '',
 		medium: '',

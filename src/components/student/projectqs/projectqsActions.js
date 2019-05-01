@@ -19,6 +19,7 @@ export const createProject = formValues => dispatch => {
   const send = {
         student_id: formValues.student_id,
         name: formValues.name,
+        short_description: formValues.short_description,
         github: formValues.github,
         website: formValues.website,
         medium: formValues.medium,

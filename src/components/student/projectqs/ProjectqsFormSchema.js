@@ -11,10 +11,11 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
 			<Field name="name" type="text" className="project-title-text-area" />
 			<ErrorMessage name="name" component="div" />
 		</label>
+
 		<label>
 			<span className="input-label">GitHub URL</span>
 			<br />
-			<Field name="github" type="text" className="project-type-text-area"/>
+			<Field name="github" type="text" className="github-text-area"/>
 			<ErrorMessage name="github" component="div" />
 		</label>
 
@@ -33,16 +34,23 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
 		</label>
 
 		<label>
+			<span className="input-label">Project Description</span>
+			<br />
+			<Field name="short_description" component="textarea" className="project-description-text-area" />
+			<ErrorMessage name="short_description" component="div" />
+		</label>
+
+		<label>
 			<span className="input-label">Customer Sales Pitch</span>
 			<br />
-			<Field name="customer_pitch" type="text" className="pitch-text-area" />
+			<Field name="customer_pitch" component="textarea" className="pitch-text-area" />
 			<ErrorMessage name="customer_pitch" component="div" />
 		</label>
 
 		<label>
 			<span className="input-label">Technical Sales Pitch</span>
 			<br />
-			<Field name="tech_pitch" type="text" className="pitch-text-area" />
+			<Field name="tech_pitch" component="textarea" className="pitch-text-area" />
 			<ErrorMessage name="tech_pitch" component="div" />
 		</label>
 
