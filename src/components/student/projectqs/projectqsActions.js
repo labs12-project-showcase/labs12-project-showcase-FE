@@ -9,6 +9,11 @@ export const CREATE_PROJECT_SUCCESS = "CREATE_PROJECT_SUCCESS";
 export const GET_PROJECT_START = "GET_PROJECT_START";
 export const GET_PROJECT_SUCCESS = "GET_PROJECT_SUCCESS";
 export const GET_PROJECT_FAILURE = "GET_PROJECT_FAILURE";
+export const CLEAR_PROJECT_DATA = "CLEAR_PROJECT_DATA";
+
+export const clearProjectData = () => dispatch => {
+  dispatch({ type: CLEAR_PROJECT_DATA });
+};
 
 /**
  * Submits values from Create/Edit Project form
