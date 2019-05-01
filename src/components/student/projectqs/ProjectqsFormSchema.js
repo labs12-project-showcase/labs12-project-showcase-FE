@@ -64,14 +64,14 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
     <label>
       <span className="input-label">Live Demo URL</span>
       <br />
-      <Field name="website" type="text" className="live-demo-text-area" />
+      <Field name="website" type="text" className="live-demo-url-field" />
       <ErrorMessage name="website" component="div" />
     </label>
 
     <label>
       <span className="input-label">Medium Article URL</span>
       <br />
-      <Field name="medium" type="text" className="medium-article-text-area" />
+      <Field name="medium" type="text" className="medium-article-url-field" />
       <ErrorMessage name="medium" component="div" />
     </label>
 

@@ -76,14 +76,20 @@
             .market-link-field,
             .design-link-field,
             .youtube-url-field,
-            .live-demo-text-area, 
-            .medium-article-text-area {
+            .live-demo-url-field, 
+            .medium-article-url-field {
                 width: 300px;
+                font-size: 1.8rem;
             }
 
             .pitch-text-area, .project-description-text-area {
                 width: 660px;
                 height: 150px;
+                font-size: 1.8rem;
+                padding-top: 10px;
+                padding-left: 20px;
+                border-radius: 7px;
+                border: 1px solid grey;
             }
 
             &.stretch-input {
