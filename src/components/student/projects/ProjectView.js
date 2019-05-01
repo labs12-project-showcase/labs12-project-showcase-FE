@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink, withRouter } from 'react-router-dom';
+import { getProjects } from './projectActions';
 import project from '../../../assets/project-img.jpg';
 import one from '../../../assets/one.jpg';
 import two from '../../../assets/two.jpg';
@@ -11,133 +12,140 @@ import s3 from '../../../assets/s3.png';
 import s4 from '../../../assets/s4.png';
 import s5 from '../../../assets/s5.png';
 
-const ProjectView = props => {
-	// change /watch/ by /embed/ Questions PM "Julian"
-	//  const url = {project_video}
-	const url = 'https://www.youtube.com/watch?v=TcMBFSGVi1c&t=2s';
-	const videoid = url.match(
-		/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-	);
-	if (videoid != null) {
-		console.log('video id = ', videoid[1]);
-	} else {
-		console.log('The youtube url is not valid.');
+class ProjectView extends React.Component {
+	componentDidMount() {
+		this.props.getProjects();
+		console.log('fetching', getProjects);
 	}
 
-	return (
-		<div className="project-view">
-			<div className="subNav">
-				<nav className="NavLinks-container">
-					<div>
-						<Link
-							exact
-							to="/student/dashboard"
-							className="NavLinks-container-left"
-						>
-							<div className="arrow-circle">
-								<i class="fas fa-arrow-left" />
-							</div>
-							<p>Back to Student Profile</p>
-						</Link>
+	render() {
+		// change /watch/ by /embed/ Questions PM "Julian"
+		//  const url = {project_video}
+		const url = 'https://www.youtube.com/watch?v=TcMBFSGVi1c&t=2s';
+		const videoid = url.match(
+			/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+		);
+		if (videoid != null) {
+			console.log('video id = ', videoid[1]);
+		} else {
+			console.log('The youtube url is not valid.');
+		}
+
+		return (
+			<div className="project-view">
+				<div className="subNav">
+					<nav className="NavLinks-container">
+						<div>
+							<Link
+								exact
+								to="/student/dashboard"
+								className="NavLinks-container-left"
+							>
+								<div className="arrow-circle">
+									<i className="fas fa-arrow-left" />
+								</div>
+								<p>Back to Student Profile</p>
+							</Link>
+						</div>
+						<div className="NavLinks-container-right">
+							<NavLink
+								exact
+								to="/student/project-edit"
+								className="edit-project-btn"
+							>
+								Edit Project
+							</NavLink>
+							<NavLink
+								exact
+								to="/student/profile-edit"
+								className="edit-profile-btn"
+							>
+								Edit Profile
+							</NavLink>
+						</div>
+					</nav>
+				</div>
+				<header>
+					<div className="img-des">
+						<img src={project} alt="Project" />
+						<div className="overlay" />
+						<h1>Machine-Brain Interface</h1>
+						<h2>Web App</h2>
+						<a href="https://google.com">Try it out!</a>
+						<a href="https://google.com">Read the Story on M</a>
 					</div>
-					<div className="NavLinks-container-right">
-						<NavLink
-							exact
-							to="/student/project-edit"
-							className="edit-project-btn"
-						>
-							Edit Project
-						</NavLink>
-						<NavLink
-							exact
-							to="/student/profile-edit"
-							className="edit-profile-btn"
-						>
-							Edit Profile
-						</NavLink>
+					<div className="media-display">
+						<div className="big-gallery">
+							<iframe
+								title="project preview video"
+								width="100%"
+								height="350"
+								src={`https://www.youtube.com/embed/${
+									videoid[1]
+								}?autoplay=0&showinfo=0&controls=0`}
+								frameborder="0"
+								allowfullscreen
+							/>
+						</div>
+						<div className="img-one">
+							<img src={one} alt="Project" />
+						</div>
+						<div className="img-two">
+							<img src={two} alt="Project" />
+						</div>
+						<div className="img-three">
+							<img src={three} alt="Project" />
+						</div>
 					</div>
-				</nav>
+				</header>
+				<main>
+					<div className="sales-pitch">
+						<h2>Customer Sales Pitch</h2>
+						<p>
+							Summary here, long text, talk about what I'm passionate about,
+							where I want to work, what hobbies are, things I enjoy... Here's
+							some more cool things about me. I'm a really hard worker.
+						</p>
+					</div>
+					<div className="sales-pitch">
+						<h2>Technical Sales Pitch</h2>
+						<p>
+							Summary here, long text, talk about what I'm passionate about,
+							where I want to work, what hobbies are, things I enjoy... Here's
+							some more cool things about me. I'm a really hard worker.
+						</p>
+					</div>
+					<hr />
+					<h2>Who Built This?</h2>
+					<div className="students-names">
+						<div className="s-link">
+							<img src={s1} alt="Project" />
+							<p>Student Name</p>
+						</div>
+						<div className="s-link">
+							<img src={s2} alt="Project" />
+							<p>Student Name</p>
+						</div>
+						<div className="s-link">
+							<img src={s3} alt="Project" />
+							<p>Student Name</p>
+						</div>
+						<div className="s-link">
+							<img src={s4} alt="Project" />
+							<p>Student Name</p>
+						</div>
+						<div className="s-link">
+							<img src={s5} alt="Project" />
+							<p>Student Name</p>
+						</div>
+					</div>
+					<hr />
+					<h2>Technical Architecture </h2>
+				</main>
 			</div>
-			<header>
-				<div className="img-des">
-					<img src={project} alt="Project" />
-					<div className="overlay" />
-					<h1>Machine-Brain Interface</h1>
-					<h2>Web App</h2>
-					<a href="https://google.com">Try it out!</a>
-					<a href="https://google.com">Read the Story on M</a>
-				</div>
-				<div className="media-display">
-					<div className="big-gallery">
-						<iframe
-							title="project preview video"
-							width="100%"
-							height="350"
-							src={`https://www.youtube.com/embed/${
-								videoid[1]
-							}?autoplay=0&showinfo=0&controls=0`}
-							frameborder="0"
-							allowfullscreen
-						/>
-					</div>
-					<div className="img-one">
-						<img src={one} alt="Project" />
-					</div>
-					<div className="img-two">
-						<img src={two} alt="Project" />
-					</div>
-					<div className="img-three">
-						<img src={three} alt="Project" />
-					</div>
-				</div>
-			</header>
-			<main>
-				<div className="sales-pitch">
-					<h2>Customer Sales Pitch</h2>
-					<p>
-						Summary here, long text, talk about what I'm passionate about, where
-						I want to work, what hobbies are, things I enjoy... Here's some more
-						cool things about me. I'm a really hard worker.
-					</p>
-				</div>
-				<div className="sales-pitch">
-					<h2>Technical Sales Pitch</h2>
-					<p>
-						Summary here, long text, talk about what I'm passionate about, where
-						I want to work, what hobbies are, things I enjoy... Here's some more
-						cool things about me. I'm a really hard worker.
-					</p>
-				</div>
-				<hr />
-				<h2>Who Built This?</h2>
-				<div className="students-names">
-					<div className="s-link">
-						<img src={s1} alt="Project" />
-						<p>Student Name</p>
-					</div>
-					<div className="s-link">
-						<img src={s2} alt="Project" />
-						<p>Student Name</p>
-					</div>
-					<div className="s-link">
-						<img src={s3} alt="Project" />
-						<p>Student Name</p>
-					</div>
-					<div className="s-link">
-						<img src={s4} alt="Project" />
-						<p>Student Name</p>
-					</div>
-					<div className="s-link">
-						<img src={s5} alt="Project" />
-						<p>Student Name</p>
-					</div>
-				</div>
-				<hr />
-				<h2>Technical Architecture </h2>
-			</main>
-		</div>
-	);
-};
+		);
+	}
+}
 
 const mapStateToProps = state => {
 	return {
