@@ -55,13 +55,13 @@ class TopBar extends Component {
 				{this.state.isLoggedIn && (
 					<div className="subNav">
 						<nav>
-							<NavLink exact to={`/student/public-profile/${this.props.id}`}>
+							<NavLink exact to={`/student/profile/${this.props.id}`}>
 								Return To Profile
 							</NavLink>
 							<NavLink exact to="/student/new-project">
 								Add New Project
 							</NavLink>
-							<NavLink exact to="#">
+							<NavLink exact to="/profile-quick-start">
 								Edit Profile
 							</NavLink>
 						</nav>
