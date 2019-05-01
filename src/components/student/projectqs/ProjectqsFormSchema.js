@@ -109,7 +109,7 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
     </label>
 
     <button type="submit" disabled={isSubmitting}>
-      Create Project
+      Update Project
     </button>
   </Form>
 );
