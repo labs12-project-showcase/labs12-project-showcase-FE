@@ -46,16 +46,6 @@ class StudentDashboard extends React.Component {
 
     return (
       <div className="student-dashboard">
-        <div className="subNav">
-          <nav>
-            <NavLink exact to="/student/new-project">
-              Add New Project
-            </NavLink>
-            <NavLink exact to="#">
-              Edit Profile
-            </NavLink>
-          </nav>
-        </div>
         {!endorsed && <NotEndorsed />}
         <header>
           <div className="profile-container">
