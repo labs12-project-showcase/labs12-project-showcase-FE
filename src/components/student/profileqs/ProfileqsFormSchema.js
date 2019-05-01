@@ -93,6 +93,10 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
       <ErrorMessage name="about" component="div" />
     </label>
 
+    <label>
+      <Field name="id" type="hidden" />
+    </label>
+
     <button type="submit" disabled={isSubmitting}>
       Create Profile
     </button>
