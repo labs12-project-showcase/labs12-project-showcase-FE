@@ -11,7 +11,6 @@ import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
 	state = {
-		id: 1,
 		isLoggedIn: false
 	}
 
@@ -56,8 +55,8 @@ class TopBar extends Component {
 				{this.state.isLoggedIn && (
 					<div className="subNav">
 						<nav>
-							<NavLink exact to={`/student/dashboard/${this.state.id}`}>
-
+							<NavLink exact to={`/student/public-profile/${this.props.id}`}>
+								Return To Profile
 							</NavLink>
 							<NavLink exact to="/student/new-project">
 								Add New Project
@@ -74,7 +73,7 @@ class TopBar extends Component {
 };
 
 const mapStateToProps = state => {
-	return {};
+	return { id: state.profile.profileData.id };
 };
 
 export default connect(mapStateToProps, { login, logout })(TopBar);
