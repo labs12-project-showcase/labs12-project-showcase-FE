@@ -101,6 +101,20 @@
                         background-color: darken($lambdaRed, 10%);
                     }
                 }
+                
+                .portfolio-btn {
+                    text-decoration: none;
+                    border-radius: 7px;
+                    color: #ffffff;
+                    padding: 9px;
+                    margin: 0 5px;
+                    background-color: $lambdaRed;
+                    cursor: pointer;
+          
+                    &:hover {
+                      background-color: darken($lambdaRed, 10%);
+                    }
+                  }
             }
         }
     }
