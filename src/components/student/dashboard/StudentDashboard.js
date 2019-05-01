@@ -35,7 +35,7 @@ class StudentDashboard extends React.Component {
       linkedin,
       twitter,
       github,
-      // website,
+      website,
       acclaim,
       hobbies,
       cohort,
@@ -46,16 +46,6 @@ class StudentDashboard extends React.Component {
 
     return (
       <div className="student-dashboard">
-        <div className="subNav">
-          <nav>
-            <NavLink exact to="/student/new-project">
-              Add New Project
-            </NavLink>
-            <NavLink exact to="#">
-              Edit Profile
-            </NavLink>
-          </nav>
-        </div>
         {!endorsed && <NotEndorsed />}
         <header>
           <div className="profile-container">
@@ -77,6 +67,14 @@ class StudentDashboard extends React.Component {
               </div>
             </div>
             <div className="social-links">
+              <a
+                className="portfolio-btn"
+                rel="noopener noreferrer"
+                href={website}
+                target="_blank"
+              >
+                Portfolio
+              </a>
               <a rel="noopener noreferrer" href={linkedin} target="_blank">
                 <i className="fab fa-linkedin-in" />
               </a>
@@ -92,8 +90,7 @@ class StudentDashboard extends React.Component {
         <main>
           <AboutMe about={about} />
           <Endorsements endorsements={endorsements} />
-          <hr />
-          <Projects projects={projects} top_projects={top_projects} />
+          <Progress />
           <hr />
           <div className="status-skills">
             <Status
@@ -104,12 +101,8 @@ class StudentDashboard extends React.Component {
             <Skills skills={skills} top_skills={top_skills} />
           </div>
           <hr />
-          <div className="hobbies">
-            <h2>Hobbies &amp; Interests</h2>
-            <p>{hobbies}</p>
-          </div>
+          <Projects projects={projects} top_projects={top_projects} />
         </main>
-        <Progress />
       </div>
     );
   }
