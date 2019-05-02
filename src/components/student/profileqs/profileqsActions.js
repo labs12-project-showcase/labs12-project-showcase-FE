@@ -83,6 +83,11 @@ export const updateProfile = formValues => dispatch => {
   };
   console.log('send', send);
   dispatch({ type: UPDATE_PROFILE_START });
+  if (!token)
+    return dispatch({
+      type: UPDATE_PROFILE_FAILURE,
+      payload: 'No token found in Local Storage'
+    });
   axios
     .put(`${backendURL}/api/students/update`, removeEmptyValues(send), {
       headers: { authorization: token }
