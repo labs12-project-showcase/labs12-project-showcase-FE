@@ -100,6 +100,9 @@ class Home extends React.Component {
 						{this.props.home.cards.map((cards, index) => (
 							<Cards {...this.props} cards={cards} key={index} />
 						))}
+						<button className="btn-show-more">
+							Show More <i className="fas fa-chevron-down" />
+						</button>
 					</div>
 				</main>
 			</div>
