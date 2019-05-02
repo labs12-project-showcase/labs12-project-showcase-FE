@@ -1,10 +1,6 @@
 import React from "react";
 
 const Status = ({ cohort, desired_locations, desired_position }) => {
-  //TEST DATA
-  cohort = "Full Stack Web17";
-  desired_locations = ["Houston, Tx", "San Diego, Ca", "NYC, NY"];
-  desired_position = "Software Engineer";
 
   return (
     <div className="status-container">
