@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
+import ProjectSkills from "../projectSkills/ProjectSkills";
 
 import project from "../../../assets/project-img.jpg";
 import one from "../../../assets/one.jpg";
@@ -167,7 +168,12 @@ const ProjectView = ({
             : "Loading..."}
         </div>
         <hr />
-        <h2>Technical Architecture </h2>
+        <div className="project-skills">
+          <h2>Technical Architecture </h2>
+          <div className="status-skills">
+            <ProjectSkills projectSkills={projectData.projectSkills} />
+          </div>
+        </div>
       </main>
     </div>
   );
