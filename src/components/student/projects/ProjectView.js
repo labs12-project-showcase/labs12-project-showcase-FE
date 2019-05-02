@@ -173,7 +173,7 @@ const ProjectView = ({
         <div className="students-names">
           {projectData.students
             ? projectData.students.map(student => (
-                <div className="s-link">
+                <div key={student.name} className="s-link">
                   <img src={student.profile_pic} alt={student.name} />
                   <p>{student.name}</p>
                 </div>
