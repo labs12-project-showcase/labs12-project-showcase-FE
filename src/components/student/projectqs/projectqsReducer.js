@@ -30,6 +30,9 @@ const initialState = {
     short_description: "",
     customer_pitch: "",
     tech_pitch: "",
+    students: [],
+    project_media: [],
+    project_skills: [],
     approved: false
   }
 };
@@ -51,7 +54,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         updatingProjectData: false,
-        projectData: { ...initialState.projectData, ...action.payload }
+        projectData: action.payload
       };
     case CREATE_PROJECT_FAILURE:
       return {
@@ -69,7 +72,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         gettingProjectData: false,
-        projectData: { ...initialState.projectData, ...action.payload }
+        projectData: action.payload
       };
     case GET_PROJECT_FAILURE:
       return {

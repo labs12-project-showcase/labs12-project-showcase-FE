@@ -1,11 +1,17 @@
-import React from 'react';
-import './App.scss';
-import { withRouter } from 'react-router-dom';
-import Routes from './config/Routes.js';
-import Footer from './components/Footer';
-import TopBar from './components/TopBar';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import "./App.scss";
+import { withRouter } from "react-router-dom";
 
-function App() {
+import { getProfileData } from "./components/student/profileqs/profileqsActions";
+import Routes from "./config/Routes.js";
+import Footer from "./components/Footer";
+import TopBar from "./components/TopBar";
+
+function App({ dispatch }) {
+  useEffect(() => {
+    dispatch(getProfileData());
+  }, [dispatch]);
   return (
     <div className="main-container">
       <TopBar />
@@ -15,4 +21,4 @@ function App() {
   );
 }
 
-export default withRouter(App);
+export default withRouter(connect()(App));

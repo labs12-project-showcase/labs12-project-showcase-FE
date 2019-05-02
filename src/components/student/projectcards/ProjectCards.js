@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 
 const ProjectCards = ({ top_projects, projects }) => {
@@ -83,15 +84,15 @@ const ProjectCards = ({ top_projects, projects }) => {
 
   const map = arr =>
     arr.map(proj => (
-      <a
+      <Link
         key={proj.project_id}
         className="project-card"
-        href={`/student/project-view/${proj.project_id}`}
+        to={`/student/project-view/${proj.project_id}`}
       >
         <img src={proj.media[0]} alt="Project media" />
         <h3>{proj.name}</h3>
         <p>{proj.type}</p>
-      </a>
+      </Link>
     ));
   return (
     <div className="projects-wrapper">
@@ -99,7 +100,7 @@ const ProjectCards = ({ top_projects, projects }) => {
       <div className="projects-inner-wrapper">
         {map(top_projects)}
         <Fade collapse when={!hide}>
-          {map(projects)}
+          <div>{map(projects)}</div>
         </Fade>
       </div>
       <div className="projects-buttons-container">

@@ -1,5 +1,6 @@
 import history from "../../../history.js";
 import axiosAuth from "../../../auth/axiosAuth";
+import axios from "axios";
 
 const backendURL = "https://halg-backend.herokuapp.com";
 
@@ -84,9 +85,10 @@ function removeEmptyValues(obj) {
 
 export const getProject = id => dispatch => {
   dispatch({ type: GET_PROJECT_START });
-  return axiosAuth()
+  return axios
     .get(`${backendURL}/api/projects/${id}`)
     .then(res => {
+      console.log("response", res.data);
       dispatch({
         type: GET_PROJECT_SUCCESS,
         payload: res.data

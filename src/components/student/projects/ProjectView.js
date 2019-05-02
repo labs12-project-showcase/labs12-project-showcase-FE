@@ -15,8 +15,8 @@ import three from "../../../assets/three.jpg";
 // const sameUser = id === this.props.loggedInProfile.id;
 
 const ProjectView = ({
+  project: { projectData },
   dispatch,
-  projectData,
   history,
   curAccount,
   match: {
@@ -29,26 +29,20 @@ const ProjectView = ({
 
   const checkOwner = arr => {
     const owner = arr.filter(member => {
-      console.log(member.id);
-      console.log(curAccount);
-      member.id = curAccount;
+      console.log("MEMBER ID", member.id);
+      console.log("CUR ACCOUNT ID", curAccount);
+      return (member.id = curAccount);
     });
     if (owner && owner.length) {
-      console.log("true");
       return true;
     } else {
-      console.log("false");
       return false;
     }
   };
 
   return (
     <div className="project-view">
-      {!projectData.approved ? (
-        <NotApproved />
-      ) : (
-        console.log("Project has been approved")
-      )}
+      {!projectData.approved ? <NotApproved /> : null}
       <div className="subNav">
         <nav className="NavLinks-container">
           <div>
@@ -205,7 +199,7 @@ const ProjectView = ({
 
 const mapStateToProps = state => {
   return {
-    ...state.project,
+    project: state.project,
     curAccount: state.profile.profileData.id
   };
 };
