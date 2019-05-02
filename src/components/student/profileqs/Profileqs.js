@@ -26,7 +26,7 @@ class Profileqs extends React.Component {
           {this.userExists ? (
             <>
               <h3>Edit Profile</h3>
-              <p>Make you changes below.</p>
+              <p>Make your changes below.</p>
             </>
           ) : (
             <>
