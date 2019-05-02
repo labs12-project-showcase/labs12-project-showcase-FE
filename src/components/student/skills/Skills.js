@@ -1,19 +1,7 @@
 import React from "react";
 
 const Skills = ({ top_skills, skills }) => {
-  top_skills = ["React", "Redux", "Node.js"];
-  skills = [
-    "MongoDB",
-    "SQL",
-    "OOP",
-    "HTML5",
-    "CSS3",
-    "JavaScript",
-    "Python",
-    "C++",
-    "SASS",
-    "LESS"
-  ];
+
   const map = arr =>
     arr.map(skill => (
       <span key={skill} className="skill-chip">
