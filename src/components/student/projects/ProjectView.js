@@ -23,22 +23,24 @@ const ProjectView = ({
     params: { id }
   }
 }) => {
-  const [isOwner, updateOwner] = useState(false);
-
   useEffect(() => {
     dispatch(getProject(id));
-
-    if (projectData.students) {
-      const owner = projectData.students.filter(
-        member => (member.id = curAccount)
-      );
-      if (owner) {
-        updateOwner(true);
-      } else {
-        updateOwner(false);
-      }
-    }
   }, [id, dispatch]);
+
+  const checkOwner = arr => {
+    const owner = arr.filter(member => {
+      console.log(member.id);
+      console.log(curAccount);
+      member.id = curAccount;
+    });
+    if (owner && owner.length) {
+      console.log("true");
+      return true;
+    } else {
+      console.log("false");
+      return false;
+    }
+  };
 
   return (
     <div className="project-view">
@@ -61,7 +63,7 @@ const ProjectView = ({
             </div>
           </div>
           <div className="NavLinks-container-right">
-            {isOwner ? (
+            {projectData.students && checkOwner(projectData.students) ? (
               <NavLink
                 exact
                 to="/student/project-edit"
