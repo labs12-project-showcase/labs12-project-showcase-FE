@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import AsyncSelect from 'react-select/lib/Async';
 import CreatableSelect from 'react-select/lib/Creatable';
 import { ErrorMessage, Field, Form } from 'formik';
+import LocationSelect from '../../location/LocationSelect';
 import Select from 'react-select';
 import * as Yup from 'yup';
-import axios from 'axios';
 
 // Custom styling for react-select components
 const reactSelectStyles = {
@@ -138,14 +137,11 @@ export const FormSchema = ({
   /*
    *** CURRENT_LOCATION SET-UP ***
    */
+  const [currentLocation, setCurrentLocation] = useState('');
 
-  // locationOptions = inputValue => {
-  //   // @TODO: restrict the accessToken in account.mapbox.com to only our URL
-  //   accessToken = 'pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ';
-  //   axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${inputValue}.json?access_token=${accessToken}&cachebuster=1556822293407&autocomplete=true`)
-  // }
-
-  /* *** THE FORM *** */
+  /*
+   *** THE FORM ***
+   */
   return (
     <Form className="profile-quick-start-form">
       <label>
@@ -228,19 +224,41 @@ export const FormSchema = ({
         <Field
           name="location"
           type="text"
-          // render={({ field, form }) => (
-          //   <>
-          //     <AsyncSelect
-          //       loadOptions={locationOptions}
-          //       name={field.name}
-          //       onBlur={field.onBlur}
-          //       // onChange={}
-          //       // options={}
-          //       styles={reactSelectStyles}
-          //       // value={cohortSelection}
-          //     />
-          //   </>
-          // )}
+          render={({ field, form }) => (
+            <>
+              <LocationSelect
+                currentLocation={currentLocation}
+                initialValues={initialValues}
+                field={field}
+                name={field.name}
+                onBlur={field.onBlur}
+                onChange={option => {
+                  setCurrentLocation(option);
+                  values.lat = option.value.lat;
+                  values.location = option.value.locationName;
+                  values.lon = option.value.lon;
+                }}
+                setCurrentLocation={setCurrentLocation}
+                styles={reactSelectStyles}
+              />
+              {/* <AsyncSelect
+                loadOptions={getLocationOptions}
+                name={field.name}
+                onBlur={field.onBlur}
+                onChange={option => {
+                  setCurrentLocation(option);
+                  console.log(option);
+                  values.lat = option.value.lat;
+                  values.location = option.value.locationName;
+                  values.lon = option.value.lon;
+                }}
+                noOptionsMessage={() => 'Type to begin searching...'}
+                placeholder="Type to begin searching..."
+                styles={reactSelectStyles}
+                value={currentLocation}
+              /> */}
+            </>
+          )}
         />
         <ErrorMessage
           name="location"
@@ -449,7 +467,9 @@ export const FormSchema = ({
       </label>
 
       <label className="stretch-input">
-        <p>Tell prospective employers about yourself (maximum 500 characters)</p>
+        <p>
+          Tell prospective employers about yourself (maximum 500 characters)
+        </p>
         <span className="input-label about-label">About</span>
         <br />
         <Field name="about" component="textarea" />
