@@ -57,7 +57,7 @@ export const updateProfile = formValues => dispatch => {
       name: formValues.name
     },
     // desired_locations: formValues.desired_locations,
-    // skills: formValues.skills,
+    skills: formValues.skills,
     student: {
       about: formValues.about,
       acclaim: formValues.acclaim,
@@ -67,11 +67,12 @@ export const updateProfile = formValues => dispatch => {
       linkedin: formValues.linkedin,
       location: formValues.location,
       profile_pic: formValues.profile_pic,
-      track_id: formValues.track,
+      track_id: formValues.track_id,
       twitter: formValues.twitter,
       website: formValues.website
     }
   };
+  console.log('send', send);
   dispatch({ type: UPDATE_PROFILE_START });
   axios
     .put(`${backendURL}/api/students/update`, removeEmptyValues(send), {
