@@ -47,8 +47,8 @@ class Routes extends Component {
 					path="/student/new-project"
 					component={Projectqs}
 				/>
-				<PrivateRoute
-					path="/student/project-view"
+				<Route
+					path="/student/project-view/:id"
 					component={ProjectView}
 				/>
 				<Route

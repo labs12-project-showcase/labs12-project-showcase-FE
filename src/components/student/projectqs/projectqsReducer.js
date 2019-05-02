@@ -1,4 +1,5 @@
 import {
+  CLEAR_PROJECT_DATA,
   CREATE_PROJECT_FAILURE,
   CREATE_PROJECT_START,
   CREATE_PROJECT_SUCCESS,
@@ -35,6 +36,11 @@ const initialState = {
 
 const projectqsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CLEAR_PROJECT_DATA:
+      return {
+        ...state,
+        projectData: initialState.projectData
+      };
     case CREATE_PROJECT_START:
       return {
         ...state,
