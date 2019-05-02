@@ -26,17 +26,14 @@ export default function Cards(props) {
 				<div className="details">
 					<h2>{name}</h2>
 					<h3>
-						Full-Stack Web Development &amp; Computer Science
-						{desired_title}
+						{/* Full-Stack Web Development &amp; Computer Science
+						{desired_title} */}
 						<br />
 						{track}
 					</h3>
 					<p>Skills:</p>
-					<br /> {top_skills}
 					<ul>
-						<li>React</li>
-						<li>Redux</li>
-						<li>Node Js</li>
+						<li>{top_skills}</li>
 					</ul>
 					<br />
 					<br />
