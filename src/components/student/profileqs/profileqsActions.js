@@ -30,6 +30,8 @@ export const getProfileData = (queryUpdate = false) => dispatch => {
       let noNulls = {};
       for (let item in res.data) {
         if (res.data[item] !== null) {
+          // Exclude arrays with only `null` within
+          if (Array.isArray(res.data[item]) && res.data[item][0])
           noNulls[item] = res.data[item];
         }
       }
