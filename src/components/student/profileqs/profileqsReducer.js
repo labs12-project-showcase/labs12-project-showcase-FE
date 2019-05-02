@@ -54,8 +54,6 @@ const initialState = {
         }
         student {
         }
-        hobbies [
-        ]
         top_skills [
         ]
         skills [
