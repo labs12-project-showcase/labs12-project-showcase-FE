@@ -7,11 +7,7 @@ import project from '../../../assets/project-img.jpg';
 import one from '../../../assets/one.jpg';
 import two from '../../../assets/two.jpg';
 import three from '../../../assets/three.jpg';
-import s1 from '../../../assets/s1.png';
-import s2 from '../../../assets/s2.png';
-import s3 from '../../../assets/s3.png';
-import s4 from '../../../assets/s4.png';
-import s5 from '../../../assets/s5.png';
+
 // import { dispatch } from '../../../../../../../Library/Caches/typescript/3.4.3/node_modules/rxjs/internal/observable/range';
 
 const ProjectView = ({
