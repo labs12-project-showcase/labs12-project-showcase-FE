@@ -1,5 +1,6 @@
 import history from '../../../history.js';
 import axios from 'axios';
+import { isArray } from 'util';
 
 const token = localStorage.getItem('backendToken');
 
@@ -98,7 +99,7 @@ function removeEmptyValues(obj) {
     .filter(f => Boolean(obj[f]))
     .reduce(
       (r, i) =>
-        typeof obj[i] === 'object'
+        typeof obj[i] === 'object' && !Array.isArray(obj[i])
           ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
           : { ...r, [i]: obj[i] },
       {}
