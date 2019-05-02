@@ -22,7 +22,7 @@ export const getProfileData = (queryUpdate = false) => dispatch => {
   axios
     .get(url, {
       headers: {
-        Authorization: token
+        authorization: token
       }
     })
     .then(res => {
