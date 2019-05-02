@@ -361,7 +361,7 @@ export const FormSchema = ({
       </label>
 
       <button type="submit" disabled={isSubmitting}>
-        Create Profile
+        {initialValues.exists ? 'Save Changes' : 'Create Profile'}
       </button>
     </Form>
   );
