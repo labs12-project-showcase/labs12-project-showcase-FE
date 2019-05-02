@@ -110,11 +110,11 @@ class StudentTable extends React.Component {
           }
         ]
     return ( 
-      <MaterialDatatable>
+      <MaterialDatatable
         title={"Admin Student Table"}
         columns={columns}
         data={data}
-      </MaterialDatatable>
+      />
      );
   }
 }
