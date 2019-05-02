@@ -4,53 +4,49 @@ import one from '../../assets/one.jpg';
 import two from '../../assets/two.jpg';
 import three from '../../assets/three.jpg';
 
-export default function Cards(props) {
-	const {
-		id,
-		name,
-		track,
-		top_skills,
-		linkedin,
-		twitter,
-		github,
-		desired_title,
-		profile_pic
-	} = props.cards;
+const Cards = ({
+	id,
+	name,
+	track,
+	top_skills,
+	skills,
+	linkedin,
+	twitter,
+	github,
+	desired_title,
+	profile_pic,
+	cards
+}) => {
+	const map = arr => arr.map(skill => <li key={skill}>{skill}</li>);
 
 	return (
 		<>
 			<div className="cards">
 				<div className="profile-pic">
-					<img src={profile_pic} alt="Profile" />
+					<img src={cards.profile_pic} alt="Profile" />
 				</div>
 				<div className="details">
-					<h2>{name}</h2>
-					<h3>
-						{/* Full-Stack Web Development &amp; Computer Science
-						{desired_title} */}
-						<br />
-						{track}
-					</h3>
+					<h2>{cards.name}</h2>
+					<h3>{cards.track}</h3>
 					<p>Skills:</p>
-					<ul>
-						<li>{top_skills}</li>
-					</ul>
+					<ul>{map(cards.top_skills)}</ul>
 					<br />
 					<br />
 					<div className="contact-links">
-						<a href={github} target="_blank" rel="noopener noreferrer">
+						<a href={cards.github} target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-github" />
 						</a>
-						<a href={linkedin} target="_blank" rel="noopener noreferrer">
+						<a href={cards.linkedin} target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-linkedin-in" />
 						</a>
-						<a href={twitter} target="_blank" rel="noopener noreferrer">
+						<a href={cards.twitter} target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-twitter" />
 						</a>
 					</div>
 				</div>
 				<div className="projects-box">
 					<h2>My top 3 projects</h2>
+
 					<div className="display-box">
 						<img src={one} alt="Project display" />
 						<h3>Project Title</h3>
@@ -70,4 +66,6 @@ export default function Cards(props) {
 			</div>
 		</>
 	);
-}
+};
+
+export default Cards;
