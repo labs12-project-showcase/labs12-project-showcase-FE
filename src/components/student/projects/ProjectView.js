@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
+import NotApproved from "../notApproved/NotApproved";
 
 import project from "../../../assets/project-img.jpg";
 import one from "../../../assets/one.jpg";
@@ -11,10 +12,13 @@ import three from "../../../assets/three.jpg";
 
 // import { dispatch } from '../../../../../../../Library/Caches/typescript/3.4.3/node_modules/rxjs/internal/observable/range';
 
+// const sameUser = id === this.props.loggedInProfile.id;
+
 const ProjectView = ({
   dispatch,
   projectData,
   history,
+  curAccount,
   match: {
     params: { id }
   }
@@ -23,8 +27,29 @@ const ProjectView = ({
     dispatch(getProject(id));
   }, [id, dispatch]);
 
+  const checkOwner = arr => {
+    const owner = arr.filter(member => {
+      console.log(member.id);
+      console.log(curAccount);
+
+      return (member.id = curAccount);
+    });
+    if (owner && owner.length) {
+      console.log("true");
+      return true;
+    } else {
+      console.log("false");
+      return false;
+    }
+  };
+
   return (
     <div className="project-view">
+      {!projectData.approved ? (
+        <NotApproved />
+      ) : (
+        console.log("Project has been approved")
+      )}
       <div className="subNav">
         <nav className="NavLinks-container">
           <div>
@@ -39,7 +64,7 @@ const ProjectView = ({
             </div>
           </div>
           <div className="NavLinks-container-right">
-            {
+            {projectData.students && checkOwner(projectData.students) ? (
               <NavLink
                 exact
                 to="/student/project-edit"
@@ -47,7 +72,7 @@ const ProjectView = ({
               >
                 Edit Project
               </NavLink>
-            }
+            ) : null}
             <NavLink
               exact
               to="/student/profile-edit"
@@ -181,7 +206,8 @@ const ProjectView = ({
 
 const mapStateToProps = state => {
   return {
-    ...state.project
+    ...state.project,
+    curAccount: state.profile.profileData.id
   };
 };
 

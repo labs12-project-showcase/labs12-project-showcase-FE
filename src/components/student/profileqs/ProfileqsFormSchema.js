@@ -189,7 +189,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setTrackSelection(option);
-                  form.setFieldValue('track_id', option.value);
+                  form.setFieldValue("track_id", option.value);
                 }}
                 options={trackOptions}
                 styles={reactSelectStyles}
@@ -216,7 +216,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setCohortSelection(option);
-                  form.setFieldValue('cohort_id', option.value);
+                  form.setFieldValue("cohort_id", option.value);
                 }}
                 options={cohortOptions}
                 styles={reactSelectStyles}
@@ -359,16 +359,16 @@ export const FormSchema = ({
                 onKeyDown={event => {
                   if (!skillsInput) return;
                   switch (event.key) {
-                    case 'Enter':
-                    case 'Tab':
+                    case "Enter":
+                    case "Tab":
                       setSkillsList(previousState => [
                         ...previousState,
                         createSkillsOption(skillsInput)
                       ]);
-                      console.group('Value Added – SkillKeyDown');
+                      console.group("Value Added – SkillKeyDown");
                       console.log(skillsList);
                       console.groupEnd();
-                      setSkillsInput('');
+                      setSkillsInput("");
                       event.preventDefault();
                       break;
                     default:
@@ -400,7 +400,7 @@ export const FormSchema = ({
                 isMulti
                 name={field.name}
                 noOptionsMessage={() =>
-                  'Add skills above, then select your top skills here'
+                  "Add skills above, then select your top skills here"
                 }
                 onBlur={field.onBlur}
                 onChange={option => {
@@ -414,7 +414,7 @@ export const FormSchema = ({
                     return previousState.map(skill => {
                       skill.topSkill = false;
                       for (let topSkill of option) {
-                        console.log('compare: ', skill.value, topSkill.value);
+                        console.log("compare: ", skill.value, topSkill.value);
                         if (skill.value === topSkill.value) {
                           skill.topSkill = true;
                           return skill;
@@ -459,7 +459,7 @@ export const FormSchema = ({
       </label>
 
       <button type="submit" disabled={isSubmitting}>
-        {initialValues.exists ? 'Save Changes' : 'Create Profile'}
+        {initialValues.exists ? "Save Changes" : "Create Profile"}
       </button>
     </Form>
   );
@@ -472,25 +472,25 @@ export const ProfileQsSchema = Yup.object().shape({
     .trim(),
   acclaim: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   desired_title: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .trim('Must be a valid URL'),
+    .trim("Must be a valid URL"),
   github: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   linkedin: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   location: Yup.string().trim(),
   name: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .required('Name is required')
-    .trim('Must be a valid URL'),
+    .required("Name is required")
+    .trim("Must be a valid URL"),
   website: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   twitter: Yup.string()
     .trim()
-    .url('Must be a valid URL')
+    .url("Must be a valid URL")
 });
