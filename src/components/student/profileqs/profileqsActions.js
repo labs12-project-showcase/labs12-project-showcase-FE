@@ -1,6 +1,5 @@
 import history from '../../../history.js';
 import axios from 'axios';
-import { isArray } from 'util';
 
 const token = localStorage.getItem('backendToken');
 
