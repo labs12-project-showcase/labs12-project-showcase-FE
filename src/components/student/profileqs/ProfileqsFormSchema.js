@@ -342,6 +342,10 @@ export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
         />
       </label>
 
+      <label>
+      <Field name="id" type="hidden" />
+    </label>
+
       <button type="submit" disabled={isSubmitting}>
         Create Profile
       </button>

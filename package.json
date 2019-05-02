@@ -23,6 +23,7 @@
     "react-select": "^2.4.3",
     "react-share": "^2.4.0",
     "react-sweet-progress": "^1.1.2",
+    "react-table": "^6.10.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "swiper": "^4.5.0",

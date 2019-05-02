@@ -78,7 +78,7 @@ export const updateProfile = formValues => dispatch => {
       headers: { authorization: token }
     })
     .then(res => {
-      history.push('/student/dashboard');
+      history.push(`/student/profile/${formValues.id}`);
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data });
     })
     .catch(error => {
