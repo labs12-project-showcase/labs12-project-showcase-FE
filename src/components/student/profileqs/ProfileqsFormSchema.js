@@ -360,10 +360,6 @@ export const FormSchema = ({
         />
       </label>
 
-      {/* <label>
-        <Field name="id" type="hidden" />
-      </label> */}
-
       <button type="submit" disabled={isSubmitting}>
         Create Profile
       </button>
