@@ -96,12 +96,20 @@ export const FormSchema = ({
   const [skillsInput, setSkillsInput] = useState();
   // const [skillsList, setSkillsList] = useState();
 
+  const createSkillsOption = label => ({
+    label,
+    value: label
+  });
+
   // Populate Skills <Select> with defaultValues
   useEffect(() => {
     console.log('useEffect for default skills running');
     // need to make the `initialValues.skills` into the objects that
     // React Select expects
-    if (initialValues.skills[0]) setSkillsList(initialValues.skills);
+    if (initialValues.skills[0])
+      setSkillsList(
+        initialValues.skills.map(skill => createSkillsOption(skill))
+      );
   }, [initialValues, setSkillsList]);
 
   /* *** THE FORM *** */
@@ -309,10 +317,7 @@ export const FormSchema = ({
                     case 'Tab':
                       setSkillsList(previousState => [
                         ...previousState,
-                        {
-                          label: skillsInput,
-                          value: skillsInput
-                        }
+                        createSkillsOption(skillsInput)
                       ]);
                       console.group('Value Added – SkillKeyDown');
                       console.log(skillsList);
@@ -355,9 +360,9 @@ export const FormSchema = ({
         />
       </label>
 
-      <label>
+      {/* <label>
         <Field name="id" type="hidden" />
-      </label>
+      </label> */}
 
       <button type="submit" disabled={isSubmitting}>
         Create Profile
