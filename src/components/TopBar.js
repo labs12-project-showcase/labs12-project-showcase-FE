@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import { login, logout } from '../auth/authActions.js';
 import { NavLink } from 'react-router-dom';
 import { validateJwt } from '../config/utilities.js';
-import loginIcon from '../assets/login.png';
-import logoutIcon from '../assets/logout.png';
+// import loginIcon from '../assets/login.png';
+// import logoutIcon from '../assets/logout.png';
 
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
 	state = {
 		isLoggedIn: false
-	}
+	};
 
 	componentWillMount() {
 		this.unlisten = history.listen((location, action) => {
@@ -38,16 +38,16 @@ class TopBar extends Component {
 							alt="white lambda logo"
 						/>
 					</NavLink>
-	
+
 					<div className="TopBar-btn-container">
 						{!this.state.isLoggedIn && (
 							<button className="TopBar-login-btn" onClick={login}>
-								<img src={loginIcon} alt="Logout icon" />
+								<i className="fas fa-user" />
 							</button>
 						)}
 						{this.state.isLoggedIn && (
 							<button className="TopBar-logout-btn" onClick={logout}>
-								<img src={logoutIcon} alt="Logout icon" />
+								<i className="fas fa-sign-out-alt" />
 							</button>
 						)}
 					</div>
@@ -70,10 +70,13 @@ class TopBar extends Component {
 			</div>
 		);
 	}
-};
+}
 
 const mapStateToProps = state => {
 	return { id: state.profile.profileData.id };
 };
 
-export default connect(mapStateToProps, { login, logout })(TopBar);
+export default connect(
+	mapStateToProps,
+	{ login, logout }
+)(TopBar);
