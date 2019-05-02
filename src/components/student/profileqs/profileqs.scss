@@ -68,11 +68,18 @@
                 position: relative;
                 top: 0.8rem;
                 z-index: 1;
+                &.about-label {
+                    top: 2.7rem;
+                }
             }
 
             &.stretch-input {
                 margin: 1.6rem 0;
                 width: 100%;
+
+                p {
+                    margin-bottom: -2rem;
+                }
 
                 textarea {
                     margin-top: 20px;

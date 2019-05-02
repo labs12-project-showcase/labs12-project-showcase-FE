@@ -349,9 +349,8 @@ export const FormSchema = ({
       </label>
 
       <label className="stretch-input">
-        Tell prospective employers about yourself (500 words)
-        <br />
-        <span className="input-label">About</span>
+        <p>Tell prospective employers about yourself (500 words)</p>
+        <span className="input-label about-label">About</span>
         <br />
         <Field name="about" component="textarea" />
         <ErrorMessage
