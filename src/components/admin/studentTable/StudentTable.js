@@ -1,16 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-
-
-
-// const AdminDashboard = props => {
-//   return (
-//     <div className="adminDashboard">
-    
-//     </div>
-//   );
-// };
+import { fetchStudents } from '../adminActions.js';
 
 class StudentTable extends React.Component {
   constructor(props) {
@@ -19,6 +10,11 @@ class StudentTable extends React.Component {
       
      }
   }
+
+  componentDidMount() {
+    this.props.fetchStudents();
+  }
+
   render() { 
     const columns = [
       {
@@ -110,11 +106,13 @@ class StudentTable extends React.Component {
           }
         ]
     return ( 
-      <MaterialDatatable
-        title={"Admin Student Table"}
-        columns={columns}
-        data={data}
-      />
+      <div className="tableContainer">
+        <MaterialDatatable
+          title={"Admin Student Table"}
+          columns={columns}
+          data={data}
+        />
+      </div>
      );
   }
 }
@@ -125,4 +123,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(StudentTable);
+export default connect(mapStateToProps, { fetchStudents })(StudentTable);
