@@ -11,6 +11,7 @@ import ProjectView from '../components/student/projects/ProjectView';
 import ProjectEdit from '../components/student/projects/ProjectEdit';
 import Profileqs from '../components/student/profileqs/Profileqs';
 import ContactForm from '../components/student/contactForm/ContactForm';
+import StudentTable from '../components/admin/studentTable/StudentTable.js';
 
 class Routes extends Component {
 	
@@ -54,6 +55,10 @@ class Routes extends Component {
 				<Route
 					path="/contact-me"
 					render={props => <ContactForm auth={props.auth} {...props} />}
+				/>
+				<Route
+					path="/admin/student-table"
+					component={StudentTable}
 				/>
 				<PrivateRoute
 					exact
