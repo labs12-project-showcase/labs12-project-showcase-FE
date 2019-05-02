@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import AsyncSelect from 'react-select/lib/Async';
 import CreatableSelect from 'react-select/lib/Creatable';
 import { ErrorMessage, Field, Form } from 'formik';
+import LocationSelect from '../../location/LocationSelect';
 import Select from 'react-select';
 import * as Yup from 'yup';
-import axios from 'axios';
 
 // Custom styling for react-select components
 const reactSelectStyles = {
@@ -138,14 +137,24 @@ export const FormSchema = ({
   /*
    *** CURRENT_LOCATION SET-UP ***
    */
+  const [currentLocation, setCurrentLocation] = useState('');
 
-  // locationOptions = inputValue => {
-  //   // @TODO: restrict the accessToken in account.mapbox.com to only our URL
-  //   accessToken = 'pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ';
-  //   axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${inputValue}.json?access_token=${accessToken}&cachebuster=1556822293407&autocomplete=true`)
-  // }
+  useEffect(() => {
+    if (initialValues.lat && initialValues.location && initialValues.lon) {
+      setCurrentLocation({
+        label: initialValues.location,
+        value: {
+          lat: initialValues.lat,
+          locationName: initialValues.location,
+          lon: initialValues.lon
+        }
+      });
+    }
+  }, [initialValues, setCurrentLocation]);
 
-  /* *** THE FORM *** */
+  /*
+   *** THE FORM ***
+   */
   return (
     <Form className="profile-quick-start-form">
       <label>
@@ -180,7 +189,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setTrackSelection(option);
-                  form.setFieldValue('track_id', option.value);
+                  form.setFieldValue("track_id", option.value);
                 }}
                 options={trackOptions}
                 styles={reactSelectStyles}
@@ -207,7 +216,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setCohortSelection(option);
-                  form.setFieldValue('cohort_id', option.value);
+                  form.setFieldValue("cohort_id", option.value);
                 }}
                 options={cohortOptions}
                 styles={reactSelectStyles}
@@ -228,19 +237,25 @@ export const FormSchema = ({
         <Field
           name="location"
           type="text"
-          // render={({ field, form }) => (
-          //   <>
-          //     <AsyncSelect
-          //       loadOptions={locationOptions}
-          //       name={field.name}
-          //       onBlur={field.onBlur}
-          //       // onChange={}
-          //       // options={}
-          //       styles={reactSelectStyles}
-          //       // value={cohortSelection}
-          //     />
-          //   </>
-          // )}
+          render={({ field, form }) => (
+            <>
+              <LocationSelect
+                currentLocation={currentLocation}
+                initialValues={initialValues}
+                field={field}
+                name={field.name}
+                onBlur={field.onBlur}
+                onChange={option => {
+                  setCurrentLocation(option);
+                  values.lat = option.value.lat;
+                  values.location = option.value.locationName;
+                  values.lon = option.value.lon;
+                }}
+                setCurrentLocation={setCurrentLocation}
+                styles={reactSelectStyles}
+              />
+            </>
+          )}
         />
         <ErrorMessage
           name="location"
@@ -335,26 +350,8 @@ export const FormSchema = ({
                 menuIsOpen={false}
                 name={field.name}
                 onBlur={field.onBlur}
-                onChange={(list, actionMeta) => {
-                  console.group('Skills Value Changed');
-                  console.log('skills onChange list: ', list);
-                  console.log(`action: ${actionMeta.action}`);
-                  console.groupEnd();
+                onChange={(list) => {
                   setSkillsList(list);
-
-                  // Pull the `value`s for each item in the `list`
-                  const submitList = list.map(item => item.value);
-                  // The line below is what I'd LIKE to have happen
-                  form.setFieldValue(field.name, submitList);
-
-                  /*
-                   * was testing with a random field to change – doesn't work
-                   * but it DOES work when I bring the line below up to the `cohort` <Select>
-                   */
-                  // form.setFieldValue('desired_title', 'hello!', false);
-
-                  // console.log('form: ', form); // just to see
-                  console.log('form values – skills: ', values.skills); // to test if setFieldValue() works
                 }}
                 // track the input in state
                 onInputChange={inputValue => setSkillsInput(inputValue)}
@@ -362,16 +359,16 @@ export const FormSchema = ({
                 onKeyDown={event => {
                   if (!skillsInput) return;
                   switch (event.key) {
-                    case 'Enter':
-                    case 'Tab':
+                    case "Enter":
+                    case "Tab":
                       setSkillsList(previousState => [
                         ...previousState,
                         createSkillsOption(skillsInput)
                       ]);
-                      console.group('Value Added – SkillKeyDown');
+                      console.group("Value Added – SkillKeyDown");
                       console.log(skillsList);
                       console.groupEnd();
-                      setSkillsInput('');
+                      setSkillsInput("");
                       event.preventDefault();
                       break;
                     default:
@@ -403,7 +400,7 @@ export const FormSchema = ({
                 isMulti
                 name={field.name}
                 noOptionsMessage={() =>
-                  'Add skills above, then select your top skills here'
+                  "Add skills above, then select your top skills here"
                 }
                 onBlur={field.onBlur}
                 onChange={option => {
@@ -417,7 +414,7 @@ export const FormSchema = ({
                     return previousState.map(skill => {
                       skill.topSkill = false;
                       for (let topSkill of option) {
-                        console.log('compare: ', skill.value, topSkill.value);
+                        console.log("compare: ", skill.value, topSkill.value);
                         if (skill.value === topSkill.value) {
                           skill.topSkill = true;
                           return skill;
@@ -449,7 +446,9 @@ export const FormSchema = ({
       </label>
 
       <label className="stretch-input">
-        <p>Tell prospective employers about yourself (maximum 500 characters)</p>
+        <p>
+          Tell prospective employers about yourself (maximum 500 characters)
+        </p>
         <span className="input-label about-label">About</span>
         <br />
         <Field name="about" component="textarea" />
@@ -460,7 +459,7 @@ export const FormSchema = ({
       </label>
 
       <button type="submit" disabled={isSubmitting}>
-        {initialValues.exists ? 'Save Changes' : 'Create Profile'}
+        {initialValues.exists ? "Save Changes" : "Create Profile"}
       </button>
     </Form>
   );
@@ -473,25 +472,25 @@ export const ProfileQsSchema = Yup.object().shape({
     .trim(),
   acclaim: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   desired_title: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .trim('Must be a valid URL'),
+    .trim("Must be a valid URL"),
   github: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   linkedin: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   location: Yup.string().trim(),
   name: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .required('Name is required')
-    .trim('Must be a valid URL'),
+    .required("Name is required")
+    .trim("Must be a valid URL"),
   website: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   twitter: Yup.string()
     .trim()
-    .url('Must be a valid URL')
+    .url("Must be a valid URL")
 });
