@@ -31,7 +31,8 @@ const ProjectView = ({
     const owner = arr.filter(member => {
       console.log(member.id);
       console.log(curAccount);
-      member.id = curAccount;
+
+      return (member.id = curAccount);
     });
     if (owner && owner.length) {
       console.log("true");
