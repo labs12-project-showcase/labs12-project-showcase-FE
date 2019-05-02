@@ -139,6 +139,19 @@ export const FormSchema = ({
    */
   const [currentLocation, setCurrentLocation] = useState('');
 
+  useEffect(() => {
+    if (initialValues.lat && initialValues.location && initialValues.lon) {
+      setCurrentLocation({
+        label: initialValues.location,
+        value: {
+          lat: initialValues.lat,
+          locationName: initialValues.location,
+          lon: initialValues.lon
+        }
+      });
+    }
+  }, [initialValues, setCurrentLocation]);
+
   /*
    *** THE FORM ***
    */
