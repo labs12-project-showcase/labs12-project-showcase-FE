@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 
-import { ProfileQsSchema, formSchema } from './ProfileqsFormSchema';
+import { ProfileQsSchema, FormSchema } from './ProfileqsFormSchema';
 import { updateProfile } from './profileqsActions';
 
 // function handleSubmitError(error) {
@@ -21,7 +21,7 @@ const ProfileqsForm = ({ dispatch, ...props}) => {
       onSubmit={(values) => dispatch(updateProfile(values))}
       validationSchema={ProfileQsSchema}
       enableReinitialize
-      render={formSchema}
+      render={props => <FormSchema {...props} />}
     />
   );
 };
