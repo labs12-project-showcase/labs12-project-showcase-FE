@@ -23,7 +23,7 @@ class Profileqs extends React.Component {
     return (
       <div className="profileqs-container">
         <div className="profileqs">
-          {userExists ? (
+          {this.userExists ? (
             <>
               <h3>Edit Profile</h3>
               <p>Make you changes below.</p>
