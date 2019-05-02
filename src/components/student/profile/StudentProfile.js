@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { getData } from "./studentDashboardActions";
+import { getData } from "./studentProfileActions";
 import badge from "../../../assets/lambda-badge.png";
 import tony from "../../../assets/tony.jpg";
 import Projects from "../projectcards/ProjectCards";
@@ -15,10 +15,9 @@ import Progress from "../progress/Progress";
 
 // yarn add react-id-swiper@latest swiper@latest
 
-class StudentDashboard extends React.Component {
+class StudentProfile extends React.Component {
   componentDidMount() {
-    this.props.getData();
-    console.log("fetching", getData);
+    this.props.getData(this.props.match.params.id);
   }
 
   render() {
@@ -41,11 +40,13 @@ class StudentDashboard extends React.Component {
       desired_position,
       projects,
       top_projects
-    } = this.props.studentDashboard.profile;
+    } = this.props.studentProfile.profile;
+
+    const sameUser = (id === this.props.loggedInProfile.id);
 
     return (
       <div className="student-dashboard">
-        {!endorsed && <NotEndorsed />}
+        {sameUser && !endorsed && <NotEndorsed />}
         <header>
           <div className="profile-container">
             <div className="picture">
@@ -89,7 +90,7 @@ class StudentDashboard extends React.Component {
         <main>
           <AboutMe about={about} />
           <Endorsements endorsements={endorsements} />
-          <Progress />
+          { sameUser && <Progress /> }
           <hr />
           <div className="status-skills">
             <Status
@@ -109,12 +110,13 @@ class StudentDashboard extends React.Component {
 
 const mapStateToProps = state => ({
   ...state,
-  studentDashboard: state.studentDashboard
+  loggedInProfile: state.profile.profileData,
+  studentProfile: state.studentProfile
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
     { getData }
-  )(StudentDashboard)
+  )(StudentProfile)
 );

@@ -1,80 +1,80 @@
 // Top bar - logo and Navigation
 
 .TopBar {
-    // position: fixed;
-    height: 110px;
-    top: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: $lambdaRed;
+	padding: 10px 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: $lambdaRed;
+	z-index: 99999;
+	position: relative;
 
-    .TopBar-container {
-        width: 100%;
-        max-width: 1000px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 5px 0;
+	.TopBar-container {
+		width: 100%;
+		max-width: 1000px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 5px 0;
 
-        .TopBar-hire-lambda-logo {
-            height: 30px;
-        }
+		.TopBar-hire-lambda-logo {
+			height: 30px;
+		}
 
-        .TopBar-btn-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+		.TopBar-btn-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-            .TopBar-login-btn,
-            .TopBar-logout-btn {
-                padding: 5px;
-                border-radius: 5px;
-                border: none;
-                background: none;
+			.TopBar-login-btn,
+			.TopBar-logout-btn {
+				padding: 5px;
+				border-radius: 5px;
+				border: none;
+				background: none;
 
-                img {
-                    width: 30px;
-                    height: auto;
-                }
+				.fa-sign-out-alt,
+				.fa-user {
+					font-size: 2rem;
+					color: $lightcolor;
+					padding: 10px;
+				}
 
-                &:hover {
-                    cursor: pointer;
-                    background: darken(($lambdaRed), 10%);
-                }
-            }
-        }
+				img {
+					width: 30px;
+					height: auto;
+				}
 
-        ;
-
-
-    }
+				&:hover {
+					cursor: pointer;
+					background: darken(($lambdaRed), 10%);
+				}
+			}
+		}
+	}
 }
 
 .subNav {
-    width: 100%;
-    background: darken(($lambdaRed), 10%);
-    padding: 20px 0;
-    @include box-align();
+	width: 100%;
+	background: darken(($lambdaRed), 10%);
+	padding: 20px 0;
+	@include box-align();
 
-    nav {
+	nav {
+		@include box-align(flex-end, center);
+		width: 100%;
+		max-width: 1024px;
 
-        @include box-align(flex-end, center);
-        width: 100%;
-        max-width: 1024px;
+		a {
+			text-decoration: none;
+			color: $lightcolor;
+			margin: 0 5px;
 
-        a {
-            text-decoration: none;
-            color: $lightcolor;
-            margin: 0 5px;
-
-            &:last-child {
-                margin-right: 0
-            }
-        }
-
-    }
-
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
 }

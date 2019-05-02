@@ -17,7 +17,7 @@ const Status = ({ cohort, desired_locations, desired_position }) => {
         <p>Looking for Work in:</p>
         <ul>
           {desired_locations.map(loc => (
-            <li>{loc}</li>
+            <li key={loc}>{loc}</li>
           ))}
         </ul>
       </section>

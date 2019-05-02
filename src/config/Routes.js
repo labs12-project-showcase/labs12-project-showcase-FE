@@ -3,7 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PrivateRoute from './PrivateRoute.js';
 import { handleAuth } from '../auth/authActions.js';
-import StudentDashboard from '../components/student/dashboard/StudentDashboard';
+import StudentProfile from '../components/student/profile/StudentProfile';
 import Callback from '../auth/Callback.js';
 import Home from '../components/home/Home.js';
 import Projectqs from '../components/student/projectqs/Projectqs';
@@ -36,10 +36,10 @@ class Routes extends Component {
 						return <Callback {...props} />;
 					}}
 				/>
-				<PrivateRoute
+				<Route
 					exact
-					path="/student/dashboard"
-					component={StudentDashboard}
+					path="/student/profile/:id"
+					component={StudentProfile}
 				/>
 				<PrivateRoute path="/profile-quick-start" component={Profileqs} />
 				<PrivateRoute
@@ -47,8 +47,8 @@ class Routes extends Component {
 					path="/student/new-project"
 					component={Projectqs}
 				/>
-				<PrivateRoute
-					path="/student/project-view"
+				<Route
+					path="/student/project-view/:id"
 					component={ProjectView}
 				/>
 				<Route

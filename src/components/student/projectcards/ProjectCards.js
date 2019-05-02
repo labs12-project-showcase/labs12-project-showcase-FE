@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Fade from "react-reveal/Fade";
 
-import EditCards from "./EditCards";
-
 const ProjectCards = ({ top_projects, projects }) => {
   const [hide, toggleHide] = useState(true);
 

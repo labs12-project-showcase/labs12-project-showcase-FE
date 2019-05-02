@@ -1,4 +1,6 @@
 .student-dashboard {
+	min-height: 85vh;
+
 	header {
 		background-color: $darkcolor;
 		height: 280px;
@@ -121,7 +123,7 @@
 		margin: 100px auto;
 		width: 100%;
 		max-width: 1024px;
-		@include box-align(space-between, center);
+		@include box-align(space-around, flex-start);
 
 		hr {
 			margin: 20px auto;

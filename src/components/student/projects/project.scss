@@ -1,206 +1,212 @@
 .project-view {
-    .subNav {
-        padding: 10px 0;
+	.subNav {
+		padding: 10px 0;
 
-        .NavLinks-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+		.NavLinks-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 
-            .NavLinks-container-left {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
+			.NavLinks-container-left {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
 
-                .arrow-circle {
-                    padding: 7px;
-                    border-radius: 50%;
-                    margin-right: 10px;
-                    background-color: $lambdaRed;
+				.arrow-circle {
+					padding: 7px;
+					border-radius: 50%;
+					margin-right: 10px;
+					background-color: $lambdaRed;
 
-                    .fa-arrow-left {
-                        font-size: 2rem;
-                        color: $lightcolor;
-                    }
+					.fa-arrow-left {
+						font-size: 2rem;
+						color: $lightcolor;
+					}
+				}
+			}
 
-                }
+			.NavLinks-container-right {
+				.edit-project-btn {
+					margin-right: 25px;
+				}
 
-            }
+				.edit-profile-btn {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
 
-            .NavLinks-container-right {
-                .edit-project-btn {
-                    margin-right: 25px;
-                }
+	header {
+		@include box-align(flex-start, flex-start);
+		max-width: 1024px;
+		width: 100%;
+		margin: 0 auto;
 
-                .edit-profile-btn {
-                    margin-right: 10px;
-                }
-            }
-        }
-    }
+		.img-des {
+			max-width: 420px;
+			width: 100%;
+			height: 477px;
+			position: relative;
+			margin: 10px;
+			overflow: hidden;
 
+			img {
+				display: block;
+				width: auto;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 0;
+			}
 
-    header {
-        @include box-align(flex-start, flex-start);
-        max-width: 1024px;
-        width: 100%;
-        margin: 0 auto;
+			.overlay {
+				position: absolute;
+				top: 0;
+				background: $darkcolor;
+				opacity: 0.6;
+				width: 100%;
+				height: 100%;
+			}
 
-        .img-des {
-            max-width: 420px;
-            width: 100%;
-            height: 477px;
-            position: relative;
-            margin: 10px;
-            overflow: hidden;
+			h1 {
+				position: absolute;
+				z-index: 1;
+				font-size: 3.4rem;
+				font-weight: 700;
+				top: 30%;
+				padding: 30px;
+				color: $lightcolor;
+			}
 
+			h2 {
+				position: absolute;
+				z-index: 1;
+				font-size: 2.5rem;
+				font-weight: 400;
+				top: 50%;
+				padding: 30px;
+				color: $lightcolor;
+			}
 
-            img {
-                display: block;
-                width: auto;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 0;
+			a {
+				position: absolute;
+				z-index: 1;
+				font-size: 3.4rem;
+				text-decoration: none;
+				background: $lambdaRed;
+				font-size: 1.6rem;
+				color: $lightcolor;
+				padding: 5px 10px;
+				bottom: 100px;
+				left: 20px;
+				border-radius: 5px;
+				cursor: pointer;
 
-            }
+				&:last-child {
+					bottom: 60px;
+				}
 
-            .overlay {
-                position: absolute;
-                top: 0;
-                background: $darkcolor;
-                opacity: .6;
-                width: 100%;
-                height: 100%;
-            }
+				&:hover {
+					background-color: darken($lambdaRed, 10%);
+				}
+			}
+		}
 
-            h1 {
-                position: absolute;
-                z-index: 1;
-                font-size: 3.4rem;
-                font-weight: 700;
-                top: 30%;
-                padding: 30px;
-                color: $lightcolor;
-            }
+		.media-display {
+			@include box-align();
+			max-width: 560px;
+			width: 100%;
+			margin: 10px;
 
-            h2 {
-                position: absolute;
-                z-index: 1;
-                font-size: 2.5rem;
-                font-weight: 400;
-                top: 50%;
-                padding: 30px;
-                color: $lightcolor;
-            }
+			.big-gallery {
+				width: 100%;
+				max-width: 560px;
+			}
 
-            a {
-                position: absolute;
-                z-index: 1;
-                font-size: 3.4rem;
-                text-decoration: none;
-                background: $lambdaRed;
-                font-size: 1.6rem;
-                color: $lightcolor;
-                padding: 5px 10px;
-                bottom: 100px;
-                left: 20px;
-                border-radius: 5px;
-                cursor: pointer;
+			.img-one,
+			.img-two,
+			.img-three {
+				margin: 5px auto;
 
-                &:last-child {
-                    bottom: 60px;
-                }
+				img {
+					width: 100%;
+					max-width: 180px;
+				}
+			}
 
-                &:hover {
-                    background-color: darken($lambdaRed, 10%);
-                }
-            }
+			.img-two {
+				margin: 5px;
+			}
+		}
+	}
 
+	main {
+		width: 100%;
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 20px;
+		@include box-align();
 
-        }
+		hr {
+			margin: 20px auto;
+			border: 1px solid $lambdaRed;
+			width: 100%;
+		}
 
-        .media-display {
-            @include box-align();
-            max-width: 560px;
-            width: 100%;
-            margin: 10px;
+		.sales-pitch {
+			width: 100%;
+			max-width: 470px;
+			background-color: $lightcolor;
+			padding: 30px 20px;
+			margin: 30px auto;
+			border-radius: 5px;
 
-            .big-gallery {
-                width: 100%;
-                max-width: 560px;
-            }
+			h2 {
+				text-align: left;
+				font-weight: 700;
+				margin-bottom: 10px;
+			}
+		}
 
-            .img-one,
-            .img-two,
-            .img-three {
-                margin: 5px auto;
+		.project-urls-container {
+			a {
+				text-decoration: none;
+				border-radius: 5px;
+				color: #ffffff;
+				padding: 10px;
+				margin: 5px;
+				background-color: $lambdaRed;
+				cursor: pointer;
 
-                img {
-                    width: 100%;
-                    max-width: 180px;
-                }
-            }
+				&:hover {
+					background-color: darken($lambdaRed, 10%);
+				}
+			}
+		}
 
-            .img-two {
-                margin: 5px;
-            }
-        }
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 1.8rem;
+			font-weight: 700;
+			margin-bottom: 30px;
+		}
 
-    }
+		.students-names {
+			@include box-align();
 
-    main {
-        width: 100%;
-        max-width: 1024px;
-        margin: 0 auto;
-        padding: 20px;
-        @include box-align();
+			.s-link {
+				margin: 20px;
 
-        hr {
-            margin: 20px auto;
-            border: 1px solid $lambdaRed;
-            width: 100%;
-        }
-
-
-        .sales-pitch {
-            width: 100%;
-            max-width: 470px;
-            background-color: $lightcolor;
-            padding: 30px 20px;
-            margin: 30px auto;
-            border-radius: 5px;
-
-            h2 {
-                text-align: left;
-                font-weight: 700;
-                margin-bottom: 10px;
-            }
-        }
-
-        h2 {
-            width: 100%;
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-
-        .students-names {
-            @include box-align();
-
-            .s-link {
-                margin: 20px;
-
-                p {
-                    text-align: center;
-                    padding: 10px;
-                }
-            }
-        }
-
-    }
+				p {
+					text-align: center;
+					padding: 10px;
+				}
+			}
+		}
+	}
 }
