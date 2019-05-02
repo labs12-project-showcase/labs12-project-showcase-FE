@@ -22,18 +22,6 @@ const ProjectView = ({
     dispatch(getProject(id));
   }, [id, dispatch]);
 
-  // change /watch/ by /embed/ Questions PM "Julian"
-  //  const url = {project_video}
-  const url = "https://www.youtube.com/watch?v=TcMBFSGVi1c&t=2s";
-  const videoid = url.match(
-    /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-  );
-  if (videoid != null) {
-    console.log("video id = ", videoid[1]);
-  } else {
-    console.log("The youtube url is not valid.");
-  }
-
   return (
     <div className="project-view">
       <div className="subNav">
@@ -96,9 +84,7 @@ const ProjectView = ({
               title="project preview video"
               width="100%"
               height="350"
-              src={`https://www.youtube.com/embed/${
-                videoid[1]
-              }?autoplay=0&showinfo=0&controls=0`}
+              src={projectData.youtube_url}
               frameBorder="0"
               allowFullScreen
             />
