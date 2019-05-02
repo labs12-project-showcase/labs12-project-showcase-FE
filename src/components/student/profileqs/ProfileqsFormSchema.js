@@ -99,6 +99,8 @@ export const FormSchema = ({
   // Populate Skills <Select> with defaultValues
   useEffect(() => {
     console.log('useEffect for default skills running');
+    // need to make the `initialValues.skills` into the objects that
+    // React Select expects
     if (initialValues.skills[0]) setSkillsList(initialValues.skills);
   }, [initialValues]);
 
