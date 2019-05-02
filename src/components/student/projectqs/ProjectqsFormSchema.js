@@ -13,6 +13,13 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
     </label>
 
     <label>
+      <span className="input-label">Website URL</span>
+      <br />
+      <Field name="website" type="text" className="live-demo-url-field" />
+      <ErrorMessage name="website" component="div" />
+    </label>
+
+    <label>
       <span className="input-label">GitHub URL</span>
       <br />
       <Field name="github" type="text" className="github-link-field" required />
@@ -59,13 +66,6 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
       <br />
       <Field name="youtube_url" type="text" className="youtube-url-field" />
       <ErrorMessage name="youtube_url" component="div" />
-    </label>
-
-    <label>
-      <span className="input-label">Website URL</span>
-      <br />
-      <Field name="website" type="text" className="live-demo-url-field" />
-      <ErrorMessage name="website" component="div" />
     </label>
 
     <label>

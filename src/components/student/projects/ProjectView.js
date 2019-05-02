@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
+import NotApproved from "../notApproved/NotApproved";
 
 import project from "../../../assets/project-img.jpg";
 import one from "../../../assets/one.jpg";
@@ -10,6 +11,8 @@ import two from "../../../assets/two.jpg";
 import three from "../../../assets/three.jpg";
 
 // import { dispatch } from '../../../../../../../Library/Caches/typescript/3.4.3/node_modules/rxjs/internal/observable/range';
+
+// const sameUser = id === this.props.loggedInProfile.id;
 
 const ProjectView = ({
   dispatch,
@@ -20,25 +23,32 @@ const ProjectView = ({
     params: { id }
   }
 }) => {
-  const [isOwner, updateOwner] = useState(false);
-
   useEffect(() => {
     dispatch(getProject(id));
-
-    if (projectData.students) {
-      const owner = projectData.students.filter(
-        member => (member.id = curAccount)
-      );
-      if (owner) {
-        updateOwner(true);
-      } else {
-        updateOwner(false);
-      }
-    }
   }, [id, dispatch]);
+
+  const checkOwner = arr => {
+    const owner = arr.filter(member => {
+      console.log(member.id);
+      console.log(curAccount);
+      member.id = curAccount;
+    });
+    if (owner && owner.length) {
+      console.log("true");
+      return true;
+    } else {
+      console.log("false");
+      return false;
+    }
+  };
 
   return (
     <div className="project-view">
+      {!projectData.approved ? (
+        <NotApproved />
+      ) : (
+        console.log("Project has been approved")
+      )}
       <div className="subNav">
         <nav className="NavLinks-container">
           <div>
@@ -53,7 +63,7 @@ const ProjectView = ({
             </div>
           </div>
           <div className="NavLinks-container-right">
-            {isOwner ? (
+            {projectData.students && checkOwner(projectData.students) ? (
               <NavLink
                 exact
                 to="/student/project-edit"
