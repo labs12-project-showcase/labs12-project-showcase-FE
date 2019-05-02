@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import AsyncSelect from 'react-select/lib/Async';
 import CreatableSelect from 'react-select/lib/Creatable';
 import { ErrorMessage, Field, Form } from 'formik';
 import Select from 'react-select';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 // Custom styling for react-select components
 const reactSelectStyles = {
@@ -124,7 +126,7 @@ export const FormSchema = ({
       // and make it into the array of objects React Select expects
       initialValues.skills.map(skill => {
         const option = createSkillsOption(skill);
-        // set `topSkill: true` if it's in top_skill array
+        // set `topSkill: true` if it's in `top_skills` array
         if (initialValues.top_skills.includes(skill)) {
           option.topSkill = true;
         }
@@ -132,6 +134,16 @@ export const FormSchema = ({
       })
     );
   }, [initialValues, setSkillsList]);
+
+  /*
+   *** CURRENT_LOCATION SET-UP ***
+   */
+
+  // locationOptions = inputValue => {
+  //   // @TODO: restrict the accessToken in account.mapbox.com to only our URL
+  //   accessToken = 'pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ';
+  //   axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${inputValue}.json?access_token=${accessToken}&cachebuster=1556822293407&autocomplete=true`)
+  // }
 
   /* *** THE FORM *** */
   return (
@@ -213,7 +225,23 @@ export const FormSchema = ({
       <label>
         <span className="input-label">Current Location</span>
         <br />
-        <Field name="location" type="text" />
+        <Field
+          name="location"
+          type="text"
+          // render={({ field, form }) => (
+          //   <>
+          //     <AsyncSelect
+          //       loadOptions={locationOptions}
+          //       name={field.name}
+          //       onBlur={field.onBlur}
+          //       // onChange={}
+          //       // options={}
+          //       styles={reactSelectStyles}
+          //       // value={cohortSelection}
+          //     />
+          //   </>
+          // )}
+        />
         <ErrorMessage
           name="location"
           render={msg => <div className="inline-error">{msg}</div>}
