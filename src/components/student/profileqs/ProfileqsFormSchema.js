@@ -133,10 +133,6 @@ export const FormSchema = ({
     );
   }, [initialValues, setSkillsList]);
 
-  /*
-   *** TOP SKILLS SET-UP ***
-   */
-
   /* *** THE FORM *** */
   return (
     <Form className="profile-quick-start-form">
