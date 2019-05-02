@@ -22,7 +22,13 @@ const reactSelectStyles = {
   })
 };
 
-export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
+export const FormSchema = ({
+  isSubmitting,
+  initialValues,
+  setSkillsList,
+  skillsList,
+  values
+}) => {
   /* *** TRACKS SET-UP *** */
 
   // Tracks uses state to hold the current selection
@@ -88,12 +94,12 @@ export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
   /* *** SKILLS *** */
 
   const [skillsInput, setSkillsInput] = useState();
-  const [skillsList, setSkillsList] = useState();
+  // const [skillsList, setSkillsList] = useState();
 
   // Populate Skills <Select> with defaultValues
   useEffect(() => {
     console.log('useEffect for default skills running');
-    setSkillsList(initialValues.skills);
+    if (initialValues.skills[0]) setSkillsList(initialValues.skills);
   }, [initialValues]);
 
   /* *** THE FORM *** */
@@ -131,7 +137,7 @@ export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
                 onBlur={field.onBlur}
                 onChange={option => {
                   setTrackSelection(option);
-                  form.setFieldValue(field.name, option.value);
+                  form.setFieldValue('track_id', option.value);
                 }}
                 options={trackOptions}
                 styles={reactSelectStyles}
@@ -302,7 +308,7 @@ export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
                       setSkillsList(previousState => [
                         ...previousState,
                         {
-                          skillsInput,
+                          label: skillsInput,
                           value: skillsInput
                         }
                       ]);
