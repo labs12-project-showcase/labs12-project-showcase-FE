@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
@@ -18,12 +18,26 @@ const ProjectView = ({
   dispatch,
   projectData,
   history,
+  curAccount,
   match: {
     params: { id }
   }
 }) => {
+  const [isOwner, updateOwner] = useState(false);
+
   useEffect(() => {
     dispatch(getProject(id));
+
+    if (projectData.students) {
+      const owner = projectData.students.filter(
+        member => (member.id = curAccount)
+      );
+      if (owner) {
+        updateOwner(true);
+      } else {
+        updateOwner(false);
+      }
+    }
   }, [id, dispatch]);
 
   return (
@@ -47,7 +61,7 @@ const ProjectView = ({
             </div>
           </div>
           <div className="NavLinks-container-right">
-            {
+            {isOwner ? (
               <NavLink
                 exact
                 to="/student/project-edit"
@@ -55,7 +69,7 @@ const ProjectView = ({
               >
                 Edit Project
               </NavLink>
-            }
+            ) : null}
             <NavLink
               exact
               to="/student/profile-edit"
@@ -189,7 +203,8 @@ const ProjectView = ({
 
 const mapStateToProps = state => {
   return {
-    ...state.project
+    ...state.project,
+    curAccount: state.profile.profileData.id
   };
 };
 

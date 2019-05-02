@@ -8,7 +8,7 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
     <label>
       <span className="input-label">Project Title</span>
       <br />
-      <Field name="name" type="text" className="project-title-field" />
+      <Field name="name" type="text" className="project-title-field" required />
       <ErrorMessage name="name" component="div" />
     </label>
 
@@ -22,7 +22,7 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
     <label>
       <span className="input-label">GitHub URL</span>
       <br />
-      <Field name="github" type="text" className="github-link-field" />
+      <Field name="github" type="text" className="github-link-field" required />
       <ErrorMessage name="github" component="div" />
     </label>
 
@@ -82,6 +82,7 @@ export const formSchema = ({ errors, status, touched, isSubmitting }) => (
         name="short_description"
         component="textarea"
         className="project-description-text-area"
+        required
       />
       <ErrorMessage name="short_description" component="div" />
     </label>
