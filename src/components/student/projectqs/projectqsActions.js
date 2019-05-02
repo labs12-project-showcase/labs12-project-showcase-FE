@@ -20,6 +20,14 @@ export const clearProjectData = () => dispatch => {
  * in `ProjectqsForm.js` to API endpoint
  */
 export const createProject = formValues => dispatch => {
+  const url = formValues.youtube_url;
+  let videoid = url.match(
+    /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+  );
+  if (!videoid) {
+    videoid = ["gLdXxFS8BV4"];
+  }
+
   // *** Match form values to the shape the backend API expects
   const send = {
     student_id: formValues.student_id,
@@ -30,7 +38,9 @@ export const createProject = formValues => dispatch => {
     mobile_link: formValues.mobile_link,
     market_link: formValues.market_link,
     design_link: formValues.design_link,
-    youtube_url: formValues.youtube_url,
+    youtube_url: `https://www.youtube.com/embed/${
+      videoid[1]
+    }?autoplay=0&showinfo=0&controls=0`,
     website: formValues.website,
     medium: formValues.medium,
     short_description: formValues.short_description,
@@ -39,15 +49,19 @@ export const createProject = formValues => dispatch => {
   };
 
   dispatch({ type: CREATE_PROJECT_START });
-  axiosAuth()
-    .post(`${backendURL}/api/projects`, removeEmptyValues(send))
-    .then(res => {
-      history.push("/student/dashboard");
-      dispatch({ type: CREATE_PROJECT_SUCCESS, payload: res.data });
-    })
-    .catch(error => {
-      dispatch({ type: CREATE_PROJECT_FAILURE, payload: error });
-    });
+  return new Promise((resolve, reject) => {
+    axiosAuth()
+      .post(`${backendURL}/api/projects`, removeEmptyValues(send))
+      .then(res => {
+        history.push("/student/dashboard");
+        dispatch({ type: CREATE_PROJECT_SUCCESS, payload: res.data });
+        resolve();
+      })
+      .catch(error => {
+        dispatch({ type: CREATE_PROJECT_FAILURE, payload: error });
+        reject();
+      });
+  });
 };
 
 /**
