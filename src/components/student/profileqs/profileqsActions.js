@@ -51,18 +51,23 @@ export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
  */
 export const updateProfile = formValues => dispatch => {
   // *** Match form values to the shape the backend API expects
+  console.log('formValues: ', formValues);
   const send = {
     account: {
       name: formValues.name
     },
+    // desired_locations: formValues.desired_locations,
+    // skills: formValues.skills,
     student: {
       about: formValues.about,
       acclaim: formValues.acclaim,
+      cohort_id: formValues.cohort_id,
       desired_title: formValues.desired_title,
       github: formValues.github,
       linkedin: formValues.linkedin,
       location: formValues.location,
       profile_pic: formValues.profile_pic,
+      track_id: formValues.track,
       twitter: formValues.twitter,
       website: formValues.website
     }
