@@ -27,15 +27,21 @@ export const getProfileData = (queryUpdate = false) => dispatch => {
     })
     .then(res => {
       // remove nulls from the response
-      let noNulls = {};
-      for (let item in res.data) {
-        if (res.data[item] !== null) {
-          // Exclude arrays with only `null` within
-          if (Array.isArray(res.data[item]) && res.data[item][0])
-          noNulls[item] = res.data[item];
-        }
-      }
-      dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
+      // let noNulls = {};
+      // for (let item in res.data) {
+      //   if (res.data[item] !== null) {
+      //     // Exclude arrays with only `null` within
+      //     if (
+      //       (Array.isArray(res.data[item]) && res.data[item][0]) ||
+      //       !Array.isArray(res.data[item])
+      //     )
+      //       noNulls[item] = res.data[item];
+      //   }
+      // }
+      dispatch({
+        type: GET_PROFILE_DATA_SUCCESS,
+        payload: removeNulls(res.data)
+      });
     })
     .catch(error => {
       dispatch({ type: GET_PROFILE_DATA_FAILURE, payload: error });
@@ -72,7 +78,8 @@ export const updateProfile = formValues => dispatch => {
       track_id: formValues.track_id,
       twitter: formValues.twitter,
       website: formValues.website
-    }
+    },
+    top_skills: formValues.top_skills
   };
   console.log('send', send);
   dispatch({ type: UPDATE_PROFILE_START });
@@ -82,7 +89,10 @@ export const updateProfile = formValues => dispatch => {
     })
     .then(res => {
       history.push(`/student/profile/${formValues.id}`);
-      dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data });
+      dispatch({
+        type: UPDATE_PROFILE_SUCCESS,
+        payload: removeNulls(res.data)
+      });
     })
     .catch(error => {
       dispatch({ type: UPDATE_PROFILE_FAILURE, payload: error });
@@ -105,4 +115,19 @@ function removeEmptyValues(obj) {
           : { ...r, [i]: obj[i] },
       {}
     );
+}
+
+function removeNulls(obj) {
+  let noNulls = {};
+  for (let item in obj) {
+    if (obj[item] !== null) {
+      // Exclude arrays with only `null` within
+      if (
+        (Array.isArray(obj[item]) && obj[item][0]) ||
+        !Array.isArray(obj[item])
+      )
+        noNulls[item] = obj[item];
+    }
+  }
+  return noNulls;
 }
