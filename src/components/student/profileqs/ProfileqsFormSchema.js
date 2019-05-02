@@ -449,7 +449,7 @@ export const FormSchema = ({
       </label>
 
       <label className="stretch-input">
-        <p>Tell prospective employers about yourself (500 words)</p>
+        <p>Tell prospective employers about yourself (maximum 500 characters)</p>
         <span className="input-label about-label">About</span>
         <br />
         <Field name="about" component="textarea" />
@@ -469,7 +469,7 @@ export const FormSchema = ({
 // Validation Schema, feels similar to React PropTypes
 export const ProfileQsSchema = Yup.object().shape({
   about: Yup.string()
-    .max(1000, `Maximum 1,000 characters`)
+    .max(500, `Maximum 500 characters`)
     .trim(),
   acclaim: Yup.string()
     .trim()
