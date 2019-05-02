@@ -12,8 +12,7 @@ import { Link } from "react-router-dom";
 
 const Share = ({ studentId, name, about }) => {
   const [hide, toggleHide] = useState(true);
-  const url = `https://lambdashowcase.netlify.com/student/${studentId}`;
-  name = "Brandon Gardner";
+  const url = `https://lambdashowcase.netlify.com/student/profile/${studentId}`;
   about = "about string";
   return (
     <div className="share-wrapper">

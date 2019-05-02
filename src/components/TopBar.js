@@ -27,6 +27,7 @@ class TopBar extends Component {
 	}
 
 	render() {
+		const renderLoggedIn = validateJwt();
 		const { login, logout } = this.props;
 		return (
 			<div className="TopBar">
@@ -40,19 +41,19 @@ class TopBar extends Component {
 					</NavLink>
 
 					<div className="TopBar-btn-container">
-						{!this.state.isLoggedIn && (
+						{!(this.state.isLoggedIn || renderLoggedIn) && (
 							<button className="TopBar-login-btn" onClick={login}>
 								<i className="fas fa-user" />
 							</button>
 						)}
-						{this.state.isLoggedIn && (
+						{(this.state.isLoggedIn || renderLoggedIn) && (
 							<button className="TopBar-logout-btn" onClick={logout}>
 								<i className="fas fa-sign-out-alt" />
 							</button>
 						)}
 					</div>
 				</div>
-				{this.state.isLoggedIn && (
+				{(this.state.isLoggedIn || renderLoggedIn) && (
 					<div className="subNav">
 						<nav>
 							<NavLink exact to={`/student/profile/${this.props.id}`}>
