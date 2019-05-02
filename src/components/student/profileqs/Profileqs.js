@@ -1,11 +1,11 @@
-//Profile Quick Start
-
 import React from 'react';
 import { connect } from 'react-redux';
 import ProfileqsForm from './ProfileqsForm';
 import { getProfileData } from './profileqsActions';
 
 class Profileqs extends React.Component {
+  userExists = this.props.profile.profileData.exists || false;
+
   componentDidMount() {
     if (
       // check for `name`, which is a required field and
@@ -23,9 +23,26 @@ class Profileqs extends React.Component {
     return (
       <div className="profileqs-container">
         <div className="profileqs">
-          {/* @TODO: Make the `document.title` and <h3> dynamic */}
-          <h3>Profile Quick Start</h3>
-          <p>Please complete the following basic information</p>
+          {this.userExists ? (
+            <>
+              <h3>Edit Profile</h3>
+              <p>Make your changes below.</p>
+            </>
+          ) : (
+            <>
+              <h3>Profile Quick Start</h3>
+              <p>Use the fields below to build your profile.</p>
+              {this.props.profile.profileData.github ? (
+                <>
+                  <p>
+                    We have prepopulated some of the fields with information
+                    from GitHub. That information will only be saved after
+                    you submit the form.
+                  </p>
+                </>
+              ) : null}
+            </>
+          )}
           <ProfileqsForm initialFormValues={this.props.profile.profileData} />
         </div>
       </div>
