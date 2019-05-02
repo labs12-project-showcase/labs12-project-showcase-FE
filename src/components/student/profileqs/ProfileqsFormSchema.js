@@ -276,22 +276,24 @@ export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
                   console.log(`action: ${actionMeta.action}`);
                   console.groupEnd();
                   setSkillsList(list);
+
                   // Pull the `value`s for each item in the `list`
                   const submitList = list.map(item => item.value);
-                  console.log('formList', formList);
                   // The line below is what I'd LIKE to have happen
                   form.setFieldValue(field.name, submitList);
 
                   /*
                    * was testing with a random field to change – doesn't work
-                   * but it DOES work when I bring the line below to the `cohort` <Select>
+                   * but it DOES work when I bring the line below up to the `cohort` <Select>
                    */
                   // form.setFieldValue('desired_title', 'hello!', false);
 
-                  console.log('form: ', form);
-                  console.log('form values – skills: ', values);
+                  console.log('form: ', form); // just to see
+                  console.log('form values – skills: ', values); // to test if setFieldValue() works
                 }}
+                // track the input in state
                 onInputChange={inputValue => setSkillsInput(inputValue)}
+                // add the skill if `Enter` or `Tab` is pressed
                 onKeyDown={event => {
                   if (!skillsInput) return;
                   switch (event.key) {
