@@ -2,7 +2,35 @@
 	min-height: 85vh;
 
 	header {
-		background-color: $darkcolor;
+		background: #002070; /* Old browsers */
+		background: -moz-linear-gradient(
+			-45deg,
+			#002070 0%,
+			#1e50ee 30%,
+			#002070 48%,
+			#002070 48%,
+			#1e50ee 70%,
+			#002070 100%
+		); /* FF3.6-15 */
+		background: -webkit-linear-gradient(
+			-45deg,
+			#002070 0%,
+			#1e50ee 30%,
+			#002070 48%,
+			#002070 48%,
+			#1e50ee 70%,
+			#002070 100%
+		); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(
+			135deg,
+			#002070 0%,
+			#1e50ee 30%,
+			#002070 48%,
+			#002070 48%,
+			#1e50ee 70%,
+			#002070 100%
+		); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002070', endColorstr='#002070',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		height: 280px;
 
 		.profile-container {
