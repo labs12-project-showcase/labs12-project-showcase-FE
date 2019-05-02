@@ -139,57 +139,122 @@
 			.cards {
 				width: 100%;
 				margin: 20px 5px;
+				background-color: $lightcolor;
 				border: 1px solid $border-color;
 				border-radius: 5px;
+				overflow: hidden;
+				border-top-left-radius: 100px;
+				border-bottom-left-radius: 100px;
+				box-shadow: 0 0 6px 3px #cccccc;
+				@include box-align(space-between, flex-start);
 
+				.profile-pic {
+					width: 150px;
+					height: 150px;
+					border-radius: 50%;
+					overflow: hidden;
+					margin-top: 25px;
+					margin-left: 20px;
+					img {
+						width: 100%;
+						height: auto;
+					}
+				}
 				.details {
+					width: 100%;
+					max-width: 300px;
 					text-align: center;
 					background-color: $lightcolor;
 					border-radius: 3px;
 					@include box-align();
 
-					.profile-pic {
-						img {
-							width: 200px;
-							height: auto;
-						}
-					}
 					h2 {
 						font-weight: 700;
 						font-size: 2.5rem;
-						width: 70%;
+						width: 100%;
+						margin-top: 20px;
+						margin-bottom: 15px;
 					}
 
 					h3 {
-						font-size: 1.4rem;
+						width: 100%;
+						font-size: 1.6rem;
+						margin-bottom: 10px;
 					}
 
 					p {
-						margin: 20px auto;
+						width: 100%;
+						margin: 5px auto 0;
+						font-weight: 700;
 					}
-
-					a {
-						font-size: 2rem;
-						color: lighten($darkcolor, 50%);
-						cursor: pointer;
-
-						&:hover {
-							color: $darkcolor;
+					ul {
+						@include box-align();
+						li {
+							margin: 0 5px;
+							background-color: lighten($darkcolor, 50%);
+							color: $lightcolor;
+							padding: 3px 7px;
+							border-radius: 5px;
 						}
 					}
 
-					.prof-link {
-						color: $lightcolor;
-						text-decoration: none;
-						border: none;
-						font-size: 1.4rem;
+					.contact-links {
 						width: 100%;
 						padding: 10px;
-						background-color: lighten($darkcolor, 50%);
-						cursor: pointer;
+						a {
+							font-size: 2.5rem;
+							color: lighten($darkcolor, 50%);
+							cursor: pointer;
+							margin: 5px;
 
+							&:hover {
+								color: $darkcolor;
+							}
+						}
+					}
+				}
+				.projects-box {
+					width: 100%;
+					max-width: 400px;
+					@include box-align();
+					padding: 20px 10px 10px;
+
+					h2 {
+						font-size: 1.8rem;
+						margin-bottom: 20px;
+					}
+					.display-box {
+						box-shadow: 0 0 6px 3px #cccccc;
+						background-color: $lightcolor;
+						margin: 2px 2px 5px;
+						width: 90px;
+						font-size: 0.8rem;
+						cursor: pointer;
+						-webkit-transition: transform 1s; /* Safari */
+						transition: transform 1s;
 						&:hover {
-							background-color: $darkcolor;
+							transform: scale(2);
+						}
+						img {
+							width: 100%;
+							height: auto;
+						}
+						h3 {
+							padding: 3px 2px;
+							text-align: center;
+						}
+					}
+					.prof-link {
+						border: none;
+						background-color: $lambdaDarkBlue;
+						color: $lightcolor;
+						padding: 5px 10px;
+						margin: 10px auto 5px;
+						width: 100%;
+						cursor: pointer;
+						&:hover {
+							box-shadow: 0 0 6px 3px #cccccc;
+							background-color: $lambdaLightBlue;
 						}
 					}
 				}
