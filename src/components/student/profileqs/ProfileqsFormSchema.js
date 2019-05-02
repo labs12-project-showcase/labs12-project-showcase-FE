@@ -282,12 +282,12 @@ export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
                   // The line below is what I'd LIKE to have happen
                   form.setFieldValue(field.name, submitList);
 
-                  /* 
-                  * was testing with a random field to change – doesn't work
-                  * but it DOES work when I bring the line below to the `cohort` <Select>
-                  */
+                  /*
+                   * was testing with a random field to change – doesn't work
+                   * but it DOES work when I bring the line below to the `cohort` <Select>
+                   */
                   // form.setFieldValue('desired_title', 'hello!', false);
-                  
+
                   console.log('form: ', form);
                   console.log('form values – skills: ', values);
                 }}
@@ -343,8 +343,8 @@ export const FormSchema = ({ errors, isSubmitting, initialValues, values }) => {
       </label>
 
       <label>
-      <Field name="id" type="hidden" />
-    </label>
+        <Field name="id" type="hidden" />
+      </label>
 
       <button type="submit" disabled={isSubmitting}>
         Create Profile
