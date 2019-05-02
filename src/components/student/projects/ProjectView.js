@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
+import NotApproved from "../notApproved/NotApproved";
 
 import project from "../../../assets/project-img.jpg";
 import one from "../../../assets/one.jpg";
@@ -10,6 +11,8 @@ import two from "../../../assets/two.jpg";
 import three from "../../../assets/three.jpg";
 
 // import { dispatch } from '../../../../../../../Library/Caches/typescript/3.4.3/node_modules/rxjs/internal/observable/range';
+
+// const sameUser = id === this.props.loggedInProfile.id;
 
 const ProjectView = ({
   dispatch,
@@ -25,6 +28,11 @@ const ProjectView = ({
 
   return (
     <div className="project-view">
+      {!projectData.approved ? (
+        <NotApproved />
+      ) : (
+        console.log("Project has been approved")
+      )}
       <div className="subNav">
         <nav className="NavLinks-container">
           <div>
