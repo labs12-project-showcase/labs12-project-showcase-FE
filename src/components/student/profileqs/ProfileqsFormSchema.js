@@ -22,6 +22,14 @@ const reactSelectStyles = {
   })
 };
 
+const reactSelectStylesStretch = {
+  ...reactSelectStyles,
+  container: provided => ({
+    ...provided,
+    width: 560
+  })
+};
+
 export const FormSchema = ({
   isSubmitting,
   initialValues,
@@ -29,7 +37,9 @@ export const FormSchema = ({
   skillsList,
   values
 }) => {
-  /* *** TRACKS SET-UP *** */
+  /*
+   *** TRACKS SET-UP ***
+   */
 
   // Tracks uses state to hold the current selection
   // as a workaround to not being able to use defaultValue
@@ -38,7 +48,7 @@ export const FormSchema = ({
   // Create options list for track <Select>
   const [trackOptions, setTrackOptions] = useState();
   useEffect(() => {
-    console.log('useEffect for setCohortOptions running!');
+    // console.log('useEffect for setCohortOptions running!');
     setTrackOptions(
       initialValues.track_options.map(track => ({
         label: track.name,
@@ -49,7 +59,7 @@ export const FormSchema = ({
 
   // Populate Tracks <Select> with defaultValue
   useEffect(() => {
-    console.log('useEffect running for default tracks!');
+    // console.log('useEffect running for default tracks!');
     if (trackOptions && initialValues.track_id) {
       for (let track in trackOptions) {
         if (trackOptions[track].value === initialValues.track_id) {
@@ -60,7 +70,9 @@ export const FormSchema = ({
     }
   }, [trackOptions, initialValues]);
 
-  /* *** COHORTS SET-UP *** */
+  /*
+   *** COHORTS SET-UP ***
+   */
 
   // Cohorts uses state to hold the current selection
   // as a workaround to not being able to use defaultValue
@@ -69,7 +81,7 @@ export const FormSchema = ({
   // Create options list for cohort <Select>
   const [cohortOptions, setCohortOptions] = useState();
   useEffect(() => {
-    console.log('useEffect for setCohortOptions running!');
+    // console.log('useEffect for setCohortOptions running!');
     setCohortOptions(
       initialValues.cohort_options.map(cohort => ({
         label: cohort.cohort_name,
@@ -80,7 +92,7 @@ export const FormSchema = ({
 
   // Populate Cohorts <Select> with defaultValue
   useEffect(() => {
-    console.log('useEffect for default cohort running');
+    // console.log('useEffect for default cohort running');
     if (cohortOptions && initialValues.cohort_id) {
       for (let cohort in cohortOptions) {
         if (cohortOptions[cohort].value === initialValues.cohort_id) {
@@ -91,26 +103,39 @@ export const FormSchema = ({
     }
   }, [cohortOptions, initialValues]);
 
-  /* *** SKILLS *** */
+  /*
+   *** SKILLS SET-UP ***
+   */
 
   const [skillsInput, setSkillsInput] = useState();
   // const [skillsList, setSkillsList] = useState();
 
   const createSkillsOption = label => ({
     label,
+    topSkill: false,
     value: label
   });
 
   // Populate Skills <Select> with defaultValues
   useEffect(() => {
-    console.log('useEffect for default skills running');
-    // need to make the `initialValues.skills` into the objects that
-    // React Select expects
-    if (initialValues.skills[0])
-      setSkillsList(
-        initialValues.skills.map(skill => createSkillsOption(skill))
-      );
+    // console.log('useEffect for default skills running');
+    setSkillsList(
+      // take the plain array from initialValues
+      // and make it into the array of objects React Select expects
+      initialValues.skills.map(skill => {
+        const option = createSkillsOption(skill);
+        // set `topSkill: true` if it's in top_skill array
+        if (initialValues.top_skills.includes(skill)) {
+          option.topSkill = true;
+        }
+        return option;
+      })
+    );
   }, [initialValues, setSkillsList]);
+
+  /*
+   *** TOP SKILLS SET-UP ***
+   */
 
   /* *** THE FORM *** */
   return (
@@ -275,7 +300,7 @@ export const FormSchema = ({
         <br />
         <Field
           name="skills"
-          multiple={true}
+          multiple
           render={({ field, form }) => (
             <>
               <CreatableSelect
@@ -288,7 +313,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={(list, actionMeta) => {
                   console.group('Skills Value Changed');
-                  console.log(list);
+                  console.log('skills onChange list: ', list);
                   console.log(`action: ${actionMeta.action}`);
                   console.groupEnd();
                   setSkillsList(list);
@@ -304,8 +329,8 @@ export const FormSchema = ({
                    */
                   // form.setFieldValue('desired_title', 'hello!', false);
 
-                  console.log('form: ', form); // just to see
-                  console.log('form values – skills: ', values); // to test if setFieldValue() works
+                  // console.log('form: ', form); // just to see
+                  console.log('form values – skills: ', values.skills); // to test if setFieldValue() works
                 }}
                 // track the input in state
                 onInputChange={inputValue => setSkillsInput(inputValue)}
@@ -330,13 +355,7 @@ export const FormSchema = ({
                   }
                 }}
                 placeholder="Type a skill and press enter..."
-                styles={{
-                  ...reactSelectStyles,
-                  container: provided => ({
-                    ...provided,
-                    width: 560
-                  })
-                }}
+                styles={reactSelectStylesStretch}
                 value={skillsList}
               />
             </>
@@ -344,6 +363,63 @@ export const FormSchema = ({
         />
         <ErrorMessage
           name="skills"
+          render={msg => <div className="inline-error">{msg}</div>}
+        />
+      </label>
+
+      <label className="stretch-input">
+        <span className="input-label">Top Skills</span>
+        <Field
+          multiple
+          name="top_skills"
+          render={({ field, form }) => (
+            <>
+              <Select
+                isClearable
+                isMulti
+                name={field.name}
+                noOptionsMessage={() =>
+                  'Add skills above, then select your top skills here'
+                }
+                onBlur={field.onBlur}
+                onChange={option => {
+                  /**
+                   * Loop through the `previousState`.
+                   * To begin, set all `skill.topSkill`s to `false`
+                   * IF a `skill` matches a `skill` in the change `option`
+                   * THEN set `skill.topSkill` to `true`
+                   */
+                  setSkillsList(previousState => {
+                    return previousState.map(skill => {
+                      skill.topSkill = false;
+                      for (let topSkill of option) {
+                        console.log('compare: ', skill.value, topSkill.value);
+                        if (skill.value === topSkill.value) {
+                          skill.topSkill = true;
+                          return skill;
+                        }
+                      }
+                      return skill;
+                    });
+                  });
+                  form.setFieldValue(
+                    field.name,
+                    option.map(skill => skill.value)
+                  );
+                  // console.log(
+                  //   `values.${field.name} change: `,
+                  //   values.top_skills
+                  // );
+                }}
+                options={skillsList}
+                styles={reactSelectStylesStretch}
+                value={skillsList.filter(skill => skill.topSkill)}
+              />
+            </>
+          )}
+        />
+        <ErrorMessage
+          name="top_skills"
           render={msg => <div className="inline-error">{msg}</div>}
         />
       </label>
