@@ -254,22 +254,6 @@ export const FormSchema = ({
                 setCurrentLocation={setCurrentLocation}
                 styles={reactSelectStyles}
               />
-              {/* <AsyncSelect
-                loadOptions={getLocationOptions}
-                name={field.name}
-                onBlur={field.onBlur}
-                onChange={option => {
-                  setCurrentLocation(option);
-                  console.log(option);
-                  values.lat = option.value.lat;
-                  values.location = option.value.locationName;
-                  values.lon = option.value.lon;
-                }}
-                noOptionsMessage={() => 'Type to begin searching...'}
-                placeholder="Type to begin searching..."
-                styles={reactSelectStyles}
-                value={currentLocation}
-              /> */}
             </>
           )}
         />
@@ -366,26 +350,8 @@ export const FormSchema = ({
                 menuIsOpen={false}
                 name={field.name}
                 onBlur={field.onBlur}
-                onChange={(list, actionMeta) => {
-                  console.group('Skills Value Changed');
-                  console.log('skills onChange list: ', list);
-                  console.log(`action: ${actionMeta.action}`);
-                  console.groupEnd();
+                onChange={(list) => {
                   setSkillsList(list);
-
-                  // Pull the `value`s for each item in the `list`
-                  const submitList = list.map(item => item.value);
-                  // The line below is what I'd LIKE to have happen
-                  form.setFieldValue(field.name, submitList);
-
-                  /*
-                   * was testing with a random field to change – doesn't work
-                   * but it DOES work when I bring the line below up to the `cohort` <Select>
-                   */
-                  // form.setFieldValue('desired_title', 'hello!', false);
-
-                  // console.log('form: ', form); // just to see
-                  console.log('form values – skills: ', values.skills); // to test if setFieldValue() works
                 }}
                 // track the input in state
                 onInputChange={inputValue => setSkillsInput(inputValue)}
