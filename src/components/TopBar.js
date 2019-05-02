@@ -53,7 +53,7 @@ class TopBar extends Component {
 						)}
 					</div>
 				</div>
-				{this.state.isLoggedIn && (
+				{(this.state.isLoggedIn || renderLoggedIn) && (
 					<div className="subNav">
 						<nav>
 							<NavLink exact to={`/student/profile/${this.props.id}`}>
