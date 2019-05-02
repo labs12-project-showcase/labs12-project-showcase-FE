@@ -102,7 +102,7 @@ export const FormSchema = ({
     // need to make the `initialValues.skills` into the objects that
     // React Select expects
     if (initialValues.skills[0]) setSkillsList(initialValues.skills);
-  }, [initialValues]);
+  }, [initialValues, setSkillsList]);
 
   /* *** THE FORM *** */
   return (
@@ -319,6 +319,9 @@ export const FormSchema = ({
                       console.groupEnd();
                       setSkillsInput('');
                       event.preventDefault();
+                      break;
+                    default:
+                      return;
                   }
                 }}
                 placeholder="Type a skill and press enter..."
