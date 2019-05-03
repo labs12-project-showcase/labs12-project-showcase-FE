@@ -88,7 +88,9 @@ const ProjectCards = ({ top_projects, projects }) => {
 		));
 	return (
 		<div className="projects-wrapper">
-			<h2>Projects</h2>
+			<h2>
+				<i className="fas fa-project-diagram" /> Projects
+			</h2>
 			<div className="projects-inner-wrapper">
 				{map(top_projects)}
 				<Fade collapse when={!hide}>

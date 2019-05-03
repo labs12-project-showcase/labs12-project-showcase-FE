@@ -1,214 +1,225 @@
 .project-view {
-  .subNav {
-    padding: 10px 0;
+	.subNav {
+		padding: 10px 0;
 
-    .NavLinks-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+		.NavLinks-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 
-      .NavLinks-container-left {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        color: white;
+			.NavLinks-container-left {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				color: white;
 
-        .arrow-circle {
-          padding: 7px;
-          border-radius: 50%;
-          margin-right: 10px;
-          background-color: $lambdaRed;
-          cursor: pointer;
-        }
+				.arrow-circle {
+					padding: 7px;
+					border-radius: 50%;
+					margin-right: 10px;
+					background-color: $lambdaRed;
+					cursor: pointer;
+				}
 
-        .fa-arrow-left {
-          font-size: 2rem;
-          color: $lightcolor;
-        }
-      }
+				.fa-arrow-left {
+					font-size: 2rem;
+					color: $lightcolor;
+				}
+			}
 
-      .NavLinks-container-right {
-        .edit-project-btn {
-          margin-right: 25px;
-        }
+			.NavLinks-container-right {
+				.edit-project-btn {
+					margin-right: 25px;
+				}
 
-        .edit-profile-btn {
-          margin-right: 10px;
-        }
-      }
-    }
-  }
+				.edit-profile-btn {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
 
-  header {
-    @include box-align(flex-start, flex-start);
-    max-width: 1024px;
-    width: 100%;
-    margin: 0 auto;
+	header {
+		@include box-align(flex-start, flex-start);
+		max-width: 1024px;
+		width: 100%;
+		margin: 0 auto;
 
-    .img-des {
-      max-width: 420px;
-      width: 100%;
-      height: 477px;
-      position: relative;
-      margin: 10px;
-      overflow: hidden;
+		.img-des {
+			max-width: 420px;
+			width: 100%;
+			height: 477px;
+			position: relative;
+			margin: 10px;
+			overflow: hidden;
 
-      img {
-        display: block;
-        width: auto;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 0;
-      }
+			img {
+				display: block;
+				width: auto;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 0;
+			}
 
-      .overlay {
-        position: absolute;
-        top: 0;
-        background: $darkcolor;
-        opacity: 0.6;
-        width: 100%;
-        height: 100%;
-      }
+			.overlay {
+				position: absolute;
+				top: 0;
+				background: $darkcolor;
+				opacity: 0.6;
+				width: 100%;
+				height: 100%;
+			}
 
-      h1 {
-        position: absolute;
-        z-index: 1;
-        font-size: 3.4rem;
-        font-weight: 700;
-        top: 30%;
-        padding: 30px;
-        color: $lightcolor;
-      }
+			h1 {
+				position: absolute;
+				z-index: 1;
+				font-size: 3.4rem;
+				font-weight: 700;
+				top: 30%;
+				padding: 30px;
+				color: $lightcolor;
+			}
 
-      h2 {
-        position: absolute;
-        z-index: 1;
-        font-size: 2.5rem;
-        font-weight: 400;
-        top: 50%;
-        padding: 30px;
-        color: $lightcolor;
-      }
+			h2 {
+				position: absolute;
+				z-index: 1;
+				font-size: 2.5rem;
+				font-weight: 400;
+				top: 50%;
+				padding: 30px;
+				color: $lightcolor;
+			}
 
-      a {
-        position: absolute;
-        z-index: 1;
-        font-size: 3.4rem;
-        text-decoration: none;
-        background: $lambdaRed;
-        font-size: 1.6rem;
-        color: $lightcolor;
-        padding: 5px 10px;
-        bottom: 100px;
-        left: 20px;
-        border-radius: 5px;
-        cursor: pointer;
+			a {
+				position: absolute;
+				z-index: 1;
+				font-size: 3.4rem;
+				text-decoration: none;
+				background: $lambdaRed;
+				font-size: 1.6rem;
+				color: $lightcolor;
+				padding: 5px 10px;
+				bottom: 100px;
+				left: 20px;
+				border-radius: 5px;
+				cursor: pointer;
 
-        &:last-child {
-          bottom: 60px;
-        }
+				&:last-child {
+					bottom: 60px;
+				}
 
-        &:hover {
-          background-color: darken($lambdaRed, 10%);
-        }
-      }
-    }
+				&:hover {
+					background-color: darken($lambdaRed, 10%);
+				}
+			}
+		}
 
-    .media-display {
-      @include box-align();
-      max-width: 560px;
-      width: 100%;
-      margin: 10px;
+		.media-display {
+			@include box-align();
+			max-width: 560px;
+			width: 100%;
+			margin: 10px;
 
-      .big-gallery {
-        width: 100%;
-        max-width: 560px;
-      }
+			.big-gallery {
+				width: 100%;
+				max-width: 560px;
+			}
 
-      .img-one,
-      .img-two,
-      .img-three {
-        margin: 5px auto;
+			.img-one,
+			.img-two,
+			.img-three {
+				margin: 5px auto;
 
-        img {
-          width: 100%;
-          max-width: 180px;
-        }
-      }
+				img {
+					width: 100%;
+					max-width: 180px;
+				}
+			}
 
-      .img-two {
-        margin: 5px;
-      }
-    }
-  }
+			.img-two {
+				margin: 5px;
+			}
+		}
+	}
 
-  main {
-    width: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 20px;
-    @include box-align();
+	main {
+		width: 100%;
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 20px;
+		@include box-align();
 
-    hr {
-      margin: 20px auto;
-      border: 1px solid $lambdaRed;
-      width: 100%;
-    }
+		hr {
+			margin: 20px auto;
+			border: 1px solid $lambdaRed;
+			width: 100%;
+		}
 
-    .sales-pitch {
-      width: 100%;
-      max-width: 470px;
-      background-color: $lightcolor;
-      padding: 30px 20px;
-      margin: 30px auto;
-      border-radius: 5px;
+		.sales-pitch {
+			width: 100%;
+			max-width: 470px;
+			background-color: $lightcolor;
+			padding: 30px 20px;
+			margin: 30px auto;
+			border-radius: 5px;
 
-      h2 {
-        text-align: left;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-    }
+			h2 {
+				text-align: left;
+				font-weight: 700;
+				margin-bottom: 10px;
+			}
+		}
 
-    .project-urls-container {
-      a {
-        text-decoration: none;
-        border-radius: 5px;
-        color: #ffffff;
-        padding: 10px;
-        margin: 5px;
-        background-color: $lambdaRed;
-        cursor: pointer;
+		.project-urls-container {
+			min-height: 100px;
+			@include box-align();
 
-        &:hover {
-          background-color: darken($lambdaRed, 10%);
-        }
-      }
-    }
+			a {
+				text-decoration: none;
+				border-radius: 5px;
+				color: #ffffff;
+				padding: 10px;
+				margin: 5px;
+				background-color: $lambdaRed;
+				cursor: pointer;
 
-    h2 {
-      width: 100%;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 30px;
-    }
+				&:hover {
+					background-color: darken($lambdaRed, 10%);
+				}
+			}
+		}
 
-    .students-names {
-      @include box-align();
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 1.8rem;
+			font-weight: 700;
+			margin-bottom: 30px;
+		}
 
-      .s-link {
-        margin: 20px;
+		.students-names {
+			@include box-align();
 
-        p {
-          text-align: center;
-          padding: 10px;
-        }
-      }
-    }
-  }
+			.s-link {
+				margin: 20px;
+				@include box-align();
+				flex-direction: column;
+				img {
+					height: 150px;
+					width: 150px;
+					border-radius: 50%;
+				}
+
+				p {
+					font-weight: 700;
+					text-align: center;
+					padding: 10px;
+				}
+			}
+		}
+	}
 }

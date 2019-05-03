@@ -57,7 +57,9 @@ class StudentProfile extends React.Component {
 						<div className="name-cont">
 							<h1>{name}</h1>
 							<h2>{track}</h2>
-							<h3>{location}</h3>
+							<h3>
+								<i className="fas fa-map-marker-alt" /> {location}
+							</h3>
 						</div>
 						<div className="badge">
 							<a rel="noopener noreferrer" href={acclaim} target="_blank">
@@ -102,12 +104,8 @@ class StudentProfile extends React.Component {
 						/>
 						<Skills skills={skills || []} top_skills={top_skills || []} />
 					</div>
-					<hr />
-					<Projects
-						projects={projects || []}
-						top_projects={top_projects || []}
-					/>
 				</main>
+				<Projects projects={projects || []} top_projects={top_projects || []} />
 			</div>
 		);
 	}

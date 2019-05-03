@@ -1,21 +1,25 @@
 .status-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 35%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	min-width: 35%;
+	@media (max-width: 600px) {
+		width: 100%;
+	}
 
-    h2 {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+	h2 {
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
 
-    .status-section {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
+	.status-section {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 20px;
 
-        ul {
-            margin-right: 2.8rem;
-            line-height: 1.3;
-        }
-    }
+		ul {
+			margin-right: 2.8rem;
+			line-height: 1.3;
+		}
+	}
 }

@@ -1,7 +1,33 @@
 .student-dashboard {
 	header {
-		background-color: $lambdaDarkBlue;
+		background: #1e50ee; /* Old browsers */
+		background: -moz-linear-gradient(
+			-45deg,
+			#1e50ee 0%,
+			#002070 12%,
+			#002070 83%,
+			#1e50ee 99%
+		); /* FF3.6-15 */
+		background: -webkit-linear-gradient(
+			-45deg,
+			#1e50ee 0%,
+			#002070 12%,
+			#002070 83%,
+			#1e50ee 99%
+		); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(
+			135deg,
+			#1e50ee 0%,
+			#002070 12%,
+			#002070 83%,
+			#1e50ee 99%
+		); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e50ee', endColorstr='#1e50ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		height: 280px;
+
+		@media (max-width: 600px) {
+			height: auto;
+		}
 
 		.profile-container {
 			width: 100%;
