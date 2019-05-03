@@ -13,6 +13,12 @@ export const GET_PROFILE_DATA_SUCCESS = "GET_PROFILE_DATA_SUCCESS";
  */
 export const getProfileData = (queryUpdate = false) => dispatch => {
   dispatch({ type: GET_PROFILE_DATA_START });
+  // if (!token) {
+  //   return dispatch({
+  //     type: GET_PROFILE_DATA_FAILURE,
+  //     payload: 'No token found in Local Storage'
+  //   });
+  // }
   let url = `${backendURL}/api/students/profile${
     queryUpdate ? "?update=true" : ""
   }`;
@@ -39,8 +45,8 @@ export const UPDATE_PROFILE_SUCCESS = "UPDATE_PROFILE_SUCCESS";
  * in `ProfileqsForm.js` to API endpoint
  */
 export const updateProfile = formValues => dispatch => {
+  console.log("updateProfile running!");
   // *** Match form values to the shape the backend API expects
-  console.log("formValues: ", formValues);
   const send = {
     account: {
       name: formValues.name
@@ -66,7 +72,6 @@ export const updateProfile = formValues => dispatch => {
     top_projects: formValues.top_projects,
     projects: formValues.projects
   };
-  console.log("send", send);
   dispatch({ type: UPDATE_PROFILE_START });
   axiosAuth()
     .put(`${backendURL}/api/students/update`, removeEmptyValues(send))
