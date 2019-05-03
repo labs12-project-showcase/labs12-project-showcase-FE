@@ -145,7 +145,7 @@
 				overflow: hidden;
 				border-top-left-radius: 100px;
 				border-bottom-left-radius: 100px;
-				box-shadow: 0 0 6px 3px #cccccc;
+				@extend %box-shadow;
 				@include box-align(space-between, flex-start);
 
 				.profile-pic {
@@ -191,7 +191,7 @@
 					ul {
 						@include box-align();
 						li {
-							margin: 0 5px;
+							margin: 5px;
 							background-color: lighten($darkcolor, 50%);
 							color: $lightcolor;
 							padding: 3px 7px;
