@@ -2,51 +2,44 @@
 	min-height: 85vh;
 
 	header {
-		background: #002070; /* Old browsers */
+		background: #1e50ee; /* Old browsers */
 		background: -moz-linear-gradient(
 			-45deg,
-			#002070 0%,
+			#1e50ee 0%,
 			#002070 12%,
-			#1e50ee 28%,
-			#1e50ee 28%,
-			#002070 30%,
-			#002070 70%,
-			#1e50ee 72%,
-			#002070 87%,
-			#002070 100%
+			#002070 83%,
+			#1e50ee 99%
 		); /* FF3.6-15 */
 		background: -webkit-linear-gradient(
 			-45deg,
-			#002070 0%,
+			#1e50ee 0%,
 			#002070 12%,
-			#1e50ee 28%,
-			#1e50ee 28%,
-			#002070 30%,
-			#002070 70%,
-			#1e50ee 72%,
-			#002070 87%,
-			#002070 100%
+			#002070 83%,
+			#1e50ee 99%
 		); /* Chrome10-25,Safari5.1-6 */
 		background: linear-gradient(
 			135deg,
-			#002070 0%,
+			#1e50ee 0%,
 			#002070 12%,
-			#1e50ee 28%,
-			#1e50ee 28%,
-			#002070 30%,
-			#002070 70%,
-			#1e50ee 72%,
-			#002070 87%,
-			#002070 100%
+			#002070 83%,
+			#1e50ee 99%
 		); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002070', endColorstr='#002070',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e50ee', endColorstr='#1e50ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		height: 280px;
+
+		@media (max-width: 600px) {
+			height: auto;
+		}
 
 		.profile-container {
 			width: 100%;
 			max-width: 1024px;
 			margin: 0 auto;
 			@include box-align(space-between, flex-end);
+			@media (max-width: 600px) {
+				flex-direction: column;
+				@include box-align();
+			}
 
 			.picture {
 				width: 250px;
@@ -61,14 +54,23 @@
 					width: 100%;
 					height: auto;
 				}
+
+				@media (max-width: 600px) {
+					transform: translateY(50px);
+				}
 			}
 
 			.name-cont {
 				width: 100%;
-				max-width: 350px;
+				max-width: 340px;
 				min-width: 300px;
 				color: $lightcolor;
+				text-align: center;
 				transform: translateY(20px);
+				@media (max-width: 600px) {
+					transform: translateY(60px);
+					text-align: center;
+				}
 
 				h1 {
 					font-size: 3.8rem;
@@ -76,10 +78,14 @@
 					margin-bottom: 15px;
 				}
 
-				h2,
-				h3 {
+				h2 {
 					font-size: 1.6rem;
-					font-weight: 400;
+					font-weight: 500;
+					margin-bottom: 5px;
+				}
+				h3 {
+					font-size: 1.4rem;
+					font-weight: 300;
 					margin-bottom: 5px;
 				}
 			}
@@ -87,12 +93,18 @@
 			.badge {
 				width: 100%;
 				max-width: 350px;
+				@media (max-width: 600px) {
+					width: auto;
+				}
 
 				img {
 					display: block;
 					width: 150px;
 					height: auto;
 					margin: 0 0 0 auto;
+					@media (max-width: 600px) {
+						margin: 85px 0px 24px;
+					}
 				}
 
 				.contact-btn {
@@ -100,6 +112,10 @@
 					max-width: 450px;
 					@include box-align(flex-start, center);
 					margin-bottom: 20px;
+
+					@media (max-width: 600px) {
+						justify-content: center;
+					}
 
 					a {
 						text-decoration: none;
@@ -123,6 +139,10 @@
 				max-width: 830px;
 				margin-top: 50px;
 				@include box-align(flex-end, center);
+				@media (max-width: 600px) {
+					margin: 20px auto;
+					justify-content: center;
+				}
 
 				i {
 					margin: 0 10px;
@@ -143,10 +163,16 @@
 					text-decoration: none;
 					border-radius: 7px;
 					color: #ffffff;
-					padding: 9px;
+					padding: 9px 10px;
 					margin: 0 5px;
 					background-color: $lambdaRed;
 					cursor: pointer;
+					i {
+						margin: 0;
+						padding: 0;
+						width: inherit;
+						height: auto;
+					}
 
 					&:hover {
 						background-color: darken($lambdaRed, 10%);
@@ -160,7 +186,7 @@
 		margin: 100px auto;
 		width: 100%;
 		max-width: 1024px;
-		@include box-align(space-around, flex-start);
+		@include box-align(space-around, center);
 
 		hr {
 			margin: 20px auto;
@@ -169,8 +195,7 @@
 		}
 
 		.status-skills {
-			display: flex;
-			justify-content: space-between;
+			@include box-align(center, space-between);
 			width: 100%;
 			padding: 0 5%;
 		}

@@ -10,9 +10,11 @@
 	background-color: $lambdaDarkBlue;
 	z-index: 99999;
 	position: relative;
+	box-shadow: 0 0 6px 3px #011c61;
 
 	.TopBar-container {
 		width: 100%;
+		padding: 5px;
 		max-width: 1000px;
 		display: flex;
 		align-items: center;
@@ -59,7 +61,6 @@
 .subNav {
 	width: 100%;
 	background-color: $darkcolor;
-	// background: darken(($lambdaRed), 10%);
 	padding: 20px 0;
 	@include box-align();
 
@@ -67,6 +68,10 @@
 		@include box-align(flex-end, center);
 		width: 100%;
 		max-width: 1024px;
+		@media (max-width: 500px) {
+			flex-direction: column;
+			flex-basis: auto;
+		}
 
 		a {
 			text-decoration: none;
@@ -75,9 +80,19 @@
 			color: $lightcolor;
 			margin: 0 5px;
 			border-radius: 5px;
+			@media (max-width: 500px) {
+				margin: 3px;
+			}
+			i {
+				margin-right: 5px;
+			}
 
 			&:last-child {
 				margin-right: 0;
+			}
+			&:hover {
+				background-color: $lambdaDarkBlue;
+				@extend %box-shadow;
 			}
 		}
 	}
