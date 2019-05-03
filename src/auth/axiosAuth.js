@@ -10,8 +10,8 @@ export default function() {
 
     return axios.create({
         headers: {
-            // 'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`,
         }
     });
 };
