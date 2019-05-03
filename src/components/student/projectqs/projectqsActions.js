@@ -1,4 +1,5 @@
 import axiosAuth from "../../../auth/axiosAuth";
+import axios from "axios";
 
 const backendURL = "https://halg-backend.herokuapp.com";
 
@@ -24,7 +25,7 @@ export const createProject = formValues => dispatch => {
     /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
   );
   if (!videoid) {
-    videoid = ["gLdXxFS8BV4"];
+    videoid = ["", "gLdXxFS8BV4"];
   }
 
   // *** Match form values to the shape the backend API expects
@@ -82,7 +83,7 @@ function removeEmptyValues(obj) {
 
 export const getProject = id => dispatch => {
   dispatch({ type: GET_PROJECT_START });
-  return axiosAuth()
+  return axios
     .get(`${backendURL}/api/projects/${id}`)
     .then(res => {
       dispatch({
