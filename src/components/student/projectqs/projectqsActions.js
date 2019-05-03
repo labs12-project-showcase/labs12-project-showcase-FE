@@ -25,7 +25,7 @@ export const createProject = formValues => dispatch => {
     /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
   );
   if (!videoid) {
-    videoid = ["gLdXxFS8BV4"];
+    videoid = ["", "gLdXxFS8BV4"];
   }
 
   // *** Match form values to the shape the backend API expects
