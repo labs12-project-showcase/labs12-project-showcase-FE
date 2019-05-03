@@ -15,7 +15,7 @@ class Home extends React.Component {
 			<div className="home">
 				<header>
 					<div className="header-text">
-						<h1>Lambda School Alumni</h1>
+						<h1>Lambda School Showcase</h1>
 						<p>
 							Lambda School's diverse group of alumni span coast-to-coast,
 							sharing a passion for learning and a drive to succeed. Discover

@@ -1,4 +1,3 @@
-import history from "../../../history.js";
 import axiosAuth from "../../../auth/axiosAuth";
 import axios from "axios";
 
@@ -54,7 +53,6 @@ export const createProject = formValues => dispatch => {
     axiosAuth()
       .post(`${backendURL}/api/projects`, removeEmptyValues(send))
       .then(res => {
-        history.push("/student/dashboard");
         dispatch({ type: CREATE_PROJECT_SUCCESS, payload: res.data });
         resolve();
       })

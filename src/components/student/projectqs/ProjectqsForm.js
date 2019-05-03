@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Formik } from "formik";
 
@@ -29,6 +30,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
     dispatch(createProject({ ...values, student_id: props.profile.id }))
       .then(res => {
         console.log("success");
+        props.history.push(`/student/profile/${props.profile.id}`);
       })
       .catch(err => {
         console.log("failure", err);
@@ -70,4 +72,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ProjectqsForm);
+export default withRouter(connect(mapStateToProps)(ProjectqsForm));

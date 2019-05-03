@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-// import AsyncSelect from 'react-select/lib/Async';
-import CreatableSelect from "react-select/lib/Creatable";
-import { ErrorMessage, Field, Form } from "formik";
-import Select from "react-select";
-import * as Yup from "yup";
-// import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import CreatableSelect from 'react-select/lib/Creatable';
+import { ErrorMessage, Field, Form } from 'formik';
+import LocationSelect from '../../location/LocationSelect';
+import Select from 'react-select';
+import * as Yup from 'yup';
 
 // Custom styling for react-select components
 const reactSelectStyles = {
@@ -138,14 +137,24 @@ export const FormSchema = ({
   /*
    *** CURRENT_LOCATION SET-UP ***
    */
+  const [currentLocation, setCurrentLocation] = useState('');
 
-  // locationOptions = inputValue => {
-  //   // @TODO: restrict the accessToken in account.mapbox.com to only our URL
-  //   accessToken = 'pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ';
-  //   axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${inputValue}.json?access_token=${accessToken}&cachebuster=1556822293407&autocomplete=true`)
-  // }
+  useEffect(() => {
+    if (initialValues.lat && initialValues.location && initialValues.lon) {
+      setCurrentLocation({
+        label: initialValues.location,
+        value: {
+          lat: initialValues.lat,
+          locationName: initialValues.location,
+          lon: initialValues.lon
+        }
+      });
+    }
+  }, [initialValues, setCurrentLocation]);
 
-  /* *** THE FORM *** */
+  /*
+   *** THE FORM ***
+   */
   return (
     <Form className="profile-quick-start-form">
       <label>
@@ -228,19 +237,25 @@ export const FormSchema = ({
         <Field
           name="location"
           type="text"
-          // render={({ field, form }) => (
-          //   <>
-          //     <AsyncSelect
-          //       loadOptions={locationOptions}
-          //       name={field.name}
-          //       onBlur={field.onBlur}
-          //       // onChange={}
-          //       // options={}
-          //       styles={reactSelectStyles}
-          //       // value={cohortSelection}
-          //     />
-          //   </>
-          // )}
+          render={({ field, form }) => (
+            <>
+              <LocationSelect
+                currentLocation={currentLocation}
+                initialValues={initialValues}
+                field={field}
+                name={field.name}
+                onBlur={field.onBlur}
+                onChange={option => {
+                  setCurrentLocation(option);
+                  values.lat = option.value.lat;
+                  values.location = option.value.locationName;
+                  values.lon = option.value.lon;
+                }}
+                setCurrentLocation={setCurrentLocation}
+                styles={reactSelectStyles}
+              />
+            </>
+          )}
         />
         <ErrorMessage
           name="location"
@@ -335,26 +350,8 @@ export const FormSchema = ({
                 menuIsOpen={false}
                 name={field.name}
                 onBlur={field.onBlur}
-                onChange={(list, actionMeta) => {
-                  console.group("Skills Value Changed");
-                  console.log("skills onChange list: ", list);
-                  console.log(`action: ${actionMeta.action}`);
-                  console.groupEnd();
+                onChange={(list) => {
                   setSkillsList(list);
-
-                  // Pull the `value`s for each item in the `list`
-                  const submitList = list.map(item => item.value);
-                  // The line below is what I'd LIKE to have happen
-                  form.setFieldValue(field.name, submitList);
-
-                  /*
-                   * was testing with a random field to change – doesn't work
-                   * but it DOES work when I bring the line below up to the `cohort` <Select>
-                   */
-                  // form.setFieldValue('desired_title', 'hello!', false);
-
-                  // console.log('form: ', form); // just to see
-                  console.log("form values – skills: ", values.skills); // to test if setFieldValue() works
                 }}
                 // track the input in state
                 onInputChange={inputValue => setSkillsInput(inputValue)}
