@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const EditCards = ({ id, top_projects, projects }) => {
   //New Top Projects should initialize with the list of top projects from props
@@ -6,12 +6,6 @@ const EditCards = ({ id, top_projects, projects }) => {
   //New Projects should initialize with the list of projects from props
   const [newProjs, updateProjs] = useState(projects || []);
   const [dragged, updateDragged] = useState({});
-
-  useEffect(() => {
-    if (!top_projects.length) {
-      updateTopProjs(initial_top_projects);
-    }
-  }, [updateTopProjs, top_projects]);
 
   const handleSubmit = () => {
     const top_projects = newTopProjs.map(proj => ({
@@ -122,33 +116,5 @@ const EditCards = ({ id, top_projects, projects }) => {
     </div>
   );
 };
-
-//Need to seed database with 3 dummy projects for this to work...
-const initial_top_projects = [
-  {
-    name: "Your First",
-    project_id: 1,
-    type: "Please exchange this with your own project.",
-    media: [
-      "https://www.union.edu/files/union-marketing-layer/201803/picture.jpg"
-    ]
-  },
-  {
-    name: "Your Second",
-    project_id: 2,
-    type: "Please exchange this with your own project.",
-    media: [
-      "https://www.union.edu/files/union-marketing-layer/201803/picture.jpg"
-    ]
-  },
-  {
-    name: "Your Third",
-    project_id: 3,
-    type: "Please exchange this with your own project.",
-    media: [
-      "https://www.union.edu/files/union-marketing-layer/201803/picture.jpg"
-    ]
-  }
-];
 
 export default EditCards;
