@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
 import NotApproved from "../notApproved/NotApproved";
+import ProgressProject from "../progressProject/ProgressProject";
 
 import project from "../../../assets/project-img.jpg";
 import one from "../../../assets/one.jpg";
@@ -75,15 +76,18 @@ const ProjectView = ({
         </div>
       </header>
       <main>
-        <div className="sales-pitch">
-          <h2>Customer Sales Pitch</h2>
-          <p>{projectData.customer_pitch || "Please add customer pitch"}</p>
+        <div className="pitch-and-progress-container">
+          <div className="sales-pitch">
+            <h2>Customer Sales Pitch</h2>
+            <p>{projectData.customer_pitch || "Please add customer pitch"}</p>
+          </div>
+          <div className="sales-pitch">
+            <h2>Technical Sales Pitch</h2>
+            <p>{projectData.tech_pitch || "Please add tech pitch"}</p>
+          </div>
+          {/* {sameUser && <Progress />} */}
+          <ProgressProject />
         </div>
-        <div className="sales-pitch">
-          <h2>Technical Sales Pitch</h2>
-          <p>{projectData.tech_pitch || "Please add tech pitch"}</p>
-        </div>
-
         <div className="project-urls-container">
           <a
             href={projectData.github}
