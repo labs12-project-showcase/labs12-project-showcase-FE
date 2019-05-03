@@ -8,10 +8,12 @@ import Routes from "./config/Routes.js";
 import Footer from "./components/Footer";
 import TopBar from "./components/TopBar";
 
-function App({ dispatch }) {
+function App({ dispatch, profile }) {
   useEffect(() => {
-    dispatch(getProfileData());
-  }, [dispatch]);
+    if (!profile.id) {
+      dispatch(getProfileData());
+    }
+  }, [dispatch, profile.id]);
   return (
     <div className="main-container">
       <TopBar />
@@ -21,4 +23,8 @@ function App({ dispatch }) {
   );
 }
 
-export default withRouter(connect()(App));
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+export default withRouter(connect(mapStateToProps)(App));
