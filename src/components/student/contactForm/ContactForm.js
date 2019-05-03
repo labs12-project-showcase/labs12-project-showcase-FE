@@ -12,7 +12,7 @@ class ContactForm extends Component {
 
 
 	sendEmail = _ => {
-		const id = 1;
+		const id = 6;
 		const { email } = this.state;
 		// fetch(`http://127.0.0.1:7000/send-email?recipient=${'jmaxt12@gmail.com'}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
 		//   .catch(err => console.error(err))
@@ -83,6 +83,7 @@ class ContactForm extends Component {
 		);
 	}
 }
+console.log('SHOW ME SOMETHING')
 
 /* 
 lambdashowcase.com/students/something id in url
