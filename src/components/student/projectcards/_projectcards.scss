@@ -119,6 +119,13 @@
       }
     }
 
+    .edit-card {
+      width: 100%;
+      margin-bottom: 10px;
+      justify-content: flex-start;
+      flex-direction: row;
+    }
+
     .drag-drop-target {
       position: relative;
       padding: 5px;
@@ -167,7 +174,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 40px;
+      margin: 20px 0;
       padding-bottom: 5px;
       font-weight: bold;
       border-bottom: 2px solid $lambdaRed;
@@ -180,5 +187,25 @@
         }
       }
     }
+  }
+}
+
+.edit-wrapper {
+  background: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  position: relative;
+
+  .input-label {
+    color: gray;
+    background: #ffffff;
+    font-size: 1.4rem;
+    left: 1rem;
+    padding: 0.4rem;
+    position: absolute;
+    top: -1.1rem;
+    z-index: 1;
   }
 }

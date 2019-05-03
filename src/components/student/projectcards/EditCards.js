@@ -44,20 +44,20 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
   //Dragging should only be available from lower project => upper project area
   const draggableMap = arr =>
     arr.map((proj, index) => (
-      <div key={proj.id} className="project-card drag-drop-target">
+      <div key={proj.id} className="project-card edit-card drag-drop-target">
         <div
           className="drag-target-cover"
           draggable
           onDrag={e => beginDrag(e, index)}
         />
 
-        <img
+        {/*<img
           src={
             proj.media[0] ||
             "https://assets-global.website-files.com/5ca6aa5b04fdce3dfc90bd80/5cafe65bc08e6fed1ea341fb_Lambda_Avatar_Red-p-500.jpeg"
           }
           alt="Project media"
-        />
+        />*/}
         <h3>{proj.name}</h3>
         <p>{proj.type}</p>
       </div>
@@ -68,24 +68,25 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
         key={proj.id}
         onDrop={e => handleDrop(e)}
         onDragOver={e => handleDragOver(e)}
-        className="project-card drag-drop-target"
+        className="project-card edit-card drag-drop-target"
       >
         <div className="drop-target-cover" data-index={index} />
         <div className="card-content">
-          <img
+          {/*<img
             src={
               proj.media[0] ||
               "https://assets-global.website-files.com/5ca6aa5b04fdce3dfc90bd80/5cafe65bc08e6fed1ea341fb_Lambda_Avatar_Red-p-500.jpeg"
             }
             alt="Project media"
-          />
+          />*/}
           <h3>{proj.name}</h3>
           <p>{proj.type}</p>
         </div>
       </div>
     ));
   return (
-    <div className="projects-wrapper">
+    <div className="projects-wrapper edit-wrapper">
+      <span className="input-label">Projects</span>
       <div className="projects-inner-wrapper">
         {targetMap(top_projects)}
         <p className="edit-project-message">
