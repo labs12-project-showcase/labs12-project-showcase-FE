@@ -15,8 +15,8 @@ import three from '../../../assets/three.jpg';
 // const sameUser = id === this.props.loggedInProfile.id;
 
 const ProjectView = ({
+	project: { projectData },
 	dispatch,
-	projectData,
 	history,
 	curAccount,
 	match: {
@@ -29,28 +29,51 @@ const ProjectView = ({
 
 	const checkOwner = arr => {
 		const owner = arr.filter(member => {
-			console.log(member.id);
-			console.log(curAccount);
-
-			return (member.id = curAccount);
+			return member.student_id === curAccount;
 		});
 		if (owner && owner.length) {
-			console.log('true');
 			return true;
 		} else {
-			console.log('false');
 			return false;
 		}
 	};
 
 	return (
 		<div className="project-view">
-			{!projectData.approved ? (
-				<NotApproved />
-			) : (
-				console.log('Project has been approved')
-			)}
-
+			{!projectData.approved ? <NotApproved /> : null}
+			<div className="subNav">
+				<nav className="NavLinks-container">
+					<div>
+						<div className="NavLinks-container-left">
+							<i
+								onClick={() => {
+									history.goBack();
+								}}
+								className="fas fa-arrow-left arrow-circle"
+							/>
+							<p>Back to Student Profile</p>
+						</div>
+					</div>
+					<div className="NavLinks-container-right">
+						{projectData.students && checkOwner(projectData.students) ? (
+							<NavLink
+								exact
+								to="/student/project-edit"
+								className="edit-project-btn"
+							>
+								Edit Project
+							</NavLink>
+						) : null}
+						<NavLink
+							exact
+							to="/student/profile-edit"
+							className="edit-profile-btn"
+						>
+							Edit Profile
+						</NavLink>
+					</div>
+				</nav>
+			</div>
 			<header>
 				<div className="img-des">
 					<img src={project} alt="Project" />
@@ -103,7 +126,7 @@ const ProjectView = ({
 					<h2>Technical Sales Pitch</h2>
 					<p>{projectData.tech_pitch || 'Please add tech pitch'}</p>
 				</div>
-
+				<hr />
 				<div className="project-urls-container">
 					<a
 						href={projectData.github}
@@ -174,7 +197,7 @@ const ProjectView = ({
 
 const mapStateToProps = state => {
 	return {
-		...state.project,
+		project: state.project,
 		curAccount: state.profile.profileData.id
 	};
 };
