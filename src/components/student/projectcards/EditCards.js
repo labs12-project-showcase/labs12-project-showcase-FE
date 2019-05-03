@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const EditCards = ({ id }) => {
+const EditCards = ({ id, top_projects, projects }) => {
   //New Top Projects should initialize with the list of top projects from props
-  const [newTopProjs, updateTopProjs] = useState(top_projects);
+  const [newTopProjs, updateTopProjs] = useState(top_projects || []);
   //New Projects should initialize with the list of projects from props
-  const [newProjs, updateProjs] = useState(projects);
+  const [newProjs, updateProjs] = useState(projects || []);
   const [dragged, updateDragged] = useState({});
+
+  useEffect(() => {
+    if (!top_projects.length) {
+      updateTopProjs(initial_top_projects);
+    }
+  }, [updateTopProjs, top_projects]);
 
   const handleSubmit = () => {
     const top_projects = newTopProjs.map(proj => ({
@@ -92,7 +98,7 @@ const EditCards = ({ id }) => {
       </div>
     ));
   return (
-    <React.Fragment>
+    <div className="projects-wrapper">
       <div className="projects-inner-wrapper">
         {targetMap(newTopProjs)}
         <p className="edit-project-message">
@@ -113,84 +119,34 @@ const EditCards = ({ id }) => {
           Cancel
         </button>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
-const top_projects = [
+//Need to seed database with 3 dummy projects for this to work...
+const initial_top_projects = [
   {
-    name: "Top Uno",
+    name: "Your First",
     project_id: 1,
-    type: "React Application with cool stuff",
+    type: "Please exchange this with your own project.",
     media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
+      "https://www.union.edu/files/union-marketing-layer/201803/picture.jpg"
     ]
   },
   {
-    name: "Top Dos",
+    name: "Your Second",
     project_id: 2,
-    type: "React Application with cool stuff",
+    type: "Please exchange this with your own project.",
     media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
+      "https://www.union.edu/files/union-marketing-layer/201803/picture.jpg"
     ]
   },
   {
-    name: "Top Tres",
+    name: "Your Third",
     project_id: 3,
-    type: "React Application with cool stuff",
+    type: "Please exchange this with your own project.",
     media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-    ]
-  }
-];
-
-const projects = [
-  {
-    name: "Bottom 1",
-    project_id: 4,
-    type: "React Application with cool stuff",
-    media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-    ]
-  },
-  {
-    name: "Bottom 2",
-    project_id: 5,
-    type: "React Application with cool stuff",
-    media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-    ]
-  },
-  {
-    name: "Bottom 3",
-    project_id: 6,
-    type: "React Application with cool stuff",
-    media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-    ]
-  },
-  {
-    name: "Bottom 4",
-    project_id: 7,
-    type: "React Application with cool stuff",
-    media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-    ]
-  },
-  {
-    name: "Bottom 5",
-    project_id: 8,
-    type: "React Application with cool stuff",
-    media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-    ]
-  },
-  {
-    name: "Bottom 6",
-    project_id: 9,
-    type: "React Application with cool stuff",
-    media: [
-      "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
+      "https://www.union.edu/files/union-marketing-layer/201803/picture.jpg"
     ]
   }
 ];
