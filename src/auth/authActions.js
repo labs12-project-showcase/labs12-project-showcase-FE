@@ -41,7 +41,6 @@ export const handleAuth = () => dispatch => {
   auth.parseHash((err, results) => {
 
     history.push('/callback');
-    console.log('parse hash', err, results);
     dispatch({
       type: SET_SESSION,
       payload: {
@@ -66,7 +65,6 @@ export const handleAuth = () => dispatch => {
       dispatch({ type: GET_PROFILE_DATA_START });
       axiosAuth().get(`${backendUrl}/api/students/profile`)
       .then(resGetProf => {
-        console.log('resGetProf', resGetProf);
         let noNulls = {};
         for (let item in resGetProf.data) {
           if (resGetProf.data[item] !== null) {

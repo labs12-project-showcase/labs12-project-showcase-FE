@@ -10,6 +10,7 @@ export default function() {
 
   return axios.create({
     headers: {
+      //We will have file uploads, this will cause issues
       // 'Content-Type': 'application/json',
       authorization: token
     }

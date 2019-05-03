@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getData } from './studentProfileActions';
 import badge from '../../../assets/lambda-badge.png';
-import tony from '../../../assets/tony.jpg';
 import Projects from '../projectcards/ProjectCards';
 import NotEndorsed from '../notEndorsed/NotEndorsed';
 import AboutMe from '../aboutMe/AboutMe';
@@ -52,12 +51,14 @@ class StudentProfile extends React.Component {
 				<header>
 					<div className="profile-container">
 						<div className="picture">
-							<img src={profile_pic} alt="Profile picture" />
+							<img src={profile_pic} alt="Profile" />
 						</div>
 						<div className="name-cont">
 							<h1>{name}</h1>
 							<h2>{track}</h2>
-							<h3>{location}</h3>
+							<h3>
+								<i className="fas fa-map-marker-alt" /> {location}
+							</h3>
 						</div>
 						<div className="badge">
 							<a rel="noopener noreferrer" href={acclaim} target="_blank">
@@ -75,7 +76,7 @@ class StudentProfile extends React.Component {
 								href={website}
 								target="_blank"
 							>
-								Portfolio
+								<i className="fas fa-briefcase" /> Portfolio
 							</a>
 							<a rel="noopener noreferrer" href={linkedin} target="_blank">
 								<i className="fab fa-linkedin-in" />
@@ -102,12 +103,8 @@ class StudentProfile extends React.Component {
 						/>
 						<Skills skills={skills || []} top_skills={top_skills || []} />
 					</div>
-					<hr />
-					<Projects
-						projects={projects || []}
-						top_projects={top_projects || []}
-					/>
 				</main>
+				<Projects projects={projects || []} top_projects={top_projects || []} />
 			</div>
 		);
 	}
