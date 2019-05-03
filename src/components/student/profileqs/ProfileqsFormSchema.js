@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import CreatableSelect from 'react-select/lib/Creatable';
-import { ErrorMessage, Field, Form } from 'formik';
-import LocationSelect from '../../location/LocationSelect';
-import Select from 'react-select';
-import * as Yup from 'yup';
+import React, { useEffect, useState } from "react";
+import CreatableSelect from "react-select/lib/Creatable";
+import { ErrorMessage, Field, Form } from "formik";
+import LocationSelect from "../../location/LocationSelect";
+import Select from "react-select";
+import * as Yup from "yup";
+
+import EditCards from "../projectcards/EditCards";
 
 // Custom styling for react-select components
 const reactSelectStyles = {
@@ -36,6 +38,10 @@ export const FormSchema = ({
   initialValues,
   setSkillsList,
   skillsList,
+  projects,
+  setProjects,
+  top_projects,
+  setTopProjects,
   values
 }) => {
   /*
@@ -134,10 +140,20 @@ export const FormSchema = ({
     );
   }, [initialValues, setSkillsList]);
 
+  useEffect(() => {
+    setProjects(initialValues.projects);
+    setTopProjects(initialValues.top_projects);
+  }, [
+    initialValues.projects,
+    initialValues.top_projects,
+    setProjects,
+    setTopProjects
+  ]);
+
   /*
    *** CURRENT_LOCATION SET-UP ***
    */
-  const [currentLocation, setCurrentLocation] = useState('');
+  const [currentLocation, setCurrentLocation] = useState("");
 
   useEffect(() => {
     if (initialValues.lat && initialValues.location && initialValues.lon) {
@@ -189,7 +205,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setTrackSelection(option);
-                  form.setFieldValue('track_id', option.value);
+                  form.setFieldValue("track_id", option.value);
                 }}
                 options={trackOptions}
                 styles={reactSelectStyles}
@@ -216,7 +232,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setCohortSelection(option);
-                  form.setFieldValue('cohort_id', option.value);
+                  form.setFieldValue("cohort_id", option.value);
                 }}
                 options={cohortOptions}
                 styles={reactSelectStyles}
@@ -359,16 +375,16 @@ export const FormSchema = ({
                 onKeyDown={event => {
                   if (!skillsInput) return;
                   switch (event.key) {
-                    case 'Enter':
-                    case 'Tab':
+                    case "Enter":
+                    case "Tab":
                       setSkillsList(previousState => [
                         ...previousState,
                         createSkillsOption(skillsInput)
                       ]);
-                      console.group('Value Added – SkillKeyDown');
+                      console.group("Value Added – SkillKeyDown");
                       console.log(skillsList);
                       console.groupEnd();
-                      setSkillsInput('');
+                      setSkillsInput("");
                       event.preventDefault();
                       break;
                     default:
@@ -401,8 +417,8 @@ export const FormSchema = ({
                 name={field.name}
                 noOptionsMessage={() =>
                   skillsList.filter(skill => skill.topSkill).length < 3
-                  ? 'Add skills above, then select your top skills here'
-                  : 'Maximum of 3 Top Skills'
+                    ? "Add skills above, then select your top skills here"
+                    : "Maximum of 3 Top Skills"
                 }
                 onBlur={field.onBlur}
                 onChange={option => {
@@ -418,7 +434,7 @@ export const FormSchema = ({
                     return previousState.map(skill => {
                       skill.topSkill = false;
                       for (let topSkill of option) {
-                        console.log('compare: ', skill.value, topSkill.value);
+                        console.log("compare: ", skill.value, topSkill.value);
                         if (skill.value === topSkill.value) {
                           skill.topSkill = true;
                           return skill;
@@ -466,8 +482,17 @@ export const FormSchema = ({
         />
       </label>
 
+      {projects && projects.length ? (
+        <EditCards
+          projects={projects}
+          top_projects={top_projects}
+          setProjects={setProjects}
+          setTopProjects={setTopProjects}
+        />
+      ) : null}
+
       <button type="submit" disabled={isSubmitting}>
-        {initialValues.exists ? 'Save Changes' : 'Create Profile'}
+        {initialValues.exists ? "Save Changes" : "Create Profile"}
       </button>
     </Form>
   );
@@ -480,25 +505,25 @@ export const ProfileQsSchema = Yup.object().shape({
     .trim(),
   acclaim: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   desired_title: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .trim('Must be a valid URL'),
+    .trim("Must be a valid URL"),
   github: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   linkedin: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   location: Yup.string().trim(),
   name: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .required('Name is required')
-    .trim('Must be a valid URL'),
+    .required("Name is required")
+    .trim("Must be a valid URL"),
   website: Yup.string()
     .trim()
-    .url('Must be a valid URL'),
+    .url("Must be a valid URL"),
   twitter: Yup.string()
     .trim()
-    .url('Must be a valid URL')
+    .url("Must be a valid URL")
 });

@@ -1,26 +1,7 @@
 import React, { useState } from "react";
 
-const EditCards = ({ id, top_projects, projects }) => {
-  //New Top Projects should initialize with the list of top projects from props
-  const [newTopProjs, updateTopProjs] = useState(top_projects || []);
-  //New Projects should initialize with the list of projects from props
-  const [newProjs, updateProjs] = useState(projects || []);
+const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
   const [dragged, updateDragged] = useState({});
-
-  const handleSubmit = () => {
-    const top_projects = newTopProjs.map(proj => ({
-      project_id: proj.project_id,
-      student_id: id
-    }));
-    const projects = newProjs.map(proj => ({
-      project_id: proj.project_id,
-      student_id: id
-    }));
-
-    //#TODO Submit Action here for projects page
-  };
-
-  //#TODO Cancel changes action here maybe??
 
   const beginDrag = (e, index) => {
     e.preventDefault();
@@ -32,18 +13,18 @@ const EditCards = ({ id, top_projects, projects }) => {
     const topIndex = Number(e.target.dataset.index);
 
     //Find the correct projects from each array
-    const newTop = newProjs[dragged];
-    const newBottom = newTopProjs[topIndex];
+    const newTop = projects[dragged];
+    const newBottom = top_projects[topIndex];
 
     //Reduce each array with new projects in place of old ones
-    const newTops = newTopProjs.reduce((arr, cur, index) => {
+    const newTops = top_projects.reduce((arr, cur, index) => {
       if (index === topIndex) {
         return [...arr, newTop];
       }
       return [...arr, cur];
     }, []);
 
-    const newBottoms = newProjs.reduce((arr, cur, index) => {
+    const newBottoms = projects.reduce((arr, cur, index) => {
       if (index === dragged) {
         return [...arr, newBottom];
       }
@@ -51,8 +32,8 @@ const EditCards = ({ id, top_projects, projects }) => {
     }, []);
 
     //Update state of top projects and projects. Also clear dragged index.
-    updateTopProjs(newTops);
-    updateProjs(newBottoms);
+    setTopProjects(newTops);
+    setProjects(newBottoms);
     updateDragged({});
   };
 
@@ -63,14 +44,20 @@ const EditCards = ({ id, top_projects, projects }) => {
   //Dragging should only be available from lower project => upper project area
   const draggableMap = arr =>
     arr.map((proj, index) => (
-      <div key={proj.project_id} className="project-card drag-drop-target">
+      <div key={proj.id} className="project-card edit-card drag-drop-target">
         <div
           className="drag-target-cover"
           draggable
           onDrag={e => beginDrag(e, index)}
         />
 
-        <img src={proj.media[0]} alt="Project media" />
+        {/*<img
+          src={
+            proj.media[0] ||
+            "https://assets-global.website-files.com/5ca6aa5b04fdce3dfc90bd80/5cafe65bc08e6fed1ea341fb_Lambda_Avatar_Red-p-500.jpeg"
+          }
+          alt="Project media"
+        />*/}
         <h3>{proj.name}</h3>
         <p>{proj.type}</p>
       </div>
@@ -78,40 +65,34 @@ const EditCards = ({ id, top_projects, projects }) => {
   const targetMap = arr =>
     arr.map((proj, index) => (
       <div
-        key={proj.project_id}
+        key={proj.id}
         onDrop={e => handleDrop(e)}
         onDragOver={e => handleDragOver(e)}
-        className="project-card drag-drop-target"
+        className="project-card edit-card drag-drop-target"
       >
         <div className="drop-target-cover" data-index={index} />
         <div className="card-content">
-          <img src={proj.media[0]} alt="Project media" />
+          {/*<img
+            src={
+              proj.media[0] ||
+              "https://assets-global.website-files.com/5ca6aa5b04fdce3dfc90bd80/5cafe65bc08e6fed1ea341fb_Lambda_Avatar_Red-p-500.jpeg"
+            }
+            alt="Project media"
+          />*/}
           <h3>{proj.name}</h3>
           <p>{proj.type}</p>
         </div>
       </div>
     ));
   return (
-    <div className="projects-wrapper">
+    <div className="projects-wrapper edit-wrapper">
+      <span className="input-label">Projects</span>
       <div className="projects-inner-wrapper">
-        {targetMap(newTopProjs)}
+        {targetMap(top_projects)}
         <p className="edit-project-message">
           Please drag projects from below to the top projects section.
         </p>
-        {draggableMap(newProjs)}
-      </div>
-      <div className="projects-buttons-container">
-        <button type="button" onClick={handleSubmit}>
-          Submit Projects
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            console.log("Need cancel changes handler");
-          }}
-        >
-          Cancel
-        </button>
+        {draggableMap(projects)}
       </div>
     </div>
   );
