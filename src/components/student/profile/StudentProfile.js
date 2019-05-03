@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getData } from './studentProfileActions';
 import badge from '../../../assets/lambda-badge.png';
-import tony from '../../../assets/tony.jpg';
 import Projects from '../projectcards/ProjectCards';
 import NotEndorsed from '../notEndorsed/NotEndorsed';
 import AboutMe from '../aboutMe/AboutMe';
