@@ -4,13 +4,15 @@ import "./App.scss";
 import { withRouter } from "react-router-dom";
 
 import { getProfileData } from "./components/student/profileqs/profileqsActions";
+import { validateJwt } from './config/utilities.js';
 import Routes from "./config/Routes.js";
 import Footer from "./components/Footer";
 import TopBar from "./components/TopBar";
 
 function App({ dispatch, profile }) {
   useEffect(() => {
-    if (!profile.id) {
+    const isLoggedIn = validateJwt();
+    if (isLoggedIn && !profile.id) {
       dispatch(getProfileData());
     }
   }, [dispatch, profile.id]);
