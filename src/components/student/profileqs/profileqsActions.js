@@ -1,14 +1,15 @@
-import history from "../../../history.js";
-import axios from "axios";
+import history from '../../../history.js';
+import axiosAuth from '../../../auth/axiosAuth';
+import axios from 'axios';
 
-const token = localStorage.getItem("backendToken");
+const token = localStorage.getItem('backendToken');
 
-const backendURL = "https://halg-backend.herokuapp.com";
+const backendURL = 'https://halg-backend.herokuapp.com';
 
 //
-export const GET_PROFILE_DATA_FAILURE = "GET_PROFILE_DATA_FAILURE";
-export const GET_PROFILE_DATA_START = "GET_PROFILE_DATA_START";
-export const GET_PROFILE_DATA_SUCCESS = "GET_PROFILE_DATA_SUCCESS";
+export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
+export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
+export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
 
 /**
  * Calls back-end for Profile data
@@ -16,10 +17,16 @@ export const GET_PROFILE_DATA_SUCCESS = "GET_PROFILE_DATA_SUCCESS";
  */
 export const getProfileData = (queryUpdate = false) => dispatch => {
   dispatch({ type: GET_PROFILE_DATA_START });
+  // if (!token) {
+  //   return dispatch({
+  //     type: GET_PROFILE_DATA_FAILURE,
+  //     payload: 'No token found in Local Storage'
+  //   });
+  // }
   let url = `${backendURL}/api/students/profile${
-    queryUpdate ? "?update=true" : ""
+    queryUpdate ? '?update=true' : ''
   }`;
-  axios
+  axiosAuth()
     .get(url, {
       headers: {
         authorization: token
@@ -37,17 +44,17 @@ export const getProfileData = (queryUpdate = false) => dispatch => {
 };
 
 //
-export const UPDATE_PROFILE_FAILURE = "UPDATE_PROFILE_FAILURE";
-export const UPDATE_PROFILE_START = "UPDATE_PROFILE_START";
-export const UPDATE_PROFILE_SUCCESS = "UPDATE_PROFILE_SUCCESS";
+export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
+export const UPDATE_PROFILE_START = 'UPDATE_PROFILE_START';
+export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
 
 /**
  * Submits values from Create/Edit Profile form
  * in `ProfileqsForm.js` to API endpoint
  */
 export const updateProfile = formValues => dispatch => {
+  console.log('updateProfile running!');
   // *** Match form values to the shape the backend API expects
-  console.log("formValues: ", formValues);
   const send = {
     account: {
       name: formValues.name
@@ -73,14 +80,14 @@ export const updateProfile = formValues => dispatch => {
     top_projects: formValues.top_projects,
     projects: formValues.projects
   };
-  console.log("send", send);
   dispatch({ type: UPDATE_PROFILE_START });
-  if (!token)
-    return dispatch({
-      type: UPDATE_PROFILE_FAILURE,
-      payload: "No token found in Local Storage"
-    });
-  axios
+  // if (!token) {
+  //   return dispatch({
+  //     type: UPDATE_PROFILE_FAILURE,
+  //     payload: `No token found in Local Storage. Token: ${token}`
+  //   });
+  // }
+  axiosAuth()
     .put(`${backendURL}/api/students/update`, removeEmptyValues(send), {
       headers: { authorization: token }
     })
@@ -107,7 +114,7 @@ function removeEmptyValues(obj) {
     .filter(f => Boolean(obj[f]))
     .reduce(
       (r, i) =>
-        typeof obj[i] === "object" && !Array.isArray(obj[i])
+        typeof obj[i] === 'object' && !Array.isArray(obj[i])
           ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
           : { ...r, [i]: obj[i] },
       {}
