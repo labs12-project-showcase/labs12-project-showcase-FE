@@ -75,7 +75,7 @@ const profileqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         gettingProfileData: false,
-        profileData: action.payload
+        profileData: {...state.profileData, ...action.payload}
       };
     case GET_PROFILE_DATA_FAILURE:
       return {
