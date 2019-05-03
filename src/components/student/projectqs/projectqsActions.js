@@ -88,7 +88,6 @@ export const getProject = id => dispatch => {
   return axios
     .get(`${backendURL}/api/projects/${id}`)
     .then(res => {
-      console.log("response", res.data);
       dispatch({
         type: GET_PROJECT_SUCCESS,
         payload: res.data
