@@ -93,7 +93,7 @@ const ProjectCards = ({ top_projects, projects }) => {
       </h2>
       <div className="projects-inner-wrapper">
         {map(top_projects)}
-        <Fade collapse when={!hide}>
+        <Fade top collapse when={!hide}>
           <div style={hide ? { display: "none" } : { display: "flex" }}>
             {map(projects)}
           </div>
