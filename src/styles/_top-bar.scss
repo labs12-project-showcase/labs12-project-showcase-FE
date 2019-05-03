@@ -1,13 +1,13 @@
 // Top bar - logo and Navigation
 
 .TopBar {
-	padding: 10px 0;
+	padding: 10px 0 0;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: $lambdaRed;
+	background-color: $lambdaDarkBlue;
 	z-index: 99999;
 	position: relative;
 
@@ -58,7 +58,8 @@
 
 .subNav {
 	width: 100%;
-	background: darken(($lambdaRed), 10%);
+	background-color: $darkcolor;
+	// background: darken(($lambdaRed), 10%);
 	padding: 20px 0;
 	@include box-align();
 
@@ -69,8 +70,11 @@
 
 		a {
 			text-decoration: none;
+			background-color: darken($darkcolor, 10%);
+			padding: 5px 7px;
 			color: $lightcolor;
 			margin: 0 5px;
+			border-radius: 5px;
 
 			&:last-child {
 				margin-right: 0;

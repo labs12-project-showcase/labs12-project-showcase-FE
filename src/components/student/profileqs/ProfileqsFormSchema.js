@@ -189,7 +189,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setTrackSelection(option);
-                  form.setFieldValue("track_id", option.value);
+                  form.setFieldValue('track_id', option.value);
                 }}
                 options={trackOptions}
                 styles={reactSelectStyles}
@@ -216,7 +216,7 @@ export const FormSchema = ({
                 onBlur={field.onBlur}
                 onChange={option => {
                   setCohortSelection(option);
-                  form.setFieldValue("cohort_id", option.value);
+                  form.setFieldValue('cohort_id', option.value);
                 }}
                 options={cohortOptions}
                 styles={reactSelectStyles}
@@ -350,7 +350,7 @@ export const FormSchema = ({
                 menuIsOpen={false}
                 name={field.name}
                 onBlur={field.onBlur}
-                onChange={(list) => {
+                onChange={list => {
                   setSkillsList(list);
                 }}
                 // track the input in state
@@ -359,16 +359,16 @@ export const FormSchema = ({
                 onKeyDown={event => {
                   if (!skillsInput) return;
                   switch (event.key) {
-                    case "Enter":
-                    case "Tab":
+                    case 'Enter':
+                    case 'Tab':
                       setSkillsList(previousState => [
                         ...previousState,
                         createSkillsOption(skillsInput)
                       ]);
-                      console.group("Value Added – SkillKeyDown");
+                      console.group('Value Added – SkillKeyDown');
                       console.log(skillsList);
                       console.groupEnd();
-                      setSkillsInput("");
+                      setSkillsInput('');
                       event.preventDefault();
                       break;
                     default:
@@ -400,10 +400,14 @@ export const FormSchema = ({
                 isMulti
                 name={field.name}
                 noOptionsMessage={() =>
-                  "Add skills above, then select your top skills here"
+                  skillsList.filter(skill => skill.topSkill).length < 3
+                  ? 'Add skills above, then select your top skills here'
+                  : 'Maximum of 3 Top Skills'
                 }
                 onBlur={field.onBlur}
                 onChange={option => {
+                  if (option.length > 3) return;
+
                   /**
                    * Loop through the `previousState`.
                    * To begin, set all `skill.topSkill`s to `false`
@@ -414,7 +418,7 @@ export const FormSchema = ({
                     return previousState.map(skill => {
                       skill.topSkill = false;
                       for (let topSkill of option) {
-                        console.log("compare: ", skill.value, topSkill.value);
+                        console.log('compare: ', skill.value, topSkill.value);
                         if (skill.value === topSkill.value) {
                           skill.topSkill = true;
                           return skill;
@@ -432,7 +436,11 @@ export const FormSchema = ({
                   //   values.top_skills
                   // );
                 }}
-                options={skillsList}
+                options={
+                  skillsList.filter(skill => skill.topSkill).length < 3
+                    ? skillsList
+                    : []
+                }
                 styles={reactSelectStylesStretch}
                 value={skillsList.filter(skill => skill.topSkill)}
               />
@@ -459,7 +467,7 @@ export const FormSchema = ({
       </label>
 
       <button type="submit" disabled={isSubmitting}>
-        {initialValues.exists ? "Save Changes" : "Create Profile"}
+        {initialValues.exists ? 'Save Changes' : 'Create Profile'}
       </button>
     </Form>
   );
@@ -472,25 +480,25 @@ export const ProfileQsSchema = Yup.object().shape({
     .trim(),
   acclaim: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url('Must be a valid URL'),
   desired_title: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .trim("Must be a valid URL"),
+    .trim('Must be a valid URL'),
   github: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url('Must be a valid URL'),
   linkedin: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url('Must be a valid URL'),
   location: Yup.string().trim(),
   name: Yup.string()
     .max(100, `Maximum 100 characters`)
-    .required("Name is required")
-    .trim("Must be a valid URL"),
+    .required('Name is required')
+    .trim('Must be a valid URL'),
   website: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url('Must be a valid URL'),
   twitter: Yup.string()
     .trim()
-    .url("Must be a valid URL")
+    .url('Must be a valid URL')
 });

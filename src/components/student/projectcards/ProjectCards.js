@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 
 const ProjectCards = ({ top_projects, projects }) => {
@@ -10,24 +11,20 @@ const ProjectCards = ({ top_projects, projects }) => {
       project_id: 1,
       type: "React Application with cool stuff",
       media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
+        "https://morenowtech.com/wp-content/uploads/2019/05/tabless-thursday.jpg"
       ]
     },
     {
       name: "Brandons project",
       project_id: 2,
       type: "React Application with cool stuff",
-      media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-      ]
+      media: ["https://morenowtech.com/wp-content/uploads/2019/05/fit-me.jpg"]
     },
     {
       name: "Brandons project",
       project_id: 3,
       type: "React Application with cool stuff",
-      media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-      ]
+      media: ["https://morenowtech.com/wp-content/uploads/2019/05/tico.jpg"]
     }
   ];
   projects = [
@@ -35,32 +32,28 @@ const ProjectCards = ({ top_projects, projects }) => {
       name: "Brandons project",
       project_id: 4,
       type: "React Application with cool stuff",
-      media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-      ]
+      media: ["https://morenowtech.com/wp-content/uploads/2019/05/guidr.jpg"]
     },
     {
       name: "Brandons project",
       project_id: 5,
       type: "React Application with cool stuff",
       media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
+        "https://morenowtech.com/wp-content/uploads/2015/01/soy-el-guia.jpg"
       ]
     },
     {
       name: "Brandons project",
       project_id: 6,
       type: "React Application with cool stuff",
-      media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
-      ]
+      media: ["https://morenowtech.com/wp-content/uploads/2015/01/Marvic.jpg"]
     },
     {
       name: "Brandons project",
       project_id: 7,
       type: "React Application with cool stuff",
       media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
+        "https://morenowtech.com/wp-content/uploads/2015/01/thedroptv.jpg"
       ]
     },
     {
@@ -68,7 +61,7 @@ const ProjectCards = ({ top_projects, projects }) => {
       project_id: 8,
       type: "React Application with cool stuff",
       media: [
-        "https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1"
+        "https://morenowtech.com/wp-content/uploads/2015/01/TheAptusGroup.jpg"
       ]
     },
     {
@@ -83,15 +76,15 @@ const ProjectCards = ({ top_projects, projects }) => {
 
   const map = arr =>
     arr.map(proj => (
-      <a
+      <Link
         key={proj.project_id}
         className="project-card"
-        href={`/student/project-view/${proj.project_id}`}
+        to={`/student/project-view/${proj.project_id}`}
       >
         <img src={proj.media[0]} alt="Project media" />
         <h3>{proj.name}</h3>
         <p>{proj.type}</p>
-      </a>
+      </Link>
     ));
   return (
     <div className="projects-wrapper">
@@ -99,7 +92,7 @@ const ProjectCards = ({ top_projects, projects }) => {
       <div className="projects-inner-wrapper">
         {map(top_projects)}
         <Fade collapse when={!hide}>
-          {map(projects)}
+          <div>{map(projects)}</div>
         </Fade>
       </div>
       <div className="projects-buttons-container">

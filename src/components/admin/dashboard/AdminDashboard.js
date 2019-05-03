@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css'
+import MaterialDatatable from "material-datatable";
 
 
 const AdminDashboard = props => {
@@ -11,6 +10,9 @@ const AdminDashboard = props => {
     </div>
   );
 };
+
+ 
+export default AdminDashboard;
 
 const mapStateToProps = state => {
   return {
