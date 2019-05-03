@@ -1,18 +1,18 @@
 .aboutMe {
-    background-color: $lightcolor;
-    width: 100%;
-    max-width: 400px;
-    min-height: 352px;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 0 3px 1px #CCCCCC;
-    box-shadow: 0 0 3px 1px #CCCCCC;
-    padding: 20px;
-    margin: 5px;
-    line-height: 1.5;
+	background-color: $lightcolor;
+	width: 100%;
+	max-width: 400px;
+	min-height: 215px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0 3px 1px #cccccc;
+	box-shadow: 0 0 3px 1px #cccccc;
+	padding: 20px;
+	margin: 5px;
+	line-height: 1.5;
 
-    h2 {
-        font-weight: 700;
-        text-align: left;
-        width: 100%;
-    }
+	h2 {
+		font-weight: 700;
+		text-align: left;
+		width: 100%;
+	}
 }
