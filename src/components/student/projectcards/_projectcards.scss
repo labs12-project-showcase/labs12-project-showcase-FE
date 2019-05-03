@@ -1,184 +1,184 @@
 .projects-wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 0 2%;
-	width: 100%;
-	background: #000000; /* Old browsers */
-	background: -moz-linear-gradient(
-		-45deg,
-		#000000 0%,
-		#000000 20%,
-		#000000 20%,
-		#474747 44%,
-		#2c2c2c 53%,
-		#111111 67%,
-		#1c1c1c 92%,
-		#131313 100%
-	); /* FF3.6-15 */
-	background: -webkit-linear-gradient(
-		-45deg,
-		#000000 0%,
-		#000000 20%,
-		#000000 20%,
-		#474747 44%,
-		#2c2c2c 53%,
-		#111111 67%,
-		#1c1c1c 92%,
-		#131313 100%
-	); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(
-		135deg,
-		#000000 0%,
-		#000000 20%,
-		#000000 20%,
-		#474747 44%,
-		#2c2c2c 53%,
-		#111111 67%,
-		#1c1c1c 92%,
-		#131313 100%
-	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	padding: 100px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2%;
+  width: 100%;
+  background: #000000; /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    #000000 0%,
+    #000000 20%,
+    #000000 20%,
+    #474747 44%,
+    #2c2c2c 53%,
+    #111111 67%,
+    #1c1c1c 92%,
+    #131313 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #000000 0%,
+    #000000 20%,
+    #000000 20%,
+    #474747 44%,
+    #2c2c2c 53%,
+    #111111 67%,
+    #1c1c1c 92%,
+    #131313 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    #000000 20%,
+    #000000 20%,
+    #474747 44%,
+    #2c2c2c 53%,
+    #111111 67%,
+    #1c1c1c 92%,
+    #131313 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  padding: 100px 10px;
 
-	h2 {
-		font-weight: 500;
-		font-size: 2.8rem;
-		color: $lightcolor;
-		margin-bottom: 50px;
-		text-transform: uppercase;
+  h2 {
+    font-weight: 500;
+    font-size: 2.8rem;
+    color: $lightcolor;
+    margin-bottom: 50px;
+    text-transform: uppercase;
 
-		.fa-project-diagram {
-			margin-right: 10px;
-		}
-	}
+    .fa-project-diagram {
+      margin-right: 10px;
+    }
+  }
 
-	a {
-		text-decoration: none;
-		color: black;
-	}
+  a {
+    text-decoration: none;
+    color: black;
+  }
 
-	button {
-		text-decoration: none;
-		border: none;
-		border-radius: 5px;
-		color: #ffffff;
-		padding: 10px;
-		margin: 5px;
-		background-color: $lambdaRed;
-		cursor: pointer;
+  button {
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px;
+    margin: 5px;
+    background-color: $lambdaRed;
+    cursor: pointer;
 
-		&:hover {
-			box-shadow: 0 0 6px 3px #cccccc;
-			background: #8d0e26;
-		}
-	}
+    &:hover {
+      box-shadow: 0 0 6px 3px #cccccc;
+      background: #8d0e26;
+    }
+  }
 
-	.projects-inner-wrapper {
-		@include box-align(space-around, center);
-		width: 100%;
-		max-width: 1000px;
-		@media (max-width: 600px) {
-			@include box-align(center, center);
-		}
+  .projects-inner-wrapper {
+    @include box-align(space-around, center);
+    width: 100%;
+    max-width: 1000px;
+    @media (max-width: 600px) {
+      @include box-align(center, center);
+    }
 
-		.react-reveal {
-			@include box-align(space-around, center);
-		}
-		.project-card {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-around;
-			width: 270px;
-			// height: 210px;
-			margin-bottom: 40px;
-			border-radius: 5px;
-			box-shadow: 0 0 6px 3px #1e2323;
-			background-color: $backg-light;
+    .react-reveal {
+      @include box-align(space-around, center);
+    }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: 270px;
+      // height: 210px;
+      margin-bottom: 40px;
+      border-radius: 5px;
+      box-shadow: 0 0 6px 3px #1e2323;
+      background-color: $backg-light;
 
-			img {
-				border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
-				max-width: 100%;
-				overflow: hidden;
-			}
+      img {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        max-width: 100%;
+        overflow: hidden;
+      }
 
-			h3,
-			p {
-				margin: 5px 0;
-			}
+      h3,
+      p {
+        margin: 5px 0;
+      }
 
-			h3 {
-				font-weight: bold;
-			}
+      h3 {
+        font-weight: bold;
+      }
 
-			p {
-				margin-bottom: 10px;
-			}
-		}
+      p {
+        margin-bottom: 10px;
+      }
+    }
 
-		.drag-drop-target {
-			// position: relative;
-			padding: 5px;
-			box-shadow: 0 0 6px 3px #cccccc;
+    .drag-drop-target {
+      position: relative;
+      padding: 5px;
+      box-shadow: 0 0 6px 3px #cccccc;
 
-			.drag-target-cover {
-				cursor: grab;
-				height: 100%;
-				width: 100%;
-				// position: absolute;
-				top: 0;
-				left: 0;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-			}
+      .drag-target-cover {
+        cursor: grab;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
 
-			.drop-target-cover {
-				cursor: grab;
-				height: 100%;
-				width: 100%;
-				// position: absolute;
-				top: 0;
-				left: 0;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-			}
+      .drop-target-cover {
+        cursor: grab;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
 
-			.card-content {
-				outline: 3px dashed lightgray;
-				padding: 3px;
-				width: 100%;
-				height: 100%;
-			}
+      .card-content {
+        outline: 3px dashed lightgray;
+        padding: 3px;
+        width: 100%;
+        height: 100%;
+      }
 
-			.drop-target-cover {
-				// outline: 3px dashed lightgray;
-			}
-		}
+      .drop-target-cover {
+        // outline: 3px dashed lightgray;
+      }
+    }
 
-		.edit-project-message {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-bottom: 40px;
-			padding-bottom: 5px;
-			font-weight: bold;
-			border-bottom: 2px solid $lambdaRed;
-		}
+    .edit-project-message {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 5px;
+      font-weight: bold;
+      border-bottom: 2px solid $lambdaRed;
+    }
 
-		.projects-buttons-container {
-			button {
-				.fa-chevron-down {
-					margin-left: 10px;
-				}
-			}
-		}
-	}
+    .projects-buttons-container {
+      button {
+        .fa-chevron-down {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
 }

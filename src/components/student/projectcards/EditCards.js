@@ -32,8 +32,6 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
     }, []);
 
     //Update state of top projects and projects. Also clear dragged index.
-    console.log("NEW TOP PROJECTS", newTops);
-    console.log("NEW PROJECTS", newBottoms);
     setTopProjects(newTops);
     setProjects(newBottoms);
     updateDragged({});
@@ -53,7 +51,13 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
           onDrag={e => beginDrag(e, index)}
         />
 
-        <img src={proj.media[0]} alt="Project media" />
+        <img
+          src={
+            proj.media[0] ||
+            "https://assets-global.website-files.com/5ca6aa5b04fdce3dfc90bd80/5cafe65bc08e6fed1ea341fb_Lambda_Avatar_Red-p-500.jpeg"
+          }
+          alt="Project media"
+        />
         <h3>{proj.name}</h3>
         <p>{proj.type}</p>
       </div>
@@ -68,7 +72,13 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
       >
         <div className="drop-target-cover" data-index={index} />
         <div className="card-content">
-          <img src={proj.media[0]} alt="Project media" />
+          <img
+            src={
+              proj.media[0] ||
+              "https://assets-global.website-files.com/5ca6aa5b04fdce3dfc90bd80/5cafe65bc08e6fed1ea341fb_Lambda_Avatar_Red-p-500.jpeg"
+            }
+            alt="Project media"
+          />
           <h3>{proj.name}</h3>
           <p>{proj.type}</p>
         </div>
