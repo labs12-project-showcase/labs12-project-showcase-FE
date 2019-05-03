@@ -7,22 +7,22 @@ $primary-color: #333;
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+	box-sizing: border-box !important;
 }
 
 html {
-    font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-    font-size: 1.6rem;
-    font-family: 'Lato', sans-serif;
-    background-color: $backg-light;
+	font-size: 1.6rem;
+	font-family: 'Lato', sans-serif;
+	background-color: $backg-light;
 }
 
 li,
 input,
 label,
 textarea {
-    font-family: 'Lato', sans-serif;
+	font-family: 'Lato', sans-serif;
 }

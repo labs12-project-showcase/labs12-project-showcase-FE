@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { login, logout } from '../auth/authActions.js';
 import { NavLink } from 'react-router-dom';
 import { validateJwt } from '../config/utilities.js';
-// import loginIcon from '../assets/login.png';
-// import logoutIcon from '../assets/logout.png';
 
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
@@ -57,13 +55,13 @@ class TopBar extends Component {
 					<div className="subNav">
 						<nav>
 							<NavLink exact to={`/student/profile/${this.props.id}`}>
-								Return To Profile
+								<i className="fas fa-undo" /> Return To Profile
 							</NavLink>
 							<NavLink exact to="/student/new-project">
-								Add New Project
+								<i className="fas fa-plus" /> Add New Project
 							</NavLink>
 							<NavLink exact to="/profile-quick-start">
-								Edit Profile
+								<i className="fas fa-user-edit" /> Edit Profile
 							</NavLink>
 						</nav>
 					</div>

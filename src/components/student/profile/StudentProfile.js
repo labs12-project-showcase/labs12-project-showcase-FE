@@ -75,7 +75,7 @@ class StudentProfile extends React.Component {
 								href={website}
 								target="_blank"
 							>
-								Portfolio
+								<i className="fas fa-briefcase" /> Portfolio
 							</a>
 							<a rel="noopener noreferrer" href={linkedin} target="_blank">
 								<i className="fab fa-linkedin-in" />

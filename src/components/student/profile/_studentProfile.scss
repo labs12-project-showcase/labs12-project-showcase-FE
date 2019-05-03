@@ -143,10 +143,16 @@
 					text-decoration: none;
 					border-radius: 7px;
 					color: #ffffff;
-					padding: 9px;
+					padding: 9px 10px;
 					margin: 0 5px;
 					background-color: $lambdaRed;
 					cursor: pointer;
+					i {
+						margin: 0;
+						padding: 0;
+						width: inherit;
+						height: auto;
+					}
 
 					&:hover {
 						background-color: darken($lambdaRed, 10%);

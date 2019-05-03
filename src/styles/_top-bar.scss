@@ -75,6 +75,9 @@
 			color: $lightcolor;
 			margin: 0 5px;
 			border-radius: 5px;
+			i {
+				margin-right: 5px;
+			}
 
 			&:last-child {
 				margin-right: 0;
