@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import ProfileqsForm from './ProfileqsForm';
-import { getProfileData } from './profileqsActions';
+import React from "react";
+import { connect } from "react-redux";
+import ProfileqsForm from "./ProfileqsForm";
+import { getProfileData } from "./profileqsActions";
 
 class Profileqs extends React.Component {
   userExists = this.props.profile.profileData.exists || false;
@@ -36,8 +36,8 @@ class Profileqs extends React.Component {
                 <>
                   <p>
                     We have prepopulated some of the fields with information
-                    from GitHub. That information will only be saved after
-                    you submit the form.
+                    from GitHub. That information will only be saved after you
+                    submit the form.
                   </p>
                 </>
               ) : null}
