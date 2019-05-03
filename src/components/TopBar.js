@@ -55,13 +55,13 @@ class TopBar extends Component {
 					<div className="subNav">
 						<nav>
 							<NavLink exact to={`/student/profile/${this.props.id}`}>
-								Your Profile
+								<i className="far fa-id-card" /> Your Profile
 							</NavLink>
 							<NavLink exact to="/student/new-project">
-								Add New Project
+								<i className="fas fa-plus" /> Add New Project
 							</NavLink>
 							<NavLink exact to="/profile-quick-start">
-								Edit Profile
+								<i className="fas fa-user-edit" /> Edit Profile
 							</NavLink>
 						</nav>
 					</div>

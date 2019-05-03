@@ -51,7 +51,7 @@ class StudentProfile extends React.Component {
 				<header>
 					<div className="profile-container">
 						<div className="picture">
-							<img src={profile_pic} alt="Profile picture" />
+							<img src={profile_pic} alt="Profile" />
 						</div>
 						<div className="name-cont">
 							<h1>{name}</h1>

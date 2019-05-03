@@ -52,10 +52,15 @@
 
 			.name-cont {
 				width: 100%;
-				max-width: 350px;
+				max-width: 340px;
 				min-width: 300px;
 				color: $lightcolor;
+				text-align: center;
 				transform: translateY(20px);
+				@media (max-width: 600px) {
+					transform: translateY(60px);
+					text-align: center;
+				}
 
 				h1 {
 					font-size: 3.8rem;
@@ -63,10 +68,14 @@
 					margin-bottom: 15px;
 				}
 
-				h2,
-				h3 {
+				h2 {
 					font-size: 1.6rem;
-					font-weight: 400;
+					font-weight: 500;
+					margin-bottom: 5px;
+				}
+				h3 {
+					font-size: 1.4rem;
+					font-weight: 300;
 					margin-bottom: 5px;
 				}
 			}

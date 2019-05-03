@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getData } from './studentDashboardActions';
 import badge from '../../../assets/lambda-badge.png';
-import tony from '../../../assets/tony.jpg';
 import Projects from '../projectcards/ProjectCards';
 import NotEndorsed from '../notEndorsed/NotEndorsed';
 import AboutMe from '../aboutMe/AboutMe';
@@ -12,8 +11,6 @@ import Share from '../share/Share';
 import Status from '../status/Status';
 import Skills from '../skills/Skills';
 import Progress from '../progress/Progress';
-
-// yarn add react-id-swiper@latest swiper@latest
 
 class StudentDashboard extends React.Component {
 	componentDidMount() {
@@ -40,7 +37,9 @@ class StudentDashboard extends React.Component {
 			cohort,
 			desired_position,
 			projects,
-			top_projects
+			top_projects,
+			track,
+			profile_pic
 		} = this.props.studentDashboard.profile;
 
 		return (
@@ -49,7 +48,7 @@ class StudentDashboard extends React.Component {
 				<header>
 					<div className="profile-container">
 						<div className="picture">
-							<img src={tony} alt="Tony Stark" />
+							<img src={profile_pic} alt="Profile picture" />
 						</div>
 						<div className="name-cont">
 							<h1>{name}</h1>
