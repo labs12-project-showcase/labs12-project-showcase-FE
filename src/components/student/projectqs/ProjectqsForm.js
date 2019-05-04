@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Formik } from "formik";
 
-import { ProjectQsSchema, formSchema } from "./ProjectqsFormSchema";
+import { ProjectQsSchema, FormSchema } from "./ProjectqsFormSchema";
 import {
   createProject,
   getProject,
@@ -11,6 +11,7 @@ import {
 } from "./projectqsActions";
 
 const ProjectqsForm = ({ dispatch, ...props }) => {
+  const [formSkillsList, setFormSkillsList] = useState([]);
   const [error, setError] = useState(false);
   useEffect(() => {
     if (props.id) {
@@ -45,7 +46,13 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         onSubmit={submit}
         validationSchema={ProjectQsSchema}
         enableReinitialize
-        render={formSchema}
+        render={props => (
+          <FormSchema
+            skillsList={formSkillsList}
+            setSkillsList={setFormSkillsList}
+            {...props}
+          />
+        )}
       />
       {error ? (
         <div className="modal-wrapper">
