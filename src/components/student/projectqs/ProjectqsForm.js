@@ -13,30 +13,27 @@ import {
 const ProjectqsForm = ({ dispatch, ...props }) => {
   const [formSkillsList, setFormSkillsList] = useState([]);
   const [error, setError] = useState(false);
+
   useEffect(() => {
     if (props.id) {
-      dispatch(getProject(props.id))
-        .then(res => {
-          console.log("Fetched project");
-        })
-        .catch(err => {
-          console.log("Error", err);
-        });
+      dispatch(getProject(props.id));
     } else {
       dispatch(clearProjectData);
     }
   }, [dispatch, props.id]);
 
   const submit = values => {
-    dispatch(createProject({ ...values, student_id: props.profile.id }))
-      .then(res => {
-        console.log("success");
-        props.history.push(`/student/profile/${props.profile.id}`);
-      })
-      .catch(err => {
-        console.log("failure", err);
-        setError(true);
-      });
+    if (!props.id) {
+      dispatch(createProject({ ...values, student_id: props.profile.id }))
+        .then(res => {
+          props.history.push(`/student/profile/${props.profile.id}`);
+        })
+        .catch(err => {
+          setError(true);
+        });
+    } else {
+      //dispatch update project stuff here
+    }
   };
 
   return (

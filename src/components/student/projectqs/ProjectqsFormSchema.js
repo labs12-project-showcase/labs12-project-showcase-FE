@@ -177,7 +177,7 @@ export const FormSchema = ({
       </label>
 
       <label className="stretch-input">
-        <span className="input-label">Skills</span>
+        <span className="input-label">Technological Architecture</span>
         <br />
         <Field
           name="skills"
@@ -214,7 +214,7 @@ export const FormSchema = ({
                       return;
                   }
                 }}
-                placeholder="Type a skill and press enter..."
+                placeholder="Type a technology and press enter..."
                 styles={reactSelectStylesStretch}
                 value={skillsList}
               />
