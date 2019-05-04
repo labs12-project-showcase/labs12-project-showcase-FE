@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
 import NotApproved from "../notApproved/NotApproved";
+import ProgressProject from "../progressProject/ProgressProject";
 
 import project from "../../../assets/project-img.jpg";
 import one from "../../../assets/one.jpg";
@@ -75,59 +76,63 @@ const ProjectView = ({
         </div>
       </header>
       <main>
-        <div className="sales-pitch">
-          <h2>Customer Sales Pitch</h2>
-          <p>{projectData.customer_pitch || "Please add customer pitch"}</p>
+      <div className="pitch-and-projectURL-container">
+          <div className="sales-pitch">
+            <h2>Customer Sales Pitch</h2>
+            <p>{projectData.customer_pitch || "Please add customer pitch"}</p>
+          </div>
+          <div className="sales-pitch">
+            <h2>Technical Sales Pitch</h2>
+            <p>{projectData.tech_pitch || "Please add tech pitch"}</p>
+          </div>
+          <div className="project-urls-container">
+            <a
+              href={projectData.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="github-chip"
+            >
+              <i className="fab fa-github" />
+            </a>
+            <a
+              href={projectData.fe_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Front End
+            </a>
+            <a
+              href={projectData.be_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Back End
+            </a>
+            <a
+              href={projectData.market_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Marketing
+            </a>
+            <a
+              href={projectData.mobile_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Mobile
+            </a>
+            <a
+              href={projectData.design_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Design
+            </a>
+          </div>
         </div>
-        <div className="sales-pitch">
-          <h2>Technical Sales Pitch</h2>
-          <p>{projectData.tech_pitch || "Please add tech pitch"}</p>
-        </div>
-
-        <div className="project-urls-container">
-          <a
-            href={projectData.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github
-          </a>
-          <a
-            href={projectData.fe_link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Front End
-          </a>
-          <a
-            href={projectData.be_link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Back End
-          </a>
-          <a
-            href={projectData.market_link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Marketing
-          </a>
-          <a
-            href={projectData.mobile_link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Mobile
-          </a>
-          <a
-            href={projectData.design_link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Design
-          </a>
-        </div>
+        {/* {sameUser && <Progress />} */}
+        <ProgressProject />
         <hr />
         <h2>Who Built This?</h2>
         <div className="students-names">
