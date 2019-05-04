@@ -208,6 +208,12 @@
             align-items: center;
             opacity: 1;
 
+            h2 {
+              font-weight: bold;
+              font-size: 2rem;
+              margin-bottom: 25px;
+            }
+
             form {
               position: relative;
 

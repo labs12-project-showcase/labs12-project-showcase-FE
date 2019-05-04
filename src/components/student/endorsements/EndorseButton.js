@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import axiosAuth from "../../../auth/axiosAuth";
 
 const EndorseButton = ({ profile_id, id }) => {
-  const [hide, toggleHide] = useState(false);
+  const [hide, toggleHide] = useState(true);
   const [message, updateMessage] = useState("");
+  const [alert, updateAlert] = useState("Say something nice..");
 
   const handleSubmit = () => {
     //Decided against actions/reducers because I don't think we need to track this in global state, unless we want to dispatch a new fetch profile maybe?
@@ -19,13 +20,14 @@ const EndorseButton = ({ profile_id, id }) => {
           }
         )
         .then(res => {
+          updateAlert("");
           toggleHide(true);
         })
         .catch(err => {
-          updateMessage(
-            "Something went wrong... please make sure you are logged in and try again."
-          );
+          updateAlert("Something went wrong...");
         });
+    } else {
+      updateAlert("Type more!");
     }
   };
 
@@ -44,6 +46,7 @@ const EndorseButton = ({ profile_id, id }) => {
       {!hide ? (
         <div className="modal-wrapper" onClick={closeForm}>
           <div className="endorse-modal" onClick={e => e.stopPropagation()}>
+            <h2>{alert}</h2>
             <form className="endorse-form">
               <label htmlFor="endorsement" id="endorse-label">
                 Endorsement
