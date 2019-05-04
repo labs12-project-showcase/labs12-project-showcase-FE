@@ -1,213 +1,289 @@
 .student-dashboard {
-	min-height: 85vh;
+  min-height: 85vh;
 
-	header {
-		background: #1e50ee; /* Old browsers */
-		background: -moz-linear-gradient(
-			-45deg,
-			#1e50ee 0%,
-			#002070 12%,
-			#002070 83%,
-			#1e50ee 99%
-		); /* FF3.6-15 */
-		background: -webkit-linear-gradient(
-			-45deg,
-			#1e50ee 0%,
-			#002070 12%,
-			#002070 83%,
-			#1e50ee 99%
-		); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(
-			135deg,
-			#1e50ee 0%,
-			#002070 12%,
-			#002070 83%,
-			#1e50ee 99%
-		); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e50ee', endColorstr='#1e50ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-		height: 280px;
+  header {
+    background: #1e50ee; /* Old browsers */
+    background: -moz-linear-gradient(
+      -45deg,
+      #1e50ee 0%,
+      #002070 12%,
+      #002070 83%,
+      #1e50ee 99%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      -45deg,
+      #1e50ee 0%,
+      #002070 12%,
+      #002070 83%,
+      #1e50ee 99%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      135deg,
+      #1e50ee 0%,
+      #002070 12%,
+      #002070 83%,
+      #1e50ee 99%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e50ee', endColorstr='#1e50ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    height: 280px;
 
-		@media (max-width: 600px) {
-			height: auto;
-		}
+    @media (max-width: 600px) {
+      height: auto;
+    }
 
-		.profile-container {
-			width: 100%;
-			max-width: 1024px;
-			margin: 0 auto;
-			@include box-align(space-between, flex-end);
-			@media (max-width: 600px) {
-				flex-direction: column;
-				@include box-align();
-			}
+    .profile-container {
+      width: 100%;
+      max-width: 1024px;
+      margin: 0 auto;
+      @include box-align(space-between, flex-end);
+      @media (max-width: 600px) {
+        flex-direction: column;
+        @include box-align();
+      }
 
-			.picture {
-				width: 250px;
-				height: 250px;
-				border-radius: 50%;
-				overflow: hidden;
-				border: 10px solid $lightcolor;
-				margin: 0 auto;
-				transform: translateY(130px);
+      .picture {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 10px solid $lightcolor;
+        margin: 0 auto;
+        transform: translateY(130px);
 
-				img {
-					width: 100%;
-					height: auto;
-				}
+        img {
+          width: 100%;
+          height: auto;
+        }
 
-				@media (max-width: 600px) {
-					transform: translateY(50px);
-				}
-			}
+        @media (max-width: 600px) {
+          transform: translateY(50px);
+        }
+      }
 
-			.name-cont {
-				width: 100%;
-				max-width: 340px;
-				min-width: 300px;
-				color: $lightcolor;
-				text-align: center;
-				transform: translateY(20px);
-				@media (max-width: 600px) {
-					transform: translateY(60px);
-					text-align: center;
-				}
+      .name-cont {
+        width: 100%;
+        max-width: 340px;
+        min-width: 300px;
+        color: $lightcolor;
+        text-align: center;
+        transform: translateY(20px);
+        @media (max-width: 600px) {
+          transform: translateY(60px);
+          text-align: center;
+        }
 
-				h1 {
-					font-size: 3.8rem;
-					font-weight: 700;
-					margin-bottom: 15px;
-				}
+        h1 {
+          font-size: 3.8rem;
+          font-weight: 700;
+          margin-bottom: 15px;
+        }
 
-				h2 {
-					font-size: 1.6rem;
-					font-weight: 500;
-					margin-bottom: 5px;
-				}
-				h3 {
-					font-size: 1.4rem;
-					font-weight: 300;
-					margin-bottom: 5px;
-				}
-			}
+        h2 {
+          font-size: 1.6rem;
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 300;
+          margin-bottom: 5px;
+        }
+      }
 
-			.badge {
-				width: 100%;
-				max-width: 350px;
-				@media (max-width: 600px) {
-					width: auto;
-				}
+      .badge {
+        width: 100%;
+        max-width: 350px;
+        @media (max-width: 600px) {
+          width: auto;
+        }
 
-				img {
-					display: block;
-					width: 150px;
-					height: auto;
-					margin: 0 0 0 auto;
-					@media (max-width: 600px) {
-						margin: 85px 0px 24px;
-					}
-				}
+        img {
+          display: block;
+          width: 150px;
+          height: auto;
+          margin: 0 0 0 auto;
+          @media (max-width: 600px) {
+            margin: 85px 0px 24px;
+          }
+        }
 
-				.contact-btn {
-					width: 100%;
-					max-width: 450px;
-					@include box-align(flex-start, center);
-					margin-bottom: 20px;
+        .contact-btn {
+          width: 100%;
+          max-width: 450px;
+          @include box-align(flex-start, center);
+          margin-bottom: 20px;
 
-					@media (max-width: 600px) {
-						justify-content: center;
-					}
+          @media (max-width: 600px) {
+            justify-content: center;
+          }
 
-					a {
-						text-decoration: none;
-						border-radius: 5px;
-						color: $lightcolor;
-						padding: 10px;
-						margin: 5px;
-						background-color: darken($lambdaRed, 10%);
-						cursor: pointer;
+          a {
+            text-decoration: none;
+            border-radius: 5px;
+            color: $lightcolor;
+            padding: 10px;
+            margin: 5px;
+            background-color: darken($lambdaRed, 10%);
+            cursor: pointer;
 
-						&:hover {
-							-webkit-box-shadow: 0 0 3px 3px #722227;
-							box-shadow: 0 0 3px 3px #722227;
-						}
-					}
-				}
-			}
+            &:hover {
+              -webkit-box-shadow: 0 0 3px 3px #722227;
+              box-shadow: 0 0 3px 3px #722227;
+            }
+          }
+        }
+      }
 
-			.social-links {
-				width: 100%;
-				max-width: 830px;
-				margin-top: 50px;
-				@include box-align(flex-end, center);
-				@media (max-width: 600px) {
-					margin: 20px auto;
-					justify-content: center;
-				}
+      .social-links {
+        width: 100%;
+        max-width: 830px;
+        margin-top: 50px;
+        @include box-align(flex-end, center);
+        @media (max-width: 600px) {
+          margin: 20px auto;
+          justify-content: center;
+        }
 
-				i {
-					margin: 0 10px;
-					background-color: $lambdaRed;
-					color: $lightcolor;
-					width: 34px;
-					height: 34px;
-					padding: 9px;
-					border-radius: 50%;
-					cursor: pointer;
+        i {
+          margin: 0 10px;
+          background-color: $lambdaRed;
+          color: $lightcolor;
+          width: 34px;
+          height: 34px;
+          padding: 9px;
+          border-radius: 50%;
+          cursor: pointer;
 
-					&:hover {
-						background-color: darken($lambdaRed, 10%);
-					}
-				}
+          &:hover {
+            background-color: darken($lambdaRed, 10%);
+          }
+        }
 
-				.portfolio-btn {
-					text-decoration: none;
-					border-radius: 7px;
-					color: #ffffff;
-					padding: 9px 10px;
-					margin: 0 5px;
-					background-color: $lambdaRed;
-					cursor: pointer;
-					i {
-						margin: 0;
-						padding: 0;
-						width: inherit;
-						height: auto;
-					}
+        .endorse-button {
+          -webkit-appearance: none;
+        }
+        .portfolio-btn,
+        .endorse-button {
+          border: none;
+          text-decoration: none;
+          border-radius: 7px;
+          color: #ffffff;
+          padding: 9px 10px;
+          margin: 0 5px;
+          background-color: $lambdaRed;
+          cursor: pointer;
+          i {
+            margin: 0;
+            padding: 0;
+            width: inherit;
+            height: auto;
+          }
 
-					&:hover {
-						background-color: darken($lambdaRed, 10%);
-					}
-				}
-			}
-		}
-	}
+          &:hover {
+            background-color: darken($lambdaRed, 10%);
+          }
+        }
 
-	main {
-		margin: 100px auto;
-		width: 100%;
-		max-width: 1024px;
-		@include box-align(space-around, center);
+        .modal-wrapper {
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 98;
+          height: 100%;
+          width: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.4);
 
-		hr {
-			margin: 20px auto;
-			border: 1px solid $lambdaRed;
-			width: 100%;
-		}
+          .endorse-modal {
+            box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            background-color: white;
+            margin: 200px auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 99;
+            width: 300px;
+            padding: 35px 25px;
+            justify-content: flex-start;
+            align-items: center;
+            opacity: 1;
 
-		.status-skills {
-			@include box-align(center, space-between);
-			width: 100%;
-			padding: 0 5%;
-		}
+            form {
+              position: relative;
 
-		.hobbies {
-			font-size: 1.6rem;
+              #endorse-label {
+                color: gray;
+                background: white;
+                padding: 0 4px;
+                position: absolute;
+                top: -8px;
+                left: 8px;
+              }
 
-			h2 {
-				font-weight: 700;
-				font-size: 1.8rem;
-				margin-bottom: 20px;
-			}
-		}
-	}
+              .endorse-input {
+                border-radius: 5px;
+                border: 1px solid lightgray;
+                margin-bottom: 20px;
+                padding-top: 10px;
+              }
+
+              .endorse-form-buttons {
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+
+                button {
+                  -webkit-appearance: none;
+                  background-color: $lambdaRed;
+                  border: none;
+                  color: white;
+                  border-radius: 5px;
+                  margin: 0 auto;
+                  padding: 3px 9px;
+                  font-size: 1.8rem;
+                  cursor: pointer;
+                  transition: 0.2s;
+
+                  &:hover {
+                    transform: translateY(-2px);
+                    background-color: darken($lambdaRed, 10%);
+                    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.6);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    margin: 100px auto;
+    width: 100%;
+    max-width: 1024px;
+    @include box-align(space-around, center);
+
+    hr {
+      margin: 20px auto;
+      border: 1px solid $lambdaRed;
+      width: 100%;
+    }
+
+    .status-skills {
+      @include box-align(center, space-between);
+      width: 100%;
+      padding: 0 5%;
+    }
+
+    .hobbies {
+      font-size: 1.6rem;
+
+      h2 {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+    }
+  }
 }
