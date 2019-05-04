@@ -90,8 +90,9 @@ const ProjectView = ({
               href={projectData.github}
               target="_blank"
               rel="noopener noreferrer"
+              className="github-chip"
             >
-              Github
+              <i className="fab fa-github" />
             </a>
             <a
               href={projectData.fe_link}

@@ -184,7 +184,7 @@
 
 		a {
 			text-decoration: none;
-			border-radius: 5px;
+			border-radius: 10px;
 			color: #ffffff;
 			padding: 10px;
 			margin: 5px;
@@ -195,6 +195,17 @@
 				background-color: darken($lambdaRed, 10%);
 			}
 		}
+
+		.github-chip {
+			border-radius: 50%;
+
+			.fa-github {
+				font-size: 3rem;
+				padding: 1px;
+			}
+		}
+
+
 		}
     }
 
