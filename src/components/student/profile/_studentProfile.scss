@@ -277,7 +277,7 @@
     }
 
     .status-skills {
-      @include box-align(center, space-between);
+      @include box-align(space-between, center);
       width: 100%;
       padding: 0 5%;
     }

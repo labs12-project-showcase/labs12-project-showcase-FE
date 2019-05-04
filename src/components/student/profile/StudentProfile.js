@@ -36,8 +36,8 @@ class StudentProfile extends React.Component {
       github,
       website,
       acclaim,
-      cohort,
-      desired_position,
+      cohort_name,
+      desired_title,
       projects,
       top_projects,
       track,
@@ -45,7 +45,6 @@ class StudentProfile extends React.Component {
     } = this.props.studentProfile.profile;
 
     const sameUser = id === this.props.loggedInProfile.id;
-    console.log("PROFILE ID", id);
 
     return (
       <div className="student-dashboard">
@@ -100,9 +99,9 @@ class StudentProfile extends React.Component {
           <hr />
           <div className="status-skills">
             <Status
-              cohort={cohort}
+              cohort={cohort_name}
               desired_locations={desired_locations || []}
-              desired_position={desired_position}
+              desired_title={desired_title}
             />
             <Skills skills={skills || []} top_skills={top_skills || []} />
           </div>
