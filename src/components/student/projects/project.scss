@@ -157,41 +157,59 @@
 			margin: 20px auto;
 			border: 1px solid $lambdaRed;
 			width: 100%;
-		}
+    }
+    
+    .pitch-and-projectURL-container {
+      display: flex;
+	  flex-direction: column;
 
-		.sales-pitch {
-			width: 100%;
-			max-width: 470px;
-			background-color: $lightcolor;
-			padding: 30px 20px;
-			margin: 30px auto;
-			border-radius: 5px;
+      .sales-pitch {
+        width: 100%;
+        max-width: 500px;
+        background-color: $lightcolor;
+        padding: 30px 20px;
+        margin: 30px auto;
+        border-radius: 5px;
+  
+        h2 {
+          text-align: left;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+	  }
+	  
+	  .project-urls-container {
+		min-height: 100px;
+		@include box-align();
 
-			h2 {
-				text-align: left;
-				font-weight: 700;
-				margin-bottom: 10px;
+		a {
+			text-decoration: none;
+			border-radius: 10px;
+			color: #ffffff;
+			padding: 10px;
+			margin: 5px;
+			background-color: $lambdaRed;
+			cursor: pointer;
+
+			&:hover {
+				background-color: darken($lambdaRed, 10%);
 			}
 		}
 
-		.project-urls-container {
-			min-height: 100px;
-			@include box-align();
+		.github-chip {
+			border-radius: 50%;
 
-			a {
-				text-decoration: none;
-				border-radius: 5px;
-				color: #ffffff;
-				padding: 10px;
-				margin: 5px;
-				background-color: $lambdaRed;
-				cursor: pointer;
-
-				&:hover {
-					background-color: darken($lambdaRed, 10%);
-				}
+			.fa-github {
+				font-size: 3rem;
+				padding: 1px;
 			}
 		}
+
+
+		}
+    }
+
+		
 
 		h2 {
 			width: 100%;
