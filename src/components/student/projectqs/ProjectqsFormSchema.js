@@ -36,6 +36,7 @@ export const FormSchema = ({
   touched,
   isSubmitting,
   initialValues,
+  project_id,
   setSkillsList,
   skillsList,
   values
@@ -262,7 +263,7 @@ export const FormSchema = ({
       </label>
 
       <button type="submit" disabled={isSubmitting}>
-        Update Project
+        {project_id ? "Update Project" : "Create Project"}
       </button>
     </Form>
   );

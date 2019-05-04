@@ -45,6 +45,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         enableReinitialize
         render={props => (
           <FormSchema
+            project_id={props.id}
             skillsList={formSkillsList}
             setSkillsList={setFormSkillsList}
             {...props}
