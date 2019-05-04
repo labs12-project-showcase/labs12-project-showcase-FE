@@ -7,9 +7,9 @@ const ProgressProject = ({ projectData }) => {
   const [percentage, updatePercent] = useState(0);
   const [full, updateFull] = useState([]);
   const [empty, updateEmpty] = useState([]);
-  //Fake some profile data here
+  //Fake some project data here
   useEffect(() => {
-    //Should be props.profileData later
+    //Should be props.projectData later
     checkFields(data);
   }, []);
 
@@ -79,7 +79,7 @@ const ProgressProject = ({ projectData }) => {
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile.profileData
+  project: state.project.projectData
 });
 
 export default connect(mapStateToProps)(ProgressProject);
