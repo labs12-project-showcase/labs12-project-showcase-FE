@@ -13,6 +13,7 @@ import {
 const ProjectqsForm = ({ dispatch, ...props }) => {
   const [formSkillsList, setFormSkillsList] = useState([]);
   const [error, setError] = useState(false);
+  console.log(formSkillsList);
 
   useEffect(() => {
     if (props.id) {
@@ -24,7 +25,13 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
 
   const submit = values => {
     if (!props.id) {
-      dispatch(createProject({ ...values, student_id: props.profile.id }))
+      dispatch(
+        createProject({
+          ...values,
+          student_id: props.profile.id,
+          skills: formSkillsList.map(skill => skill.value)
+        })
+      )
         .then(res => {
           props.history.push(`/student/profile/${props.profile.id}`);
         })

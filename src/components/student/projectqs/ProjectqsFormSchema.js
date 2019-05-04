@@ -43,9 +43,9 @@ export const FormSchema = ({
 }) => {
   const [skillsInput, setSkillsInput] = useState();
 
+  console.log(initialValues.project_skills);
   const createSkillsOption = label => ({
     label,
-    topSkill: false,
     value: label
   });
 
@@ -56,10 +56,6 @@ export const FormSchema = ({
       // and make it into the array of objects React Select expects
       initialValues.project_skills.map(skill => {
         const option = createSkillsOption(skill);
-        // set `topSkill: true` if it's in `top_skills` array
-        if (initialValues.top_skills.includes(skill)) {
-          option.topSkill = true;
-        }
         return option;
       })
     );
