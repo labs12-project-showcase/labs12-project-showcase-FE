@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    margin-left: 100px;
 
     .react-sweet-progress-circle-outer {
         margin: 0 auto;
@@ -11,14 +12,14 @@
         position: absolute;
         text-align: center;
         top: 30px;
-        left: 55px;
+        left: 65px;
         font-weight: 700;
     }
 
     .bottom-text {
         font-weight: 700;
         top: 87px;
-        left: 43px;
+        left: 57px;
         position: absolute;
         text-align: center;
     }

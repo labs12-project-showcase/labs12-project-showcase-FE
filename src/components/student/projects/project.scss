@@ -159,13 +159,13 @@
 			width: 100%;
     }
     
-    .pitch-and-progress-container {
+    .pitch-and-projectURL-container {
       display: flex;
-      flex-direction: row;
+	  flex-direction: column;
 
       .sales-pitch {
         width: 100%;
-        max-width: 470px;
+        max-width: 500px;
         background-color: $lightcolor;
         padding: 30px 20px;
         margin: 30px auto;
@@ -176,27 +176,29 @@
           font-weight: 700;
           margin-bottom: 10px;
         }
-      }
-    }
+	  }
+	  
+	  .project-urls-container {
+		min-height: 100px;
+		@include box-align();
 
-		.project-urls-container {
-			min-height: 100px;
-			@include box-align();
+		a {
+			text-decoration: none;
+			border-radius: 5px;
+			color: #ffffff;
+			padding: 10px;
+			margin: 5px;
+			background-color: $lambdaRed;
+			cursor: pointer;
 
-			a {
-				text-decoration: none;
-				border-radius: 5px;
-				color: #ffffff;
-				padding: 10px;
-				margin: 5px;
-				background-color: $lambdaRed;
-				cursor: pointer;
-
-				&:hover {
-					background-color: darken($lambdaRed, 10%);
-				}
+			&:hover {
+				background-color: darken($lambdaRed, 10%);
 			}
 		}
+		}
+    }
+
+		
 
 		h2 {
 			width: 100%;
