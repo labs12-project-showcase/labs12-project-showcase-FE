@@ -43,23 +43,21 @@ export const FormSchema = ({
 }) => {
   const [skillsInput, setSkillsInput] = useState();
 
-  console.log(initialValues.project_skills);
   const createSkillsOption = label => ({
     label,
     value: label
   });
 
   useEffect(() => {
-    // console.log('useEffect for default skills running');
-    setSkillsList(
-      // take the plain array from initialValues
-      // and make it into the array of objects React Select expects
-      initialValues.project_skills.map(skill => {
-        const option = createSkillsOption(skill);
-        return option;
-      })
-    );
-  }, [initialValues, setSkillsList]);
+    if (initialValues.project_skills) {
+      setSkillsList(
+        initialValues.project_skills.map(skill => {
+          const option = createSkillsOption(skill);
+          return option;
+        })
+      );
+    }
+  }, [initialValues.project_skills, setSkillsList]);
 
   return (
     <Form className="project-quick-start-form">
@@ -192,8 +190,9 @@ export const FormSchema = ({
                 onChange={list => {
                   setSkillsList(list);
                 }}
-                // track the input in state
-                onInputChange={inputValue => setSkillsInput(inputValue)}
+                onInputChange={inputValue => {
+                  setSkillsInput(inputValue);
+                }}
                 // add the skill if `Enter` or `Tab` is pressed
                 onKeyDown={event => {
                   if (!skillsInput) return;
@@ -205,6 +204,7 @@ export const FormSchema = ({
                         createSkillsOption(skillsInput)
                       ]);
                       setSkillsInput("");
+                      console.log("SKILL LIST AFTER ENTER", skillsList);
                       event.preventDefault();
                       break;
                     default:

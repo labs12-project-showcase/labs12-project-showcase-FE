@@ -13,7 +13,6 @@ import {
 const ProjectqsForm = ({ dispatch, ...props }) => {
   const [formSkillsList, setFormSkillsList] = useState([]);
   const [error, setError] = useState(false);
-  console.log(formSkillsList);
 
   useEffect(() => {
     if (props.id) {
