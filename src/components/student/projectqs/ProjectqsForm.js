@@ -28,7 +28,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         createProject({
           ...values,
           student_id: props.profile.id,
-          project_skills: formSkillsList.map(skill => skill.value)
+          skills: formSkillsList.map(skill => skill.value)
         })
       )
         .then(res => {
