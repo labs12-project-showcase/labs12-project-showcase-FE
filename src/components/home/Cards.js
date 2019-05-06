@@ -2,19 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import one from "../../assets/one.jpg";
 
-const Cards = ({
-  id,
-  name,
-  track,
-  top_skills,
-  skills,
-  linkedin,
-  twitter,
-  github,
-  desired_title,
-  profile_pic,
-  cards
-}) => {
+const Cards = ({ cards }) => {
   const map = arr => arr.map(skill => <li key={skill}>{skill}</li>);
   return (
     <>
