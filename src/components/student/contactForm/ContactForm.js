@@ -16,9 +16,9 @@ class ContactForm extends Component {
 	// }
 
 	sendEmail = _ => {
-		const id = {id};
+		const id = this.state.id;
 		
-		console.log('SHOW ME SOMETHING', id)
+		//console.log('SHOW ME SOMETHING', id)
 		const { email } = this.state;
 		// fetch(`http://127.0.0.1:7000/send-email?recipient=${'jmaxt12@gmail.com'}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
 		//   .catch(err => console.error(err))
