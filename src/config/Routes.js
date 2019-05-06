@@ -12,6 +12,7 @@ import ProjectEdit from "../components/student/projects/ProjectEdit";
 import Profileqs from "../components/student/profileqs/Profileqs";
 import ContactForm from "../components/student/contactForm/ContactForm";
 import StudentTable from "../components/admin/studentTable/StudentTable.js";
+import ProjectTable from "../components/admin/projectTable/ProjectTable";
 
 class Routes extends Component {
   handleAuth = ({ location }) => {
@@ -45,6 +46,7 @@ class Routes extends Component {
             render={props => <ContactForm auth={props.auth} {...props} />}
           />
           <Route path="/admin/student-table" component={StudentTable} />
+					<Route path="/admin/project-table" component={ProjectTable} />
           <PrivateRoute
             exact
             path="/student/edit-project/:id"
