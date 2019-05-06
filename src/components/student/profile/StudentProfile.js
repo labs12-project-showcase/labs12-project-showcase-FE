@@ -65,7 +65,12 @@ class StudentProfile extends React.Component {
 								<img src={badge} alt="Lambda Badge" />
 							</a>
 							<div className="contact-btn">
-								<Link to="/contact-me">Contact Me</Link>
+								<Link to={{
+								pathname: "/contact-me/:id",
+								data: id={id}
+								}}>
+								Contact Me
+								</Link>
 								<Share studentId={id} name={name} />
 							</div>
 						</div>

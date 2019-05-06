@@ -53,8 +53,8 @@ class Routes extends Component {
 					component={ProjectView}
 				/>
 				<Route
-					path="/contact-me"
-					render={props => <ContactForm auth={props.auth} {...props} />}
+					path="/contact-me/:id"
+					component={ContactForm}
 				/>
 				<Route
 					path="/admin/student-table"
