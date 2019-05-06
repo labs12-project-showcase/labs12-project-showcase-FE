@@ -288,10 +288,12 @@
             margin-bottom: 20px;
           }
           .display-box {
+            text-decoration: none;
+            color: black;
             box-shadow: 0 0 6px 3px #cccccc;
             background-color: $lightcolor;
             margin: 2px 2px 5px;
-            width: 90px;
+            width: 100px;
             font-size: 0.8rem;
             cursor: pointer;
             -webkit-transition: transform 1s; /* Safari */
