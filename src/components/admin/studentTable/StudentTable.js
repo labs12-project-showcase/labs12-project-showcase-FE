@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchStudents } from '../adminActions.js';
+import Switch from "@material-ui/core/Switch"
 
 class StudentTable extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class StudentTable extends React.Component {
   }
 
   render() { 
-    const columns = [
+    const column = [
       {
         name: "Name",
         field: "name",
@@ -38,21 +39,51 @@ class StudentTable extends React.Component {
       {
         name: "Graduated",
         field: "graduated",
-            filter: true,
-            sort: true,
+        options: {
+          customBodyRender: value => {
+            return (
+              <Switch
+                checked={value.active}
+                onChange={async () => {
+                  this.props.changeAdStatus(value, this.state.offer_id);
+                }}
+              />
+            );
+          }
+        }
       },
       {
         name: "Hired",
         field: "hired",
-            filter: true,
-            sort: true,
+        options: {
+          customBodyRender: value => {
+            return (
+              <Switch
+                checked={value.active}
+                onChange={async () => {
+                  this.props.changeAdStatus(value, this.state.offer_id);
+                }}
+              />
+            );
+          }
+        }
       },
       {
         name: "Endorsed",
         field: "endorsed",
-            filter: true,
-            sort: true,
-      }
+        options: {
+          customBodyRender: value => {
+            return (
+              <Switch
+                checked={value.active}
+                onChange={async () => {
+                  this.props.changeAdStatus(value, this.state.offer_id);
+                }}
+              />
+            );
+          }
+        }
+      },
     ]
 
     const data = [
@@ -105,11 +136,12 @@ class StudentTable extends React.Component {
             endorsed: "No"
           }
         ]
+    
     return ( 
       <div className="tableContainer">
         <MaterialDatatable
           title={"Admin Student Table"}
-          columns={columns}
+          columns={column}
           data={data}
         />
       </div>
