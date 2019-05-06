@@ -63,7 +63,7 @@ export const createProject = formValues => dispatch => {
         resolve();
       })
       .catch(error => {
-        dispatch({ type: CREATE_PROJECT_FAILURE, payload: error });
+        dispatch({ type: CREATE_PROJECT_FAILURE, payload: "Error" });
         reject();
       });
   });
@@ -102,5 +102,50 @@ export const getProject = id => dispatch => {
         type: GET_PROJECT_FAILURE,
         payload: "Could not fetch data."
       });
+    });
+};
+
+export const updateProject = (formValues, id) => dispatch => {
+  const url = formValues.youtube_url;
+  let videoid = url.match(
+    /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+  );
+  if (!videoid) {
+    videoid = ["", "gLdXxFS8BV4"];
+  }
+
+  const send = {
+    student_id: formValues.student_id,
+    skills: formValues.skills,
+    project: {
+      name: formValues.name,
+      github: formValues.github,
+      fe_link: formValues.fe_link,
+      be_link: formValues.be_link,
+      mobile_link: formValues.mobile_link,
+      market_link: formValues.market_link,
+      design_link: formValues.design_link,
+      youtube_url: `https://www.youtube.com/embed/${
+        videoid[1]
+      }?autoplay=0&showinfo=0&controls=0`,
+      website: formValues.website,
+      medium: formValues.medium,
+      short_description: formValues.short_description,
+      customer_pitch: formValues.customer_pitch,
+      tech_pitch: formValues.tech_pitch
+    }
+  };
+
+  dispatch({ type: UPDATE_PROJECT_START });
+  return axiosAuth()
+    .put(`${backendURL}/api/projects/${id}`, removeEmptyValues(send))
+    .then(res => {
+      console.log(res);
+      dispatch({ type: UPDATE_PROJECT_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: UPDATE_PROJECT_FAILURE, payload: "Error" });
+      throw new Error("Failed in project update dispatch.");
     });
 };

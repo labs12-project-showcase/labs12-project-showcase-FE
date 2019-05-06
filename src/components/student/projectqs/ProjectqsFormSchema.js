@@ -42,7 +42,6 @@ export const FormSchema = ({
   values
 }) => {
   const [skillsInput, setSkillsInput] = useState();
-
   const createSkillsOption = label => ({
     label,
     value: label
@@ -267,31 +266,43 @@ export const ProjectQsSchema = Yup.object().shape({
     .required("Please provide a GitHub URL for the project."),
   fe_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   be_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   mobile_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   market_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   design_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   youtube_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   website: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .required("Please provide the demo URL for the project."),
   medium: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   short_description: Yup.string()
     .trim()
     .required("Please provide a short description."),
-  customer_pitch: Yup.string().trim(),
-  tech_pitch: Yup.string().trim()
+  customer_pitch: Yup.string()
+    .trim()
+    .nullable(),
+  tech_pitch: Yup.string()
+    .trim()
+    .nullable()
 });
