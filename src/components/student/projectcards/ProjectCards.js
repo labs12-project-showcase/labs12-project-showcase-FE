@@ -69,7 +69,7 @@ const ProjectCards = ({ top_projects, projects }) => {
 			project_id: 9,
 			type: 'React Application with cool stuff',
 			media: [
-				'https://assets.entrepreneur.com/content/3x2/2000/how-read-website-source-code.jpg?width=700&crop=2:1'
+				'https://morenowtech.com/wp-content/uploads/2015/01/TheAptusGroup.jpg'
 			]
 		}
 	];
@@ -93,14 +93,16 @@ const ProjectCards = ({ top_projects, projects }) => {
 			</h2>
 			<div className="projects-inner-wrapper">
 				{map(top_projects)}
-				<Fade collapse when={!hide}>
-					<div>{map(projects)}</div>
+				<Fade bottom collapse when={!hide}>
+					<div style={hide ? { display: 'none' } : { display: 'flex' }}>
+						{map(projects)}
+					</div>
 				</Fade>
 			</div>
 			<div className="projects-buttons-container">
 				<button type="button" onClick={() => toggleHide(!hide)}>
 					{hide ? 'Show More' : 'Show Less '}
-					<i className="fas fa-chevron-down" />
+					<i className={hide ? 'fas fa-chevron-down' : 'fas fa-chevron-up'} />
 				</button>
 			</div>
 		</div>
