@@ -42,7 +42,7 @@ const projectqsReducer = (state = initialState, action) => {
     case CLEAR_PROJECT_DATA:
       return {
         ...state,
-        projectData: initialState.projectData
+        projectData: { ...state.projectData, ...initialState.projectData }
       };
     case CREATE_PROJECT_START:
       return {
@@ -54,7 +54,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         updatingProjectData: false,
-        projectData: action.payload
+        projectData: { ...state.projectData, ...action.payload }
       };
     case CREATE_PROJECT_FAILURE:
       return {
@@ -72,7 +72,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         gettingProjectData: false,
-        projectData: action.payload
+        projectData: { ...state.projectData, ...action.payload }
       };
     case GET_PROJECT_FAILURE:
       return {
@@ -89,7 +89,7 @@ const projectqsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
-        projectData: action.payload,
+        projectData: { ...state.projectData, ...action.payload },
         updatingProjectData: false
       };
     case UPDATE_PROJECT_FAILURE:
