@@ -12,6 +12,10 @@ class StudentTable extends React.Component {
      }
   }
 
+  // handleChange = name => {
+  //   this.setState({ [name]: event.target.checked })
+  // }
+
   componentDidMount() {
     this.props.fetchStudents();
   }
@@ -43,10 +47,7 @@ class StudentTable extends React.Component {
           customBodyRender: value => {
             return (
               <Switch
-                checked={value.active}
-                onChange={async () => {
-                  this.props.changeAdStatus(value, this.state.offer_id);
-                }}
+                checked={this.state.checked}
               />
             );
           }
@@ -59,10 +60,6 @@ class StudentTable extends React.Component {
           customBodyRender: value => {
             return (
               <Switch
-                checked={value.active}
-                onChange={async () => {
-                  this.props.changeAdStatus(value, this.state.offer_id);
-                }}
               />
             );
           }
@@ -75,10 +72,6 @@ class StudentTable extends React.Component {
           customBodyRender: value => {
             return (
               <Switch
-                checked={value.active}
-                onChange={async () => {
-                  this.props.changeAdStatus(value, this.state.offer_id);
-                }}
               />
             );
           }
