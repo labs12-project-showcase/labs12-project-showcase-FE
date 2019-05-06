@@ -80,24 +80,24 @@ const projectqsReducer = (state = initialState, action) => {
         error: action.payload,
         gettingProjectData: false
       };
-    // case UPDATE_PROJECT_START:
-    // return {
-    //   ...state,
-    //   updatingProjectData: true
-    // };
-    // case UPDATE_PROJECT_SUCCESS:
-    // return {
-    //   ...state,
-    //   error: null,
-    //   projectData: action.payload,
-    //   updatingProjectData: false
-    // };
-    // case UPDATE_PROJECT_FAILURE:
-    // return {
-    //   ...state,
-    //   error: action.payload,
-    //   updatingProjectData: false
-    // };
+    case UPDATE_PROJECT_START:
+      return {
+        ...state,
+        updatingProjectData: true
+      };
+    case UPDATE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        projectData: action.payload,
+        updatingProjectData: false
+      };
+    case UPDATE_PROJECT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingProjectData: false
+      };
     default:
       return state;
   }
