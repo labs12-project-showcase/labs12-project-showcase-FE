@@ -23,7 +23,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
   }, [dispatch, props.match.params.id]);
 
   const submit = values => {
-    if (!props.id) {
+    if (!props.match.params.id) {
       dispatch(
         createProject({
           ...values,

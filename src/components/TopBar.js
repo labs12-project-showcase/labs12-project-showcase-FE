@@ -75,7 +75,10 @@ class TopBar extends Component {
                 /\/student\/project-view\/\d+/g
               ) &&
                 this.checkOwner(this.props.project_students) && (
-                  <NavLink exact to={`/student/edit-project/`}>
+                  <NavLink
+                    exact
+                    to={`/student/edit-project/${this.props.project_id}`}
+                  >
                     <i className="fas fa-plus" /> Edit Project
                   </NavLink>
                 )}
@@ -93,7 +96,8 @@ class TopBar extends Component {
 const mapStateToProps = state => {
   return {
     id: state.profile.profileData.id,
-    project_students: state.project.projectData.students
+    project_students: state.project.projectData.students,
+    project_id: state.project.projectData.id
   };
 };
 
