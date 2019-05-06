@@ -1,81 +1,105 @@
-import React, { Component } from 'react';
-import history from '../history.js';
-import { connect } from 'react-redux';
-import { login, logout } from '../auth/authActions.js';
-import { NavLink } from 'react-router-dom';
-import { validateJwt } from '../config/utilities.js';
+import React, { Component } from "react";
+import history from "../history.js";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { login, logout } from "../auth/authActions.js";
+import { NavLink } from "react-router-dom";
+import { validateJwt } from "../config/utilities.js";
 
-import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
+import whiteLambdaLogo from "../assets/Hire-lambda-logo-white.png";
 
 class TopBar extends Component {
-	state = {
-		isLoggedIn: false
-	};
+  state = {
+    isLoggedIn: false
+  };
 
-	componentWillMount() {
-		this.unlisten = history.listen((location, action) => {
-			console.log('history from top bar', location, action);
-			const update = validateJwt();
-			this.setState({ isLoggedIn: update });
-		});
-	}
+  componentWillMount() {
+    this.unlisten = history.listen((location, action) => {
+      const update = validateJwt();
+      this.setState({ isLoggedIn: update });
+    });
+  }
 
-	componentWillUnmount() {
-		this.unlisten();
-	}
+  componentWillUnmount() {
+    this.unlisten();
+  }
 
-	render() {
-		const renderLoggedIn = validateJwt();
-		const { login, logout } = this.props;
-		return (
-			<div className="TopBar">
-				<div className="TopBar-container">
-					<NavLink exact to="/">
-						<img
-							className="TopBar-hire-lambda-logo"
-							src={whiteLambdaLogo}
-							alt="white lambda logo"
-						/>
-					</NavLink>
+  checkOwner = arr => {
+    const owner = arr.filter(member => {
+      return member.student_id === this.props.id;
+    });
+    if (owner && owner.length) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
-					<div className="TopBar-btn-container">
-						{!(this.state.isLoggedIn || renderLoggedIn) && (
-							<button className="TopBar-login-btn" onClick={login}>
-								<i className="fas fa-user" />
-							</button>
-						)}
-						{(this.state.isLoggedIn || renderLoggedIn) && (
-							<button className="TopBar-logout-btn" onClick={logout}>
-								<i className="fas fa-sign-out-alt" />
-							</button>
-						)}
-					</div>
-				</div>
-				{(this.state.isLoggedIn || renderLoggedIn) && (
-					<div className="subNav">
-						<nav>
-							<NavLink exact to={`/student/profile/${this.props.id}`}>
-								<i className="far fa-id-card" /> Your Profile
-							</NavLink>
-							<NavLink exact to="/student/new-project">
-								<i className="fas fa-plus" /> Add New Project
-							</NavLink>
-							<NavLink exact to="/profile-quick-start">
-								<i className="fas fa-user-edit" /> Edit Profile
-							</NavLink>
-						</nav>
-					</div>
-				)}
-			</div>
-		);
-	}
+  render() {
+    const renderLoggedIn = validateJwt();
+    const { login, logout } = this.props;
+    return (
+      <div className="TopBar">
+        <div className="TopBar-container">
+          <NavLink exact to="/">
+            <img
+              className="TopBar-hire-lambda-logo"
+              src={whiteLambdaLogo}
+              alt="white lambda logo"
+            />
+          </NavLink>
+
+          <div className="TopBar-btn-container">
+            {!(this.state.isLoggedIn || renderLoggedIn) && (
+              <button className="TopBar-login-btn" onClick={login}>
+                <i className="fas fa-user" />
+              </button>
+            )}
+            {(this.state.isLoggedIn || renderLoggedIn) && (
+              <button className="TopBar-logout-btn" onClick={logout}>
+                <i className="fas fa-sign-out-alt" />
+              </button>
+            )}
+          </div>
+        </div>
+        {(this.state.isLoggedIn || renderLoggedIn) && (
+          <div className="subNav">
+            <nav>
+              <NavLink exact to={`/student/profile/${this.props.id}`}>
+                <i className="far fa-id-card" /> Your Profile
+              </NavLink>
+              <NavLink exact to="/student/new-project">
+                <i className="fas fa-plus" /> Add New Project
+              </NavLink>
+              {this.props.location.pathname.match(
+                /\/student\/project-view\/\d+/g
+              ) &&
+                this.checkOwner(this.props.project_students) && (
+                  <NavLink exact to={`/student/edit-project/`}>
+                    <i className="fas fa-plus" /> Edit Project
+                  </NavLink>
+                )}
+              <NavLink exact to="/profile-quick-start">
+                <i className="fas fa-user-edit" /> Edit Profile
+              </NavLink>
+            </nav>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-	return { id: state.profile.profileData.id };
+  return {
+    id: state.profile.profileData.id,
+    project_students: state.project.projectData.students
+  };
 };
 
-export default connect(
-	mapStateToProps,
-	{ login, logout }
-)(TopBar);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { login, logout }
+  )(TopBar)
+);

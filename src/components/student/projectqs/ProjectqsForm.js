@@ -15,12 +15,12 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (props.id) {
-      dispatch(getProject(props.id));
+    if (props.match.params.id) {
+      dispatch(getProject(props.match.params.id));
     } else {
-      dispatch(clearProjectData);
+      dispatch(clearProjectData());
     }
-  }, [dispatch, props.id]);
+  }, [dispatch, props.match.params.id]);
 
   const submit = values => {
     if (!props.id) {
@@ -32,7 +32,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         })
       )
         .then(res => {
-          //props.history.push(`/student/profile/${props.profile.id}`);
+          props.history.push(`/student/profile/${props.profile.id}`);
         })
         .catch(err => {
           setError(true);
