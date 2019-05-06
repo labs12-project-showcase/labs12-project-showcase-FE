@@ -32,7 +32,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         })
       )
         .then(res => {
-          props.history.push(`/student/profile/${props.profile.id}`);
+          //props.history.push(`/student/profile/${props.profile.id}`);
         })
         .catch(err => {
           setError(true);

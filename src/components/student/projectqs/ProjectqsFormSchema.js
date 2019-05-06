@@ -204,7 +204,6 @@ export const FormSchema = ({
                         createSkillsOption(skillsInput)
                       ]);
                       setSkillsInput("");
-                      console.log("SKILL LIST AFTER ENTER", skillsList);
                       event.preventDefault();
                       break;
                     default:
