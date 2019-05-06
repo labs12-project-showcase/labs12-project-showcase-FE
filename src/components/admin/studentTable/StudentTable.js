@@ -47,8 +47,6 @@ class StudentTable extends React.Component {
                 onChange={async () => {
                   this.props.changeAdStatus(value, this.state.offer_id);
                 }}
-                value="checkedB"
-                color="primary"
               />
             );
           }
@@ -65,8 +63,6 @@ class StudentTable extends React.Component {
                 onChange={async () => {
                   this.props.changeAdStatus(value, this.state.offer_id);
                 }}
-                value="checkedB"
-                color="primary"
               />
             );
           }
@@ -83,8 +79,6 @@ class StudentTable extends React.Component {
                 onChange={async () => {
                   this.props.changeAdStatus(value, this.state.offer_id);
                 }}
-                value="checkedB"
-                color="primary"
               />
             );
           }
