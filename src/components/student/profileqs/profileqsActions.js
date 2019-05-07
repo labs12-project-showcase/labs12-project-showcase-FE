@@ -1,7 +1,6 @@
 import history from "../../../history.js";
 import axiosAuth from "../../../auth/axiosAuth";
-
-const backendURL = "https://halg-backend.herokuapp.com";
+import { backendUrl } from '../../../config/urls.js';
 
 export const GET_PROFILE_DATA_FAILURE = "GET_PROFILE_DATA_FAILURE";
 export const GET_PROFILE_DATA_START = "GET_PROFILE_DATA_START";
@@ -19,7 +18,7 @@ export const getProfileData = (queryUpdate = false) => dispatch => {
   //     payload: 'No token found in Local Storage'
   //   });
   // }
-  let url = `${backendURL}/api/students/profile${
+  let url = `${backendUrl}/api/students/profile${
     queryUpdate ? "?update=true" : ""
   }`;
   axiosAuth()
@@ -74,7 +73,7 @@ export const updateProfile = formValues => dispatch => {
   };
   dispatch({ type: UPDATE_PROFILE_START });
   axiosAuth()
-    .put(`${backendURL}/api/students/update`, removeEmptyValues(send))
+    .put(`${backendUrl}/api/students/update`, removeEmptyValues(send))
     .then(res => {
       history.push(`/student/profile/${formValues.id}`);
       dispatch({

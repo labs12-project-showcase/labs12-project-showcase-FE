@@ -1,7 +1,6 @@
 import axiosAuth from "../../../auth/axiosAuth";
 import axios from "axios";
-
-const backendURL = "https://halg-backend.herokuapp.com";
+import { backendUrl } from '../../../config/urls.js';
 
 export const CREATE_PROJECT_FAILURE = "CREATE_PROJECT_FAILURE";
 export const CREATE_PROJECT_START = "CREATE_PROJECT_START";
@@ -54,7 +53,7 @@ export const createProject = formValues => dispatch => {
   dispatch({ type: CREATE_PROJECT_START });
   return new Promise((resolve, reject) => {
     axiosAuth()
-      .post(`${backendURL}/api/projects`, removeEmptyValues(send))
+      .post(`${backendUrl}/api/projects`, removeEmptyValues(send))
       .then(res => {
         dispatch({ type: CREATE_PROJECT_SUCCESS, payload: res.data });
         resolve();
@@ -87,7 +86,7 @@ function removeEmptyValues(obj) {
 export const getProject = id => dispatch => {
   dispatch({ type: GET_PROJECT_START });
   return axios
-    .get(`${backendURL}/api/projects/${id}`)
+    .get(`${backendUrl}/api/projects/${id}`)
     .then(res => {
       dispatch({
         type: GET_PROJECT_SUCCESS,

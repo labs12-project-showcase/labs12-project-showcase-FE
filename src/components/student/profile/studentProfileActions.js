@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { backendUrl } from '../../../config/urls.js';
+
 export const FETCH_PROFILE = 'FETCH_PROFILE';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
 export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
@@ -8,7 +10,7 @@ export const getData = id => dispatch => {
 		authorization: localStorage.getItem('backendToken')
 	};
 	axios
-		.get(`https://halg-backend.herokuapp.com/api/students/profile/${id}`, {
+		.get(`${backendUrl}/api/students/profile/${id}`, {
 			headers
 		})
 		.then(res => res.data)
