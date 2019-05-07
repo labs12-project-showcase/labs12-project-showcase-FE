@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import history from '../history.js';
 import { connect } from 'react-redux';
-import { login, logout } from '../auth/authActions.js';
+import { login, logout, adminLogin } from '../auth/authActions.js';
 import { NavLink } from 'react-router-dom';
-import { validateJwt } from '../config/utilities.js';
+import { validateJwt, getJwtRole } from '../config/utilities.js';
 
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
@@ -26,7 +26,8 @@ class TopBar extends Component {
 
 	render() {
 		const renderLoggedIn = validateJwt();
-		const { login, logout } = this.props;
+		const loggedInRole = getJwtRole();
+		const { login, logout, adminLogin } = this.props;
 		return (
 			<div className="TopBar">
 				<div className="TopBar-container">
@@ -40,9 +41,12 @@ class TopBar extends Component {
 
 					<div className="TopBar-btn-container">
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
-							<button className="TopBar-login-btn" onClick={login}>
-								<i className="fas fa-user" />
-							</button>
+							<>
+								<button className="TopBar-login-btn" onClick={login}>
+									<i className="fas fa-user" />
+								</button>
+								<button className="" onClick={adminLogin}>Admin Login</button>
+							</>
 						)}
 						{(this.state.isLoggedIn || renderLoggedIn) && (
 							<button className="TopBar-logout-btn" onClick={logout}>
@@ -51,7 +55,7 @@ class TopBar extends Component {
 						)}
 					</div>
 				</div>
-				{(this.state.isLoggedIn || renderLoggedIn) && (
+				{(this.state.isLoggedIn || renderLoggedIn) && loggedInRole === 'student' && (
 					<div className="subNav">
 						<nav>
 							<NavLink exact to={`/student/profile/${this.props.id}`}>
@@ -77,5 +81,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ login, logout }
+	{ login, logout, adminLogin }
 )(TopBar);
