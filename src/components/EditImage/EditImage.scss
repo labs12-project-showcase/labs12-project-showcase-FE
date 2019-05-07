@@ -1,18 +1,18 @@
 .edit-image-container {
+	align-items: center;
 	background: #fff;
 	box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.05);
-	position: relative;
-	border-radius: 10px;
-	padding: 20px 0;
-	display: flex;
-	align-items: center;
+  border: 1px solid lightgray;
+	border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
 	justify-content: center;
-	flex-direction: column;
-	margin: 10px auto;
+	padding: 20px 0;
+  position: relative;
   transition: all 0.3s ease-in;
   width: 100%;
   
-  input {
+  input[type=file] {
     opacity: 0;
     position: absolute;
     z-index: -1;
@@ -21,6 +21,7 @@
   p {
     font-size: 12px;
     margin: 8px 0 4px;
+    text-align: center;
   }
 
   .errors-container {
@@ -48,9 +49,34 @@
     }
   }
 
-  .uploadIcon {
-    width: 50px;
-    height: 50px;
+  .edit-image-inputs {
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    padding: 1rem;
+
+    form {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      input[type=url] {
+        width: 100%;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .separator {
+      margin: 0.5rem;
+    }
   }
   
   .image-preview-wrapper {
@@ -61,56 +87,22 @@
   }
   
   .image-preview-container {
-    width: 25%;
-    margin: 5%;
+    max-width: 20rem;
+    margin: 0 5%;
     padding: 10px;
-    background: #edf2f6;
+    // background: #edf2f6;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: inherit;
     box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
-    border: 1px solid #d0dbe4;
+    border: 1px solid lightgray;
     position: relative;
 
     img.image-preview {
       width: 100%;
     }
-  }
-  
-  .delete-image-icon {
-    position: absolute;
-    top: -9px;
-    right: -9px;
-    color: #fff;
-    background: #ff4081;
-    border-radius: 50%;
-    text-align: center;
-    cursor: pointer;
-    font-size: 26px;
-    font-weight: bold;
-    line-height: 30px;
-    width: 30px;
-    height: 30px;
-  }
-}
-
-// this corresponds to no class
-.uploadFilesButton {
-	padding: 5px 43px;
-	background: transparent;
-	border-radius: 30px;
-	color: #3f4257;
-	font-weight: 300;
-	font-size: 14px;
-	margin: 10px 0;
-	transition: all 0.2s ease-in;
-	cursor: pointer;
-	outline: none;
-	border: 1px solid #3f4257;
-  &:hover {
-    background: #3f4257;
-    color: #fff;
   }
 }
 
