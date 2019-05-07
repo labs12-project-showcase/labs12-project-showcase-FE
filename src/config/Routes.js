@@ -8,7 +8,6 @@ import Callback from "../auth/Callback.js";
 import Home from "../components/home/Home.js";
 import Projectqs from "../components/student/projectqs/Projectqs";
 import ProjectView from "../components/student/projects/ProjectView";
-import ProjectEdit from "../components/student/projects/ProjectEdit";
 import Profileqs from "../components/student/profileqs/Profileqs";
 import ContactForm from "../components/student/contactForm/ContactForm";
 import StudentTable from "../components/admin/studentTable/StudentTable.js";
