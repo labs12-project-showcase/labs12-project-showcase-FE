@@ -1,8 +1,7 @@
-import history from '../../../history.js';
 import axios from 'axios'; // required for CancelToken
 import axiosAuth from '../../../auth/axiosAuth';
 import { backendUrl } from '../../../config/urls.js';
-import history from "../../../history.js";
+import history from '../../../history.js';
 
 export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
 export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
@@ -14,7 +13,7 @@ export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
  */
 export const getProfileData = (queryUpdate = false) => dispatch => {
   dispatch({ type: GET_PROFILE_DATA_START });
-  let url = `${backendURL}/api/students/profile${
+  let url = `${backendUrl}/api/students/profile${
     queryUpdate ? '?update=true' : ''
   }`;
   axiosAuth()
