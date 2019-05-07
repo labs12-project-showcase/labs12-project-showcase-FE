@@ -164,7 +164,7 @@ const EditImage = props => {
         </div>
       ));
     }
-    return <div className="errorsContainer">{notAccepted}</div>;
+    return <div className="errors-container">{notAccepted}</div>;
   }
 
   function renderUploadIcon() {
@@ -182,12 +182,14 @@ const EditImage = props => {
   function renderImagePreview() {
     return imageList.map((image, index) => {
       return (
-        <div key={index} className="image-preview-container">
-          {/* @TODO: Improve accessibility of the following code */}
-          <div className="deleteImage" onClick={() => removeImage(image)}>
-            X
+        <div key={index} className="image-preview-wrapper">
+          <div className="image-preview-container">
+            {/* @TODO: Improve accessibility of the following code */}
+            <div className="delete-image-icon" onClick={() => removeImage(image)}>
+              X
+            </div>
+            <img src={item.url} className="image-preview" alt="preview" />
           </div>
-          <img src={item.url} className="image-preview" alt="preview" />
         </div>
       );
     });
