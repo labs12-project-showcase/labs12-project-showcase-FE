@@ -49,6 +49,12 @@
 				border: 10px solid $lightcolor;
 				margin: 0 auto;
 				transform: translateY(130px);
+				@media (min-width: 768px) and (max-width: 900px) {
+					width: 150px;
+					height: 150px;
+					border: 5px solid $lightcolor;
+					transform: translateY(95px);
+				}
 
 				img {
 					width: 100%;
@@ -95,6 +101,10 @@
 				max-width: 350px;
 				@media (max-width: 767px) {
 					width: auto;
+				}
+				@media (min-width: 768px) and (max-width: 960px) {
+					max-width: 260px;
+					padding: 20px 10px;
 				}
 
 				img {
@@ -269,6 +279,9 @@
 		width: 100%;
 		max-width: 1024px;
 		@include box-align(space-around, center);
+		@media (max-width: 838px) {
+			flex-direction: column;
+		}
 
 		hr {
 			margin: 20px auto;
