@@ -3,15 +3,26 @@ import { connect } from "react-redux";
 import { Progress as ProgressCircle } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 
-const ProgressProject = ({ projectData }) => {
+const ProgressProject = ({ project }) => {
   const [percentage, updatePercent] = useState(0);
   const [full, updateFull] = useState([]);
   const [empty, updateEmpty] = useState([]);
   //Fake some project data here
   useEffect(() => {
-    //Should be props.projectData later
-    checkFields(data);
-  }, []);
+    const {
+      id,
+      approved,
+      students,
+      name,
+      website,
+      short_description,
+      ...rest
+    } = project;
+    //Should be props.project later
+    if (project) {
+      checkFields(rest);
+    }
+  }, [project]);
 
   const checkFields = data => {
     //Check length
@@ -23,13 +34,27 @@ const ProgressProject = ({ projectData }) => {
 
     //Check truthy for every key in object
     for (let i in data) {
-      if (!data[i]) {
+      if (!data[i] || !data[i].length) {
         actual--;
-        const field = i.charAt(0).toUpperCase() + i.slice(1);
-        empty.push(field);
+        const field = i.split("_").reduce((name, cur) => {
+          if (cur.charAt(0) !== "_") {
+            name.push(cur.charAt(0).toUpperCase() + cur.slice(1));
+            return name;
+          } else {
+            return name;
+          }
+        }, []);
+        empty.push(field.join(" "));
       } else {
-        const field = i.charAt(0).toUpperCase() + i.slice(1);
-        full.push(field);
+        const field = i.split("_").reduce((name, cur) => {
+          if (cur.charAt(0) !== "_") {
+            name.push(cur.charAt(0).toUpperCase() + cur.slice(1));
+            return name;
+          } else {
+            return name;
+          }
+        }, []);
+        full.push(field.join(" "));
       }
     }
 
