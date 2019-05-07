@@ -10,6 +10,10 @@
 	margin: 5px;
 	line-height: 1.5;
 	@include box-align();
+	@media (max-width: 768px) {
+		max-width: 315px;
+		padding: 12px;
+	}
 
 	h2 {
 		font-weight: 700;

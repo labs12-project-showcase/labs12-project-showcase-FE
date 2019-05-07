@@ -1,7 +1,6 @@
 import axiosAuth from "../../../auth/axiosAuth";
 import axios from "axios";
-
-const backendURL = "https://halg-backend.herokuapp.com";
+import { backendUrl } from '../../../config/urls.js';
 
 export const CREATE_PROJECT_FAILURE = "CREATE_PROJECT_FAILURE";
 export const CREATE_PROJECT_START = "CREATE_PROJECT_START";
@@ -57,9 +56,12 @@ export const createProject = formValues => dispatch => {
   dispatch({ type: CREATE_PROJECT_START });
   return new Promise((resolve, reject) => {
     axiosAuth()
-      .post(`${backendURL}/api/projects`, removeEmptyValues(send))
+      .post(`${backendUrl}/api/projects`, removeEmptyValues(send))
       .then(res => {
-        dispatch({ type: CREATE_PROJECT_SUCCESS, payload: res.data });
+        dispatch({
+          type: CREATE_PROJECT_SUCCESS,
+          payload: removeNulls(res.data)
+        });
         resolve();
       })
       .catch(error => {
@@ -87,14 +89,29 @@ function removeEmptyValues(obj) {
     );
 }
 
+function removeNulls(obj) {
+  let noNulls = {};
+  for (let item in obj) {
+    if (obj[item] !== null) {
+      // Exclude arrays with only `null` within
+      if (
+        (Array.isArray(obj[item]) && obj[item][0]) ||
+        !Array.isArray(obj[item])
+      )
+        noNulls[item] = obj[item];
+    }
+  }
+  return noNulls;
+}
+
 export const getProject = id => dispatch => {
   dispatch({ type: GET_PROJECT_START });
   return axios
-    .get(`${backendURL}/api/projects/${id}`)
+    .get(`${backendUrl}/api/projects/${id}`)
     .then(res => {
       dispatch({
         type: GET_PROJECT_SUCCESS,
-        payload: res.data
+        payload: removeNulls(res.data)
       });
     })
     .catch(err => {
@@ -138,10 +155,13 @@ export const updateProject = (formValues, id) => dispatch => {
 
   dispatch({ type: UPDATE_PROJECT_START });
   return axiosAuth()
-    .put(`${backendURL}/api/projects/${id}`, removeEmptyValues(send))
+    .put(`${backendUrl}/api/projects/${id}`, removeEmptyValues(send))
     .then(res => {
       console.log(res);
-      dispatch({ type: UPDATE_PROJECT_SUCCESS, payload: res.data });
+      dispatch({
+        type: UPDATE_PROJECT_SUCCESS,
+        payload: removeNulls(res.data)
+      });
     })
     .catch(err => {
       console.log(err);

@@ -13,3 +13,13 @@ export const validateJwt = () => {
     }
   }
 }
+
+export const getJwtRole = () => {
+  const token = localStorage.getItem('backendToken');
+  if (token === null) {
+    return '';
+  } else {
+    const decoded = jwtDecode(token);
+    return decoded.role;
+  }
+}
