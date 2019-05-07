@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchStudents } from '../adminActions.js';
+import { fetchProjects } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
 //import { Link } from "react-router-dom";
 
@@ -14,20 +14,20 @@ class ProjectTable extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchStudents();
+    this.props.fetchProjects();
   }
 
   render() { 
     const column = [
       {
         name: "Title",
-        field: "title",
+        field: "name",
             filter: true,
             sort: true,
       },
       {
         name: "Type",
-        field: "type",
+        field: "short_description",
             filter: true,
             sort: true,
       },
@@ -51,7 +51,7 @@ class ProjectTable extends React.Component {
             );
           }
         }
-      },
+      }, 
     ]
 
     const data = [
@@ -104,7 +104,7 @@ class ProjectTable extends React.Component {
         <MaterialDatatable
           title={"Admin Project Table"}
           columns={column}
-          data={data}
+          data={this.props.projects}
         />
       </div>
      );
@@ -113,8 +113,9 @@ class ProjectTable extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ...state.projectTable
+    // ...state.projectTable,
+    projects: state.admin.projects
   };
 };
 
-export default connect(mapStateToProps, { fetchStudents })(ProjectTable);
+export default connect(mapStateToProps, { fetchProjects })(ProjectTable);
