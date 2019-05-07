@@ -44,13 +44,27 @@ const Progress = ({ profile }) => {
 
     //Check truthy for every key in object
     for (let i in data) {
-      if (!data[i]) {
+      if (!data[i] || !data[i].length) {
         actual--;
-        const field = i.charAt(0).toUpperCase() + i.slice(1);
-        empty.push(field);
+        const field = i.split("_").reduce((name, cur) => {
+          if (cur.charAt(0) !== "_") {
+            name.push(cur.charAt(0).toUpperCase() + cur.slice(1));
+            return name;
+          } else {
+            return name;
+          }
+        }, []);
+        empty.push(field.join(" "));
       } else {
-        const field = i.charAt(0).toUpperCase() + i.slice(1);
-        full.push(field);
+        const field = i.split("_").reduce((name, cur) => {
+          if (cur.charAt(0) !== "_") {
+            name.push(cur.charAt(0).toUpperCase() + cur.slice(1));
+            return name;
+          } else {
+            return name;
+          }
+        }, []);
+        full.push(field.join(" "));
       }
     }
 
