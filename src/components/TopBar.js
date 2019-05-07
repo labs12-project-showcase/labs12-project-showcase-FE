@@ -25,11 +25,15 @@ class TopBar extends Component {
   }
 
   checkOwner = arr => {
-    const owner = arr.filter(member => {
-      return member.student_id === this.props.id;
-    });
-    if (owner && owner.length) {
-      return true;
+    if (arr) {
+      const owner = arr.filter(member => {
+        return member.student_id === this.props.id;
+      });
+      if (owner && owner.length) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
