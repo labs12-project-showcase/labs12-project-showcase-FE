@@ -54,7 +54,7 @@ class StudentTable extends React.Component {
       },
       {
         name: "Cohort",
-        field: "cohort",
+        field: "cohort_name",
             filter: true,
             sort: true,
       },
