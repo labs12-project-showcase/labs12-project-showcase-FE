@@ -3,7 +3,7 @@ import {
 } from "./adminActions";
 
 const initialState = {
-  students = []
+  students: []
 };
 
 const adminReducer = (state = initialState, action) => {
