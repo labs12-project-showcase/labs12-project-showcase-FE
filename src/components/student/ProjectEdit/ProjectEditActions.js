@@ -1,9 +1,8 @@
 import history from '../../../history.js';
 import axios from 'axios';
+import { backendUrl } from '../../../config/urls.js';
 
 const token = localStorage.getItem('backendToken');
-
-const backendURL = 'https://halg-backend.herokuapp.com';
 
 //
 export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
@@ -14,7 +13,7 @@ export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
 export const getProfileData = () => dispatch => {
   dispatch({ type: GET_PROFILE_DATA_START });
   axios
-    .get(`${backendURL}/api/students/profile`, {
+    .get(`${backendUrl}/api/students/profile`, {
       headers: {
         Authorization: token
       }
@@ -65,7 +64,7 @@ export const updateProfile = formValues => dispatch => {
 
   dispatch({ type: UPDATE_PROFILE_START });
   axios
-    .put(`${backendURL}/api/students/update`, removeEmptyValues(send), {
+    .put(`${backendUrl}/api/students/update`, removeEmptyValues(send), {
       headers: { authorization: token }
     })
     .then(res => {
