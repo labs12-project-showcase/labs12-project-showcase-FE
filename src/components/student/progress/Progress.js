@@ -119,18 +119,18 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(Progress);
 
-const data = {
-  github: "git",
-  twitter: null,
-  acclaim: null,
-  about: "hey there",
-  skills: ["1", "2", "3"],
-  top_skills: null,
-  top_projects: ["1", "2", "3"],
-  location: "texas",
-  website: null,
-  linkedin: null,
-  desired_position: null,
-  hobbies: [],
-  profile_pic: "testing"
-};
+// const data = {
+//   github: "git",
+//   twitter: null,
+//   acclaim: null,
+//   about: "hey there",
+//   skills: ["1", "2", "3"],
+//   top_skills: null,
+//   top_projects: ["1", "2", "3"],
+//   location: "texas",
+//   website: null,
+//   linkedin: null,
+//   desired_position: null,
+//   hobbies: [],
+//   profile_pic: "testing"
+// };

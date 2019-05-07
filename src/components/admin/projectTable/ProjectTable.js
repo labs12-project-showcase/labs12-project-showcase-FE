@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchProjects } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class ProjectTable extends React.Component {
   constructor(props) {
@@ -24,6 +24,19 @@ class ProjectTable extends React.Component {
         field: "name",
             filter: true,
             sort: true,
+            options: {
+              customBodyRender: value => {
+               console.log('custom body render value', value);
+               return (
+                <Link
+                 to={`/student/project-view/${value.id}`}
+                 onClick={ (e) => {
+                  e.stopPropagation();
+                 }}
+                >{value.name}</Link>
+               );
+              }
+             }
       },
       {
         name: "Type",
@@ -51,53 +64,8 @@ class ProjectTable extends React.Component {
             );
           }
         }
-      },
+      }
     ]
-
-    const data = [
-              {
-                title: "Jake",
-                type: "Full-Stack Web",
-                contributors: "Web 17",
-                approved: "No",
-            
-              },
-              {
-                title: "Lowell",
-                type: "Full-Stack Web",
-                contributors: "Web 17",
-                approved: "No",
-            
-              },
-              {
-                title: "Brandon",
-                type: "Full-Stack Web",
-                contributors: "Web 17",
-                approved: "No",
-            
-              },
-              {
-                title: "Tico",
-                type: "Full-Stack Web",
-                contributors: "Web 17",
-                approved: "No",
-            
-              },
-              {
-                title: "Ryan",
-                type: "Full-Stack Web",
-                contributors: "Web 17",
-                approved: "No",
-            
-              },
-              {
-                title: "Julian",
-                type: "Full-Stack Web",
-                contributors: "Web 17",
-                approved: "No",
-            
-              }
-            ]
     
     return ( 
       <div className="tableContainer">
