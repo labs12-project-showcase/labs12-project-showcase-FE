@@ -19,6 +19,10 @@
         margin-bottom: 10px;
     }
 
+    .profile-picture {
+        margin: 1rem 0;
+    }
+
     .profile-quick-start-form {
         display: flex;
         flex-wrap: wrap;
@@ -59,20 +63,6 @@
                 width: 22.4rem;
             }
 
-            .input-label {
-                color: gray;
-                background: $lightcolor;
-                font-size: 1.4rem;
-                left: 1rem;
-                padding: 0.4rem;
-                position: relative;
-                top: 0.8rem;
-                z-index: 1;
-                &.about-label {
-                    top: 2.7rem;
-                }
-            }
-
             &.stretch-input {
                 margin: 1.6rem 0;
                 width: 100%;
@@ -92,5 +82,19 @@
                 }
             }
         }
+    }
+}
+
+.input-label {
+    color: gray;
+    background: $lightcolor;
+    font-size: 1.4rem;
+    left: 1rem;
+    padding: 0.4rem;
+    position: relative;
+    top: 0.8rem;
+    z-index: 1;
+    &.about-label {
+        top: 2.7rem;
     }
 }

@@ -7,6 +7,7 @@ import adminDashboardReducer from "../components/admin/dashboard/adminDashboardR
 import studentProfileReducer from "../components/student/profile/studentProfileReducer.js";
 import profileReducer from "../components/student/profileqs/profileqsReducer";
 import projectReducer from "../components/student/projectqs/projectqsReducer";
+import adminReducer from "../components/admin/adminReducer";
 
 export default combineReducers({
   adminDashboard: adminDashboardReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
   profile: profileReducer,
   register: registerReducer,
   project: projectReducer,
-  studentProfile: studentProfileReducer
+  studentProfile: studentProfileReducer,
+  admin: adminReducer
 });

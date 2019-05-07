@@ -12,7 +12,9 @@ td {
 }
 
 .MuiSwitch-switchBase-173 {
-	height: 0 !important;
+	@media (max-width: 600px) {
+		height: 14px !important;
+	}
 }
 
 .MaterialDatatableBodyCell-cellStacked-168 {
