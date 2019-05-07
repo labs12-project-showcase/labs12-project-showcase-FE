@@ -8,7 +8,7 @@ const EditImage = props => {
   const [badFileTypeList, setBadFileTypeList] = useState([]);
   const [badFileSizeList, setBadFileSizeList] = useState([]);
   const [imageList, setImageList] = useState([]);
-  const [imagePreviews, setImagePreviews] = useState(null);
+  // const [imagePreviews, setImagePreviews] = useState(null);
 
   // Load default images if there are any
   useEffect(() => {
@@ -20,8 +20,6 @@ const EditImage = props => {
     }
   }, [props.initialImageList]);
   console.log('imageList: ', imageList);
-
-  console.log('imagePreview: ', imagePreviews);
 
   // Check file type
   function hasExtension(fileName) {
@@ -149,8 +147,14 @@ const EditImage = props => {
 
     // remove image from state
     setImageList(previousState => {
-      previousState.splice(index, 1);
-      return previousState;
+      /* doesn't work, not sure why */
+      // previousState.splice(index, 1);
+      // return previousState;
+
+      // let arr = previousState; // can't do this either, must be fresh Array
+      let arr = Array.from(previousState);
+      arr.splice(index, 1);
+      return arr;
     });
   }
 
@@ -186,7 +190,7 @@ const EditImage = props => {
   }
 
   function renderImagePreview() {
-    console.log('renderImagePreview running!');
+    console.log('renderImagePreview running!', imageList.length);
     return imageList.map((image, index) => {
       return (
         <div key={index} className="image-preview-wrapper">
@@ -235,10 +239,6 @@ const EditImage = props => {
           />
         </>
       ) : null}
-      {/* 
-        the `renderImagePreview` below isn't 
-        updating when I remove an image from state 
-      */}
       {props.withPreview && imageList.length ? renderImagePreview() : null}
     </div>
   );
@@ -268,30 +268,3 @@ EditImage.defaultProps = {
 };
 
 export default EditImage;
-
-// Set `imagePreviews`
-// useEffect(() => {
-//   console.log('useEffect setting imagePreviews');
-//   if (props.withPreview && imageList.length) {
-//     setImagePreviews(
-//       imageList.map((image, index) => {
-//         return (
-//           <div key={index} className="image-preview-wrapper">
-//             <div className="image-preview-container">
-//               {/* @TODO: Improve accessibility of the following code */}
-//               <div
-//                 className="delete-image-icon"
-//                 onClick={() => removeImageCallback(index)}
-//               >
-//                 X
-//               </div>
-//               <img src={image.url} className="image-preview" alt="preview" />
-//             </div>
-//           </div>
-//         );
-//       })
-//     );
-//   } else {
-//     setImagePreviews(null);
-//   }
-// }, [imageList, props.withPreview, removeImageCallback]);
