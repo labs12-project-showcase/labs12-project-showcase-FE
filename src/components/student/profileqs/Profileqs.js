@@ -1,7 +1,14 @@
-import React from "react";
-import { connect } from "react-redux";
-import ProfileqsForm from "./ProfileqsForm";
-import { getProfileData } from "./profileqsActions";
+import React from 'react';
+import { connect } from 'react-redux';
+
+import EditImage from '../../EditImage/EditImage';
+import {
+  getProfileData,
+  updateProfile,
+  uploadProfilePicture
+} from './profileqsActions';
+import avatar from '../../../assets/avatar.jpg';
+import ProfileqsForm from './ProfileqsForm';
 
 class Profileqs extends React.Component {
   userExists = this.props.profile.profileData.exists || false;
@@ -43,6 +50,19 @@ class Profileqs extends React.Component {
               ) : null}
             </>
           )}
+          <div className="profile-picture">
+            <span className="input-label">Profile Picture</span>
+            <EditImage
+              initialImageList={[this.props.profile.profileData.profile_pic]}
+              maxFileCount={1}
+              onImageUpload={this.props.uploadProfilePicture}
+              onUrlAdd={url =>
+                this.props.updateProfile({ profile_pic: url }, false)
+              }
+              placeholder={avatar}
+              uploadButtonText="Upload file"
+            />
+          </div>
           <ProfileqsForm initialFormValues={this.props.profile.profileData} />
         </div>
       </div>
@@ -60,5 +80,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getProfileData }
+  { getProfileData, updateProfile, uploadProfilePicture }
 )(Profileqs);
