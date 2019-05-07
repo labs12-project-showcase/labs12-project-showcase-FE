@@ -12,7 +12,7 @@ const ProjectCards = ({ top_projects, projects }) => {
       <Link
         key={proj.id}
         className="project-card"
-        to={`/student/project-view/${proj.project_id}`}
+        to={`/student/project-view/${proj.id}`}
       >
         <img
           src={"https://morenowtech.com/wp-content/uploads/2015/01/Marvic.jpg"}
