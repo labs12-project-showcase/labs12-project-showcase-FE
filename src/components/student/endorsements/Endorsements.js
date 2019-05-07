@@ -2,7 +2,7 @@ import React from "react";
 import Swiper from "react-id-swiper";
 import { Pagination } from "swiper/dist/js/swiper.esm";
 
-const Endorsements = props => {
+const Endorsements = ({ endorsements }) => {
   const params = {
     modules: [Pagination],
     effect: "coverflow",
@@ -33,55 +33,19 @@ const Endorsements = props => {
     <>
       <div className="endorsements">
         <h2>Endorsement</h2>
-        <Swiper {...params}>
-          <div className="swiper-slide">
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis parturient montes.
-            </p>
-          </div>
-          <div className="swiper-slide">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              doloribus dolorum, commodi excepturi a aliquam! Fugiat ut
-              repudiandae blanditiis vel, porro officia vitae aspernatur
-              reiciendis nesciunt! Debitis rem illo reprehenderit?
-            </p>
-          </div>
-          <div className="swiper-slide">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              doloribus dolorum, commodi excepturi a aliquam! Fugiat ut
-              repudiandae blanditiis vel, porro officia vitae aspernatur
-              reiciendis nesciunt! Debitis rem illo reprehenderit?
-            </p>
-          </div>
-          <div className="swiper-slide">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              doloribus dolorum, commodi excepturi a aliquam! Fugiat ut
-              repudiandae blanditiis vel, porro officia vitae aspernatur
-              reiciendis nesciunt! Debitis rem illo reprehenderit?
-            </p>
-          </div>
-          <div className="swiper-slide">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              doloribus dolorum, commodi excepturi a aliquam! Fugiat ut
-              repudiandae blanditiis vel, porro officia vitae aspernatur
-              reiciendis nesciunt! Debitis rem illo reprehenderit?
-            </p>
-          </div>
-          <div className="swiper-slide">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              doloribus dolorum, commodi excepturi a aliquam! Fugiat ut
-              repudiandae blanditiis vel, porro officia vitae aspernatur
-              reiciendis nesciunt! Debitis rem illo reprehenderit?
-            </p>
-          </div>
-        </Swiper>
+        {endorsements.length ? (
+          <Swiper {...params}>
+            {endorsements.map((endorsement, index) => (
+              <div className="swiper-slide" key={index}>
+                <p>
+                  {endorsement.message} - {endorsement.name}
+                </p>
+              </div>
+            ))}
+          </Swiper>
+        ) : (
+          <p>There are currently no endorsements for this student.</p>
+        )}
       </div>
     </>
   );
