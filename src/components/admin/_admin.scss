@@ -12,7 +12,9 @@ td {
 }
 
 .MuiSwitch-switchBase-173 {
-	height: 0 !important;
+	@media (max-width: 600px) {
+		height: 14px !important;
+	}
 }
 
 .MaterialDatatableBodyCell-cellStacked-168 {
@@ -53,7 +55,7 @@ td {
 	.MaterialDatatableToolbarSelect-title-252 {
 		font-size: 1.4rem;
 	}
-	.MaterialDatatableToolbarSelect-title-252 {
+	.MuiTypography-caption-55 {
 		font-size: 1.4rem;
 	}
 	.MaterialDatatableBodyRow-responsiveStacked-164 {
