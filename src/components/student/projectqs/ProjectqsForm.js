@@ -7,23 +7,24 @@ import { ProjectQsSchema, FormSchema } from "./ProjectqsFormSchema";
 import {
   createProject,
   getProject,
-  clearProjectData
+  clearProjectData,
+  updateProject
 } from "./projectqsActions";
 
-const ProjectqsForm = ({ dispatch, ...props }) => {
+const ProjectqsForm = ({ dispatch, project_id, ...props }) => {
   const [formSkillsList, setFormSkillsList] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (props.id) {
-      dispatch(getProject(props.id));
+    if (props.match.params.id) {
+      dispatch(getProject(props.match.params.id));
     } else {
-      dispatch(clearProjectData);
+      dispatch(clearProjectData());
     }
-  }, [dispatch, props.id]);
+  }, [dispatch, props.match.params.id]);
 
   const submit = values => {
-    if (!props.id) {
+    if (!props.match.params.id) {
       dispatch(
         createProject({
           ...values,
@@ -32,13 +33,28 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         })
       )
         .then(res => {
-          //props.history.push(`/student/profile/${props.profile.id}`);
+          props.history.push(`/student/profile/${props.profile.id}`);
         })
         .catch(err => {
           setError(true);
         });
     } else {
-      //dispatch update project stuff here
+      dispatch(
+        updateProject(
+          {
+            ...values,
+            student_id: props.profile.id,
+            skills: formSkillsList.map(skill => skill.value)
+          },
+          props.match.params.id
+        )
+      )
+        .then(res => {
+          props.history.push(`/student/project-view/${props.match.params.id}`);
+        })
+        .catch(err => {
+          console.log("Error in form component .catch");
+        });
     }
   };
 
@@ -51,7 +67,7 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
         enableReinitialize
         render={props => (
           <FormSchema
-            project_id={props.id}
+            project_id={project_id}
             skillsList={formSkillsList}
             setSkillsList={setFormSkillsList}
             {...props}
@@ -79,7 +95,8 @@ const ProjectqsForm = ({ dispatch, ...props }) => {
 const mapStateToProps = state => {
   return {
     profile: state.profile.profileData,
-    initialFormValues: state.project.projectData
+    initialFormValues: state.project.projectData,
+    project_id: state.project.projectData.id
   };
 };
 

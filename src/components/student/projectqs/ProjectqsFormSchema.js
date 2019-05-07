@@ -42,14 +42,16 @@ export const FormSchema = ({
   values
 }) => {
   const [skillsInput, setSkillsInput] = useState();
-
   const createSkillsOption = label => ({
     label,
     value: label
   });
 
   useEffect(() => {
-    if (initialValues.project_skills) {
+    if (
+      initialValues.project_skills &&
+      initialValues.project_skills[0] !== null
+    ) {
       setSkillsList(
         initialValues.project_skills.map(skill => {
           const option = createSkillsOption(skill);
@@ -64,12 +66,7 @@ export const FormSchema = ({
       <label>
         <span className="input-label">Project Title</span>
         <br />
-        <Field
-          name="name"
-          type="text"
-          className="project-title-field"
-          required
-        />
+        <Field name="name" type="text" className="project-title-field" />
         <ErrorMessage
           name="name"
           render={msg => <div className="inline-error">{msg}</div>}
@@ -89,12 +86,7 @@ export const FormSchema = ({
       <label>
         <span className="input-label">GitHub URL</span>
         <br />
-        <Field
-          name="github"
-          type="text"
-          className="github-link-field"
-          required
-        />
+        <Field name="github" type="text" className="github-link-field" />
         <ErrorMessage
           name="github"
           render={msg => <div className="inline-error">{msg}</div>}
@@ -230,7 +222,6 @@ export const FormSchema = ({
           name="short_description"
           component="textarea"
           className="project-description-text-area"
-          required
         />
         <ErrorMessage name="short_description" component="div" />
       </label>
@@ -266,35 +257,52 @@ export const FormSchema = ({
 
 // Validation Schema, feels similar to React PropTypes
 export const ProjectQsSchema = Yup.object().shape({
-  name: Yup.string().trim(),
+  name: Yup.string()
+    .trim()
+    .required("Please provide a name for the project."),
   github: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .required("Please provide a GitHub URL for the project."),
   fe_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   be_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   mobile_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   market_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   design_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   youtube_link: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .nullable(),
   website: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
+    .url("Must be a valid URL")
+    .required("Please provide the demo URL for the project."),
   medium: Yup.string()
     .trim()
-    .url("Must be a valid URL"),
-  short_description: Yup.string().trim(),
-  customer_pitch: Yup.string().trim(),
-  tech_pitch: Yup.string().trim()
+    .url("Must be a valid URL")
+    .nullable(),
+  short_description: Yup.string()
+    .trim()
+    .required("Please provide a short description."),
+  customer_pitch: Yup.string()
+    .trim()
+    .nullable(),
+  tech_pitch: Yup.string()
+    .trim()
+    .nullable()
 });
