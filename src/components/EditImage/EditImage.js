@@ -1,28 +1,27 @@
 /* Heavily inspired by https://github.com/JakeHartnell/react-images-upload */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import axiosAuth from '../auth/axiosAuth';
+import axiosAuth from '../../auth/axiosAuth';
 
 const EditImage = props => {
   let inputElement;
-  const [imageList, setImageList] = useState([]);
   const [badFileTypeList, setBadFileTypeList] = useState([]);
   const [badFileSizeList, setBadFileSizeList] = useState([]);
-
-  // Supposed to fire the `onChange()` but I'm not sure about it
-  // the imageList might not be good? I dunno
-  // useEffect(() => {
-  //   this.props.onChange(imageList);
-  // }, [imageList]);
+  const [imageList, setImageList] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState(null);
 
   // Load default images if there are any
   useEffect(() => {
+    console.log('useEffect is setting imageList');
     if (props.initialImageList) {
       setImageList(
         props.initialImageList.map(item => ({ file: null, url: item }))
       );
     }
   }, [props.initialImageList]);
+  console.log('imageList: ', imageList);
+
+  console.log('imagePreview: ', imagePreviews);
 
   // Check file type
   function hasExtension(fileName) {
@@ -34,13 +33,16 @@ const EditImage = props => {
   // File validation
   function onFileDrop(event) {
     const files = event.target.files;
+    console.log('files: ', files);
     const allFilePromises = [];
 
-    // Limit files to max number, including current images
-    files.splice(props.maxFileCount - imageList.lenth);
-
     // Loop over added files
-    for (let i in files) {
+    // Note: limits iterations to `props.maxFileCount`, including current images
+    for (
+      let i = 0;
+      i < Math.min(files.length, props.maxFileCount - imageList.length);
+      i++
+    ) {
       const file = files[i];
 
       // check for file extension
@@ -57,7 +59,7 @@ const EditImage = props => {
       allFilePromises.push(readFile(file));
     }
 
-    // await all file-read promises, then update state
+    // await all file-read promises
     Promise.all(allFilePromises).then(newFilesData => {
       newFilesData.forEach(item => {
         // set state with dataUrl for previewing the image
@@ -129,16 +131,19 @@ const EditImage = props => {
   }
 
   /**
-   *
-   * @param {Object} image An Object from `imageList`
+   * Removes image from state; cancel axios request to upload, if possible
+   * @param {Object} index Index of an image object in `imageList`
    */
   function removeImage(index) {
+    console.log('removeImage index:', index);
+    console.log('removeImage imageList:', imageList);
+
     // @TODO: if Url is a full Url,
     // need to request back-end to delete image
 
     // if Url is dataUrl, cancel axios request
     if (imageList[index].cancelToken) {
-      previousState[index].cancelToken();
+      imageList[index].cancelToken();
       console.log('User canceled image upload.');
     }
 
@@ -159,7 +164,7 @@ const EditImage = props => {
       ));
     }
     if (badFileSizeList.length) {
-      notAccepted = this.state.badFileSizeList.map((fileName, index) => (
+      notAccepted = badFileSizeList.map((fileName, index) => (
         <div className={`inline-error ${props.errorClass}`} key={index}>
           {fileName} {props.fileSizeError}
         </div>
@@ -181,49 +186,60 @@ const EditImage = props => {
   }
 
   function renderImagePreview() {
+    console.log('renderImagePreview running!');
     return imageList.map((image, index) => {
       return (
         <div key={index} className="image-preview-wrapper">
           <div className="image-preview-container">
             {/* @TODO: Improve accessibility of the following code */}
-            <div className="delete-image-icon" onClick={() => removeImage(image)}>
+            <div
+              className="delete-image-icon"
+              onClick={() => removeImage(index)}
+            >
               X
             </div>
-            <img src={item.url} className="image-preview" alt="preview" />
+            <img src={image.url} className="image-preview" alt="preview" />
           </div>
         </div>
       );
     });
   }
 
-  // not sure what this does yet. need to test.
+  // not sure exactly what this does yet. need to test.
   function triggerFileUpload() {
     inputElement.click();
   }
 
   return (
-    <div className={`edit-image-container ${this.props.containerClassName}`}>
-      {this.renderIcon()}
-      {this.renderLabel()}
-      {this.renderErrors()}
-      <button
-        type={this.props.buttonType}
-        className={`edit-image-button ${props.buttonClassName}`}
-        // style={this.props.buttonStyles}
-        onClick={this.triggerFileUpload}
-      >
-        {this.props.buttonText}
-      </button>
-      <input
-        type="file"
-        ref={input => (inputElement = input)}
-        name={props.inputElementName}
-        multiple={!props.singleImage}
-        onChange={onFileDrop}
-        onClick={onUploadClick}
-        accept={props.accept}
-      />
-      {props.withPreview ? this.renderPreview() : null}
+    <div className={`edit-image-container ${props.containerClassName}`}>
+      {renderUploadIcon()}
+      {renderLabel()}
+      {renderErrors()}
+      {imageList.length < props.maxFileCount ? (
+        <>
+          <button
+            type={props.buttonType}
+            className={`edit-image-button ${props.buttonClassName}`}
+            onClick={triggerFileUpload}
+          >
+            {props.buttonText}
+          </button>
+          <input
+            type="file"
+            ref={input => (inputElement = input)}
+            name={props.inputElementName}
+            multiple={!props.singleImage}
+            onChange={onFileDrop}
+            onClick={onUploadClick}
+            accept={props.accept}
+          />
+        </>
+      ) : null}
+      {/* 
+        the `renderImagePreview` below isn't 
+        updating when I remove an image from state 
+      */}
+      {props.withPreview && imageList.length ? renderImagePreview() : null}
     </div>
   );
 };
@@ -231,29 +247,51 @@ const EditImage = props => {
 EditImage.defaultProps = {
   accept: 'image/*',
   buttonClassName: '',
-  // buttonStyles: {},
   acceptedExtensions: ['.jpg', '.jpeg', '.gif', '.png'],
   buttonText: 'Choose images',
   buttonType: 'button',
   containerClassName: '',
   errorClass: '',
-  // errorStyle: {},
-  // fileContainerStyle: {},
   fileSizeError: ' file size is too big',
   fileTypeError: ' is not a supported file extension',
   initialImageList: '',
   inputElementName: '',
   label: 'Max file size: 5mb, accepted: jpg|gif|png',
   labelClass: '',
-  // labelStyles: {},
   maxFileCount: Infinity,
   maxFileSize: 5242880,
-  onChange: () => {},
+  // onChange: () => {},
   singleImage: true,
-  // style: {},
   withIcon: true,
-  withLabel: true
-  // withPreview: false,
+  withLabel: true,
+  withPreview: true
 };
 
 export default EditImage;
+
+// Set `imagePreviews`
+// useEffect(() => {
+//   console.log('useEffect setting imagePreviews');
+//   if (props.withPreview && imageList.length) {
+//     setImagePreviews(
+//       imageList.map((image, index) => {
+//         return (
+//           <div key={index} className="image-preview-wrapper">
+//             <div className="image-preview-container">
+//               {/* @TODO: Improve accessibility of the following code */}
+//               <div
+//                 className="delete-image-icon"
+//                 onClick={() => removeImageCallback(index)}
+//               >
+//                 X
+//               </div>
+//               <img src={image.url} className="image-preview" alt="preview" />
+//             </div>
+//           </div>
+//         );
+//       })
+//     );
+//   } else {
+//     setImagePreviews(null);
+//   }
+// }, [imageList, props.withPreview, removeImageCallback]);
