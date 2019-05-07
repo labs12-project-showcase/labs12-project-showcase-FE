@@ -25,7 +25,7 @@
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e50ee', endColorstr='#1e50ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 		height: 280px;
 
-		@media (max-width: 600px) {
+		@media (max-width: 767px) {
 			height: auto;
 		}
 
@@ -57,7 +57,7 @@
 				color: $lightcolor;
 				text-align: center;
 				transform: translateY(20px);
-				@media (max-width: 600px) {
+				@media (max-width: 767px) {
 					transform: translateY(60px);
 					text-align: center;
 				}

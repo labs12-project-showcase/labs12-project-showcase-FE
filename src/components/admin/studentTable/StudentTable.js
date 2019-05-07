@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchStudents } from '../adminActions.js';
+import Switch from "@material-ui/core/Switch";
+import { Link } from "react-router-dom";
 
 class StudentTable extends React.Component {
   constructor(props) {
@@ -16,12 +18,33 @@ class StudentTable extends React.Component {
   }
 
   render() { 
-    const columns = [
+
+    const column = [
+      {
+        name: "ID",
+        field: "id",
+        options: {
+          display: false
+        }
+      },
       {
         name: "Name",
         field: "name",
             filter: true,
             sort: true,
+            options: {
+              customBodyRender: value => {
+               console.log('custom body render value', value);
+               return (
+                <Link
+                 to={`/student/profile/${value.id}`}
+                 onClick={ (e) => {
+                  e.stopPropagation();
+                 }}
+                >{value.name}</Link>
+               );
+              }
+             }
       },
       {
         name: "Track",
@@ -31,86 +54,63 @@ class StudentTable extends React.Component {
       },
       {
         name: "Cohort",
-        field: "cohort",
+        field: "cohort_name",
             filter: true,
             sort: true,
       },
       {
         name: "Graduated",
         field: "graduated",
-            filter: true,
-            sort: true,
+        options: {
+          customBodyRender: value => {
+            return (
+              <Switch
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
+              />
+            );
+          }
+        }
       },
       {
         name: "Hired",
         field: "hired",
-            filter: true,
-            sort: true,
+        options: {
+          customBodyRender: value => {
+            return (
+              <Switch
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
+              />
+            );
+          }
+        }
       },
       {
         name: "Endorsed",
         field: "endorsed",
-            filter: true,
-            sort: true,
-      }
-    ]
-
-    const data = [
-        {
-            name: "Jake",
-            track: "Full-Stack Web",
-            cohort: "Web 17",
-            graduated: "No",
-            hired: "No",
-            endorsed: "No"
-          },
-          {
-            name: "Lowell",
-            track: "Full-Stack Web",
-            cohort: "Web 17",
-            graduated: "No",
-            hired: "No",
-            endorsed: "No"
-          },
-          {
-            name: "Brandon",
-            track: "Full-Stack Web",
-            cohort: "Web 17",
-            graduated: "No",
-            hired: "No",
-            endorsed: "No"
-          },
-          {
-            name: "Tico",
-            track: "Full-Stack Web",
-            cohort: "Web 17",
-            graduated: "No",
-            hired: "No",
-            endorsed: "No"
-          },
-          {
-            name: "Ryan",
-            track: "Full-Stack Web",
-            cohort: "Web 17",
-            graduated: "No",
-            hired: "No",
-            endorsed: "No"
-          },
-          {
-            name: "Julian",
-            track: "Full-Stack Web",
-            cohort: "Web 17",
-            graduated: "No",
-            hired: "No",
-            endorsed: "No"
+        options: {
+          customBodyRender: value => {
+            return (
+              <Switch
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
+              />
+            );
           }
-        ]
+        }
+      },
+    ]
+    
     return ( 
       <div className="tableContainer">
         <MaterialDatatable
           title={"Admin Student Table"}
-          columns={columns}
-          data={data}
+          columns={column}
+          data={this.props.students}
         />
       </div>
      );
@@ -118,8 +118,9 @@ class StudentTable extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log("finding state", state)
   return {
-    ...state.projectTable
+    students: state.admin.students
   };
 };
 

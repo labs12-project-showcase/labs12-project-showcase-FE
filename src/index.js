@@ -12,6 +12,8 @@ import { Provider } from "react-redux";
 import rootReducer from "./config/rootReducer.js";
 import history from "./history.js";
 
+import ScrollToTop from "./components/utils/ScrollToTop";
+
 const store = createStore(
   rootReducer,
   compose(
@@ -23,7 +25,9 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <ScrollToTop>
+        <App />
+      </ScrollToTop>
     </Router>
   </Provider>,
 

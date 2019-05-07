@@ -1,8 +1,8 @@
 import history from '../../../history.js';
 import axios from 'axios'; // required for CancelToken
 import axiosAuth from '../../../auth/axiosAuth';
-
-const backendURL = 'https://halg-backend.herokuapp.com';
+import { backendUrl } from '../../../config/urls.js';
+import history from "../../../history.js";
 
 export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
 export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
@@ -75,7 +75,7 @@ export const updateProfile = (formValues, redirect = true) => dispatch => {
   };
   dispatch({ type: UPDATE_PROFILE_START });
   axiosAuth()
-    .put(`${backendURL}/api/students/update`, removeEmptyValues(send))
+    .put(`${backendUrl}/api/students/update`, removeEmptyValues(send))
     .then(res => {
       if (redirect) {
         history.push(`/student/profile/${formValues.id}`);

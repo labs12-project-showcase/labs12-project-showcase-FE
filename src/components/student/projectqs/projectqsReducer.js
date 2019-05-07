@@ -5,10 +5,10 @@ import {
   CREATE_PROJECT_SUCCESS,
   GET_PROJECT_FAILURE,
   GET_PROJECT_START,
-  GET_PROJECT_SUCCESS
-  // UPDATE_PROJECT_FAILURE,
-  // UPDATE_PROJECT_START,
-  // UPDATE_PROJECT_SUCCESS
+  GET_PROJECT_SUCCESS,
+  UPDATE_PROJECT_FAILURE,
+  UPDATE_PROJECT_START,
+  UPDATE_PROJECT_SUCCESS
 } from "./projectqsActions.js";
 
 const initialState = {
@@ -42,7 +42,7 @@ const projectqsReducer = (state = initialState, action) => {
     case CLEAR_PROJECT_DATA:
       return {
         ...state,
-        projectData: initialState.projectData
+        projectData: { ...state.projectData, ...initialState.projectData }
       };
     case CREATE_PROJECT_START:
       return {
@@ -54,7 +54,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         updatingProjectData: false,
-        projectData: action.payload
+        projectData: { ...state.projectData, ...action.payload }
       };
     case CREATE_PROJECT_FAILURE:
       return {
@@ -72,7 +72,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         gettingProjectData: false,
-        projectData: action.payload
+        projectData: { ...state.projectData, ...action.payload }
       };
     case GET_PROJECT_FAILURE:
       return {
@@ -80,24 +80,24 @@ const projectqsReducer = (state = initialState, action) => {
         error: action.payload,
         gettingProjectData: false
       };
-    // case UPDATE_PROJECT_START:
-    // return {
-    //   ...state,
-    //   updatingProjectData: true
-    // };
-    // case UPDATE_PROJECT_SUCCESS:
-    // return {
-    //   ...state,
-    //   error: null,
-    //   projectData: action.payload,
-    //   updatingProjectData: false
-    // };
-    // case UPDATE_PROJECT_FAILURE:
-    // return {
-    //   ...state,
-    //   error: action.payload,
-    //   updatingProjectData: false
-    // };
+    case UPDATE_PROJECT_START:
+      return {
+        ...state,
+        updatingProjectData: true
+      };
+    case UPDATE_PROJECT_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        projectData: { ...state.projectData, ...action.payload },
+        updatingProjectData: false
+      };
+    case UPDATE_PROJECT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingProjectData: false
+      };
     default:
       return state;
   }

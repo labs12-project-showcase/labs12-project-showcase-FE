@@ -1,97 +1,89 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
+import { fetchProjects } from '../adminActions.js';
+import Switch from "@material-ui/core/Switch";
+import { Link } from "react-router-dom";
 
-
-
-// const AdminDashboard = props => {
-//   return (
-//     <div className="adminDashboard">
-    
-//     </div>
-//   );
-// };
-
-class ProjectTable extends Component {
+class ProjectTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      data: [
-        {
-          "Title": "Jake",
-          "Type": "Full-Stack Web",
-          "Contributors": "Web 17",
-          "Approved": "No",
       
-        },
-        {
-          "Title": "Lowell",
-          "Type": "Full-Stack Web",
-          "Contributors": "Web 17",
-          "Approved": "No",
-      
-        },
-        {
-          "Title": "Brandon",
-          "Type": "Full-Stack Web",
-          "Contributors": "Web 17",
-          "Approved": "No",
-      
-        },
-        {
-          "Title": "Tico",
-          "Type": "Full-Stack Web",
-          "Contributors": "Web 17",
-          "Approved": "No",
-      
-        },
-        {
-          "Title": "Ryan",
-          "Type": "Full-Stack Web",
-          "Contributors": "Web 17",
-          "Approved": "No",
-      
-        },
-        {
-          "Title": "Julian",
-          "Type": "Full-Stack Web",
-          "Contributors": "Web 17",
-          "Approved": "No",
-      
-        }
-      ]
      }
   }
+
+  componentDidMount() {
+    this.props.fetchProjects();
+  }
+
   render() { 
-    const columns = [
+    const column = [
       {
-        Header: "Title"
+        name: "Title",
+        field: "name",
+            filter: true,
+            sort: true,
+            options: {
+              customBodyRender: value => {
+               console.log('custom body render value', value);
+               return (
+                <Link
+                 to={`/student/project-view/${value.id}`}
+                 onClick={ (e) => {
+                  e.stopPropagation();
+                 }}
+                >{value.name}</Link>
+               );
+              }
+             }
       },
       {
-        Header: "Type"
+        name: "Type",
+        field: "short_description",
+            filter: true,
+            sort: true,
       },
       {
-        Header: "Contributors"
+        name: "Contributors",
+        field: "contributors",
+            filter: true,
+            sort: true,
       },
       {
-        Header: "Approved"
-      },
+        name: "Approved",
+        field: "approved",
+        options: {
+          customBodyRender: value => {
+            return (
+              <Switch
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
+              />
+            );
+          }
+        }
+      }
     ]
+    
     return ( 
-      <MaterialDatatable>
-        column={column}
-        data={this.state}
-      </MaterialDatatable>
+      <div className="tableContainer">
+        <MaterialDatatable
+          title={"Admin Project Table"}
+          columns={column}
+          data={this.props.projects}
+        />
+      </div>
      );
   }
 }
- 
-export default ProjectTable;
 
 const mapStateToProps = state => {
   return {
-    ...state.studentTable
+    // ...state.projectTable,
+    projects: state.admin.projects
   };
 };
 
-export default connect(mapStateToProps)(StudentTable);
+export default connect(mapStateToProps, { fetchProjects })(ProjectTable);

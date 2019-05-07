@@ -20,7 +20,16 @@ export const LOGGING_IN = 'LOGGING_IN';
 
 export const login = params => dispatch => {
   dispatch({ type: LOGGING_IN });
-  auth.authorize();
+  auth.authorize({
+    connection: 'github'
+  });
+}
+
+export const adminLogin = params => dispatch => {
+  dispatch({ type: LOGGING_IN });
+  auth.authorize({
+    connection: 'Username-Password-Authentication'
+  });
 }
 
 export const logout = params => dispatch => {
@@ -49,10 +58,12 @@ export const handleAuth = () => dispatch => {
       }
     });
 
+    const whichRole = results.idTokenPayload.sub.substring(0, 6) === 'github' ? 1 : 2;
+
     const send = {
       email: results.idTokenPayload.email,
       name: results.idTokenPayload.name,
-      role_id: 1,
+      role_id: whichRole,
       sub_id: results.idTokenPayload.sub
     };
 
@@ -62,25 +73,29 @@ export const handleAuth = () => dispatch => {
 
       localStorage.setItem('backendToken', resLogin.data);
 
-      dispatch({ type: GET_PROFILE_DATA_START });
-      axiosAuth().get(`${backendUrl}/api/students/profile`)
-      .then(resGetProf => {
-        let noNulls = {};
-        for (let item in resGetProf.data) {
-          if (resGetProf.data[item] !== null) {
-            noNulls[item] = resGetProf.data[item];
+      if (whichRole === 2) {
+        history.replace('/admin/student-table');
+      } else {
+        dispatch({ type: GET_PROFILE_DATA_START });
+        axiosAuth().get(`${backendUrl}/api/students/profile`)
+        .then(resGetProf => {
+          let noNulls = {};
+          for (let item in resGetProf.data) {
+            if (resGetProf.data[item] !== null) {
+              noNulls[item] = resGetProf.data[item];
+            }
           }
-        }
-        dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
-        if (resGetProf.data.exists) {
-          history.push(`/student/profile/${resGetProf.data.id}`);
-        } else {
-          history.push('/profile-quick-start');
-        }
-      })
-      .catch(err => {
-        dispatch({ type: GET_PROFILE_DATA_FAILURE, payload: err });
-      });
+          dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
+          if (resGetProf.data.exists) {
+            history.replace(`/student/profile/${resGetProf.data.id}`);
+          } else {
+            history.replace('/profile-quick-start');
+          }
+        })
+        .catch(err => {
+          dispatch({ type: GET_PROFILE_DATA_FAILURE, payload: err });
+        });
+      }
 
     })
     .catch(err => {
