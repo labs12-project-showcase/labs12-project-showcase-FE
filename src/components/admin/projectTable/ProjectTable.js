@@ -39,15 +39,15 @@ class ProjectTable extends React.Component {
       {
         name: "Approved",
         field: "Approved",
-        options: {
-          customBodyRender: value => {
-            return (
-              //console.log(value)
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+          options: {
+            customBodyRender: value => {
+              return (
+                //console.log(value)
+                <Switch
+                onClick= { (e) =>
+                {e.stopPropagation()}
+                }
+                />
             );
           }
         }

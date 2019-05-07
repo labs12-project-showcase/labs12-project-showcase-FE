@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchStudents } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch"
+import Switch from "@material-ui/core/Switch";
+import { Link } from "react-router-dom";
 
 class StudentTable extends React.Component {
   constructor(props) {
@@ -33,6 +34,19 @@ class StudentTable extends React.Component {
         field: "name",
             filter: true,
             sort: true,
+            options: {
+              customBodyRender: value => {
+               console.log('custom body render value', value);
+               return (
+                <Link
+                 to={`/student/profile/${value.id}`}
+                 onClick={ (e) => {
+                  e.stopPropagation();
+                 }}
+                >{value.name}</Link>
+               );
+              }
+             }
       },
       {
         name: "Track",
