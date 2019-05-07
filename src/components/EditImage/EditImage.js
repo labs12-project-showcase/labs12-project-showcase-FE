@@ -1,3 +1,4 @@
+/* Heavily inspired by https://github.com/JakeHartnell/react-images-upload */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import axiosAuth from '../auth/axiosAuth';
@@ -16,12 +17,12 @@ const EditImage = props => {
 
   // Load default images if there are any
   useEffect(() => {
-    if (props.defaultImageList) {
+    if (props.initialImageList) {
       setImageList(
-        props.defaultImageList.map(item => ({ file: null, url: item }))
+        props.initialImageList.map(item => ({ file: null, url: item }))
       );
     }
-  }, [props.defaultImageList]);
+  }, [props.initialImageList]);
 
   // Check file type
   function hasExtension(fileName) {
@@ -235,12 +236,12 @@ EditImage.defaultProps = {
   buttonText: 'Choose images',
   buttonType: 'button',
   containerClassName: '',
-  defaultImageList: '',
   errorClass: '',
   // errorStyle: {},
   // fileContainerStyle: {},
   fileSizeError: ' file size is too big',
   fileTypeError: ' is not a supported file extension',
+  initialImageList: '',
   inputElementName: '',
   label: 'Max file size: 5mb, accepted: jpg|gif|png',
   labelClass: '',
