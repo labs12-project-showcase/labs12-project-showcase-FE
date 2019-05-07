@@ -1,13 +1,12 @@
 import React from "react";
 
 const ProjectSkills = ({ projectSkills }) => {
-  const map = arr => {
+  const map = arr =>
     arr.map(projectSkill => (
       <span key={projectSkill} className="projectSkill-chip">
         {projectSkill}
       </span>
     ));
-  };
 
   return (
     <div className="projectSkills-container">
