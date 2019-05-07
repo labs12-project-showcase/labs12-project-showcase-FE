@@ -9,6 +9,9 @@
 	padding: 20px;
 	margin: 5px;
 	line-height: 1.5;
+	@media (max-width: 768px) {
+		max-width: 315px;
+	}
 
 	h2 {
 		font-weight: 700;
