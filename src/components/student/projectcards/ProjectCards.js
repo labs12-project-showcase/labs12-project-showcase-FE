@@ -10,7 +10,7 @@ const ProjectCards = ({ top_projects, projects }) => {
   const map = arr =>
     arr.map(proj => (
       <Link
-        key={proj.project_id}
+        key={proj.id}
         className="project-card"
         to={`/student/project-view/${proj.project_id}`}
       >
