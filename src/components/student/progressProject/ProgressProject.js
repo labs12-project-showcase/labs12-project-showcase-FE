@@ -7,7 +7,6 @@ const ProgressProject = ({ project }) => {
   const [percentage, updatePercent] = useState(0);
   const [full, updateFull] = useState([]);
   const [empty, updateEmpty] = useState([]);
-  //Fake some project data here
   useEffect(() => {
     const {
       id,
@@ -18,7 +17,6 @@ const ProgressProject = ({ project }) => {
       short_description,
       ...rest
     } = project;
-    //Should be props.project later
     if (project) {
       checkFields(rest);
     }
@@ -108,18 +106,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(ProgressProject);
-
-const data = {
-  "Project Name": "Mentors International Training Reminders",
-  "Project Website": "Toledo",
-  "Github Link": "https://github.com/ticotheps",
-  "Front End Link": "https://heytico.com",
-  "Back End Link": null,
-  "Marketing Site Link": "hey there",
-  "Mobile App Link": null,
-  "Design File Link": null,
-  "YouTube Video Link": "https://youtube.com",
-  "Medium Article Link": null,
-  "Technical Sales Pitch": null,
-  "Customer Sales Pitch": null
-};
