@@ -13,22 +13,20 @@ class StudentTable extends React.Component {
      }
   }
 
-  // handleChange = name => {
-  //   this.setState({ [name]: event.target.checked })
-  // }
-
   componentDidMount() {
     this.props.fetchStudents();
   }
 
   render() { 
-    // const {
-    //   name,
-    //   track,
-    //   cohort,
-    // } = this.props.students
 
     const column = [
+      {
+        name: "ID",
+        field: "id",
+        options: {
+          display: false
+        }
+      },
       {
         name: "Name",
         field: "name",
@@ -66,7 +64,6 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
-              //console.log(value)
               <Switch
               onClick= { (e) =>
               {e.stopPropagation()}
@@ -82,7 +79,6 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
-              //console.log(value)
               <Switch
               onClick= { (e) =>
               {e.stopPropagation()}
@@ -98,7 +94,6 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
-              //console.log(value)
               <Switch
               onClick= { (e) =>
               {e.stopPropagation()}
@@ -403,7 +398,6 @@ class StudentTable extends React.Component {
     
     return ( 
       <div className="tableContainer">
-        {console.log("testing the data", this.props.students)}
         <MaterialDatatable
           title={"Admin Student Table"}
           columns={column}
@@ -415,7 +409,7 @@ class StudentTable extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
+  console.log("finding state", state)
   return {
     //...state.projectTable
     students: state.admin.students

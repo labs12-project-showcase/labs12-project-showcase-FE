@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchStudents } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch"
+import Switch from "@material-ui/core/Switch";
+import { Link } from "react-router-dom";
 
 class ProjectTable extends React.Component {
   constructor(props) {
@@ -38,19 +39,19 @@ class ProjectTable extends React.Component {
       },
       {
         name: "Approved",
-        field: "Approved",
+        field: "approved",
           options: {
             customBodyRender: value => {
               return (
-                //console.log(value)
                 <Switch
+                //checked={this.state.checked}
                 onClick= { (e) =>
                 {e.stopPropagation()}
                 }
                 />
-            );
+              );
+            }
           }
-        }
       },
     ]
 
