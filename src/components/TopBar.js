@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import history from '../history.js';
+import React, { Component } from "react";
+import history from "../history.js";
 import { withRouter } from "react-router-dom";
-import { connect } from 'react-redux';
-import { login, logout, adminLogin } from '../auth/authActions.js';
-import { NavLink } from 'react-router-dom';
-import { validateJwt, getJwtRole } from '../config/utilities.js';
+import { connect } from "react-redux";
+import { login, logout, adminLogin } from "../auth/authActions.js";
+import { NavLink } from "react-router-dom";
+import { validateJwt, getJwtRole } from "../config/utilities.js";
 
 import whiteLambdaLogo from "../assets/Hire-lambda-logo-white.png";
 
@@ -40,8 +40,8 @@ class TopBar extends Component {
   };
 
   render() {
-		const renderLoggedIn = validateJwt();
-		const loggedInRole = getJwtRole();
+    const renderLoggedIn = validateJwt();
+    const loggedInRole = getJwtRole();
     const { login, logout, adminLogin } = this.props;
     return (
       <div className="TopBar">
@@ -56,14 +56,14 @@ class TopBar extends Component {
 
           <div className="TopBar-btn-container">
             {!(this.state.isLoggedIn || renderLoggedIn) && (
-							<>
-              <button className="TopBar-login-btn" onClick={login}>
-                <i className="fas fa-user" />
-              </button>
-              <button className="" onClick={adminLogin}>
-								Admin Login
-							</button>
-							</>
+              <>
+                <button className="TopBar-login-btn" onClick={login}>
+                  <i className="fas fa-user" />
+                </button>
+                <button className="" onClick={adminLogin}>
+                  Admin Login
+                </button>
+              </>
             )}
             {(this.state.isLoggedIn || renderLoggedIn) && (
               <button className="TopBar-logout-btn" onClick={logout}>
@@ -72,32 +72,33 @@ class TopBar extends Component {
             )}
           </div>
         </div>
-        {(this.state.isLoggedIn || renderLoggedIn) && loggedInRole === 'student' && (
-          <div className="subNav">
-            <nav>
-              <NavLink exact to={`/student/profile/${this.props.id}`}>
-                <i className="far fa-id-card" /> Your Profile
-              </NavLink>
-              <NavLink exact to="/student/new-project">
-                <i className="fas fa-plus" /> Add New Project
-              </NavLink>
-              {this.props.location.pathname.match(
-                /\/student\/project-view\/\d+/g
-              ) &&
-                this.checkOwner(this.props.project_students) && (
-                  <NavLink
-                    exact
-                    to={`/student/edit-project/${this.props.project_id}`}
-                  >
-                    <i className="fas fa-plus" /> Edit Project
-                  </NavLink>
-                )}
-              <NavLink exact to="/profile-quick-start">
-                <i className="fas fa-user-edit" /> Edit Profile
-              </NavLink>
-            </nav>
-          </div>
-        )}
+        {(this.state.isLoggedIn || renderLoggedIn) &&
+          loggedInRole === "student" && (
+            <div className="subNav">
+              <nav>
+                <NavLink exact to={`/student/profile/${this.props.id}`}>
+                  <i className="far fa-id-card" /> Your Profile
+                </NavLink>
+                <NavLink exact to="/student/new-project">
+                  <i className="fas fa-plus" /> Add New Project
+                </NavLink>
+                {this.props.location.pathname.match(
+                  /\/student\/project-view\/\d+/g
+                ) &&
+                  this.checkOwner(this.props.project_students) && (
+                    <NavLink
+                      exact
+                      to={`/student/edit-project/${this.props.project_id}`}
+                    >
+                      <i className="fas fa-plus" /> Edit Project
+                    </NavLink>
+                  )}
+                <NavLink exact to="/profile-quick-start">
+                  <i className="fas fa-user-edit" /> Edit Profile
+                </NavLink>
+              </nav>
+            </div>
+          )}
       </div>
     );
   }
@@ -111,7 +112,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(
-	mapStateToProps,
-	{ login, logout, adminLogin }
-)(TopBar));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { login, logout, adminLogin }
+  )(TopBar)
+);
