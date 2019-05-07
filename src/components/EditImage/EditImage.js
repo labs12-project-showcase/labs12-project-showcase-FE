@@ -1,7 +1,5 @@
 /* Heavily inspired by https://github.com/JakeHartnell/react-images-upload */
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import axiosAuth from '../../auth/axiosAuth';
 
 const EditImage = props => {
   let inputElement;
@@ -21,18 +19,41 @@ const EditImage = props => {
   }, [props.initialImageList]);
   console.log('imageList: ', imageList);
 
-  // Check file type
-  function hasExtension(fileName) {
-    const pattern =
-      '(' + props.acceptedExtensions.join('|').replace(/\./g, '\\.') + ')$';
-    return new RegExp(pattern, 'i').test(fileName);
+  function clearErrors() {
+    setBadFileTypeList([]);
+    setBadFileSizeList([]);
   }
 
-  // File validation
-  function onFileDrop(event) {
+  function handleUrlAdd(event) {
+    event.preventDefault();
+    clearErrors();
+
+    // check file extension on URL
+    let url = event.target.children[0].value;
+    if (!hasExtension(url, ['.gif', '.jpg', '.jpeg', '.png', '.svg'])) {
+      setBadFileTypeList(previousState => {
+        let arr = Array.from(previousState);
+        arr.push(url);
+        return arr;
+      });
+      return;
+    }
+
+    setImageList(previousState => {
+      let arr = Array.from(previousState);
+      arr.push({ file: null, url });
+      return arr;
+    });
+
+    // call function in props
+    props.onUrlAdd(url);
+  }
+
+  function handleFileDrop(event) {
     const files = event.target.files;
     console.log('files: ', files);
     const allFilePromises = [];
+    clearErrors();
 
     // Loop over added files
     // Note: limits iterations to `props.maxFileCount`, including current images
@@ -45,12 +66,20 @@ const EditImage = props => {
 
       // check for file extension
       if (!hasExtension(file.name)) {
-        setBadFileTypeList(previousState => previousState.push(file.name));
+        setBadFileTypeList(previousState => {
+          let arr = Array.from(previousState);
+          arr.push(file.name);
+          return arr;
+        });
         continue;
       }
       // check for file size
       if (file.size > props.maxFileSize) {
-        setBadFileSizeList(previousState => previousState.push(file.name));
+        setBadFileSizeList(previousState => {
+          let arr = Array.from(previousState);
+          arr.push(file.name);
+          return arr;
+        });
         continue;
       }
       // read file, and add it to promise list
@@ -62,43 +91,24 @@ const EditImage = props => {
       newFilesData.forEach(item => {
         // set state with dataUrl for previewing the image
         // useEffect will begin uploading the image
-        setImageList(previousState =>
-          previousState.push({ file: item.file, url: item.dataUrl })
-        );
+        setImageList(previousState => {
+          let arr = Array.from(previousState);
+          arr.push({ file: item.file, url: item.dataUrl });
+          return arr;
+        });
 
-        // send file to backend API
-        axiosAuth()
-          .put(
-            'https://halg-backend.herokuapp.com//api/students/update/profile_picture',
-            newFilesData.file,
-            // create axios CancelToken, and save it to the image object
-            {
-              cancelToken: new axios.CancelToken(function executor(c) {
-                imageList[imageList.length - 1].cancelToken = c;
-              })
-            }
-          )
-          .then(res =>
-            // replace the dataUrl with the returned Cloudinary URL
-            // and remove cancelToken from object
-            setImageList(previousState => {
-              let index;
-              for (let i of previousState) {
-                if (previousState[i].url === item.dataUrl) {
-                  index = i;
-                  break;
-                }
-              }
-              if (index) {
-                previousState[index].url = res.data.student.profile_pic;
-                previousState[index].cancelToken = null;
-              }
-              return previousState;
-            })
-          )
-          .catch(error => console.error(error));
+        console.log('before onImageUpload, fileList: ', imageList);
+
+        // call function from props
+        props.onImageUpload(item.file, setImageList);
       });
     });
+  }
+
+  // Check file type
+  function hasExtension(fileName, formats = props.acceptedExtensions) {
+    const pattern = '(' + formats.join('|').replace(/\./g, '\\.') + ')$';
+    return new RegExp(pattern, 'i').test(fileName);
   }
 
   function onUploadClick(event) {
@@ -139,7 +149,7 @@ const EditImage = props => {
     // @TODO: if Url is a full Url,
     // need to request back-end to delete image
 
-    // if Url is dataUrl, cancel axios request
+    // cancel axios request if possible
     if (imageList[index].cancelToken) {
       imageList[index].cancelToken();
       console.log('User canceled image upload.');
@@ -147,11 +157,6 @@ const EditImage = props => {
 
     // remove image from state
     setImageList(previousState => {
-      /* doesn't work, not sure why */
-      // previousState.splice(index, 1);
-      // return previousState;
-
-      // let arr = previousState; // can't do this either, must be fresh Array
       let arr = Array.from(previousState);
       arr.splice(index, 1);
       return arr;
@@ -177,12 +182,6 @@ const EditImage = props => {
     return <div className="errors-container">{notAccepted}</div>;
   }
 
-  function renderUploadIcon() {
-    return props.withIcon ? (
-      <p className="upload-image-icon">UPLOAD ICON PRETEND</p>
-    ) : null;
-  }
-
   function renderLabel() {
     return props.withLabel ? (
       <p className={props.labelClass}>{props.label}</p>
@@ -190,23 +189,77 @@ const EditImage = props => {
   }
 
   function renderImagePreview() {
-    console.log('renderImagePreview running!', imageList.length);
-    return imageList.map((image, index) => {
+    if (!imageList.length && props.placeholder) {
       return (
-        <div key={index} className="image-preview-wrapper">
-          <div className="image-preview-container">
-            {/* @TODO: Improve accessibility of the following code */}
-            <div
-              className="delete-image-icon"
-              onClick={() => removeImage(index)}
-            >
-              X
-            </div>
-            <img src={image.url} className="image-preview" alt="preview" />
-          </div>
+        // <div className="image-preview-wrapper">
+        <div className="image-preview-container">
+          <img
+            src={props.placeholder}
+            className="image-preview placeholder"
+            alt="placeholder"
+          />
         </div>
+        // </div>
       );
-    });
+    }
+    return (
+      // <div className="image-preview-wrapper">
+      <>
+        {imageList.map((image, index) => {
+          return (
+            <div className="image-preview-container" key={index}>
+              <img src={image.url} className="image-preview" alt="preview" />
+              <button
+                className={props.buttonsClassName}
+                onClick={() => removeImage(index)}
+                type="button"
+              >
+                Remove
+              </button>
+            </div>
+          );
+        })}
+        {/* </div> */}
+      </>
+    );
+  }
+
+  function renderInputs() {
+    return (
+      <div className="edit-image-inputs">
+        <form onSubmit={handleUrlAdd}>
+          <input
+            name="imageURL"
+            placeholder="Add image by URL"
+            required
+            type="url"
+          />
+          <button className={props.buttonsClassName} type="submit">
+            Add URL
+          </button>
+        </form>
+        <p className="separator">— OR —</p>
+        <div className="upload">
+          <button
+            type={props.uploadButtonText}
+            className={props.buttonsClassName}
+            onClick={triggerFileUpload}
+          >
+            {props.uploadButtonText}
+          </button>
+          <input
+            type="file"
+            ref={input => (inputElement = input)}
+            name={props.inputElementName}
+            multiple={!props.singleImage}
+            onChange={handleFileDrop}
+            onClick={onUploadClick}
+            accept={props.accept}
+          />
+        </div>
+        {renderLabel()}
+      </div>
+    );
   }
 
   // not sure exactly what this does yet. need to test.
@@ -215,54 +268,35 @@ const EditImage = props => {
   }
 
   return (
-    <div className={`edit-image-container ${props.containerClassName}`}>
-      {renderUploadIcon()}
-      {renderLabel()}
+    <div className={props.containerClassName}>
+      {props.withPreview ? renderImagePreview() : null}
+      {imageList.length < props.maxFileCount ? renderInputs() : null}
       {renderErrors()}
-      {imageList.length < props.maxFileCount ? (
-        <>
-          <button
-            type={props.buttonType}
-            className={`edit-image-button ${props.buttonClassName}`}
-            onClick={triggerFileUpload}
-          >
-            {props.buttonText}
-          </button>
-          <input
-            type="file"
-            ref={input => (inputElement = input)}
-            name={props.inputElementName}
-            multiple={!props.singleImage}
-            onChange={onFileDrop}
-            onClick={onUploadClick}
-            accept={props.accept}
-          />
-        </>
-      ) : null}
-      {props.withPreview && imageList.length ? renderImagePreview() : null}
     </div>
   );
 };
 
 EditImage.defaultProps = {
   accept: 'image/*',
-  buttonClassName: '',
-  acceptedExtensions: ['.jpg', '.jpeg', '.gif', '.png'],
-  buttonText: 'Choose images',
-  buttonType: 'button',
-  containerClassName: '',
+  acceptedExtensions: ['.jpg', '.jpeg', '.png'],
+  buttonsClassName: 'edit-image-button',
+  containerClassName: 'edit-image-container',
   errorClass: '',
   fileSizeError: ' file size is too big',
   fileTypeError: ' is not a supported file extension',
   initialImageList: '',
   inputElementName: '',
-  label: 'Max file size: 5mb, accepted: jpg|gif|png',
+  label: 'Max file size: 5mb, accepted: .jpg, .png',
   labelClass: '',
   maxFileCount: Infinity,
   maxFileSize: 5242880,
   // onChange: () => {},
+  onImageUpload: () => {},
+  onUrlAdd: () => {},
+  placeholder: null,
   singleImage: true,
-  withIcon: true,
+  uploadButtonText: 'Upload files',
+  uploadButtonType: 'button',
   withLabel: true,
   withPreview: true
 };
