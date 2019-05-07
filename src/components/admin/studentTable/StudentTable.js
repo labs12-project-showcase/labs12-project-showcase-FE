@@ -21,6 +21,12 @@ class StudentTable extends React.Component {
   }
 
   render() { 
+    // const {
+    //   name,
+    //   track,
+    //   cohort,
+    // } = this.props.students
+
     const column = [
       {
         name: "Name",
@@ -46,8 +52,11 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
+              //console.log(value)
               <Switch
-                checked={this.state.checked}
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
               />
             );
           }
@@ -59,7 +68,11 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
+              //console.log(value)
               <Switch
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
               />
             );
           }
@@ -71,7 +84,11 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
+              //console.log(value)
               <Switch
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
               />
             );
           }
@@ -127,15 +144,256 @@ class StudentTable extends React.Component {
             graduated: "No",
             hired: "No",
             endorsed: "No"
+          },
+          {
+            name: "Jake",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Lowell",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Brandon",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Tico",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Ryan",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Julian",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Jake",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Lowell",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Brandon",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Tico",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Ryan",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Julian",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Jake",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Lowell",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Brandon",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Tico",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Ryan",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Julian",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Jake",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Lowell",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Brandon",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Tico",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Ryan",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Julian",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Jake",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Lowell",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Brandon",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Tico",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Ryan",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
+          },
+          {
+            name: "Julian",
+            track: "Full-Stack Web",
+            cohort: "Web 17",
+            graduated: "No",
+            hired: "No",
+            endorsed: "No"
           }
         ]
     
     return ( 
       <div className="tableContainer">
+        {console.log("testing the data", this.props.students)}
         <MaterialDatatable
           title={"Admin Student Table"}
           columns={column}
-          data={data}
+          data={this.props.students}
         />
       </div>
      );
@@ -143,8 +401,10 @@ class StudentTable extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
-    ...state.projectTable
+    //...state.projectTable
+    students: state.admin.students
   };
 };
 
