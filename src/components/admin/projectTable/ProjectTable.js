@@ -21,13 +21,13 @@ class ProjectTable extends React.Component {
     const column = [
       {
         name: "Title",
-        field: "title",
+        field: "name",
             filter: true,
             sort: true,
       },
       {
         name: "Type",
-        field: "type",
+        field: "short_description",
             filter: true,
             sort: true,
       },
@@ -104,7 +104,7 @@ class ProjectTable extends React.Component {
         <MaterialDatatable
           title={"Admin Project Table"}
           columns={column}
-          data={data}
+          data={this.props.projects}
         />
       </div>
      );
