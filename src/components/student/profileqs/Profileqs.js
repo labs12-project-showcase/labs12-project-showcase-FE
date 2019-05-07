@@ -1,7 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import ProfileqsForm from "./ProfileqsForm";
-import { getProfileData } from "./profileqsActions";
+import React from 'react';
+import { connect } from 'react-redux';
+import EditImage from '../../EditImage/EditImage';
+import ProfileqsForm from './ProfileqsForm';
+import { getProfileData } from './profileqsActions';
 
 class Profileqs extends React.Component {
   userExists = this.props.profile.profileData.exists || false;
@@ -43,6 +44,10 @@ class Profileqs extends React.Component {
               ) : null}
             </>
           )}
+          <EditImage
+            initialImageList={[this.props.profile.profileData.profile_pic]}
+            maxFileCount={1}
+          />
           <ProfileqsForm initialFormValues={this.props.profile.profileData} />
         </div>
       </div>
