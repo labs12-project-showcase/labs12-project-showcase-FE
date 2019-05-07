@@ -42,7 +42,11 @@ class ProjectTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
+              //console.log(value)
               <Switch
+              onClick= { (e) =>
+              {e.stopPropagation()}
+              }
               />
             );
           }
