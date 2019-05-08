@@ -87,7 +87,7 @@ class ProjectTable extends React.Component {
                 <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
                     <ListItem>
-                      <ListItemText inset primary="Tico Theps" 
+                      <ListItemText inset primary={value.students}
                       />
                       <Link
                 to={`/student/profile/${value.id}`}
