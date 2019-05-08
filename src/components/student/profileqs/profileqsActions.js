@@ -155,17 +155,17 @@ export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
  * nested objects, too.
  * @param {Object} obj Object literal to be trimmed
  */
-function removeEmptyValues(obj) {
-  return Object.keys(obj)
-    .filter(f => Boolean(obj[f]))
-    .reduce(
-      (r, i) =>
-        typeof obj[i] === 'object' && !Array.isArray(obj[i])
-          ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
-          : { ...r, [i]: obj[i] },
-      {}
-    );
-}
+// function removeEmptyValues(obj) {
+//   return Object.keys(obj)
+//     .filter(f => Boolean(obj[f]))
+//     .reduce(
+//       (r, i) =>
+//         typeof obj[i] === 'object' && !Array.isArray(obj[i])
+//           ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
+//           : { ...r, [i]: obj[i] },
+//       {}
+//     );
+// }
 
 function removeNulls(obj) {
   let noNulls = {};
