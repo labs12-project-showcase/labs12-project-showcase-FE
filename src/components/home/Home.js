@@ -1,13 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { homeData } from './homeActions';
+import { homeData, getFilteredCards } from './homeActions';
 import Cards from './Cards';
 import Carousel from './Carousel';
 
 class Home extends React.Component {
+	
+	state = {
+		fullStack: false,
+		ios: false,
+		android: false,
+		uiux: false,
+		dataScience: false,
+		badge: false,
+		within: 50,
+
+	}
+
 	componentDidMount() {
 		this.props.homeData();
+	}
+
+	handleSubmit = event => {
+		event.preventDefault();
+		this.props.getFilteredCards(this.state);
+	}
+
+	handleChange = event => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
 	}
 
 	render() {
@@ -30,33 +56,33 @@ class Home extends React.Component {
 					<div className="hero-girl">&nbsp;</div>
 				</header>
 				<main>
-					<div className="search-bar">
+					<form className="search-bar" onSubmit={this.handleSubmit}>
 						{/* Please use this section to implement the serch */}
 						<h2>Filters</h2>
 						<div className="control-group">
 							<label className="control control-checkbox">
 								Full Stack
-								<input type="checkbox" />
+								<input type="checkbox" name="fullStack" checked={this.state.fullStack} onChange={this.handleChange} />
 								<div className="control_indicator" />
 							</label>
 							<label className="control control-checkbox">
 								iOS
-								<input type="checkbox" />
+								<input type="checkbox" name="ios" checked={this.state.ios} onChange={this.handleChange} />
 								<div className="control_indicator" />
 							</label>
 							<label className="control control-checkbox">
 								Android
-								<input type="checkbox" />
+								<input type="checkbox" name="android" checked={this.state.android} onChange={this.handleChange} />
 								<div className="control_indicator" />
 							</label>
 							<label className="control control-checkbox">
 								UI/UX
-								<input type="checkbox" />
+								<input type="checkbox" name="uiux" checked={this.state.uiux} onChange={this.handleChange} />
 								<div className="control_indicator" />
 							</label>
 							<label className="control control-checkbox">
 								Data Science
-								<input type="checkbox" />
+								<input type="checkbox" name="dataScience" checked={this.state.dataScience} onChange={this.handleChange} />
 								<div className="control_indicator" />
 							</label>
 
@@ -64,7 +90,7 @@ class Home extends React.Component {
 
 							<label className="control control-checkbox">
 								Lambda Badge
-								<input type="checkbox" />
+								<input type="checkbox" name="badge" checked={this.state.badge} onChange={this.handleChange} />
 								<div className="control_indicator" />
 							</label>
 
@@ -72,7 +98,7 @@ class Home extends React.Component {
 
 							<label className="input-location">
 								Within
-								<input type="number" size="3" placeholder="100" /> miles of
+								<input type="number" size="3" placeholder="50" name="within" value={this.state.within} onChange={this.handleChange} /> miles of
 							</label>
 
 							<hr />
@@ -94,7 +120,7 @@ class Home extends React.Component {
 							</label>
 						</div>
 						<button className="bnt-search">Submit</button>
-					</div>
+					</form>
 					<div className="cards-display">
 						<h2>Featured Alumni</h2>
 						{this.props.home.cards.map((cards, index) => (
@@ -118,6 +144,6 @@ const mapStateToProps = state => ({
 export default withRouter(
 	connect(
 		mapStateToProps,
-		{ homeData }
+		{ homeData, getFilteredCards }
 	)(Home)
 );
