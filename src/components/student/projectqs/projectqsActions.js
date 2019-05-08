@@ -174,7 +174,7 @@ export const UPLOAD_PROJECT_PICTURE_FAILURE = "UPLOAD_PROJECT_PICTURE_FAILURE";
 export const UPLOAD_PROJECT_PICTURE_START = "UPLOAD_PROJECT_PICTURE_START";
 export const UPLOAD_PROJECT_PICTURE_SUCCESS = "UPLOAD_PROJECT_PICTURE_SUCCESS";
 
-export const uploadProjectPicture = (file, setImageList) => dispatch => {
+export const uploadProjectPicture = (file, setImageList, id) => dispatch => {
   dispatch({ type: UPLOAD_PROJECT_PICTURE_START });
   // create FormData for file
   const formData = new FormData();
@@ -182,26 +182,30 @@ export const uploadProjectPicture = (file, setImageList) => dispatch => {
 
   // send file to backend API
   axiosAuth()
-    .put("https://halg-backend.herokuapp.com/api/projects/update", formData, {
-      // create axios CancelToken, and save it to the image object
-      cancelToken: new axios.CancelToken(function executor(c) {
-        setImageList(previousState => {
-          console.log("actions previousState: ", previousState);
-          let arr = Array.from(previousState);
-          let index;
-          for (let i in arr) {
-            if (arr[i].url === file.dataUrl) {
-              index = i;
-              break;
+    .put(
+      `https://halg-backend.herokuapp.com/api/projects/${id}/media`,
+      formData,
+      {
+        // create axios CancelToken, and save it to the image object
+        cancelToken: new axios.CancelToken(function executor(c) {
+          setImageList(previousState => {
+            console.log("actions previousState: ", previousState);
+            let arr = Array.from(previousState);
+            let index;
+            for (let i in arr) {
+              if (arr[i].url === file.dataUrl) {
+                index = i;
+                break;
+              }
             }
-          }
-          if (index) {
-            arr[index].cancelToken = c;
-          }
-          return arr;
-        });
-      })
-    })
+            if (index) {
+              arr[index].cancelToken = c;
+            }
+            return arr;
+          });
+        })
+      }
+    )
     .then(res => {
       // replace the dataUrl with the returned Cloudinary URL
       // and remove cancelToken from object

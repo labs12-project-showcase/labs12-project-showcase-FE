@@ -64,15 +64,13 @@ const ProjectView = ({
               allowFullScreen
             />
           </div>
-          <div className="img-one">
-            <img src={one} alt="Project" />
-          </div>
-          <div className="img-two">
-            <img src={two} alt="Project" />
-          </div>
-          <div className="img-three">
-            <img src={three} alt="Project" />
-          </div>
+          {projectData && projectData.project_media.length
+            ? projectData.project_media.slice(0, 3).map(media => (
+                <div className="img-one" key={media}>
+                  <img src={media} alt="Project" />
+                </div>
+              ))
+            : null}
         </div>
       </header>
       <main>

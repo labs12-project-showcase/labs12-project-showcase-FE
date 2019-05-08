@@ -8,7 +8,10 @@ import {
   GET_PROJECT_SUCCESS,
   UPDATE_PROJECT_FAILURE,
   UPDATE_PROJECT_START,
-  UPDATE_PROJECT_SUCCESS
+  UPDATE_PROJECT_SUCCESS,
+  UPLOAD_PROJECT_PICTURE_START,
+  UPLOAD_PROJECT_PICTURE_SUCCESS,
+  UPLOAD_PROJECT_PICTURE_FAILURE
 } from "./projectqsActions.js";
 
 const initialState = {
@@ -97,6 +100,25 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         updatingProjectData: false
+      };
+    case UPLOAD_PROJECT_PICTURE_START:
+      return {
+        ...state,
+        error: null,
+        updatingProfileData: true
+      };
+    case UPLOAD_PROJECT_PICTURE_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        profileData: { ...state.profileData, ...action.payload },
+        updatingProfileData: false
+      };
+    case UPLOAD_PROJECT_PICTURE_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingProfileData: false
       };
     default:
       return state;
