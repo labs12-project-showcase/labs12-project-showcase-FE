@@ -13,11 +13,15 @@ class ProjectTable extends React.Component {
      };
   };
 
-  handleChange = approved => event => {
-    this.setState({ [approved]: event.target.checked });
-  };
-  // approved = () => {
-  //   if projects.approved === true return checked= true
+//   handleChange(event) {
+//     //console.log(event.target.value);
+//     this.setState({
+//         approved: event.target.value
+//     })
+// }
+
+  // checked = () => {
+  //   projects.approved === true return checked = true
   // }
 
   componentDidMount() {
@@ -67,7 +71,7 @@ class ProjectTable extends React.Component {
               {e.stopPropagation()}
               }
               checked={this.state.checkedApproved}
-              onChange={this.handleChange('checkedApproved')}
+              //onChange={this.handleChange('checkedApproved')}
               value="checkedApproved"
               />
             );
