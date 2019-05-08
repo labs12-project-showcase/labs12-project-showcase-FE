@@ -1,17 +1,36 @@
-// Project Quick Start Form
-
 import React from "react";
 import { connect } from "react-redux";
 import ProjectqsForm from "./ProjectqsForm";
-import { createProject } from "./projectqsActions";
+import { uploadProjectPicture, updateProject } from "./projectqsActions";
+
+import EditImage from "../../EditImage/EditImage";
+import avatar from "../../../assets/avatar.jpg";
 
 const Projectqs = props => {
   return (
     <div className="projectqs-container">
       <div className="projectqs">
-        {/* @TODO: Make the `document.title` and <h3> dynamic */}
         <h3>Project Quick Start</h3>
         <p>Please submit the following details about your project </p>
+        {props.project.id ? (
+          <div className="project-pictures">
+            <span className="input-label">Project Pictures</span>
+            <EditImage
+              initialImageList={
+                props.project.project_media
+                  ? props.project.project_media.slice(0, 3)
+                  : []
+              }
+              maxFileCount={3}
+              onImageUpload={(file, setImageList) =>
+                props.uploadProjectPicture(file, setImageList, props.project.id)
+              }
+              onUrlAdd={url => props.updateProject({ profile_pic: url }, false)}
+              placeholder={avatar}
+              uploadButtonText="Upload file"
+            />
+          </div>
+        ) : null}
         <ProjectqsForm />
       </div>
     </div>
@@ -20,11 +39,12 @@ const Projectqs = props => {
 
 const mapStateToProps = state => {
   return {
-    profile: state.profile
+    profile: state.profile,
+    project: state.project.projectData
   };
 };
 
 export default connect(
   mapStateToProps,
-  { createProject }
+  { uploadProjectPicture, updateProject }
 )(Projectqs);
