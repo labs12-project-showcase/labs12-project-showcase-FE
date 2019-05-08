@@ -1,4 +1,7 @@
 import {
+  DELETE_PROFILE_PICTURE_FAILURE,
+  DELETE_PROFILE_PICTURE_START,
+  DELETE_PROFILE_PICTURE_SUCCESS,
   GET_PROFILE_DATA_FAILURE,
   GET_PROFILE_DATA_START,
   GET_PROFILE_DATA_SUCCESS,
@@ -51,23 +54,47 @@ const initialState = {
 };
 
 /* 
-      Info {
-        account {
-          name
-        }
-        student {
-        }
-        top_skills [
-        ]
-        skills [
-        ]
-        desired_locations [
-        ]
-      }
-    */
+  Info {
+    account {
+      name
+    }
+    student {
+    }
+    hobbies [
+    ]
+    top_skills [
+    ]
+    skills [
+    ]
+    desired_locations [
+    ],
+    top_projects [
+    ],
+    projects [
+    ]
+  }
+*/
 
 const profileqsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case DELETE_PROFILE_PICTURE_START:
+      return {
+        ...state,
+        error: null,
+        updatingProfileData: true
+      };
+    case DELETE_PROFILE_PICTURE_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        updatingProfileData: false
+      };
+    case DELETE_PROFILE_PICTURE_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingProfileData: false
+      };
     case GET_PROFILE_DATA_START:
       return {
         ...state,
@@ -104,25 +131,25 @@ const profileqsReducer = (state = initialState, action) => {
         error: action.payload,
         updatingProfileData: false
       };
-      case UPLOAD_PROFILE_PICTURE_START:
+    case UPLOAD_PROFILE_PICTURE_START:
       return {
         ...state,
         error: null,
         updatingProfileData: true
-      }
-      case UPLOAD_PROFILE_PICTURE_SUCCESS:
+      };
+    case UPLOAD_PROFILE_PICTURE_SUCCESS:
       return {
         ...state,
         error: null,
         profileData: { ...state.profileData, ...action.payload },
         updatingProfileData: false
-      }
-      case UPLOAD_PROFILE_PICTURE_FAILURE:
-      return{
+      };
+    case UPLOAD_PROFILE_PICTURE_FAILURE:
+      return {
         ...state,
         error: action.payload,
         updatingProfileData: false
-      }
+      };
     default:
       return state;
   }

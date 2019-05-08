@@ -3,6 +3,30 @@ import axiosAuth from '../../../auth/axiosAuth';
 import { backendUrl } from '../../../config/urls.js';
 import history from '../../../history.js';
 
+//
+export const DELETE_PROFILE_PICTURE_FAILURE = 'DELETE_PROFILE_PICTURE_FAILURE';
+export const DELETE_PROFILE_PICTURE_START = 'DELETE_PROFILE_PICTURE_START';
+export const DELETE_PROFILE_PICTURE_SUCCESS = 'DELETE_PROFILE_PICTURE_SUCCESS';
+
+export const deleteProfilePicture = url => dispatch => {
+  dispatch({ type: DELETE_PROFILE_PICTURE_START});
+  return axiosAuth()
+    .put(`${backendUrl}/api/students/update/profile_picture/remove`, {
+      url
+    })
+    .then(res => {
+      dispatch({ type: DELETE_PROFILE_PICTURE_SUCCESS });
+    })
+    .catch(error => {
+      dispatch({
+        type: DELETE_PROFILE_PICTURE_FAILURE,
+        payload: error
+      });
+      throw new Error("Image could not be deleted.");
+    });
+}
+
+// 
 export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
 export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
 export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
@@ -97,7 +121,7 @@ export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
   // send file to backend API
   axiosAuth()
     .put(
-      'https://halg-backend.herokuapp.com/api/students/update/profile_picture',
+      `${backendUrl}/api/students/update/profile_picture`,
       formData,
       {
         // create axios CancelToken, and save it to the image object
@@ -121,6 +145,13 @@ export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
       }
     )
     .then(res => {
+      if (res.status !== 200) {
+        throw new Error(
+          `Something went wrong updating the profile picture. Status: ${
+            res.status
+          }`
+        );
+      }
       // replace the dataUrl with the returned Cloudinary URL
       // and remove cancelToken from object
       setImageList(previousState => {
@@ -133,7 +164,7 @@ export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
           }
         }
         if (index) {
-          arr[index].url = res.data.student.profile_pic;
+          arr[index].url = res.data.profile_pic;
           arr[index].cancelToken = null;
         }
         return arr;
