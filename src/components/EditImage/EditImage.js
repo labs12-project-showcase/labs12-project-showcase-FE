@@ -209,10 +209,8 @@ const EditImage = props => {
       <>
         {imageList.map((image, index) => {
           return (
-            <>
-              <div className="image-preview-container" key={index}>
-                <img src={image.url} className="image-preview" alt="preview" />
-              </div>
+            <div className="image-preview-container" key={index}>
+              <img src={image.url} className="image-preview" alt="preview" />
               <button
                 className={props.buttonsClassName}
                 onClick={() => removeImage(index)}
@@ -220,7 +218,7 @@ const EditImage = props => {
               >
                 Remove
               </button>
-            </>
+            </div>
           );
         })}
         {/* </div> */}
