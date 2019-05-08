@@ -205,7 +205,6 @@ const EditImage = props => {
       );
     }
     return (
-      // <div className="image-preview-wrapper">
       <>
         {imageList.map((image, index) => {
           return (
@@ -223,7 +222,6 @@ const EditImage = props => {
             </React.Fragment>
           );
         })}
-        {/* </div> */}
       </>
     );
   }
