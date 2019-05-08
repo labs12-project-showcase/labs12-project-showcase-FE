@@ -100,7 +100,7 @@ const EditImage = props => {
         console.log("before onImageUpload, fileList: ", imageList);
 
         // call function from props
-        props.onImageUpload(item.file, setImageList);
+        props.onImageUpload(item, setImageList);
       });
     });
   }
@@ -155,6 +155,7 @@ const EditImage = props => {
       console.log("User canceled image upload.");
     }
 
+    console.log('imageList url: ', imageList[index].url)
     // remove image from state
     props.onRemove(imageList[index].url).then(() => {
       setImageList(previousState => {

@@ -88,11 +88,11 @@ export const UPLOAD_PROFILE_PICTURE_FAILURE = 'UPLOAD_PROFILE_PICTURE_FAILURE';
 export const UPLOAD_PROFILE_PICTURE_START = 'UPLOAD_PROFILE_PICTURE_START';
 export const UPLOAD_PROFILE_PICTURE_SUCCESS = 'UPLOAD_PROFILE_PICTURE_SUCCESS';
 
-export const uploadProfilePicture = (file, setImageList) => dispatch => {
+export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
   dispatch({ type: UPLOAD_PROFILE_PICTURE_START });
   // create FormData for file
   const formData = new FormData();
-  formData.append('image', file, file.name);
+  formData.append('image', dataObject.file, dataObject.file.name);
 
   // send file to backend API
   axiosAuth()
@@ -107,7 +107,7 @@ export const uploadProfilePicture = (file, setImageList) => dispatch => {
             let arr = Array.from(previousState);
             let index;
             for (let i in arr) {
-              if (arr[i].url === file.dataUrl) {
+              if (arr[i].url === dataObject.dataUrl) {
                 index = i;
                 break;
               }
@@ -127,7 +127,7 @@ export const uploadProfilePicture = (file, setImageList) => dispatch => {
         let arr = Array.from(previousState);
         let index;
         for (let i in arr) {
-          if (arr[i].url === file.dataUrl) {
+          if (arr[i].url === dataObject.dataUrl) {
             index = i;
             break;
           }
