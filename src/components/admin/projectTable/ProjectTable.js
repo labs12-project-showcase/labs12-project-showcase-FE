@@ -75,6 +75,7 @@ class ProjectTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
+            console.log(value.student_ids);
             return (
               <List
                 component="nav"
@@ -87,12 +88,13 @@ class ProjectTable extends React.Component {
                 <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
                     <ListItem>
-                      <ListItemText inset primary={value.students}
-                      />
+                      {/* <ListItemText inset primary={value.students}
+                      /> */}
                       <Link
-                to={`/student/profile/${value.id}`}
-                
-              >{value.contributors}</Link>
+                        to={`/student/profile/${value.student_ids}`}
+                      >
+                        {value.students}
+                      </Link>
                     </ListItem>
                   </List>
                 </Collapse>
