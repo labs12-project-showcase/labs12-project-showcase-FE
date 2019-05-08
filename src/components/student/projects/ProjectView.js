@@ -8,10 +8,6 @@ import ProgressProject from "../progressProject/ProgressProject";
 
 import project from "../../../assets/project-img.jpg";
 
-// import { dispatch } from '../../../../../../../Library/Caches/typescript/3.4.3/node_modules/rxjs/internal/observable/range';
-
-// const sameUser = id === this.props.loggedInProfile.id;
-
 const ProjectView = ({
   project: { projectData },
   dispatch,
