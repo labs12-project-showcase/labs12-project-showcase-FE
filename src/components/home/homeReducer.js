@@ -1,7 +1,9 @@
 import {
 	FETCH_CARDS,
 	FETCH_CARDS_SUCCESS,
-	FETCH_CARDS_FAILURE
+	FETCH_CARDS_FAILURE,
+	UPDATE_FILTERED_CARDS,
+	UPDATE_FILTERED_CARDS_FAILURE
 } from './homeActions';
 
 const initialState = {
@@ -12,6 +14,16 @@ const initialState = {
 
 const homeReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case UPDATE_FILTERED_CARDS:
+			return {
+				...state,
+				cards: action.payload
+			}
+		case UPDATE_FILTERED_CARDS_FAILURE:
+			return {
+				...state,
+				error: action.payload
+			}
 		case FETCH_CARDS:
 			console.log('cardsReducer', state);
 			return {
