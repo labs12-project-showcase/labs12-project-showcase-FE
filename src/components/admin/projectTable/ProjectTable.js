@@ -46,7 +46,7 @@ class ProjectTable extends React.Component {
       },
       {
         name: "Contributors",
-        field: "student_ids",
+        field: "students",
             filter: true,
             sort: true,
       },
