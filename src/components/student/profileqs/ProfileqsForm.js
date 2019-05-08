@@ -18,7 +18,11 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
         dispatch(
           updateProfile({
             ...values,
-            desired_locations: desiredLocations.map(location => location.value),
+            desired_locations: desiredLocations.map(location => ({
+              lat: location.value.lat,
+              location: location.value.locationName,
+              lon: location.value.lon
+            })),
             projects: projects.map(proj => ({
               project_id: proj.id,
               student_id: props.initialFormValues.id
