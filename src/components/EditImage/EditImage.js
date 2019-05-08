@@ -156,16 +156,13 @@ const EditImage = props => {
     }
 
     // remove image from state
-    props
-      .onRemove(imageList[index].url)
-      .then(() => {
-        setImageList(previousState => {
-          let arr = Array.from(previousState);
-          arr.splice(index, 1);
-          return arr;
-        });
-      })
-      .catch(err => console.log(err));
+    props.onRemove(imageList[index].url).then(() => {
+      setImageList(previousState => {
+        let arr = Array.from(previousState);
+        arr.splice(index, 1);
+        return arr;
+      });
+    });
   }
 
   function renderErrors() {

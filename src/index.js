@@ -14,13 +14,28 @@ import history from "./history.js";
 
 import ScrollToTop from "./components/utils/ScrollToTop";
 
-const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(thunk, logger),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+let newStore;
+console.log('node_env', process.env.NODE_ENV);
+
+if(process.env.NODE_ENV === 'production') {
+  newStore = createStore(
+    rootReducer,
+    compose(
+      applyMiddleware(thunk, logger)
+    )
+  );
+}
+else if (process.env.NODE_ENV === 'development') {
+  newStore = createStore(
+    rootReducer,
+    compose(
+      applyMiddleware(thunk, logger),
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+  );
+}
+
+const store = newStore;
 
 ReactDOM.render(
   <Provider store={store}>
