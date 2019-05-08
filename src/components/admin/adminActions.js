@@ -19,7 +19,7 @@ export const fetchStudents = () => dispatch => {
 
 export const fetchProjects = () => dispatch => {
   // axiosAuth().get(`${backendUrl}/api/admin/projects`)
-  axiosAuth().get(`http://localhost:5000/api/admin/projects`)
+  axiosAuth().get(`${backendUrl}/api/admin/projects`)
     .then(res => {
       dispatch({
         type: ADMIN_FETCHED_PROJECTS,
