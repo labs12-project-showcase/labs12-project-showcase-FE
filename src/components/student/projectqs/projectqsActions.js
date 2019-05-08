@@ -1,6 +1,6 @@
 import axiosAuth from "../../../auth/axiosAuth";
 import axios from "axios";
-import { backendUrl } from '../../../config/urls.js';
+import { backendUrl } from "../../../config/urls.js";
 
 export const CREATE_PROJECT_FAILURE = "CREATE_PROJECT_FAILURE";
 export const CREATE_PROJECT_START = "CREATE_PROJECT_START";
@@ -167,5 +167,92 @@ export const updateProject = (formValues, id) => dispatch => {
       console.log(err);
       dispatch({ type: UPDATE_PROJECT_FAILURE, payload: "Error" });
       throw new Error("Failed in project update dispatch.");
+    });
+};
+
+export const UPLOAD_PROJECT_PICTURE_FAILURE = "UPLOAD_PROJECT_PICTURE_FAILURE";
+export const UPLOAD_PROJECT_PICTURE_START = "UPLOAD_PROJECT_PICTURE_START";
+export const UPLOAD_PROJECT_PICTURE_SUCCESS = "UPLOAD_PROJECT_PICTURE_SUCCESS";
+
+export const uploadProjectPicture = (file, setImageList, id) => dispatch => {
+  dispatch({ type: UPLOAD_PROJECT_PICTURE_START });
+  // create FormData for file
+  const formData = new FormData();
+  formData.append("image", file, file.name);
+
+  // send file to backend API
+  axiosAuth()
+    .put(
+      `https://halg-backend.herokuapp.com/api/projects/${id}/media`,
+      formData,
+      {
+        // create axios CancelToken, and save it to the image object
+        cancelToken: new axios.CancelToken(function executor(c) {
+          setImageList(previousState => {
+            console.log("actions previousState: ", previousState);
+            let arr = Array.from(previousState);
+            let index;
+            for (let i in arr) {
+              if (arr[i].url === file.dataUrl) {
+                index = i;
+                break;
+              }
+            }
+            if (index) {
+              arr[index].cancelToken = c;
+            }
+            return arr;
+          });
+        })
+      }
+    )
+    .then(res => {
+      // replace the dataUrl with the returned Cloudinary URL
+      // and remove cancelToken from object
+      setImageList(previousState => {
+        let arr = Array.from(previousState);
+        let index;
+        for (let i in arr) {
+          if (arr[i].url === file.dataUrl) {
+            index = i;
+            break;
+          }
+        }
+        if (index) {
+          arr[index].url = res.data.student.profile_pic;
+          arr[index].cancelToken = null;
+        }
+        return arr;
+      });
+
+      dispatch({
+        type: UPLOAD_PROJECT_PICTURE_SUCCESS,
+        payload: removeNulls(res.data)
+      });
+    })
+    .catch(error => {
+      dispatch({ type: UPLOAD_PROJECT_PICTURE_FAILURE, payload: error });
+    });
+};
+
+export const DELETE_PROJECT_PICTURE_FAILURE = "DELETE_PROJECT_PICTURE_FAILURE";
+export const DELETE_PROJECT_PICTURE_START = "DELETE_PROJECT_PICTURE_START";
+export const DELETE_PROJECT_PICTURE_SUCCESS = "DELETE_PROJECT_PICTURE_SUCCESS";
+
+export const deleteProjectPicture = (url, id) => dispatch => {
+  dispatch({ type: DELETE_PROJECT_PICTURE_START });
+  return axiosAuth()
+    .put(`https://halg-backend.herokuapp.com/api/projects/${id}/media/remove`, {
+      url
+    })
+    .then(res => {
+      dispatch({ type: DELETE_PROJECT_PICTURE_SUCCESS });
+    })
+    .catch(err => {
+      dispatch({
+        type: DELETE_PROJECT_PICTURE_FAILURE,
+        payload: "Could not delete project image."
+      });
+      throw new Error("Image could not be deleted.");
     });
 };

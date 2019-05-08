@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Formik } from "formik";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Formik } from 'formik';
 
-import { ProfileQsSchema, FormSchema } from "./ProfileqsFormSchema";
-import { updateProfile } from "./profileqsActions";
+import { ProfileQsSchema, FormSchema } from './ProfileqsFormSchema';
+import { updateProfile } from './profileqsActions';
 
 const ProfileqsForm = ({ dispatch, ...props }) => {
+  const [desiredLocations, setDesiredLocations] = useState([]);
   const [formSkillsList, setFormSkillsList] = useState([]);
-  const [top_projects, setTopProjects] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [top_projects, setTopProjects] = useState([]);
 
   return (
     <Formik
@@ -17,12 +18,13 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
         dispatch(
           updateProfile({
             ...values,
-            skills: formSkillsList.map(item => item.value),
-            top_projects: top_projects.map(proj => ({
+            desired_locations: desiredLocations.map(location => location.value),
+            projects: projects.map(proj => ({
               project_id: proj.id,
               student_id: props.initialFormValues.id
             })),
-            projects: projects.map(proj => ({
+            skills: formSkillsList.map(item => item.value),
+            top_projects: top_projects.map(proj => ({
               project_id: proj.id,
               student_id: props.initialFormValues.id
             }))
@@ -33,12 +35,14 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
       enableReinitialize
       render={props => (
         <FormSchema
-          skillsList={formSkillsList}
-          setSkillsList={setFormSkillsList}
-          top_projects={top_projects}
-          setTopProjects={setTopProjects}
+          desiredLocations={desiredLocations}
           projects={projects}
+          skillsList={formSkillsList}
+          setDesiredLocations={setDesiredLocations}
           setProjects={setProjects}
+          setSkillsList={setFormSkillsList}
+          setTopProjects={setTopProjects}
+          top_projects={top_projects}
           {...props}
         />
       )}

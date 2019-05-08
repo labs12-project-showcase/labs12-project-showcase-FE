@@ -1,88 +1,104 @@
 .profileqs-container {
-    min-height: 85vh;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin: 50px auto; // will likely need to be changed later
+	min-height: 85vh;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin: 50px auto; // will likely need to be changed later
 }
 
 .profileqs {
-    width: 100%;
-    max-width: 600px;
-    background-color: $lightcolor;
-    padding: 20px;
-    border-radius: 5px;
+	width: 100%;
+	max-width: 600px;
+	background-color: $lightcolor;
+	padding: 20px;
+	border-radius: 5px;
 
-    h3 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
+	h3 {
+		font-size: 1.8rem;
+		font-weight: 700;
+		margin-bottom: 10px;
+	}
 
-    .profile-picture {
-        margin: 1rem 0;
-    }
+	.profile-picture {
+		margin: 1rem 0;
+	}
 
-    .profile-quick-start-form {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-top: 30px;
+	.profile-quick-start-form {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 30px;
 
-        button {
-            background-color: $lambdaRed;
-            border: 1px solid $lambdaRed;
-            border-radius: 5px;
-            color: $lightcolor;
-            font-size: 1.6rem;
-            margin: 2rem auto;
-            padding: 10px 15px;
-            cursor: pointer;
+		button {
+			background-color: $lambdaRed;
+			border: 1px solid $lambdaRed;
+			border-radius: 5px;
+			color: $lightcolor;
+			font-size: 1.6rem;
+			margin: 2rem auto;
+			padding: 10px 15px;
+			cursor: pointer;
 
-            &:hover {
-                background-color: darken($lambdaRed, 10%);
-            }
-        }
+			&:hover {
+				background-color: darken($lambdaRed, 10%);
+			}
+		}
 
-        label {
-            margin: 0.4rem 0;
+		label {
+			margin: 0.4rem 0;
+			@media (max-width: 499px) {
+				width: 100%;
+			}
 
-            // this styles the inline error
-            // e.g. "Name is required"
-            div.inline-error {
-                color: $lambdaRed;
-                padding: 0.8rem;
-                text-align: center;
-            }
+			// this styles the inline error
+			// e.g. "Name is required"
+			div.inline-error {
+				color: $lambdaRed;
+				padding: 0.8rem;
+				text-align: center;
+			}
 
-            input {
-                border: 1px solid lightgray;
-                border-radius: 5px;
-                font-size: 1.6rem;
-                padding: 1.4rem 1rem 1.2rem 2rem;
-                width: 22.4rem;
-            }
+			input {
+				border: 1px solid lightgray;
+				border-radius: 5px;
+				font-size: 1.6rem;
+				padding: 1.4rem 1rem 1.2rem 2rem;
+				width: 22.4rem;
+				@media (max-width: 499px) {
+					width: 100%;
+				}
+			}
 
-            &.stretch-input {
-                margin: 1.6rem 0;
-                width: 100%;
+			&.stretch-input {
+				margin: 1.6rem 0;
+				width: 100%;
+				.css-1sr4j5r-container {
+					@media (max-width: 600px) {
+						width: 100%;
+					}
+				}
 
-                p {
-                    margin-bottom: -2rem;
-                }
+				p {
+					margin-bottom: -2rem;
+				}
 
-                textarea {
-                    margin-top: 20px;
-                    height: 16rem;
-                    font-size: 1.6rem;
-                    padding: 1.6rem;
-                    width: 100%;
-                    border-radius: 5px;
-                    border: 1px solid lightgray;
-                }
-            }
-        }
-    }
+				textarea {
+					margin-top: 20px;
+					height: 16rem;
+					font-size: 1.6rem;
+					padding: 1.6rem;
+					width: 100%;
+					border-radius: 5px;
+					border: 1px solid lightgray;
+				}
+			}
+			.css-pgw907-container {
+				@media (max-width: 499px) {
+					width: 100%;
+				}
+			}
+		}
+	}
 }
 
 .input-label {

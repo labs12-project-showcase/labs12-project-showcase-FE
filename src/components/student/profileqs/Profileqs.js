@@ -11,6 +11,8 @@ import avatar from '../../../assets/avatar.jpg';
 import ProfileqsForm from './ProfileqsForm';
 
 class Profileqs extends React.Component {
+  placeholderImage =
+    'https://res.cloudinary.com/hirelambdastudents/image/upload/v1556814928/pictures/avatar.png';
   userExists = this.props.profile.profileData.exists || false;
 
   componentDidMount() {
@@ -53,7 +55,12 @@ class Profileqs extends React.Component {
           <div className="profile-picture">
             <span className="input-label">Profile Picture</span>
             <EditImage
-              initialImageList={[this.props.profile.profileData.profile_pic]}
+              initialImageList={
+                // workaround for the default avatar image
+                this.props.profile.profileData.profile_pic === this.placeholderImage
+                  ? []
+                  : [this.props.profile.profileData.profile_pic]
+              }
               maxFileCount={1}
               onImageUpload={this.props.uploadProfilePicture}
               onUrlAdd={url =>

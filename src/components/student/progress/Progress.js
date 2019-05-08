@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Progress as ProgressCircle } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
-// import { red } from "ansi-colors";
 
 const Progress = ({ profile }) => {
   const [percentage, updatePercent] = useState(0);
   const [full, updateFull] = useState([]);
   const [empty, updateEmpty] = useState([]);
-  //Fake some profile data here
   useEffect(() => {
     const {
       approved,
@@ -118,19 +116,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Progress);
-
-// const data = {
-//   github: "git",
-//   twitter: null,
-//   acclaim: null,
-//   about: "hey there",
-//   skills: ["1", "2", "3"],
-//   top_skills: null,
-//   top_projects: ["1", "2", "3"],
-//   location: "texas",
-//   website: null,
-//   linkedin: null,
-//   desired_position: null,
-//   hobbies: [],
-//   profile_pic: "testing"
-// };

@@ -1,19 +1,6 @@
 import React from "react";
 
-const ProjectSkills = ({ top_projectSkills, projectSkills }) => {
-  top_projectSkills = ["React", "Redux", "Node.js"];
-  projectSkills = [
-    "MongoDB",
-    "SQL",
-    "OOP",
-    "HTML5",
-    "CSS3",
-    "JavaScript",
-    "Python",
-    "C++",
-    "SASS",
-    "LESS"
-  ];
+const ProjectSkills = ({ projectSkills }) => {
   const map = arr =>
     arr.map(projectSkill => (
       <span key={projectSkill} className="projectSkill-chip">
@@ -24,7 +11,13 @@ const ProjectSkills = ({ top_projectSkills, projectSkills }) => {
   return (
     <div className="projectSkills-container">
       <section className="projectSkills">
-        <ul>{map(projectSkills)}</ul>
+        <ul>
+          {projectSkills.length ? (
+            map(projectSkills)
+          ) : (
+            <p>Please add some technologies!</p>
+          )}
+        </ul>
       </section>
     </div>
   );

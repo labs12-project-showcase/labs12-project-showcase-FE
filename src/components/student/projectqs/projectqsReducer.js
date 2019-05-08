@@ -8,7 +8,13 @@ import {
   GET_PROJECT_SUCCESS,
   UPDATE_PROJECT_FAILURE,
   UPDATE_PROJECT_START,
-  UPDATE_PROJECT_SUCCESS
+  UPDATE_PROJECT_SUCCESS,
+  UPLOAD_PROJECT_PICTURE_START,
+  UPLOAD_PROJECT_PICTURE_SUCCESS,
+  UPLOAD_PROJECT_PICTURE_FAILURE,
+  DELETE_PROJECT_PICTURE_START,
+  DELETE_PROJECT_PICTURE_SUCCESS,
+  DELETE_PROJECT_PICTURE_FAILURE
 } from "./projectqsActions.js";
 
 const initialState = {
@@ -72,7 +78,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         gettingProjectData: false,
-        projectData: { ...state.projectData, ...action.payload }
+        projectData: { ...action.payload }
       };
     case GET_PROJECT_FAILURE:
       return {
@@ -93,6 +99,43 @@ const projectqsReducer = (state = initialState, action) => {
         updatingProjectData: false
       };
     case UPDATE_PROJECT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingProjectData: false
+      };
+    case UPLOAD_PROJECT_PICTURE_START:
+      return {
+        ...state,
+        error: null,
+        updatingProjectData: true
+      };
+    case UPLOAD_PROJECT_PICTURE_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        profileData: { ...state.projectData, ...action.payload },
+        updatingProjectData: false
+      };
+    case UPLOAD_PROJECT_PICTURE_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingProjectData: false
+      };
+    case DELETE_PROJECT_PICTURE_START:
+      return {
+        ...state,
+        error: null,
+        updatingProjectData: true
+      };
+    case DELETE_PROJECT_PICTURE_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        updatingProjectData: false
+      };
+    case DELETE_PROJECT_PICTURE_FAILURE:
       return {
         ...state,
         error: action.payload,

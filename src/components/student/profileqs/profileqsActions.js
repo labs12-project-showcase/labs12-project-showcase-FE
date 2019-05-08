@@ -45,7 +45,7 @@ export const updateProfile = (formValues, redirect = true) => dispatch => {
     account: {
       name: formValues.name
     },
-    // desired_locations: formValues.desired_locations,
+    desired_locations: formValues.desired_locations,
     skills: formValues.skills,
     student: {
       about: formValues.about,
@@ -68,7 +68,7 @@ export const updateProfile = (formValues, redirect = true) => dispatch => {
   };
   dispatch({ type: UPDATE_PROFILE_START });
   axiosAuth()
-    .put(`${backendUrl}/api/students/update`, removeEmptyValues(send))
+    .put(`${backendUrl}/api/students/update`, send)
     .then(res => {
       if (redirect) {
         history.push(`/student/profile/${formValues.id}`);
