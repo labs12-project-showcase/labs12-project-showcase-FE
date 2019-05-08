@@ -157,59 +157,55 @@
 			margin: 20px auto;
 			border: 1px solid $lambdaRed;
 			width: 100%;
-    }
-    
-    .pitch-and-projectURL-container {
-      display: flex;
-	  flex-direction: column;
+		}
 
-      .sales-pitch {
-        width: 100%;
-        max-width: 500px;
-        background-color: $lightcolor;
-        padding: 30px 20px;
-        margin: 30px auto;
-        border-radius: 5px;
-  
-        h2 {
-          text-align: left;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-	  }
-	  
-	  .project-urls-container {
-		min-height: 100px;
-		@include box-align();
+		.pitch-and-projectURL-container {
+			display: flex;
+			flex-direction: column;
 
-		a {
-			text-decoration: none;
-			border-radius: 10px;
-			color: #ffffff;
-			padding: 10px;
-			margin: 5px;
-			background-color: $lambdaRed;
-			cursor: pointer;
+			.sales-pitch {
+				width: 100%;
+				max-width: 500px;
+				background-color: $lightcolor;
+				padding: 30px 20px;
+				margin: 30px auto;
+				border-radius: 5px;
 
-			&:hover {
-				background-color: darken($lambdaRed, 10%);
+				h2 {
+					text-align: left;
+					font-weight: 700;
+					margin-bottom: 10px;
+				}
+			}
+
+			.project-urls-container {
+				min-height: 100px;
+				@include box-align();
+
+				a {
+					text-decoration: none;
+					border-radius: 10px;
+					color: #ffffff;
+					padding: 10px;
+					margin: 5px;
+					background-color: $lambdaRed;
+					cursor: pointer;
+
+					&:hover {
+						background-color: darken($lambdaRed, 10%);
+					}
+				}
+
+				.github-chip {
+					border-radius: 50%;
+
+					.fa-github {
+						font-size: 3rem;
+						padding: 1px;
+					}
+				}
 			}
 		}
-
-		.github-chip {
-			border-radius: 50%;
-
-			.fa-github {
-				font-size: 3rem;
-				padding: 1px;
-			}
-		}
-
-
-		}
-    }
-
-		
 
 		h2 {
 			width: 100%;
@@ -226,10 +222,15 @@
 				margin: 20px;
 				@include box-align();
 				flex-direction: column;
-				img {
+				.s-pic {
 					height: 150px;
 					width: 150px;
+					overflow: hidden;
 					border-radius: 50%;
+					img {
+						width: 100%;
+						height: auto;
+					}
 				}
 
 				p {
