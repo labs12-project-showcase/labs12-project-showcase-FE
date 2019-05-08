@@ -234,3 +234,25 @@ export const uploadProjectPicture = (file, setImageList, id) => dispatch => {
       dispatch({ type: UPLOAD_PROJECT_PICTURE_FAILURE, payload: error });
     });
 };
+
+export const DELETE_PROJECT_PICTURE_FAILURE = "DELETE_PROJECT_PICTURE_FAILURE";
+export const DELETE_PROJECT_PICTURE_START = "DELETE_PROJECT_PICTURE_START";
+export const DELETE_PROJECT_PICTURE_SUCCESS = "DELETE_PROJECT_PICTURE_SUCCESS";
+
+export const deleteProjectPicture = (url, id) => dispatch => {
+  dispatch({ type: DELETE_PROJECT_PICTURE_START });
+  return axiosAuth()
+    .put(`https://halg-backend.herokuapp.com/api/projects/${id}/media/remove`, {
+      url
+    })
+    .then(res => {
+      dispatch({ type: DELETE_PROJECT_PICTURE_SUCCESS });
+    })
+    .catch(err => {
+      dispatch({
+        type: DELETE_PROJECT_PICTURE_FAILURE,
+        payload: "Could not delete project image."
+      });
+      throw new Error("Image could not be deleted.");
+    });
+};
