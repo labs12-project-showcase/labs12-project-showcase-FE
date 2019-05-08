@@ -20,8 +20,9 @@ class StudentProfile extends React.Component {
     this.props.getData(this.props.match.params.id);
   }
 
-  componentDidUpdate() {
-    this.props.getData(this.props.match.params.id);
+  componentDidUpdate(prevProps) {
+    prevProps.match.params.id !== this.props.match.params.id &&
+      this.props.getData(this.props.match.params.id);
   }
 
   render() {
