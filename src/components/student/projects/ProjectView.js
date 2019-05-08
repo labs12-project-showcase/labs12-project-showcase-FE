@@ -64,7 +64,7 @@ const ProjectView = ({
               allowFullScreen
             />
           </div>
-          {projectData && projectData.project_media.length
+          {projectData.project_media && projectData.project_media.length
             ? projectData.project_media.slice(0, 3).map(media => (
                 <div className="img-one" key={media}>
                   <img src={media} alt="Project" />

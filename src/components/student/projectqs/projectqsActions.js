@@ -241,10 +241,10 @@ export const DELETE_PROJECT_PICTURE_SUCCESS = "DELETE_PROJECT_PICTURE_SUCCESS";
 
 export const deleteProjectPicture = (url, id) => dispatch => {
   dispatch({ type: DELETE_PROJECT_PICTURE_START });
-  axiosAuth()
-    .delete(
-      `https://halg-backend.herokuapp.com/api/projects/${id}/media/${url}`
-    )
+  return axiosAuth()
+    .put(`https://halg-backend.herokuapp.com/api/projects/${id}/media/remove`, {
+      url
+    })
     .then(res => {
       dispatch({ type: DELETE_PROJECT_PICTURE_SUCCESS });
     })
