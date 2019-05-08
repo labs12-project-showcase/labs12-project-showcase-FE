@@ -59,6 +59,18 @@ class ProjectTable extends React.Component {
         field: "contributors",
             filter: true,
             sort: true,
+            options: {
+              customBodyRender: value => {
+               return (
+                <Link
+                 to={`/student/profile/${value.student_id}`}
+                 onClick={ (e) => {
+                  e.stopPropagation();
+                 }}
+                >{value.name}</Link>
+               );
+              }
+             }
       },
       {
         name: "Approved",
@@ -71,7 +83,7 @@ class ProjectTable extends React.Component {
               {e.stopPropagation()}
               }
               checked={this.state.checkedApproved}
-              //onChange={this.handleChange('checkedApproved')}
+             // onChange={this.handleChange('checkedApproved')}
               value="checkedApproved"
               />
             );
