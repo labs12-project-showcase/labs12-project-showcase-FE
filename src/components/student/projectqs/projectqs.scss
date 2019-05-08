@@ -1,168 +1,192 @@
 .projectqs-container {
-  min-height: 85vh;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 20px auto; // will likely need to be changed later
+	min-height: 85vh;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin: 20px auto; // will likely need to be changed later
 }
 
 .projectqs {
-  width: 100%;
-  max-width: 700px;
-  background-color: $lightcolor;
-  padding: 20px;
-  border-radius: 5px;
+	width: 100%;
+	max-width: 700px;
+	background-color: $lightcolor;
+	padding: 20px;
+	border-radius: 5px;
 
-  h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
+	h3 {
+		font-size: 1.8rem;
+		font-weight: 700;
+		margin-bottom: 10px;
+	}
 
-  .project-quick-start-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 15px;
+	.project-quick-start-form {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 15px;
 
-    button {
-      background-color: $lambdaRed;
-      border: 1px solid $lambdaRed;
-      border-radius: 5px;
-      color: $lightcolor;
-      font-size: 1.6rem;
-      margin: 2rem auto;
-      padding: 10px 15px;
-      cursor: pointer;
+		button {
+			background-color: $lambdaRed;
+			border: 1px solid $lambdaRed;
+			border-radius: 5px;
+			color: $lightcolor;
+			font-size: 1.6rem;
+			margin: 2rem auto;
+			padding: 10px 15px;
+			cursor: pointer;
 
-      &:hover {
-        background-color: darken($lambdaRed, 10%);
-      }
-    }
+			&:hover {
+				background-color: darken($lambdaRed, 10%);
+			}
+		}
 
-    label {
-      margin: 0.4rem 0;
+		label {
+			margin: 0.4rem 0;
+			@media (max-width: 600px) {
+				width: 100%;
+			}
 
-      // this styles the inline error
-      // e.g. "Name is required"
-      div.inline-error {
-        color: $lambdaRed;
-        padding: 0.8rem;
-        text-align: center;
-      }
+			// this styles the inline error
+			// e.g. "Name is required"
+			div.inline-error {
+				color: $lambdaRed;
+				padding: 0.8rem;
+				text-align: center;
+			}
 
-      input {
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        font-size: 1.6rem;
-        padding: 1.4rem 1rem 1.2rem 2rem;
-      }
+			input {
+				border: 1px solid lightgray;
+				border-radius: 5px;
+				font-size: 1.6rem;
+				padding: 1.4rem 1rem 1.2rem 2rem;
+				@media (max-width: 654px) {
+					width: 100%;
+				}
+			}
 
-      .input-label {
-        color: gray;
-        background: $lightcolor;
-        font-size: 1.4rem;
-        left: 1rem;
-        padding: 0.4rem;
-        position: relative;
-        top: 0.8rem;
-        z-index: 1;
-      }
+			.input-label {
+				color: gray;
+				background: $lightcolor;
+				font-size: 1.4rem;
+				left: 1rem;
+				padding: 0.4rem;
+				position: relative;
+				top: 0.8rem;
+				z-index: 1;
+			}
 
-      .project-title-field,
-      .github-link-field,
-      .fe-link-field,
-      .be-link-field,
-      .mobile-link-field,
-      .market-link-field,
-      .design-link-field,
-      .youtube-url-field,
-      .live-demo-url-field,
-      .medium-article-url-field {
-        width: 300px;
-        font-size: 1.8rem;
-      }
+			.project-title-field,
+			.github-link-field,
+			.fe-link-field,
+			.be-link-field,
+			.mobile-link-field,
+			.market-link-field,
+			.design-link-field,
+			.youtube-url-field,
+			.live-demo-url-field,
+			.medium-article-url-field {
+				width: 300px;
+				font-size: 1.8rem;
+				@media (max-width: 654px) {
+					width: 100%;
+				}
+			}
 
-      .pitch-text-area,
-      .project-description-text-area {
-        width: 660px;
-        height: 150px;
-        font-size: 1.8rem;
-        padding-top: 10px;
-        padding-left: 20px;
-        border-radius: 7px;
-        border: 1px solid lightgrey;
-      }
+			.pitch-text-area,
+			.project-description-text-area {
+				width: 660px;
+				height: 150px;
+				font-size: 1.8rem;
+				padding-top: 10px;
+				padding-left: 20px;
+				border-radius: 7px;
+				border: 1px solid lightgrey;
+				@media (max-width: 654px) {
+					width: 100%;
+				}
+			}
 
-      &.stretch-input {
-        margin: 1.6rem 0;
-        width: 100%;
+			&.stretch-input {
+				margin: 1.6rem 0;
+				width: 100%;
+				@media (max-width: 654px) {
+					width: 100%;
+				}
 
-        textarea {
-          margin-top: 20px;
-          height: 16rem;
-          font-size: 1.6rem;
-          padding: 1.6rem;
-          width: 100%;
-          border-radius: 5px;
-          border: 1px solid lightgray;
-        }
-      }
-    }
-  }
+				.css-9msvp0-container {
+					@media (max-width: 654px) {
+						width: 100%;
+					}
+				}
+
+				textarea {
+					margin-top: 20px;
+					height: 16rem;
+					font-size: 1.6rem;
+					padding: 1.6rem;
+					width: 100%;
+					border-radius: 5px;
+					border: 1px solid lightgray;
+					@media (max-width: 654px) {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
 }
 
 .modal-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 98;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 98;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
 
-  .error-modal {
-    box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.6);
-    border-radius: 5px;
-    background-color: white;
-    margin: 200px auto;
-    display: flex;
-    flex-direction: column;
-    z-index: 99;
-    width: 300px;
-    padding: 25px;
-    justify-content: flex-start;
-    align-items: center;
-    opacity: 1;
+	.error-modal {
+		box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.6);
+		border-radius: 5px;
+		background-color: white;
+		margin: 200px auto;
+		display: flex;
+		flex-direction: column;
+		z-index: 99;
+		width: 300px;
+		padding: 25px;
+		justify-content: flex-start;
+		align-items: center;
+		opacity: 1;
 
-    h2 {
-      font-weight: bold;
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
+		h2 {
+			font-weight: bold;
+			font-size: 2rem;
+			margin-bottom: 15px;
+		}
 
-    p {
-      line-height: 1.2;
-      margin-bottom: 15px;
-    }
+		p {
+			line-height: 1.2;
+			margin-bottom: 15px;
+		}
 
-    button {
-      -webkit-appearance: none;
-      background-color: $lambdaRed;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      padding: 3px 9px;
-      font-size: 1.8rem;
-      cursor: pointer;
-      transition: 0.2s;
+		button {
+			-webkit-appearance: none;
+			background-color: $lambdaRed;
+			border: none;
+			color: white;
+			border-radius: 5px;
+			padding: 3px 9px;
+			font-size: 1.8rem;
+			cursor: pointer;
+			transition: 0.2s;
 
-      &:hover {
-        transform: translateY(-2px);
-        background-color: darken($lambdaRed, 10%);
-        box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.6);
-      }
-    }
-  }
+			&:hover {
+				transform: translateY(-2px);
+				background-color: darken($lambdaRed, 10%);
+				box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.6);
+			}
+		}
+	}
 }
