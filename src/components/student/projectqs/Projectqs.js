@@ -1,7 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProjectqsForm from "./ProjectqsForm";
-import { uploadProjectPicture, updateProject } from "./projectqsActions";
+import {
+  uploadProjectPicture,
+  updateProject,
+  deleteProjectPicture
+} from "./projectqsActions";
 
 import EditImage from "../../EditImage/EditImage";
 import avatar from "../../../assets/avatar.jpg";
@@ -25,6 +29,9 @@ const Projectqs = props => {
               onImageUpload={(file, setImageList) =>
                 props.uploadProjectPicture(file, setImageList, props.project.id)
               }
+              onRemove={url =>
+                props.deleteProjectPicture(url, props.project.id)
+              }
               onUrlAdd={url => props.updateProject({ profile_pic: url }, false)}
               placeholder={avatar}
               uploadButtonText="Upload file"
@@ -46,5 +53,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { uploadProjectPicture, updateProject }
+  { uploadProjectPicture, updateProject, deleteProjectPicture }
 )(Projectqs);

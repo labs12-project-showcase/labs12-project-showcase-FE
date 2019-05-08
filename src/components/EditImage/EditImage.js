@@ -1,5 +1,5 @@
 /* Heavily inspired by https://github.com/JakeHartnell/react-images-upload */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const EditImage = props => {
   let inputElement;
@@ -10,14 +10,14 @@ const EditImage = props => {
 
   // Load default images if there are any
   useEffect(() => {
-    console.log('useEffect is setting imageList');
+    console.log("useEffect is setting imageList");
     if (props.initialImageList) {
       setImageList(
         props.initialImageList.map(item => ({ file: null, url: item }))
       );
     }
   }, [props.initialImageList]);
-  console.log('imageList: ', imageList);
+  console.log("imageList: ", imageList);
 
   function clearErrors() {
     setBadFileTypeList([]);
@@ -30,7 +30,7 @@ const EditImage = props => {
 
     // check file extension on URL
     let url = event.target.children[0].value;
-    if (!hasExtension(url, ['.gif', '.jpg', '.jpeg', '.png', '.svg'])) {
+    if (!hasExtension(url, [".gif", ".jpg", ".jpeg", ".png", ".svg"])) {
       setBadFileTypeList(previousState => {
         let arr = Array.from(previousState);
         arr.push(url);
@@ -51,7 +51,7 @@ const EditImage = props => {
 
   function handleFileDrop(event) {
     const files = event.target.files;
-    console.log('files: ', files);
+    console.log("files: ", files);
     const allFilePromises = [];
     clearErrors();
 
@@ -97,7 +97,7 @@ const EditImage = props => {
           return arr;
         });
 
-        console.log('before onImageUpload, fileList: ', imageList);
+        console.log("before onImageUpload, fileList: ", imageList);
 
         // call function from props
         props.onImageUpload(item.file, setImageList);
@@ -107,8 +107,8 @@ const EditImage = props => {
 
   // Check file type
   function hasExtension(fileName, formats = props.acceptedExtensions) {
-    const pattern = '(' + formats.join('|').replace(/\./g, '\\.') + ')$';
-    return new RegExp(pattern, 'i').test(fileName);
+    const pattern = "(" + formats.join("|").replace(/\./g, "\\.") + ")$";
+    return new RegExp(pattern, "i").test(fileName);
   }
 
   function onUploadClick(event) {
@@ -125,7 +125,7 @@ const EditImage = props => {
         reader.onload = function(event) {
           // Add file name to the dataUrl
           let dataUrl = event.target.result;
-          dataUrl = dataUrl.replace(';base64', `;name=${file.name};base64`);
+          dataUrl = dataUrl.replace(";base64", `;name=${file.name};base64`);
 
           resolve({ file, dataUrl });
         };
@@ -143,8 +143,8 @@ const EditImage = props => {
    * @param {Object} index Index of an image object in `imageList`
    */
   function removeImage(index) {
-    console.log('removeImage index:', index);
-    console.log('removeImage imageList:', imageList);
+    console.log("removeImage index:", index);
+    console.log("removeImage imageList:", imageList);
 
     // @TODO: if Url is a full Url,
     // need to request back-end to delete image
@@ -152,19 +152,24 @@ const EditImage = props => {
     // cancel axios request if possible
     if (imageList[index].cancelToken) {
       imageList[index].cancelToken();
-      console.log('User canceled image upload.');
+      console.log("User canceled image upload.");
     }
 
     // remove image from state
-    setImageList(previousState => {
-      let arr = Array.from(previousState);
-      arr.splice(index, 1);
-      return arr;
-    });
+    props
+      .onRemove(imageList[index].url)
+      .then(() => {
+        setImageList(previousState => {
+          let arr = Array.from(previousState);
+          arr.splice(index, 1);
+          return arr;
+        });
+      })
+      .catch(err => console.log(err));
   }
 
   function renderErrors() {
-    let notAccepted = '';
+    let notAccepted = "";
     if (badFileTypeList.length) {
       notAccepted = badFileTypeList.map((fileName, index) => (
         <div className={`inline-error ${props.errorClass}`} key={index}>
@@ -277,17 +282,17 @@ const EditImage = props => {
 };
 
 EditImage.defaultProps = {
-  accept: 'image/*',
-  acceptedExtensions: ['.jpg', '.jpeg', '.png'],
-  buttonsClassName: 'edit-image-button',
-  containerClassName: 'edit-image-container',
-  errorClass: '',
-  fileSizeError: ' file size is too big',
-  fileTypeError: ' is not a supported file extension',
-  initialImageList: '',
-  inputElementName: '',
-  label: 'Max file size: 5mb, accepted: .jpg, .png',
-  labelClass: '',
+  accept: "image/*",
+  acceptedExtensions: [".jpg", ".jpeg", ".png"],
+  buttonsClassName: "edit-image-button",
+  containerClassName: "edit-image-container",
+  errorClass: "",
+  fileSizeError: " file size is too big",
+  fileTypeError: " is not a supported file extension",
+  initialImageList: "",
+  inputElementName: "",
+  label: "Max file size: 5mb, accepted: .jpg, .png",
+  labelClass: "",
   maxFileCount: Infinity,
   maxFileSize: 5242880,
   // onChange: () => {},
@@ -295,8 +300,8 @@ EditImage.defaultProps = {
   onUrlAdd: () => {},
   placeholder: null,
   singleImage: true,
-  uploadButtonText: 'Upload files',
-  uploadButtonType: 'button',
+  uploadButtonText: "Upload files",
+  uploadButtonType: "button",
   withLabel: true,
   withPreview: true
 };
