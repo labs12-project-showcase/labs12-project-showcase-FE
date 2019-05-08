@@ -184,11 +184,11 @@ export const FormSchema = ({
       </label>
 
       <label>
-        <span className="input-label">Profile Picture URL</span>
+        <span className="input-label">Desired Title</span>
         <br />
-        <Field name="profile_pic" type="text" />
+        <Field name="desired_title" type="text" />
         <ErrorMessage
-          name="profile_pic"
+          name="desired_title"
           render={msg => <div className="inline-error">{msg}</div>}
         />
       </label>
@@ -286,16 +286,6 @@ export const FormSchema = ({
         <Field name="desired_locations" type="text" />
         <ErrorMessage
           name="desired_locations"
-          render={msg => <div className="inline-error">{msg}</div>}
-        />
-      </label>
-
-      <label>
-        <span className="input-label">Desired Title</span>
-        <br />
-        <Field name="desired_title" type="text" />
-        <ErrorMessage
-          name="desired_title"
           render={msg => <div className="inline-error">{msg}</div>}
         />
       </label>
