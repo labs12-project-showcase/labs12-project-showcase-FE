@@ -294,6 +294,7 @@ EditImage.defaultProps = {
   maxFileSize: 5242880,
   // onChange: () => {},
   onImageUpload: () => {},
+  onRemove: () => {},
   onUrlAdd: () => {},
   placeholder: null,
   singleImage: true,
