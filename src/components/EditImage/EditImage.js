@@ -10,7 +10,7 @@ const EditImage = props => {
   // Load default images if there are any
   useEffect(() => {
     console.log('useEffect is setting imageList');
-    if (props.initialImageList && props.initialImageList[0].url) {
+    if (props.initialImageList && props.initialImageList[0]) {
       setImageList(
         props.initialImageList.map(item => ({ file: null, url: item }))
       );
@@ -286,7 +286,7 @@ EditImage.defaultProps = {
   errorClass: '',
   fileSizeError: ' file size is too big',
   fileTypeError: ' is not a supported file extension',
-  initialImageList: '',
+  initialImageList: [],
   inputElementName: '',
   label: 'Max file size: 5mb, accepted: .jpg, .png',
   labelClass: '',
