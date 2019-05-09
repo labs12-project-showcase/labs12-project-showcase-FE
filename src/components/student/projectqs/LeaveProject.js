@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { withRouter, connect } from "react-redux";
 
 import axiosAuth from "../../../auth/axiosAuth";
 import { getProject } from "./projectqsActions";
@@ -109,4 +109,4 @@ const mapStateToProps = state => ({
   student_id: state.profile.profileData.id
 });
 
-export default connect(mapStateToProps)(LeaveProject);
+export default withRouter(connect(mapStateToProps)(LeaveProject));
