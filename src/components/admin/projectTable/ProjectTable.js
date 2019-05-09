@@ -4,15 +4,7 @@ import MaterialDatatable from "material-datatable";
 import { fetchProjects } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
-// import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import ProjectTableRow from './ProjectTableRow';
 
 
 class ProjectTable extends React.Component {
@@ -23,9 +15,7 @@ class ProjectTable extends React.Component {
     };
   };
 
-  handleClick = (e) => {
-    this.setState(state => ({ open: !state.open }));
-  };
+
 
   //   handleChange(event) {
   //     //console.log(event.target.value);
@@ -75,33 +65,9 @@ class ProjectTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
-            
+            console.log(value);
             return (
-              <List component="nav">
-                <ListItem 
-                  button 
-                  onClick={e => this.handleClick(e)}
-                >
-                  <ListItemText inset primary="Contributors" />
-                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
-                  </ListItem>
-                  <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding >
-                      {value.students.map(student => {
-                        return (
-                          <ListItem key={student}>
-                            <Link
-                              to={`/student/profile/${student}`}
-                            >
-                              {student}
-                            </Link>
-                          </ListItem>
-                        )
-                      })}
-                    </List>
-                  </Collapse>
-              </List>
-
+              <ProjectTableRow value={value} />
             );
           }
         }
