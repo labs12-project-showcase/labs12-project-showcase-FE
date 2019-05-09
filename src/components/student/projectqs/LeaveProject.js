@@ -1,11 +1,13 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import axiosAuth from "../../../auth/axiosAuth";
 import { getProject } from "./projectqsActions";
 
 const LeaveProject = ({
   dispatch,
+  students,
   match: {
     params: { id }
   }
@@ -28,4 +30,8 @@ const LeaveProject = ({
   );
 };
 
-export default withRouter(LeaveProject);
+const mapStateToProps = state => ({
+  students: state.project.projectData.students
+});
+
+export default withRouter(connect(mapStateToProps)(LeaveProject));

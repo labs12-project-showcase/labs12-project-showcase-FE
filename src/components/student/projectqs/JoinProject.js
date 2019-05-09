@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import axiosAuth from "../../../auth/axiosAuth";
 import { getProject } from "./projectqsActions";
@@ -28,4 +29,4 @@ const JoinProject = ({
   );
 };
 
-export default withRouter(JoinProject);
+export default withRouter(connect()(JoinProject));
