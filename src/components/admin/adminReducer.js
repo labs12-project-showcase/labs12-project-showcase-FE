@@ -12,7 +12,8 @@ import {
 
 const initialState = {
   students: [],
-  projects: []
+  projects: [],
+  updatedProjectData: false
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -50,17 +51,20 @@ const adminReducer = (state = initialState, action) => {
       case ADMIN_UPDATED_PROJECTS_START:
       return {
         ...state,
-        projects: action.payload
+        projects: action.payload,
+        updatedProjectData: true
       }
       case ADMIN_UPDATED_PROJECTS_SUCCESS:
       return {
         ...state,
-        projects: action.payload
+        projects: action.payload,
+        updatedProjectData: false
       }
       case ADMIN_UPDATED_PROJECTS_FAILURE:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
+        updatedProjectData: false
       }
     default:
       return state;
