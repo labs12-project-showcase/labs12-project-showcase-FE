@@ -3,18 +3,22 @@ $primary-color: #333;
 */
 
 // Main Colors
-
-$lambdaRed: #bb1333;
-$lambdaDarkBlue: #002070;
-$lambdaLightBlue: #1e50ee;
+$newBorder: #e8e8e8;
+$lambdaGray: #747474;
 $lambdaTeal: #08addd;
-$lambdaGray: #55596d;
-$darkcolor: #1d2226;
+$lambdaPink: #f32667;
+$lambdaRed: #bb1333;
+
+$lambdaLightBlue: #1e50ee;
+$lambdaDarkBlue: #002070;
+
 $lightcolor: #ffffff;
+$darkcolor: #1d2226;
 
 // light background color
-$backg-light: #fafbfd;
+$backg-light: #ffffff;
 $border-color: #e6e6e6;
+$back-search: #e6e6e6;
 
 // Font family
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');

@@ -3,7 +3,6 @@
 	background: #fff;
 	box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.05);
 	border: 1px solid lightgray;
-	border-radius: 5px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -34,7 +33,6 @@
 	.edit-image-button {
 		padding: 6px 23px;
 		background: $lambdaDarkBlue;
-		border-radius: 30px;
 		color: white;
 		font-weight: 300;
 		font-size: 14px;
@@ -52,7 +50,6 @@
 	.edit-image-inputs {
 		align-items: center;
 		border: 1px solid lightgray;
-		border-radius: 5px;
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
 		display: flex;
 		flex-direction: column;
@@ -90,7 +87,6 @@
 	.image-preview-container {
 		width: 200px;
 		height: 200px;
-		border-radius: 50%;
 		margin: 10px 5%;
 		// padding: 10px;
 		// background: #edf2f6;

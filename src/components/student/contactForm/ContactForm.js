@@ -8,24 +8,15 @@ class ContactForm extends Component {
 			topic: '',
 			text: ''
 		},
-		id: this.props.id
 	};
 
-	// componentDidMount() {
-	// 	this.props.getData(this.props.match.params.id);
-	// }
-
 	sendEmail = _ => {
-		const id = this.state.id;
 		
-		//console.log('SHOW ME SOMETHING', id)
 		const { email } = this.state;
-		// fetch(`http://127.0.0.1:7000/send-email?recipient=${'jmaxt12@gmail.com'}&sender=${email.sender}&topic=${email.subject}&text=${email.text}`) //query string url
-		//   .catch(err => console.error(err))
 		
 		axios
 		.post(
-			`https://halg-backend.herokuapp.com/api/students/contact-me/${id}`,
+			`https://halg-backend.herokuapp.com/api/students/contact-me/${this.props.match.params.id}`,
 			email
 			)
 			.then(res => {
@@ -44,11 +35,6 @@ class ContactForm extends Component {
 				<div className="contact">
 					<h2> Send Message </h2>
 					<br />
-					{/* <label> Recipient </label>
-          <br />
-          <input value={email.recipient}
-		  onChange={e => this.setState({ email: { ...email, recipient: e.target.value } })} />
-		<div/> */}
 					<label>
 						<span className="input-label"> From </span>
 					</label>
@@ -90,8 +76,4 @@ class ContactForm extends Component {
 	}
 }
 
-/* 
-lambdashowcase.com/students/something id in url
-prop => student.id
-*/
 export default ContactForm;

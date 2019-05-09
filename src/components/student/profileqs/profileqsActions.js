@@ -3,6 +3,30 @@ import axiosAuth from '../../../auth/axiosAuth';
 import { backendUrl } from '../../../config/urls.js';
 import history from '../../../history.js';
 
+//
+export const DELETE_PROFILE_PICTURE_FAILURE = 'DELETE_PROFILE_PICTURE_FAILURE';
+export const DELETE_PROFILE_PICTURE_START = 'DELETE_PROFILE_PICTURE_START';
+export const DELETE_PROFILE_PICTURE_SUCCESS = 'DELETE_PROFILE_PICTURE_SUCCESS';
+
+export const deleteProfilePicture = url => dispatch => {
+  dispatch({ type: DELETE_PROFILE_PICTURE_START});
+  return axiosAuth()
+    .put(`${backendUrl}/api/students/update/profile_picture/remove`, {
+      url
+    })
+    .then(res => {
+      dispatch({ type: DELETE_PROFILE_PICTURE_SUCCESS });
+    })
+    .catch(error => {
+      dispatch({
+        type: DELETE_PROFILE_PICTURE_FAILURE,
+        payload: error
+      });
+      throw new Error("Image could not be deleted.");
+    });
+}
+
+// 
 export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
 export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
 export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
@@ -45,7 +69,7 @@ export const updateProfile = (formValues, redirect = true) => dispatch => {
     account: {
       name: formValues.name
     },
-    // desired_locations: formValues.desired_locations,
+    desired_locations: formValues.desired_locations,
     skills: formValues.skills,
     student: {
       about: formValues.about,
@@ -68,7 +92,7 @@ export const updateProfile = (formValues, redirect = true) => dispatch => {
   };
   dispatch({ type: UPDATE_PROFILE_START });
   axiosAuth()
-    .put(`${backendUrl}/api/students/update`, removeEmptyValues(send))
+    .put(`${backendUrl}/api/students/update`, send)
     .then(res => {
       if (redirect) {
         history.push(`/student/profile/${formValues.id}`);
@@ -88,16 +112,16 @@ export const UPLOAD_PROFILE_PICTURE_FAILURE = 'UPLOAD_PROFILE_PICTURE_FAILURE';
 export const UPLOAD_PROFILE_PICTURE_START = 'UPLOAD_PROFILE_PICTURE_START';
 export const UPLOAD_PROFILE_PICTURE_SUCCESS = 'UPLOAD_PROFILE_PICTURE_SUCCESS';
 
-export const uploadProfilePicture = (file, setImageList) => dispatch => {
+export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
   dispatch({ type: UPLOAD_PROFILE_PICTURE_START });
   // create FormData for file
   const formData = new FormData();
-  formData.append('image', file, file.name);
+  formData.append('image', dataObject.file, dataObject.file.name);
 
   // send file to backend API
   axiosAuth()
     .put(
-      'https://halg-backend.herokuapp.com/api/students/update/profile_picture',
+      `${backendUrl}/api/students/update/profile_picture`,
       formData,
       {
         // create axios CancelToken, and save it to the image object
@@ -107,7 +131,7 @@ export const uploadProfilePicture = (file, setImageList) => dispatch => {
             let arr = Array.from(previousState);
             let index;
             for (let i in arr) {
-              if (arr[i].url === file.dataUrl) {
+              if (arr[i].url === dataObject.dataUrl) {
                 index = i;
                 break;
               }
@@ -121,19 +145,26 @@ export const uploadProfilePicture = (file, setImageList) => dispatch => {
       }
     )
     .then(res => {
+      if (res.status !== 200) {
+        throw new Error(
+          `Something went wrong updating the profile picture. Status: ${
+            res.status
+          }`
+        );
+      }
       // replace the dataUrl with the returned Cloudinary URL
       // and remove cancelToken from object
       setImageList(previousState => {
         let arr = Array.from(previousState);
         let index;
         for (let i in arr) {
-          if (arr[i].url === file.dataUrl) {
+          if (arr[i].url === dataObject.dataUrl) {
             index = i;
             break;
           }
         }
         if (index) {
-          arr[index].url = res.data.student.profile_pic;
+          arr[index].url = res.data.profile_pic;
           arr[index].cancelToken = null;
         }
         return arr;
@@ -155,17 +186,17 @@ export const uploadProfilePicture = (file, setImageList) => dispatch => {
  * nested objects, too.
  * @param {Object} obj Object literal to be trimmed
  */
-function removeEmptyValues(obj) {
-  return Object.keys(obj)
-    .filter(f => Boolean(obj[f]))
-    .reduce(
-      (r, i) =>
-        typeof obj[i] === 'object' && !Array.isArray(obj[i])
-          ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
-          : { ...r, [i]: obj[i] },
-      {}
-    );
-}
+// function removeEmptyValues(obj) {
+//   return Object.keys(obj)
+//     .filter(f => Boolean(obj[f]))
+//     .reduce(
+//       (r, i) =>
+//         typeof obj[i] === 'object' && !Array.isArray(obj[i])
+//           ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
+//           : { ...r, [i]: obj[i] },
+//       {}
+//     );
+// }
 
 function removeNulls(obj) {
   let noNulls = {};

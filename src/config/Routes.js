@@ -41,7 +41,7 @@ class Routes extends Component {
           />
           <Route path="/student/project-view/:id" component={ProjectView} />
           <Route
-            path="/contact-me"
+            path="/contact-me/:id"
             render={props => <ContactForm auth={props.auth} {...props} />}
           />
           <Route path="/admin/student-table" component={StudentTable} />

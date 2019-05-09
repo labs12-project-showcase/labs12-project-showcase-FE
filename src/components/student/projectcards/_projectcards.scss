@@ -3,51 +3,15 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 0 2%;
+	padding: 10px 0;
 	width: 100%;
-	background: #000000; /* Old browsers */
-	background: -moz-linear-gradient(
-		-45deg,
-		#000000 0%,
-		#000000 20%,
-		#000000 20%,
-		#474747 44%,
-		#2c2c2c 53%,
-		#111111 67%,
-		#1c1c1c 92%,
-		#131313 100%
-	); /* FF3.6-15 */
-	background: -webkit-linear-gradient(
-		-45deg,
-		#000000 0%,
-		#000000 20%,
-		#000000 20%,
-		#474747 44%,
-		#2c2c2c 53%,
-		#111111 67%,
-		#1c1c1c 92%,
-		#131313 100%
-	); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(
-		135deg,
-		#000000 0%,
-		#000000 20%,
-		#000000 20%,
-		#474747 44%,
-		#2c2c2c 53%,
-		#111111 67%,
-		#1c1c1c 92%,
-		#131313 100%
-	); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#131313',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	padding: 100px 10px;
 
 	h2 {
-		font-weight: 500;
-		font-size: 2.8rem;
-		color: $lightcolor;
-		margin-bottom: 50px;
-		text-transform: uppercase;
+		font-weight: 900;
+		font-size: 3.2rem;
+		color: $darkcolor;
+		margin-bottom: 30px;
+		text-transform: capitalize;
 
 		.fa-project-diagram {
 			margin-right: 10px;
@@ -61,24 +25,25 @@
 
 	button {
 		text-decoration: none;
-		border: none;
-		border-radius: 5px;
-		color: #ffffff;
-		padding: 10px;
-		margin: 5px;
-		background-color: $lambdaRed;
+		font-size: 1.8rem;
+		padding: 32px;
+		color: $lambdaTeal;
+		margin: 20px 5px;
+		background-color: $lightcolor;
 		cursor: pointer;
+		border: 1px solid $newBorder;
 
 		&:hover {
-			box-shadow: 0 0 6px 3px #cccccc;
-			background: #8d0e26;
+			background: $lambdaTeal;
+			color: $lightcolor;
+			border: 1px solid $lightcolor;
 		}
 	}
 
 	.projects-inner-wrapper {
 		@include box-align(space-between, center);
 		width: 100%;
-		max-width: 1000px;
+		max-width: 1120px;
 		@media (max-width: 600px) {
 			@include box-align(center, center);
 		}
@@ -91,31 +56,46 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: space-between;
-			width: 270px;
+			width: 360px;
+			padding: 5px;
+			height: 276px;
+			overflow: hidden;
 			margin-bottom: 40px;
-			border-radius: 5px;
-			box-shadow: 0 0 6px 3px #1e2323;
+			position: relative;
+			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
+			box-shadow: 1px 1px 1px 1px #f2f2f2;
 			background-color: $backg-light;
 			margin: 20px auto;
-
+			cursor: pointer;
+			&:hover {
+				-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
+				box-shadow: -2px 5px 16px 2px#d3d3d3;
+			}
 			img {
-				border-top-left-radius: 5px;
-				border-top-right-radius: 5px;
-				max-width: 100%;
-				overflow: hidden;
+				height: auto;
+				width: 100% !important;
 			}
+			.caption {
+				width: 100%;
+				padding: 10px 5px;
+				position: absolute;
+				bottom: 0;
+				background-color: $lightcolor;
+				h3,
+				p {
+					margin: 5px 0;
+				}
 
-			h3,
-			p {
-				margin: 5px 0;
-			}
+				h3 {
+					font-weight: 900;
+					font-size: 2.2rem;
+					text-transform: capitalize;
+				}
 
-			h3 {
-				font-weight: bold;
-			}
-
-			p {
-				margin-bottom: 10px;
+				p {
+					margin-bottom: 10px;
+					color: $lambdaGray;
+				}
 			}
 		}
 
@@ -123,8 +103,11 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			padding: 2%;
-			width: 40%;
+			padding: 10px;
+			width: 360px;
+			height: 276px;
+			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
+			box-shadow: 1px 1px 1px 1px #f2f2f2;
 			h2 {
 				margin-top: 20px;
 				color: black;
@@ -144,7 +127,8 @@
 		.drag-drop-target {
 			position: relative;
 			padding: 5px;
-			box-shadow: 0 0 6px 3px #cccccc;
+			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
+			box-shadow: 1px 1px 1px 1px #f2f2f2;
 
 			.drag-target-cover {
 				cursor: grab;
@@ -204,7 +188,7 @@
 .edit-wrapper {
 	background: white;
 	border: 1px solid lightgray;
-	border-radius: 5px;
+
 	padding-top: 25px;
 	padding-bottom: 15px;
 	position: relative;

@@ -44,7 +44,6 @@ td {
 .MuiPaper-root-5 {
 	max-width: 1024px;
 	margin: 50px auto;
-	border-radius: 5px;
 	.MuiTypography-h6-62 {
 		font-size: 1.8rem;
 		font-weight: 500;
@@ -63,5 +62,8 @@ td {
 			border: none;
 			border-bottom: 2px solid rgba(0, 0, 0, 0.15);
 		}
+	}
+	.MuiListItemText-inset-233:first-child {
+		padding-left: 0px;
 	}
 }
