@@ -4,6 +4,24 @@ import { withRouter } from 'react-router-dom';
 import { homeData, getFilteredCards } from './homeActions';
 import Cards from './Cards';
 import Carousel from './Carousel';
+import LocationSelect from '../location/LocationSelect.js';
+
+const reactSelectStyles = {
+  container: (provided, state) => ({
+    ...provided,
+    width: 224
+  }),
+  control: provided => ({
+    ...provided,
+    paddingLeft: 10,
+    paddingTop: 4,
+    minHeight: 48
+  }),
+  menu: provided => ({
+    ...provided,
+    zIndex: 2
+  })
+};
 
 class Home extends React.Component {
 	state = {
@@ -13,7 +31,8 @@ class Home extends React.Component {
 		uiux: false,
 		dataScience: false,
 		badge: false,
-		within: 50
+		within: 50,
+		location: null
 	};
 
 	componentDidMount() {
@@ -33,6 +52,10 @@ class Home extends React.Component {
 			[name]: value
 		});
 	};
+
+	handleLocation = location => {
+		this.setState({ location: location });
+	}
 
 	render() {
 		return (
@@ -138,10 +161,7 @@ class Home extends React.Component {
 
 								<label>
 									Located
-									<div className="search-location">
-										<i className="fas fa-search" />
-										<input type="text" placeholder="Washington, DC" />
-									</div>
+									<LocationSelect fieldValue={this.state.location} styles={reactSelectStyles} onChange={this.handleLocation} />
 								</label>
 							</div>
 							<div className="search-box">
@@ -165,10 +185,10 @@ class Home extends React.Component {
 						{this.props.home.cards.map((cards, index) => (
 							<Cards {...this.props} cards={cards} key={index} />
 						))}
-						<button className="btn-show-more">
-							Show More <i className="fas fa-chevron-down" />
-						</button>
 					</div>
+					<button className="btn-show-more">
+						Show More <i className="fas fa-chevron-down" />
+					</button>
 				</main>
 			</div>
 		);

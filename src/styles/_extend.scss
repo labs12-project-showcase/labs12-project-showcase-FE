@@ -20,6 +20,10 @@
 		width: 100%;
 		margin: 20px auto;
 		@include box-align();
+		@media (max-width: 600px) {
+			@include box-align();
+			flex-direction: column;
+		}
 		.search-box {
 			padding: 20px;
 			max-width: 30%;
@@ -30,7 +34,14 @@
 			&:first-child {
 				label {
 					width: 45%;
+					@media (max-width: 600px) {
+						width: 100%;
+					}
 				}
+			}
+			@media (max-width: 600px) {
+				max-width: 100%;
+				flex-direction: column;
 			}
 		}
 		.control {

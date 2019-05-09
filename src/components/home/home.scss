@@ -10,6 +10,7 @@
 		padding: 10px;
 		@media (max-width: 768px) {
 			padding: 0;
+			height: auto;
 		}
 		.header-text {
 			margin: 0 auto 0 0;
@@ -140,7 +141,8 @@
 		width: 100%;
 		padding-top: 100px;
 		.search-bar {
-			border: 1px solid $newBorder;
+			border-top: 1px solid $newBorder;
+			border-bottom: 1px solid $newBorder;
 			margin: 0 auto;
 			width: 100%;
 			max-width: 1200px;
@@ -148,6 +150,7 @@
 			@extend %search-section;
 			@media (max-width: 768px) {
 				width: 100%;
+				flex-direction: column;
 			}
 
 			h2 {
@@ -283,7 +286,7 @@
 							cursor: pointer;
 							&:hover {
 								box-shadow: 0 0 6px 3px #cccccc;
-								background-color: $lambdaLightBlue;
+								background-color: $lambdaGray;
 							}
 						}
 					}
@@ -354,19 +357,18 @@
 					}
 				}
 			}
-
-			.btn-show-more {
-				border: none;
-				background-color: $lambdaRed;
-				color: $lightcolor;
-				padding: 5px 10px;
-				margin: 10px auto 5px;
-				width: 200px;
-				cursor: pointer;
-				&:hover {
-					box-shadow: 0 0 6px 3px #cccccc;
-					background-color: darken($lambdaRed, 10%);
-				}
+		}
+		.btn-show-more {
+			border: none;
+			background-color: $lambdaRed;
+			color: $lightcolor;
+			padding: 5px 10px;
+			margin: 10px auto 5px;
+			width: 200px;
+			cursor: pointer;
+			&:hover {
+				box-shadow: 0 0 6px 3px #cccccc;
+				background-color: darken($lambdaRed, 10%);
 			}
 		}
 	}
