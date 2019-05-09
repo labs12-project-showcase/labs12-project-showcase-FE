@@ -161,7 +161,7 @@ class Home extends React.Component {
 
 								<label>
 									Located
-									<LocationSelect fieldValue={this.state.location} styles={reactSelectStyles} onChange={this.handleLocation} />
+									<LocationSelect fieldValue={this.state.location} styles={reactSelectStyles} onChange={this.handleLocation} isClearable />
 								</label>
 							</div>
 							<div className="search-box">
