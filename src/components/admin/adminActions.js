@@ -8,7 +8,9 @@ export const ADMIN_FETCHED_STUDENTS_FAILURE = 'ADMIN_FETCHED_STUDENTS_FAILURE';
 
 
 export const fetchStudents = () => dispatch => {
-  axiosAuth().get(`${backendUrl}/api/admin/students`)
+  dispatch ({ type: ADMIN_FETCHED_STUDENTS_START});
+  axiosAuth()
+  .get(`${backendUrl}/api/admin/students`)
   .then(res => {
     dispatch({
         type: ADMIN_FETCHED_STUDENTS_SUCCESS,
@@ -16,7 +18,7 @@ export const fetchStudents = () => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      dispatch({ type: ADMIN_FETCHED_STUDENTS_FAILURE, payload: err });
     });
   }
 
@@ -46,6 +48,7 @@ export const fetchProjects = () => dispatch => {
   export const ADMIN_UPDATED_PROJECTS_FAILURE = 'ADMIN_UPDATED_PROJECTS_FAILURE';
   
   export const updatedProjects = () => dispatch => {
+    dispatch({type: ADMIN_UPDATED_PROJECTS_START})
     axiosAuth().put(`${backendUrl}/api/admin/projects`)
     .then(res => {
       dispatch({
@@ -54,6 +57,6 @@ export const fetchProjects = () => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      dispatch({ type: ADMIN_UPDATED_PROJECTS_FAILURE, payload: err });
     });
 }

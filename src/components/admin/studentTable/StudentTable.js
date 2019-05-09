@@ -34,7 +34,6 @@ class StudentTable extends React.Component {
             sort: true,
             options: {
               customBodyRender: studentValue => {
-               console.log('custom body render studentValue', studentValue);
                return (
                 <Link
                  to={`/student/profile/${studentValue.id}`}
@@ -119,7 +118,6 @@ class StudentTable extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("finding state", state)
   return {
     students: state.admin.students
   };
