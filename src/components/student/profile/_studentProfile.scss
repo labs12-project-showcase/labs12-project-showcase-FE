@@ -14,9 +14,9 @@
 
 		.profile-container {
 			width: 100%;
-			max-width: 1024px;
+			max-width: 1120px;
 			margin: 0 auto;
-			@include box-align(space-between, flex-end);
+			@include box-align(flex-start, flex-start);
 			@media (max-width: 767px) {
 				flex-direction: column;
 				@include box-align();
@@ -26,7 +26,7 @@
 				width: 215px;
 				height: 215px;
 				overflow: hidden;
-				margin: 0 auto;
+				margin-right: 50px;
 				@media (min-width: 768px) and (max-width: 900px) {
 					width: 215px;
 					height: 215px;
@@ -42,79 +42,59 @@
 				}
 			}
 
-			.name-cont {
+			.top-info {
+				@include box-align(space-between, flex-start);
+				max-width: 850px;
 				width: 100%;
-				max-width: 340px;
-				min-width: 300px;
-				color: $darkcolor;
-				text-align: center;
-				transform: translateY(20px);
-				@media (max-width: 767px) {
-					transform: translateY(60px);
-					text-align: center;
-				}
-
-				h1 {
-					font-size: 3.8rem;
-					font-weight: 700;
-					margin-bottom: 15px;
-				}
-
-				h2 {
-					font-size: 1.6rem;
-					font-weight: 500;
-					margin-bottom: 5px;
-				}
-				h3 {
-					font-size: 1.4rem;
-					font-weight: 300;
-					margin-bottom: 5px;
-				}
-			}
-
-			.badge {
-				width: 100%;
-				max-width: 350px;
-				@media (max-width: 767px) {
-					width: auto;
-				}
-				@media (min-width: 768px) and (max-width: 960px) {
-					max-width: 260px;
-					padding: 20px 10px;
-				}
-
-				img {
-					display: block;
-					width: 150px;
-					height: auto;
-					margin: 0 0 0 auto;
-					@media (max-width: 767px) {
-						margin: 85px 0px 24px;
-					}
-				}
-
-				.contact-btn {
+				.name-cont {
 					width: 100%;
-					max-width: 450px;
-					@include box-align(flex-start, center);
-					margin-bottom: 20px;
-
+					max-width: 500px;
+					min-width: 300px;
+					color: $darkcolor;
+					transform: translateY(19px);
 					@media (max-width: 767px) {
-						justify-content: center;
+						transform: translateY(60px);
+						text-align: center;
 					}
 
-					a {
-						text-decoration: none;
-						border-radius: 5px;
-						color: $lightcolor;
-						padding: 10px;
-						margin: 5px;
-						background-color: darken($lambdaRed, 10%);
-						cursor: pointer;
+					h1 {
+						font-size: 4.2rem;
+						font-weight: 900;
+						margin-bottom: 14px;
+					}
 
-						&:hover {
-							-webkit-box-shadow: 0 0 3px 3px #722227;
-							box-shadow: 0 0 3px 3px #722227;
+					h2 {
+						font-size: 2rem;
+						font-weight: 500;
+						margin-bottom: 5px;
+						color: $lambdaGray;
+					}
+					h3 {
+						font-size: 2rem;
+						font-weight: 300;
+						margin-bottom: 5px;
+						color: $lambdaGray;
+					}
+				}
+
+				.badge {
+					width: 100%;
+
+					text-align: right;
+					@media (max-width: 767px) {
+						width: auto;
+					}
+					@media (min-width: 768px) and (max-width: 960px) {
+						max-width: 260px;
+						padding: 20px 10px;
+					}
+
+					img {
+						width: 100px;
+						height: auto;
+
+						@media (max-width: 767px) {
+							margin: 85px 0px 24px;
 						}
 					}
 				}
@@ -124,24 +104,45 @@
 				width: 100%;
 				max-width: 830px;
 				margin-top: 50px;
-				@include box-align(flex-end, center);
+				font-size: 1.8rem;
+				@include box-align(flex-start, center);
 				@media (max-width: 767px) {
 					margin: 20px auto;
 					justify-content: center;
 				}
 
 				i {
-					margin: 0 10px;
-					background-color: $lambdaRed;
-					color: $lightcolor;
-					width: 34px;
-					height: 34px;
-					padding: 9px;
-					border-radius: 50%;
+					margin: 0 5px;
+					background-color: $lightcolor;
+					color: $lambdaTeal;
+					border: 1px solid $newBorder;
+					padding: 23px 32px;
+
 					cursor: pointer;
 
 					&:hover {
-						background-color: darken($lambdaRed, 10%);
+						background-color: $lambdaTeal;
+						color: $lightcolor;
+					}
+				}
+				.contact-btn {
+					@include box-align(flex-start, center);
+
+					@media (max-width: 767px) {
+						justify-content: center;
+					}
+
+					a {
+						margin-right: 5px;
+						padding: 23px 32px;
+						text-decoration: none;
+						color: $lightcolor;
+						background-color: $lambdaRed;
+						cursor: pointer;
+						text-align: center;
+						&:hover {
+							background-color: darken($lambdaRed, 10%);
+						}
 					}
 				}
 
@@ -150,13 +151,12 @@
 				}
 				.portfolio-btn,
 				.endorse-button {
-					border: none;
 					text-decoration: none;
-					border-radius: 7px;
-					color: #ffffff;
-					padding: 9px 10px;
+					padding: 23px 32px;
 					margin: 0 5px;
-					background-color: $lambdaRed;
+					background-color: $lightcolor;
+					color: $lambdaTeal;
+					border: 1px solid $newBorder;
 					cursor: pointer;
 					i {
 						margin: 0;
@@ -166,7 +166,8 @@
 					}
 
 					&:hover {
-						background-color: darken($lambdaRed, 10%);
+						background-color: $lambdaTeal;
+						color: $lightcolor;
 					}
 				}
 
@@ -253,7 +254,7 @@
 	main {
 		margin: 100px auto;
 		width: 100%;
-		max-width: 1024px;
+		max-width: 1120px;
 		@include box-align(space-around, center);
 		@media (max-width: 838px) {
 			flex-direction: column;
