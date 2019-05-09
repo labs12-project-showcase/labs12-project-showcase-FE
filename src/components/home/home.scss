@@ -1,6 +1,9 @@
 .home {
 	header {
-		background-color: $lightcolor;
+		height: 713px;
+		background-image: url(./assets/profile-background.png);
+		background-repeat: no-repeat;
+		background-position: bottom right;
 		position: relative;
 		text-align: center;
 		@include box-align(space-between, center);
@@ -96,7 +99,6 @@
 						button {
 							text-decoration: none;
 							border: none;
-							border-radius: 5px;
 							color: #ffffff;
 							padding: 10px;
 							margin: 10px auto;
@@ -134,6 +136,32 @@
 		}
 	}
 
+	.formSection {
+		width: 100%;
+		padding-top: 100px;
+		.search-bar {
+			border: 1px solid $newBorder;
+			margin: 0 auto;
+			width: 100%;
+			max-width: 1200px;
+			padding: 50px 20px;
+			@extend %search-section;
+			@media (max-width: 768px) {
+				width: 100%;
+			}
+
+			h2 {
+				font-size: 2.8rem;
+				font-weight: 900;
+				width: 100%;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+			@media (max-width: 768px) {
+				padding: 20px;
+			}
+		}
+	}
 	main {
 		@include box-align(space-around, flex-start);
 		width: 100%;
@@ -143,33 +171,12 @@
 		padding-bottom: 100px;
 		box-sizing: border-box;
 
-		.search-bar {
-			width: 30%;
-			max-width: 300px;
-			padding: 100px 20px;
-			@extend %search-section;
-			@media (max-width: 768px) {
-				width: 100%;
-			}
-
-			h2 {
-				font-size: 2rem;
-				font-weight: 500;
-				width: 100%;
-				text-align: left;
-				margin-bottom: 10px;
-			}
-			@media (max-width: 768px) {
-				padding: 20px;
-			}
-		}
-
 		.cards-display {
-			width: 70%;
+			width: 100%;
 			max-width: 1200px;
-			padding: 100px 10px;
+			padding: 100px 0;
 			@include box-align(center, flex-start);
-			flex-direction: column;
+
 			@media (max-width: 768px) {
 				width: 100%;
 			}
@@ -182,16 +189,12 @@
 				margin-bottom: 50px;
 			}
 			.cards {
-				width: 100%;
+				width: 50%;
+				max-width: 530px;
 				margin: 20px 5px;
 				background-color: $lightcolor;
 				border: 1px solid $border-color;
-				border-radius: 5px;
 				overflow: hidden;
-				border-top-left-radius: 150px;
-				border-bottom-left-radius: 150px;
-				border-top-right-radius: 30px;
-				border-bottom-right-radius: 30px;
 				@extend %box-shadow;
 				@include box-align(space-between, center);
 
@@ -202,26 +205,22 @@
 				.profile-pic {
 					width: 150px;
 					height: 150px;
-					border-radius: 50%;
 					overflow: hidden;
-					margin-left: 2%;
+					margin: 10px;
 					@extend %box-shadow;
 					border: 1px solid $border-color;
-					@media (min-width: 768px) and (max-width: 854px) {
-						margin-left: 20px;
-						margin-top: 25%;
-					}
+
 					img {
 						width: 100%;
 						height: auto;
 					}
 				}
 				.details {
-					width: 30%;
-					max-width: 300px;
+					width: 100%;
+					padding: 0 20px 5px;
+					text-transform: capitalize;
 					text-align: center;
 					background-color: $lightcolor;
-					border-radius: 3px;
 					@include box-align();
 					@media (max-width: 768px) {
 						width: 100%;
@@ -234,7 +233,7 @@
 					h2 {
 						text-transform: uppercase;
 						font-weight: 700;
-						font-size: 1.8rem;
+						font-size: 2.2rem;
 						width: 100%;
 						margin-top: 20px;
 						margin-bottom: 15px;
@@ -258,7 +257,6 @@
 							background-color: lighten($darkcolor, 50%);
 							color: $lightcolor;
 							padding: 3px 7px;
-							border-radius: 5px;
 						}
 					}
 
@@ -277,12 +275,11 @@
 						}
 						.prof-link {
 							border: none;
-							background-color: $lambdaDarkBlue;
+							background-color: $lambdaTeal;
 							color: $lightcolor;
 							padding: 5px 10px;
-							margin: 10px auto 5px;
+							margin: 10px auto;
 							width: 100%;
-							border-radius: 5px;
 							cursor: pointer;
 							&:hover {
 								box-shadow: 0 0 6px 3px #cccccc;
@@ -292,10 +289,10 @@
 					}
 				}
 				.projects-box {
-					width: 40%;
-					max-width: 400px;
+					width: 100%;
+					max-width: 350px;
 					@include box-align();
-					padding: 20px 10px 10px;
+					padding: 0 10px 10px;
 					@media (max-width: 768px) {
 						width: 100%;
 					}
@@ -307,6 +304,9 @@
 					h2 {
 						font-size: 1.8rem;
 						margin-bottom: 20px;
+						font-weight: 500;
+						color: $lambdaGray;
+						text-transform: capitalize;
 					}
 					.display-box {
 						text-decoration: none;
@@ -320,7 +320,7 @@
 						-webkit-transition: transform 1s; /* Safari */
 						transition: transform 1s;
 						&:hover {
-							transform: scale(1.3);
+							transform: scale(1.1);
 						}
 						img {
 							width: 100%;
@@ -335,10 +335,6 @@
 			}
 			@media (max-width: 768px) {
 				.cards {
-					border-top-left-radius: 5px;
-					border-bottom-left-radius: 5px;
-					border-top-right-radius: 5px;
-					border-bottom-right-radius: 5px;
 					flex-direction: column;
 					justify-content: center;
 

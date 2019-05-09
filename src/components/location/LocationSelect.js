@@ -1,29 +1,45 @@
-import React from "react";
-import AsyncSelect from "react-select/lib/Async";
-import axios from "axios";
+import React from 'react';
+import AsyncSelect from 'react-select/lib/Async';
+import axios from 'axios';
 
 const LocationSelect = ({
-  currentLocation,
-  initialValues,
-  field,
+  fieldValue,
+  isClearable,
+  isMulti,
+  noOptionsMessage,
   name,
   onBlur,
   onChange,
-  setCurrentLocation,
+  placeholder,
   styles
 }) => {
   return (
     <AsyncSelect
+      getOptionValue={opt => opt.value.locationName}
+      isClearable={isClearable}
+      isMulti={isMulti}
       loadOptions={getLocationOptions}
       name={name}
       onBlur={onBlur}
       onChange={onChange}
-      noOptionsMessage={() => "Type to begin searching..."}
-      placeholder="Type to search..."
+      noOptionsMessage={noOptionsMessage}
+      placeholder={placeholder}
       styles={styles}
-      value={currentLocation}
+      value={fieldValue}
     />
   );
+};
+
+LocationSelect.defaultProps = {
+  fieldValue: 'You need to add a state variable here',
+  isClearable: false,
+  isMulti: false,
+  name: 'location',
+  onBlur: () => {},
+  onChange: () => {},
+  noOptionsMessage: () => 'Type to begin searching...',
+  placeholder: 'Type to search...',
+  styles: {}
 };
 
 /**
@@ -37,7 +53,7 @@ const LocationSelect = ({
  */
 function fixedEncodeURIComponent(str) {
   return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
-    return "%" + c.charCodeAt(0).toString(16);
+    return '%' + c.charCodeAt(0).toString(16);
   });
 }
 
@@ -52,7 +68,7 @@ function getLocationOptions(inputValue) {
 
   // @TODO: restrict the accessToken in account.mapbox.com to only our URL
   const accessToken =
-    "pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ";
+    'pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ';
   const encodedInput = fixedEncodeURIComponent(inputValue);
   return axios
     .get(

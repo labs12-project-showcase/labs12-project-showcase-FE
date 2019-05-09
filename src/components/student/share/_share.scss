@@ -1,13 +1,25 @@
 .share-wrapper {
-  position: relative;
-  .share-links {
-    display: flex;
-    position: absolute;
-    top: 35px;
-
-    .share-button {
-      margin-right: 1rem;
-      cursor: pointer;
-    }
-  }
+	position: relative;
+	.share-btn {
+		text-decoration: none;
+		padding: 21px 32px;
+		margin: 0 5px;
+		background-color: #ffffff;
+		color: #08addd;
+		border: 1px solid #e8e8e8;
+		cursor: pointer;
+		&:hover {
+			background-color: $lambdaTeal;
+			color: $lightcolor;
+		}
+	}
+	.share-links {
+		display: flex;
+		position: absolute;
+		top: 46px;
+		cursor: pointer;
+		.share-button {
+			margin: 5px;
+		}
+	}
 }
