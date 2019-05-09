@@ -184,7 +184,7 @@ export const FormSchema = ({
           label: item.location,
           value: {
             lat: item.lat,
-            locationName: item.location,
+            location: item.location,
             lon: item.lon
           }
         }))
