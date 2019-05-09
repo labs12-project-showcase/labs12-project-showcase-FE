@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import axiosAuth from "../../../auth/axiosAuth";
 import { getProject } from "./projectqsActions";
@@ -21,9 +21,10 @@ const JoinProject = ({
       });
   };
   return (
-    <button className="nav-button" type="button" onClick={join}>
+    <Link to="#" onClick={join}>
+      <i className="fas fa-arrow-right" />
       Join Project
-    </button>
+    </Link>
   );
 };
 

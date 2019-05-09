@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import axiosAuth from "../../../auth/axiosAuth";
 import { getProject } from "./projectqsActions";
@@ -21,9 +21,10 @@ const LeaveProject = ({
       });
   };
   return (
-    <button className="nav-button" type="button" onClick={leave}>
+    <Link to="#" onClick={leave}>
+      <i className="fas fa-arrow-left" />
       Leave Project
-    </button>
+    </Link>
   );
 };
 
