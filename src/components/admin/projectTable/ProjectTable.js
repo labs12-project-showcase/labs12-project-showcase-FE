@@ -5,7 +5,6 @@ import { fetchProjects } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 import ProjectTableRow from './ProjectTableRow';
-//import AdminTopBar from '../dashboard/AdminDashboard';
 
 
 class ProjectTable extends React.Component {
@@ -53,7 +52,6 @@ class ProjectTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
-            console.log(value);
             return (
               <ProjectTableRow value={value} />
             );
@@ -69,7 +67,6 @@ class ProjectTable extends React.Component {
               <Switch
                 onClick={(e) => { e.stopPropagation() }}
                 checked={this.state.checkedApproved}
-                // onChange={this.handleChange('checkedApproved')}
                 value="checkedApproved"
               />
             );
