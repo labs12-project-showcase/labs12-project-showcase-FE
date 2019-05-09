@@ -7,13 +7,17 @@ import {
   ADMIN_FETCHED_PROJECTS_FAILURE,
   ADMIN_UPDATED_PROJECTS_START,
   ADMIN_UPDATED_PROJECTS_SUCCESS,
-  ADMIN_UPDATED_PROJECTS_FAILURE
+  ADMIN_UPDATED_PROJECTS_FAILURE,
+  ADMIN_UPDATED_STUDENTS_START,
+  ADMIN_UPDATED_STUDENTS_SUCCESS,
+  ADMIN_UPDATED_STUDENTS_FAILURE
 } from "./adminActions";
 
 const initialState = {
   students: [],
   projects: [],
-  updatedProjectData: false
+  updatedProjectData: false,
+  updatedStudentData: false
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -65,6 +69,24 @@ const adminReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         updatedProjectData: false
+      }
+      case ADMIN_UPDATED_STUDENTS_START:
+      return {
+        ...state,
+        projects: action.payload,
+        updatedStudentData: true
+      }
+      case ADMIN_UPDATED_STUDENTS_SUCCESS:
+      return {
+        ...state,
+        projects: action.payload,
+        updatedStudentData: false
+      }
+      case ADMIN_UPDATED_STUDENTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatedStudentData: false
       }
     default:
       return state;

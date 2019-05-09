@@ -60,3 +60,20 @@ export const fetchProjects = () => dispatch => {
       dispatch({ type: ADMIN_UPDATED_PROJECTS_FAILURE, payload: err });
     });
 }
+
+export const ADMIN_UPDATED_STUDENTS_START = 'ADMIN_UPDATED_STUDENTS_START';
+export const ADMIN_UPDATED_STUDENTS_SUCCESS = 'ADMIN_UPDATED_STUDENTS_SUCCESS';
+export const ADMIN_UPDATED_STUDENTS_FAILURE = 'ADMIN_UPDATED_STUDENTS_FAILURE';
+
+export const updatedStudents = () => dispatch => {
+  dispatch({type: ADMIN_UPDATED_STUDENTS_START})
+  axiosAuth().put(`${backendUrl}/api/admin/students`)
+  .then(res => {
+    dispatch({
+      type: ADMIN_UPDATED_STUDENTS_SUCCESS,
+      payload: res.data
+    });
+  })
+  .catch(err => {
+    dispatch({ type: ADMIN_UPDATED_STUDENTS_FAILURE, payload: err });
+  });
