@@ -166,6 +166,7 @@ class Home extends React.Component {
                   miles of
                 </label>
 
+<<<<<<< HEAD
                 <label>
                   Located
                   <LocationSelect
@@ -204,6 +205,42 @@ class Home extends React.Component {
       </div>
     );
   }
+=======
+								<label>
+									Located
+									<LocationSelect fieldValue={this.state.location} styles={reactSelectStyles} onChange={this.handleLocation} isClearable />
+								</label>
+							</div>
+							<div className="search-box">
+								<label>
+									Will Relocate
+									<div className="search-location">
+										<i className="fas fa-search" />
+										<input type="text" placeholder="Washington, DC" />
+									</div>
+								</label>
+							</div>
+						</div>
+						<div className="search-button">
+							<button className="bnt-search">Search</button>
+						</div>
+					</form>
+				</section>
+				<main>
+					<div className="cards-display">
+						<h2>Featured Alumni</h2>
+						{this.props.home.cards.map((cards, index) => (
+							<Cards {...this.props} cards={cards} key={index} />
+						))}
+					</div>
+					<button className="btn-show-more">
+						Show More <i className="fas fa-chevron-down" />
+					</button>
+				</main>
+			</div>
+		);
+	}
+>>>>>>> 17aed435dd2996228c798220d8b43b371de66913
 }
 
 const mapStateToProps = state => ({
