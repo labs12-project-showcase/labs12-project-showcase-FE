@@ -5,6 +5,8 @@
 	justify-content: center;
 	align-items: flex-start;
 	margin: 100px auto;
+	width: 100%;
+	max-width: 800px;
 
 	.circle-progress {
 		width: 100%;
@@ -41,12 +43,12 @@
 
 	.incomplete-box,
 	.complete-box {
-		@include box-align();
+		@include box-align(flex-start, center);
 		width: 45%;
 	}
 
 	h2 {
-		text-align: center;
+		text-align: left;
 		width: 100%;
 		font-size: 2.2rem;
 		font-weight: 900;
