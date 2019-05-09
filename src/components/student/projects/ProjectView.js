@@ -6,8 +6,6 @@ import ProjectSkills from '../projectSkills/ProjectSkills';
 import NotApproved from '../notApproved/NotApproved';
 import ProgressProject from '../progressProject/ProgressProject';
 
-import project from '../../../assets/project-img.jpg';
-
 const ProjectView = ({
 	project: { projectData },
 	dispatch,
@@ -26,8 +24,6 @@ const ProjectView = ({
 			{!projectData.approved ? <NotApproved /> : null}
 			<header>
 				<div className="img-des">
-					<img src={project} alt="Project" />
-					<div className="overlay" />
 					<h1>{projectData.name}</h1>
 					<h2>{projectData.short_description}</h2>
 					<a

@@ -1,41 +1,69 @@
 .progress-container {
 	display: flex;
-	flex-direction: column;
-	position: relative;
-	margin: 20px auto;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 100px auto;
+
+	.circle-progress {
+		width: 100%;
+		@include box-align();
+		flex-direction: column;
+		position: relative;
+		text-align: center;
+		.react-sweet-progress-symbol {
+			color: $lambdaGray;
+			font-weight: 500;
+		}
+		.top-text {
+			position: absolute;
+			text-align: center;
+			top: 30px;
+			font-weight: 700;
+			width: 100%;
+			color: $lambdaGray;
+		}
+
+		.bottom-text {
+			color: $lambdaGray;
+			width: 100%;
+			font-weight: 700;
+			top: 87px;
+			position: absolute;
+			text-align: center;
+		}
+	}
 
 	.react-sweet-progress-circle-outer {
 		margin: 0 auto;
 	}
 
-	.top-text {
-		position: absolute;
-		text-align: center;
-		top: 30px;
-		left: 55px;
-		font-weight: 700;
-	}
-
-	.bottom-text {
-		font-weight: 700;
-		top: 87px;
-		left: 43px;
-		position: absolute;
-		text-align: center;
+	.incomplete-box,
+	.complete-box {
+		@include box-align();
+		width: 45%;
 	}
 
 	h2 {
-		font-weight: bold;
-		margin: 20px 0 10px 0;
+		text-align: center;
+		width: 100%;
+		font-size: 2.2rem;
+		font-weight: 900;
+		margin: 20px 0 30px 0;
+		color: $lambdaGray;
 	}
 
 	.checkbox-wrapper {
 		margin-bottom: 5px;
+		width: 170px;
+		text-align: left;
+		color: $lambdaGray;
 	}
 
 	.checkbox {
 		-webkit-appearance: none;
-		background-color: #bb1333;
+		background-color: $lambdaTeal;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
 			inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
 		padding: 8px;

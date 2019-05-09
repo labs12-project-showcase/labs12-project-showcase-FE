@@ -38,3 +38,17 @@ hr {
 	border-top: 1px solid lightgray;
 	width: 100%;
 }
+
+.colorTeal {
+	color: $lambdaTeal;
+}
+
+.colorGray {
+	color: $lambdaGray;
+}
+
+iframe {
+	.ytp-large-play-button-bg {
+		background-color: $lambdaTeal !important;
+	}
+}

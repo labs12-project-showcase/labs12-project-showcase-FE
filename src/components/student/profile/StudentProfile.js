@@ -120,6 +120,7 @@ class StudentProfile extends React.Component {
 						/>
 						<Skills skills={skills || []} top_skills={top_skills || []} />
 					</div>
+					<hr />
 					{sameUser && <Progress />}
 				</main>
 			</div>

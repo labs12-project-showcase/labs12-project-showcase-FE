@@ -263,9 +263,9 @@
 		}
 
 		.status-skills {
-			@include box-align(space-between, center);
+			@include box-align(space-between, flex-start);
 			width: 100%;
-			padding: 0 5%;
+			padding: 10px 5% 100px;
 		}
 
 		.hobbies {
