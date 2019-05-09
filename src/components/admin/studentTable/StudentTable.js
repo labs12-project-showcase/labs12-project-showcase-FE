@@ -33,15 +33,15 @@ class StudentTable extends React.Component {
             filter: true,
             sort: true,
             options: {
-              customBodyRender: value => {
-               console.log('custom body render value', value);
+              customBodyRender: studentValue => {
+               console.log('custom body render studentValue', studentValue);
                return (
                 <Link
-                 to={`/student/profile/${value.id}`}
+                 to={`/student/profile/${studentValue.id}`}
                  onClick={ (e) => {
                   e.stopPropagation();
                  }}
-                >{value.name}</Link>
+                >{studentValue.name}</Link>
                );
               }
              }
@@ -77,7 +77,7 @@ class StudentTable extends React.Component {
         name: "Hired",
         field: "hired",
         options: {
-          customBodyRender: value => {
+          customBodyRender: studentValue => {
             return (
               <Switch
               onClick= { (e) =>
@@ -92,7 +92,7 @@ class StudentTable extends React.Component {
         name: "Endorsed",
         field: "endorsed",
         options: {
-          customBodyRender: value => {
+          customBodyRender: studentValue => {
             return (
               <Switch
               onClick= { (e) =>
