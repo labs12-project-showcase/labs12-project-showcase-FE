@@ -5,7 +5,7 @@ class ContactForm extends Component {
 	state = {
 		email: {
 			from: '',
-			topic: '',
+			subject: '',
 			text: ''
 		},
 	};
@@ -36,7 +36,7 @@ class ContactForm extends Component {
 					<h2> Send Message </h2>
 					<br />
 					<label>
-						<span className="input-label"> From </span>
+						<span className="input-label"> Sender's Email Address </span>
 					</label>
 
 					<input
@@ -51,9 +51,9 @@ class ContactForm extends Component {
 					</label>
 
 					<input
-						value={email.topic}
+						value={email.subject}
 						onChange={e =>
-							this.setState({ email: { ...email, topic: e.target.value } })
+							this.setState({ email: { ...email, subject: e.target.value } })
 						}
 						/>
 
