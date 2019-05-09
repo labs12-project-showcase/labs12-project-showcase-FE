@@ -48,7 +48,7 @@ const projectqsReducer = (state = initialState, action) => {
     case CLEAR_PROJECT_DATA:
       return {
         ...state,
-        projectData: { ...state.projectData, ...initialState.projectData }
+        projectData: initialState.projectData
       };
     case CREATE_PROJECT_START:
       return {
