@@ -46,6 +46,11 @@
 			background: #545972;
 		}
 	}
+	#remove-button {
+		position: absolute;
+		bottom: 0;
+		right: 50px;
+	}
 
 	.edit-image-inputs {
 		align-items: center;
@@ -87,14 +92,7 @@
 	.image-preview-container {
 		width: 200px;
 		height: 200px;
-		margin: 10px 5%;
-		// padding: 10px;
-		// background: #edf2f6;
-		// display: flex;
-		// align-items: center;
-		// justify-content: center;
-		// flex-direction: column;
-		// height: inherit;
+		margin: 10px 9px;
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
 		border: 1px solid lightgray;
 		position: relative;

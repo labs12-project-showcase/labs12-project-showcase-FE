@@ -211,6 +211,7 @@ const EditImage = props => {
 						<React.Fragment key={index}>
 							<div className="image-preview-container">
 								<button
+									id="remove-button"
 									className={props.buttonsClassName}
 									onClick={() => removeImage(index)}
 									type="button"
