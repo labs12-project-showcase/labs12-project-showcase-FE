@@ -1,21 +1,23 @@
 .aboutMe {
 	background-color: $lightcolor;
 	width: 100%;
-	max-width: 400px;
+	max-width: 680px;
 	min-height: 215px;
-	border-radius: 5px;
-	-webkit-box-shadow: 0 0 3px 1px #cccccc;
-	box-shadow: 0 0 3px 1px #cccccc;
-	padding: 20px;
-	margin: 5px;
-	line-height: 1.5;
+	padding: 20px 0;
+
 	@media (max-width: 768px) {
 		max-width: 315px;
 	}
 
 	h2 {
-		font-weight: 700;
+		font-weight: 900;
+		font-size: 2.2rem;
 		text-align: left;
 		width: 100%;
+		margin-bottom: 24px;
+	}
+	p {
+		line-height: 2;
+		color: $lambdaGray;
 	}
 }

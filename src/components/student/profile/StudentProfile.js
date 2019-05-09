@@ -99,12 +99,18 @@ class StudentProfile extends React.Component {
 								</a>
 							</div>
 						</div>
+						<div className="header-boxes">
+							<AboutMe about={about} />
+							<Endorsements endorsements={endorsements || []} />
+						</div>
 					</div>
 				</header>
 				<main>
-					<AboutMe about={about} />
-					<Endorsements endorsements={endorsements || []} />
-					{sameUser && <Progress />}
+					<Projects
+						projects={projects || []}
+						top_projects={top_projects || []}
+					/>
+
 					<hr />
 					<div className="status-skills">
 						<Status
@@ -114,8 +120,8 @@ class StudentProfile extends React.Component {
 						/>
 						<Skills skills={skills || []} top_skills={top_skills || []} />
 					</div>
+					{sameUser && <Progress />}
 				</main>
-				<Projects projects={projects || []} top_projects={top_projects || []} />
 			</div>
 		);
 	}

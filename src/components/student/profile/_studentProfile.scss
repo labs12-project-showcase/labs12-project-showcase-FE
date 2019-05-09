@@ -78,8 +78,6 @@
 				}
 
 				.badge {
-					width: 100%;
-
 					text-align: right;
 					@media (max-width: 767px) {
 						width: auto;
@@ -248,22 +246,20 @@
 					}
 				}
 			}
+			.header-boxes {
+				margin-top: 20px;
+				@include box-align(space-between, flex-start);
+			}
 		}
 	}
 
 	main {
-		margin: 100px auto;
+		margin: 10px auto;
 		width: 100%;
 		max-width: 1120px;
 		@include box-align(space-around, center);
 		@media (max-width: 838px) {
 			flex-direction: column;
-		}
-
-		hr {
-			margin: 20px auto;
-			border: 1px solid $lambdaRed;
-			width: 100%;
 		}
 
 		.status-skills {
