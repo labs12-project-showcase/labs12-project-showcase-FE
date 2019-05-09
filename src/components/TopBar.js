@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { login, logout, adminLogin } from "../auth/authActions.js";
 import { NavLink } from "react-router-dom";
 import { validateJwt, getJwtRole } from "../config/utilities.js";
-
+import JoinProject from "./student/projectqs/JoinProject";
+import LeaveProject from "./student/projectqs/LeaveProject";
 import whiteLambdaLogo from "../assets/Hire-lambda-logo-white.png";
 
 class TopBar extends Component {
@@ -84,13 +85,20 @@ class TopBar extends Component {
                 </NavLink>
                 {this.props.location.pathname.match(
                   /\/student\/project-view\/\d+/g
-                ) && this.checkOwner(this.props.project_students) ? (
-                  <NavLink
-                    exact
-                    to={`/student/edit-project/${this.props.project_id}`}
-                  >
-                    <i className="fas fa-plus" /> Edit Project
-                  </NavLink>
+                ) ? (
+                  this.checkOwner(this.props.project_students) ? (
+                    <React.Fragment>
+                      <NavLink
+                        exact
+                        to={`/student/edit-project/${this.props.project_id}`}
+                      >
+                        <i className="fas fa-plus" /> Edit Project
+                      </NavLink>
+                      <LeaveProject />
+                    </React.Fragment>
+                  ) : (
+                    <JoinProject />
+                  )
                 ) : null}
                 <NavLink exact to="/profile-quick-start">
                   <i className="fas fa-user-edit" /> Edit Profile

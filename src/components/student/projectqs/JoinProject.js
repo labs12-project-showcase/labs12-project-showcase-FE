@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import axiosAuth from "../../../auth/axiosAuth";
-import { getProject } from "../projectqs/projectqsActions";
+import { getProject } from "./projectqsActions";
 
 const JoinProject = ({
   dispatch,
