@@ -15,7 +15,7 @@ const LeaveProject = ({
   const [modal, setModal] = useState(false);
 
   const leave = () => {
-    if (checkMembers) {
+    if (checkMembers()) {
       openModal();
     } else {
       dispatchLeave()
@@ -44,7 +44,7 @@ const LeaveProject = ({
 
   const dispatchLeave = () => {
     return axiosAuth().put(
-      `https://halg-backend.herokuapp.com/api/projects/leave`,
+      `https://halg-backend.herokuapp.com/api/projects/${project_id}/leave`,
       {
         student_id,
         project_id
