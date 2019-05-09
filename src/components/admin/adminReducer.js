@@ -17,12 +17,37 @@ const initialState = {
 
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADMIN_FETCHED_STUDENTS_SUCCESS:
+    case ADMIN_FETCHED_STUDENTS_START:
       return {
         ...state,
         students: action.payload
       }
+      case ADMIN_FETCHED_STUDENTS_SUCCESS:
+      return {
+        ...state,
+        students: action.payload
+      }
+      case ADMIN_FETCHED_STUDENTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
+      case ADMIN_FETCHED_PROJECTS_START:
+      return {
+        ...state,
+        projects: action.payload
+      }
       case ADMIN_FETCHED_PROJECTS_SUCCESS:
+      return {
+        ...state,
+        projects: action.payload
+      }
+      case ADMIN_FETCHED_PROJECTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      }
+      case ADMIN_UPDATED_PROJECTS_START:
       return {
         ...state,
         projects: action.payload
@@ -31,6 +56,11 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
         projects: action.payload
+      }
+      case ADMIN_UPDATED_PROJECTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload
       }
     default:
       return state;
