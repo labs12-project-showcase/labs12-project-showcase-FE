@@ -20,7 +20,8 @@ export const homeData = () => dispatch => {
 		);
 };
 export const getFilteredCards = state => dispatch => {
-	const queryString = `?tracks=${state.fullStack ? '1' : ''}${state.ios ? '2' : ''}${state.dataScience ? '3' : ''}${state.android ? '4' : ''}${state.uiux ? '5' : ''}&badge=${state.badge ? 'true' : 'false'}&within=${state.within}`;
+	const latLon = `${state.location.value.lat && state.location.value.lon ? `&lat=${state.location.value.lat}&lon=${state.location.value.lon}` : ''}`;
+	const queryString = `?tracks=${state.fullStack ? '1' : ''}${state.ios ? '2' : ''}${state.dataScience ? '3' : ''}${state.android ? '4' : ''}${state.uiux ? '5' : ''}&badge=${state.badge ? 'true' : 'false'}&within=${state.within}${latLon}`;
 	console.log('query string', queryString);
 	axios.get(`${backendUrl}/api/students/cards/filter${queryString}`)
 	.then(res => {
