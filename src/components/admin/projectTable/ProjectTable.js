@@ -87,15 +87,17 @@ class ProjectTable extends React.Component {
                 </ListItem>
                 <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    <ListItem>
-                      {/* <ListItemText inset primary={value.students}
-                      /> */}
-                      <Link
-                        to={`/student/profile/${value.student_ids}`}
-                      >
-                        {value.students}
-                      </Link>
-                    </ListItem>
+                    {value.students.map(student => {
+                      return (
+                        <ListItem key={student}>
+                          <Link
+                            to={`/student/profile/${student}`}
+                          >
+                            {student}
+                          </Link>
+                        </ListItem>
+                      )
+                    })}
                   </List>
                 </Collapse>
               </List>
