@@ -5,7 +5,6 @@ import { fetchProjects } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 import ProjectTableRow from './ProjectTableRow';
-//import AdminTopBar from '../dashboard/AdminDashboard';
 
 
 class ProjectTable extends React.Component {
@@ -18,16 +17,6 @@ class ProjectTable extends React.Component {
 
 
 
-  //   handleChange(event) {
-  //     //console.log(event.target.value);
-  //     this.setState({
-  //         approved: event.target.value
-  //     })
-  // }
-
-  // checked = () => {
-  //   projects.approved === true return checked = true
-  // }
 
   componentDidMount() {
     this.props.fetchProjects();
@@ -66,7 +55,6 @@ class ProjectTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
-            console.log(value);
             return (
               <ProjectTableRow value={value} />
             );
@@ -81,8 +69,6 @@ class ProjectTable extends React.Component {
             return (
               <Switch
                 onClick={(e) => { e.stopPropagation() }}
-                checked={this.state.checkedApproved}
-                // onChange={this.handleChange('checkedApproved')}
                 value="checkedApproved"
               />
             );
@@ -95,7 +81,6 @@ class ProjectTable extends React.Component {
 
       <div className="tableContainer">
       <button><Link to={`/admin/student-table`}>Student Table</Link></button>
-        {/* {console.log("approved??????", this.props.projects[0].approved)} */}
         <MaterialDatatable
           title={"Admin Project Table"}
           columns={column}
@@ -108,7 +93,6 @@ class ProjectTable extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // ...state.projectTable,
     projects: state.admin.projects
   };
 };
