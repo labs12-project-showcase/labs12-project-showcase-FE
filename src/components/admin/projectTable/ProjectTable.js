@@ -16,19 +16,6 @@ class ProjectTable extends React.Component {
     };
   };
 
-
-
-  //   handleChange(event) {
-  //     //console.log(event.target.value);
-  //     this.setState({
-  //         approved: event.target.value
-  //     })
-  // }
-
-  // checked = () => {
-  //   projects.approved === true return checked = true
-  // }
-
   componentDidMount() {
     this.props.fetchProjects();
   }
