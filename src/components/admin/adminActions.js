@@ -77,3 +77,4 @@ export const updatedStudents = () => dispatch => {
   .catch(err => {
     dispatch({ type: ADMIN_UPDATED_STUDENTS_FAILURE, payload: err });
   });
+}
