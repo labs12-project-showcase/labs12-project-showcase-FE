@@ -3,17 +3,21 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	width: 35%;
+	margin-top: 50px;
 	@media (max-width: 600px) {
 		width: 100%;
 	}
 
 	h2 {
-		font-weight: bold;
-		margin-bottom: 5px;
+		font-weight: 900;
+		margin-bottom: 24px;
+		font-size: 2.2rem;
 	}
 
 	section {
 		margin-bottom: 20px;
+		line-height: 1.8;
+		color: $lambdaGray;
 
 		h3 {
 			margin-bottom: 5px;
@@ -26,12 +30,12 @@
 		}
 
 		.skill-chip {
+			text-transform: capitalize;
 			background: $lambdaRed;
 			cursor: default;
-			font-size: 14px;
-			padding: 2px 7px;
+			font-size: 1.6rem;
+			padding: 5px 12px;
 			color: white;
-			border-radius: 10px;
 			margin: 5px 5px;
 		}
 	}

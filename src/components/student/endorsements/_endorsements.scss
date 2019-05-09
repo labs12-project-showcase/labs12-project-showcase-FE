@@ -1,23 +1,28 @@
 .endorsements {
 	background-color: $lightcolor;
 	width: 100%;
-	max-width: 400px;
-	min-height: 215px;
-	border-radius: 5px;
-	-webkit-box-shadow: 0 0 3px 1px #cccccc;
-	box-shadow: 0 0 3px 1px #cccccc;
+	max-width: 430px;
+	min-height: 290px;
 	padding: 20px;
 	margin: 5px;
 	line-height: 1.5;
-	@include box-align();
+	@include box-align(flex-start, center);
 	@media (max-width: 768px) {
 		max-width: 315px;
 		padding: 12px;
 	}
 
 	h2 {
-		font-weight: 700;
+		font-weight: 900;
+		font-size: 2.2rem;
 		text-align: left;
 		width: 100%;
+	}
+	p {
+		color: $lambdaGray;
+	}
+	.endorsementEmpty {
+		color: $lambdaGray;
+		min-height: 200px;
 	}
 }

@@ -26,3 +26,29 @@ label,
 textarea {
 	font-family: 'Lato', sans-serif;
 }
+
+.hrTop {
+	border: 5px solid $lambdaRed;
+	width: 59px;
+	margin: 0 auto 24px 0;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid lightgray;
+	width: 100%;
+}
+
+.colorTeal {
+	color: $lambdaTeal;
+}
+
+.colorGray {
+	color: $lambdaGray;
+}
+
+iframe {
+	.ytp-large-play-button-bg {
+		background-color: $lambdaTeal !important;
+	}
+}

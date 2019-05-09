@@ -17,10 +17,35 @@
 
 %search-section {
 	.control-group {
+		width: 100%;
 		margin: 20px auto;
+		@include box-align();
+		@media (max-width: 600px) {
+			@include box-align();
+			flex-direction: column;
+		}
+		.search-box {
+			padding: 20px;
+			max-width: 30%;
+			@include box-align(flex-start, flex-start);
+			label {
+				margin: 5px;
+			}
+			&:first-child {
+				label {
+					width: 45%;
+					@media (max-width: 600px) {
+						width: 100%;
+					}
+				}
+			}
+			@media (max-width: 600px) {
+				max-width: 100%;
+				flex-direction: column;
+			}
+		}
 		.control {
 			font-family: arial;
-			display: block;
 			position: relative;
 			padding-left: 26px;
 			margin-bottom: 4px;
@@ -52,7 +77,7 @@
 		}
 
 		.control input:checked ~ .control_indicator {
-			background: $lambdaLightBlue;
+			background: $lambdaTeal;
 		}
 		.control:hover input:not([disabled]):checked ~ .control_indicator,
 		.control input:checked:focus ~ .control_indicator {
@@ -114,18 +139,21 @@
 			border: 2px solid $border-color;
 		}
 	}
-	.bnt-search {
-		border: none;
-		background-color: $lambdaDarkBlue;
-		color: $lightcolor;
-		padding: 5px 10px;
-		margin: 0 auto;
+	.search-button {
 		width: 100%;
-		border-radius: 5px;
-		cursor: pointer;
-		&:hover {
-			box-shadow: 0 0 6px 3px #cccccc;
-			background-color: $lambdaLightBlue;
+		text-align: center;
+		.bnt-search {
+			border: none;
+			background-color: $lambdaTeal;
+			color: $lightcolor;
+			padding: 5px 10px;
+			margin: 0 auto;
+			width: 250px;
+			cursor: pointer;
+			&:hover {
+				box-shadow: 0 0 6px 3px #cccccc;
+				background-color: $lambdaGray;
+			}
 		}
 	}
 }

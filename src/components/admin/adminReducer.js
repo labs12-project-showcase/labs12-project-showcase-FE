@@ -1,6 +1,7 @@
 import {
   ADMIN_FETCHED_STUDENTS,
-  ADMIN_FETCHED_PROJECTS
+  ADMIN_FETCHED_PROJECTS,
+  ADMIN_UPDATED_PROJECTS
 } from "./adminActions";
 
 const initialState = {
@@ -16,6 +17,11 @@ const adminReducer = (state = initialState, action) => {
         students: action.payload
       }
       case ADMIN_FETCHED_PROJECTS:
+      return {
+        ...state,
+        projects: action.payload
+      }
+      case ADMIN_UPDATED_PROJECTS:
       return {
         ...state,
         projects: action.payload
