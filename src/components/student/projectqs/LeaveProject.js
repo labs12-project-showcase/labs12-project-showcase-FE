@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { withRouter, connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import axiosAuth from "../../../auth/axiosAuth";
 import { getProject } from "./projectqsActions";
