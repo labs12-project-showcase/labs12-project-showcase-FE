@@ -30,7 +30,9 @@ const Projectqs = props => {
                 props.uploadProjectPicture(file, setImageList, props.project.id)
               }
               onRemove={url =>
-                props.deleteProjectPicture(url, props.project.id)
+                props
+                  .deleteProjectPicture(url, props.project.id)
+                  .catch(err => console.log(err))
               }
               onUrlAdd={url => props.updateProject({ profile_pic: url }, false)}
               placeholder={avatar}
