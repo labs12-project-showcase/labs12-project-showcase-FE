@@ -23,7 +23,7 @@ class ProjectTable extends React.Component {
     };
   };
 
-  handleClick = () => {
+  handleClick = (e) => {
     this.setState(state => ({ open: !state.open }));
   };
 
@@ -77,29 +77,29 @@ class ProjectTable extends React.Component {
           customBodyRender: value => {
             
             return (
-              <List
-                component="nav"
-              >
-                <ListItem button onClick={this.handleClick}>
-
+              <List component="nav">
+                <ListItem 
+                  button 
+                  onClick={e => this.handleClick(e)}
+                >
                   <ListItemText inset primary="Contributors" />
-                  {this.state.open ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    {value.students.map(student => {
-                      return (
-                        <ListItem key={student}>
-                          <Link
-                            to={`/student/profile/${student}`}
-                          >
-                            {student}
-                          </Link>
-                        </ListItem>
-                      )
-                    })}
-                  </List>
-                </Collapse>
+                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                  </ListItem>
+                  <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding >
+                      {value.students.map(student => {
+                        return (
+                          <ListItem key={student}>
+                            <Link
+                              to={`/student/profile/${student}`}
+                            >
+                              {student}
+                            </Link>
+                          </ListItem>
+                        )
+                      })}
+                    </List>
+                  </Collapse>
               </List>
 
             );
@@ -113,8 +113,7 @@ class ProjectTable extends React.Component {
           customBodyRender: studentValue => {
             return (
               <Switch
-                onClick={(e) => { e.stopPropagation() }
-                }
+                onClick={(e) => { e.stopPropagation() }}
                 checked={this.state.checkedApproved}
                 // onChange={this.handleChange('checkedApproved')}
                 value="checkedApproved"
