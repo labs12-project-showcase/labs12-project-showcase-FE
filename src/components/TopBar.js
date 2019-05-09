@@ -84,15 +84,14 @@ class TopBar extends Component {
                 </NavLink>
                 {this.props.location.pathname.match(
                   /\/student\/project-view\/\d+/g
-                ) &&
-                  this.checkOwner(this.props.project_students) && (
-                    <NavLink
-                      exact
-                      to={`/student/edit-project/${this.props.project_id}`}
-                    >
-                      <i className="fas fa-plus" /> Edit Project
-                    </NavLink>
-                  )}
+                ) && this.checkOwner(this.props.project_students) ? (
+                  <NavLink
+                    exact
+                    to={`/student/edit-project/${this.props.project_id}`}
+                  >
+                    <i className="fas fa-plus" /> Edit Project
+                  </NavLink>
+                ) : null}
                 <NavLink exact to="/profile-quick-start">
                   <i className="fas fa-user-edit" /> Edit Profile
                 </NavLink>
