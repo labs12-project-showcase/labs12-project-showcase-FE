@@ -102,15 +102,15 @@
 }
 
 .input-label {
-	color: gray;
-	background: $lightcolor;
-	font-size: 1.4rem;
-	left: 1rem;
-	padding: 0.4rem;
-	position: relative;
-	top: 0.8rem;
-	z-index: 1;
-	&.about-label {
-		top: 2.7rem;
-	}
+    color: gray;
+    background: $lightcolor;
+    font-size: 1.4rem;
+    left: 1rem;
+    padding: 0.4rem 0.4rem 0;
+    position: relative;
+    top: 0.8rem;
+    z-index: 1;
+    &.about-label {
+        top: 2.7rem;
+    }
 }

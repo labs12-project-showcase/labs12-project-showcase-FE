@@ -1,17 +1,17 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { getData } from "./studentProfileActions";
-import badge from "../../../assets/lambda-badge.png";
-import Projects from "../projectcards/ProjectCards";
-import NotEndorsed from "../notEndorsed/NotEndorsed";
-import AboutMe from "../aboutMe/AboutMe";
-import Endorsements from "../endorsements/Endorsements";
-import Share from "../share/Share";
-import Status from "../status/Status";
-import Skills from "../skills/Skills";
-import Progress from "../progress/Progress";
-import EndorseButton from "../endorsements/EndorseButton";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getData } from './studentProfileActions';
+import badge from '../../../assets/lambda-badge.png';
+import Projects from '../projectcards/ProjectCards';
+import NotEndorsed from '../notEndorsed/NotEndorsed';
+import AboutMe from '../aboutMe/AboutMe';
+import Endorsements from '../endorsements/Endorsements';
+import Share from '../share/Share';
+import Status from '../status/Status';
+import Skills from '../skills/Skills';
+import Progress from '../progress/Progress';
+import EndorseButton from '../endorsements/EndorseButton';
 
 // yarn add react-id-swiper@latest swiper@latest
 
@@ -50,14 +50,16 @@ class StudentProfile extends React.Component {
     } = this.props.studentProfile.profile;
 
     const sameUser = id === this.props.loggedInProfile.id;
-
+    const profilePicture =
+      profile_pic ||
+      'https://res.cloudinary.com/hirelambdastudents/image/upload/v1556814928/pictures/avatar.png';
     return (
       <div className="student-dashboard">
         {sameUser && !endorsed && <NotEndorsed />}
         <header>
           <div className="profile-container">
             <div className="picture">
-              <img src={profile_pic} alt="Profile" />
+              <img src={profilePicture} alt="Profile" />
             </div>
             <div className="name-cont">
               <h1>{name}</h1>

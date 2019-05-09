@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import EditImage from '../../EditImage/EditImage';
 import {
+  deleteProfilePicture,
   getProfileData,
   updateProfile,
   uploadProfilePicture
@@ -56,6 +57,7 @@ class Profileqs extends React.Component {
               initialImageList={[this.props.profile.profileData.profile_pic]}
               maxFileCount={1}
               onImageUpload={this.props.uploadProfilePicture}
+              onRemove={url => this.props.deleteProfilePicture(url)}
               onUrlAdd={url =>
                 this.props.updateProfile({ profile_pic: url }, false)
               }
@@ -80,5 +82,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getProfileData, updateProfile, uploadProfilePicture }
+  { deleteProfilePicture, getProfileData, updateProfile, uploadProfilePicture }
 )(Profileqs);
