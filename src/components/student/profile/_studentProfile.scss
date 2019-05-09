@@ -2,30 +2,11 @@
 	min-height: 85vh;
 
 	header {
-		background: #1e50ee; /* Old browsers */
-		background: -moz-linear-gradient(
-			-45deg,
-			#1e50ee 0%,
-			#002070 12%,
-			#002070 83%,
-			#1e50ee 99%
-		); /* FF3.6-15 */
-		background: -webkit-linear-gradient(
-			-45deg,
-			#1e50ee 0%,
-			#002070 12%,
-			#002070 83%,
-			#1e50ee 99%
-		); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(
-			135deg,
-			#1e50ee 0%,
-			#002070 12%,
-			#002070 83%,
-			#1e50ee 99%
-		); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e50ee', endColorstr='#1e50ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-		height: 280px;
+		background-image: url(./assets/profile-background.png);
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		min-height: 655px;
+		padding-top: 94px;
 
 		@media (max-width: 767px) {
 			height: auto;
@@ -42,18 +23,13 @@
 			}
 
 			.picture {
-				width: 250px;
-				height: 250px;
-				border-radius: 50%;
+				width: 215px;
+				height: 215px;
 				overflow: hidden;
-				border: 10px solid $lightcolor;
 				margin: 0 auto;
-				transform: translateY(130px);
 				@media (min-width: 768px) and (max-width: 900px) {
-					width: 150px;
-					height: 150px;
-					border: 5px solid $lightcolor;
-					transform: translateY(95px);
+					width: 215px;
+					height: 215px;
 				}
 
 				img {
@@ -70,7 +46,7 @@
 				width: 100%;
 				max-width: 340px;
 				min-width: 300px;
-				color: $lightcolor;
+				color: $darkcolor;
 				text-align: center;
 				transform: translateY(20px);
 				@media (max-width: 767px) {
