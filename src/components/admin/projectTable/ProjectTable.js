@@ -5,6 +5,7 @@ import { fetchProjects } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 import ProjectTableRow from './ProjectTableRow';
+//import AdminTopBar from '../dashboard/AdminDashboard';
 
 
 class ProjectTable extends React.Component {
@@ -91,7 +92,9 @@ class ProjectTable extends React.Component {
     ]
 
     return (
+
       <div className="tableContainer">
+      <button><Link to={`/admin/student-table`}>Student Table</Link></button>
         {/* {console.log("approved??????", this.props.projects[0].approved)} */}
         <MaterialDatatable
           title={"Admin Project Table"}
