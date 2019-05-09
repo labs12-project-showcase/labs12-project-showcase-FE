@@ -45,7 +45,7 @@ const LeaveProject = ({
   };
 
   const dispatchLeave = () => {
-    return axiosAuth.put(
+    return axiosAuth().put(
       `https://halg-backend.herokuapp.com/api/projects/leave/${project_id}`
     );
   };
@@ -72,18 +72,30 @@ const LeaveProject = ({
         Leave Project
       </Link>
       {modal ? (
-        <div className="modal">
-          <h2>Alert</h2>
-          <p>
-            You are the last member on this project. If you leave, the project
-            will be deleted. This cannot be reversed. Are you sure?
-          </p>
-          <button type="button" className="modal-button" onClick={confirmLeave}>
-            I'm Sure
-          </button>
-          <button type="button" className="modal-button" onClick={cancelLeave}>
-            Cancel
-          </button>
+        <div className="modal-wrapper">
+          <div className="error-modal">
+            <h2>Alert</h2>
+            <p>
+              You are the last member on this project. If you leave, the project
+              will be deleted. This cannot be reversed. Are you sure?
+            </p>
+            <div className="modal-buttons">
+              <button
+                type="button"
+                className="modal-button"
+                onClick={confirmLeave}
+              >
+                I'm Sure
+              </button>
+              <button
+                type="button"
+                className="modal-button"
+                onClick={cancelLeave}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       ) : null}
     </React.Fragment>
