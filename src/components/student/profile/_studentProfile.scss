@@ -8,8 +8,9 @@
 		min-height: 655px;
 		padding-top: 94px;
 
-		@media (max-width: 767px) {
+		@media (max-width: 1100px) {
 			height: auto;
+			padding-top: 20px;
 		}
 
 		.profile-container {
@@ -27,18 +28,15 @@
 				height: 215px;
 				overflow: hidden;
 				margin-right: 50px;
-				@media (min-width: 768px) and (max-width: 900px) {
-					width: 215px;
-					height: 215px;
+				@media (max-width: 1100px) {
+					width: 150px;
+					height: 150px;
+					margin-right: 0;
 				}
 
 				img {
 					width: 100%;
 					height: auto;
-				}
-
-				@media (max-width: 767px) {
-					transform: translateY(50px);
 				}
 			}
 
