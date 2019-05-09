@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import axiosAuth from "../../../auth/axiosAuth";
@@ -10,9 +10,7 @@ const LeaveProject = ({
   students,
   history,
   student_id,
-  match: {
-    params: { id: project_id }
-  }
+  project_id
 }) => {
   const [modal, setModal] = useState(false);
 
@@ -46,7 +44,11 @@ const LeaveProject = ({
 
   const dispatchLeave = () => {
     return axiosAuth().put(
-      `https://halg-backend.herokuapp.com/api/projects/leave/${project_id}`
+      `https://halg-backend.herokuapp.com/api/projects/leave`,
+      {
+        student_id,
+        project_id
+      }
     );
   };
 
@@ -107,4 +109,4 @@ const mapStateToProps = state => ({
   student_id: state.profile.profileData.id
 });
 
-export default withRouter(connect(mapStateToProps)(LeaveProject));
+export default connect(mapStateToProps)(LeaveProject);

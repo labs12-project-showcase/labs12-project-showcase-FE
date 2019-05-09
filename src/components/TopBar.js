@@ -94,10 +94,10 @@ class TopBar extends Component {
                       >
                         <i className="fas fa-plus" /> Edit Project
                       </NavLink>
-                      <LeaveProject />
+                      <LeaveProject project_id={this.props.project_id} />
                     </React.Fragment>
                   ) : (
-                    <JoinProject />
+                    <JoinProject project_id={this.props.project_id} />
                   )
                 ) : null}
                 <NavLink exact to="/profile-quick-start">
