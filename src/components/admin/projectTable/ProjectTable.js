@@ -15,26 +15,9 @@ class ProjectTable extends React.Component {
     };
   };
 
-<<<<<<< HEAD
-||||||| merged common ancestors
-
-
-  //   handleChange(event) {
-  //     //console.log(event.target.value);
-  //     this.setState({
-  //         approved: event.target.value
-  //     })
-  // }
-
-  // checked = () => {
-  //   projects.approved === true return checked = true
-  // }
-
-=======
 
 
 
->>>>>>> 09c7b5f5f2c72580f5a1dea89be4947324d3036e
   componentDidMount() {
     this.props.fetchProjects();
   }
@@ -86,13 +69,6 @@ class ProjectTable extends React.Component {
             return (
               <Switch
                 onClick={(e) => { e.stopPropagation() }}
-<<<<<<< HEAD
-                checked={this.state.checkedApproved}
-||||||| merged common ancestors
-                checked={this.state.checkedApproved}
-                // onChange={this.handleChange('checkedApproved')}
-=======
->>>>>>> 09c7b5f5f2c72580f5a1dea89be4947324d3036e
                 value="checkedApproved"
               />
             );

@@ -11,7 +11,7 @@ import Share from '../share/Share';
 import Status from '../status/Status';
 import Skills from '../skills/Skills';
 import Progress from '../progress/Progress';
-import EndorseButton from '../endorsements/EndorseButton';
+// import EndorseButton from '../endorsements/EndorseButton';
 
 // yarn add react-id-swiper@latest swiper@latest
 
