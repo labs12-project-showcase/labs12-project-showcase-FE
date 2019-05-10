@@ -86,17 +86,18 @@ class StudentProfile extends React.Component {
 								>
 									Portfolio
 								</a>
-								<Share studentId={id} name={name} />
-
-								<a rel="noopener noreferrer" href={linkedin} target="_blank">
-									<i className="fab fa-linkedin-in" />
-								</a>
-								<a rel="noopener noreferrer" href={github} target="_blank">
-									<i className="fab fa-github" />
-								</a>
-								<a rel="noopener noreferrer" href={twitter} target="_blank">
-									<i className="fab fa-twitter" />
-								</a>
+								<div className="social-media">
+									<Share studentId={id} name={name} />
+									<a rel="noopener noreferrer" href={linkedin} target="_blank">
+										<i className="fab fa-linkedin-in" />
+									</a>
+									<a rel="noopener noreferrer" href={github} target="_blank">
+										<i className="fab fa-github" />
+									</a>
+									<a rel="noopener noreferrer" href={twitter} target="_blank">
+										<i className="fab fa-twitter" />
+									</a>
+								</div>
 							</div>
 						</div>
 						<div className="header-boxes">

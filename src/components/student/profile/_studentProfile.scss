@@ -6,33 +6,29 @@
 		background-repeat: no-repeat;
 		background-position: bottom right;
 		min-height: 655px;
-		padding-top: 94px;
-
-		@media (max-width: 1100px) {
-			height: auto;
-			padding-top: 20px;
-		}
 
 		.profile-container {
 			width: 100%;
-			max-width: 1120px;
-			margin: 0 auto;
-			@include box-align(flex-start, flex-start);
+			max-width: 1000px;
+			margin: 50px auto 0;
+			@include box-align(space-between, flex-start);
 			@media (max-width: 767px) {
 				flex-direction: column;
 				@include box-align();
 			}
 
 			.picture {
-				width: 215px;
-				height: 215px;
+				width: 235px;
+				height: 235px;
 				overflow: hidden;
-				margin-right: 50px;
-				@media (max-width: 1100px) {
-					width: 150px;
-					height: 150px;
-					margin-right: 0;
-				}
+				margin: 15px 8px;
+				margin-top: 15px;
+				margin-right: 18px;
+				// @media (max-width: 1100px) {
+				// 	width: 150px;
+				// 	height: 150px;
+				// 	margin-right: 0;
+				// }
 
 				img {
 					width: 100%;
@@ -42,8 +38,12 @@
 
 			.top-info {
 				@include box-align(space-between, flex-start);
-				max-width: 850px;
+				max-width: 660px;
 				width: 100%;
+				margin: 0 10px;
+				@media (max-width: 768px) {
+					margin: 0;
+				}
 				.name-cont {
 					width: 100%;
 					max-width: 500px;
@@ -77,13 +77,14 @@
 
 				.badge {
 					text-align: right;
-					@media (max-width: 767px) {
+					@media (max-width: 768px) {
 						width: auto;
+						margin: 0 auto;
 					}
-					@media (min-width: 768px) and (max-width: 960px) {
-						max-width: 260px;
-						padding: 20px 10px;
-					}
+					// @media (min-width: 768px) and (max-width: 960px) {
+					// 	max-width: 260px;
+					// 	padding: 20px 10px;
+					// }
 
 					img {
 						width: 100px;
@@ -106,19 +107,26 @@
 					margin: 20px auto;
 					justify-content: center;
 				}
+				.social-media {
+					@include box-align();
+					i {
+						margin: 0 5px;
+						background-color: $lightcolor;
+						color: $lambdaTeal;
+						border: 1px solid $newBorder;
+						padding: 20px;
 
-				i {
-					margin: 0 5px;
-					background-color: $lightcolor;
-					color: $lambdaTeal;
-					border: 1px solid $newBorder;
-					padding: 23px 32px;
+						cursor: pointer;
 
-					cursor: pointer;
-
-					&:hover {
-						background-color: $lambdaTeal;
-						color: $lightcolor;
+						&:hover {
+							background-color: $lambdaTeal;
+							color: $lightcolor;
+						}
+					}
+					@media (max-width: 591px) {
+						@include box-align();
+						margin-top: 10px;
+						width: 100%;
 					}
 				}
 				.contact-btn {
@@ -130,7 +138,7 @@
 
 					a {
 						margin-right: 5px;
-						padding: 23px 32px;
+						padding: 20px;
 						text-decoration: none;
 						color: $lightcolor;
 						background-color: $lambdaRed;
@@ -148,7 +156,7 @@
 				.portfolio-btn,
 				.endorse-button {
 					text-decoration: none;
-					padding: 23px 32px;
+					padding: 20px;
 					margin: 0 5px;
 					background-color: $lightcolor;
 					color: $lambdaTeal;
@@ -247,6 +255,9 @@
 			.header-boxes {
 				margin-top: 20px;
 				@include box-align(space-between, flex-start);
+				@media (max-width: 768px) {
+					@include box-align();
+				}
 			}
 		}
 	}
@@ -254,7 +265,7 @@
 	main {
 		margin: 10px auto;
 		width: 100%;
-		max-width: 1120px;
+		max-width: 1000px;
 		@include box-align(space-around, center);
 		@media (max-width: 838px) {
 			flex-direction: column;
