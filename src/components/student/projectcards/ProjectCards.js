@@ -17,7 +17,7 @@ const ProjectCards = ({ top_projects, projects, media }) => {
 				<img src={proj.media[0]} alt="Project media" />
 				<div className="caption">
 					<h3>{proj.name}</h3>
-					<p>{proj.type} Lorem ipsum dolor sit, amet consectetur</p>
+					<p>{proj.short_description}</p>
 				</div>
 			</Link>
 		));
