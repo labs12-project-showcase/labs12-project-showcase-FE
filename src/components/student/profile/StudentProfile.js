@@ -56,6 +56,7 @@ class StudentProfile extends React.Component {
 		return (
 			<div className="student-dashboard">
 				{sameUser && !endorsed && <NotEndorsed />}
+				{/* <EndorseButton profile_id={id} /> */}
 				<header>
 					<div className="profile-container">
 						<div className="picture">
@@ -67,7 +68,6 @@ class StudentProfile extends React.Component {
 								<h2>{track}</h2>
 								<h3>{location}</h3>
 							</div>
-							<EndorseButton profile_id={id} />
 							<div className="badge">
 								<a rel="noopener noreferrer" href={acclaim} target="_blank">
 									<img src={badge} alt="Lambda Badge" />
@@ -86,17 +86,18 @@ class StudentProfile extends React.Component {
 								>
 									Portfolio
 								</a>
-								<Share studentId={id} name={name} />
-
-								<a rel="noopener noreferrer" href={linkedin} target="_blank">
-									<i className="fab fa-linkedin-in" />
-								</a>
-								<a rel="noopener noreferrer" href={github} target="_blank">
-									<i className="fab fa-github" />
-								</a>
-								<a rel="noopener noreferrer" href={twitter} target="_blank">
-									<i className="fab fa-twitter" />
-								</a>
+								<div className="social-media">
+									<Share studentId={id} name={name} />
+									<a rel="noopener noreferrer" href={linkedin} target="_blank">
+										<i className="fab fa-linkedin-in" />
+									</a>
+									<a rel="noopener noreferrer" href={github} target="_blank">
+										<i className="fab fa-github" />
+									</a>
+									<a rel="noopener noreferrer" href={twitter} target="_blank">
+										<i className="fab fa-twitter" />
+									</a>
+								</div>
 							</div>
 						</div>
 						<div className="header-boxes">

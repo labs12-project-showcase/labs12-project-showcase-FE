@@ -42,66 +42,66 @@
 	}
 
 	header {
-		@include box-align(center, flex-start);
+		@include box-align(space-between, flex-start);
 		max-width: 1024px;
 		width: 100%;
 		margin: 0 auto;
-
+		padding-top: 30px;
+		@media (max-width: 768px) {
+			@include box-align();
+			flex-direction: column;
+		}
 		.img-des {
-			max-width: 420px;
+			max-width: 42%;
 			width: 100%;
-			height: 477px;
-			position: relative;
-			margin: 10px;
-			overflow: hidden;
+			height: 540px;
+			padding: 20px;
 			background-color: $lambdaDarkBlue;
-
-			img {
-				display: block;
-				width: auto;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				right: 0;
-				z-index: 0;
+			@include box-align(center, flex-start);
+			flex-direction: column;
+			@media (max-width: 768px) {
+				order: 2;
+				padding: 20px;
+				max-width: 95%;
+				@include box-align();
+				height: auto;
 			}
 
+			// img {
+			// 	display: block;
+			// 	width: auto;
+			// 	height: 100%;
+			// 	position: absolute;
+			// 	top: 0;
+			// 	right: 0;
+			// 	z-index: 0;
+			// }
+
 			h1 {
-				position: absolute;
-				z-index: 1;
 				font-size: 3.4rem;
 				font-weight: 700;
 				top: 110px;
-				padding: 30px;
+				padding: 10px;
 				color: $lightcolor;
 			}
 
 			h2 {
-				position: absolute;
-				z-index: 1;
 				font-size: 1.6rem;
 				font-weight: 500;
-				top: 160px;
-				padding: 30px;
+				padding: 10px;
+				margin-bottom: 30px;
+				line-height: 1.5;
 				color: $lightcolor;
 			}
 
 			a {
-				position: absolute;
-				z-index: 1;
-				font-size: 3.4rem;
 				text-decoration: none;
 				background: $lambdaRed;
-				font-size: 1.6rem;
+				margin: 10px;
+				font-size: 2.2rem;
 				color: $lightcolor;
 				padding: 5px 10px;
-				bottom: 100px;
-				left: 20px;
 				cursor: pointer;
-
-				&:last-child {
-					bottom: 60px;
-				}
 
 				&:hover {
 					background-color: darken($lambdaRed, 10%);
@@ -110,10 +110,14 @@
 		}
 
 		.media-display {
+			margin: 0 auto;
 			@include box-align();
-			max-width: 560px;
+			max-width: 55%;
 			width: 100%;
-			margin: 10px;
+			@media (max-width: 768px) {
+				max-width: 100%;
+				flex-direction: column;
+			}
 
 			.big-gallery {
 				width: 100%;
@@ -123,11 +127,16 @@
 			.img-one,
 			.img-two,
 			.img-three {
+				width: 30%;
 				margin: 5px auto;
+				@media (max-width: 768px) {
+					width: 100%;
+					margin: 10px;
+					max-width: 300px;
+				}
 
 				img {
 					width: 100%;
-					max-width: 180px;
 				}
 			}
 
@@ -151,20 +160,32 @@
 		}
 
 		.pitch-and-projectURL-container {
-			display: flex;
-			flex-direction: column;
+			@include box-align(center, flex-start);
+
+			@media (max-width: 768px) {
+				flex-direction: column;
+			}
 
 			.sales-pitch {
 				width: 100%;
-				max-width: 500px;
+				max-width: 50%;
 				background-color: $lightcolor;
 				padding: 30px 20px;
 				margin: 30px auto;
 
+				@media (max-width: 768px) {
+					max-width: 100%;
+				}
+
 				h2 {
+					font-size: 2.2rem;
 					text-align: left;
 					font-weight: 700;
-					margin-bottom: 10px;
+					margin-bottom: 24px;
+				}
+				p {
+					line-height: 1.5;
+					color: $lambdaGray;
 				}
 			}
 
@@ -199,8 +220,9 @@
 		h2 {
 			width: 100%;
 			text-align: center;
-			font-size: 1.8rem;
+			font-size: 2.2rem;
 			font-weight: 700;
+			margin-top: 20px;
 			margin-bottom: 30px;
 		}
 
@@ -208,9 +230,12 @@
 			@include box-align();
 
 			.s-link {
+				color: black;
+				text-decoration: none;
 				margin: 20px;
 				@include box-align();
 				flex-direction: column;
+
 				.s-pic {
 					height: 150px;
 					width: 150px;
@@ -226,6 +251,11 @@
 					font-weight: 700;
 					text-align: center;
 					padding: 10px;
+				}
+
+				&:visited {
+					text-decoration: none;
+					color: black;
 				}
 			}
 		}

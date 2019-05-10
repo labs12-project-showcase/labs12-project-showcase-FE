@@ -1,14 +1,14 @@
 .endorsements {
 	background-color: $lightcolor;
-	width: 100%;
-	max-width: 430px;
+	width: 40%;
 	min-height: 290px;
 	padding: 20px;
 	margin: 5px;
 	line-height: 1.5;
 	@include box-align(flex-start, center);
 	@media (max-width: 768px) {
-		max-width: 315px;
+		max-width: 350px;
+		width: 100%;
 		padding: 12px;
 	}
 

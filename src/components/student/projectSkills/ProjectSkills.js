@@ -12,7 +12,7 @@ const ProjectSkills = ({ projectSkills }) => {
     <div className="projectSkills-container">
       <section className="projectSkills">
         <ul>
-          {projectSkills.length ? (
+          {projectSkills && projectSkills.length ? (
             map(projectSkills)
           ) : (
             <p>Please add some technologies!</p>

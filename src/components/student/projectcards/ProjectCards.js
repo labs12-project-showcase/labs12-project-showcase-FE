@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade';
 
 import AddProjectCard from './AddProjectCard';
 
-const ProjectCards = ({ top_projects, projects }) => {
+const ProjectCards = ({ top_projects, projects, media }) => {
 	const [hide, toggleHide] = useState(true);
 
 	const map = arr =>
@@ -14,10 +14,7 @@ const ProjectCards = ({ top_projects, projects }) => {
 				className="project-card"
 				to={`/student/project-view/${proj.id}`}
 			>
-				<img
-					src={'https://morenowtech.com/wp-content/uploads/2019/05/fit-me.jpg'}
-					alt="Project media"
-				/>
+				<img src={proj.media[0]} alt="Project media" />
 				<div className="caption">
 					<h3>{proj.name}</h3>
 					<p>{proj.type} Lorem ipsum dolor sit, amet consectetur</p>
@@ -50,5 +47,3 @@ const ProjectCards = ({ top_projects, projects }) => {
 };
 
 export default ProjectCards;
-
-//'https://morenowtech.com/wp-content/uploads/2015/01/Marvic.jpg'

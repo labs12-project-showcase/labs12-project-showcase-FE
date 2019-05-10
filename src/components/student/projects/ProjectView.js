@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { getProject } from '../projectqs/projectqsActions';
 import ProjectSkills from '../projectSkills/ProjectSkills';
 import NotApproved from '../notApproved/NotApproved';
@@ -64,10 +64,12 @@ const ProjectView = ({
 			<main>
 				<div className="pitch-and-projectURL-container">
 					<div className="sales-pitch">
+						<hr className="hrTop" />
 						<h2>Customer Sales Pitch</h2>
 						<p>{projectData.customer_pitch || 'Please add customer pitch'}</p>
 					</div>
 					<div className="sales-pitch">
+						<hr className="hrTop" />
 						<h2>Technical Sales Pitch</h2>
 						<p>{projectData.tech_pitch || 'Please add tech pitch'}</p>
 					</div>
@@ -124,12 +126,16 @@ const ProjectView = ({
 				<div className="students-names">
 					{projectData.students
 						? projectData.students.map(student => (
-								<div key={student.name} className="s-link">
+								<Link
+									to={`/student/profile/${student.student_id}`}
+									key={student.name}
+									className="s-link"
+								>
 									<div className="s-pic">
 										<img src={student.profile_pic} alt={student.name} />
-										<p>{student.name}</p>
 									</div>
-								</div>
+									<p>{student.name}</p>
+								</Link>
 						  ))
 						: 'Loading...'}
 				</div>

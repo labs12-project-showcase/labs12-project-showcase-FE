@@ -78,7 +78,7 @@ const projectqsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         gettingProjectData: false,
-        projectData: { ...action.payload }
+        projectData: { ...initialState.projectData, ...action.payload }
       };
     case GET_PROJECT_FAILURE:
       return {

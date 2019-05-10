@@ -8,10 +8,13 @@ import { getProject } from "./projectqsActions";
 const JoinProject = ({ dispatch, student_id, project_id }) => {
   const join = () => {
     axiosAuth()
-      .put(`https://halg-backend.herokuapp.com/api/projects/join`, {
-        student_id,
-        project_id
-      })
+      .put(
+        `https://halg-backend.herokuapp.com/api/projects/${project_id}/join`,
+        {
+          student_id,
+          project_id
+        }
+      )
       .then(() => {
         dispatch(getProject(project_id));
       })

@@ -19,25 +19,16 @@
 	.control-group {
 		width: 100%;
 		margin: 20px auto;
-		@include box-align();
-		@media (max-width: 600px) {
-			@include box-align();
-			flex-direction: column;
-		}
+		@include box-align(flex-start, flex-start);
+		flex-direction: column;
+
 		.search-box {
-			padding: 20px;
-			max-width: 30%;
+			width: 100%;
+			flex-direction: column;
 			@include box-align(flex-start, flex-start);
+
 			label {
 				margin: 5px;
-			}
-			&:first-child {
-				label {
-					width: 45%;
-					@media (max-width: 600px) {
-						width: 100%;
-					}
-				}
 			}
 			@media (max-width: 600px) {
 				max-width: 100%;
@@ -112,20 +103,26 @@
 
 		.input-location {
 			input {
-				max-width: 45px;
+				text-align: center;
+				max-width: 53px;
 				margin: 3px;
+				padding: 3px 4px;
+				border: 1px solid $newBorder;
 			}
 		}
 		.search-location {
 			border: 1px solid $border-color;
-			border-radius: 5px;
 			margin-top: 10px;
+			min-height: 48px;
+			width: 224px;
+
 			background-color: $lightcolor;
-			.fa-search {
+			@include box-align(flex-start, center) .fa-search {
 				color: lightgray;
-				margin: 5px;
+				margin: 5px 10px;
 			}
 			input {
+				font-size: 1.6rem;
 				padding: 5px;
 				border: none;
 				background-color: $lightcolor;
@@ -138,6 +135,11 @@
 			margin: 20px auto;
 			border: 2px solid $border-color;
 		}
+	}
+	.css-1s4n2az-control {
+		border: 1px solid $newBorder;
+		margin-top: 10px;
+		margin-bottom: 15px;
 	}
 	.search-button {
 		width: 100%;

@@ -17,16 +17,6 @@ class ProjectTable extends React.Component {
 
 
 
-  //   handleChange(event) {
-  //     //console.log(event.target.value);
-  //     this.setState({
-  //         approved: event.target.value
-  //     })
-  // }
-
-  // checked = () => {
-  //   projects.approved === true return checked = true
-  // }
 
   componentDidMount() {
     this.props.fetchProjects();
@@ -65,7 +55,6 @@ class ProjectTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
-            console.log(value);
             return (
               <ProjectTableRow value={value} />
             );
@@ -80,8 +69,6 @@ class ProjectTable extends React.Component {
             return (
               <Switch
                 onClick={(e) => { e.stopPropagation() }}
-                checked={this.state.checkedApproved}
-                // onChange={this.handleChange('checkedApproved')}
                 value="checkedApproved"
               />
             );
@@ -91,8 +78,9 @@ class ProjectTable extends React.Component {
     ]
 
     return (
+
       <div className="tableContainer">
-        {/* {console.log("approved??????", this.props.projects[0].approved)} */}
+      <button><Link to={`/admin/student-table`}>Student Table</Link></button>
         <MaterialDatatable
           title={"Admin Project Table"}
           columns={column}
@@ -105,7 +93,6 @@ class ProjectTable extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // ...state.projectTable,
     projects: state.admin.projects
   };
 };
