@@ -54,12 +54,7 @@ const ProjectViewHome = () => {
 								className="project-card"
 								href={`/student/project-view/${x.id}`}
 							>
-								<img
-									src={
-										'https://morenowtech.com/wp-content/uploads/2019/05/tico.jpg'
-									}
-									alt="Project media"
-								/>
+								<img src={x.project_media[0]} alt="Project media" />
 								<h3>{x.name}</h3>
 								<button>Learn More</button>
 							</a>

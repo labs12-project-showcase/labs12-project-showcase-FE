@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import one from '../../assets/one.jpg';
 
 const Cards = ({ cards }) => {
 	const map = arr => arr.map(skill => <li key={skill}>{skill}</li>);
@@ -18,7 +17,7 @@ const Cards = ({ cards }) => {
 							to={`/student/project-view/${proj.project_id}`}
 							className="display-box"
 						>
-							<img src={one} alt="Project" />
+							<img src={proj.media} alt="Project" />
 							<h3>{proj.name}</h3>
 						</Link>
 					))}
