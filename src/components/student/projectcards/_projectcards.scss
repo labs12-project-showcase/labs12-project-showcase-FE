@@ -48,6 +48,10 @@
 			@include box-align(center, center);
 		}
 
+		div {
+			width: 100%;
+		}
+
 		.react-reveal {
 			@include box-align(space-between, center);
 		}

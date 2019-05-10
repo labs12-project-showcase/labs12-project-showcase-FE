@@ -160,7 +160,7 @@
 		}
 
 		.pitch-and-projectURL-container {
-			@include box-align();
+			@include box-align(center, flex-start);
 
 			@media (max-width: 768px) {
 				flex-direction: column;

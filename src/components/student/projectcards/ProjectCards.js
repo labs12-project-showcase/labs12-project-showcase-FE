@@ -47,5 +47,3 @@ const ProjectCards = ({ top_projects, projects, media }) => {
 };
 
 export default ProjectCards;
-
-//'https://morenowtech.com/wp-content/uploads/2015/01/Marvic.jpg'

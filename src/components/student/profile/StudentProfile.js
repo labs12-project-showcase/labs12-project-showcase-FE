@@ -56,6 +56,7 @@ class StudentProfile extends React.Component {
 		return (
 			<div className="student-dashboard">
 				{sameUser && !endorsed && <NotEndorsed />}
+				{/* <EndorseButton profile_id={id} /> */}
 				<header>
 					<div className="profile-container">
 						<div className="picture">
@@ -67,7 +68,6 @@ class StudentProfile extends React.Component {
 								<h2>{track}</h2>
 								<h3>{location}</h3>
 							</div>
-							<EndorseButton profile_id={id} />
 							<div className="badge">
 								<a rel="noopener noreferrer" href={acclaim} target="_blank">
 									<img src={badge} alt="Lambda Badge" />
