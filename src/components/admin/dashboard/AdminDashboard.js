@@ -1,23 +1,28 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import MaterialDatatable from "material-datatable";
+// import react from 'react';
 
 
-const AdminDashboard = props => {
-  return (
-    <div className="adminDashboard">
-    
-    </div>
-  );
-};
 
- 
-export default AdminDashboard;
-
-const mapStateToProps = state => {
-  return {
-    ...state.adminDashboard
-  };
-};
-
-export default connect(mapStateToProps)(AdminDashboard);
+// <div className="subNav">
+//               <nav>
+//                 <NavLink exact to={`/student/profile/${this.props.id}`}>
+//                   <i className="far fa-id-card" /> Your Profile
+//                 </NavLink>
+//                 <NavLink exact to="/student/new-project">
+//                   <i className="fas fa-plus" /> Add New Project
+//                 </NavLink>
+//                 {this.props.location.pathname.match(
+//                   /\/student\/project-view\/\d+/g
+//                 ) &&
+//                   this.checkOwner(this.props.project_students) && (
+//                     <NavLink
+//                       exact
+//                       to={`/student/edit-project/${this.props.project_id}`}
+//                     >
+//                       <i className="fas fa-plus" /> Edit Project
+//                     </NavLink>
+//                   )}
+//                 <NavLink exact to="/profile-quick-start">
+//                   <i className="fas fa-user-edit" /> Edit Profile
+//                 </NavLink>
+//               </nav>
+//             </div>
