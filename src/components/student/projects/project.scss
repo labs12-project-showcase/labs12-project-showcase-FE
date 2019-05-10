@@ -175,7 +175,7 @@
 		width: 100%;
 		max-width: 1024px;
 		margin: 0 auto;
-		padding: 20px;
+		padding: 20px 20px 50px;
 		@include box-align();
 
 		hr {
@@ -208,6 +208,7 @@
 					text-align: left;
 					font-weight: 700;
 					margin-bottom: 24px;
+					letter-spacing: 1.7px;
 				}
 				p {
 					line-height: 1.5;
@@ -249,10 +250,11 @@
 		h2 {
 			width: 100%;
 			text-align: center;
-			font-size: 2.8rem;
-			font-weight: 700;
+			font-size: 3.9rem;
+			font-weight: 900;
 			margin-top: 20px;
 			margin-bottom: 30px;
+			letter-spacing: 2.7px;
 		}
 
 		.students-names {
