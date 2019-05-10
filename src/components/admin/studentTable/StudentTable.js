@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchStudents, updateStudent } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
+import GraduatedButton from "./StudentGraduatedButton";
+import HiredButton from './StudentHiredButton';
+import EndorsedButton from './StudentEndorsedButton';
 
 class StudentTable extends React.Component {
   constructor(props) {
@@ -63,11 +65,7 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: value => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <GraduatedButton />
             );
           }
         }
@@ -76,13 +74,9 @@ class StudentTable extends React.Component {
         name: "Hired",
         field: "hired",
         options: {
-          customBodyRender: student => {
+          customBodyRender: value => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <HiredButton />
             );
           }
         }
@@ -91,13 +85,9 @@ class StudentTable extends React.Component {
         name: "Endorsed",
         field: "endorsed",
         options: {
-          customBodyRender: student => {
+          customBodyRender: value => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <EndorsedButton />
             );
           }
         }
