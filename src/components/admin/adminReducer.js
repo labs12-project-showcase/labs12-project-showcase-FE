@@ -69,7 +69,6 @@ const adminReducer = (state = initialState, action) => {
           arr.push(cur);
           return arr;
         }, []),
-        // projects: [...state.projects, action.payload[0]],
         updatingProjectData: false
       };
     case ADMIN_UPDATED_PROJECT_FAILURE:

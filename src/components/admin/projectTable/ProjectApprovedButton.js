@@ -17,6 +17,7 @@ class ProjectApprovedButton extends React.Component {
             <Switch
                 onClick={this.handleChange}
                 checked={this.props.project.approved}
+                color="primary"
           />
         );
     }
