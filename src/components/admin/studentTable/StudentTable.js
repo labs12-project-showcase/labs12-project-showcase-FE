@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchStudents, updateStudent } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 import GraduatedButton from "./StudentGraduatedButton";
 import HiredButton from './StudentHiredButton';
@@ -64,9 +63,9 @@ class StudentTable extends React.Component {
         name: "Graduated",
         field: "graduated",
         options: {
-          customBodyRender: value => {
+          customBodyRender: student => {
             return (
-              <GraduatedButton />
+              <GraduatedButton student={student}/>
             );
           }
         }
@@ -77,7 +76,7 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: student => {
             return (
-              <HiredButton />
+              <HiredButton student={student}/>
             );
           }
         }
@@ -88,7 +87,7 @@ class StudentTable extends React.Component {
         options: {
           customBodyRender: student => {
             return (
-              <EndorsedButton />
+              <EndorsedButton student={student}/>
             );
           }
         }
