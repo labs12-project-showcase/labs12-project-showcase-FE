@@ -2,21 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchProjects } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 import ProjectTableRow from './ProjectTableRow';
+import ProjectApprovedButton from './ProjectApprovedButton.js';
 
 
 class ProjectTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-  };
-
-
-
 
   componentDidMount() {
     this.props.fetchProjects();
@@ -43,7 +34,7 @@ class ProjectTable extends React.Component {
         }
       },
       {
-        name: "Type",
+        name: "Description",
         field: "short_description",
         filter: true,
         sort: true,
@@ -65,12 +56,9 @@ class ProjectTable extends React.Component {
         name: "Approved",
         field: "approved",
         options: {
-          customBodyRender: studentValue => {
+          customBodyRender: project => {
             return (
-              <Switch
-                onClick={(e) => { e.stopPropagation() }}
-                value="checkedApproved"
-              />
+              <ProjectApprovedButton project={project} />
             );
           }
         }

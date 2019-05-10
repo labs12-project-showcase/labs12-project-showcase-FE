@@ -5,19 +5,19 @@ import {
   ADMIN_FETCHED_PROJECTS_START,
   ADMIN_FETCHED_PROJECTS_SUCCESS,
   ADMIN_FETCHED_PROJECTS_FAILURE,
-  ADMIN_UPDATED_PROJECTS_START,
-  ADMIN_UPDATED_PROJECTS_SUCCESS,
-  ADMIN_UPDATED_PROJECTS_FAILURE,
-  ADMIN_UPDATED_STUDENTS_START,
-  ADMIN_UPDATED_STUDENTS_SUCCESS,
-  ADMIN_UPDATED_STUDENTS_FAILURE
+  ADMIN_UPDATED_PROJECT_START,
+  ADMIN_UPDATED_PROJECT_SUCCESS,
+  ADMIN_UPDATED_PROJECT_FAILURE,
+  ADMIN_UPDATED_STUDENT_START,
+  ADMIN_UPDATED_STUDENT_SUCCESS,
+  ADMIN_UPDATED_STUDENT_FAILURE
 } from "./adminActions";
 
 const initialState = {
   students: [],
   projects: [],
-  updatedProjectData: false,
-  updatedStudentData: false
+  updatingProjectData: false,
+  updatingStudentData: false
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -26,68 +26,75 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
         students: action.payload
-      }
-      case ADMIN_FETCHED_STUDENTS_SUCCESS:
+      };
+    case ADMIN_FETCHED_STUDENTS_SUCCESS:
       return {
         ...state,
         students: action.payload
-      }
-      case ADMIN_FETCHED_STUDENTS_FAILURE:
+      };
+    case ADMIN_FETCHED_STUDENTS_FAILURE:
       return {
         ...state,
         error: action.payload
-      }
-      case ADMIN_FETCHED_PROJECTS_START:
+      };
+    case ADMIN_FETCHED_PROJECTS_START:
       return {
         ...state,
         projects: action.payload
-      }
-      case ADMIN_FETCHED_PROJECTS_SUCCESS:
+      };
+    case ADMIN_FETCHED_PROJECTS_SUCCESS:
       return {
         ...state,
         projects: action.payload
-      }
-      case ADMIN_FETCHED_PROJECTS_FAILURE:
+      };
+    case ADMIN_FETCHED_PROJECTS_FAILURE:
       return {
         ...state,
         error: action.payload
-      }
-      case ADMIN_UPDATED_PROJECTS_START:
+      };
+    case ADMIN_UPDATED_PROJECT_START:
       return {
         ...state,
-        projects: action.payload,
-        updatedProjectData: true
-      }
-      case ADMIN_UPDATED_PROJECTS_SUCCESS:
+        updatingProjectData: true
+      };
+    case ADMIN_UPDATED_PROJECT_SUCCESS:
       return {
         ...state,
-        projects: action.payload,
-        updatedProjectData: false
-      }
-      case ADMIN_UPDATED_PROJECTS_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        updatedProjectData: false
-      }
-      case ADMIN_UPDATED_STUDENTS_START:
-      return {
-        ...state,
-        projects: action.payload,
-        updatedStudentData: true
-      }
-      case ADMIN_UPDATED_STUDENTS_SUCCESS:
-      return {
-        ...state,
-        projects: action.payload,
-        updatedStudentData: false
-      }
-      case ADMIN_UPDATED_STUDENTS_FAILURE:
+        projects: state.projects.reduce((arr, cur) => {
+          console.log(cur.id, action.payload.id);
+          if(cur.id === action.payload.id) {
+            arr.push({ ...cur, ...action.payload });
+            return arr;
+          }
+          arr.push(cur);
+          return arr;
+        }, []),
+        updatingProjectData: false
+      };
+    case ADMIN_UPDATED_PROJECT_FAILURE:
       return {
         ...state,
         error: action.payload,
-        updatedStudentData: false
-      }
+        updatingProjectData: false
+      };
+    case ADMIN_UPDATED_STUDENT_START:
+      return {
+        ...state,
+        projects: action.payload,
+        updatingStudentData: true
+      };
+    case ADMIN_UPDATED_STUDENT_SUCCESS:
+      return {
+        ...state,
+        projects: action.payload,
+        updatingStudentData: false
+      };
+    case ADMIN_UPDATED_STUDENT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingStudentData: false
+      };
     default:
       return state;
   }
