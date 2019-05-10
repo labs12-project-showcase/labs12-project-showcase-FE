@@ -58,21 +58,21 @@ export const updateProject = () => dispatch => {
     });
 };
 
-export const ADMIN_UPDATED_STUDENTS_START = "ADMIN_UPDATED_STUDENTS_START";
-export const ADMIN_UPDATED_STUDENTS_SUCCESS = "ADMIN_UPDATED_STUDENTS_SUCCESS";
-export const ADMIN_UPDATED_STUDENTS_FAILURE = "ADMIN_UPDATED_STUDENTS_FAILURE";
+export const ADMIN_UPDATED_STUDENT_START = "ADMIN_UPDATED_STUDENT_START";
+export const ADMIN_UPDATED_STUDENT_SUCCESS = "ADMIN_UPDATED_STUDENT_SUCCESS";
+export const ADMIN_UPDATED_STUDENT_FAILURE = "ADMIN_UPDATED_STUDENT_FAILURE";
 
-export const updatedStudents = () => dispatch => {
-  dispatch({ type: ADMIN_UPDATED_STUDENTS_START });
+export const updateStudent = () => dispatch => {
+  dispatch({ type: ADMIN_UPDATED_STUDENT_START });
   axiosAuth()
     .put(`${backendUrl}/api/admin/students`)
     .then(res => {
       dispatch({
-        type: ADMIN_UPDATED_STUDENTS_SUCCESS,
+        type: ADMIN_UPDATED_STUDENT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      dispatch({ type: ADMIN_UPDATED_STUDENTS_FAILURE, payload: err });
+      dispatch({ type: ADMIN_UPDATED_STUDENT_FAILURE, payload: err });
     });
 };

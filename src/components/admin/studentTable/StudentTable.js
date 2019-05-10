@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchStudents } from '../adminActions.js';
+import { fetchStudents, updateStudent } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 
@@ -123,4 +123,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchStudents })(StudentTable);
+export default connect(mapStateToProps, { fetchStudents, updateStudent })(StudentTable);
