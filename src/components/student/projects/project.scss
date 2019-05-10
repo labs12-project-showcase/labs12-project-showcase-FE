@@ -86,15 +86,28 @@
 
 			a {
 				text-decoration: none;
-				background: $lambdaRed;
+				background-color: $lightcolor;
+				color: $lambdaDarkBlue;
+				border: 2px solid $lightcolor;
 				margin: 10px;
 				font-size: 2.2rem;
-				color: $lightcolor;
-				padding: 5px 10px;
+				padding: 20px;
 				cursor: pointer;
+				&:nth-last-child(1) {
+					background-color: $lambdaDarkBlue;
+					color: $lightcolor;
+					border: 2px solid $lightcolor;
+
+					&:hover {
+						background-color: $lightcolor;
+						color: $lambdaDarkBlue;
+					}
+				}
 
 				&:hover {
-					background-color: darken($lambdaRed, 10%);
+					border: 2px solid $lightcolor;
+					color: $lightcolor;
+					background-color: $lambdaDarkBlue;
 				}
 			}
 		}
@@ -111,7 +124,12 @@
 
 			.big-gallery {
 				width: 100%;
+				max-height: 352px;
 				max-width: 560px;
+				overflow: hidden;
+				img {
+					width: 100%;
+				}
 			}
 
 			.img-one,
@@ -123,6 +141,8 @@
 				height: 160px;
 				overflow: hidden;
 				border: 1px solid $newBorder;
+				cursor: pointer;
+
 				@media (max-width: 768px) {
 					width: 100%;
 					margin: 10px;
@@ -155,7 +175,7 @@
 		width: 100%;
 		max-width: 1024px;
 		margin: 0 auto;
-		padding: 20px;
+		padding: 20px 20px 50px;
 		@include box-align();
 
 		hr {
@@ -183,10 +203,12 @@
 				}
 
 				h2 {
+					color: $lambdaTeal;
 					font-size: 2.2rem;
 					text-align: left;
 					font-weight: 700;
 					margin-bottom: 24px;
+					letter-spacing: 1.7px;
 				}
 				p {
 					line-height: 1.5;
@@ -200,23 +222,26 @@
 
 				a {
 					text-decoration: none;
-					color: #ffffff;
-					padding: 10px;
+					color: $lambdaTeal;
 					margin: 5px;
-					background-color: $lambdaRed;
+					background-color: $lightcolor;
 					cursor: pointer;
+					border: 1px solid $newBorder;
+					padding: 25px 28px;
 
 					&:hover {
-						background-color: darken($lambdaRed, 10%);
+						background-color: $lambdaTeal;
+						color: $lightcolor;
+						border: 1px solid $lightcolor;
 					}
 				}
 
 				.github-chip {
-					border-radius: 50%;
+					// border-radius: 50%;
 
 					.fa-github {
-						font-size: 3rem;
-						padding: 1px;
+						font-size: 1.8rem;
+						// padding: 1px;
 					}
 				}
 			}
@@ -225,13 +250,16 @@
 		h2 {
 			width: 100%;
 			text-align: center;
-			font-size: 2.2rem;
-			font-weight: 700;
+			font-size: 3.9rem;
+			font-weight: 900;
 			margin-top: 20px;
 			margin-bottom: 30px;
+			letter-spacing: 2.7px;
 		}
 
 		.students-names {
+			width: 100%;
+			margin-bottom: 50px;
 			@include box-align();
 
 			.s-link {
