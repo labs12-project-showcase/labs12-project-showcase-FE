@@ -47,25 +47,6 @@ const ProjectView = ({
           imageUrls={projectData.project_media}
           rawYouTubeUrl={projectData.youtube_url}
         />
-        {/* <div className="media-display">
-					<div className="big-gallery">
-						<iframe
-							title="project preview video"
-							width="100%"
-							height="350"
-							src={projectData.youtube_url}
-							frameBorder="0"
-							allowFullScreen
-						/>
-					</div>
-					{projectData.project_media && projectData.project_media.length
-						? projectData.project_media.slice(0, 3).map(media => (
-								<div className="img-one" key={media}>
-									<img src={media} alt="Project" />
-								</div>
-						  ))
-						: null}
-				</div> */}
       </header>
       <main>
         <div className="pitch-and-projectURL-container">
