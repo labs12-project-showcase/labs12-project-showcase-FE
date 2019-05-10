@@ -26,7 +26,7 @@
 			}
 			h1 {
 				width: 100%;
-				text-align: left;
+				text-align: center;
 				max-width: 700px;
 				font-size: 4.8rem;
 				font-weight: 900;
@@ -34,7 +34,7 @@
 				color: $lambdaGray;
 				margin-bottom: 30px;
 				@media (max-width: 768px) {
-					font-size: 2.5rem;
+					font-size: 3rem;
 				}
 			}
 			p {
@@ -46,7 +46,6 @@
 				color: $darkcolor;
 				margin-bottom: 32px;
 				@media (max-width: 768px) {
-					font-size: 1.6rem;
 					line-height: 1.5;
 				}
 			}
@@ -212,12 +211,16 @@
 				}
 
 				.profile-pic {
-					width: 150px;
-					height: 150px;
+					width: 30%;
+					height: 170px;
 					overflow: hidden;
 					margin: 10px;
 					@extend %box-shadow;
 					border: 1px solid $border-color;
+					@media (max-width: 768px) {
+						width: 160px;
+						height: 160px;
+					}
 
 					img {
 						width: 100%;
@@ -225,8 +228,8 @@
 					}
 				}
 				.details {
-					width: 100%;
-					max-width: 300px;
+					width: 68%;
+					max-width: 370px;
 					padding: 0 20px 5px;
 					text-transform: capitalize;
 					text-align: center;
@@ -246,13 +249,21 @@
 						font-size: 2.2rem;
 						width: 100%;
 						margin-top: 20px;
-						margin-bottom: 15px;
+						margin-bottom: 10px;
+						text-align: center;
 					}
 
 					h3 {
+						color: $lambdaGray;
 						width: 100%;
 						font-size: 1.4rem;
+						font-weight: 500;
 						margin-bottom: 10px;
+					}
+					h4 {
+						width: 100%;
+						font-size: 1.6rem;
+						font-weight: 700;
 					}
 
 					p {
@@ -301,31 +312,41 @@
 						text-align: center;
 						font-size: 1.8rem;
 						margin-bottom: 20px;
-						font-weight: 500;
-						color: $lambdaGray;
+						font-weight: 700;
+						color: $darkcolor;
 						text-transform: capitalize;
 					}
 					.display-box {
 						text-decoration: none;
 						color: black;
-						box-shadow: 0 0 2px 1px #cccccc;
+						border: 1px solid $newBorder;
 						background-color: $lightcolor;
-						margin: 2px 2px 5px;
-						width: 100px;
+						margin: 5px;
+						width: 150px;
 						font-size: 0.8rem;
 						cursor: pointer;
 						-webkit-transition: transform 1s; /* Safari */
-						transition: transform 1s;
+
 						&:hover {
-							transform: scale(1.1);
+							box-shadow: 0 0 6px 1px #cccccc;
 						}
-						img {
+						.proj-box-container {
 							width: 100%;
-							height: auto;
-						}
-						h3 {
-							padding: 3px 2px;
-							text-align: center;
+							height: 180px;
+							position: relative;
+							img {
+								width: 100%;
+								height: auto;
+							}
+							h3 {
+								position: absolute;
+								width: 100%;
+								bottom: 0;
+								padding: 3px 2px;
+								text-align: center;
+								font-size: 1.4rem;
+								text-transform: capitalize;
+							}
 						}
 					}
 				}

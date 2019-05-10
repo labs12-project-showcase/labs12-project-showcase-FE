@@ -14,6 +14,9 @@ const Cards = ({ cards }) => {
 					<h3>{cards.track}</h3>
 
 					<br />
+
+					<h4>Skills:</h4>
+					<ul>{map(cards.top_skills)}</ul>
 					<div className="contact-links">
 						<a href={cards.github} target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-github" />
@@ -24,12 +27,10 @@ const Cards = ({ cards }) => {
 						<a href={cards.twitter} target="_blank" rel="noopener noreferrer">
 							<i className="fab fa-twitter" />
 						</a>
+						<Link to={`/student/profile/${cards.id}`}>
+							<button className="prof-link">Profile &amp; Projects</button>
+						</Link>
 					</div>
-					<p>Skills:</p>
-					<ul>{map(cards.top_skills)}</ul>
-					<Link to={`/student/profile/${cards.id}`}>
-						<button className="prof-link">Profile &amp; Projects</button>
-					</Link>
 				</div>
 				<div className="projects-box">
 					<h2>My top 3 projects</h2>
@@ -39,8 +40,10 @@ const Cards = ({ cards }) => {
 							to={`/student/project-view/${proj.project_id}`}
 							className="display-box"
 						>
-							<img src={proj.media} alt="Project" />
-							<h3>{proj.name}</h3>
+							<div className="proj-box-container">
+								<img src={proj.media} alt="Project" />
+								<h3>{proj.name}</h3>
+							</div>
 						</Link>
 					))}
 				</div>
