@@ -67,16 +67,6 @@
 				height: auto;
 			}
 
-			// img {
-			// 	display: block;
-			// 	width: auto;
-			// 	height: 100%;
-			// 	position: absolute;
-			// 	top: 0;
-			// 	right: 0;
-			// 	z-index: 0;
-			// }
-
 			h1 {
 				font-size: 3.4rem;
 				font-weight: 700;
@@ -127,12 +117,23 @@
 			.img-one,
 			.img-two,
 			.img-three {
-				width: 30%;
+				position: relative;
 				margin: 5px auto;
+				width: 30%;
 				@media (max-width: 768px) {
 					width: 100%;
 					margin: 10px;
 					max-width: 300px;
+				}
+
+				.capture-click {
+					// display: block;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+					// z-index: 0;
 				}
 
 				img {
