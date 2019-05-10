@@ -109,14 +109,17 @@
 		}
 		.search-location {
 			border: 1px solid $border-color;
-			border-radius: 5px;
 			margin-top: 10px;
+			min-height: 48px;
+			width: 224px;
+
 			background-color: $lightcolor;
-			.fa-search {
+			@include box-align(flex-start, center) .fa-search {
 				color: lightgray;
-				margin: 5px;
+				margin: 5px 10px;
 			}
 			input {
+				font-size: 1.6rem;
 				padding: 5px;
 				border: none;
 				background-color: $lightcolor;
@@ -129,6 +132,11 @@
 			margin: 20px auto;
 			border: 2px solid $border-color;
 		}
+	}
+	.css-1s4n2az-control {
+		border: 1px solid $newBorder;
+		margin-top: 10px;
+		margin-bottom: 15px;
 	}
 	.search-button {
 		width: 100%;
