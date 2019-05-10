@@ -1,12 +1,12 @@
 .aboutMe {
 	background-color: $lightcolor;
-	width: 100%;
-	max-width: 680px;
+	width: 55%;
 	min-height: 215px;
-	padding: 20px 0;
+	padding: 20px 5px;
 
 	@media (max-width: 768px) {
-		max-width: 315px;
+		width: 100%;
+		margin: 20px;
 	}
 
 	h2 {

@@ -43,9 +43,13 @@
 	.projects-inner-wrapper {
 		@include box-align(space-between, center);
 		width: 100%;
-		max-width: 1120px;
-		@media (max-width: 600px) {
+		max-width: 1000px;
+		@media (max-width: 768px) {
 			@include box-align(center, center);
+		}
+
+		div {
+			width: 100%;
 		}
 
 		.react-reveal {
@@ -56,7 +60,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: space-between;
-			width: 360px;
+			width: 300px;
 			padding: 5px;
 			height: 276px;
 			overflow: hidden;
