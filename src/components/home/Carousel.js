@@ -56,7 +56,7 @@ const ProjectViewHome = () => {
 							>
 								<img src={x.project_media[0]} alt="Project media" />
 								<h3>{x.name}</h3>
-								<button>Learn More</button>
+								<button>See More</button>
 							</a>
 						</div>
 					</div>

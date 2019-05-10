@@ -19,25 +19,16 @@
 	.control-group {
 		width: 100%;
 		margin: 20px auto;
-		@include box-align();
-		@media (max-width: 600px) {
-			@include box-align();
-			flex-direction: column;
-		}
+		@include box-align(flex-start, flex-start);
+		flex-direction: column;
+
 		.search-box {
-			padding: 20px;
-			max-width: 30%;
+			width: 100%;
+			flex-direction: column;
 			@include box-align(flex-start, flex-start);
+
 			label {
 				margin: 5px;
-			}
-			&:first-child {
-				label {
-					width: 45%;
-					@media (max-width: 600px) {
-						width: 100%;
-					}
-				}
 			}
 			@media (max-width: 600px) {
 				max-width: 100%;

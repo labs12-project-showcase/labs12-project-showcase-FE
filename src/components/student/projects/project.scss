@@ -1,241 +1,263 @@
 .project-view {
-  .subNav {
-    padding: 10px 0;
+	.subNav {
+		padding: 10px 0;
 
-    .NavLinks-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+		.NavLinks-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 
-      .NavLinks-container-left {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        color: white;
+			.NavLinks-container-left {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				color: white;
 
-        .arrow-circle {
-          padding: 7px;
-          border-radius: 50%;
-          margin-right: 10px;
-          background-color: $lambdaRed;
-          cursor: pointer;
-        }
+				.arrow-circle {
+					padding: 7px;
+					border-radius: 50%;
+					margin-right: 10px;
+					background-color: $lambdaRed;
+					cursor: pointer;
+				}
 
-        .fa-arrow-left {
-          font-size: 2rem;
-          color: $lightcolor;
-        }
-      }
+				.fa-arrow-left {
+					font-size: 2rem;
+					color: $lightcolor;
+				}
+			}
 
-      .NavLinks-container-right {
-        .edit-project-btn {
-          margin-right: 25px;
-        }
+			.NavLinks-container-right {
+				.edit-project-btn {
+					margin-right: 25px;
+				}
 
-        .edit-profile-btn {
-          margin-right: 10px;
-        }
-      }
-    }
-  }
+				.edit-profile-btn {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
 
-  header {
-    @include box-align(center, flex-start);
-    max-width: 1024px;
-    width: 100%;
-    margin: 0 auto;
+	header {
+		@include box-align(space-between, flex-start);
+		max-width: 1024px;
+		width: 100%;
+		margin: 0 auto;
+		padding-top: 30px;
+		@media (max-width: 768px) {
+			@include box-align();
+			flex-direction: column;
+		}
+		.img-des {
+			max-width: 42%;
+			width: 100%;
+			height: 540px;
+			padding: 20px;
+			background-color: $lambdaDarkBlue;
+			@include box-align(center, flex-start);
+			flex-direction: column;
+			@media (max-width: 768px) {
+				order: 2;
+				padding: 20px;
+				max-width: 95%;
+				@include box-align();
+				height: auto;
+			}
 
-    .img-des {
-      max-width: 420px;
-      width: 100%;
-      height: 477px;
-      position: relative;
-      margin: 10px;
-      overflow: hidden;
-      background-color: $lambdaDarkBlue;
+			// img {
+			// 	display: block;
+			// 	width: auto;
+			// 	height: 100%;
+			// 	position: absolute;
+			// 	top: 0;
+			// 	right: 0;
+			// 	z-index: 0;
+			// }
 
-      img {
-        display: block;
-        width: auto;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 0;
-      }
+			h1 {
+				font-size: 3.4rem;
+				font-weight: 700;
+				top: 110px;
+				padding: 10px;
+				color: $lightcolor;
+			}
 
-      h1 {
-        position: absolute;
-        z-index: 1;
-        font-size: 3.4rem;
-        font-weight: 700;
-        top: 110px;
-        padding: 30px;
-        color: $lightcolor;
-      }
+			h2 {
+				font-size: 1.6rem;
+				font-weight: 500;
+				padding: 10px;
+				margin-bottom: 30px;
+				line-height: 1.5;
+				color: $lightcolor;
+			}
 
-      h2 {
-        position: absolute;
-        z-index: 1;
-        font-size: 1.6rem;
-        font-weight: 500;
-        top: 160px;
-        padding: 30px;
-        color: $lightcolor;
-      }
+			a {
+				text-decoration: none;
+				background: $lambdaRed;
+				margin: 10px;
+				font-size: 2.2rem;
+				color: $lightcolor;
+				padding: 5px 10px;
+				cursor: pointer;
 
-      a {
-        position: absolute;
-        z-index: 1;
-        font-size: 3.4rem;
-        text-decoration: none;
-        background: $lambdaRed;
-        font-size: 1.6rem;
-        color: $lightcolor;
-        padding: 5px 10px;
-        bottom: 100px;
-        left: 20px;
-        cursor: pointer;
+				&:hover {
+					background-color: darken($lambdaRed, 10%);
+				}
+			}
+		}
 
-        &:last-child {
-          bottom: 60px;
-        }
+		.media-display {
+			margin: 0 auto;
+			@include box-align();
+			max-width: 55%;
+			width: 100%;
+			@media (max-width: 768px) {
+				max-width: 100%;
+				flex-direction: column;
+			}
 
-        &:hover {
-          background-color: darken($lambdaRed, 10%);
-        }
-      }
-    }
+			.big-gallery {
+				width: 100%;
+				max-width: 560px;
+			}
 
-    .media-display {
-      @include box-align();
-      max-width: 560px;
-      width: 100%;
-      margin: 10px;
+			.img-one,
+			.img-two,
+			.img-three {
+				width: 30%;
+				margin: 5px auto;
+				@media (max-width: 768px) {
+					width: 100%;
+					margin: 10px;
+					max-width: 300px;
+				}
 
-      .big-gallery {
-        width: 100%;
-        max-width: 560px;
-      }
+				img {
+					width: 100%;
+				}
+			}
 
-      .img-one,
-      .img-two,
-      .img-three {
-        margin: 5px auto;
+			.img-two {
+				margin: 5px;
+			}
+		}
+	}
 
-        img {
-          width: 100%;
-          max-width: 180px;
-        }
-      }
+	main {
+		width: 100%;
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 20px;
+		@include box-align();
 
-      .img-two {
-        margin: 5px;
-      }
-    }
-  }
+		hr {
+			margin: 20px auto;
+			border: 1px solid $lambdaRed;
+			width: 100%;
+		}
 
-  main {
-    width: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 20px;
-    @include box-align();
+		.pitch-and-projectURL-container {
+			@include box-align();
 
-    hr {
-      margin: 20px auto;
-      border: 1px solid $lambdaRed;
-      width: 100%;
-    }
+			@media (max-width: 768px) {
+				flex-direction: column;
+			}
 
-    .pitch-and-projectURL-container {
-      display: flex;
-      flex-direction: column;
+			.sales-pitch {
+				width: 100%;
+				max-width: 50%;
+				background-color: $lightcolor;
+				padding: 30px 20px;
+				margin: 30px auto;
 
-      .sales-pitch {
-        width: 100%;
-        max-width: 500px;
-        background-color: $lightcolor;
-        padding: 30px 20px;
-        margin: 30px auto;
+				@media (max-width: 768px) {
+					max-width: 100%;
+				}
 
-        h2 {
-          text-align: left;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-      }
+				h2 {
+					font-size: 2.2rem;
+					text-align: left;
+					font-weight: 700;
+					margin-bottom: 24px;
+				}
+				p {
+					line-height: 1.5;
+					color: $lambdaGray;
+				}
+			}
 
-      .project-urls-container {
-        min-height: 100px;
-        @include box-align();
+			.project-urls-container {
+				min-height: 100px;
+				@include box-align();
 
-        a {
-          text-decoration: none;
-          color: #ffffff;
-          padding: 10px;
-          margin: 5px;
-          background-color: $lambdaRed;
-          cursor: pointer;
+				a {
+					text-decoration: none;
+					color: #ffffff;
+					padding: 10px;
+					margin: 5px;
+					background-color: $lambdaRed;
+					cursor: pointer;
 
-          &:hover {
-            background-color: darken($lambdaRed, 10%);
-          }
-        }
+					&:hover {
+						background-color: darken($lambdaRed, 10%);
+					}
+				}
 
-        .github-chip {
-          border-radius: 50%;
+				.github-chip {
+					border-radius: 50%;
 
-          .fa-github {
-            font-size: 3rem;
-            padding: 1px;
-          }
-        }
-      }
-    }
+					.fa-github {
+						font-size: 3rem;
+						padding: 1px;
+					}
+				}
+			}
+		}
 
-    h2 {
-      width: 100%;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 30px;
-    }
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 2.2rem;
+			font-weight: 700;
+			margin-top: 20px;
+			margin-bottom: 30px;
+		}
 
-    .students-names {
-      @include box-align();
+		.students-names {
+			@include box-align();
 
-      .s-link {
-        color: black;
-        text-decoration: none;
-        margin: 20px;
-        @include box-align();
-        flex-direction: column;
+			.s-link {
+				color: black;
+				text-decoration: none;
+				margin: 20px;
+				@include box-align();
+				flex-direction: column;
 
-        .s-pic {
-          height: 150px;
-          width: 150px;
-          overflow: hidden;
-          border-radius: 50%;
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
+				.s-pic {
+					height: 150px;
+					width: 150px;
+					overflow: hidden;
+					border-radius: 50%;
+					img {
+						width: 100%;
+						height: auto;
+					}
+				}
 
-        p {
-          font-weight: 700;
-          text-align: center;
-          padding: 10px;
-        }
+				p {
+					font-weight: 700;
+					text-align: center;
+					padding: 10px;
+				}
 
-        &:visited {
-          text-decoration: none;
-          color: black;
-        }
-      }
-    }
-  }
+				&:visited {
+					text-decoration: none;
+					color: black;
+				}
+			}
+		}
+	}
 }
