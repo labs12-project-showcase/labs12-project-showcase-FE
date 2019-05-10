@@ -111,7 +111,12 @@
 
 			.big-gallery {
 				width: 100%;
+				max-height: 352px;
 				max-width: 560px;
+				overflow: hidden;
+				img {
+					width: 100%;
+				}
 			}
 
 			.img-one,
@@ -123,6 +128,8 @@
 				height: 160px;
 				overflow: hidden;
 				border: 1px solid $newBorder;
+				cursor: pointer;
+
 				@media (max-width: 768px) {
 					width: 100%;
 					margin: 10px;
