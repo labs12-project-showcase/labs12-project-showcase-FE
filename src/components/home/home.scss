@@ -79,37 +79,46 @@
 						background-color: $lightcolor;
 						.bottom-card {
 							background-color: $lightcolor;
+							min-height: 395px;
+							position: relative;
+
 							a {
 								text-decoration: none;
 
-								h3 {
-									font-size: 2.4rem;
-									font-weight: 500;
-									color: $darkcolor;
-									font-weight: 500;
-									font-size: 1.6rem;
-									text-transform: capitalize;
-									padding: 10px 3px;
+								img {
+									width: 100%;
+									height: auto;
 								}
-							}
+								.carousel-detail {
+									position: absolute;
+									bottom: 0;
+									@include box-align();
+									flex-direction: column;
+									width: 100%;
 
-							img {
-								width: 100%;
-								height: auto;
-							}
-						}
+									h3 {
+										font-size: 2rem;
+										font-weight: 500;
+										color: $darkcolor;
+										font-weight: 500;
+										text-transform: capitalize;
+										padding: 10px 3px;
+									}
 
-						button {
-							text-decoration: none;
-							border: none;
-							color: #ffffff;
-							padding: 10px;
-							margin: 10px auto;
-							background-color: $lambdaTeal;
-							cursor: pointer;
+									button {
+										text-decoration: none;
+										border: none;
+										color: #ffffff;
+										padding: 10px;
+										margin: 10px auto;
+										background-color: $lambdaTeal;
+										cursor: pointer;
 
-							&:hover {
-								background: darken($lambdaTeal, 10%);
+										&:hover {
+											background: darken($lambdaTeal, 10%);
+										}
+									}
+								}
 							}
 						}
 					}

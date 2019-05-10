@@ -55,8 +55,10 @@ const ProjectViewHome = () => {
 								href={`/student/project-view/${x.id}`}
 							>
 								<img src={x.project_media[0]} alt="Project media" />
-								<h3>{x.name}</h3>
-								<button>See More</button>
+								<div className="carousel-detail">
+									<h3>{x.name}</h3>
+									<button>See More</button>
+								</div>
 							</a>
 						</div>
 					</div>
