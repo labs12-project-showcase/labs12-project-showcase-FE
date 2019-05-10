@@ -8,12 +8,6 @@ import ProjectApprovedButton from './ProjectApprovedButton.js';
 
 
 class ProjectTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-  };
 
   componentDidMount() {
     this.props.fetchProjects();

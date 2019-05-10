@@ -62,13 +62,14 @@ const adminReducer = (state = initialState, action) => {
         ...state,
         projects: state.projects.reduce((arr, cur) => {
           console.log(cur.id, action.payload.id);
-          if(cur.id === action.payload[0].id) {
-            arr.push(action.payload[0]);
+          if(cur.id === action.payload.id) {
+            arr.push({ ...cur, ...action.payload });
             return arr;
           }
           arr.push(cur);
           return arr;
         }, []),
+        // projects: [...state.projects, action.payload[0]],
         updatingProjectData: false
       };
     case ADMIN_UPDATED_PROJECT_FAILURE:

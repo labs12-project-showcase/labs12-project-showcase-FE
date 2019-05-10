@@ -48,7 +48,7 @@ export const updateProject = (id, info) => dispatch => {
   axiosAuth()
     .put(`${backendUrl}/api/admin/projects/${id}`, info)
     .then(res => {
-      console.log(res.data);
+      console.log("res.data: ", res.data);
       dispatch({
         type: ADMIN_UPDATED_PROJECT_SUCCESS,
         payload: res.data
