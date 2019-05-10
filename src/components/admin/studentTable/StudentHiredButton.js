@@ -1,27 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import Switch from "@material-ui/core/Switch";
-import { updateProject } from '../adminActions';
+import { updateStudent } from '../adminActions';
 
 class StudentHiredButton extends React.Component {
     handleChange = (e) => {
         e.stopPropagation();
-        this.props.updateProject(this.props.project.id, {
-            approved: !this.props.project.approved
+        this.props.updateStudent(this.props.student.id, {
+            hired: !this.props.student.hired
         });
     }
 
     render() { 
-        console.log(this.props.project);
+        console.log(this.props.student);
         return (  
             <Switch
                 onClick={this.handleChange}
-                checked={this.props.project.approved}
+                checked={this.props.student.hired}
                 color="primary"
           />
         );
     }
 }
  
-export default connect(null, { updateProject })(StudentHiredButton);
+export default connect(null, { updateStudent })(StudentHiredButton);
 
