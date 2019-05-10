@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchStudents } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch";
+import { fetchStudents, updateStudent } from '../adminActions.js';
 import { Link } from "react-router-dom";
+import GraduatedButton from "./StudentGraduatedButton";
+import HiredButton from './StudentHiredButton';
+import EndorsedButton from './StudentEndorsedButton';
 
 class StudentTable extends React.Component {
   constructor(props) {
@@ -33,14 +35,14 @@ class StudentTable extends React.Component {
             filter: true,
             sort: true,
             options: {
-              customBodyRender: studentValue => {
+              customBodyRender: student => {
                return (
                 <Link
-                 to={`/student/profile/${studentValue.id}`}
+                 to={`/student/profile/${student.id}`}
                  onClick={ (e) => {
                   e.stopPropagation();
                  }}
-                >{studentValue.name}</Link>
+                >{student.name}</Link>
                );
               }
              }
@@ -61,13 +63,9 @@ class StudentTable extends React.Component {
         name: "Graduated",
         field: "graduated",
         options: {
-          customBodyRender: value => {
+          customBodyRender: student => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <GraduatedButton student={student}/>
             );
           }
         }
@@ -76,13 +74,9 @@ class StudentTable extends React.Component {
         name: "Hired",
         field: "hired",
         options: {
-          customBodyRender: studentValue => {
+          customBodyRender: student => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <HiredButton student={student}/>
             );
           }
         }
@@ -91,13 +85,9 @@ class StudentTable extends React.Component {
         name: "Endorsed",
         field: "endorsed",
         options: {
-          customBodyRender: studentValue => {
+          customBodyRender: student => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <EndorsedButton student={student}/>
             );
           }
         }
@@ -123,4 +113,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchStudents })(StudentTable);
+export default connect(mapStateToProps, { fetchStudents, updateStudent })(StudentTable);
