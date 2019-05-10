@@ -43,17 +43,19 @@ export const ADMIN_UPDATED_PROJECT_START = "ADMIN_UPDATED_PROJECT_START";
 export const ADMIN_UPDATED_PROJECT_SUCCESS = "ADMIN_UPDATED_PROJECT_SUCCESS";
 export const ADMIN_UPDATED_PROJECT_FAILURE = "ADMIN_UPDATED_PROJECT_FAILURE";
 
-export const updateProject = () => dispatch => {
+export const updateProject = (id, info) => dispatch => {
   dispatch({ type: ADMIN_UPDATED_PROJECT_START });
   axiosAuth()
-    .put(`${backendUrl}/api/admin/projects`)
+    .put(`${backendUrl}/api/admin/projects/${id}`, info)
     .then(res => {
+      console.log(res.data);
       dispatch({
         type: ADMIN_UPDATED_PROJECT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
+      console.log(err);
       dispatch({ type: ADMIN_UPDATED_PROJECT_FAILURE, payload: err });
     });
 };

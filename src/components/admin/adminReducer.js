@@ -16,8 +16,8 @@ import {
 const initialState = {
   students: [],
   projects: [],
-  updatedProjectData: false,
-  updatedStudentData: false
+  updatingProjectData: false,
+  updatingStudentData: false
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -55,38 +55,45 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_UPDATED_PROJECT_START:
       return {
         ...state,
-        projects: action.payload,
-        updatedProjectData: true
+        updatingProjectData: true
       };
     case ADMIN_UPDATED_PROJECT_SUCCESS:
       return {
         ...state,
-        projects: action.payload,
-        updatedProjectData: false
+        projects: state.projects.reduce((arr, cur) => {
+          console.log(cur.id, action.payload.id);
+          if(cur.id === action.payload[0].id) {
+            arr.push(action.payload[0]);
+            return arr;
+          }
+          arr.push(cur);
+          return arr;
+        }, []),
+        updatingProjectData: false
       };
     case ADMIN_UPDATED_PROJECT_FAILURE:
       return {
         ...state,
         error: action.payload,
-        updatedProjectData: false
+        updatingProjectData: false
       };
     case ADMIN_UPDATED_STUDENT_START:
       return {
         ...state,
         projects: action.payload,
-        updatedStudentData: true
+        updatingStudentData: true
       };
     case ADMIN_UPDATED_STUDENT_SUCCESS:
       return {
         ...state,
         projects: action.payload,
-        updatedStudentData: false
+        updatingStudentData: false
       };
     case ADMIN_UPDATED_STUDENT_FAILURE:
       return {
         ...state,
         error: action.payload,
-        updatedStudentData: false
+        updatingStudentData: false
       };
     default:
       return state;
