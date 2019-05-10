@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchProjects } from '../adminActions.js';
+import { fetchProjects, updateProject } from '../adminActions.js';
 import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 import ProjectTableRow from './ProjectTableRow';
@@ -14,9 +14,6 @@ class ProjectTable extends React.Component {
       open: false,
     };
   };
-
-
-
 
   componentDidMount() {
     this.props.fetchProjects();
@@ -97,4 +94,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchProjects })(ProjectTable);
+export default connect(mapStateToProps, { fetchProjects, updateProject })(ProjectTable);
