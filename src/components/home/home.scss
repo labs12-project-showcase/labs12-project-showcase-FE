@@ -278,6 +278,7 @@
 							background-color: lighten($darkcolor, 50%);
 							color: $lightcolor;
 							padding: 3px 7px;
+							font-size: 1.4rem;
 						}
 					}
 
@@ -310,7 +311,7 @@
 
 					h2 {
 						text-align: center;
-						font-size: 1.8rem;
+						font-size: 1.6rem;
 						margin-bottom: 20px;
 						font-weight: 700;
 						color: $darkcolor;
@@ -340,6 +341,7 @@
 							}
 							h3 {
 								position: absolute;
+								background-color: $lightcolor;
 								width: 100%;
 								bottom: 0;
 								padding: 3px 2px;
@@ -357,6 +359,7 @@
 					padding: 5px 10px;
 					margin: 10px auto;
 					width: 100%;
+					font-size: 1.4rem;
 					cursor: pointer;
 					&:hover {
 						box-shadow: 0 0 6px 3px #cccccc;
