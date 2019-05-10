@@ -85,7 +85,15 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_UPDATED_STUDENT_SUCCESS:
       return {
         ...state,
-        projects: action.payload,
+        students: state.students.reduce((arr, cur) => {
+          console.log(cur.id, action.payload.id);
+          if(cur.id === action.payload.id) {
+            arr.push({ ...cur, ...action.payload });
+            return arr;
+          }
+          arr.push(cur);
+          return arr;
+        }, []),
         updatingStudentData: false
       };
     case ADMIN_UPDATED_STUDENT_FAILURE:
