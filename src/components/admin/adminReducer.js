@@ -80,7 +80,6 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_UPDATED_STUDENT_START:
       return {
         ...state,
-        projects: action.payload,
         updatingStudentData: true
       };
     case ADMIN_UPDATED_STUDENT_SUCCESS:
