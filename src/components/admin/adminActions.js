@@ -80,3 +80,61 @@ export const updateStudent = (id, info) => dispatch => {
       dispatch({ type: ADMIN_UPDATED_STUDENT_FAILURE, payload: err });
     });
 };
+
+export const ADMIN_FETCHED_TRACKS_START = "ADMIN_FETCHED_TRACKS_START";
+export const ADMIN_FETCHED_TRACKS_SUCCESS = "ADMIN_FETCHED_TRACKS_SUCCESS";
+export const ADMIN_FETCHED_TRACKS_FAILURE = "ADMIN_FETCHED_TRACKS_FAILURE";
+
+export const fetchTracks = () => dispatch => {
+  dispatch({ type: ADMIN_FETCHED_TRACKS_START });
+  axiosAuth()
+    .get(`${backendUrl}/api/admin/tacks`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_FETCHED_TRACKS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_FETCHED_TRACKS_FAILURE, payload: err });
+    });
+};
+
+export const ADMIN_UPDATED_TRACK_START = "ADMIN_UPDATED_TRACK_START";
+export const ADMIN_UPDATED_TRACK_SUCCESS = "ADMIN_UPDATED_TRACK_SUCCESS";
+export const ADMIN_UPDATED_TRACK_FAILURE = "ADMIN_UPDATED_TRACK_FAILURE";
+
+export const updateTRACK = (id, info) => dispatch => {
+  dispatch({ type: ADMIN_UPDATED_TRACK_START });
+  axiosAuth()
+    // .put(`http://localhost:5000/api/admin/students/${id}`, info)
+    .put(`${backendUrl}/api/admin/students/${id}`, info)
+    .then(res => {
+      dispatch({
+        type: ADMIN_UPDATED_STUDENT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_UPDATED_STUDENT_FAILURE, payload: err });
+    });
+};
+
+export const ADMIN_DELETE_TRACK_START = "ADMIN_DELETE_TRACK_START";
+export const ADMIN_DELETE_TRACK_SUCCESS = "ADMIN_DELETE_TRACK_SUCCESS";
+export const ADMIN_DELETE_TRACK_FAILURE = "ADMIN_DELETE_TRACK_FAILURE";
+
+export const ADMIN_DELETE_TRACK_SUCCESS = () => dispatch => {
+  dispatch({ type: ADMIN_DELETE_TRACK_START });
+  axiosAuth()
+    .get(`${backendUrl}/api/admin/projects`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_DELETE_TRACK_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_DELETE_TRACK_FAILURE, payload: err });
+    });
+};
