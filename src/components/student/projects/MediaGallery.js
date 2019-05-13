@@ -89,7 +89,7 @@ const MediaGallery = ({ defaultYouTubeUrl, imageUrls, rawYouTubeUrl }) => {
     <div className="media-display">
       <div className="big-gallery">{mediaList[0]}</div>
       <div className="gallery-caption">
-        <p>Description of this video or image etc here</p>
+        {/* <p>Description of this video or image etc here</p> */}
       </div>
       {mediaList.length ? smallGallery : null}
     </div>
