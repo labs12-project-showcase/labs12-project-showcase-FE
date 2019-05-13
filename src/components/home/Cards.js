@@ -7,7 +7,9 @@ const Cards = ({ cards }) => {
 		<>
 			<div className="cards">
 				<div className="profile-pic">
-					<img src={cards.profile_pic} alt="Profile" />
+					<Link to={`/student/profile/${cards.id}`}>
+						<img src={cards.profile_pic} alt="Profile" />
+					</Link>
 				</div>
 				<div className="details">
 					<h2>{cards.name}</h2>
