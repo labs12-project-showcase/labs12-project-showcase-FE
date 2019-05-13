@@ -155,7 +155,7 @@ export const updateProject = (formValues, id) => dispatch => {
 
   dispatch({ type: UPDATE_PROJECT_START });
   return axiosAuth()
-    .put(`${backendUrl}/api/projects/${id}`, removeEmptyValues(send))
+    .put(`${backendUrl}/api/projects/${id}`, send)
     .then(res => {
       console.log(res);
       dispatch({
