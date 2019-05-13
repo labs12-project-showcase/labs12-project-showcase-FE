@@ -7,7 +7,7 @@ class StudentEndorsedButton extends React.Component {
     handleChange = (e) => {
         e.stopPropagation();
         this.props.updateStudent(this.props.student.id, {
-            endorsed: !this.props.student.endorsed
+            approved: !this.props.student.approved
         });
     }
 
@@ -16,7 +16,7 @@ class StudentEndorsedButton extends React.Component {
         return (  
             <Switch
                 onClick={this.handleChange}
-                checked={this.props.student.endorsed}
+                checked={this.props.student.approved}
                 color="primary"
           />
         );
