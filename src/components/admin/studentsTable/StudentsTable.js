@@ -7,7 +7,7 @@ import GraduatedButton from "./StudentGraduatedButton";
 import HiredButton from './StudentHiredButton';
 import EndorsedButton from './StudentEndorsedButton';
 
-class StudentTable extends React.Component {
+class StudentsTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -97,7 +97,7 @@ class StudentTable extends React.Component {
     return ( 
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Student Table"}
+          title={"Admin Students Table"}
           columns={column}
           data={this.props.students}
         />
@@ -112,4 +112,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchStudents, updateStudent })(StudentTable);
+export default connect(mapStateToProps, { fetchStudents, updateStudent })(StudentsTable);

@@ -9,7 +9,7 @@ export const DELETE_PROFILE_PICTURE_START = 'DELETE_PROFILE_PICTURE_START';
 export const DELETE_PROFILE_PICTURE_SUCCESS = 'DELETE_PROFILE_PICTURE_SUCCESS';
 
 export const deleteProfilePicture = url => dispatch => {
-  dispatch({ type: DELETE_PROFILE_PICTURE_START});
+  dispatch({ type: DELETE_PROFILE_PICTURE_START });
   return axiosAuth()
     .put(`${backendUrl}/api/students/update/profile_picture/remove`, {
       url
@@ -22,11 +22,11 @@ export const deleteProfilePicture = url => dispatch => {
         type: DELETE_PROFILE_PICTURE_FAILURE,
         payload: error
       });
-      throw new Error("Image could not be deleted.");
+      throw new Error('Image could not be deleted.');
     });
-}
+};
 
-// 
+//
 export const GET_PROFILE_DATA_FAILURE = 'GET_PROFILE_DATA_FAILURE';
 export const GET_PROFILE_DATA_START = 'GET_PROFILE_DATA_START';
 export const GET_PROFILE_DATA_SUCCESS = 'GET_PROFILE_DATA_SUCCESS';
@@ -63,7 +63,7 @@ export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
  * in `ProfileqsForm.js` to API endpoint
  */
 export const updateProfile = (formValues, redirect = true) => dispatch => {
-  console.log('updateProfile running!');
+  // console.log('updateProfile running!');
   // *** Match form values to the shape the backend API expects
   const send = {
     account: {
@@ -120,30 +120,26 @@ export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
 
   // send file to backend API
   axiosAuth()
-    .put(
-      `${backendUrl}/api/students/update/profile_picture`,
-      formData,
-      {
-        // create axios CancelToken, and save it to the image object
-        cancelToken: new axios.CancelToken(function executor(c) {
-          setImageList(previousState => {
-            console.log('actions previousState: ', previousState);
-            let arr = Array.from(previousState);
-            let index;
-            for (let i in arr) {
-              if (arr[i].url === dataObject.dataUrl) {
-                index = i;
-                break;
-              }
+    .put(`${backendUrl}/api/students/update/profile_picture`, formData, {
+      // create axios CancelToken, and save it to the image object
+      cancelToken: new axios.CancelToken(function executor(c) {
+        setImageList(previousState => {
+          console.log('actions previousState: ', previousState);
+          let arr = Array.from(previousState);
+          let index;
+          for (let i in arr) {
+            if (arr[i].url === dataObject.dataUrl) {
+              index = i;
+              break;
             }
-            if (index) {
-              arr[index].cancelToken = c;
-            }
-            return arr;
-          });
-        })
-      }
-    )
+          }
+          if (index) {
+            arr[index].cancelToken = c;
+          }
+          return arr;
+        });
+      })
+    })
     .then(res => {
       if (res.status !== 200) {
         throw new Error(
@@ -204,7 +200,7 @@ function removeNulls(obj) {
     if (obj[item] !== null) {
       // Exclude arrays with only `null` within
       if (
-        (Array.isArray(obj[item]) && obj[item][0]) ||
+        (Array.isArray(obj[item]) && obj[item][0]) !== null ||
         !Array.isArray(obj[item])
       )
         noNulls[item] = obj[item];

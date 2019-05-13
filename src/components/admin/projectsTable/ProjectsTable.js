@@ -7,7 +7,7 @@ import ProjectTableRow from './ProjectTableRow';
 import ProjectApprovedButton from './ProjectApprovedButton.js';
 
 
-class ProjectTable extends React.Component {
+class ProjectsTable extends React.Component {
 
   componentDidMount() {
     this.props.fetchProjects();
@@ -69,7 +69,7 @@ class ProjectTable extends React.Component {
 
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Project Table"}
+          title={"Admin Projects Table"}
           columns={column}
           data={this.props.projects}
         />
@@ -84,4 +84,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchProjects })(ProjectTable);
+export default connect(mapStateToProps, { fetchProjects })(ProjectsTable);

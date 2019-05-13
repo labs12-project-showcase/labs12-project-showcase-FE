@@ -184,14 +184,15 @@ export const FormSchema = ({
           label: item.location,
           value: {
             lat: item.lat,
-            location: item.location,
+            locationName: item.location,
             lon: item.lon
           }
         }))
       );
-    } else {
-      setDesiredLocations([]);
-    }
+    } 
+    // else {
+    //   setDesiredLocations([]);
+    // }
   }, [initialValues, setDesiredLocations]);
 
   /*
