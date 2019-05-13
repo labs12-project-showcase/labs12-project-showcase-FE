@@ -31,7 +31,7 @@ class StudentProfile extends React.Component {
 			name,
 			about,
 			desired_locations,
-			endorsed,
+			approved,
 			endorsements,
 			skills,
 			top_skills,
@@ -54,7 +54,7 @@ class StudentProfile extends React.Component {
 			'https://res.cloudinary.com/hirelambdastudents/image/upload/v1556814928/pictures/avatar.png';
 		return (
 			<div className="student-dashboard">
-				{sameUser && !endorsed && <NotEndorsed />}
+				{sameUser && !approved && <NotEndorsed />}
 				{/* <EndorseButton profile_id={id} /> */}
 				<header>
 					<div className="profile-container">

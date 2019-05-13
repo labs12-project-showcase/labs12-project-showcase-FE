@@ -8,6 +8,7 @@ export const ADMIN_FETCHED_STUDENTS_FAILURE = "ADMIN_FETCHED_STUDENTS_FAILURE";
 export const fetchStudents = () => dispatch => {
   dispatch({ type: ADMIN_FETCHED_STUDENTS_START });
   axiosAuth()
+    // .get(`http://localhost:5000/api/admin/students`)
     .get(`${backendUrl}/api/admin/students`)
     .then(res => {
       dispatch({
@@ -64,10 +65,11 @@ export const ADMIN_UPDATED_STUDENT_START = "ADMIN_UPDATED_STUDENT_START";
 export const ADMIN_UPDATED_STUDENT_SUCCESS = "ADMIN_UPDATED_STUDENT_SUCCESS";
 export const ADMIN_UPDATED_STUDENT_FAILURE = "ADMIN_UPDATED_STUDENT_FAILURE";
 
-export const updateStudent = () => dispatch => {
+export const updateStudent = (id, info) => dispatch => {
   dispatch({ type: ADMIN_UPDATED_STUDENT_START });
   axiosAuth()
-    .put(`${backendUrl}/api/admin/students`)
+    // .put(`http://localhost:5000/api/admin/students/${id}`, info)
+    .put(`${backendUrl}/api/admin/students/${id}`, info)
     .then(res => {
       dispatch({
         type: ADMIN_UPDATED_STUDENT_SUCCESS,

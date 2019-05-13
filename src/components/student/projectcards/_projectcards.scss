@@ -1,214 +1,214 @@
 .projects-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 0;
+	width: 100%;
 
-  h2 {
-    font-weight: 900;
-    font-size: 3.2rem;
-    color: $darkcolor;
-    margin-bottom: 30px;
-    text-transform: capitalize;
+	h2 {
+		font-weight: 900;
+		font-size: 3.2rem;
+		color: $darkcolor;
+		margin-bottom: 30px;
+		text-transform: capitalize;
 
-    .fa-project-diagram {
-      margin-right: 10px;
-    }
-  }
+		.fa-project-diagram {
+			margin-right: 10px;
+		}
+	}
 
-  a {
-    text-decoration: none;
-    color: black;
-  }
+	a {
+		text-decoration: none;
+		color: black;
+	}
 
-  button {
-    text-decoration: none;
-    font-size: 1.8rem;
-    padding: 32px;
-    color: $lambdaTeal;
-    margin: 20px 5px;
-    background-color: $lightcolor;
-    cursor: pointer;
-    border: 1px solid $newBorder;
+	button {
+		text-decoration: none;
+		font-size: 1.8rem;
+		padding: 32px;
+		color: $lambdaTeal;
+		margin: 20px 5px;
+		background-color: $lightcolor;
+		cursor: pointer;
+		border: 1px solid $newBorder;
 
-    &:hover {
-      background: $lambdaTeal;
-      color: $lightcolor;
-      border: 1px solid $lightcolor;
-    }
-  }
+		&:hover {
+			background: $lambdaTeal;
+			color: $lightcolor;
+			border: 1px solid $lightcolor;
+		}
+	}
 
-  .projects-inner-wrapper {
-    @include box-align(space-between, center);
-    width: 100%;
-    max-width: 1000px;
-    @media (max-width: 768px) {
-      @include box-align(center, center);
-    }
+	.projects-inner-wrapper {
+		@include box-align(space-between, center);
+		width: 100%;
+		max-width: 1000px;
+		@media (max-width: 768px) {
+			@include box-align(center, center);
+		}
 
-    div {
-      width: 100%;
-    }
+		div {
+			width: 100%;
+		}
 
-    .react-reveal {
-      @include box-align(space-between, center);
-    }
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      width: 300px;
-      padding: 5px;
-      height: 276px;
-      overflow: hidden;
-      margin-bottom: 40px;
-      position: relative;
-      -webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
-      box-shadow: 1px 1px 1px 1px #f2f2f2;
-      background-color: $backg-light;
-      margin: 20px auto;
-      cursor: pointer;
-      &:hover {
-        -webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
-        box-shadow: -2px 5px 16px 2px#d3d3d3;
-      }
-      img {
-        height: auto;
-        width: 100% !important;
-      }
-      .caption {
-        width: 100%;
-        padding: 10px 5px;
-        position: absolute;
-        bottom: 0;
-        background-color: $lightcolor;
-        h3,
-        p {
-          margin: 10px 0 0;
-          font-size: 1.4rem;
-          line-height: 1.2;
-          max-height: 15px;
-        }
+		.react-reveal {
+			@include box-align(space-between, center);
+		}
+		.project-card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			width: 300px;
+			padding: 5px;
+			height: 276px;
+			overflow: hidden;
+			margin-bottom: 40px;
+			position: relative;
+			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
+			box-shadow: 1px 1px 1px 1px #f2f2f2;
+			background-color: $backg-light;
+			margin: 20px auto;
+			cursor: pointer;
+			&:hover {
+				-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
+				box-shadow: -2px 5px 16px 2px#d3d3d3;
+			}
+			img {
+				height: auto;
+				width: 100% !important;
+			}
+			.caption {
+				width: 100%;
+				padding: 10px 5px;
+				position: absolute;
+				bottom: 0;
+				background-color: $lightcolor;
+				h3,
+				p {
+					margin: 10px 0 0;
+					font-size: 1.4rem;
+					line-height: 1.2;
+					max-height: 15px;
+				}
 
-        h3 {
-          font-weight: 900;
-          font-size: 2.2rem;
-          text-transform: capitalize;
-        }
+				h3 {
+					font-weight: 900;
+					font-size: 2.2rem;
+					min-height: 42px;
+					text-transform: capitalize;
+				}
 
-        p {
-          margin-bottom: 10px;
-          color: $lambdaGray;
-        }
-      }
-    }
+				p {
+					margin-bottom: 10px;
+					color: $lambdaGray;
+				}
+			}
+		}
 
-    .add-project-card {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      width: 360px;
-      height: 276px;
-      -webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
-      box-shadow: 1px 1px 1px 1px #f2f2f2;
-      h2 {
-        margin-top: 20px;
-        color: black;
-      }
-      p {
-        padding: 0;
-      }
-    }
+		.add-project-card {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+			width: 360px;
+			height: 276px;
+			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
+			box-shadow: 1px 1px 1px 1px #f2f2f2;
+			h2 {
+				margin-top: 20px;
+				color: black;
+			}
+			p {
+				padding: 0;
+			}
+		}
 
-    .edit-card {
-      width: 100%;
-      margin-bottom: 0;
-      height: 50px;
-      justify-content: flex-start;
-      flex-direction: row;
-    }
+		.edit-card {
+			width: 100%;
+			margin-bottom: 10px;
+			justify-content: flex-start;
+			flex-direction: row;
+		}
 
-    .drag-drop-target {
-      position: relative;
-      padding: 5px;
-      -webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
-      box-shadow: 1px 1px 1px 1px #f2f2f2;
+		.drag-drop-target {
+			position: relative;
+			padding: 5px;
+			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
+			box-shadow: 1px 1px 1px 1px #f2f2f2;
 
-      .drag-target-cover {
-        cursor: grab;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
+			.drag-target-cover {
+				cursor: grab;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
 
-      .drop-target-cover {
-        cursor: grab;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
+			.drop-target-cover {
+				cursor: grab;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
 
-      .card-content {
-        outline: 3px dashed lightgray;
-        padding: 3px;
-        width: 100%;
-        height: 100%;
-      }
-    }
+			.card-content {
+				outline: 3px dashed lightgray;
+				padding: 3px;
+				width: 100%;
+				height: 100%;
+			}
+		}
 
-    .edit-project-message {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px 0;
-      padding-bottom: 5px;
-      font-weight: bold;
-      border-bottom: 2px solid $lambdaRed;
-    }
-  }
-  .projects-buttons-container {
-    button {
-      .fa-chevron-down,
-      .fa-chevron-up {
-        margin-left: 10px;
-      }
-    }
-  }
+		.edit-project-message {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 20px 0;
+			padding-bottom: 5px;
+			font-weight: bold;
+			border-bottom: 2px solid $lambdaRed;
+		}
+	}
+	.projects-buttons-container {
+		button {
+			.fa-chevron-down,
+			.fa-chevron-up {
+				margin-left: 10px;
+			}
+		}
+	}
 }
 
 .edit-wrapper {
-  background: white;
-  border: 1px solid lightgray;
+	background: white;
+	border: 1px solid lightgray;
 
-  padding-top: 25px;
-  padding-bottom: 15px;
-  position: relative;
+	padding-top: 25px;
+	padding-bottom: 15px;
+	position: relative;
 
-  .input-label {
-    color: gray;
-    background: #ffffff;
-    font-size: 1.4rem;
-    left: 1rem;
-    padding: 0.4rem;
-    position: absolute;
-    top: -1.1rem;
-    z-index: 1;
-  }
+	.input-label {
+		color: gray;
+		background: #ffffff;
+		font-size: 1.4rem;
+		left: 1rem;
+		padding: 0.4rem;
+		position: absolute;
+		top: -1.1rem;
+		z-index: 1;
+	}
 }
