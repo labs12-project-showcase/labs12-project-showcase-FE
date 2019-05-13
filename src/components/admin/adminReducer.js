@@ -1,16 +1,19 @@
 import {
+  //****STUDENT ACTION TYPES**** */
   ADMIN_FETCHED_STUDENTS_START,
   ADMIN_FETCHED_STUDENTS_SUCCESS,
   ADMIN_FETCHED_STUDENTS_FAILURE,
   ADMIN_UPDATED_STUDENT_START,
   ADMIN_UPDATED_STUDENT_SUCCESS,
   ADMIN_UPDATED_STUDENT_FAILURE,
+  //****PROJECT ACTION TYPES**** */
   ADMIN_FETCHED_PROJECTS_START,
   ADMIN_FETCHED_PROJECTS_SUCCESS,
   ADMIN_FETCHED_PROJECTS_FAILURE,
   ADMIN_UPDATED_PROJECT_START,
   ADMIN_UPDATED_PROJECT_SUCCESS,
   ADMIN_UPDATED_PROJECT_FAILURE,
+  //****COHORTS ACTION TYPES**** */
   ADMIN_FETCHED_COHORTS_START,
   ADMIN_FETCHED_COHORTS_SUCCESS,
   ADMIN_FETCHED_COHORTS_FAILURE,
@@ -23,55 +26,60 @@ import {
   ADMIN_UPDATED_COHORT_START,
   ADMIN_UPDATED_COHORT_SUCCESS,
   ADMIN_UPDATED_COHORT_FAILURE,
+  //****TRACK ACTION TYPES**** */
+  ADMIN_FETCHED_TRACKS_START,
+  ADMIN_FETCHED_TRACKS_SUCCESS,
+  ADMIN_FETCHED_TRACKS_FAILURE,
+  ADMIN_UPDATED_TRACK_START,
+  ADMIN_UPDATED_TRACK_SUCCESS,
+  ADMIN_UPDATED_TRACK_FAILURE,
+  ADMIN_DELETED_TRACK_START,
+  ADMIN_DELETED_TRACK_SUCCESS,
+  ADMIN_DELETED_TRACK_FAILURE
 } from "./adminActions";
 
 const initialState = {
-  students: [],
-  projects: [],
   cohorts: [],
+  projects: [],
+  students: [],
+  tracks:[],
+  updatingCohortsData: false,
   updatingProjectData: false,
   updatingStudentData: false,
-  updatingCohortsData: false
+  updatingTracksData: false,
 };
 
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADMIN_FETCHED_STUDENTS_START:
-      return {
-        ...state,
-        students: action.payload
-      };
-    case ADMIN_FETCHED_STUDENTS_SUCCESS:
-      return {
-        ...state,
-        students: action.payload
-      };
-    case ADMIN_FETCHED_STUDENTS_FAILURE:
-      return {
-        ...state,
-        error: action.payload
-      };
+    
+    //******************************PROJECT TABLE REDUCERS************************** */
+    
+    //****FETCHED PROJECTS**** */
+
     case ADMIN_FETCHED_PROJECTS_START:
-      return {
+    return {
         ...state,
         projects: action.payload
       };
     case ADMIN_FETCHED_PROJECTS_SUCCESS:
-      return {
+    return {
         ...state,
         projects: action.payload
       };
     case ADMIN_FETCHED_PROJECTS_FAILURE:
-      return {
+    return {
         ...state,
         error: action.payload
       };
-    case ADMIN_UPDATED_PROJECT_START:
+
+      //****UPDATED PROJECTS**** */
+
+      case ADMIN_UPDATED_PROJECT_START:
       return {
         ...state,
         updatingProjectData: true
       };
-    case ADMIN_UPDATED_PROJECT_SUCCESS:
+      case ADMIN_UPDATED_PROJECT_SUCCESS:
       return {
         ...state,
         projects: state.projects.reduce((arr, cur) => {
@@ -85,13 +93,36 @@ const adminReducer = (state = initialState, action) => {
         }, []),
         updatingProjectData: false
       };
-    case ADMIN_UPDATED_PROJECT_FAILURE:
+      case ADMIN_UPDATED_PROJECT_FAILURE:
       return {
         ...state,
         error: action.payload,
         updatingProjectData: false
       };
-    case ADMIN_UPDATED_STUDENT_START:
+      
+      //******************************STUDENT TABLE REDUCERS************************** */
+
+      //****FETHCED STUDENTS**** */
+
+      case ADMIN_FETCHED_STUDENTS_START:
+        return {
+          ...state,
+          students: action.payload
+        };
+      case ADMIN_FETCHED_STUDENTS_SUCCESS:
+        return {
+          ...state,
+          students: action.payload
+        };
+      case ADMIN_FETCHED_STUDENTS_FAILURE:
+        return {
+          ...state,
+          error: action.payload
+        };
+
+      //****UPDATED STUDENTS**** */
+
+      case ADMIN_UPDATED_STUDENT_START:
       return {
         ...state,
         updatingStudentData: true
@@ -116,6 +147,10 @@ const adminReducer = (state = initialState, action) => {
         error: action.payload,
         updatingStudentData: false
       };
+
+//******************************COHORTS TABLE REDUCERS************************** */
+
+    //****FETHCED COHORTS**** */
     case ADMIN_FETCHED_COHORTS_START:
       return {
         ...state,
@@ -134,6 +169,9 @@ const adminReducer = (state = initialState, action) => {
         error: action.payload,
         updatingCohortsData: false
       };
+    
+    //****UPDATED COHORTS**** */
+
     case ADMIN_UPDATED_COHORT_START:
       return {
         ...state,
@@ -152,6 +190,9 @@ const adminReducer = (state = initialState, action) => {
         error: action.payload,
         updatingCohortsData: false
       };
+
+    //****DELETED COHORTS**** */
+
     case ADMIN_DELETED_COHORT_START:
       return {
         ...state,
@@ -170,6 +211,8 @@ const adminReducer = (state = initialState, action) => {
         error: action.payload,
         updatingCohortsData: false
       };
+
+    //****ADDED COHORTS**** */
     case ADMIN_ADDED_COHORT_START:
       return {
         ...state,
@@ -187,6 +230,65 @@ const adminReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         updatingCohortsData: false
+      };
+
+//******************************TRACKS TABLE REDUCERS************************** */
+
+//****FETCHED TRACKS**** */
+
+    case ADMIN_FETCHED_TRACKS_START:
+    return {
+        ...state,
+        tracks: action.payload
+    };
+    case ADMIN_FETCHED_TRACKS_SUCCESS:
+      return {
+        ...state,
+        tracks: action.payload
+      };
+    case ADMIN_FETCHED_TRACKS_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+    //****UPDATED TRACKS**** */
+
+      case ADMIN_UPDATED_TRACK_START:
+      return {
+        ...state,
+        tracks: action.payload,
+        updatingTracksData: true
+      }
+    case ADMIN_UPDATED_TRACK_SUCCESS:
+      return {
+        ...state,
+        tracks: action.payload,
+        updatingTracksData: false
+      };
+    case ADMIN_UPDATED_TRACK_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingTracksData: false
+      }; 
+
+    //****DELETE TRACKS**** */
+
+    case ADMIN_DELETED_TRACK_START:
+    return {
+      ...state,
+      tracks: action.payload
+    };
+      case ADMIN_DELETED_TRACK_SUCCESS:
+      return {
+        ...state,
+        tracks: action.payload
+      };
+    case ADMIN_DELETED_TRACK_FAILURE:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;
