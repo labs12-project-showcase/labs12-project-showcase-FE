@@ -48,7 +48,6 @@ class StudentProfile extends React.Component {
 			track,
 			profile_pic
 		} = this.props.studentProfile.profile;
-
 		const sameUser = id === this.props.loggedInProfile.id;
 		const profilePicture =
 			profile_pic ||
@@ -102,7 +101,7 @@ class StudentProfile extends React.Component {
 						</div>
 						<div className="header-boxes">
 							<AboutMe about={about} />
-							<Endorsements endorsements={endorsements || []} />
+							{endorsements !== undefined && endorsements.length > 0 && <Endorsements endorsements={endorsements} />}
 						</div>
 					</div>
 				</header>
