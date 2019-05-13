@@ -34,6 +34,19 @@ class AccountsTable extends React.Component {
         filter: true,
         sort: true,
       },
+      {
+        name: "",
+        options: {
+            customBodyRender: value => {
+                return (
+                    <div>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                );
+            }
+        }
+      }
     ]
 
     return (

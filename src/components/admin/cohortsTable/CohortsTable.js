@@ -29,6 +29,19 @@ class CohortsTable extends React.Component {
             );
           }
         }
+      },
+      {
+        name: "",
+        options: {
+            customBodyRender: value => {
+                return (
+                    <div>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                );
+            }
+        }
       }
     ]
 
