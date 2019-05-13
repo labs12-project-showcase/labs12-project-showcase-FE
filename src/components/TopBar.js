@@ -59,7 +59,7 @@ class TopBar extends Component {
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
 							<>
 								<button className="TopBar-login-btn" onClick={login}>
-									<i className="fas fa-user" />
+									Create an account / Sign in <i className="fas fa-user" />
 								</button>
 								{/* <button className="" onClick={adminLogin}>
                   Admin Login
@@ -68,7 +68,7 @@ class TopBar extends Component {
 						)}
 						{(this.state.isLoggedIn || renderLoggedIn) && (
 							<button className="TopBar-logout-btn" onClick={logout}>
-								<i className="fas fa-sign-out-alt" />
+								Sign Out <i className="fas fa-sign-out-alt" />
 							</button>
 						)}
 					</div>
@@ -106,28 +106,17 @@ class TopBar extends Component {
 							</nav>
 						</div>
 					)}
-				{(this.state.isLoggedIn || renderLoggedIn) &&
-					loggedInRole === 'staff' && (
-						<div className="subNav">
-							<nav>
-								<NavLink to="/admin/student-table">
-									Students
-								</NavLink>
-								<NavLink to="/admin/project-table">
-									Projects
-								</NavLink>
-								<NavLink to="/admin/account-table">
-									Accounts
-								</NavLink>
-								<NavLink to="/admin/track-table">
-									Tracks
-								</NavLink>
-								<NavLink to="/admin/cohort-table">
-									Cohorts
-								</NavLink>
-							</nav>
-						</div>
-					)}
+				{(this.state.isLoggedIn || renderLoggedIn) && loggedInRole === 'staff' && (
+					<div className="subNav">
+						<nav>
+							<NavLink to="/admin/student-table">Students</NavLink>
+							<NavLink to="/admin/project-table">Projects</NavLink>
+							<NavLink to="/admin/account-table">Accounts</NavLink>
+							<NavLink to="/admin/track-table">Tracks</NavLink>
+							<NavLink to="/admin/cohort-table">Cohorts</NavLink>
+						</nav>
+					</div>
+				)}
 			</div>
 		);
 	}
