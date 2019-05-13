@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+
 import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
 import NotApproved from "../notApproved/NotApproved";
@@ -24,7 +25,7 @@ const ProjectView = ({
 
   return (
     <div className="project-view">
-      {!projectData.approved ? <NotApproved /> : null}
+      <NotApproved approved={projectData.approved} />
       <header>
         <ProjectLeftHeader
           name={projectData.name}
