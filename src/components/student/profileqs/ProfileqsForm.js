@@ -18,7 +18,7 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
         dispatch(
           updateProfile({
             ...values,
-            desired_locations: desiredLocations ? desiredLocations.map(location => ({
+            desired_locations: desiredLocations.length ? desiredLocations.map(location => ({
               lat: location.value.lat,
               location: location.value.locationName,
               lon: location.value.lon
