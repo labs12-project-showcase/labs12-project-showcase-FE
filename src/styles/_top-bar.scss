@@ -31,10 +31,11 @@
 
 			.TopBar-login-btn,
 			.TopBar-logout-btn {
-				padding: 5px;
-				border-radius: 5px;
+				padding: 5px 5px 5px 10px;
 				border: none;
 				background: none;
+				color: darken(($lambdaRed), 22%);
+				@include box-align();
 
 				.fa-sign-out-alt,
 				.fa-user {
@@ -49,6 +50,7 @@
 				}
 
 				&:hover {
+					color: $lightcolor;
 					cursor: pointer;
 					background: darken(($lambdaRed), 10%);
 				}
