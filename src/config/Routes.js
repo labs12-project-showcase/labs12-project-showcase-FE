@@ -12,6 +12,7 @@ import Profileqs from "../components/student/profileqs/Profileqs";
 import ContactForm from "../components/student/contactForm/ContactForm";
 import StudentTable from "../components/admin/studentTable/StudentTable.js";
 import ProjectTable from "../components/admin/projectTable/ProjectTable";
+import AdminLogin from "../auth/AdminLogin.js";
 
 class Routes extends Component {
   handleAuth = ({ location }) => {
@@ -32,6 +33,7 @@ class Routes extends Component {
               return <Callback {...props} />;
             }}
           />
+          
           <Route exact path="/student/profile/:id" component={StudentProfile} />
           <PrivateRoute path="/profile-quick-start" component={Profileqs} />
           <PrivateRoute
@@ -46,6 +48,7 @@ class Routes extends Component {
           />
           <Route path="/admin/student-table" component={StudentTable} />
 					<Route path="/admin/project-table" component={ProjectTable} />
+          <Route path="/admin-login" component={AdminLogin} />
           <PrivateRoute
             exact
             path="/student/edit-project/:id"
