@@ -1,36 +1,36 @@
 .status-container {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	min-width: 35%;
-	margin-top: 50px;
-	@media (max-width: 600px) {
-		width: 100%;
-	}
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 50%;
+  margin-top: 50px;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 
-	h2 {
-		font-weight: 900;
-		margin-bottom: 24px;
-		font-size: 2.2rem;
-	}
+  h2 {
+    font-weight: 900;
+    margin-bottom: 24px;
+    font-size: 2.2rem;
+  }
 
-	.status-section {
-		display: flex;
-		line-height: 1.8;
-		color: $lambdaGray;
+  .status-section {
+    display: flex;
+    line-height: 1.8;
+    color: $lambdaGray;
 
-		ul {
-			margin-right: 2.8rem;
-			margin-bottom: 10px;
+    ul {
+      margin-right: 2.8rem;
+      margin-bottom: 10px;
 
-			li {
-				text-transform: capitalize;
-				margin-bottom: 3px;
-			}
-		}
+      li {
+        text-transform: capitalize;
+        margin-bottom: 3px;
+      }
+    }
 
-		div {
-			width: 48%;
-		}
-	}
+    div {
+      width: 48%;
+    }
+  }
 }
