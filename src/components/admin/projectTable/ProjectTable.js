@@ -68,7 +68,6 @@ class ProjectTable extends React.Component {
     return (
 
       <div className="tableContainer">
-      <button><Link to={`/admin/student-table`}>Student Table</Link></button>
         <MaterialDatatable
           title={"Admin Project Table"}
           columns={column}
