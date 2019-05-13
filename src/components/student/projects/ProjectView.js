@@ -7,6 +7,7 @@ import NotApproved from "../notApproved/NotApproved";
 import ProgressProject from "../progressProject/ProgressProject";
 import ProjectLinkButton from "./ProjectLinkButton";
 import ProjectStudents from "./ProjectStudents";
+import ProjectPitches from "./ProjectPitches";
 
 const ProjectView = ({
   project: { projectData },
@@ -65,14 +66,10 @@ const ProjectView = ({
       </header>
       <main>
         <div className="pitch-and-projectURL-container">
-          <div className="sales-pitch">
-            <h2>Customer Sales Pitch</h2>
-            <p>{projectData.customer_pitch || "Please add customer pitch"}</p>
-          </div>
-          <div className="sales-pitch">
-            <h2>Technical Sales Pitch</h2>
-            <p>{projectData.tech_pitch || "Please add tech pitch"}</p>
-          </div>
+          <ProjectPitches
+            tech_pitch={projectData.tech_pitch}
+            customer_pitch={projectData.customer_pitch}
+          />
           <div className="project-urls-container">
             <ProjectLinkButton
               link={projectData.github}
