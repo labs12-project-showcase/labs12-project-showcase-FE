@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchCohorts } from '../adminActions.js';
-import { Link } from "react-router-dom";
-// import CohortsTableRow from './CohortsTableRow';
 
 
 class CohortsTable extends React.Component {

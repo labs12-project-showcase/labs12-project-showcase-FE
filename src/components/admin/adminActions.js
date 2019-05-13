@@ -80,3 +80,24 @@ export const updateStudent = (id, info) => dispatch => {
       dispatch({ type: ADMIN_UPDATED_STUDENT_FAILURE, payload: err });
     });
 };
+
+
+export const ADMIN_FETCHED_COHORTS_START = "ADMIN_FETCHED_COHORTS_START";
+export const ADMIN_FETCHED_COHORTS_SUCCESS = "ADMIN_FETCHED_COHORTS_SUCCESS";
+export const ADMIN_FETCHED_COHORTS_FAILURE = "ADMIN_FETCHED_COHORTS_FAILURE";
+
+export const fetchCohorts = () => dispatch => {
+  dispatch({ type: ADMIN_FETCHED_COHORTS_START });
+  axiosAuth()
+    // .get(`http://localhost:5000/api/admin/students`)
+    .get(`${backendUrl}/api/admin/cohorts`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_FETCHED_COHORTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_FETCHED_COHORTS_FAILURE, payload: err });
+    });
+};
