@@ -12,7 +12,7 @@ import {
 class CohortsTable extends React.Component {
 
   componentDidMount() {
-    this.props.fetchCohorts();
+    this.props.getCohorts();
   }
 
   render() {
