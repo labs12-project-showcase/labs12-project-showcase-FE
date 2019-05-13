@@ -28,8 +28,10 @@ import {
 const initialState = {
   students: [],
   projects: [],
+  cohorts: [],
   updatingProjectData: false,
-  updatingStudentData: false
+  updatingStudentData: false,
+  updatingCohortsData: false
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -113,6 +115,78 @@ const adminReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         updatingStudentData: false
+      };
+    case ADMIN_FETCHED_COHORTS_START:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: true
+      };
+    case ADMIN_FETCHED_COHORTS_SUCCESS:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: false
+      };
+    case ADMIN_FETCHED_COHORTS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingCohortsData: false
+      };
+    case ADMIN_UPDATED_COHORT_START:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: true
+      };
+    case ADMIN_UPDATED_COHORT_SUCCESS:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: false
+      };
+    case ADMIN_UPDATED_COHORT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingCohortsData: false
+      };
+    case ADMIN_DELETED_COHORT_START:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: true
+      };
+    case ADMIN_DELETED_COHORT_SUCCESS:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: false
+      };
+    case ADMIN_DELETED_COHORT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingCohortsData: false
+      };
+    case ADMIN_ADDED_COHORT_START:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: true
+      };
+    case ADMIN_ADDED_COHORT_SUCCESS:
+      return {
+        ...state,
+        cohorts: action.payload,
+        updatingCohortsData: false
+      };
+    case ADMIN_ADDED_COHORT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingCohortsData: false
       };
     default:
       return state;
