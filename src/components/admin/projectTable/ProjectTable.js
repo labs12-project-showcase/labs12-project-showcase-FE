@@ -2,31 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { fetchProjects } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch";
 import { Link } from "react-router-dom";
 import ProjectTableRow from './ProjectTableRow';
+import ProjectApprovedButton from './ProjectApprovedButton.js';
 
 
 class ProjectTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-  };
-
-
-
-  //   handleChange(event) {
-  //     //console.log(event.target.value);
-  //     this.setState({
-  //         approved: event.target.value
-  //     })
-  // }
-
-  // checked = () => {
-  //   projects.approved === true return checked = true
-  // }
 
   componentDidMount() {
     this.props.fetchProjects();
@@ -53,7 +34,7 @@ class ProjectTable extends React.Component {
         }
       },
       {
-        name: "Type",
+        name: "Description",
         field: "short_description",
         filter: true,
         sort: true,
@@ -65,7 +46,6 @@ class ProjectTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
-            console.log(value);
             return (
               <ProjectTableRow value={value} />
             );
@@ -76,14 +56,9 @@ class ProjectTable extends React.Component {
         name: "Approved",
         field: "approved",
         options: {
-          customBodyRender: studentValue => {
+          customBodyRender: project => {
             return (
-              <Switch
-                onClick={(e) => { e.stopPropagation() }}
-                checked={this.state.checkedApproved}
-                // onChange={this.handleChange('checkedApproved')}
-                value="checkedApproved"
-              />
+              <ProjectApprovedButton project={project} />
             );
           }
         }
@@ -91,8 +66,9 @@ class ProjectTable extends React.Component {
     ]
 
     return (
+
       <div className="tableContainer">
-        {/* {console.log("approved??????", this.props.projects[0].approved)} */}
+      <button><Link to={`/admin/student-table`}>Student Table</Link></button>
         <MaterialDatatable
           title={"Admin Project Table"}
           columns={column}
@@ -105,7 +81,6 @@ class ProjectTable extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // ...state.projectTable,
     projects: state.admin.projects
   };
 };

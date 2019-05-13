@@ -9,6 +9,16 @@ td {
 .tableContainer {
 	justify-content: center;
 	min-height: 60vh;
+
+	a {
+		text-decoration: none;
+		color: $lambdaLightBlue;
+
+		&:visited {
+			text-decoration: none;
+			color: $lambdaLightBlue;
+		}
+	}
 }
 
 .MuiSwitch-switchBase-173 {
@@ -64,6 +74,9 @@ td {
 		}
 	}
 	.MuiListItemText-inset-233:first-child {
+		padding-left: 0px;
+	}
+	.MuiListItemText-inset-620:first-child {
 		padding-left: 0px;
 	}
 }

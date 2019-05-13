@@ -1,241 +1,304 @@
 .project-view {
-  .subNav {
-    padding: 10px 0;
+	.subNav {
+		padding: 10px 0;
 
-    .NavLinks-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+		.NavLinks-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 
-      .NavLinks-container-left {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        color: white;
+			.NavLinks-container-left {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				color: white;
 
-        .arrow-circle {
-          padding: 7px;
-          border-radius: 50%;
-          margin-right: 10px;
-          background-color: $lambdaRed;
-          cursor: pointer;
-        }
+				.arrow-circle {
+					padding: 7px;
+					border-radius: 50%;
+					margin-right: 10px;
+					background-color: $lambdaRed;
+					cursor: pointer;
+				}
 
-        .fa-arrow-left {
-          font-size: 2rem;
-          color: $lightcolor;
-        }
-      }
+				.fa-arrow-left {
+					font-size: 2rem;
+					color: $lightcolor;
+				}
+			}
 
-      .NavLinks-container-right {
-        .edit-project-btn {
-          margin-right: 25px;
-        }
+			.NavLinks-container-right {
+				.edit-project-btn {
+					margin-right: 25px;
+				}
 
-        .edit-profile-btn {
-          margin-right: 10px;
-        }
-      }
-    }
-  }
+				.edit-profile-btn {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
 
-  header {
-    @include box-align(center, flex-start);
-    max-width: 1024px;
-    width: 100%;
-    margin: 0 auto;
+	header {
+		@include box-align(space-between, flex-start);
+		max-width: 1200px;
+		width: 100%;
+		margin: 0 auto;
+		padding-top: 30px;
+		@media (max-width: 768px) {
+			@include box-align();
+			flex-direction: column;
+		}
+		.img-des {
+			max-width: 42%;
+			width: 100%;
+			height: 552px;
+			padding: 20px;
+			background-color: $lambdaDarkBlue;
+			@include box-align(center, flex-start);
+			flex-direction: column;
+			@media (max-width: 768px) {
+				order: 2;
+				padding: 20px;
+				max-width: 95%;
+				@include box-align();
+				height: auto;
+			}
 
-    .img-des {
-      max-width: 420px;
-      width: 100%;
-      height: 477px;
-      position: relative;
-      margin: 10px;
-      overflow: hidden;
-      background-color: $lambdaDarkBlue;
+			h1 {
+				font-size: 3.4rem;
+				font-weight: 700;
+				top: 110px;
+				padding: 10px;
+				color: $lightcolor;
+			}
 
-      img {
-        display: block;
-        width: auto;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 0;
-      }
+			h2 {
+				font-size: 1.6rem;
+				font-weight: 500;
+				padding: 10px;
+				margin-bottom: 30px;
+				line-height: 1.5;
+				color: $lightcolor;
+			}
 
-      h1 {
-        position: absolute;
-        z-index: 1;
-        font-size: 3.4rem;
-        font-weight: 700;
-        top: 110px;
-        padding: 30px;
-        color: $lightcolor;
-      }
+			a {
+				text-decoration: none;
+				background-color: $lightcolor;
+				color: $lambdaDarkBlue;
+				border: 2px solid $lightcolor;
+				margin: 10px;
+				font-size: 2.2rem;
+				padding: 20px;
+				cursor: pointer;
+				&:nth-last-child(1) {
+					background-color: $lambdaDarkBlue;
+					color: $lightcolor;
+					border: 2px solid $lightcolor;
 
-      h2 {
-        position: absolute;
-        z-index: 1;
-        font-size: 1.6rem;
-        font-weight: 500;
-        top: 160px;
-        padding: 30px;
-        color: $lightcolor;
-      }
+					&:hover {
+						background-color: $lightcolor;
+						color: $lambdaDarkBlue;
+					}
+				}
 
-      a {
-        position: absolute;
-        z-index: 1;
-        font-size: 3.4rem;
-        text-decoration: none;
-        background: $lambdaRed;
-        font-size: 1.6rem;
-        color: $lightcolor;
-        padding: 5px 10px;
-        bottom: 100px;
-        left: 20px;
-        cursor: pointer;
+				&:hover {
+					border: 2px solid $lightcolor;
+					color: $lightcolor;
+					background-color: $lambdaDarkBlue;
+				}
+			}
+		}
 
-        &:last-child {
-          bottom: 60px;
-        }
+		.media-display {
+			margin: 0 auto;
+			@include box-align();
+			max-width: 55%;
+			width: 100%;
+			@media (max-width: 768px) {
+				max-width: 100%;
+				flex-direction: column;
+			}
 
-        &:hover {
-          background-color: darken($lambdaRed, 10%);
-        }
-      }
-    }
+			.big-gallery {
+				width: 100%;
+				max-height: 352px;
+				max-width: 647px;
+				overflow: hidden;
+				img {
+					width: 100%;
+				}
+			}
+			.gallery-caption {
+				width: 100%;
+				padding: 0 6px;
+				p {
+					padding: 10px;
+					background-color: #fbf7f7;
+				}
+			}
 
-    .media-display {
-      @include box-align();
-      max-width: 560px;
-      width: 100%;
-      margin: 10px;
+			.img-one,
+			.img-two,
+			.img-three {
+				position: relative;
+				width: 32%;
+				margin: 4px auto;
+				height: 160px;
+				overflow: hidden;
+				border: 1px solid $newBorder;
+				cursor: pointer;
 
-      .big-gallery {
-        width: 100%;
-        max-width: 560px;
-      }
+				@media (max-width: 768px) {
+					width: 100%;
+					margin: 10px;
+					max-width: 300px;
+					height: 260px;
+				}
 
-      .img-one,
-      .img-two,
-      .img-three {
-        margin: 5px auto;
+				.capture-click {
+					// display: block;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+					// z-index: 0;
+				}
 
-        img {
-          width: 100%;
-          max-width: 180px;
-        }
-      }
+				img {
+					width: 100%;
+				}
+			}
 
-      .img-two {
-        margin: 5px;
-      }
-    }
-  }
+			.img-two {
+				margin: 5px;
+			}
+		}
+	}
 
-  main {
-    width: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 20px;
-    @include box-align();
+	main {
+		width: 100%;
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 20px 20px 50px;
+		@include box-align();
 
-    hr {
-      margin: 20px auto;
-      border: 1px solid $lambdaRed;
-      width: 100%;
-    }
+		hr {
+			margin: 20px auto;
+			border: 1px solid $lambdaRed;
+			width: 100%;
+		}
 
-    .pitch-and-projectURL-container {
-      display: flex;
-      flex-direction: column;
+		.pitch-and-projectURL-container {
+			@include box-align(center, flex-start);
 
-      .sales-pitch {
-        width: 100%;
-        max-width: 500px;
-        background-color: $lightcolor;
-        padding: 30px 20px;
-        margin: 30px auto;
+			@media (max-width: 768px) {
+				flex-direction: column;
+			}
 
-        h2 {
-          text-align: left;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-      }
+			.sales-pitch {
+				width: 100%;
+				max-width: 50%;
+				background-color: $lightcolor;
+				padding: 30px 20px;
+				margin: 30px auto;
 
-      .project-urls-container {
-        min-height: 100px;
-        @include box-align();
+				@media (max-width: 768px) {
+					max-width: 100%;
+				}
 
-        a {
-          text-decoration: none;
-          color: #ffffff;
-          padding: 10px;
-          margin: 5px;
-          background-color: $lambdaRed;
-          cursor: pointer;
+				h2 {
+					color: $lambdaTeal;
+					font-size: 2.2rem;
+					text-align: left;
+					font-weight: 700;
+					margin-bottom: 24px;
+					letter-spacing: 1.7px;
+				}
+				p {
+					line-height: 1.5;
+					color: $lambdaGray;
+				}
+			}
 
-          &:hover {
-            background-color: darken($lambdaRed, 10%);
-          }
-        }
+			.project-urls-container {
+				min-height: 100px;
+				@include box-align();
 
-        .github-chip {
-          border-radius: 50%;
+				a {
+					text-decoration: none;
+					color: $lambdaTeal;
+					margin: 5px;
+					background-color: $lightcolor;
+					cursor: pointer;
+					border: 1px solid $newBorder;
+					padding: 25px 28px;
 
-          .fa-github {
-            font-size: 3rem;
-            padding: 1px;
-          }
-        }
-      }
-    }
+					&:hover {
+						background-color: $lambdaTeal;
+						color: $lightcolor;
+						border: 1px solid $lightcolor;
+					}
+				}
 
-    h2 {
-      width: 100%;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 30px;
-    }
+				.github-chip {
+					// border-radius: 50%;
 
-    .students-names {
-      @include box-align();
+					.fa-github {
+						font-size: 1.8rem;
+						// padding: 1px;
+					}
+				}
+			}
+		}
 
-      .s-link {
-        color: black;
-        text-decoration: none;
-        margin: 20px;
-        @include box-align();
-        flex-direction: column;
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 3.9rem;
+			font-weight: 900;
+			margin-top: 20px;
+			margin-bottom: 30px;
+			letter-spacing: 2.7px;
+		}
 
-        .s-pic {
-          height: 150px;
-          width: 150px;
-          overflow: hidden;
-          border-radius: 50%;
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
+		.students-names {
+			width: 100%;
+			margin-bottom: 50px;
+			@include box-align();
 
-        p {
-          font-weight: 700;
-          text-align: center;
-          padding: 10px;
-        }
+			.s-link {
+				color: black;
+				text-decoration: none;
+				margin: 20px;
+				@include box-align();
+				flex-direction: column;
 
-        &:visited {
-          text-decoration: none;
-          color: black;
-        }
-      }
-    }
-  }
+				.s-pic {
+					height: 150px;
+					width: 150px;
+					overflow: hidden;
+					border-radius: 50%;
+					img {
+						width: 100%;
+						height: auto;
+					}
+				}
+
+				p {
+					font-weight: 700;
+					text-align: center;
+					padding: 10px;
+				}
+
+				&:visited {
+					text-decoration: none;
+					color: black;
+				}
+			}
+		}
+	}
 }

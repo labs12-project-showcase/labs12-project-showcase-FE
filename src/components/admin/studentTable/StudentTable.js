@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchStudents } from '../adminActions.js';
-import Switch from "@material-ui/core/Switch";
+import { fetchStudents, updateStudent } from '../adminActions.js';
 import { Link } from "react-router-dom";
+import GraduatedButton from "./StudentGraduatedButton";
+import HiredButton from './StudentHiredButton';
+import EndorsedButton from './StudentEndorsedButton';
 
 class StudentTable extends React.Component {
   constructor(props) {
@@ -33,15 +35,14 @@ class StudentTable extends React.Component {
             filter: true,
             sort: true,
             options: {
-              customBodyRender: studentValue => {
-               console.log('custom body render studentValue', studentValue);
+              customBodyRender: student => {
                return (
                 <Link
-                 to={`/student/profile/${studentValue.id}`}
+                 to={`/student/profile/${student.id}`}
                  onClick={ (e) => {
                   e.stopPropagation();
                  }}
-                >{studentValue.name}</Link>
+                >{student.name}</Link>
                );
               }
              }
@@ -62,13 +63,9 @@ class StudentTable extends React.Component {
         name: "Graduated",
         field: "graduated",
         options: {
-          customBodyRender: value => {
+          customBodyRender: student => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <GraduatedButton student={student}/>
             );
           }
         }
@@ -77,13 +74,9 @@ class StudentTable extends React.Component {
         name: "Hired",
         field: "hired",
         options: {
-          customBodyRender: studentValue => {
+          customBodyRender: student => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <HiredButton student={student}/>
             );
           }
         }
@@ -92,13 +85,9 @@ class StudentTable extends React.Component {
         name: "Endorsed",
         field: "endorsed",
         options: {
-          customBodyRender: studentValue => {
+          customBodyRender: student => {
             return (
-              <Switch
-              onClick= { (e) =>
-              {e.stopPropagation()}
-              }
-              />
+              <EndorsedButton student={student}/>
             );
           }
         }
@@ -107,6 +96,7 @@ class StudentTable extends React.Component {
     
     return ( 
       <div className="tableContainer">
+      <button><Link to={`/admin/project-table`}>Project Table</Link></button>
         <MaterialDatatable
           title={"Admin Student Table"}
           columns={column}
@@ -118,10 +108,9 @@ class StudentTable extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("finding state", state)
   return {
     students: state.admin.students
   };
 };
 
-export default connect(mapStateToProps, { fetchStudents })(StudentTable);
+export default connect(mapStateToProps, { fetchStudents, updateStudent })(StudentTable);

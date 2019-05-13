@@ -5,6 +5,7 @@ import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
 import NotApproved from "../notApproved/NotApproved";
 import ProgressProject from "../progressProject/ProgressProject";
+import MediaGallery from "./MediaGallery";
 import ProjectLinkButton from "./ProjectLinkButton";
 import ProjectStudents from "./ProjectStudents";
 import ProjectPitches from "./ProjectPitches";
@@ -12,8 +13,6 @@ import ProjectPitches from "./ProjectPitches";
 const ProjectView = ({
   project: { projectData },
   dispatch,
-  history,
-  curAccount,
   match: {
     params: { id }
   }
@@ -44,25 +43,10 @@ const ProjectView = ({
             Read the Story on M
           </a>
         </div>
-        <div className="media-display">
-          <div className="big-gallery">
-            <iframe
-              title="project preview video"
-              width="100%"
-              height="350"
-              src={projectData.youtube_url}
-              frameBorder="0"
-              allowFullScreen
-            />
-          </div>
-          {projectData.project_media && projectData.project_media.length
-            ? projectData.project_media.slice(0, 3).map(media => (
-                <div className="img-one" key={media}>
-                  <img src={media} alt="Project" />
-                </div>
-              ))
-            : null}
-        </div>
+        <MediaGallery
+          imageUrls={projectData.project_media}
+          rawYouTubeUrl={projectData.youtube_url}
+        />
       </header>
       <main>
         <div className="pitch-and-projectURL-container">
@@ -107,3 +91,49 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(connect(mapStateToProps)(ProjectView));
+
+// return (
+//   <div className="project-view">
+//     {!projectData.approved ? <NotApproved /> : null}
+//     <header>
+//       <div className="img-des">
+//         <h1>{projectData.name}</h1>
+//         <h2>{projectData.short_description}</h2>
+//         <a
+//           href={projectData.website}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Try it out!
+//         </a>
+//         <a
+//           href={projectData.medium}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Read the Story on M
+//         </a>
+//       </div>
+//       <div className="media-display">
+//         <div className="big-gallery">
+//           <iframe
+//             title="project preview video"
+//             width="100%"
+//             height="350"
+//             src={projectData.youtube_url}
+//             frameBorder="0"
+//             allowFullScreen
+//           />
+//         </div>
+//         {projectData.project_media && projectData.project_media.length
+//           ? projectData.project_media.slice(0, 3).map(media => (
+//               <div className="img-one" key={media}>
+//                 <img src={media} alt="Project" />
+//               </div>
+//             ))
+//           : null}
+//       </div>
+//     </header>
+
+//   </div>
+// );
