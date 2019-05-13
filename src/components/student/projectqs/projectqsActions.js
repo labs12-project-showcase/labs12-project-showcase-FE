@@ -56,7 +56,7 @@ export const createProject = formValues => dispatch => {
   dispatch({ type: CREATE_PROJECT_START });
   return new Promise((resolve, reject) => {
     axiosAuth()
-      .post(`${backendUrl}/api/projects`, removeEmptyValues(send))
+      .post(`${backendUrl}/api/projects`, send)
       .then(res => {
         dispatch({
           type: CREATE_PROJECT_SUCCESS,
