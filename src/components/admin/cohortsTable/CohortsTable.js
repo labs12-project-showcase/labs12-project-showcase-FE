@@ -1,64 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchProjects } from '../adminActions.js';
+import { fetchCohorts } from '../adminActions.js';
 import { Link } from "react-router-dom";
-import CohortsTableRow from './ProjectTableRow';
-import ProjectApprovedButton from './ProjectApprovedButton.js';
+// import CohortsTableRow from './CohortsTableRow';
 
 
-class ProjectTable extends React.Component {
+class CohortsTable extends React.Component {
 
   componentDidMount() {
-    this.props.fetchProjects();
+    this.props.fetchCohorts();
   }
 
   render() {
     const column = [
       {
-        name: "Title",
-        field: "name",
+        name: "Cohort",
+        field: "cohort_name",
         filter: true,
         sort: true,
         options: {
           customBodyRender: value => {
             return (
-              <Link
-                to={`/student/project-view/${value.id}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >{value.name}</Link>
-            );
-          }
-        }
-      },
-      {
-        name: "Description",
-        field: "short_description",
-        filter: true,
-        sort: true,
-      },
-      {
-        name: "Contributors",
-        field: "students",
-        filter: true,
-        sort: true,
-        options: {
-          customBodyRender: value => {
-            return (
-              <ProjectTableRow value={value} />
-            );
-          }
-        }
-      },
-      {
-        name: "Approved",
-        field: "approved",
-        options: {
-          customBodyRender: project => {
-            return (
-              <ProjectApprovedButton project={project} />
+              <p>{value.cohort_name}</p>
             );
           }
         }
@@ -69,9 +33,9 @@ class ProjectTable extends React.Component {
 
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Project Table"}
+          title={"Admin Cohorts Table"}
           columns={column}
-          data={this.props.projects}
+          data={this.props.cohorts}
         />
       </div>
     );
@@ -80,8 +44,8 @@ class ProjectTable extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    projects: state.admin.projects
+    cohorts: state.admin.cohorts
   };
 };
 
-export default connect(mapStateToProps, { fetchProjects })(CohortsTable);
+export default connect(mapStateToProps, { fetchCohorts })(CohortsTable);
