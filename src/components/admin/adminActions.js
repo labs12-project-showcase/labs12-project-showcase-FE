@@ -86,10 +86,10 @@ export const ADMIN_FETCHED_COHORTS_START = "ADMIN_FETCHED_COHORTS_START";
 export const ADMIN_FETCHED_COHORTS_SUCCESS = "ADMIN_FETCHED_COHORTS_SUCCESS";
 export const ADMIN_FETCHED_COHORTS_FAILURE = "ADMIN_FETCHED_COHORTS_FAILURE";
 
-export const fetchCohorts = () => dispatch => {
+export const getCohorts = () => dispatch => {
   dispatch({ type: ADMIN_FETCHED_COHORTS_START });
   axiosAuth()
-    // .get(`http://localhost:5000/api/admin/students`)
+    // .get(`http://localhost:5000/api/admin/cohorts`)
     .get(`${backendUrl}/api/admin/cohorts`)
     .then(res => {
       dispatch({
@@ -99,5 +99,65 @@ export const fetchCohorts = () => dispatch => {
     })
     .catch(err => {
       dispatch({ type: ADMIN_FETCHED_COHORTS_FAILURE, payload: err });
+    });
+};
+
+export const ADMIN_UPDATED_COHORT_START = "ADMIN_UPDATED_COHORT_START";
+export const ADMIN_UPDATED_COHORT_SUCCESS = "ADMIN_UPDATED_COHORT_SUCCESS";
+export const ADMIN_UPDATED_COHORT_FAILURE = "ADMIN_UPDATED_COHORT_FAILURE";
+
+export const updateCohort = (id, info) => dispatch => {
+  dispatch({ type: ADMIN_UPDATED_COHORT_START });
+  axiosAuth()
+    // .put(`http://localhost:5000/api/admin/cohorts/${id}`, info)
+    .put(`${backendUrl}/api/admin/cohorts/${id}`, info)
+    .then(res => {
+      dispatch({
+        type: ADMIN_UPDATED_COHORT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_UPDATED_COHORT_FAILURE, payload: err });
+    });
+};
+
+export const ADMIN_DELETED_COHORT_START = "ADMIN_DELETED_COHORT_START";
+export const ADMIN_DELETED_COHORT_SUCCESS = "ADMIN_DELETED_COHORT_SUCCESS";
+export const ADMIN_DELETED_COHORT_FAILURE = "ADMIN_DELETED_COHORT_FAILURE";
+
+export const deleteCohort = (id) => dispatch => {
+  dispatch({ type: ADMIN_DELETED_COHORT_START });
+  axiosAuth()
+    // .put(`http://localhost:5000/api/admin/cohorts/${id}`, info)
+    .put(`${backendUrl}/api/admin/cohorts/${id}`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_DELETED_COHORT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_DELETED_COHORT_FAILURE, payload: err });
+    });
+};
+
+export const ADMIN_ADDED_COHORT_START = "ADMIN_ADDED_COHORT_START";
+export const ADMIN_ADDED_COHORT_SUCCESS = "ADMIN_ADDED_COHORT_SUCCESS";
+export const ADMIN_ADDED_COHORT_FAILURE = "ADMIN_ADDED_COHORT_FAILURE";
+
+export const addCohort = (info) => dispatch => {
+  dispatch({ type: ADMIN_ADDED_COHORT_START });
+  axiosAuth()
+    // .put(`http://localhost:5000/api/admin/cohorts`, info)
+    .put(`${backendUrl}/api/admin/cohorts`, info)
+    .then(res => {
+      dispatch({
+        type: ADMIN_ADDED_COHORT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_ADDED_COHORT_FAILURE, payload: err });
     });
 };

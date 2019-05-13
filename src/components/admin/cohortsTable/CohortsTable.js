@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchCohorts } from '../adminActions.js';
+import { 
+    getCohorts,
+    updateCohort,
+    deleteCohort,
+    addCohort 
+} from '../adminActions.js';
 
 
 class CohortsTable extends React.Component {
@@ -46,4 +51,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCohorts })(CohortsTable);
+export default connect(mapStateToProps, { 
+    getCohorts,
+    updateCohort,
+    deleteCohort,
+    addCohort 
+})(CohortsTable);
