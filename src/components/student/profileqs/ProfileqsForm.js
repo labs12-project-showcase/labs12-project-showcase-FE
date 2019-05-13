@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Formik } from 'formik';
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Formik } from "formik";
 
-import { ProfileQsSchema, FormSchema } from './ProfileqsFormSchema';
-import { updateProfile } from './profileqsActions';
+import { ProfileQsSchema, FormSchema } from "./ProfileqsFormSchema";
+import { updateProfile } from "./profileqsActions";
 
 const ProfileqsForm = ({ dispatch, ...props }) => {
   const [desiredLocations, setDesiredLocations] = useState([]);
@@ -18,11 +18,13 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
         dispatch(
           updateProfile({
             ...values,
-            desired_locations: desiredLocations ? desiredLocations.map(location => ({
-              lat: location.value.lat,
-              location: location.value.locationName,
-              lon: location.value.lon
-            })) : [null],
+            desired_locations: desiredLocations
+              ? desiredLocations.map(location => ({
+                  lat: location.value.lat,
+                  location: location.value.locationName,
+                  lon: location.value.lon
+                }))
+              : [null],
             projects: projects.map(proj => ({
               project_id: proj.id,
               student_id: props.initialFormValues.id

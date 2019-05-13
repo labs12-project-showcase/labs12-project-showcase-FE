@@ -60,12 +60,12 @@ const ProjectView = ({
             <ProjectLinkButton link={projectData.design_link} text="Design" />
           </div>
         </div>
-        <ProgressProject />
         <hr />
         <ProjectStudents students={projectData.students} />
         <hr />
         <ProjectSkills projectSkills={projectData.project_skills} />
       </main>
+      <ProgressProject project={projectData} />
     </div>
   );
 };
