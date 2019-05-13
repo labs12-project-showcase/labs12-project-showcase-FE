@@ -11,44 +11,44 @@ import {
   UPLOAD_PROFILE_PICTURE_FAILURE,
   UPLOAD_PROFILE_PICTURE_START,
   UPLOAD_PROFILE_PICTURE_SUCCESS
-} from './profileqsActions.js';
+} from "./profileqsActions.js";
 
 const initialState = {
   dataSource: null,
   error: null,
   gettingProfileData: false,
   profileData: {
-    about: '',
-    acclaim: '',
+    about: "",
+    acclaim: "",
     account_id: null,
     approved: false,
     cohort_id: null,
     cohort_options: [],
-    cohort_name: '',
+    cohort_name: "",
     desired_locations: [],
-    desired_title: '',
+    desired_title: "",
     endorsements: [],
     exists: false,
-    github: '',
+    github: "",
     graduated: false,
     hired: false,
     hobbies: [],
     id: null,
     lat: null,
-    linkedin: '',
-    location: '',
+    linkedin: "",
+    location: "",
     lon: null,
-    name: '',
-    profile_pic: '',
+    name: "",
+    profile_pic: "",
     projects: [],
     skills: [],
     top_projects: [],
     top_skills: [],
-    track: '',
+    track: "",
     track_id: null,
     track_options: [],
-    twitter: '',
-    website: ''
+    twitter: "",
+    website: ""
   },
   updatingProfileData: false
 };
