@@ -21,14 +21,19 @@ class AccountsTable extends React.Component {
         field: "name",
         filter: true,
         sort: true,
-        options: {
-          customBodyRender: value => {
-            return (
-              <p>{value.name}</p>
-            );
-          }
-        }
-      }
+      },
+      {
+        name: "Email",
+        field: "email",
+        filter: true,
+        sort: true,
+      },
+      {
+        name: "Role",
+        field: "role_id",
+        filter: true,
+        sort: true,
+      },
     ]
 
     return (

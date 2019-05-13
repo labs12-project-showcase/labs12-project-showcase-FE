@@ -13,6 +13,7 @@ import ContactForm from "../components/student/contactForm/ContactForm";
 import StudentsTable from "../components/admin/studentsTable/StudentsTable";
 import ProjectsTable from "../components/admin/projectsTable/ProjectsTable";
 import CohortsTable from "../components/admin/cohortsTable/CohortsTable";
+import AccountsTable from "../components/admin/accountsTable/AccountsTable";
 import AdminLogin from "../auth/AdminLogin.js";
 import TracksTable from "../components/admin/tracksTable/TracksTable";
 
@@ -52,6 +53,7 @@ class Routes extends Component {
 					<Route path="/admin/projects-table" component={ProjectsTable} />
           <Route path="/admin/cohorts-table" component={CohortsTable} />
           <Route path="/admin/tracks-table" component={TracksTable} />
+          <Route path="/admin/accounts-table" component={AccountsTable} />
           <Route path="/admin-login" component={AdminLogin} />
           <PrivateRoute
             exact

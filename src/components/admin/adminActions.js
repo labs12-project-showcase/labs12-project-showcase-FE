@@ -249,3 +249,72 @@ export const deleteTrack = (id) => dispatch => {
       dispatch({ type: ADMIN_DELETED_TRACK_FAILURE, payload: err });
     });
 };
+
+//******************************ACCOUNTS TABLE ACTIONS + ACTION TYPES************************** */
+
+//****FETCHED ACCOUNTS**** */
+
+
+export const ADMIN_FETCHED_ACCOUNTS_START = "ADMIN_FETCHED_ACCOUNTS_START";
+export const ADMIN_FETCHED_ACCOUNTS_SUCCESS = "ADMIN_FETCHED_ACCOUNTS_SUCCESS";
+export const ADMIN_FETCHED_ACCOUNTS_FAILURE = "ADMIN_FETCHED_ACCOUNTS_FAILURE";
+
+export const getAccounts = () => dispatch => {
+  dispatch({ type: ADMIN_FETCHED_ACCOUNTS_START });
+  axiosAuth()
+    // .get(`http://localhost:5000/api/admin/accounts`)
+    .get(`${backendUrl}/api/admin/accounts`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_FETCHED_ACCOUNTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_FETCHED_ACCOUNTS_FAILURE, payload: err });
+    });
+};
+
+//****UPDATED ACCOUNTS**** */
+
+export const ADMIN_UPDATED_ACCOUNT_START = "ADMIN_UPDATED_ACCOUNT_START";
+export const ADMIN_UPDATED_ACCOUNT_SUCCESS = "ADMIN_UPDATED_ACCOUNT_SUCCESS";
+export const ADMIN_UPDATED_ACCOUNT_FAILURE = "ADMIN_UPDATED_ACCOUNT_FAILURE";
+
+export const updateAccount = (id, info) => dispatch => {
+  dispatch({ type: ADMIN_UPDATED_ACCOUNT_START });
+  axiosAuth()
+    // .put(`http://localhost:5000/api/admin/accounts/${id}`, info)
+    .put(`${backendUrl}/api/admin/accounts/${id}`, info)
+    .then(res => {
+      dispatch({
+        type: ADMIN_UPDATED_ACCOUNT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_UPDATED_ACCOUNT_FAILURE, payload: err });
+    });
+};
+
+//****DELETED ACCOUNT**** */
+
+export const ADMIN_DELETED_ACCOUNT_START = "ADMIN_DELETED_ACCOUNT_START";
+export const ADMIN_DELETED_ACCOUNT_SUCCESS = "ADMIN_DELETED_ACCOUNT_SUCCESS";
+export const ADMIN_DELETED_ACCOUNT_FAILURE = "ADMIN_DELETED_ACCOUNT_FAILURE";
+
+export const deleteAccount = (id) => dispatch => {
+  dispatch({ type: ADMIN_DELETED_ACCOUNT_START });
+  axiosAuth()
+    // .put(`http://localhost:5000/api/admin/accounts/${id}`, info)
+    .put(`${backendUrl}/api/admin/accounts/${id}`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_DELETED_ACCOUNT_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_DELETED_ACCOUNT_FAILURE, payload: err });
+    });
+};

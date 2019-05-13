@@ -35,14 +35,26 @@ import {
   ADMIN_UPDATED_TRACK_FAILURE,
   ADMIN_DELETED_TRACK_START,
   ADMIN_DELETED_TRACK_SUCCESS,
-  ADMIN_DELETED_TRACK_FAILURE
+  ADMIN_DELETED_TRACK_FAILURE,
+  //****COHORTS ACTION TYPES**** */
+  ADMIN_FETCHED_ACCOUNTS_START,
+  ADMIN_FETCHED_ACCOUNTS_SUCCESS,
+  ADMIN_FETCHED_ACCOUNTS_FAILURE,
+  ADMIN_DELETED_ACCOUNT_START,
+  ADMIN_DELETED_ACCOUNT_SUCCESS,
+  ADMIN_DELETED_ACCOUNT_FAILURE,
+  ADMIN_UPDATED_ACCOUNT_START,
+  ADMIN_UPDATED_ACCOUNT_SUCCESS,
+  ADMIN_UPDATED_ACCOUNT_FAILURE,
 } from "./adminActions";
 
 const initialState = {
+  accounts: [],
   cohorts: [],
   projects: [],
   students: [],
   tracks:[],
+  updatingAccountsData: false,
   updatingCohortsData: false,
   updatingProjectData: false,
   updatingStudentData: false,
@@ -102,7 +114,7 @@ const adminReducer = (state = initialState, action) => {
       
       //******************************STUDENT TABLE REDUCERS************************** */
 
-      //****FETHCED STUDENTS**** */
+      //****FETCHED STUDENTS**** */
 
       case ADMIN_FETCHED_STUDENTS_START:
         return {
@@ -150,24 +162,21 @@ const adminReducer = (state = initialState, action) => {
 
 //******************************COHORTS TABLE REDUCERS************************** */
 
-    //****FETHCED COHORTS**** */
+    //****FETCHED COHORTS**** */
     case ADMIN_FETCHED_COHORTS_START:
       return {
         ...state,
-        cohorts: action.payload,
-        updatingCohortsData: true
+        cohorts: action.payload
       };
     case ADMIN_FETCHED_COHORTS_SUCCESS:
       return {
         ...state,
-        cohorts: action.payload,
-        updatingCohortsData: false
+        cohorts: action.payload
       };
     case ADMIN_FETCHED_COHORTS_FAILURE:
       return {
         ...state,
-        error: action.payload,
-        updatingCohortsData: false
+        error: action.payload
       };
     
     //****UPDATED COHORTS**** */
@@ -290,6 +299,67 @@ const adminReducer = (state = initialState, action) => {
         ...state,
         error: action.payload
       };
+
+      //******************************ACCOUNTS TABLE REDUCERS************************** */
+
+    //****FETCHED ACCOUNTS**** */
+    case ADMIN_FETCHED_ACCOUNTS_START:
+    return {
+      ...state,
+      accounts: action.payload
+    };
+  case ADMIN_FETCHED_ACCOUNTS_SUCCESS:
+    return {
+      ...state,
+      accounts: action.payload
+    };
+  case ADMIN_FETCHED_ACCOUNTS_FAILURE:
+    return {
+      ...state,
+      error: action.payload
+    };
+  
+  //****UPDATED ACCOUNT**** */
+
+  case ADMIN_UPDATED_ACCOUNT_START:
+    return {
+      ...state,
+      accounts: action.payload,
+      updatingAccountsData: true
+    };
+  case ADMIN_UPDATED_ACCOUNT_SUCCESS:
+    return {
+      ...state,
+      accounts: action.payload,
+      updatingAccountsData: false
+    };
+  case ADMIN_UPDATED_ACCOUNT_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+      updatingAccountsData: false
+    };
+
+  //****DELETED ACCOUNT**** */
+
+  case ADMIN_DELETED_ACCOUNT_START:
+    return {
+      ...state,
+      accounts: action.payload,
+      updatingAccountsData: true
+    };
+  case ADMIN_DELETED_ACCOUNT_SUCCESS:
+    return {
+      ...state,
+      accounts: action.payload,
+      updatingAccountsData: false
+    };
+  case ADMIN_DELETED_ACCOUNT_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+      updatingAccountsData: false
+    };
     default:
       return state;
   }
