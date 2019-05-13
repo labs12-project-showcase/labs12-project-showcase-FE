@@ -64,10 +64,7 @@ const ProjectView = ({
         <hr />
         <ProjectStudents students={projectData.students} />
         <hr />
-        <div className="project-skills">
-          <h2>Technical Architecture </h2>
-          <ProjectSkills projectSkills={projectData.project_skills} />
-        </div>
+        <ProjectSkills projectSkills={projectData.project_skills} />
       </main>
     </div>
   );
