@@ -9,16 +9,21 @@ const ProjectSkills = ({ projectSkills }) => {
     ));
 
   return (
-    <div className="projectSkills-container">
-      <section className="projectSkills">
-        <ul>
-          {projectSkills && projectSkills.length ? (
-            map(projectSkills)
-          ) : (
-            <p>Please add some technologies!</p>
-          )}
-        </ul>
-      </section>
+    <div className="project-skills">
+      <h2>Technical Architecture </h2>
+      <div className="status-skills">
+        <div className="projectSkills-container">
+          <section className="projectSkills">
+            <ul>
+              {projectSkills && projectSkills.length ? (
+                map(projectSkills)
+              ) : (
+                <p>Please add some technologies!</p>
+              )}
+            </ul>
+          </section>
+        </div>
+      </div>
     </div>
   );
 };
