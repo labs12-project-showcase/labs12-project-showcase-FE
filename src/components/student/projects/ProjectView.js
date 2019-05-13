@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
 import NotApproved from "../notApproved/NotApproved";
 import ProgressProject from "../progressProject/ProgressProject";
 import ProjectLinkButton from "./ProjectLinkButton";
+import ProjectStudents from "./ProjectStudents";
 
 const ProjectView = ({
   project: { projectData },
@@ -88,32 +89,13 @@ const ProjectView = ({
             <ProjectLinkButton link={projectData.design_link} text="Design" />
           </div>
         </div>
-        {/* {sameUser && <Progress />} */}
         <ProgressProject />
         <hr />
-        <h2>Who Built This?</h2>
-        <div className="students-names">
-          {projectData.students
-            ? projectData.students.map(student => (
-                <Link
-                  to={`/student/profile/${student.student_id}`}
-                  key={student.name}
-                  className="s-link"
-                >
-                  <div className="s-pic">
-                    <img src={student.profile_pic} alt={student.name} />
-                  </div>
-                  <p>{student.name}</p>
-                </Link>
-              ))
-            : "Loading..."}
-        </div>
+        <ProjectStudents students={projectData.students} />
         <hr />
         <div className="project-skills">
           <h2>Technical Architecture </h2>
-          <div className="status-skills">
-            <ProjectSkills projectSkills={projectData.project_skills} />
-          </div>
+          <ProjectSkills projectSkills={projectData.project_skills} />
         </div>
       </main>
     </div>
