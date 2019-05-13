@@ -16,12 +16,16 @@ const EditImage = props => {
         props.initialImageList.map(item => ({ file: null, url: item }))
       );
     }
-    // if no default image and githubLink, load that
-    if (!imageList && props.githubLink) {
-      console.log(imageUrlInput);
+  }, [props.initialImageList]);
+  // console.log('imageList: ', imageList);
+
+	// Pre-populate the `Add URL` <input> with suggestedUrl
+  useEffect(() => {
+    console.log('useEffect is setting the imageUrlInput');
+    if (imageUrlInput.current && props.suggestedUrl) {
+      imageUrlInput.current.defaultValue = props.suggestedUrl;
     }
-  }, [props.initialImageList, imageList, props.githubLink]);
-  console.log('imageList: ', imageList);
+  }, [imageUrlInput, props.suggestedUrl]);
 
   function clearErrors() {
     setBadFileTypeList([]);
@@ -198,7 +202,6 @@ const EditImage = props => {
   function renderImagePreview() {
     if (!imageList.length && props.placeholder) {
       return (
-        // <div className="image-preview-wrapper">
         <div className="image-preview-container">
           <img
             src={props.placeholder}
@@ -206,7 +209,6 @@ const EditImage = props => {
             alt="placeholder"
           />
         </div>
-        // </div>
       );
     }
     return (
@@ -271,7 +273,8 @@ const EditImage = props => {
     );
   }
 
-  // not sure exactly what this does yet. need to test.
+	// `fileInputElement` is hidden, so clicking the visible button
+	// fires the click on `fileInputElement`
   function triggerFileUpload() {
     fileInputElement.current.click();
   }
@@ -292,8 +295,7 @@ EditImage.defaultProps = {
   containerClassName: 'edit-image-container',
   errorClass: '',
   fileSizeError: ' file size is too big',
-	fileTypeError: ' is not a supported file extension',
-	githubLink: '',
+  fileTypeError: ' is not a supported file extension',
   initialImageList: [],
   inputElementName: '',
   label: 'Max file size: 5mb, accepted: .jpg, .png',
@@ -306,6 +308,7 @@ EditImage.defaultProps = {
   onUrlAdd: () => {},
   placeholder: null,
   singleImage: true,
+  suggestedUrl: '',
   uploadButtonText: 'Upload files',
   uploadButtonType: 'button',
   withLabel: true,
