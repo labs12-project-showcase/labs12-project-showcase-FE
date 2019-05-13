@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
+const MediaGallery = ({ defaultYouTubeUrl, imageUrls, rawYouTubeUrl }) => {
 	// manipulate YouTube URL if necessary
 	const [embedYouTubeUrl, setEmbedYouTubeUrl] = useState('');
 	useEffect(() => {
@@ -27,12 +27,12 @@ const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
 		}
 	}, [rawYouTubeUrl]);
 
-	const defaultYouTubeVideo = (
+	const defaultYouTubeVideo = useRef(
 		<iframe
 			title="project preview video"
 			// width="100%"
 			// height="350"
-			src={`https://www.youtube.com/embed/gLdXxFS8BV4?autoplay=0&showinfo=0&controls=0`}
+			src={defaultYouTubeUrl}
 			frameBorder="0"
 			allowFullScreen
 		/>
@@ -60,11 +60,9 @@ const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
 		if (imageUrls && imageUrls[0]) {
 			let copy = Array.from(imageUrls);
 			// pull first three URLs from `copy`
-			// then create `<div>`s from them
+			// then create `<img>`s from them
 			arr = copy.splice(0, 3).map(item => (
-				// <div className="img-one" key={item}>
 				<img src={item} alt="Project" />
-				// </div>
 			));
 		}
 		// place YouTube embed contain at beginning of list, if exists
@@ -80,9 +78,11 @@ const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
 				/>
 			);
 			arr.unshift(youTubeContainer);
+		} else if (defaultYouTubeUrl) {
+			arr.unshift(defaultYouTubeVideo.current);
 		}
 		setMediaList(arr);
-	}, [embedYouTubeUrl, imageUrls]);
+	}, [defaultYouTubeVideo, defaultYouTubeUrl, embedYouTubeUrl, imageUrls]);
 
 	const smallGallery = mediaList
 		.slice(1) // index 0 is in the `.big-gallery` div
@@ -107,5 +107,9 @@ const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
 		</div>
 	);
 };
+
+MediaGallery.defaultProps = {
+	defaultYouTubeUrl: ''
+}
 
 export default MediaGallery;
