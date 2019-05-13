@@ -9,6 +9,7 @@ import MediaGallery from "./MediaGallery";
 import ProjectLinkButton from "./ProjectLinkButton";
 import ProjectStudents from "./ProjectStudents";
 import ProjectPitches from "./ProjectPitches";
+import ProjectLeftHeader from "./ProjectLeftHeader";
 
 const ProjectView = ({
   project: { projectData },
@@ -25,24 +26,12 @@ const ProjectView = ({
     <div className="project-view">
       {!projectData.approved ? <NotApproved /> : null}
       <header>
-        <div className="img-des">
-          <h1>{projectData.name}</h1>
-          <h2>{projectData.short_description}</h2>
-          <a
-            href={projectData.website}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Try it out!
-          </a>
-          <a
-            href={projectData.medium}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read the Story on M
-          </a>
-        </div>
+        <ProjectLeftHeader
+          name={projectData.name}
+          medium={projectData.medium}
+          website={projectData.website}
+          short_description={projectData.short_description}
+        />
         <MediaGallery
           imageUrls={projectData.project_media}
           rawYouTubeUrl={projectData.youtube_url}
