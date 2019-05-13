@@ -30,7 +30,7 @@ class AccountsTable extends React.Component {
       },
       {
         name: "Role",
-        field: "role_id",
+        field: "role",
         filter: true,
         sort: true,
       },
