@@ -62,6 +62,11 @@ class Profileqs extends React.Component {
                 this.props.updateProfile({ profile_pic: url }, false)
               }
               placeholder={avatar}
+              suggestedUrl={
+                this.props.profile.profileData.github
+                  ? `${this.props.profile.profileData.github}.png`
+                  : ''
+              }
               uploadButtonText="Upload file"
             />
           </div>
