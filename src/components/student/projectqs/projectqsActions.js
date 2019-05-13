@@ -71,24 +71,6 @@ export const createProject = formValues => dispatch => {
   });
 };
 
-/**
- * Accepts an Object literal and returns a new object
- * with all false-y values removed. Uses recursion to handle
- * nested objects, too.
- * @param {Object} obj Object literal to be trimmed
- */
-function removeEmptyValues(obj) {
-  return Object.keys(obj)
-    .filter(f => Boolean(obj[f]))
-    .reduce(
-      (r, i) =>
-        typeof obj[i] === "object" && !Array.isArray(obj[i])
-          ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
-          : { ...r, [i]: obj[i] },
-      {}
-    );
-}
-
 function removeNulls(obj) {
   let noNulls = {};
   for (let item in obj) {
