@@ -12,7 +12,9 @@ import Profileqs from "../components/student/profileqs/Profileqs";
 import ContactForm from "../components/student/contactForm/ContactForm";
 import StudentTable from "../components/admin/studentTable/StudentTable.js";
 import ProjectTable from "../components/admin/projectTable/ProjectTable";
+import CohortsTable from "../components/admin/cohortsTable/CohortsTable";
 import AdminLogin from "../auth/AdminLogin.js";
+import TracksTable from "../components/admin/tracksTable/TracksTable";
 
 class Routes extends Component {
   handleAuth = ({ location }) => {
@@ -48,6 +50,8 @@ class Routes extends Component {
           />
           <Route path="/admin/student-table" component={StudentTable} />
 					<Route path="/admin/project-table" component={ProjectTable} />
+          <Route path="/admin/cohorts-table" component={CohortsTable} />
+          <Route path="/admin/tracks-table" component={TracksTable} />
           <Route path="/admin-login" component={AdminLogin} />
           <PrivateRoute
             exact
