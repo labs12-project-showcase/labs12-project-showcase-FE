@@ -45,7 +45,7 @@ const ProjectView = ({
         </div>
         <MediaGallery
           defaultYouTubeUrl={
-            'https://www.youtube.com/embed/gLdXxFS8BV4?autoplay=0&showinfo=0&controls=0'
+            'https://www.youtube.com/watch?v=gLdXxFS8BV4'
           }
           imageUrls={projectData.project_media}
           rawYouTubeUrl={projectData.youtube_url}
