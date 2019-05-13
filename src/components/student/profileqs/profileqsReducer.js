@@ -87,7 +87,7 @@ const profileqsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
-        profile_pic: "",
+        profileData: {...state.profileData, profile_pic: ''},
         updatingProfileData: false
       };
     case DELETE_PROFILE_PICTURE_FAILURE:

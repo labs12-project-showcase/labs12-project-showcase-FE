@@ -34,6 +34,9 @@ const ProjectView = ({
           short_description={projectData.short_description}
         />
         <MediaGallery
+        defaultYouTubeUrl={
+          'https://www.youtube.com/watch?v=gLdXxFS8BV4'
+        }
           imageUrls={projectData.project_media}
           rawYouTubeUrl={projectData.youtube_url}
         />
