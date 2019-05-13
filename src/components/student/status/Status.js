@@ -18,8 +18,13 @@ const Status = ({ cohort, desired_locations, desired_title }) => {
           <p>Willing to Move to:</p>
         </div>
         <ul>
-          {desired_locations.map(loc => (
-            <li key={loc}>{loc}</li>
+          {desired_locations.map(obj => (
+            <li key={obj.location}>
+              {obj.location
+                .split(",")
+                .slice(0, 2)
+                .join(`, `)}
+            </li>
           ))}
         </ul>
       </section>
