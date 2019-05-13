@@ -5,6 +5,7 @@ import { getProject } from "../projectqs/projectqsActions";
 import ProjectSkills from "../projectSkills/ProjectSkills";
 import NotApproved from "../notApproved/NotApproved";
 import ProgressProject from "../progressProject/ProgressProject";
+import ProjectLinkButton from "./ProjectLinkButton";
 
 const ProjectView = ({
   project: { projectData },
@@ -72,49 +73,19 @@ const ProjectView = ({
             <p>{projectData.tech_pitch || "Please add tech pitch"}</p>
           </div>
           <div className="project-urls-container">
-            <a
-              href={projectData.github}
-              target="_blank"
-              rel="noopener noreferrer"
+            <ProjectLinkButton
+              link={projectData.github}
               className="github-chip"
-            >
-              <i className="fab fa-github" />
-            </a>
-            <a
-              href={projectData.fe_link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Front End
-            </a>
-            <a
-              href={projectData.be_link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Back End
-            </a>
-            <a
-              href={projectData.market_link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Marketing
-            </a>
-            <a
-              href={projectData.mobile_link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Mobile
-            </a>
-            <a
-              href={projectData.design_link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Design
-            </a>
+              iClassName="fab fa-github"
+            />
+            <ProjectLinkButton link={projectData.fe_link} text="Front End" />
+            <ProjectLinkButton link={projectData.be_link} text="Back End" />
+            <ProjectLinkButton
+              link={projectData.market_link}
+              text="Marketing"
+            />
+            <ProjectLinkButton link={projectData.mobile_link} text="Mobile" />
+            <ProjectLinkButton link={projectData.design_link} text="Design" />
           </div>
         </div>
         {/* {sameUser && <Progress />} */}
