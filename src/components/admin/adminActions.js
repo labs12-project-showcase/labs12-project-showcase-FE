@@ -1,25 +1,9 @@
 import axiosAuth from "../../auth/axiosAuth.js";
 import { backendUrl } from "../../config/urls.js";
 
-export const ADMIN_FETCHED_STUDENTS_START = "ADMIN_FETCHED_STUDENTS_START";
-export const ADMIN_FETCHED_STUDENTS_SUCCESS = "ADMIN_FETCHED_STUDENTS_SUCCESS";
-export const ADMIN_FETCHED_STUDENTS_FAILURE = "ADMIN_FETCHED_STUDENTS_FAILURE";
+//******************************PROJECTS TABLE ACTIONS************************** */
 
-export const fetchStudents = () => dispatch => {
-  dispatch({ type: ADMIN_FETCHED_STUDENTS_START });
-  axiosAuth()
-    // .get(`http://localhost:5000/api/admin/students`)
-    .get(`${backendUrl}/api/admin/students`)
-    .then(res => {
-      dispatch({
-        type: ADMIN_FETCHED_STUDENTS_SUCCESS,
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      dispatch({ type: ADMIN_FETCHED_STUDENTS_FAILURE, payload: err });
-    });
-};
+//****FETCHED PROJECTS**** */
 
 export const ADMIN_FETCHED_PROJECTS_START = "ADMIN_FETCHED_PROJECTS_START";
 export const ADMIN_FETCHED_PROJECTS_SUCCESS = "ADMIN_FETCHED_PROJECTS_SUCCESS";
@@ -40,6 +24,8 @@ export const fetchProjects = () => dispatch => {
     });
 };
 
+//****UPDATED PROJECTS**** */
+
 export const ADMIN_UPDATED_PROJECT_START = "ADMIN_UPDATED_PROJECT_START";
 export const ADMIN_UPDATED_PROJECT_SUCCESS = "ADMIN_UPDATED_PROJECT_SUCCESS";
 export const ADMIN_UPDATED_PROJECT_FAILURE = "ADMIN_UPDATED_PROJECT_FAILURE";
@@ -59,13 +45,39 @@ export const updateProject = (id, info) => dispatch => {
       console.log(err);
       dispatch({ type: ADMIN_UPDATED_PROJECT_FAILURE, payload: err });
     });
-};
+  };
+  
+  //******************************STUDENTS TABLE ACTIONS************************** */
+  
+  //****FETCHED STUDENTS**** */
 
-export const ADMIN_UPDATED_STUDENT_START = "ADMIN_UPDATED_STUDENT_START";
-export const ADMIN_UPDATED_STUDENT_SUCCESS = "ADMIN_UPDATED_STUDENT_SUCCESS";
-export const ADMIN_UPDATED_STUDENT_FAILURE = "ADMIN_UPDATED_STUDENT_FAILURE";
+  export const ADMIN_FETCHED_STUDENTS_START = "ADMIN_FETCHED_STUDENTS_START";
+  export const ADMIN_FETCHED_STUDENTS_SUCCESS = "ADMIN_FETCHED_STUDENTS_SUCCESS";
+  export const ADMIN_FETCHED_STUDENTS_FAILURE = "ADMIN_FETCHED_STUDENTS_FAILURE";
+  
+  export const fetchStudents = () => dispatch => {
+    dispatch({ type: ADMIN_FETCHED_STUDENTS_START });
+    axiosAuth()
+      // .get(`http://localhost:5000/api/admin/students`)
+      .get(`${backendUrl}/api/admin/students`)
+      .then(res => {
+        dispatch({
+          type: ADMIN_FETCHED_STUDENTS_SUCCESS,
+          payload: res.data
+        });
+      })
+      .catch(err => {
+        dispatch({ type: ADMIN_FETCHED_STUDENTS_FAILURE, payload: err });
+      });
+  };
 
-export const updateStudent = (id, info) => dispatch => {
+  //****UPDATED STUDENTS**** */
+
+  export const ADMIN_UPDATED_STUDENT_START = "ADMIN_UPDATED_STUDENT_START";
+  export const ADMIN_UPDATED_STUDENT_SUCCESS = "ADMIN_UPDATED_STUDENT_SUCCESS";
+  export const ADMIN_UPDATED_STUDENT_FAILURE = "ADMIN_UPDATED_STUDENT_FAILURE";
+  
+  export const updateStudent = (id, info) => dispatch => {
   dispatch({ type: ADMIN_UPDATED_STUDENT_START });
   axiosAuth()
     // .put(`http://localhost:5000/api/admin/students/${id}`, info)
@@ -81,14 +93,18 @@ export const updateStudent = (id, info) => dispatch => {
     });
 };
 
+//******************************TRACKS TABLE ACTIONS************************** */
+
+//****FETCHED TRACKS**** */
+
 export const ADMIN_FETCHED_TRACKS_START = "ADMIN_FETCHED_TRACKS_START";
 export const ADMIN_FETCHED_TRACKS_SUCCESS = "ADMIN_FETCHED_TRACKS_SUCCESS";
 export const ADMIN_FETCHED_TRACKS_FAILURE = "ADMIN_FETCHED_TRACKS_FAILURE";
 
-export const fetchTracks = () => dispatch => {
+export const getTracks = () => dispatch => {
   dispatch({ type: ADMIN_FETCHED_TRACKS_START });
   axiosAuth()
-    .get(`${backendUrl}/api/admin/tacks`)
+    .get(`${backendUrl}/api/admin/tracks`)
     .then(res => {
       dispatch({
         type: ADMIN_FETCHED_TRACKS_SUCCESS,
@@ -100,41 +116,45 @@ export const fetchTracks = () => dispatch => {
     });
 };
 
+//****UPDATED TRACKS**** */
+
 export const ADMIN_UPDATED_TRACK_START = "ADMIN_UPDATED_TRACK_START";
 export const ADMIN_UPDATED_TRACK_SUCCESS = "ADMIN_UPDATED_TRACK_SUCCESS";
 export const ADMIN_UPDATED_TRACK_FAILURE = "ADMIN_UPDATED_TRACK_FAILURE";
 
-export const updateTRACK = (id, info) => dispatch => {
+export const updateTrack = (id, info) => dispatch => {
   dispatch({ type: ADMIN_UPDATED_TRACK_START });
   axiosAuth()
-    // .put(`http://localhost:5000/api/admin/students/${id}`, info)
-    .put(`${backendUrl}/api/admin/students/${id}`, info)
+    // .put(`http://localhost:5000/api/admin/tracks/${id}`, info)
+    .put(`${backendUrl}/api/admin/tracks/${id}`, info)
     .then(res => {
       dispatch({
-        type: ADMIN_UPDATED_STUDENT_SUCCESS,
+        type: ADMIN_UPDATED_TRACK_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      dispatch({ type: ADMIN_UPDATED_STUDENT_FAILURE, payload: err });
+      dispatch({ type: ADMIN_UPDATED_TRACK_FAILURE, payload: err });
     });
 };
 
-export const ADMIN_DELETE_TRACK_START = "ADMIN_DELETE_TRACK_START";
-export const ADMIN_DELETE_TRACK_SUCCESS = "ADMIN_DELETE_TRACK_SUCCESS";
-export const ADMIN_DELETE_TRACK_FAILURE = "ADMIN_DELETE_TRACK_FAILURE";
+//****DELETED TRACKS**** */
 
-export const ADMIN_DELETE_TRACK_SUCCESS = () => dispatch => {
-  dispatch({ type: ADMIN_DELETE_TRACK_START });
+export const ADMIN_DELETED_TRACK_START = "ADMIN_DELETED_TRACK_START";
+export const ADMIN_DELETED_TRACK_SUCCESS = "ADMIN_DELETED_TRACK_SUCCESS";
+export const ADMIN_DELETED_TRACK_FAILURE = "ADMIN_DELETED_TRACK_FAILURE";
+
+export const deleteTrack = (id) => dispatch => {
+  dispatch({ type: ADMIN_DELETED_TRACK_START });
   axiosAuth()
-    .get(`${backendUrl}/api/admin/projects`)
+    .get(`${backendUrl}/api/admin/tracks/${id}`)
     .then(res => {
       dispatch({
-        type: ADMIN_DELETE_TRACK_SUCCESS,
+        type: ADMIN_DELETED_TRACK_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      dispatch({ type: ADMIN_DELETE_TRACK_FAILURE, payload: err });
+      dispatch({ type: ADMIN_DELETED_TRACK_FAILURE, payload: err });
     });
 };

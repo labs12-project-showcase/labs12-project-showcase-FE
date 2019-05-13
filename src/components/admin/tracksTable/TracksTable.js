@@ -1,39 +1,51 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { fetchProjects } from '../adminActions.js';
-import { Link } from "react-router-dom";
+import { getTracks, updateTrack, deleteTrack } from '../adminActions.js';
+//import { Link } from "react-router-dom";
 
 
 class TracksTable extends React.Component {
 
   componentDidMount() {
-    this.props.fetchProjects();
+    this.props.getTracks();
   }
 
   render() {
     const column = [
       {
         name: "Track",
-        field: "track",
+        field: "name",
         filter: true,
         sort: true,
-      },
-      {
-        name: "Description",
-        field: "short_description",
-        filter: true,
-        sort: true,
-      },
+      }
     ]
+
+    // const data = [
+    //     {
+    //         track: "Data Science"
+    //     },
+    //     {
+    //         track: "Full Stack Web"
+    //     },
+    //     {
+    //         track: "UI/UX"
+    //     },
+    //     {
+    //         track: "iOS"
+    //     },
+    //     {
+    //         track: "Android"
+    //     },
+    // ]
 
     return (
 
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Project Table"}
+          title={"Admin Tracks Table"}
           columns={column}
-          data={this.props.projects}
+          data={this.props.tracks}
         />
       </div>
     );
@@ -42,8 +54,12 @@ class TracksTable extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    projects: state.admin.projects
+    tracks: state.admin.tracks
   };
 };
 
-export default connect(mapStateToProps, { fetchProjects })(TracksTable);
+export default connect(mapStateToProps, { 
+    getTracks,
+    updateTrack,
+    deleteTrack
+})(TracksTable);
