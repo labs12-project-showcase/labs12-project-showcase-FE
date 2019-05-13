@@ -123,14 +123,6 @@ export const getProject = id => dispatch => {
 };
 
 export const updateProject = (formValues, id) => dispatch => {
-  const url = formValues.youtube_url;
-  let videoid = url.match(
-    /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-  );
-  if (!videoid) {
-    videoid = ["", "gLdXxFS8BV4"];
-  }
-
   const send = {
     student_id: formValues.student_id,
     skills: formValues.skills,
@@ -142,9 +134,7 @@ export const updateProject = (formValues, id) => dispatch => {
       mobile_link: formValues.mobile_link,
       market_link: formValues.market_link,
       design_link: formValues.design_link,
-      youtube_url: `https://www.youtube.com/embed/${
-        videoid[1]
-      }?autoplay=0&showinfo=0&controls=0`,
+      youtube_url: formValues.youtube_url,
       website: formValues.website,
       medium: formValues.medium,
       short_description: formValues.short_description,
