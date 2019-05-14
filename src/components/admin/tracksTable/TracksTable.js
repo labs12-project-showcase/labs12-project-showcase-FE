@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { getTracks, updateTrack, deleteTrack } from '../adminActions.js';
+import TracksButtons from './TracksButtons'
 //import { Link } from "react-router-dom";
 
 
@@ -24,10 +25,7 @@ class TracksTable extends React.Component {
                 options: {
                     customBodyRender: value => {
                         return (
-                            <div>
-                                <button>Edit</button>
-                                <button>Delete</button>
-                            </div>
+                           <TracksButtons />
                         );
                     }
                 }

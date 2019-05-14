@@ -6,6 +6,7 @@ import {
     updateAccount,
     deleteAccount
 } from '../adminActions.js';
+import AccountsButtons from './AccountsButtons';
 
 
 class AccountsTable extends React.Component {
@@ -39,10 +40,7 @@ class AccountsTable extends React.Component {
         options: {
             customBodyRender: value => {
                 return (
-                    <div>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </div>
+                    <AccountsButtons />
                 );
             }
         }
