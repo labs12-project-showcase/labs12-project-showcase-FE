@@ -43,8 +43,8 @@ class AccountsTable extends React.Component {
             customBodyRender: value => {
                 return (
                   <div className="modals-container">
-                    <AccountEditModal className="modal" />
-                    <AccountDeleteModal className="modal" />
+                    <AccountEditModal value={value} />
+                    <AccountDeleteModal value={value} />
                   </div>
                 );
             }

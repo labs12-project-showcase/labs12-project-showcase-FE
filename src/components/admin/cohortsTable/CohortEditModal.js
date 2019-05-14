@@ -41,7 +41,6 @@ class CohortEditModal extends React.Component {
 		e.preventDefault();
 		this.props.updateCohort(this.props.value.id, { cohort_name: this.state.cohort_name })
 		.then(this.handleClose);
-		//console.log("props", this.props)
 	};
 
 	render() {

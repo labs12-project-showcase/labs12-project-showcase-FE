@@ -330,11 +330,18 @@ const adminReducer = (state = initialState, action) => {
       updatingAccountsData: true
     };
   case ADMIN_UPDATED_ACCOUNT_SUCCESS:
-    return {
-      ...state,
-      accounts: action.payload,
-      updatingAccountsData: false
-    };
+  return {
+    ...state,
+    accounts: state.accounts.reduce((arr, cur) => {
+      if(cur.id === action.payload.id) {
+        arr.push({ ...cur, ...action.payload });
+        return arr;
+      }
+      arr.push(cur);
+      return arr;
+    }, []),
+    updatingAccountsData: false
+  };
   case ADMIN_UPDATED_ACCOUNT_FAILURE:
     return {
       ...state,
