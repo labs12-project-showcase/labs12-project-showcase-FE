@@ -85,4 +85,16 @@ td {
   .MuiListItemText-inset-620:first-child {
     padding-left: 0px;
   }
+  [class*="MuiSelect-selectMenu"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+  [class*="MuiListItem-root"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+}
+[class*="MuiTooltip-tooltip"] {
+  font-size: 1.4rem !important;
+  font-family: Lato !important;
 }
