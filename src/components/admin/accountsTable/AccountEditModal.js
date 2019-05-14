@@ -41,7 +41,8 @@ class AccountEditModal extends React.Component {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
+  handleClose = (e) => {
+    e.stopPropagation();
     this.setState({ open: false });
   };
 
@@ -50,7 +51,7 @@ class AccountEditModal extends React.Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    e.stopPropagation();
   }
 
   render() {
@@ -84,6 +85,7 @@ class AccountEditModal extends React.Component {
                 <input onClick={this.handleInputClick} type="text"></input>
               </div>
               <button type="submit">Update Account</button>
+              <button onClick={this.handleClose}>Cancel</button>
             </form>
           </div>
         </Modal>
