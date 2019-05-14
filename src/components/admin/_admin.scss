@@ -1,88 +1,88 @@
 th {
-	font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 td {
-	font-size: 16px !important;
+  font-size: 16px !important;
 }
 
 .tableContainer {
-	justify-content: center;
-	min-height: 60vh;
+  justify-content: center;
+  min-height: 60vh;
 
-	a {
-		text-decoration: none;
-		color: $lambdaLightBlue;
+  a {
+    text-decoration: none;
+    color: $lambdaLightBlue;
 
-		&:visited {
-			text-decoration: none;
-			color: $lambdaLightBlue;
-		}
-	}
+    &:visited {
+      text-decoration: none;
+      color: $lambdaLightBlue;
+    }
+  }
 }
 
 .MuiSwitch-switchBase-173 {
-	@media (max-width: 600px) {
-		height: 14px !important;
-	}
+  @media (max-width: 600px) {
+    height: 14px !important;
+  }
 }
 
 .MaterialDatatableBodyCell-cellStacked-168 {
-	@media (max-width: 600px) {
-		min-width: 160px;
-	}
+  @media (max-width: 600px) {
+    min-width: 160px;
+  }
 }
 
 .MaterialDatatableBodyCell-responsiveStacked-169 {
-	@media (max-width: 600px) {
-		min-width: 160px;
-	}
+  @media (max-width: 600px) {
+    min-width: 160px;
+  }
 }
 
 .MuiSwitch-switchBase-219 {
-	@media (max-width: 768px) {
-		height: 14px;
-	}
+  @media (max-width: 768px) {
+    height: 14px;
+  }
 }
 
 .MuiTableRow-root-117 {
-	@media (max-width: 600px) {
-		text-align: center;
-	}
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 }
 
 .MuiTable-root-112 {
-	@media (max-width: 600px) {
-		min-width: 322px;
-	}
+  @media (max-width: 600px) {
+    min-width: 322px;
+  }
 }
 
 .MuiPaper-root-5 {
-	max-width: 1024px;
-	margin: 50px auto;
-	.MuiTypography-h6-62 {
-		font-size: 1.8rem;
-		font-weight: 500;
-	}
-	.MuiTablePagination-select-188 {
-		padding-right: 30px;
-	}
-	.MaterialDatatableToolbarSelect-title-252 {
-		font-size: 1.4rem;
-	}
-	.MuiTypography-caption-55 {
-		font-size: 1.4rem;
-	}
-	.MaterialDatatableBodyRow-responsiveStacked-164 {
-		@media (max-width: 600px) {
-			border: none;
-			border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-		}
-	}
-	.MuiListItemText-inset-233:first-child {
-		padding-left: 0px;
-	}
-	.MuiListItemText-inset-620:first-child {
-		padding-left: 0px;
-	}
+  max-width: 1148px;
+  margin: 50px auto;
+  .MuiTypography-h6-62 {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .MuiTablePagination-select-188 {
+    padding-right: 30px;
+  }
+  .MaterialDatatableToolbarSelect-title-252 {
+    font-size: 1.4rem;
+  }
+  .MuiTypography-caption-55 {
+    font-size: 1.4rem;
+  }
+  .MaterialDatatableBodyRow-responsiveStacked-164 {
+    @media (max-width: 600px) {
+      border: none;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    }
+  }
+  .MuiListItemText-inset-233:first-child {
+    padding-left: 0px;
+  }
+  .MuiListItemText-inset-620:first-child {
+    padding-left: 0px;
+  }
 }
