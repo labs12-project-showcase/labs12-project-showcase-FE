@@ -110,19 +110,19 @@ class TopBar extends Component {
 					<div className="subNav">
 						<nav>
 							<NavLink to="/admin/students-table">
-								<i class="fas fa-graduation-cap" /> Students
+								<i className="fas fa-graduation-cap" /> Students
 							</NavLink>
 							<NavLink to="/admin/projects-table">
-								<i class="fas fa-graduation-cap" /> Projects
+								<i className="fas fa-project-diagram" /> Projects
 							</NavLink>
 							<NavLink to="/admin/accounts-table">
-								<i class="fas fa-align-left" /> Accounts
+								<i className="fas fa-align-left" /> Accounts
 							</NavLink>
 							<NavLink to="/admin/tracks-table">
-								<i class="fas fa-code" /> Tracks
+								<i className="fas fa-code" /> Tracks
 							</NavLink>
 							<NavLink to="/admin/cohorts-table">
-								<i class="fas fa-users" /> Cohorts
+								<i className="fas fa-users" /> Cohorts
 							</NavLink>
 						</nav>
 					</div>
