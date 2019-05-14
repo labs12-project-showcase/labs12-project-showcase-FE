@@ -27,8 +27,14 @@ class AccountsTable extends React.Component {
       {
         name: "Role",
         field: "role",
-        filter: true,
-        sort: true
+        options: {
+          filter: true,
+          sort: true,
+          customBodyRender: account =>
+            account.role
+              .charAt(0)
+              .toUpperCase() + account.role.slice(1)
+        }
       },
       {
         name: "",
@@ -45,12 +51,20 @@ class AccountsTable extends React.Component {
       }
     ];
 
+    const options = {
+      filterType: "dropdown",
+      selectableRows: false,
+      showSelectedRowsToolbar: false,
+      responsive: "stacked"
+    };
+
     return (
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Accounts Table"}
+          title={"Accounts"}
           columns={column}
           data={this.props.accounts}
+          options={options}
         />
       </div>
     );

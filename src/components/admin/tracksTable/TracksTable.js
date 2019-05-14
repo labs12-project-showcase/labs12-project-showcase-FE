@@ -20,7 +20,7 @@ class TracksTable extends React.Component {
                 filter: true,
                 sort: true,
             },
-              {
+            {
                 name: "",
                 options: {
                     customBodyRender: value => {
@@ -32,16 +32,24 @@ class TracksTable extends React.Component {
                         );
                     }
                 }
-              }
+            }
         ]
+
+        const options = {
+            filterType: "dropdown",
+            selectableRows: false,
+            showSelectedRowsToolbar: false,
+            responsive: "stacked"
+        };
 
         return (
 
             <div className="tableContainer">
                 <MaterialDatatable
-                    title={"Admin Tracks Table"}
+                    title={"Tracks"}
                     columns={column}
                     data={this.props.tracks}
+                    options={options}
                 />
             </div>
         );
