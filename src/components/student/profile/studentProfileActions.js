@@ -28,3 +28,17 @@ export const getData = id => dispatch => {
 			})
 		);
 };
+
+export const deleteStudent = id => dispatch => {
+	const headers = {
+		authorization: localStorage.getItem('backendToken')
+	};
+	axios.delete(`${backendUrl}/students/delete`, headers)
+	.then(res => {
+		console.log(res);
+	})
+	.catch(err => {
+		console.log(err);
+	})
+
+}
