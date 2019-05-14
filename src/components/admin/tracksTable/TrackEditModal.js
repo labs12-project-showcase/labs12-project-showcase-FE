@@ -131,8 +131,7 @@ TrackEditModal.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    tracks: state.admin.tracks,
-    // classes: classNames
+    tracks: state.admin.tracks
   };
 };
 
