@@ -40,8 +40,8 @@ class CohortsTable extends React.Component {
             customBodyRender: value => {
                 return (
                   <div className="modals-container">
-                    <CohortEditModal />
-                    <CohortDeleteModal />
+                    <CohortEditModal value = {value} />
+                    <CohortDeleteModal value = {value} />
                   </div>
                 );
             }

@@ -126,7 +126,7 @@ export const ADMIN_UPDATED_COHORT_FAILURE = "ADMIN_UPDATED_COHORT_FAILURE";
 
 export const updateCohort = (id, info) => dispatch => {
   dispatch({ type: ADMIN_UPDATED_COHORT_START });
-  axiosAuth()
+  return axiosAuth()
     // .put(`http://localhost:5000/api/admin/cohorts/${id}`, info)
     .put(`${backendUrl}/api/admin/cohorts/${id}`, info)
     .then(res => {
