@@ -310,8 +310,8 @@ export const ADMIN_DELETED_ACCOUNT_FAILURE = "ADMIN_DELETED_ACCOUNT_FAILURE";
 export const deleteAccount = id => dispatch => {
   dispatch({ type: ADMIN_DELETED_ACCOUNT_START });
   axiosAuth()
-    // .deleted(`http://localhost:5000/api/admin/accounts/${id}`, info)
-    .deleted(`${backendUrl}/api/admin/accounts/${id}`)
+    // .delete(`http://localhost:5000/api/admin/accounts/${id}`, info)
+    .delete(`${backendUrl}/api/admin/accounts/${id}`)
     .then(res => {
       dispatch({
         type: ADMIN_DELETED_ACCOUNT_SUCCESS,
