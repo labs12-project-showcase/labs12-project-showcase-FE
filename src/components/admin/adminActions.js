@@ -237,7 +237,7 @@ export const ADMIN_DELETED_TRACK_FAILURE = "ADMIN_DELETED_TRACK_FAILURE";
 
 export const deleteTrack = (id) => dispatch => {
   dispatch({ type: ADMIN_DELETED_TRACK_START });
-  axiosAuth()
+  return axiosAuth()
     .get(`${backendUrl}/api/admin/tracks/${id}`)
     .then(res => {
       dispatch({
