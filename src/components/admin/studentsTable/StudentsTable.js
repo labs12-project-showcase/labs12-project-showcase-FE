@@ -1,108 +1,137 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
-import { fetchStudents, updateStudent } from '../adminActions.js';
+import { fetchStudents, updateStudent } from "../adminActions.js";
 import { Link } from "react-router-dom";
 import GraduatedButton from "./StudentGraduatedButton";
-import HiredButton from './StudentHiredButton';
-import EndorsedButton from './StudentEndorsedButton';
+import HiredButton from "./StudentHiredButton";
+import EndorsedButton from "./StudentEndorsedButton";
 
 class StudentsTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      
-     }
+    this.state = {};
   }
 
   componentDidMount() {
     this.props.fetchStudents();
   }
 
-  render() { 
-
+  render() {
     const column = [
       {
         name: "ID",
         field: "id",
         options: {
+          filter: false,
+          sort: false,
           display: false
         }
       },
       {
         name: "Name",
         field: "name",
-            filter: true,
-            sort: true,
-            options: {
-              customBodyRender: student => {
-               return (
-                <Link
-                 to={`/student/profile/${student.id}`}
-                 onClick={ (e) => {
+        options: {
+          filter: false,
+          sort: true,
+          customBodyRender: student => {
+            return (
+              <Link
+                to={`/student/profile/${student.id}`}
+                onClick={e => {
                   e.stopPropagation();
-                 }}
-                >{student.name}</Link>
-               );
-              }
-             }
+                }}
+              >
+                {student.name}
+              </Link>
+            );
+          },
+          customValue: student => student.name,
+          customSortValue: student => student.name
+        }
       },
       {
         name: "Track",
         field: "track",
-            filter: true,
-            sort: true,
+        filter: true,
+        sort: true
       },
       {
         name: "Cohort",
         field: "cohort_name",
-            filter: true,
-            sort: true,
+        filter: true,
+        sort: true
       },
       {
         name: "Graduated",
         field: "graduated",
         options: {
+          filter: true,
+          sort: true,
           customBodyRender: student => {
-            return (
-              <GraduatedButton student={student}/>
-            );
-          }
+            return <GraduatedButton student={student} />;
+          },
+          customValue: student =>
+            student.graduated
+              .toString()
+              .charAt(0)
+              .toUpperCase() + student.graduated.toString().slice(1),
+          customSortValue: student => Number(student.graduated)
         }
       },
       {
         name: "Hired",
         field: "hired",
         options: {
+          filter: true,
+          sort: true,
           customBodyRender: student => {
-            return (
-              <HiredButton student={student}/>
-            );
-          }
+            return <HiredButton student={student} />;
+          },
+          customValue: student =>
+            student.hired
+              .toString()
+              .charAt(0)
+              .toUpperCase() + student.hired.toString().slice(1),
+          customSortValue: student => Number(student.hired)
         }
       },
       {
         name: "Endorsed",
         field: "endorsed",
         options: {
+          filter: true,
+          sort: true,
           customBodyRender: student => {
-            return (
-              <EndorsedButton student={student}/>
-            );
-          }
+            return <EndorsedButton student={student} />;
+          },
+          customValue: student =>
+            student.approved
+              .toString()
+              .charAt(0)
+              .toUpperCase() + student.approved.toString().slice(1),
+          customSortValue: student => Number(student.approved)
         }
-      },
-    ]
-    
-    return ( 
+      }
+    ];
+
+    const options = {
+      filterType: "dropdown",
+      selectableRows: false,
+      showSelectedRowsToolbar: false,
+      responsive: "stacked"
+    };
+
+    return (
       <div className="tableContainer">
         <MaterialDatatable
           title={"Admin Students Table"}
           columns={column}
           data={this.props.students}
+          options={options}
         />
       </div>
-     );
+    );
   }
 }
 
@@ -112,4 +141,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchStudents, updateStudent })(StudentsTable);
+export default connect(
+  mapStateToProps,
+  { fetchStudents, updateStudent }
+)(StudentsTable);
