@@ -296,7 +296,10 @@ const adminReducer = (state = initialState, action) => {
       case ADMIN_DELETED_TRACK_SUCCESS:
       return {
         ...state,
-        tracks: action.payload
+        tracks: state.tracks.filter(cur => {
+          return cur.id !== action.payload.id;
+        }),
+        updatingTracksData: false
       };
     case ADMIN_DELETED_TRACK_FAILURE:
       return {
