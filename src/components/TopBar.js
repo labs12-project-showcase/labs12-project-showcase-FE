@@ -109,11 +109,11 @@ class TopBar extends Component {
 				{(this.state.isLoggedIn || renderLoggedIn) && loggedInRole === 'staff' && (
 					<div className="subNav">
 						<nav>
-							<NavLink to="/admin/student-table">Students</NavLink>
-							<NavLink to="/admin/project-table">Projects</NavLink>
-							<NavLink to="/admin/account-table">Accounts</NavLink>
-							<NavLink to="/admin/track-table">Tracks</NavLink>
-							<NavLink to="/admin/cohort-table">Cohorts</NavLink>
+							<NavLink to="/admin/students-table">Students</NavLink>
+							<NavLink to="/admin/projects-table">Projects</NavLink>
+							<NavLink to="/admin/accounts-table">Accounts</NavLink>
+							<NavLink to="/admin/tracks-table">Tracks</NavLink>
+							<NavLink to="/admin/cohorts-table">Cohorts</NavLink>
 						</nav>
 					</div>
 				)}

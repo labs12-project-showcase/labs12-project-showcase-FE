@@ -1,42 +1,34 @@
 import React, { useEffect, useState } from 'react';
 
-const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
+const MediaGallery = ({ defaultYouTubeUrl, imageUrls, rawYouTubeUrl }) => {
 	// manipulate YouTube URL if necessary
 	const [embedYouTubeUrl, setEmbedYouTubeUrl] = useState('');
 	useEffect(() => {
 		console.log('useEffect is setting the embedYouTubeUrl');
-
-		if (rawYouTubeUrl && rawYouTubeUrl.includes('embed')) {
-			/**
-			 * if `rawYouTubeUrl` already contains 'embed', just set it
-			 */
-			setEmbedYouTubeUrl(rawYouTubeUrl);
-		} else if (rawYouTubeUrl) {
-			/**
-			 * if `rawYouTubeUrl` doesn't contain 'embed', manipulate it
-			 * `embed` equals [`rawYouTubeUrl`, `watch code, if present, else empty`]
-			 */
-			const embed = rawYouTubeUrl.match(
-				/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-			);
-			setEmbedYouTubeUrl(
-				`https://www.youtube.com/embed/${
-					embed[1]
-				}?autoplay=0&showinfo=0&controls=0`
-			);
+		if (rawYouTubeUrl) {
+			setEmbedYouTubeUrl(toEmbedYouTubeUrl(rawYouTubeUrl));
+		} else if (defaultYouTubeUrl) {
+			setEmbedYouTubeUrl(toEmbedYouTubeUrl(defaultYouTubeUrl));
 		}
-	}, [rawYouTubeUrl]);
+	}, [defaultYouTubeUrl, rawYouTubeUrl]);
 
-	const defaultYouTubeVideo = (
-		<iframe
-			title="project preview video"
-			// width="100%"
-			// height="350"
-			src={`https://www.youtube.com/embed/gLdXxFS8BV4?autoplay=0&showinfo=0&controls=0`}
-			frameBorder="0"
-			allowFullScreen
-		/>
-	);
+	/**
+	 * Takes in a YouTube video URL and returns the embed URL for the video
+	 * `embed` equals [`rawYouTubeUrl`, `watch code, if present, else empty`]
+	 * @param {String} url YouTube video URL
+	 * @returns {Array} YouTube embed video URL
+	 */
+	function toEmbedYouTubeUrl(url) {
+		if (url.includes('embed')) {
+			return url;
+		}
+		const embed = url.match(
+			/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+		);
+		return `https://www.youtube.com/embed/${
+			embed[1]
+		}?autoplay=0&showinfo=0&controls=0`;
+	}
 
 	const handleSmallClick = event => {
 		let index = event.target.getAttribute('data-index');
@@ -60,12 +52,8 @@ const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
 		if (imageUrls && imageUrls[0]) {
 			let copy = Array.from(imageUrls);
 			// pull first three URLs from `copy`
-			// then create `<div>`s from them
-			arr = copy.splice(0, 3).map(item => (
-				// <div className="img-one" key={item}>
-				<img src={item} alt="Project" />
-				// </div>
-			));
+			// then create `<img>`s from them
+			arr = copy.splice(0, 3).map(item => <img src={item} alt="Project" />);
 		}
 		// place YouTube embed contain at beginning of list, if exists
 		if (embedYouTubeUrl) {
@@ -100,9 +88,23 @@ const MediaGallery = ({ imageUrls, rawYouTubeUrl }) => {
 	return (
 		<div className="media-display">
 			<div className="big-gallery">{mediaList[0]}</div>
+			<div className="gallery-caption">
+				{/* <p>Description of this video or image etc here</p> */}
+			</div>
 			{mediaList.length ? smallGallery : null}
 		</div>
 	);
+};
+
+// return (
+// 	<div className="media-display">
+// 		<div className="big-gallery">{mediaList[0]}</div>
+// 		{mediaList.length ? smallGallery : null}
+// 	</div>
+// );
+
+MediaGallery.defaultProps = {
+	defaultYouTubeUrl: ''
 };
 
 export default MediaGallery;
