@@ -61,10 +61,10 @@ class TrackEditModal extends React.Component {
 					onClick={this.handleOpen}
 					variant="outlined"
 					color="primary"
-					classNames={classes.button}
+					classnames={classes.button}
 				>
 					Edit
-					<EditIcon classNames={classes.rightIcon} />
+					<EditIcon classnames={classes.rightIcon} />
 				</Button>
 				<Modal
 					aria-labelledby="simple-modal-title"
@@ -88,10 +88,10 @@ class TrackEditModal extends React.Component {
 								type="submit"
 								variant="outlined"
 								color="primary"
-								classNames={classes.button}
+								classnames={classes.button}
 							>
 								Update Track
-								<CheckIcon classNames={classes.rightIcon} />
+								<CheckIcon classnames={classes.rightIcon} />
 							</Button>
 							<Button
 								onClick={this.handleClose}
@@ -100,7 +100,7 @@ class TrackEditModal extends React.Component {
 								classNames={classes.button}
 							>
 								Cancel
-								<CancelIcon classNames={classes.rightIcon} />
+								<CancelIcon classnames={classes.rightIcon} />
 							</Button>
 						</form>
 					</div>
