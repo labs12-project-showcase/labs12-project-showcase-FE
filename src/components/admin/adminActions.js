@@ -215,7 +215,7 @@ export const ADMIN_UPDATED_TRACK_FAILURE = "ADMIN_UPDATED_TRACK_FAILURE";
 
 export const updateTrack = (id, info) => dispatch => {
   dispatch({ type: ADMIN_UPDATED_TRACK_START });
-  axiosAuth()
+  return axiosAuth()
     // .put(`http://localhost:5000/api/admin/tracks/${id}`, info)
     .put(`${backendUrl}/api/admin/tracks/${id}`, info)
     .then(res => {
