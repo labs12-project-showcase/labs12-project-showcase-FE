@@ -72,15 +72,15 @@ class AccountEditModal extends React.Component {
           <div style={getModalStyle()} className={classes.paper}>
             <form onSubmit={this.handleSubmit} method="PUT">
               <div>
-                <label>Updated Account Name: </label>
+                <label>Updated Name: </label>
                 <input onClick={e => e.stopPropagation()} type="text"></input>
               </div>
               <div>
-                <label>Updated Account Email: </label>
+                <label>Updated Email: </label>
                 <input onClick={e => e.stopPropagation()} type="text"></input>
               </div>
               <div>
-                <label>Updated Account Role: </label>
+                <label>Updated Role: </label>
                 <input onClick={e => e.stopPropagation()} type="text"></input>
               </div>
               <Button type="submit" variant="outlined" color="primary" classNames={classes.button}>

@@ -20,7 +20,7 @@ class AccountsTable extends React.Component {
   render() {
     const column = [
       {
-        name: "Account",
+        name: "Name",
         field: "name",
         filter: true,
         sort: true,
