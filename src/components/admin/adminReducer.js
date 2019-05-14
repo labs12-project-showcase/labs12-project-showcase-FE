@@ -70,8 +70,7 @@ const adminReducer = (state = initialState, action) => {
 
     case ADMIN_FETCHED_PROJECTS_START:
     return {
-        ...state,
-        projects: action.payload
+        ...state
       };
     case ADMIN_FETCHED_PROJECTS_SUCCESS:
     return {
@@ -118,8 +117,7 @@ const adminReducer = (state = initialState, action) => {
 
       case ADMIN_FETCHED_STUDENTS_START:
         return {
-          ...state,
-          students: action.payload
+          ...state
         };
       case ADMIN_FETCHED_STUDENTS_SUCCESS:
         return {
@@ -136,8 +134,7 @@ const adminReducer = (state = initialState, action) => {
 
       case ADMIN_UPDATED_STUDENT_START:
       return {
-        ...state,
-        updatingStudentData: true
+        ...state
       };
     case ADMIN_UPDATED_STUDENT_SUCCESS:
       return {
@@ -165,8 +162,7 @@ const adminReducer = (state = initialState, action) => {
     //****FETCHED COHORTS**** */
     case ADMIN_FETCHED_COHORTS_START:
       return {
-        ...state,
-        cohorts: action.payload
+        ...state
       };
     case ADMIN_FETCHED_COHORTS_SUCCESS:
       return {
@@ -184,7 +180,6 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_UPDATED_COHORT_START:
       return {
         ...state,
-        cohorts: action.payload,
         updatingCohortsData: true
       };
     case ADMIN_UPDATED_COHORT_SUCCESS:
@@ -205,7 +200,6 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_DELETED_COHORT_START:
       return {
         ...state,
-        cohorts: action.payload,
         updatingCohortsData: true
       };
     case ADMIN_DELETED_COHORT_SUCCESS:
@@ -225,7 +219,6 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_ADDED_COHORT_START:
       return {
         ...state,
-        cohorts: action.payload,
         updatingCohortsData: true
       };
     case ADMIN_ADDED_COHORT_SUCCESS:
@@ -247,8 +240,7 @@ const adminReducer = (state = initialState, action) => {
 
     case ADMIN_FETCHED_TRACKS_START:
     return {
-        ...state,
-        tracks: action.payload
+        ...state
     };
     case ADMIN_FETCHED_TRACKS_SUCCESS:
       return {
@@ -265,9 +257,7 @@ const adminReducer = (state = initialState, action) => {
 
       case ADMIN_UPDATED_TRACK_START:
       return {
-        ...state,
-        tracks: action.payload,
-        updatingTracksData: true
+        ...state
       }
     case ADMIN_UPDATED_TRACK_SUCCESS:
       return {
@@ -286,8 +276,7 @@ const adminReducer = (state = initialState, action) => {
 
     case ADMIN_DELETED_TRACK_START:
     return {
-      ...state,
-      tracks: action.payload
+      ...state
     };
       case ADMIN_DELETED_TRACK_SUCCESS:
       return {
@@ -305,8 +294,7 @@ const adminReducer = (state = initialState, action) => {
     //****FETCHED ACCOUNTS**** */
     case ADMIN_FETCHED_ACCOUNTS_START:
     return {
-      ...state,
-      accounts: action.payload
+      ...state
     };
   case ADMIN_FETCHED_ACCOUNTS_SUCCESS:
     return {
@@ -324,7 +312,6 @@ const adminReducer = (state = initialState, action) => {
   case ADMIN_UPDATED_ACCOUNT_START:
     return {
       ...state,
-      accounts: action.payload,
       updatingAccountsData: true
     };
   case ADMIN_UPDATED_ACCOUNT_SUCCESS:
@@ -345,7 +332,6 @@ const adminReducer = (state = initialState, action) => {
   case ADMIN_DELETED_ACCOUNT_START:
     return {
       ...state,
-      accounts: action.payload,
       updatingAccountsData: true
     };
   case ADMIN_DELETED_ACCOUNT_SUCCESS:

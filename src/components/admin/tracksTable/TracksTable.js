@@ -27,8 +27,8 @@ class TracksTable extends React.Component {
                     customBodyRender: value => {
                         return (
                             <div className="modals-container">
-                                <TrackEditModal />
-                                <TrackDeleteModal />
+                                <TrackEditModal value={value} />
+                                <TrackDeleteModal value={value} />
                             </div>
                         );
                     }
