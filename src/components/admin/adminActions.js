@@ -151,8 +151,8 @@ export const deleteCohort = id => dispatch => {
   dispatch({ type: ADMIN_DELETED_COHORT_START });
   return (
     axiosAuth()
-      // .put(`http://localhost:5000/api/admin/cohorts/${id}`, info)
-      .put(`${backendUrl}/api/admin/cohorts/${id}`)
+      // .delete(`http://localhost:5000/api/admin/cohorts/${id}`, info)
+      .delete(`${backendUrl}/api/admin/cohorts/${id}`)
       .then(res => {
         dispatch({
           type: ADMIN_DELETED_COHORT_SUCCESS,
@@ -310,8 +310,8 @@ export const ADMIN_DELETED_ACCOUNT_FAILURE = "ADMIN_DELETED_ACCOUNT_FAILURE";
 export const deleteAccount = id => dispatch => {
   dispatch({ type: ADMIN_DELETED_ACCOUNT_START });
   axiosAuth()
-    // .put(`http://localhost:5000/api/admin/accounts/${id}`, info)
-    .put(`${backendUrl}/api/admin/accounts/${id}`)
+    // .deleted(`http://localhost:5000/api/admin/accounts/${id}`, info)
+    .deleted(`${backendUrl}/api/admin/accounts/${id}`)
     .then(res => {
       dispatch({
         type: ADMIN_DELETED_ACCOUNT_SUCCESS,
