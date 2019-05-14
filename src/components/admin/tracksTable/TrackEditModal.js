@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-// import classNames from "classnames";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -8,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import CheckIcon from "@material-ui/icons/Check";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { updateTrack, getTracks } from "../adminActions.js";
+import { updateTrack } from "../adminActions.js";
 
 
 const styles = theme => ({
@@ -43,8 +42,6 @@ class TrackEditModal extends React.Component {
   handleOpen = e => {
     e.stopPropagation();
     this.setState({ open: true });
-    console.log(this.props.value);
-    console.log(this.state.name);
   };
 
   handleClose = e => {
@@ -134,14 +131,11 @@ TrackEditModal.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    tracks: state.admin.tracks,
-    // classes: classNames
+    tracks: state.admin.tracks
   };
 };
 
-const Something = withStyles(styles)(TrackEditModal);
-
 export default connect(
   mapStateToProps,
-  { updateTrack, getTracks }
-)(Something);
+  { updateTrack }
+)(withStyles(styles)(TrackEditModal));
