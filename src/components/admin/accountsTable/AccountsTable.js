@@ -1,18 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
-import {
-  getAccounts,
-  updateAccount,
-  deleteAccount
-} from '../adminActions.js';
-// import AccountEditButton from './AccountEditButton';
-import AccountEditModal from './AccountEditModal';
-import AccountDeleteModal from './AccountDeleteModal';
-
+import { getAccounts, updateAccount, deleteAccount } from "../adminActions.js";
+import AccountEditModal from "./AccountEditModal";
+import AccountDeleteModal from "./AccountDeleteModal";
 
 class AccountsTable extends React.Component {
-
   componentDidMount() {
     this.props.getAccounts();
   }
@@ -23,13 +16,13 @@ class AccountsTable extends React.Component {
         name: "Name",
         field: "name",
         filter: true,
-        sort: true,
+        sort: true
       },
       {
         name: "Email",
         field: "email",
         filter: true,
-        sort: true,
+        sort: true
       },
       {
         name: "Role",
@@ -49,14 +42,14 @@ class AccountsTable extends React.Component {
           customBodyRender: value => {
             return (
               <div className="modals-container">
-                <AccountEditModal value={value} />
-                <AccountDeleteModal value={value} />
+                <AccountEditModal className="modal" value={value} />
+                <AccountDeleteModal className="modal" value={value} />
               </div>
             );
           }
         }
       }
-    ]
+    ];
 
     const options = {
       filterType: "dropdown",
@@ -66,7 +59,6 @@ class AccountsTable extends React.Component {
     };
 
     return (
-
       <div className="tableContainer">
         <MaterialDatatable
           title={"Admin Accounts Table"}
@@ -85,8 +77,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  getAccounts,
-  updateAccount,
-  deleteAccount
-})(AccountsTable);
+export default connect(
+  mapStateToProps,
+  {
+    getAccounts,
+    updateAccount,
+    deleteAccount
+  }
+)(AccountsTable);
