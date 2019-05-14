@@ -37,7 +37,7 @@
 				color: darken(($lambdaRed), 22%);
 				@include box-align();
 				transition-duration: 0.3s;
-
+				cursor: pointer;
 				.fa-sign-out-alt,
 				.fa-user {
 					font-size: 2rem;
@@ -52,7 +52,6 @@
 
 				&:hover {
 					color: $lightcolor;
-					cursor: pointer;
 					background: darken(($lambdaRed), 10%);
 				}
 			}

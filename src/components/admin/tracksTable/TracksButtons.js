@@ -1,45 +1,50 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 // import classNames from "classnames";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit
-  },
-  rightIcon: {
-    marginLeft: theme.spacing.unit
-  },
-  iconSmall: {
-    fontSize: 16
-  }
+	button: {
+		margin: theme.spacing.unit
+	},
+	rightIcon: {
+		marginLeft: theme.spacing.unit
+	},
+	iconSmall: {
+		fontSize: 16
+	}
 });
 
-const handleClick = (e) => {
-    e.stopPropagation();
-}
+const handleClick = e => {
+	e.stopPropagation();
+};
 
 function TracksButtons(props) {
-  const { classes } = props;
-  return (
-    <div>
-      <Button onClick={handleClick} variant="outlined" color="primary" classNames={classes.button}>
-        Edit
-        <EditIcon classNames={classes.rightIcon} />
-      </Button>
-      <Button variant="outlined" color="secondary" classNames={classes.button}>
-        Delete
-        <DeleteIcon classNames={classes.rightIcon} />
-      </Button>
-    </div>
-  );
+	const { classes } = props;
+	return (
+		<div className="sc-modal-buttons">
+			<Button
+				onClick={handleClick}
+				variant="outlined"
+				color="primary"
+				classNames={classes.button}
+			>
+				Edit
+				<EditIcon classNames={classes.rightIcon} />
+			</Button>
+			<Button variant="outlined" color="secondary" classNames={classes.button}>
+				Delete
+				<DeleteIcon classNames={classes.rightIcon} />
+			</Button>
+		</div>
+	);
 }
 
 TracksButtons.propTypes = {
-  classes: PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(TracksButtons);
@@ -51,8 +56,8 @@ export default withStyles(styles)(TracksButtons);
 //         super(props);
 //         this.state = {  }
 //     }
-//     render() { 
-//         return ( 
+//     render() {
+//         return (
 //             <div>
 //             <button>Edit</button>
 //             <button>Delete</button>
@@ -60,5 +65,5 @@ export default withStyles(styles)(TracksButtons);
 //          );
 //     }
 // }
- 
+
 // export default TracksButtons;
