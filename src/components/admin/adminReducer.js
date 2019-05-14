@@ -183,11 +183,19 @@ const adminReducer = (state = initialState, action) => {
         updatingCohortsData: true
       };
     case ADMIN_UPDATED_COHORT_SUCCESS:
-      return {
-        ...state,
-        cohorts: action.payload,
-        updatingCohortsData: false
-      };
+    return {
+      ...state,
+      cohorts: state.cohorts.reduce((arr, cur) => {
+        if(cur.id === action.payload.id) {
+          arr.push({ ...cur, ...action.payload });
+          return arr;
+        } else {
+          arr.push(cur);
+          return arr;
+        }
+      }, []),
+      updatingCohortsData: false
+    };
     case ADMIN_UPDATED_COHORT_FAILURE:
       return {
         ...state,
