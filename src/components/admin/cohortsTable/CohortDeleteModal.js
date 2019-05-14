@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
 import CheckIcon from "@material-ui/icons/Check";
 import CancelIcon from "@material-ui/icons/Cancel";
 
@@ -33,7 +33,7 @@ const styles = theme => ({
   },
 });
 
-class AccountEditModal extends React.Component {
+class CohortDeleteModal extends React.Component {
   state = {
     open: false,
   };
@@ -57,9 +57,9 @@ class AccountEditModal extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.handleOpen} variant="outlined" color="primary" classNames={classes.button}>
-          Edit
-          <EditIcon classNames={classes.rightIcon} />
+        <Button onClick={this.handleOpen} variant="outlined" color="secondary" classNames={classes.button}>
+          Delete
+          <DeleteIcon classNames={classes.rightIcon} />
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
@@ -72,19 +72,10 @@ class AccountEditModal extends React.Component {
           <div style={getModalStyle()} className={classes.paper}>
             <form onSubmit={this.handleSubmit} method="PUT">
               <div>
-                <label>Updated Account Name: </label>
-                <input onClick={e => e.stopPropagation()} type="text"></input>
-              </div>
-              <div>
-                <label>Updated Account Email: </label>
-                <input onClick={e => e.stopPropagation()} type="text"></input>
-              </div>
-              <div>
-                <label>Updated Account Role: </label>
-                <input onClick={e => e.stopPropagation()} type="text"></input>
+                <label>Are you sure you want to delete this cohort?</label>
               </div>
               <Button type="submit" variant="outlined" color="primary" classNames={classes.button}>
-                Update Account
+                Delete Cohort
                 <CheckIcon classNames={classes.rightIcon} />
               </Button>
               <Button onClick={this.handleClose} variant="outlined" color="secondary" classNames={classes.button}>
@@ -99,8 +90,8 @@ class AccountEditModal extends React.Component {
   }
 }
 
-AccountEditModal.propTypes = {
+CohortDeleteModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AccountEditModal);
+export default withStyles(styles)(CohortDeleteModal);

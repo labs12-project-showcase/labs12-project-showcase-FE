@@ -33,7 +33,7 @@ const styles = theme => ({
   },
 });
 
-class AccountEditModal extends React.Component {
+class CohortEditModal extends React.Component {
   state = {
     open: false,
   };
@@ -72,15 +72,7 @@ class AccountEditModal extends React.Component {
           <div style={getModalStyle()} className={classes.paper}>
             <form onSubmit={this.handleSubmit} method="PUT">
               <div>
-                <label>Updated Account Name: </label>
-                <input onClick={e => e.stopPropagation()} type="text"></input>
-              </div>
-              <div>
-                <label>Updated Account Email: </label>
-                <input onClick={e => e.stopPropagation()} type="text"></input>
-              </div>
-              <div>
-                <label>Updated Account Role: </label>
+                <label>Updated Cohort Name: </label>
                 <input onClick={e => e.stopPropagation()} type="text"></input>
               </div>
               <Button type="submit" variant="outlined" color="primary" classNames={classes.button}>
@@ -99,8 +91,8 @@ class AccountEditModal extends React.Component {
   }
 }
 
-AccountEditModal.propTypes = {
+CohortEditModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AccountEditModal);
+export default withStyles(styles)(CohortEditModal);
