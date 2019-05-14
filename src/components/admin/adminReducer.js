@@ -358,7 +358,9 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_DELETED_ACCOUNT_SUCCESS:
       return {
         ...state,
-        accounts: action.payload,
+        accounts: state.accounts.filter(cur => {
+          return cur.id !== action.payload.id;
+        }),
         updatingAccountsData: false
       };
     case ADMIN_DELETED_ACCOUNT_FAILURE:
