@@ -98,10 +98,10 @@ const adminReducer = (state = initialState, action) => {
           if(cur.id === action.payload.id) {
             arr.push({ ...cur, ...action.payload });
             return arr;
-          }
-          arr.push(cur);
-          return arr;
-        }, []),
+          } else {
+            arr.push(cur);
+            return arr;
+          }}, []),
         updatingProjectData: false
       };
       case ADMIN_UPDATED_PROJECT_FAILURE:
@@ -144,10 +144,10 @@ const adminReducer = (state = initialState, action) => {
           if(cur.id === action.payload.id) {
             arr.push({ ...cur, ...action.payload });
             return arr;
-          }
-          arr.push(cur);
-          return arr;
-        }, []),
+          } else {
+            arr.push(cur);
+            return arr;
+          }}, []),
         updatingStudentData: false
       };
     case ADMIN_UPDATED_STUDENT_FAILURE:
@@ -262,7 +262,14 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_UPDATED_TRACK_SUCCESS:
       return {
         ...state,
-        tracks: action.payload,
+        tracks: state.tracks.reduce((arr, cur) => {
+          if(cur.id === action.payload.id) {
+            arr.push({ ...cur, ...action.payload });
+            return arr;
+          }
+          arr.push(cur);
+          return arr;
+        }, []),
         updatingTracksData: false
       };
     case ADMIN_UPDATED_TRACK_FAILURE:
