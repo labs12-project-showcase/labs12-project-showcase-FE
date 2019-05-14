@@ -5,12 +5,21 @@ class CohortsButtons extends React.Component {
         super(props);
         this.state = {  }
     }
+
+    handleClickEdit = (e) => {
+        e.stopPropagation();
+    }
+
+    handleClickDelete = (e) => {
+        e.stopPropagation();
+    }
+
     render() { 
         return ( 
             <div>
-            <button>Edit</button>
-            <button>Delete</button>
-        </div>
+                <button onClick={(e) => e.stopPropagation()}>Edit</button>
+                <button onClick={this.handleClickDelete}>Delete</button>
+            </div>
          );
     }
 }
