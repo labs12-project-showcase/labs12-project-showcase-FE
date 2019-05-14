@@ -22,7 +22,7 @@ const handleClick = (e) => {
     e.stopPropagation();
 }
 
-function AccountsButtons(props) {
+function AccountEditButton(props) {
   const { classes } = props;
   return (
     <div>
@@ -38,11 +38,11 @@ function AccountsButtons(props) {
   );
 }
 
-AccountsButtons.propTypes = {
+AccountEditButton.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AccountsButtons);
+export default withStyles(styles)(AccountEditButton);
 
 
 // import React from 'react';
