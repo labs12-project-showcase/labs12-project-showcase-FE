@@ -287,11 +287,11 @@ export const ADMIN_UPDATED_ACCOUNT_FAILURE = "ADMIN_UPDATED_ACCOUNT_FAILURE";
 
 export const updateAccount = (id, info) => dispatch => {
   dispatch({ type: ADMIN_UPDATED_ACCOUNT_START });
-  axiosAuth()
+  return axiosAuth()
     // .put(`http://localhost:5000/api/admin/accounts/${id}`, info)
     .put(`${backendUrl}/api/admin/accounts/${id}`, info)
     .then(res => {
-      dispatch({
+    dispatch({
         type: ADMIN_UPDATED_ACCOUNT_SUCCESS,
         payload: res.data
       });

@@ -314,59 +314,66 @@ const adminReducer = (state = initialState, action) => {
 
     //****FETCHED ACCOUNTS**** */
     case ADMIN_FETCHED_ACCOUNTS_START:
-      return {
-        ...state
-      };
-    case ADMIN_FETCHED_ACCOUNTS_SUCCESS:
-      return {
-        ...state,
-        accounts: action.payload
-      };
-    case ADMIN_FETCHED_ACCOUNTS_FAILURE:
-      return {
-        ...state,
-        error: action.payload
-      };
+    return {
+      ...state
+    };
+  case ADMIN_FETCHED_ACCOUNTS_SUCCESS:
+    return {
+      ...state,
+      accounts: action.payload
+    };
+  case ADMIN_FETCHED_ACCOUNTS_FAILURE:
+    return {
+      ...state,
+      error: action.payload
+    };
+  
+  //****UPDATED ACCOUNT**** */
 
-    //****UPDATED ACCOUNT**** */
+  case ADMIN_UPDATED_ACCOUNT_START:
+    return {
+      ...state,
+      updatingAccountsData: true
+    };
+  case ADMIN_UPDATED_ACCOUNT_SUCCESS:
+  return {
+    ...state,
+    accounts: state.accounts.reduce((arr, cur) => {
+      if(cur.id === action.payload.id) {
+        arr.push({ ...cur, ...action.payload });
+        return arr;
+      }
+      arr.push(cur);
+      return arr;
+    }, []),
+    updatingAccountsData: false
+  };
+  case ADMIN_UPDATED_ACCOUNT_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+      updatingAccountsData: false
+    };
 
-    case ADMIN_UPDATED_ACCOUNT_START:
-      return {
-        ...state,
-        updatingAccountsData: true
-      };
-    case ADMIN_UPDATED_ACCOUNT_SUCCESS:
-      return {
-        ...state,
-        accounts: action.payload,
-        updatingAccountsData: false
-      };
-    case ADMIN_UPDATED_ACCOUNT_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        updatingAccountsData: false
-      };
+  //****DELETED ACCOUNT**** */
 
-    //****DELETED ACCOUNT**** */
-
-    case ADMIN_DELETED_ACCOUNT_START:
-      return {
-        ...state,
-        updatingAccountsData: true
-      };
-    case ADMIN_DELETED_ACCOUNT_SUCCESS:
-      return {
-        ...state,
-        accounts: action.payload,
-        updatingAccountsData: false
-      };
-    case ADMIN_DELETED_ACCOUNT_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        updatingAccountsData: false
-      };
+  case ADMIN_DELETED_ACCOUNT_START:
+    return {
+      ...state,
+      updatingAccountsData: true
+    };
+  case ADMIN_DELETED_ACCOUNT_SUCCESS:
+    return {
+      ...state,
+      accounts: action.payload,
+      updatingAccountsData: false
+    };
+  case ADMIN_DELETED_ACCOUNT_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+      updatingAccountsData: false
+    };
     default:
       return state;
   }
