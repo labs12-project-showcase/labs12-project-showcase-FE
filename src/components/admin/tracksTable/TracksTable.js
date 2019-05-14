@@ -2,63 +2,60 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { getTracks, updateTrack, deleteTrack } from '../adminActions.js';
-//import { Link } from "react-router-dom";
+// import TracksButtons from './TracksButtons'
+import TrackEditModal from './TrackEditModal'
+import TrackDeleteModal from './TrackDeleteModal'
 
 
 class TracksTable extends React.Component {
 
-  componentDidMount() {
-    this.props.getTracks();
-  }
+    componentDidMount() {
+        this.props.getTracks();
+    }
 
-  render() {
-    const column = [
-      {
-        name: "Track",
-        field: "name",
-        filter: true,
-        sort: true,
-      }
-    ]
+    render() {
+        const column = [
+            {
+                name: "Track",
+                field: "name",
+                filter: true,
+                sort: true,
+            },
+              {
+                name: "",
+                options: {
+                    customBodyRender: value => {
+                        return (
+                            <div className="modals-container">
+                                <TrackEditModal />
+                                <TrackDeleteModal />
+                            </div>
+                        );
+                    }
+                }
+              }
+        ]
 
-    // const data = [
-    //     {
-    //         track: "Data Science"
-    //     },
-    //     {
-    //         track: "Full Stack Web"
-    //     },
-    //     {
-    //         track: "UI/UX"
-    //     },
-    //     {
-    //         track: "iOS"
-    //     },
-    //     {
-    //         track: "Android"
-    //     },
-    // ]
+        return (
 
-    return (
-
-      <div className="tableContainer">
-        <MaterialDatatable
-          title={"Admin Tracks Table"}
-          columns={column}
-          data={this.props.tracks}
-        />
-      </div>
-    );
-  }
+            <div className="tableContainer">
+                <MaterialDatatable
+                    title={"Admin Tracks Table"}
+                    columns={column}
+                    data={this.props.tracks}
+                />
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => {
-  return {
-    tracks: state.admin.tracks
-  };
+    return {
+        tracks: state.admin.tracks
+    };
 };
 
-export default connect(mapStateToProps, { 
+export default connect(mapStateToProps, {
     getTracks,
     updateTrack,
     deleteTrack

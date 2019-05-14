@@ -12,6 +12,7 @@
 @import "./styles/top-bar";
 @import "./styles/footer";
 @import "./components/admin/dashboard/adminDashboard.scss";
+@import "./components/admin/adminTables";
 @import "./components/admin/admin.scss";
 @import "./components/EditImage/EditImage.scss";
 @import "./components/home/home.scss";
@@ -32,3 +33,5 @@
 @import "./components/student/projectSkills/projectSkills";
 @import "./components/student/notApproved/notApproved";
 @import "./components/student/progressProject/progressProject";
+@import "./auth/adminLogin";
+
