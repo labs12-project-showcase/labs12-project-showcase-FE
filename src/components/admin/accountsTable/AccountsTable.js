@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-import { 
-    getAccounts,
-    updateAccount,
-    deleteAccount
+import {
+  getAccounts,
+  updateAccount,
+  deleteAccount
 } from '../adminActions.js';
 // import AccountEditButton from './AccountEditButton';
 import AccountEditModal from './AccountEditModal';
@@ -34,23 +34,36 @@ class AccountsTable extends React.Component {
       {
         name: "Role",
         field: "role",
-        filter: true,
-        sort: true,
+        options: {
+          filter: true,
+          sort: true,
+          customBodyRender: account =>
+            account.role
+              .charAt(0)
+              .toUpperCase() + account.role.slice(1)
+        }
       },
       {
         name: "",
         options: {
-            customBodyRender: value => {
-                return (
-                  <div className="modals-container">
-                    <AccountEditModal value={value} />
-                    <AccountDeleteModal value={value} />
-                  </div>
-                );
-            }
+          customBodyRender: value => {
+            return (
+              <div className="modals-container">
+                <AccountEditModal value={value} />
+                <AccountDeleteModal value={value} />
+              </div>
+            );
+          }
         }
       }
     ]
+
+    const options = {
+      filterType: "dropdown",
+      selectableRows: false,
+      showSelectedRowsToolbar: false,
+      responsive: "stacked"
+    };
 
     return (
 
@@ -59,6 +72,7 @@ class AccountsTable extends React.Component {
           title={"Admin Accounts Table"}
           columns={column}
           data={this.props.accounts}
+          options={options}
         />
       </div>
     );
@@ -71,8 +85,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { 
-    getAccounts,
-    updateAccount,
-    deleteAccount
+export default connect(mapStateToProps, {
+  getAccounts,
+  updateAccount,
+  deleteAccount
 })(AccountsTable);
