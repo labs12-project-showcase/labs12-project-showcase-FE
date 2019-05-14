@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
-// import CohortsButtons from "./CohortsButtons";
 import CohortEditModal from "./CohortEditModal";
 import CohortDeleteModal from "./CohortDeleteModal";
 
@@ -40,8 +39,8 @@ class CohortsTable extends React.Component {
             customBodyRender: value => {
                 return (
                   <div className="modals-container">
-                    <CohortEditModal />
-                    <CohortDeleteModal />
+                    <CohortEditModal value={value} />
+                    <CohortDeleteModal value={value} />
                   </div>
                 );
             }

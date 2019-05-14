@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -6,21 +7,8 @@ import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
+import { updateCohort } from "../adminActions";
 
-function rand() {
-	return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-	const top = 50 + rand();
-	const left = 50 + rand();
-
-	return {
-		top: `${top}%`,
-		left: `${left}%`,
-		transform: `translate(-${top}%, -${left}%)`
-	};
-}
 
 const styles = theme => ({
 	paper: {
@@ -35,7 +23,8 @@ const styles = theme => ({
 
 class CohortEditModal extends React.Component {
 	state = {
-		open: false
+		open: false,
+		cohort_name: this.props.value.cohort_name
 	};
 
 	handleOpen = e => {
@@ -44,12 +33,15 @@ class CohortEditModal extends React.Component {
 	};
 
 	handleClose = e => {
-		e.stopPropagation();
 		this.setState({ open: false });
 	};
 
 	handleSubmit = e => {
 		e.stopPropagation();
+		e.preventDefault();
+		this.props.updateCohort(this.props.value.id, { cohort_name: this.state.cohort_name })
+		.then(this.handleClose);
+		//console.log("props", this.props)
 	};
 
 	render() {
@@ -74,7 +66,11 @@ class CohortEditModal extends React.Component {
 					onSubmit={this.handleSubmit}
 					onClick={e => e.stopPropagation()}
 				>
-					<div style={getModalStyle()} className={classes.paper}>
+					<div style={{
+						top: '50%',
+						left: '50%',
+						transform: 'translate(-50%, -50%)'
+					}} className={classes.paper}>
 						<form
 							onSubmit={this.handleSubmit}
 							method="PUT"
@@ -82,7 +78,11 @@ class CohortEditModal extends React.Component {
 						>
 							<div className="sc-input">
 								<label>Updated Cohort Name: </label>
-								<input onClick={e => e.stopPropagation()} type="text" />
+								<input 
+								name='cohort_name'
+								value={this.state.cohort_name}
+								onChange={e => this.setState({ cohort_name: e.target.value })}
+								onClick={e => e.stopPropagation()} type="text" />
 							</div>
 							<Button
 								type="submit"
@@ -90,7 +90,7 @@ class CohortEditModal extends React.Component {
 								color="primary"
 								classnames={classes.button}
 							>
-								Update Account
+								Update Cohort
 								<CheckIcon classnames={classes.rightIcon} />
 							</Button>
 							<Button
@@ -114,4 +114,13 @@ CohortEditModal.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(CohortEditModal);
+const mapStateToProps = state => {
+	return {
+		cohorts: state.admin.cohorts
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ updateCohort }
+)(withStyles(styles)(CohortEditModal));
