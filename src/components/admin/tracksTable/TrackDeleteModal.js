@@ -35,14 +35,13 @@ class TrackDeleteModal extends React.Component {
   };
 
   handleSubmit = e => {
-	e.stopPropagation();
-	e.preventDefault();
-	this.props.deleteTrack(this.props.value.id)
-	.then(this.handleClose);
+    e.stopPropagation();
+    e.preventDefault();
+    this.props.deleteTrack(this.props.value.id).then(this.handleClose);
   };
 
   render() {
-	const { classes } = this.props;
+    const { classes } = this.props;
 
     return (
       <div className="sc-modal-buttons">
@@ -73,7 +72,7 @@ class TrackDeleteModal extends React.Component {
           >
             <form
               onSubmit={this.handleSubmit}
-              method="PUT"
+              method="DELETE"
               className="sc-modal-buttons"
             >
               <div className="sc-input">
@@ -83,7 +82,7 @@ class TrackDeleteModal extends React.Component {
                 type="submit"
                 variant="outlined"
                 color="primary"
-				className={classes.button}
+                className={classes.button}
               >
                 Delete Track
                 <CheckIcon className={classes.rightIcon} />
@@ -110,12 +109,12 @@ TrackDeleteModal.propTypes = {
 };
 
 const mapStateToProps = state => {
-	return {
-	  tracks: state.admin.tracks
-	};
+  return {
+    tracks: state.admin.tracks
+  };
 };
 
 export default connect(
-	mapStateToProps,
-	{ deleteTrack }
-  )(withStyles(styles)(TrackDeleteModal));
+  mapStateToProps,
+  { deleteTrack }
+)(withStyles(styles)(TrackDeleteModal));
