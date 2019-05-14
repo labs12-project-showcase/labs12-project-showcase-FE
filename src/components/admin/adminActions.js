@@ -309,16 +309,18 @@ export const ADMIN_DELETED_ACCOUNT_FAILURE = "ADMIN_DELETED_ACCOUNT_FAILURE";
 
 export const deleteAccount = id => dispatch => {
   dispatch({ type: ADMIN_DELETED_ACCOUNT_START });
-  axiosAuth()
-    // .delete(`http://localhost:5000/api/admin/accounts/${id}`, info)
-    .delete(`${backendUrl}/api/admin/accounts/${id}`)
-    .then(res => {
-      dispatch({
-        type: ADMIN_DELETED_ACCOUNT_SUCCESS,
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      dispatch({ type: ADMIN_DELETED_ACCOUNT_FAILURE, payload: err });
-    });
+  return (
+    axiosAuth()
+      // .delete(`http://localhost:5000/api/admin/accounts/${id}`, info)
+      .delete(`${backendUrl}/api/admin/accounts/${id}`)
+      .then(res => {
+        dispatch({
+          type: ADMIN_DELETED_ACCOUNT_SUCCESS,
+          payload: { id }
+        });
+      })
+      .catch(err => {
+        dispatch({ type: ADMIN_DELETED_ACCOUNT_FAILURE, payload: err });
+      })
+  );
 };
