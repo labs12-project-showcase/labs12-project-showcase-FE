@@ -8,6 +8,7 @@ import {
 } from '../adminActions.js';
 // import AccountEditButton from './AccountEditButton';
 import AccountEditModal from './AccountEditModal';
+import AccountDeleteModal from './AccountDeleteModal';
 
 
 class AccountsTable extends React.Component {
@@ -41,7 +42,10 @@ class AccountsTable extends React.Component {
         options: {
             customBodyRender: value => {
                 return (
+                  <div className="modals-container">
                     <AccountEditModal />
+                    <AccountDeleteModal />
+                  </div>
                 );
             }
         }
