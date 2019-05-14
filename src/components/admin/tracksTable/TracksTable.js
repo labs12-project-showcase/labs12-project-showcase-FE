@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MaterialDatatable from "material-datatable";
 import { getTracks, updateTrack, deleteTrack } from '../adminActions.js';
-// import TracksButtons from './TracksButtons'
 import TrackEditModal from './TrackEditModal'
 import TrackDeleteModal from './TrackDeleteModal'
 
