@@ -56,7 +56,7 @@ export const createProject = formValues => dispatch => {
   dispatch({ type: CREATE_PROJECT_START });
   return new Promise((resolve, reject) => {
     axiosAuth()
-      .post(`${backendUrl}/api/projects`, removeEmptyValues(send))
+      .post(`${backendUrl}/api/projects`, send)
       .then(res => {
         dispatch({
           type: CREATE_PROJECT_SUCCESS,
@@ -70,24 +70,6 @@ export const createProject = formValues => dispatch => {
       });
   });
 };
-
-/**
- * Accepts an Object literal and returns a new object
- * with all false-y values removed. Uses recursion to handle
- * nested objects, too.
- * @param {Object} obj Object literal to be trimmed
- */
-function removeEmptyValues(obj) {
-  return Object.keys(obj)
-    .filter(f => Boolean(obj[f]))
-    .reduce(
-      (r, i) =>
-        typeof obj[i] === "object" && !Array.isArray(obj[i])
-          ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
-          : { ...r, [i]: obj[i] },
-      {}
-    );
-}
 
 function removeNulls(obj) {
   let noNulls = {};
@@ -123,14 +105,6 @@ export const getProject = id => dispatch => {
 };
 
 export const updateProject = (formValues, id) => dispatch => {
-  const url = formValues.youtube_url;
-  let videoid = url.match(
-    /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-  );
-  if (!videoid) {
-    videoid = ["", "gLdXxFS8BV4"];
-  }
-
   const send = {
     student_id: formValues.student_id,
     skills: formValues.skills,
@@ -142,9 +116,7 @@ export const updateProject = (formValues, id) => dispatch => {
       mobile_link: formValues.mobile_link,
       market_link: formValues.market_link,
       design_link: formValues.design_link,
-      youtube_url: `https://www.youtube.com/embed/${
-        videoid[1]
-      }?autoplay=0&showinfo=0&controls=0`,
+      youtube_url: formValues.youtube_url,
       website: formValues.website,
       medium: formValues.medium,
       short_description: formValues.short_description,
@@ -155,7 +127,7 @@ export const updateProject = (formValues, id) => dispatch => {
 
   dispatch({ type: UPDATE_PROJECT_START });
   return axiosAuth()
-    .put(`${backendUrl}/api/projects/${id}`, removeEmptyValues(send))
+    .put(`${backendUrl}/api/projects/${id}`, send)
     .then(res => {
       console.log(res);
       dispatch({

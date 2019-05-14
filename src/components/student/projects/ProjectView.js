@@ -34,6 +34,9 @@ const ProjectView = ({
           short_description={projectData.short_description}
         />
         <MediaGallery
+        defaultYouTubeUrl={
+          'https://www.youtube.com/watch?v=gLdXxFS8BV4'
+        }
           imageUrls={projectData.project_media}
           rawYouTubeUrl={projectData.youtube_url}
         />
@@ -60,12 +63,12 @@ const ProjectView = ({
             <ProjectLinkButton link={projectData.design_link} text="Design" />
           </div>
         </div>
-        <ProgressProject />
         <hr />
         <ProjectStudents students={projectData.students} />
         <hr />
         <ProjectSkills projectSkills={projectData.project_skills} />
       </main>
+      <ProgressProject project={projectData} />
     </div>
   );
 };

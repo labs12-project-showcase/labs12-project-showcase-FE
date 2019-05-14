@@ -74,7 +74,7 @@ export const handleAuth = () => dispatch => {
       localStorage.setItem('backendToken', resLogin.data);
 
       if (whichRole === 2) {
-        history.replace('/admin/student-table');
+        history.replace('/admin/students-table');
       } else {
         dispatch({ type: GET_PROFILE_DATA_START });
         axiosAuth().get(`${backendUrl}/api/students/profile`)

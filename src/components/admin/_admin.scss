@@ -1,88 +1,183 @@
 th {
-	font-size: 20px !important;
+  font-size: 2rem !important;
 }
 
 td {
-	font-size: 16px !important;
+  font-size: 1.6rem !important;
 }
 
 .tableContainer {
-	justify-content: center;
-	min-height: 60vh;
+  justify-content: center;
+  min-height: 60vh;
 
-	a {
-		text-decoration: none;
-		color: $lambdaLightBlue;
+  a {
+    text-decoration: none;
+    color: $lambdaLightBlue;
 
-		&:visited {
-			text-decoration: none;
-			color: $lambdaLightBlue;
-		}
-	}
+    &:visited {
+      text-decoration: none;
+      color: $lambdaLightBlue;
+    }
+  }
 }
 
 .MuiSwitch-switchBase-173 {
-	@media (max-width: 600px) {
-		height: 14px !important;
-	}
+  @media (max-width: 600px) {
+    height: 14px !important;
+  }
 }
 
 .MaterialDatatableBodyCell-cellStacked-168 {
-	@media (max-width: 600px) {
-		min-width: 160px;
-	}
+  @media (max-width: 600px) {
+    min-width: 160px;
+  }
 }
 
 .MaterialDatatableBodyCell-responsiveStacked-169 {
-	@media (max-width: 600px) {
-		min-width: 160px;
-	}
+  @media (max-width: 600px) {
+    min-width: 160px;
+  }
 }
 
-.MuiSwitch-switchBase-219 {
-	@media (max-width: 768px) {
-		height: 14px;
-	}
+.MuiButtonBase-root-95 {
+  @media (max-width: 960px) {
+    height: 21px !important;
+  }
 }
 
 .MuiTableRow-root-117 {
-	@media (max-width: 600px) {
-		text-align: center;
-	}
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 }
 
 .MuiTable-root-112 {
-	@media (max-width: 600px) {
-		min-width: 322px;
-	}
+  @media (max-width: 600px) {
+    min-width: 322px;
+  }
 }
 
 .MuiPaper-root-5 {
-	max-width: 1024px;
-	margin: 50px auto;
-	.MuiTypography-h6-62 {
-		font-size: 1.8rem;
-		font-weight: 500;
-	}
-	.MuiTablePagination-select-188 {
-		padding-right: 30px;
-	}
-	.MaterialDatatableToolbarSelect-title-252 {
-		font-size: 1.4rem;
-	}
-	.MuiTypography-caption-55 {
-		font-size: 1.4rem;
-	}
-	.MaterialDatatableBodyRow-responsiveStacked-164 {
-		@media (max-width: 600px) {
-			border: none;
-			border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-		}
-	}
-	.MuiListItemText-inset-233:first-child {
-		padding-left: 0px;
-	}
-	.MuiListItemText-inset-620:first-child {
-		padding-left: 0px;
-	}
+  max-width: 1024px;
+  margin: 50px auto;
+  .MuiTypography-h6-62 {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .MuiTablePagination-select-188 {
+    padding-right: 30px;
+  }
+  .MaterialDatatableToolbarSelect-title-252 {
+    font-size: 1.4rem;
+  }
+  .MuiTypography-caption-55 {
+    font-size: 1.4rem;
+  }
+  .MaterialDatatableBodyRow-responsiveStacked-164 {
+    @media (max-width: 600px) {
+      border: none;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    }
+  }
+  .MuiListItemText-inset-233:first-child {
+    padding-left: 0px;
+  }
+  .MuiListItemText-inset-620:first-child {
+    padding-left: 0px;
+  }
+
+  .MuiTypography-root-45 {
+    font-size: 1.4rem;
+  }
+
+  .MuiSelect-select-185 {
+    margin-right: 10px;
+  }
+  [class*="MuiSelect-selectMenu"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+  [class*="MuiFormLabel"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+  [class*="MuiListItem-root"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+}
+[class*="MuiTooltip-tooltip"] {
+  font-size: 1.4rem !important;
+  font-family: Lato !important;
+}
+
+.sc-modal {
+  button {
+    margin: 3px;
+    border-radius: 0;
+    color: $lightcolor;
+    font-size: 1.4rem;
+    background-color: $lambdaDarkBlue;
+    &:hover {
+      background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
+    }
+  }
+}
+
+.bnt-edit {
+  margin: 3px;
+  border-radius: 0;
+  color: $lightcolor;
+  background-color: $lambdaDarkBlue;
+  &:hover {
+    background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
+  }
+}
+.sc-input {
+  @include box-align();
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  input {
+    border: 1px solid $newBorder;
+    margin: 3px 3px 20px;
+    font-size: 1.8rem;
+  }
+}
+
+.mui-tooltip-16095 {
+  font-size: 1rem;
+}
+
+.sc-modal-buttons {
+  @include box-align();
+  button[type="submit"] {
+    font-size: 1.4rem;
+    background-color: $lambdaDarkBlue;
+    color: $lightcolor;
+    border: none;
+    border-radius: 0;
+    margin: 3px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($color: $lambdaDarkBlue, $amount: 10);
+    }
+  }
+
+  button {
+    font-size: 1.4rem;
+    background-color: $lambdaRed;
+    color: $lightcolor;
+    border: none;
+    border-radius: 0;
+    margin: 3px;
+    cursor: pointer;
+    &:hover {
+      border: none;
+      background-color: darken($color: $lambdaRed, $amount: 10);
+    }
+  }
 }

@@ -116,7 +116,7 @@
 						color: $lambdaTeal;
 						border: 1px solid $newBorder;
 						padding: 20px;
-
+						transition-duration: 0.3s;
 						cursor: pointer;
 
 						&:hover {
@@ -145,6 +145,7 @@
 						background-color: $lambdaRed;
 						cursor: pointer;
 						text-align: center;
+						transition-duration: 0.3s;
 						&:hover {
 							background-color: darken($lambdaRed, 10%);
 						}
@@ -163,6 +164,7 @@
 					color: $lambdaTeal;
 					border: 1px solid $newBorder;
 					cursor: pointer;
+					transition-duration: 0.3s;
 					i {
 						margin: 0;
 						padding: 0;

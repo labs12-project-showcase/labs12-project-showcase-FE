@@ -152,8 +152,8 @@
 			margin: 0 auto;
 			width: 250px;
 			cursor: pointer;
+			transition-duration: 0.3s;
 			&:hover {
-				box-shadow: 0 0 6px 3px #cccccc;
 				background-color: $lambdaGray;
 			}
 		}
