@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import EditIcon from "@material-ui/icons/Edit";
+import CheckIcon from "@material-ui/icons/Check";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -46,10 +48,6 @@ class AccountEditModal extends React.Component {
     this.setState({ open: false });
   };
 
-  handleInputClick = (e) => {
-    e.stopPropagation();
-  }
-
   handleSubmit = (e) => {
     e.stopPropagation();
   }
@@ -69,23 +67,30 @@ class AccountEditModal extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
           onSubmit={this.handleSubmit}
+          onClick={e => e.stopPropagation()}
         >
           <div style={getModalStyle()} className={classes.paper}>
             <form onSubmit={this.handleSubmit} method="PUT">
               <div>
                 <label>New Account Name: </label>
-                <input onClick={this.handleInputClick} type="text"></input>
+                <input onClick={e => e.stopPropagation()} type="text"></input>
               </div>
               <div>
                 <label>New Account Email: </label>
-                <input onClick={this.handleInputClick} type="text"></input>
+                <input onClick={e => e.stopPropagation()} type="text"></input>
               </div>
               <div>
                 <label>New Account Role: </label>
-                <input onClick={this.handleInputClick} type="text"></input>
+                <input onClick={e => e.stopPropagation()} type="text"></input>
               </div>
-              <button type="submit">Update Account</button>
-              <button onClick={this.handleClose}>Cancel</button>
+              <Button type="submit" variant="outlined" color="primary" classNames={classes.button}>
+                Update Account
+                <CheckIcon classNames={classes.rightIcon} />
+              </Button>
+              <Button onClick={this.handleClose} variant="outlined" color="secondary" classNames={classes.button}>
+                Cancel
+                <CancelIcon classNames={classes.rightIcon} />
+              </Button>
             </form>
           </div>
         </Modal>
