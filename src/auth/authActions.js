@@ -37,12 +37,12 @@ export const logout = params => dispatch => {
   dispatch({ type: LOGOUT });
 
   auth.logout({
-    returnTo: window.location.origin
+    returnTo: "http://localhost:3000"
   });
 
   localStorage.removeItem('backendToken');
 
-  history.replace('/home');
+  history.replace('/');
 };
 
 export const handleAuth = () => dispatch => {
