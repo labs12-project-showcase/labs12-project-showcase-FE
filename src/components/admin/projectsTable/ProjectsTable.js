@@ -16,21 +16,24 @@ class ProjectsTable extends React.Component {
 			{
 				name: 'Title',
 				field: 'name',
-				filter: true,
-				sort: true,
 				options: {
-					customBodyRender: value => {
+					filter: true,
+					sort: true,
+					customBodyRender: project => {
 						return (
 							<Link
-								to={`/student/project-view/${value.id}`}
+								to={`/student/project-view/${project.id}`}
 								onClick={e => {
 									e.stopPropagation();
 								}}
 							>
-								{value.name}
+								{project.name}
 							</Link>
 						);
-					}
+					},
+					customValue: project => project.name,
+					customSortValue: project => project.name
+
 				}
 			},
 			{
@@ -42,9 +45,9 @@ class ProjectsTable extends React.Component {
 			{
 				name: 'Contributors',
 				field: 'students',
-				filter: true,
-				sort: true,
 				options: {
+					filter: true,
+					sort: true,
 					customBodyRender: value => {
 						return <ProjectTableRow value={value} />;
 					}
@@ -54,12 +57,25 @@ class ProjectsTable extends React.Component {
 				name: 'Approved',
 				field: 'approved',
 				options: {
+					filter: true,
+					sort: true,
 					customBodyRender: project => {
 						return <ProjectApprovedButton project={project} />;
-					}
+					},
+					customValue: project =>
+						project.approved
+							.toString(),
+					customSortValue: project => Number(project.approved)
 				}
 			}
 		];
+
+		const options = {
+			filterType: "dropdown",
+			selectableRows: false,
+			showSelectedRowsToolbar: false,
+			responsive: "stacked"
+		};
 
 		return (
 			<div className="tableContainer">
@@ -67,6 +83,7 @@ class ProjectsTable extends React.Component {
 					title={'Admin Projects Table'}
 					columns={column}
 					data={this.props.projects}
+					options={options}
 				/>
 			</div>
 		);
