@@ -6,6 +6,9 @@ import {
     updateAccount,
     deleteAccount
 } from '../adminActions.js';
+// import AccountEditButton from './AccountEditButton';
+import AccountEditModal from './AccountEditModal';
+import AccountDeleteModal from './AccountDeleteModal';
 
 
 class AccountsTable extends React.Component {
@@ -17,7 +20,7 @@ class AccountsTable extends React.Component {
   render() {
     const column = [
       {
-        name: "Account",
+        name: "Name",
         field: "name",
         filter: true,
         sort: true,
@@ -34,6 +37,19 @@ class AccountsTable extends React.Component {
         filter: true,
         sort: true,
       },
+      {
+        name: "",
+        options: {
+            customBodyRender: value => {
+                return (
+                  <div className="modals-container">
+                    <AccountEditModal className="modal" />
+                    <AccountDeleteModal className="modal" />
+                  </div>
+                );
+            }
+        }
+      }
     ]
 
     return (
