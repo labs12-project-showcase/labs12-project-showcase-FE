@@ -80,7 +80,7 @@ class ProjectsTable extends React.Component {
 		return (
 			<div className="tableContainer">
 				<MaterialDatatable
-					title={'Admin Projects Table'}
+					title={'Projects'}
 					columns={column}
 					data={this.props.projects}
 					options={options}

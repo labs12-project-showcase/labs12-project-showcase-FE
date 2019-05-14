@@ -59,7 +59,7 @@ class CohortsTable extends React.Component {
 
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Cohorts Table"}
+          title={"Cohorts"}
           columns={column}
           data={this.props.cohorts}
           options={options}

@@ -61,7 +61,7 @@ class AccountsTable extends React.Component {
     return (
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Accounts Table"}
+          title={"Accounts"}
           columns={column}
           data={this.props.accounts}
           options={options}

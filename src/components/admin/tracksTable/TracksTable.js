@@ -46,7 +46,7 @@ class TracksTable extends React.Component {
 
             <div className="tableContainer">
                 <MaterialDatatable
-                    title={"Admin Tracks Table"}
+                    title={"Tracks"}
                     columns={column}
                     data={this.props.tracks}
                     options={options}
