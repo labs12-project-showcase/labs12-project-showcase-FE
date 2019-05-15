@@ -66,8 +66,8 @@ class TrackEditModal extends React.Component {
           color="primary"
           className={classes.button}
         >
-          Edit
           <EditIcon className={classes.rightIcon} />
+          Edit
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
@@ -105,8 +105,8 @@ class TrackEditModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
-                Update Track
                 <CheckIcon className={classes.rightIcon} />
+                Update Track
               </Button>
               <Button
                 onClick={this.handleClose}
@@ -114,8 +114,8 @@ class TrackEditModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
-                Cancel
                 <CancelIcon className={classes.rightIcon} />
+                Cancel
               </Button>
             </form>
           </div>

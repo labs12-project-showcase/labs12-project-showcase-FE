@@ -51,8 +51,8 @@ class TrackDeleteModal extends React.Component {
           color="secondary"
           className={classes.button}
         >
-          Delete
           <DeleteIcon className={classes.rightIcon} />
+          Delete
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
@@ -84,8 +84,8 @@ class TrackDeleteModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
-                Delete Track
                 <CheckIcon className={classes.rightIcon} />
+                Delete Track
               </Button>
               <Button
                 onClick={this.handleClose}
@@ -93,8 +93,8 @@ class TrackDeleteModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
-                Cancel
                 <CancelIcon className={classes.rightIcon} />
+                Cancel
               </Button>
             </form>
           </div>

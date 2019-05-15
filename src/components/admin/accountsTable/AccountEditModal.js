@@ -57,8 +57,8 @@ class AccountEditModal extends React.Component {
 					color="primary"
 					classnames={classes.button}
 				>
-					Edit
 					<EditIcon classnames={classes.rightIcon} />
+					Edit
 				</Button>
 				<Modal
 					aria-labelledby="simple-modal-title"
@@ -107,8 +107,8 @@ class AccountEditModal extends React.Component {
 								color="primary"
 								classnames={classes.button}
 							>
-								Update Account
 								<CheckIcon classnames={classes.rightIcon} />
+								Update Account
 							</Button>
 							<Button
 								onClick={this.handleClose}
@@ -116,8 +116,8 @@ class AccountEditModal extends React.Component {
 								color="secondary"
 								classnames={classes.button}
 							>
-								Cancel
 								<CancelIcon classnames={classes.rightIcon} />
+								Cancel
 							</Button>
 						</form>
 					</div>

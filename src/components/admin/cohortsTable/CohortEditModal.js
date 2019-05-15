@@ -54,8 +54,8 @@ class CohortEditModal extends React.Component {
 					color="primary"
 					classnames={classes.button}
 				>
-					Edit
 					<EditIcon classnames={classes.rightIcon} />
+					Edit
 				</Button>
 				<Modal
 					aria-labelledby="simple-modal-title"
@@ -89,8 +89,8 @@ class CohortEditModal extends React.Component {
 								color="primary"
 								classnames={classes.button}
 							>
-								Update Cohort
 								<CheckIcon classnames={classes.rightIcon} />
+								Update Cohort
 							</Button>
 							<Button
 								onClick={this.handleClose}
@@ -98,8 +98,8 @@ class CohortEditModal extends React.Component {
 								color="secondary"
 								classnames={classes.button}
 							>
-								Cancel
 								<CancelIcon classnames={classes.rightIcon} />
+								Cancel
 							</Button>
 						</form>
 					</div>
