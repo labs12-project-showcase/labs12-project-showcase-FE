@@ -51,10 +51,10 @@ class DeleteModal extends React.Component {
           onClick={this.handleOpen}
           variant="outlined"
           color="secondary"
-          classNames={classes.button}
+          classnames={classes.button}
         >
           Delete Account
-          <DeleteIcon classNames={classes.rightIcon} />
+          <DeleteIcon classnames={classes.rightIcon} />
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
@@ -84,19 +84,19 @@ class DeleteModal extends React.Component {
                 type="submit"
                 variant="outlined"
                 color="primary"
-                classNames={classes.button}
+                classnames={classes.button}
               >
                 Delete Profile
-                <CheckIcon classNames={classes.rightIcon} />
+                <CheckIcon classnames={classes.rightIcon} />
               </Button>
               <Button
                 onClick={this.handleClose}
                 variant="outlined"
                 color="secondary"
-                classNames={classes.button}
+                classnames={classes.button}
               >
                 Cancel
-                <CancelIcon classNames={classes.rightIcon} />
+                <CancelIcon classnames={classes.rightIcon} />
               </Button>
             </form>
           </div>

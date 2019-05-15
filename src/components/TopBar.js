@@ -8,7 +8,6 @@ import { validateJwt, getJwtRole } from '../config/utilities.js';
 import { deleteStudent } from './student/profile/studentProfileActions.js';
 import JoinProject from './student/projectqs/JoinProject';
 import LeaveProject from './student/projectqs/LeaveProject';
-import DeleteModal from '../components/student/profile/DeleteModal.js';
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
@@ -102,7 +101,6 @@ class TopBar extends Component {
 								<NavLink exact to="/profile-quick-start">
 									<i className="fas fa-user-edit" /> Edit Profile
 								</NavLink>
-								<DeleteModal />
 							</nav>
 						</div>
 					)}
