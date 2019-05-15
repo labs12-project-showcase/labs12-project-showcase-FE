@@ -6,6 +6,8 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import CheckIcon from "@material-ui/icons/Check";
+import CancelIcon from "@material-ui/icons/Cancel";
 import { addTrack } from "../adminActions.js";
 
 const styles = theme => ({
@@ -28,7 +30,7 @@ const styles = theme => ({
 class TrackAddModal extends React.Component {
   state = {
     open: false,
-    name: this.props.value.name
+    name: ""
   };
 
   handleOpen = e => {
@@ -50,8 +52,6 @@ class TrackAddModal extends React.Component {
 
   render() {
     const { classes } = this.props;
-
-    <div />;
 
     return (
       <div className="sc-modal">
