@@ -16,6 +16,8 @@ import CohortsTable from '../components/admin/cohortsTable/CohortsTable';
 import AccountsTable from '../components/admin/accountsTable/AccountsTable';
 import AdminLogin from '../auth/AdminLogin.js';
 import TracksTable from '../components/admin/tracksTable/TracksTable';
+import MapboxMap from '../components/mapboxMap/MapboxMap';
+
 
 class Routes extends Component {
 	handleAuth = ({ location }) => {
@@ -45,6 +47,7 @@ class Routes extends Component {
 						component={Projectqs}
 					/>
 					<Route path="/student/project-view/:id" component={ProjectView} />
+					<Route exact path="/map" component={MapboxMap} />
 					<Route
 						path="/contact-me/:id"
 						render={props => <ContactForm auth={props.auth} {...props} />}
