@@ -10,7 +10,7 @@ const ProjectLeftHeader = ({ name, short_description, website, medium }) => {
       </a>
       {medium ? (
         <a href={medium} target="_blank" rel="noopener noreferrer">
-          Read the Story on M
+          Read the Story on <i class="fab fa-medium-m"></i>
         </a>
       ) : null}
     </div>
