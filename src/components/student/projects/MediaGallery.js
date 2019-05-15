@@ -2,33 +2,33 @@ import React, { useEffect, useState } from 'react';
 
 const MediaGallery = ({ defaultYouTubeUrl, imageUrls, rawYouTubeUrl }) => {
 	// manipulate YouTube URL if necessary
-	const [embedYouTubeUrl, setEmbedYouTubeUrl] = useState('');
-	useEffect(() => {
-		console.log('useEffect is setting the embedYouTubeUrl');
-		if (rawYouTubeUrl) {
-			setEmbedYouTubeUrl(toEmbedYouTubeUrl(rawYouTubeUrl));
-		} else if (defaultYouTubeUrl) {
-			setEmbedYouTubeUrl(toEmbedYouTubeUrl(defaultYouTubeUrl));
-		}
-	}, [defaultYouTubeUrl, rawYouTubeUrl]);
+	const [embedYouTubeUrl] = useState('');
+	// useEffect(() => {
+	// 	console.log('useEffect is setting the embedYouTubeUrl');
+	// 	if (rawYouTubeUrl) {
+	// 		setEmbedYouTubeUrl(toEmbedYouTubeUrl(rawYouTubeUrl));
+	// 	} else if (defaultYouTubeUrl) {
+	// 		setEmbedYouTubeUrl(toEmbedYouTubeUrl(defaultYouTubeUrl));
+	// 	}
+	// }, [defaultYouTubeUrl, rawYouTubeUrl]);
 
-	/**
-	 * Takes in a YouTube video URL and returns the embed URL for the video
-	 * `embed` equals [`rawYouTubeUrl`, `watch code, if present, else empty`]
-	 * @param {String} url YouTube video URL
-	 * @returns {Array} YouTube embed video URL
-	 */
-	function toEmbedYouTubeUrl(url) {
-		if (url.includes('embed')) {
-			return url;
-		}
-		const embed = url.match(
-			/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-		);
-		return `https://www.youtube.com/embed/${
-			embed[1]
-		}?autoplay=0&showinfo=0&controls=0`;
-	}
+	// /**
+	//  * Takes in a YouTube video URL and returns the embed URL for the video
+	//  * `embed` equals [`rawYouTubeUrl`, `watch code, if present, else empty`]
+	//  * @param {String} url YouTube video URL
+	//  * @returns {Array} YouTube embed video URL
+	//  */
+	// function toEmbedYouTubeUrl(url) {
+	// 	if (url.includes('embed')) {
+	// 		return url;
+	// 	}
+	// 	const embed = url.match(
+	// 		/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
+	// 	);
+	// 	return `https://www.youtube.com/embed/${
+	// 		embed[1]
+	// 	}?autoplay=0&showinfo=0&controls=0`;
+	// }
 
 	const handleSmallClick = event => {
 		let index = event.target.getAttribute('data-index');
