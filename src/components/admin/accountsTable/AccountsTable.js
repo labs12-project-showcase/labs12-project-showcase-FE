@@ -16,16 +16,16 @@ class AccountsTable extends React.Component {
         name: "Name",
         field: "name",
         options: {
-          filter: true,
-          sort: false
+          filter: false,
+          sort: true
         }
       },
       {
         name: "Email",
         field: "email",
         options: {
-          filter: true,
-          sort: false
+          filter: false,
+          sort: true
         }
       },
       {

@@ -33,7 +33,7 @@ class StudentsTable extends React.Component {
         field: "name",
         options: {
           filter: false,
-          sort: false,
+          sort: true,
           customBodyRender: student => {
             return (
               <Link
