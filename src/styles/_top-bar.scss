@@ -34,7 +34,7 @@
 				padding: 5px 5px 5px 10px;
 				border: none;
 				background: none;
-				color: darken(($lambdaRed), 22%);
+				color: $lightcolor;
 				@include box-align();
 				transition-duration: 0.3s;
 				cursor: pointer;
@@ -51,7 +51,6 @@
 				}
 
 				&:hover {
-					color: $lightcolor;
 					background: darken(($lambdaRed), 10%);
 				}
 			}
@@ -95,6 +94,13 @@
 			&:hover {
 				background-color: $lightcolor;
 				color: $darkcolor;
+			}
+		}
+		.sc-modal-buttons {
+			.MuiButton-root-2 {
+				text-decoration: none;
+				padding: 1px 7px;
+				color: #ffffff;
 			}
 		}
 	}
