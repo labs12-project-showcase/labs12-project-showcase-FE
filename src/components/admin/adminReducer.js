@@ -299,9 +299,10 @@ const adminReducer = (state = initialState, action) => {
           if (cur.id === action.payload.id) {
             arr.push({ ...cur, ...action.payload });
             return arr;
+          } else {
+            arr.push(cur);
+            return arr;
           }
-          arr.push(cur);
-          return arr;
         }, []),
         updatingTracksData: false
       };

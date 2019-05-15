@@ -8,7 +8,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import CheckIcon from "@material-ui/icons/Check";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { addTrack } from "../adminActions.js";
+import { addTrack, getTracks } from "../adminActions.js";
 
 const styles = theme => ({
   fab: {
@@ -45,7 +45,10 @@ class TrackAddModal extends React.Component {
   handleSubmit = e => {
     e.stopPropagation();
     e.preventDefault();
-    this.props.addTrack({ name: this.state.name }).then(this.handleClose);
+    this.props
+      .addTrack({ name: this.state.name })
+      .then(this.props.getTracks)
+      .then(this.handleClose);
   };
 
   render() {
@@ -95,6 +98,7 @@ class TrackAddModal extends React.Component {
                 variant="outlined"
                 color="primary"
                 className={classes.button}
+                onClick={this.handleSubmit}
               >
                 Create Track
                 <CheckIcon className={classes.rightIcon} />
@@ -128,5 +132,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addTrack }
+  { addTrack, getTracks }
 )(withStyles(styles)(TrackAddModal));

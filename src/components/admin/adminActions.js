@@ -211,6 +211,7 @@ export const addTrack = info => dispatch => {
   return axiosAuth()
     .post(`${backendUrl}/api/admin/tracks`, info)
     .then(res => {
+      console.log(res.data);
       dispatch({
         type: ADMIN_ADDED_TRACK_SUCCESS,
         payload: res.data
