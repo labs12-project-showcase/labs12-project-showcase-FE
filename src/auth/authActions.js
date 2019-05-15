@@ -33,16 +33,11 @@ export const adminLogin = params => dispatch => {
 }
 
 export const logout = params => dispatch => {
-
   dispatch({ type: LOGOUT });
-
   auth.logout({
-    returnTo: "http://localhost:3000"
+    returnTo: window.location.origin
   });
-
   localStorage.removeItem('backendToken');
-
-  history.replace('/');
 };
 
 export const handleAuth = () => dispatch => {

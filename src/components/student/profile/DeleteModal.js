@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { logout } from '../../../auth/authActions.js';
+import { deleteStudent } from '../../student/profile/studentProfileActions.js';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -49,8 +52,8 @@ class DeleteModal extends React.Component {
 	};
 
 	handleSubmit = e => {
-    e.stopPropagation();
-    this.props.deleteStudent();
+		e.stopPropagation();
+		this.props.deleteStudent();
 	};
 
 	render() {
@@ -114,4 +117,6 @@ DeleteModal.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(DeleteModal);
+const connectedModal = connect(null, { logout, deleteStudent })(DeleteModal);
+
+export default withStyles(styles)(connectedModal);
