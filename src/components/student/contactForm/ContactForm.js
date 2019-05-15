@@ -109,6 +109,10 @@ class ContactForm extends React.Component {
               method="POST"
               className="sc-modal-buttons"
             >
+				<div className="contact-form-header-container">
+					<h2 className="contact-form-header-message">Send a Message to {this.props.student.name}!</h2>
+				</div>
+				
               <div className="sc-input">
                 <label>Your Email: </label>
                 <input
