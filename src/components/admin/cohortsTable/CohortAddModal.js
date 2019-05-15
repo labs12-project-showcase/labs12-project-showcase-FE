@@ -46,7 +46,7 @@ class CohortAddModal extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     this.props
-      .addTrack({ name: this.state.name })
+      .addCohort({ name: this.state.name })
       .then(this.props.getCohorts)
       .then(this.handleClose);
   };
