@@ -47,7 +47,7 @@ class CohortAddModal extends React.Component {
     e.preventDefault();
     this.props
         .addCohort({ cohort_name: this.state.name })
-        // .then(this.props.getCohorts)
+        .then(this.props.getCohorts)
         .then(this.handleClose)
       
   };
