@@ -21,9 +21,9 @@ class CohortsTable extends React.Component {
       {
         name: "Cohort",
         field: "cohort_name",
-        filter: true,
-        sort: true,
         options: {
+          filter: true,
+          sort: true,
           customBodyRender: value => {
             return <p>{value.cohort_name}</p>;
           }
@@ -32,6 +32,8 @@ class CohortsTable extends React.Component {
       {
         name: "",
         options: {
+          filter: false,
+          sort: false,
           customBodyRender: value => {
             return (
               <div className="modals-container">

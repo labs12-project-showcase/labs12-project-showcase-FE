@@ -15,14 +15,18 @@ class AccountsTable extends React.Component {
       {
         name: "Name",
         field: "name",
-        filter: true,
-        sort: true
+        options: {
+          filter: false,
+          sort: true
+        }
       },
       {
         name: "Email",
         field: "email",
-        filter: true,
-        sort: true
+        options: {
+          filter: false,
+          sort: true
+        }
       },
       {
         name: "Role",
@@ -39,6 +43,8 @@ class AccountsTable extends React.Component {
       {
         name: "",
         options: {
+          filter: false,
+          sort: false,
           customBodyRender: value => {
             return (
               <div className="modals-container">
