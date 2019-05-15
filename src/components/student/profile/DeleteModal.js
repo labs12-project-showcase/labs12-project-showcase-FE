@@ -67,7 +67,7 @@ class DeleteModal extends React.Component {
 					color="secondary"
 					classNames={classes.button}
 				>
-					Delete
+					Delete Account
 					<DeleteIcon classNames={classes.rightIcon} />
 				</Button>
 				<Modal
@@ -117,6 +117,9 @@ DeleteModal.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-const connectedModal = connect(null, { logout, deleteStudent })(DeleteModal);
+const connectedModal = connect(
+	null,
+	{ logout, deleteStudent }
+)(DeleteModal);
 
 export default withStyles(styles)(connectedModal);
