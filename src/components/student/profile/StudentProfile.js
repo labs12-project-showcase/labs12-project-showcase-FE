@@ -1,16 +1,16 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { getData } from "./studentProfileActions";
-import badge from "../../../assets/lambda-badge.png";
-import Projects from "../projectcards/ProjectCards";
-import NotEndorsed from "../notEndorsed/NotEndorsed";
-import AboutMe from "../aboutMe/AboutMe";
-import Endorsements from "../endorsements/Endorsements";
-import Share from "../share/Share";
-import Status from "../status/Status";
-import Skills from "../skills/Skills";
-import Progress from "../progress/Progress";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getData } from './studentProfileActions';
+import badge from '../../../assets/lambda-badge.png';
+import Projects from '../projectcards/ProjectCards';
+import NotEndorsed from '../notEndorsed/NotEndorsed';
+import AboutMe from '../aboutMe/AboutMe';
+import Endorsements from '../endorsements/Endorsements';
+import Share from '../share/Share';
+import Status from '../status/Status';
+import Skills from '../skills/Skills';
+import Progress from '../progress/Progress';
 // import EndorseButton from '../endorsements/EndorseButton';
 
 // yarn add react-id-swiper@latest swiper@latest

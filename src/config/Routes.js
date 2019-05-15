@@ -36,7 +36,7 @@ class Routes extends Component {
 							return <Callback {...props} />;
 						}}
 					/>
-
+					
 					<Route exact path="/student/profile/:id" component={StudentProfile} />
 					<PrivateRoute path="/profile-quick-start" component={Profileqs} />
 					<PrivateRoute
