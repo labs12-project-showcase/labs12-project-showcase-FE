@@ -1,8 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { homeData, getFilteredCards } from "../home/homeActions";
 import axios from "axios";
 import {render} from 'react-dom';
 import ReactMapGL, { Marker, Popup, FullscreenControl, NavigationControl } from "react-map-gl";
 import zipcodes from 'zipcodes';
+import { backendUrl } from "../../config/urls.js";
 
 import StudentPin from './student-pin';
 import StudentInfo from './student-info';
@@ -42,9 +46,13 @@ class MapboxMap extends React.Component {
   }
 
   async componentDidMount() {
-    let { data } = await axios.get('https://halg-backend.herokuapp.com/api/students/locations')
+    this.props.homeData();
+    let { data } = await axios.get(`${backendUrl}/api/students/cards/filter`);
+    // let { data } = this.props.cards;
+    
+
     data = data.reduce((arr, student) => {
-      const location =  zipcodes.lookup(Number(student.location))
+      const location =  zipcodes.lookupByName(this.props.cards.location)
       if (location) {
         arr = [
           ...arr,
@@ -91,16 +99,19 @@ class MapboxMap extends React.Component {
   }
 
   render() {
+    console.log("cards data: ", this.props.cards);
+    console.log("student data: ", this.state.students);
     const { viewport } = this.state;
     return (
       <ReactMapGL
         {...viewport}
 		    mapStyle="mapbox://styles/mapbox/dark-v10"
 		    // mapStyle="mapbox://styles/mapbox/streets-v11"
-        onViewportChange={this._updateViewport}
-        mapboxApiAccessToken={MAPBOX_TOKEN}
-        scrollZoom={false}
-		    className="react-map"
+            onViewportChange={this._updateViewport}
+            mapboxApiAccessToken={MAPBOX_TOKEN}
+            scrollZoom={false}
+            className="react-map"
+            id="map"
       >
 		{ this.state.students.map(this._renderStudentMarker) }
 
@@ -118,8 +129,18 @@ class MapboxMap extends React.Component {
   }
 }
 
-export default MapboxMap;
+const mapStateToProps = state => ({
+  ...state,
+  cards: state.home
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { homeData, getFilteredCards }
+  )(MapboxMap)
+);
 
 export function renderToDom(container) {
-	render(<MapboxMap/>, container);
+	render(<MapboxMap />, container,);
 }
