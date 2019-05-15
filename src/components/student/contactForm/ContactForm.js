@@ -7,6 +7,7 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import CheckIcon from "@material-ui/icons/Check";
 import CancelIcon from "@material-ui/icons/Cancel";
+import { getData } from "../profile/studentProfileActions";
 
 const styles = theme => ({
   paper: {
@@ -23,16 +24,9 @@ class ContactForm extends React.Component {
   state = {
     open: false,
     email: {
-      from: "<YourEmailHere@gmail.com>",
-      subject: `An Interested User Found Your Profile on Lambda Showcase!`,
-      text: `Hi, <student name>! 
-	
-		  I stumbled upon your profile on Lambda Showcase and I am very impressed with your work!
-		  Can we schedule a time to chat? You can reach me at <YourEmailHere@gmail.com>.
-	
-		  Thanks,
-		  <Your Name Here>
-		  `
+      from: "",
+      subject: "",
+	  text: ""
     }
   };
 
@@ -42,17 +36,29 @@ class ContactForm extends React.Component {
     axios
       .post(
         `https://halg-backend.herokuapp.com/api/students/contact-me/${
-          this.props.match.params.id
+          this.props.student.id
         }`,
         email
       )
       .then(res => {
-        alert("It sent!");
+		alert(`Your message was sent successfully to ${this.props.student.name}!`);
+		this.handleClose();
       })
-      .catch(() => {
-        alert("It did not send");
+      .catch(err => {
+		console.log(err);
+		alert(`Sorry, but something went wrong while trying to send your message to ${this.props.student.name}! Please try again.`);
       });
   };
+
+  handleInputChange = e => {
+	e.stopPropagation();
+	this.setState({ 
+		email: {
+			...this.state.email, 
+			[e.target.name]: e.target.value
+		}
+	})
+  }
 
   handleOpen = e => {
     e.stopPropagation();
@@ -65,13 +71,14 @@ class ContactForm extends React.Component {
 
   handleSubmit = e => {
     e.stopPropagation();
-    e.preventDefault();
+	e.preventDefault();
+	this.sendEmail();
   };
 
   render() {
+	// console.log(this.props.student.id);
 	const { email } = this.state;
-	const { from, subject, text } = this.state.email;
-    const { classes } = this.props;
+	const { classes } = this.props;
 
     return (
       <div className="sc-modal-buttons">
@@ -99,37 +106,40 @@ class ContactForm extends React.Component {
           >
             <form
               onSubmit={this.handleSubmit}
-              method="PUT"
+              method="POST"
               className="sc-modal-buttons"
             >
               <div className="sc-input">
-                <label>Your Email Address: </label>
+                <label>Your Email: </label>
                 <input
                   name="from"
                   value={email.from}
-                  onChange={e => this.setState({ from: e.target.value })}
+                  onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="text"
+				  type="email"
+				  required
                 />
               </div>
 			  <div className="sc-input">
                 <label>Subject: </label>
                 <input
                   name="subject"
-                  value={this.state.email.subject}
-                  onChange={e => this.setState({ subject: e.target.value })}
+                  value={email.subject}
+                  onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="text"
+				  type="text"
+				  required
                 />
               </div>
 			  <div className="sc-input">
                 <label>Message: </label>
                 <input
                   name="text"
-                  value={this.state.email.text}
-                  onChange={e => this.setState({ text: e.target.value })}
+                  value={email.text}
+                  onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="text"
+				  type="text"
+				  required
                 />
               </div>
               <Button
@@ -164,8 +174,10 @@ ContactForm.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    ...state
+	...state
   };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(ContactForm));
+export default connect(mapStateToProps, 
+	{ getData }
+)(withStyles(styles)(ContactForm));

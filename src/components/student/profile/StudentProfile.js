@@ -74,7 +74,7 @@ class StudentProfile extends React.Component {
               </div>
 
               <div className="social-links">
-                <ContactForm />
+                <ContactForm student={this.props.studentProfile.profile}/>
                 <a
                   className="portfolio-btn"
                   rel="noopener noreferrer"

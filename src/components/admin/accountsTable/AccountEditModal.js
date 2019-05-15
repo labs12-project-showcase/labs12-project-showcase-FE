@@ -150,7 +150,18 @@ export default connect(
 
 
 
-
+// email: {
+// 	from: "<YourEmailHere@gmail.com>",
+// 	subject: `An Interested User Found Your Profile on Lambda Showcase!`,
+// 	text: `Hi, <student name>! 
+  
+// 		I stumbled upon your profile on Lambda Showcase and I am very impressed with your work!
+// 		Can we schedule a time to chat? You can reach me at <YourEmailHere@gmail.com>.
+  
+// 		Thanks,
+// 		<Your Name Here>
+// 		`
+// }
 
 // class ContactForm extends React.Component {
 //   render() {
