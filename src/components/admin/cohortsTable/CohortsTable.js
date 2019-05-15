@@ -1,19 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
 import CohortEditModal from "./CohortEditModal";
 import CohortDeleteModal from "./CohortDeleteModal";
+import CohortAddModal from "./CohortAddModal";
 
 import {
   getCohorts,
   updateCohort,
-  deleteCohort,
-  addCohort
-} from '../adminActions.js';
-
+  deleteCohort
+} from "../adminActions.js";
 
 class CohortsTable extends React.Component {
-
   componentDidMount() {
     this.props.getCohorts();
   }
@@ -27,9 +25,7 @@ class CohortsTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
-            return (
-              <p>{value.cohort_name}</p>
-            );
+            return <p>{value.cohort_name}</p>;
           }
         }
       },
@@ -46,7 +42,7 @@ class CohortsTable extends React.Component {
           }
         }
       }
-    ]
+    ];
 
     const options = {
       filterType: "dropdown",
@@ -56,8 +52,8 @@ class CohortsTable extends React.Component {
     };
 
     return (
-
       <div className="tableContainer">
+        <CohortAddModal />
         <MaterialDatatable
           title={"Cohorts"}
           columns={column}
@@ -75,9 +71,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  getCohorts,
-  updateCohort,
-  deleteCohort,
-  addCohort
-})(CohortsTable);
+export default connect(
+  mapStateToProps,
+  {
+    getCohorts,
+    updateCohort,
+    deleteCohort
+  }
+)(CohortsTable);
