@@ -164,8 +164,8 @@ export const ADMIN_ADDED_COHORT_FAILURE = "ADMIN_ADDED_COHORT_FAILURE";
 
 export const addCohort = info => dispatch => {
   dispatch({ type: ADMIN_ADDED_COHORT_START });
-  axiosAuth()
-    .put(`${backendUrl}/api/admin/cohorts`, info)
+  return axiosAuth()
+    .post(`${backendUrl}/api/admin/cohorts`, info)
     .then(res => {
       dispatch({
         type: ADMIN_ADDED_COHORT_SUCCESS,

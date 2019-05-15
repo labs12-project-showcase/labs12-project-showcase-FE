@@ -30,7 +30,7 @@ const styles = theme => ({
 class CohortAddModal extends React.Component {
   state = {
     open: false,
-    cohort_name: ""
+    name: ""
   };
 
   handleOpen = e => {
@@ -46,9 +46,10 @@ class CohortAddModal extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     this.props
-      .addCohort({ cohort_name: this.state.cohort_name })
-      .then(this.props.getCohorts)
-      .then(this.handleClose);
+        .addCohort({ cohort_name: this.state.name })
+        // .then(this.props.getCohorts)
+        .then(this.handleClose)
+      
   };
 
   render() {
@@ -86,11 +87,11 @@ class CohortAddModal extends React.Component {
               <div className="sc-input">
                 <label>New Cohort Name: </label>
                 <input
-                  onChange={e => this.setState({ cohort_name: e.target.value })}
+                  onChange={e => this.setState({ name: e.target.value })}
                   onClick={e => e.stopPropagation()}
                   type="text"
                   name="name"
-                  value={this.state.cohort_name}
+                  value={this.state.name}
                 />
               </div>
               <Button

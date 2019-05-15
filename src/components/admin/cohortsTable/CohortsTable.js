@@ -8,8 +8,7 @@ import CohortAddModal from "./CohortAddModal";
 import {
   getCohorts,
   updateCohort,
-  deleteCohort,
-  addCohort
+  deleteCohort
 } from "../adminActions.js";
 
 class CohortsTable extends React.Component {
@@ -77,7 +76,6 @@ export default connect(
   {
     getCohorts,
     updateCohort,
-    deleteCohort,
-    addCohort
+    deleteCohort
   }
 )(CohortsTable);
