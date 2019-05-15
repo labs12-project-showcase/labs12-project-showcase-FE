@@ -4,11 +4,11 @@
 
 ### Contributors:
 
-|                                                     [Brandon Gardner](https://github.com/brandongardner2)                                                      |                                                     [Ryan Clark](https://github.com/ryangclark)                                                      |                                                   [Lowell Richardson](https://github.com/andrewlowell)                                                    |                                                   [Julian Moreno](https://github.com/julmo611)                                                   |                                                   [Jake Thomas](https://github.com/jmaxt12)                                                    | [Tico Thep- sourinthone](https://github.com/ticotheps)                                                                                             |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [<img src="https://github.com/brandongardner2.png" width= "100" height="65" style="object-fit:cover; overflow:hidden;" />](https://github.com/brandongardner2) | [<img src="https://github.com/ryangclark.png" width= "100" height="65" style="object-fit:cover; overflow:hidden;" />](https://github.com/ryangclark) | [<img src="https://github.com/andrewlowell.png" width= "100" height="65" style="object-fit:cover; overflow:hidden;"  />](https://github.com/andrewlowell) | [<img src="https://github.com/julmo611.png" width= "100" height="65" style="object-fit:cover; overflow:hidden;" />](https://github.com/julmo611) | [<img src="https://github.com/jmaxt12.png" width= "100" height="65" style="object-fit:cover; overflow:hidden;" />](https://github.com/jmaxt12) | [<img src="https://github.com/ticotheps.png" width= "100" height="65" style="object-fit:cover; overflow:hidden;" />](https://github.com/ticotheps) |
-|                                  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/brandongardner2)                                  |                               [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ryangclark)                                |                                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/andrewlowell)                                 |                              [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/julmo611)                               |                              [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jmaxt12)                              | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ticotheps)                                                             |
-|               [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandon-gardner-/)                |             [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/clarkryang/)              |    [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/andrew-lowell-richardson-9590b3184/)    |     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/julian-moreno-0902b064/)      |     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jake-thomas-78397a87/)      | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ticotheps/)                         |
+|                                                      [Brandon Gardner](https://github.com/brandongardner2)                                                       |                                                      [Ryan Clark](https://github.com/ryangclark)                                                       |                                                    [Lowell Richardson](https://github.com/andrewlowell)                                                     |                                                    [Julian Moreno](https://github.com/julmo611)                                                    |                                                    [Jake Thomas](https://github.com/jmaxt12)                                                     | [Tico Thep- sourinthone](https://github.com/ticotheps)                                                                                               |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [<img src="https://github.com/brandongardner2.png" width= "100" height="auto" style="object-fit:cover; overflow:hidden;" />](https://github.com/brandongardner2) | [<img src="https://github.com/ryangclark.png" width= "100" height="auto" style="object-fit:cover; overflow:hidden;" />](https://github.com/ryangclark) | [<img src="https://github.com/andrewlowell.png" width= "100" height="auto" style="object-fit:cover; overflow:hidden;"  />](https://github.com/andrewlowell) | [<img src="https://github.com/julmo611.png" width= "100" height="auto" style="object-fit:cover; overflow:hidden;" />](https://github.com/julmo611) | [<img src="https://github.com/jmaxt12.png" width= "100" height="auto" style="object-fit:cover; overflow:hidden;" />](https://github.com/jmaxt12) | [<img src="https://github.com/ticotheps.png" width= "100" height="auto" style="object-fit:cover; overflow:hidden;" />](https://github.com/ticotheps) |
+|                                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/brandongardner2)                                   |                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ryangclark)                                 |                                  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/andrewlowell)                                  |                               [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/julmo611)                                |                               [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jmaxt12)                               | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ticotheps)                                                               |
+|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brandon-gardner-/)                 |              [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/clarkryang/)               |     [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/andrew-lowell-richardson-9590b3184/)     |      [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/julian-moreno-0902b064/)       |      [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jake-thomas-78397a87/)       | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/ticotheps/)                           |
 
 <br>
 <br>
@@ -19,7 +19,9 @@
 
 ## Project Overview
 
-Lambda Showcase is a capstone project built for Lambda School with the intention of helping current and future students stand out to prospective employers and expedite the candidate searching process for potential employers.
+Lambda Showcase is a capstone project built for Lambda School with the intention
+of helping current and future students stand out to prospective employers and
+expedite the candidate searching process for potential employers.
 
 You can find the project at https://lambdashowcase.netlify.com/.
 
@@ -57,7 +59,9 @@ You can find the project at https://lambdashowcase.netlify.com/.
 
 ## Environment Variables
 
-In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file in the frontend folder containing the following:
+In order for the app to function correctly, the user must set up their own
+environment variables. There should be a .env file in the frontend folder
+containing the following:
 
 In your backend, create a .env file that includes the following:
 
@@ -73,13 +77,20 @@ In your backend, create a .env file that includes the following:
 
 ### Feature Requests
 
-We would love to hear from you about new features which would improve this app and further the aims of our project. Please provide as much detail and information as possible to show us why you think your new feature should be implemented.
+We would love to hear from you about new features which would improve this app
+and further the aims of our project. Please provide as much detail and
+information as possible to show us why you think your new feature should be
+implemented.
 
 ### Pull Requests
 
-If you have developed a patch, bug fix, or new feature that would improve this app, please submit a pull request. It is best to communicate your ideas with the developers first before investing a great deal of time into a pull request to ensure that it will mesh smoothly with the project.
+If you have developed a patch, bug fix, or new feature that would improve this
+app, please submit a pull request. It is best to communicate your ideas with the
+developers first before investing a great deal of time into a pull request to
+ensure that it will mesh smoothly with the project.
 
-Remember that this project is licensed under the MIT license, and by submitting a pull request, you agree that your work will be, too.
+Remember that this project is licensed under the MIT license, and by submitting
+a pull request, you agree that your work will be, too.
 
 #### Pull Request Guidelines
 
