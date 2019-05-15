@@ -69,7 +69,7 @@
 			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
 			box-shadow: 1px 1px 1px 1px #f2f2f2;
 			background-color: $backg-light;
-			margin: 20px auto;
+			margin: 0 auto;
 			cursor: pointer;
 			&:hover {
 				-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
@@ -134,9 +134,10 @@
 
 		.drag-drop-target {
 			position: relative;
+			height: 34px;
 			padding: 5px;
-			-webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
-			box-shadow: 1px 1px 1px 1px #f2f2f2;
+			// -webkit-box-shadow: 1px 1px 1px 1px #f2f2f2;
+			// box-shadow: 1px 1px 1px 1px #f2f2f2;
 
 			.drag-target-cover {
 				cursor: grab;
@@ -165,7 +166,7 @@
 			}
 
 			.card-content {
-				outline: 3px dashed lightgray;
+				background-color: lighten($color: $lambdaLightBlue, $amount: 40);
 				padding: 3px;
 				width: 100%;
 				height: 100%;
@@ -196,9 +197,7 @@
 .edit-wrapper {
 	background: white;
 	border: 1px solid lightgray;
-
-	padding-top: 25px;
-	padding-bottom: 15px;
+	padding: 10px;
 	position: relative;
 
 	.input-label {

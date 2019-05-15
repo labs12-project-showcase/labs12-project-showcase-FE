@@ -30,13 +30,16 @@ import {
   ADMIN_FETCHED_TRACKS_START,
   ADMIN_FETCHED_TRACKS_SUCCESS,
   ADMIN_FETCHED_TRACKS_FAILURE,
+  ADMIN_ADDED_TRACK_START,
+  ADMIN_ADDED_TRACK_SUCCESS,
+  ADMIN_ADDED_TRACK_FAILURE,
   ADMIN_UPDATED_TRACK_START,
   ADMIN_UPDATED_TRACK_SUCCESS,
   ADMIN_UPDATED_TRACK_FAILURE,
   ADMIN_DELETED_TRACK_START,
   ADMIN_DELETED_TRACK_SUCCESS,
   ADMIN_DELETED_TRACK_FAILURE,
-  //****COHORTS ACTION TYPES**** */
+  //****ACCOUNTS ACTION TYPES**** */
   ADMIN_FETCHED_ACCOUNTS_START,
   ADMIN_FETCHED_ACCOUNTS_SUCCESS,
   ADMIN_FETCHED_ACCOUNTS_FAILURE,
@@ -235,7 +238,7 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_ADDED_COHORT_SUCCESS:
       return {
         ...state,
-        cohorts: action.payload,
+        cohorts: state.cohorts.push(action.payload),
         updatingCohortsData: false
       };
     case ADMIN_ADDED_COHORT_FAILURE:
@@ -264,6 +267,25 @@ const adminReducer = (state = initialState, action) => {
         error: action.payload
       };
 
+    //****ADDED TRACKS**** */
+
+    case ADMIN_ADDED_TRACK_START:
+      return {
+        ...state,
+        updatingTracksData: true
+      };
+    case ADMIN_ADDED_TRACK_SUCCESS:
+      return {
+        ...state,
+        tracks: state.tracks.push(action.payload),
+        updatingTracksData: false
+      };
+    case ADMIN_ADDED_TRACK_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+
     //****UPDATED TRACKS**** */
 
     case ADMIN_UPDATED_TRACK_START:
@@ -277,9 +299,10 @@ const adminReducer = (state = initialState, action) => {
           if (cur.id === action.payload.id) {
             arr.push({ ...cur, ...action.payload });
             return arr;
+          } else {
+            arr.push(cur);
+            return arr;
           }
-          arr.push(cur);
-          return arr;
         }, []),
         updatingTracksData: false
       };

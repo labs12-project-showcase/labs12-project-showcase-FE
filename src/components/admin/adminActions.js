@@ -164,8 +164,8 @@ export const ADMIN_ADDED_COHORT_FAILURE = "ADMIN_ADDED_COHORT_FAILURE";
 
 export const addCohort = info => dispatch => {
   dispatch({ type: ADMIN_ADDED_COHORT_START });
-  axiosAuth()
-    .put(`${backendUrl}/api/admin/cohorts`, info)
+  return axiosAuth()
+    .post(`${backendUrl}/api/admin/cohorts`, info)
     .then(res => {
       dispatch({
         type: ADMIN_ADDED_COHORT_SUCCESS,
@@ -197,6 +197,28 @@ export const getTracks = () => dispatch => {
     })
     .catch(err => {
       dispatch({ type: ADMIN_FETCHED_TRACKS_FAILURE, payload: err });
+    });
+};
+
+//****ADDED TRACK**** */
+
+export const ADMIN_ADDED_TRACK_START = "ADMIN_ADDED_TRACK_START";
+export const ADMIN_ADDED_TRACK_SUCCESS = "ADMIN_ADDED_TRACK_SUCCESS";
+export const ADMIN_ADDED_TRACK_FAILURE = "ADMIN_ADDED_TRACK_FAILURE";
+
+export const addTrack = info => dispatch => {
+  dispatch({ type: ADMIN_ADDED_TRACK_START });
+  return axiosAuth()
+    .post(`${backendUrl}/api/admin/tracks`, info)
+    .then(res => {
+      console.log(res.data);
+      dispatch({
+        type: ADMIN_ADDED_TRACK_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_ADDED_TRACK_FAILURE, payload: err });
     });
 };
 
