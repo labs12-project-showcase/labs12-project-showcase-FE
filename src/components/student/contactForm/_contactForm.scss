@@ -20,6 +20,36 @@
 
 }
 
+.sc-modal-buttons {
+	@include box-align();
+	button[type='submit'] {
+		font-size: 1.4rem;
+		background-color: $lambdaDarkBlue;
+		color: $lightcolor;
+		border: none;
+		border-radius: 0;
+		margin: 3px;
+		cursor: pointer;
+		&:hover {
+			background-color: darken($color: $lambdaDarkBlue, $amount: 10);
+		}
+	}
+
+	button {
+		font-size: 1.4rem;
+		background-color: $lambdaRed;
+		color: $lightcolor;
+		border: none;
+		border-radius: 0;
+		margin: 3px;
+		cursor: pointer;
+		&:hover {
+			border: none;
+			background-color: darken($color: $lambdaRed, $amount: 10);
+		}
+	}
+}
+
 .contact-form {
 	width: 100%;
 	min-width: 1024px;

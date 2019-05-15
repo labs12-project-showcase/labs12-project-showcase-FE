@@ -157,50 +157,50 @@ export default connect(
     
 
 //     return (
-//       <div className="contact-form">
-//         <div className="contact">
-//           <h2> Send Message </h2>
-//           <br />
-//           <label>
-//             <span className="input-label"> Your Email Address </span>
-//           </label>
+    //   <div className="contact-form">
+    //     <div className="contact">
+    //       <h2> Send Message </h2>
+    //       <br />
+    //       <label>
+    //         <span className="input-label"> Your Email Address </span>
+    //       </label>
 
-//           <input
-//             value={email.from}
-//             name="email"
-//             onChange={e =>
-//               this.setState({ email: { ...email, from: e.target.value } })
-//             }
-//           />
+    //       <input
+    //         value={email.from}
+    //         name="email"
+    //         onChange={e =>
+    //           this.setState({ email: { ...email, from: e.target.value } })
+    //         }
+    //       />
 
-//           <label>
-//             <span className="input-label">Subject</span>
-//           </label>
+    //       <label>
+    //         <span className="input-label">Subject</span>
+    //       </label>
 
-//           <input
-//             value={email.subject}
-//             name="subject"
-//             onChange={e =>
-//               this.setState({ email: { ...email, subject: e.target.value } })
-//             }
-//           />
+    //       <input
+    //         value={email.subject}
+    //         name="subject"
+    //         onChange={e =>
+    //           this.setState({ email: { ...email, subject: e.target.value } })
+    //         }
+    //       />
 
-//           <label>
-//             <span className="input-label"> Message </span>
-//           </label>
+    //       <label>
+    //         <span className="input-label"> Message </span>
+    //       </label>
 
-//           <textarea
-//             rows={3}
-//             value={email.text}
-//             name="text"
-//             onChange={e =>
-//               this.setState({ email: { ...email, text: e.target.value } })
-//             }
-//           />
+    //       <textarea
+    //         rows={3}
+    //         value={email.text}
+    //         name="text"
+    //         onChange={e =>
+    //           this.setState({ email: { ...email, text: e.target.value } })
+    //         }
+    //       />
 
-//           <button onClick={this.sendEmail}> Send Email </button>
-//         </div>
-//       </div>
+    //       <button onClick={this.sendEmail}> Send Email </button>
+    //     </div>
+    //   </div>
 //     );
 //   }
 // }

@@ -37,7 +37,7 @@ class ContactForm extends React.Component {
   };
 
   sendEmail = _ => {
-    const { email } = this.state;
+	const { email } = this.state;
 
     axios
       .post(
@@ -70,6 +70,7 @@ class ContactForm extends React.Component {
 
   render() {
 	const { email } = this.state;
+	const { from, subject, text } = this.state.email;
     const { classes } = this.props;
 
     return (
@@ -104,9 +105,29 @@ class ContactForm extends React.Component {
               <div className="sc-input">
                 <label>Your Email Address: </label>
                 <input
-                  name="name"
-                  value={this.state.name}
-                  onChange={e => this.setState({ name: e.target.value })}
+                  name="from"
+                  value={email.from}
+                  onChange={e => this.setState({ from: e.target.value })}
+                  onClick={e => e.stopPropagation()}
+                  type="text"
+                />
+              </div>
+			  <div className="sc-input">
+                <label>Subject: </label>
+                <input
+                  name="subject"
+                  value={this.state.email.subject}
+                  onChange={e => this.setState({ subject: e.target.value })}
+                  onClick={e => e.stopPropagation()}
+                  type="text"
+                />
+              </div>
+			  <div className="sc-input">
+                <label>Message: </label>
+                <input
+                  name="text"
+                  value={this.state.email.text}
+                  onChange={e => this.setState({ text: e.target.value })}
                   onClick={e => e.stopPropagation()}
                   type="text"
                 />
