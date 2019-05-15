@@ -63,9 +63,6 @@ class TopBar extends Component {
 								<button className="TopBar-login-btn" onClick={login}>
 									Create an account / Sign in <i className="fas fa-user" />
 								</button>
-								{/* <button className="" onClick={adminLogin}>
-                  Admin Login
-                </button> */}
 							</>
 						)}
 						{(this.state.isLoggedIn || renderLoggedIn) && (
@@ -105,8 +102,7 @@ class TopBar extends Component {
 								<NavLink exact to="/profile-quick-start">
 									<i className="fas fa-user-edit" /> Edit Profile
 								</NavLink>
-								{/* <button onClick={this.props.deleteStudent}>Delete this profile</button> */}
-								<DeleteModal logout={this.props.logout} deleteStudent={this.props.deleteStudent} />
+								<DeleteModal />
 							</nav>
 						</div>
 					)}
