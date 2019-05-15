@@ -15,7 +15,6 @@ import history from "./history.js";
 import ScrollToTop from "./components/utils/ScrollToTop";
 
 let newStore;
-console.log('node_env', process.env.NODE_ENV);
 
 if(process.env.NODE_ENV === 'production') {
   newStore = createStore(
