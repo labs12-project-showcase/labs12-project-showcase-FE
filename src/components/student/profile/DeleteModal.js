@@ -67,13 +67,8 @@ class DeleteModal extends React.Component {
 					color="secondary"
 					classnames={classes.button}
 				>
-<<<<<<< HEAD
 					Delete
 					<DeleteIcon classnames={classes.rightIcon} />
-=======
-					Delete Account
-					<DeleteIcon classNames={classes.rightIcon} />
->>>>>>> 3f6423b667a7125eb3b008e1c739daed4982c665
 				</Button>
 				<Modal
 					aria-labelledby="simple-modal-title"
