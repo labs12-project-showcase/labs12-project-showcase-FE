@@ -107,15 +107,20 @@ class ContactForm extends React.Component {
             <form
               onSubmit={this.handleSubmit}
               method="POST"
-              className="sc-modal-buttons"
+              className="sc-modal-buttons contact-form"
             >
 				<div className="contact-form-header-container">
 					<h2 className="contact-form-header-message">Send a Message to {this.props.student.name}!</h2>
 				</div>
 				
-              <div className="sc-input">
-                <label>Your Email: </label>
+              <div className="sc-input input-div">
+				<label 
+				  className="email-label"
+				>
+				  Your Email Address: 
+				  </label>
                 <input
+				  className="email-input"
                   name="from"
                   value={email.from}
                   onChange={this.handleInputChange}
@@ -124,9 +129,14 @@ class ContactForm extends React.Component {
 				  required
                 />
               </div>
-			  <div className="sc-input">
-                <label>Subject: </label>
+			  <div className="sc-input input-div">
+                <label
+					className="subject-label"
+				>
+					Subject: 
+				</label>
                 <input
+				  className="subject-input"
                   name="subject"
                   value={email.subject}
                   onChange={this.handleInputChange}
@@ -135,9 +145,13 @@ class ContactForm extends React.Component {
 				  required
                 />
               </div>
-			  <div className="sc-input">
-                <label>Message: </label>
-                <input
+			  <div className="sc-input input-div">
+			  	<label
+					className="message-label"
+					>Message: 
+				</label>
+                <textarea
+				  className="message-input input-div"
                   name="text"
                   value={email.text}
                   onChange={this.handleInputChange}

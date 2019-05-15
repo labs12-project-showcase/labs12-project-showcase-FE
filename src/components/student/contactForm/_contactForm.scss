@@ -1,3 +1,7 @@
+.contact-form {
+	padding: 10px;
+}
+
 .contact-btn {
 	@include box-align(flex-start, center);
 
@@ -26,11 +30,38 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	padding: 0 0 20px;
+	padding: 0 0 10px;
 }
 
 .contact-form-header-message {
-	font-size: 2.5rem;
+	font-size: 2.6rem;
 	text-align: center;
 	line-height: 1.25;
+}
+
+.input-div {
+	width: 100%;
+}
+
+.email-label, .subject-label, .message-label {
+	width: 100%;
+}
+
+.email-label {
+	margin: 20px auto 10px;
+}
+
+.email-input, .message-input, .subject-input  {
+	width: 100%;
+	font-size: 1.8rem;
+	padding: 5px 5px 5px 10px;
+}
+
+.email-input, .subject-input  {
+	height: 4.0rem;
+}
+
+.message-input {
+	height: 200px;
+	margin: 10px auto;
 }
