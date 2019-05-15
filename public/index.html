@@ -9,10 +9,14 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
    
-    <title>Hire Lambda Students</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-   
+		<title>Hire Lambda</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<div id="map"></div>
+		<script src='Map.js'></script>
+	</body>
+	<script type="text/javascript">
+		App.renderToDom(document.getElementById('map'));
+	</script>
 </html>
