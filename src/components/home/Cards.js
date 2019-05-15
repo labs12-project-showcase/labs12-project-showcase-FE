@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Cards = ({ cards }) => {
 	const map = arr => arr.map(skill => <li key={skill}>{skill}</li>);
+
 	return (
 		<>
 			<div className="cards">
@@ -14,21 +15,14 @@ const Cards = ({ cards }) => {
 				<div className="details">
 					<h2>{cards.name}</h2>
 					<h3>{cards.track}</h3>
-
+					<span>
+						<i className="fas fa-map-marker-alt" />
+						{cards.location}
+					</span>
 					<br />
-
 					<h4>Skills:</h4>
 					<ul>{map(cards.top_skills)}</ul>
 					<div className="contact-links">
-						<a href={cards.github} target="_blank" rel="noopener noreferrer">
-							<i className="fab fa-github" />
-						</a>
-						<a href={cards.linkedin} target="_blank" rel="noopener noreferrer">
-							<i className="fab fa-linkedin-in" />
-						</a>
-						<a href={cards.twitter} target="_blank" rel="noopener noreferrer">
-							<i className="fab fa-twitter" />
-						</a>
 						<Link to={`/student/profile/${cards.id}`}>
 							<button className="prof-link">Profile &amp; Projects</button>
 						</Link>

@@ -13,8 +13,6 @@ const reactSelectStyles = {
 	}),
 	control: provided => ({
 		...provided,
-		paddingLeft: 10,
-		paddingTop: 4,
 		minHeight: 48
 	}),
 	menu: provided => ({
@@ -25,21 +23,23 @@ const reactSelectStyles = {
 
 class Home extends React.Component {
 	state = {
+		android: false,
+		badge: false,
+		dataScience: false,
+		filterDesLoc: true,
 		fullStack: false,
 		ios: false,
-		android: false,
 		uiux: false,
-		dataScience: false,
-		badge: false,
-		within: 50,
-		location: {
-			label: '',
-			value: {
-				lat: '',
-				locationName: '',
-				lon: ''
-			}
-		}
+		within: 50
+		// location: null
+		// {
+		// label: '',
+		// value: {
+		// 	lat: '',
+		// 	locationName: '',
+		// 	lon: ''
+		// }
+		// }
 	};
 
 	componentDidMount() {
@@ -154,10 +154,11 @@ class Home extends React.Component {
 										<div className="control_indicator" />
 									</label>
 								</div>
-								<hr />
 								<div className="search-box">
+									<hr />
+									<h3>Location</h3>
 									<label className="input-location">
-										Within
+										Located within
 										<input
 											type="number"
 											size="3"
@@ -166,31 +167,45 @@ class Home extends React.Component {
 											value={this.state.within}
 											onChange={this.handleChange}
 										/>
-										miles of
+										miles of:
 									</label>
 
-									<label>
-										Located
-										<LocationSelect
-											fieldValue={this.state.location}
-											styles={reactSelectStyles}
-											onChange={this.handleLocation}
-											isClearable
+									{/* <label>
+										Located */}
+									<LocationSelect
+										fieldValue={this.state.location}
+										isClearable
+										onChange={this.handleLocation}
+										styles={reactSelectStyles}
+									/>
+									{/* </label> */}
+									<label className="control control-checkbox">
+										{'Currently Located Only'}
+										<input
+											onChange={e => this.setState({ filterDesLoc: false })}
+											name="filterDesLoc"
+											type="radio"
+											value={false}
 										/>
+										<div className="control_indicator" />
 									</label>
-								</div>
-								<div className="search-box">
-									<label>
-										Will Relocate
-										<div className="search-location">
-											<i className="fas fa-search" />
-											<input type="text" placeholder="Washington, DC" />
-										</div>
+									<label className="control control-checkbox">
+										{'Currently Located & Will Relocate'}
+										<input
+											onChange={e => this.setState({ filterDesLoc: true })}
+											checked={this.state.filterDesLoc}
+											name="filterDesLoc"
+											type="radio"
+											value={true}
+										/>
+										<div className="control_indicator" />
 									</label>
 								</div>
 							</div>
 							<div className="search-button">
-								<button className="bnt-search">Search</button>
+								<button className="bnt-search" type="submit">
+									Search
+								</button>
 							</div>
 						</form>
 					</section>

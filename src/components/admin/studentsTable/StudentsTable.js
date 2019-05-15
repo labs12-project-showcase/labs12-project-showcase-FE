@@ -125,7 +125,7 @@ class StudentsTable extends React.Component {
     return (
       <div className="tableContainer">
         <MaterialDatatable
-          title={"Admin Students Table"}
+          title={"Students"}
           columns={column}
           data={this.props.students}
           options={options}

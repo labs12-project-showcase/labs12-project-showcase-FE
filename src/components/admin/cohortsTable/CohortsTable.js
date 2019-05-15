@@ -1,20 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
-// import CohortsButtons from "./CohortsButtons";
 import CohortEditModal from "./CohortEditModal";
 import CohortDeleteModal from "./CohortDeleteModal";
+import CohortAddModal from "./CohortAddModal";
 
-import { 
-    getCohorts,
-    updateCohort,
-    deleteCohort,
-    addCohort 
-} from '../adminActions.js';
-
+import {
+  getCohorts,
+  updateCohort,
+  deleteCohort
+} from "../adminActions.js";
 
 class CohortsTable extends React.Component {
-
   componentDidMount() {
     this.props.getCohorts();
   }
@@ -28,34 +25,40 @@ class CohortsTable extends React.Component {
         sort: true,
         options: {
           customBodyRender: value => {
-            return (
-              <p>{value.cohort_name}</p>
-            );
+            return <p>{value.cohort_name}</p>;
           }
         }
       },
       {
         name: "",
         options: {
-            customBodyRender: value => {
-                return (
-                  <div className="modals-container">
-                    <CohortEditModal />
-                    <CohortDeleteModal />
-                  </div>
-                );
-            }
+          customBodyRender: value => {
+            return (
+              <div className="modals-container">
+                <CohortEditModal value={value} />
+                <CohortDeleteModal value={value} />
+              </div>
+            );
+          }
         }
       }
-    ]
+    ];
+
+    const options = {
+      filterType: "dropdown",
+      selectableRows: false,
+      showSelectedRowsToolbar: false,
+      responsive: "stacked"
+    };
 
     return (
-
       <div className="tableContainer">
+        <CohortAddModal />
         <MaterialDatatable
-          title={"Admin Cohorts Table"}
+          title={"Cohorts"}
           columns={column}
           data={this.props.cohorts}
+          options={options}
         />
       </div>
     );
@@ -68,9 +71,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { 
+export default connect(
+  mapStateToProps,
+  {
     getCohorts,
     updateCohort,
-    deleteCohort,
-    addCohort 
-})(CohortsTable);
+    deleteCohort
+  }
+)(CohortsTable);

@@ -159,6 +159,10 @@
 			width: 100%;
 			max-width: 250px;
 			padding-top: 20px;
+			@media (max-width: 877px) and (min-width: 500px) {
+				max-width: 100%;
+				margin: 20px;
+			}
 			.search-bar {
 				width: 100%;
 
@@ -281,10 +285,15 @@
 							font-size: 1.4rem;
 						}
 					}
+					.fa-map-marker-alt {
+						color: $lambdaPink;
+						margin-right: 5px;
+						margin-bottom: 10px;
+					}
 
 					.contact-links {
 						width: 100%;
-						padding: 10px;
+						padding: 5px;
 						a {
 							font-size: 2rem;
 							color: lighten($darkcolor, 50%);

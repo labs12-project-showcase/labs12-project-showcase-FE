@@ -1,16 +1,22 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import EditIcon from '@material-ui/icons/Edit';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { updateCohort } from "../adminActions";
-
+import { addCohort, getCohorts } from '../adminActions.js';
 
 const styles = theme => ({
+	fab: {
+		margin: theme.spacing.unit
+	},
+	extendedIcon: {
+		marginRight: theme.spacing.unit
+	},
 	paper: {
 		position: 'absolute',
 		width: theme.spacing.unit * 50,
@@ -21,10 +27,10 @@ const styles = theme => ({
 	}
 });
 
-class CohortEditModal extends React.Component {
+class CohortAddModal extends React.Component {
 	state = {
 		open: false,
-		cohort_name: this.props.value.cohort_name
+		name: ''
 	};
 
 	handleOpen = e => {
@@ -39,24 +45,27 @@ class CohortEditModal extends React.Component {
 	handleSubmit = e => {
 		e.stopPropagation();
 		e.preventDefault();
-		this.props.updateCohort(this.props.value.id, { cohort_name: this.state.cohort_name })
-		.then(this.handleClose);
+		this.props
+			.addCohort({ cohort_name: this.state.name })
+			.then(this.props.getCohorts)
+			.then(this.handleClose);
 	};
 
 	render() {
 		const { classes } = this.props;
 
 		return (
-			<div className="sc-modal">
-				<Button
+			<div className="sc-add-modal">
+				<Fab
 					onClick={this.handleOpen}
-					variant="outlined"
-					color="primary"
-					classnames={classes.button}
+					variant="extended"
+					color="secondary"
+					aria-label="Delete"
+					className={classes.fab}
 				>
-					Edit
-					<EditIcon classnames={classes.rightIcon} />
-				</Button>
+					<AddIcon className={classes.extendedIcon} />
+					Add a Cohort
+				</Fab>
 				<Modal
 					aria-labelledby="simple-modal-title"
 					aria-describedby="simple-modal-description"
@@ -65,41 +74,43 @@ class CohortEditModal extends React.Component {
 					onSubmit={this.handleSubmit}
 					onClick={e => e.stopPropagation()}
 				>
-					<div style={{
-						top: '50%',
-						left: '50%',
-						transform: 'translate(-50%, -50%)'
-					}} className={classes.paper}>
-						<form
-							onSubmit={this.handleSubmit}
-							method="PUT"
-							className="sc-modal-buttons"
-						>
+					<div
+						style={{
+							top: '50%',
+							left: '50%',
+							transform: 'translate(-50%, -50%)'
+						}}
+						className={classes.paper}
+					>
+						<form onSubmit={this.handleSubmit} className="sc-modal-buttons">
 							<div className="sc-input">
-								<label>Updated Cohort Name: </label>
-								<input 
-								name='cohort_name'
-								value={this.state.cohort_name}
-								onChange={e => this.setState({ cohort_name: e.target.value })}
-								onClick={e => e.stopPropagation()} type="text" />
+								<label>New Cohort Name: </label>
+								<input
+									onChange={e => this.setState({ name: e.target.value })}
+									onClick={e => e.stopPropagation()}
+									type="text"
+									name="name"
+									value={this.state.name}
+								/>
 							</div>
 							<Button
 								type="submit"
 								variant="outlined"
 								color="primary"
-								classnames={classes.button}
+								className={classes.button}
+								onClick={this.handleSubmit}
 							>
-								Update Cohort
-								<CheckIcon classnames={classes.rightIcon} />
+								Create Cohort
+								<CheckIcon className={classes.rightIcon} />
 							</Button>
 							<Button
 								onClick={this.handleClose}
 								variant="outlined"
 								color="secondary"
-								classnames={classes.button}
+								className={classes.button}
 							>
 								Cancel
-								<CancelIcon classnames={classes.rightIcon} />
+								<CancelIcon className={classes.rightIcon} />
 							</Button>
 						</form>
 					</div>
@@ -109,7 +120,7 @@ class CohortEditModal extends React.Component {
 	}
 }
 
-CohortEditModal.propTypes = {
+CohortAddModal.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
@@ -121,5 +132,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ updateCohort }
-)(withStyles(styles)(CohortEditModal));
+	{ addCohort, getCohorts }
+)(withStyles(styles)(CohortAddModal));
