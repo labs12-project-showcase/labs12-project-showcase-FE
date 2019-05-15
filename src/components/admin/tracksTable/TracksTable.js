@@ -4,7 +4,7 @@ import MaterialDatatable from "material-datatable";
 import { getTracks, updateTrack, deleteTrack } from "../adminActions.js";
 import TrackEditModal from "./TrackEditModal";
 import TrackDeleteModal from "./TrackDeleteModal";
-import TrackAddButton from "./TrackAddButton";
+import TrackAddModal from "./TrackAddModal";
 
 class TracksTable extends React.Component {
   componentDidMount() {
@@ -43,13 +43,13 @@ class TracksTable extends React.Component {
 
     return (
       <div className="tableContainer">
+        <TrackAddModal />
         <MaterialDatatable
           title={"Tracks"}
           columns={column}
           data={this.props.tracks}
           options={options}
         />
-        <TrackAddButton />
       </div>
     );
   }
