@@ -45,9 +45,7 @@ class TrackAddModal extends React.Component {
   handleSubmit = e => {
     e.stopPropagation();
     e.preventDefault();
-    this.props
-      .updateTrack(this.props.value.id, { name: this.state.name })
-      .then(this.handleClose);
+    this.props.addTrack({ name: this.state.name }).then(this.handleClose);
   };
 
   render() {
