@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import DeleteModal from '../profile/DeleteModal.js';
 import EditImage from '../../EditImage/EditImage';
 import {
   deleteProfilePicture,
@@ -71,6 +71,7 @@ class Profileqs extends React.Component {
             />
           </div>
           <ProfileqsForm initialFormValues={this.props.profile.profileData} />
+          <DeleteModal />
         </div>
       </div>
     );
