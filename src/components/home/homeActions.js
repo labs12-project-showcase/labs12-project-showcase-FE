@@ -37,7 +37,7 @@ export const getFilteredCards = ({
   const lat = location && location.value.lat ? location.value.lat : null;
   const lon = location && location.value.lon ? location.value.lon : null;
   const latLonString = lat && lon ? `&lat=${lat}&lon=${lon}` : "";
-  const searchString = search ? `&search=${search}` : null;
+  const searchString = search ? `&search=${search}` : "";
   const tracks = `${fullStack ? "1" : ""}${ios ? "2" : ""}${
     dataScience ? "3" : ""
   }${android ? "4" : ""}${uiux ? "5" : ""}`;
