@@ -6,4 +6,4 @@ export const backendUrl =
 export const frontendUrl =
 	process.env.NODE_ENV === 'development'
 		? 'http://localhost:3000'
-		: 'https://showcasetest.netlify.com';
+		: 'https://lambdashowcase.netlify.com';
