@@ -1,79 +1,201 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Button from "@material-ui/core/Button";
+import CheckIcon from "@material-ui/icons/Check";
+import CancelIcon from "@material-ui/icons/Cancel";
+import { getData } from "../profile/studentProfileActions";
 
-class ContactForm extends Component {
-	state = {
+const styles = theme => ({
+  paper: {
+    position: "absolute",
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    outline: "none"
+  }
+});
+
+class ContactForm extends React.Component {
+  state = {
+    open: false,
+    email: {
+      from: "",
+      subject: "",
+	  text: ""
+    }
+  };
+
+  sendEmail = _ => {
+	const { email } = this.state;
+
+    axios
+      .post(
+        `https://halg-backend.herokuapp.com/api/students/contact-me/${
+          this.props.student.id
+        }`,
+        email
+      )
+      .then(res => {
+		alert(`Your message was sent successfully to ${this.props.student.name}!`);
+		this.handleClose();
+      })
+      .catch(err => {
+		console.log(err);
+		alert(`Sorry, but something went wrong while trying to send your message to ${this.props.student.name}! Please try again.`);
+      });
+  };
+
+  handleInputChange = e => {
+	e.stopPropagation();
+	this.setState({ 
 		email: {
-			from: '',
-			subject: '',
-			text: ''
-		},
-	};
+			...this.state.email, 
+			[e.target.name]: e.target.value
+		}
+	})
+  }
 
-	sendEmail = _ => {
-		
-		const { email } = this.state;
-		
-		axios
-		.post(
-			`https://halg-backend.herokuapp.com/api/students/contact-me/${this.props.match.params.id}`,
-			email
-			)
-			.then(res => {
-				alert('It sent!');
-			})
-			.catch(() => {
-				alert('It did not send');
-			});
-		};
-		
-		render() {
-			const { email } = this.state;
-			
-			return (
-				<div className="contact-form">
-				<div className="contact">
-					<h2> Send Message </h2>
-					<br />
-					<label>
-						<span className="input-label"> Your Email Address </span>
-					</label>
+  handleOpen = e => {
+    e.stopPropagation();
+    this.setState({ open: true });
+  };
 
-					<input
-						value={email.from}
-						onChange={e =>
-							this.setState({ email: { ...email, from: e.target.value } })
-						}
-						/>
+  handleClose = e => {
+    this.setState({ open: false });
+  };
 
-					<label>
-						<span className="input-label">Subject</span>
-					</label>
+  handleSubmit = e => {
+    e.stopPropagation();
+	e.preventDefault();
+	this.sendEmail();
+  };
 
-					<input
-						value={email.subject}
-						onChange={e =>
-							this.setState({ email: { ...email, subject: e.target.value } })
-						}
-						/>
+  render() {
+	// console.log(this.props.student.id);
+	const { email } = this.state;
+	const { classes } = this.props;
 
-					<label>
-						<span className="input-label"> Message </span>
-					</label>
-
-					<textarea
-						rows={3}
-						value={email.text}
-						onChange={e =>
-							this.setState({ email: { ...email, text: e.target.value } })
-						}
-						/>
-
-					<button onClick={this.sendEmail}> Send Email </button>
+    return (
+      <div className="sc-modal-buttons">
+		<div 
+			onClick={this.handleOpen}
+			className="contact-btn"
+		>
+            Contact Me
+        </div>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+          onSubmit={this.handleSubmit}
+          onClick={e => e.stopPropagation()}
+        >
+          <div
+            style={{
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)"
+            }}
+            className={classes.paper}
+          >
+            <form
+              onSubmit={this.handleSubmit}
+              method="POST"
+              className="sc-modal-buttons contact-form"
+            >
+				<div className="contact-form-header-container">
+					<h2 className="contact-form-header-message">Send a Message to {this.props.student.name}!</h2>
 				</div>
-			</div>
-		);
-	}
+				
+              <div className="sc-input input-div">
+				<label 
+				  className="email-label"
+				>
+				  Your Email Address: 
+				  </label>
+                <input
+				  className="email-input"
+                  name="from"
+                  value={email.from}
+                  onChange={this.handleInputChange}
+                  onClick={e => e.stopPropagation()}
+				  type="email"
+				  required
+                />
+              </div>
+			  <div className="sc-input input-div">
+                <label
+					className="subject-label"
+				>
+					Subject: 
+				</label>
+                <input
+				  className="subject-input"
+                  name="subject"
+                  value={email.subject}
+                  onChange={this.handleInputChange}
+                  onClick={e => e.stopPropagation()}
+				  type="text"
+				  required
+                />
+              </div>
+			  <div className="sc-input input-div">
+			  	<label
+					className="message-label"
+					>Message: 
+				</label>
+                <textarea
+				  className="message-input input-div"
+                  name="text"
+                  value={email.text}
+                  onChange={this.handleInputChange}
+                  onClick={e => e.stopPropagation()}
+				  type="text"
+				  required
+                />
+              </div>
+              <Button
+                type="submit"
+                variant="outlined"
+                color="primary"
+                classnames={classes.button}
+              >
+                Send
+                <CheckIcon classnames={classes.rightIcon} />
+              </Button>
+              <Button
+                onClick={this.handleClose}
+                variant="outlined"
+                color="secondary"
+                classnames={classes.button}
+              >
+                Cancel
+                <CancelIcon classnames={classes.rightIcon} />
+              </Button>
+            </form>
+          </div>
+        </Modal>
+      </div>
+    );
+  }
 }
 
-export default ContactForm;
+ContactForm.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+	...state
+  };
+};
+
+export default connect(mapStateToProps, 
+	{ getData }
+)(withStyles(styles)(ContactForm));
