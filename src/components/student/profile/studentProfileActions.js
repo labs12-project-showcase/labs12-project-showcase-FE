@@ -1,4 +1,5 @@
 import axios from 'axios';
+import axiosAuth from '../../../auth/axiosAuth';
 import { backendUrl } from '../../../config/urls.js';
 import { logout } from '../../../auth/authActions.js';
 
@@ -31,12 +32,9 @@ export const getData = id => dispatch => {
 };
 
 export const deleteStudent = () => dispatch => {
-	const config = {
-		headers: { authorization: localStorage.getItem('backendToken') }
-	};
-	axios.delete(`${backendUrl}/api/students/delete`, config)
+	axiosAuth().delete(`${backendUrl}/api/students/delete`)
 	.then(res => {
-		console.log('axios delete was successful');
+		console.log('axios delete was successful', backendUrl);
 		dispatch(logout());
 	})
 	.catch(err => {
