@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import { login, logout, adminLogin } from '../auth/authActions.js';
 import { NavLink } from 'react-router-dom';
 import { validateJwt, getJwtRole } from '../config/utilities.js';
+import { deleteStudent } from './student/profile/studentProfileActions.js';
 import JoinProject from './student/projectqs/JoinProject';
 import LeaveProject from './student/projectqs/LeaveProject';
+import DeleteModal from '../components/student/profile/DeleteModal.js';
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
@@ -61,9 +63,6 @@ class TopBar extends Component {
 								<button className="TopBar-login-btn" onClick={login}>
 									Create an account / Sign in <i className="fas fa-user" />
 								</button>
-								{/* <button className="" onClick={adminLogin}>
-                  Admin Login
-                </button> */}
 							</>
 						)}
 						{(this.state.isLoggedIn || renderLoggedIn) && (
@@ -103,6 +102,7 @@ class TopBar extends Component {
 								<NavLink exact to="/profile-quick-start">
 									<i className="fas fa-user-edit" /> Edit Profile
 								</NavLink>
+								<DeleteModal />
 							</nav>
 						</div>
 					)}
@@ -143,6 +143,6 @@ const mapStateToProps = state => {
 export default withRouter(
 	connect(
 		mapStateToProps,
-		{ login, logout, adminLogin }
+		{ login, logout, adminLogin, deleteStudent }
 	)(TopBar)
 );
