@@ -130,27 +130,6 @@
 						width: 100%;
 					}
 				}
-				.contact-btn {
-					@include box-align(flex-start, center);
-
-					@media (max-width: 767px) {
-						justify-content: center;
-					}
-
-					a {
-						margin-right: 5px;
-						padding: 20px;
-						text-decoration: none;
-						color: $lightcolor;
-						background-color: $lambdaRed;
-						cursor: pointer;
-						text-align: center;
-						transition-duration: 0.3s;
-						&:hover {
-							background-color: darken($lambdaRed, 10%);
-						}
-					}
-				}
 
 				.endorse-button {
 					-webkit-appearance: none;
