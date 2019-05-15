@@ -4,7 +4,7 @@ import axios from 'axios';
 class ContactForm extends Component {
 	state = {
 		email: {
-			from: '',
+			from: 'YourEmailHere@gmail.com',
 			subject: '',
 			text: ''
 		},
@@ -41,6 +41,7 @@ class ContactForm extends Component {
 
 					<input
 						value={email.from}
+						name="email"
 						onChange={e =>
 							this.setState({ email: { ...email, from: e.target.value } })
 						}
@@ -52,6 +53,7 @@ class ContactForm extends Component {
 
 					<input
 						value={email.subject}
+						name="subject"
 						onChange={e =>
 							this.setState({ email: { ...email, subject: e.target.value } })
 						}
@@ -64,6 +66,7 @@ class ContactForm extends Component {
 					<textarea
 						rows={3}
 						value={email.text}
+						name="text"
 						onChange={e =>
 							this.setState({ email: { ...email, text: e.target.value } })
 						}
