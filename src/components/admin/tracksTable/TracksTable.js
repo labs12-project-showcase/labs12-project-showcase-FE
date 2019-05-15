@@ -22,6 +22,8 @@ class TracksTable extends React.Component {
 			{
 				name: '',
 				options: {
+					filter: false,
+					sort: false,
 					customBodyRender: value => {
 						return (
 							<div className="modals-container">

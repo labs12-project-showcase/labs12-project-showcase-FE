@@ -24,7 +24,7 @@ class ProjectTableRow extends React.Component {
                   button 
                   onClick={e => this.handleClick(e)}
                 >
-                  <ListItemText inset primary="Team Members" />
+                  <ListItemText inset primary="Team" />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                   </ListItem>
                   <Collapse in={this.state.open} timeout="auto" unmountOnExit>

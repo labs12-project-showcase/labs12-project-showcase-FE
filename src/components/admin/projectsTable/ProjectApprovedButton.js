@@ -12,7 +12,6 @@ class ProjectApprovedButton extends React.Component {
     }
 
     render() { 
-        console.log(this.props.project);
         return (  
             <Switch
                 onClick={this.handleChange}
