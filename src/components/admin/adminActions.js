@@ -209,7 +209,7 @@ export const ADMIN_ADDED_TRACK_FAILURE = "ADMIN_ADDED_TRACK_FAILURE";
 export const addTrack = info => dispatch => {
   dispatch({ type: ADMIN_ADDED_TRACK_START });
   return axiosAuth()
-    .put(`${backendUrl}/api/admin/tracks`, info)
+    .post(`${backendUrl}/api/admin/tracks`, info)
     .then(res => {
       dispatch({
         type: ADMIN_ADDED_TRACK_SUCCESS,
