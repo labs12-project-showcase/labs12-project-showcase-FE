@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getData } from './studentProfileActions';
 import badge from '../../../assets/lambda-badge.png';
@@ -11,7 +11,7 @@ import Share from '../share/Share';
 import Status from '../status/Status';
 import Skills from '../skills/Skills';
 import Progress from '../progress/Progress';
-// import EndorseButton from '../endorsements/EndorseButton';
+import ContactForm from '../contactForm/ContactForm';
 
 // yarn add react-id-swiper@latest swiper@latest
 
@@ -74,9 +74,7 @@ class StudentProfile extends React.Component {
               </div>
 
               <div className="social-links">
-                <div className="contact-btn">
-                  <Link to={`/contact-me/${id}`}>Contact Me</Link>
-                </div>
+                <ContactForm student={this.props.studentProfile.profile}/>
                 <a
                   className="portfolio-btn"
                   rel="noopener noreferrer"

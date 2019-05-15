@@ -12,7 +12,6 @@ class StudentHiredButton extends React.Component {
     }
 
     render() { 
-        console.log(this.props.student);
         return (  
             <Switch
                 onClick={this.handleChange}

@@ -35,14 +35,12 @@ export const updateProject = (id, info) => dispatch => {
   axiosAuth()
     .put(`${backendUrl}/api/admin/projects/${id}`, info)
     .then(res => {
-      console.log("res.data: ", res.data);
       dispatch({
         type: ADMIN_UPDATED_PROJECT_SUCCESS,
         payload: res.data
       });
     })
     .catch(err => {
-      console.log(err);
       dispatch({ type: ADMIN_UPDATED_PROJECT_FAILURE, payload: err });
     });
 };
@@ -211,7 +209,6 @@ export const addTrack = info => dispatch => {
   return axiosAuth()
     .post(`${backendUrl}/api/admin/tracks`, info)
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: ADMIN_ADDED_TRACK_SUCCESS,
         payload: res.data

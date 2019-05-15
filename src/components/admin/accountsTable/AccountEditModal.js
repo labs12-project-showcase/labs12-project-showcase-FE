@@ -92,8 +92,8 @@ class AccountEditModal extends React.Component {
 								name='role_id'
 								onChange={e => this.setState({role_id: e.target.value})}
 								value={this.state.role_id}>
-									{this.props.value.role_options.map(option => {
-										return (<option value={option.role_id}>
+									{this.props.value.role_options.map((option, index) => {
+										return (<option value={option.role_id} key={index}>
 											{option.role
 												.charAt(0)
 												.toUpperCase() + option.role.slice(1)
