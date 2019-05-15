@@ -22,10 +22,19 @@
 		@include box-align(flex-start, flex-start);
 		flex-direction: column;
 
+		@media (max-width: 877px) and (min-width: 500px) {
+			flex-direction: row;
+			@include box-align();
+		}
+
 		.search-box {
 			width: 100%;
 			flex-direction: column;
 			@include box-align(flex-start, flex-start);
+			@media (max-width: 877px) and (min-width: 500px) {
+				width: 48%;
+				@include box-align(center, flex-start);
+			}
 
 			label {
 				margin: 5px;
@@ -33,6 +42,28 @@
 			@media (max-width: 600px) {
 				max-width: 100%;
 				flex-direction: column;
+			}
+
+			h3 {
+				font-weight: 700;
+			}
+
+			.css-gxal88-control {
+				border-radius: 0;
+				margin-bottom: 10px;
+				height: 38px;
+				min-height: 38px;
+				cursor: text;
+			}
+
+			.css-7c8269-control {
+				margin-bottom: 10px;
+				min-height: 38px;
+				box-shadow: none;
+
+				&:hover {
+					border-color: $newBorder;
+				}
 			}
 		}
 		.control {
@@ -134,13 +165,17 @@
 		hr {
 			margin: 20px auto;
 			border: 2px solid $border-color;
+			@media (max-width: 877px) and (min-width: 500px) {
+				display: none;
+			}
 		}
 	}
 	.css-1s4n2az-control {
 		border: 1px solid $newBorder;
-		margin-top: 10px;
-		margin-bottom: 15px;
+		margin-top: 20px;
+		margin-bottom: 25px;
 	}
+
 	.search-button {
 		width: 100%;
 		text-align: center;
