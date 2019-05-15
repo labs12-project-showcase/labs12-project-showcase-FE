@@ -30,6 +30,9 @@ import {
   ADMIN_FETCHED_TRACKS_START,
   ADMIN_FETCHED_TRACKS_SUCCESS,
   ADMIN_FETCHED_TRACKS_FAILURE,
+  ADMIN_ADDED_TRACK_START,
+  ADMIN_ADDED_TRACK_SUCCESS,
+  ADMIN_ADDED_TRACK_FAILURE,
   ADMIN_UPDATED_TRACK_START,
   ADMIN_UPDATED_TRACK_SUCCESS,
   ADMIN_UPDATED_TRACK_FAILURE,
@@ -259,6 +262,25 @@ const adminReducer = (state = initialState, action) => {
         tracks: action.payload
       };
     case ADMIN_FETCHED_TRACKS_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+    //****ADDED TRACKS**** */
+
+    case ADMIN_ADDED_TRACK_START:
+      return {
+        ...state,
+        updatingTracksData: true
+      };
+    case ADMIN_ADDED_TRACK_SUCCESS:
+      return {
+        ...state,
+        tracks: state.tracks.push(action.payload),
+        updatingTracksData: false
+      };
+    case ADMIN_ADDED_TRACK_FAILURE:
       return {
         ...state,
         error: action.payload
