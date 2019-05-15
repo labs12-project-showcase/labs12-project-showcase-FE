@@ -36,7 +36,7 @@ class ContactForm extends Component {
 					<h2> Send Message </h2>
 					<br />
 					<label>
-						<span className="input-label"> Sender's Email Address </span>
+						<span className="input-label"> Your Email Address </span>
 					</label>
 
 					<input
