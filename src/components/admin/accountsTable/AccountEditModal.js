@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -6,21 +7,7 @@ import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
-
-function rand() {
-	return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-	const top = 50 + rand();
-	const left = 50 + rand();
-
-	return {
-		top: `${top}%`,
-		left: `${left}%`,
-		transform: `translate(-${top}%, -${left}%)`
-	};
-}
+import { updateAccount } from "../adminActions";
 
 const styles = theme => ({
 	paper: {
@@ -35,7 +22,9 @@ const styles = theme => ({
 
 class AccountEditModal extends React.Component {
 	state = {
-		open: false
+		open: false,
+		name: this.props.value.name,
+		role_id: this.props.value.role_id
 	};
 
 	handleOpen = e => {
@@ -44,12 +33,17 @@ class AccountEditModal extends React.Component {
 	};
 
 	handleClose = e => {
-		e.stopPropagation();
 		this.setState({ open: false });
 	};
 
 	handleSubmit = e => {
 		e.stopPropagation();
+		e.preventDefault();
+		this.props.updateAccount(this.props.value.id, {
+			name: this.state.name,
+			role_id: this.state.role_id
+		})
+			.then(this.handleClose);
 	};
 
 	render() {
@@ -74,7 +68,11 @@ class AccountEditModal extends React.Component {
 					onSubmit={this.handleSubmit}
 					onClick={e => e.stopPropagation()}
 				>
-					<div style={getModalStyle()} className={classes.paper}>
+					<div style={{
+						top: '50%',
+						left: '50%',
+						transform: 'translate(-50%, -50%)'
+					}} className={classes.paper}>
 						<form
 							onSubmit={this.handleSubmit}
 							method="PUT"
@@ -82,15 +80,26 @@ class AccountEditModal extends React.Component {
 						>
 							<div className="sc-input">
 								<label>Updated Name: </label>
-								<input onClick={e => e.stopPropagation()} type="text" />
-							</div>
-							<div className="sc-input">
-								<label>Updated Email: </label>
-								<input onClick={e => e.stopPropagation()} type="text" />
+								<input
+									name='name'
+									value={this.state.name}
+									onChange={e => this.setState({ name: e.target.value })}
+									onClick={e => e.stopPropagation()} type="text" />
 							</div>
 							<div className="sc-input">
 								<label>Updated Role: </label>
-								<input onClick={e => e.stopPropagation()} type="text" />
+								<select
+								name='role_id'
+								onChange={e => this.setState({role_id: e.target.value})}
+								value={this.state.role_id}>
+									{this.props.value.role_options.map(option => {
+										return (<option value={option.role_id}>
+											{option.role
+												.charAt(0)
+												.toUpperCase() + option.role.slice(1)
+											}</option>)
+									})}
+								</select>
 							</div>
 							<Button
 								type="submit"
@@ -122,4 +131,13 @@ AccountEditModal.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AccountEditModal);
+const mapStateToProps = state => {
+	return {
+		accounts: state.admin.accounts
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ updateAccount }
+)(withStyles(styles)(AccountEditModal));
