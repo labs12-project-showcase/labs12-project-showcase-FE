@@ -200,6 +200,27 @@ export const getTracks = () => dispatch => {
     });
 };
 
+//****ADDED TRACK**** */
+
+export const ADMIN_ADDED_TRACK_START = "ADMIN_ADDED_TRACK_START";
+export const ADMIN_ADDED_TRACK_SUCCESS = "ADMIN_ADDED_TRACK_SUCCESS";
+export const ADMIN_ADDED_TRACK_FAILURE = "ADMIN_ADDED_TRACK_FAILURE";
+
+export const addTrack = info => dispatch => {
+  dispatch({ type: ADMIN_ADDED_TRACK_START });
+  return axiosAuth()
+    .put(`${backendUrl}/api/admin/tracks`, info)
+    .then(res => {
+      dispatch({
+        type: ADMIN_ADDED_TRACK_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_ADDED_TRACK_FAILURE, payload: err });
+    });
+};
+
 //****UPDATED TRACKS**** */
 
 export const ADMIN_UPDATED_TRACK_START = "ADMIN_UPDATED_TRACK_START";
