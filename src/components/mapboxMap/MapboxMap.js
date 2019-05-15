@@ -23,7 +23,7 @@ const navStyle = {
   padding: "10px"
 };
 
-class Map extends React.Component {
+class MapboxMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -118,8 +118,8 @@ class Map extends React.Component {
   }
 }
 
-export default Map;
+export default MapboxMap;
 
 export function renderToDom(container) {
-	render(<Map/>, container);
+	render(<MapboxMap/>, container);
 }
