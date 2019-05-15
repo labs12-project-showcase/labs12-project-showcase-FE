@@ -238,7 +238,7 @@ const adminReducer = (state = initialState, action) => {
     case ADMIN_ADDED_COHORT_SUCCESS:
       return {
         ...state,
-        cohorts: action.payload,
+        cohorts: state.cohorts.push(action.payload),
         updatingCohortsData: false
       };
     case ADMIN_ADDED_COHORT_FAILURE:
