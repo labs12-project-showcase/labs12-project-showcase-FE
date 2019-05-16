@@ -51,7 +51,7 @@ class AccountDeleteModal extends React.Component {
           color="secondary"
           classnames={classes.button}
         >
-          <DeleteIcon classnames={classes.rightIcon} />
+          <i class="fas fa-trash"></i>
           Delete
         </Button>
         <Modal
@@ -84,7 +84,7 @@ class AccountDeleteModal extends React.Component {
                 color="primary"
                 classnames={classes.button}
               >
-                <CheckIcon classnames={classes.rightIcon} />
+                <i class="fas fa-check"></i>
                 Delete Account
               </Button>
               <Button
@@ -93,7 +93,7 @@ class AccountDeleteModal extends React.Component {
                 color="secondary"
                 classnames={classes.button}
               >
-                <CancelIcon classnames={classes.rightIcon} />
+                <i class="fas fa-ban"></i>
                 Cancel
               </Button>
             </form>

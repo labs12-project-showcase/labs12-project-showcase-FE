@@ -63,7 +63,7 @@ class TrackAddModal extends React.Component {
 					aria-label="Delete"
 					className={classes.fab}
 				>
-					<AddIcon className={classes.extendedIcon} />
+					<i class="fas fa-plus"></i>
 					Add a Track
 				</Fab>
 				<Modal

@@ -66,7 +66,7 @@ class TrackEditModal extends React.Component {
           color="primary"
           className={classes.button}
         >
-          <EditIcon className={classes.rightIcon} />
+          <i class="fas fa-edit"></i>
           Edit
         </Button>
         <Modal
@@ -105,7 +105,7 @@ class TrackEditModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
-                <CheckIcon className={classes.rightIcon} />
+                <i class="fas fa-check"></i>
                 Update Track
               </Button>
               <Button
@@ -114,7 +114,7 @@ class TrackEditModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
-                <CancelIcon className={classes.rightIcon} />
+                <i class="fas fa-ban"></i>
                 Cancel
               </Button>
             </form>

@@ -51,7 +51,7 @@ class CohortDeleteModal extends React.Component {
           color="secondary"
           className={classes.button}
         >
-          <DeleteIcon className={classes.rightIcon} />
+          <i class="fas fa-trash"></i>
           Delete
         </Button>
         <Modal
@@ -84,7 +84,7 @@ class CohortDeleteModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
-                <CheckIcon className={classes.rightIcon} />
+                <i class="fas fa-check"></i>
                 Delete Cohort
               </Button>
               <Button
@@ -93,7 +93,7 @@ class CohortDeleteModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
-                <CancelIcon className={classes.rightIcon} />
+                <i class="fas fa-ban"></i>
                 Cancel
               </Button>
             </form>
