@@ -72,7 +72,7 @@ class Routes extends Component {
             component={Projectqs}
           />
           <Route path="/student/project-view/:id" component={ProjectView} />
-          
+          <Route path="/404" component={NoMatch} />
           {/* No Match */}
 					<Route component={NoMatch} />
         </Switch>
