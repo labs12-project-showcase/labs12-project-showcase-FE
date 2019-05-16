@@ -1,67 +1,78 @@
+.contact-form-modal {
+  width: 600px;
+}
+
 .contact-form {
-	padding: 10px;
+  padding: 10px;
+  width: 600px;
 }
 
 .contact-btn {
-	@include box-align(flex-start, center);
+  @include box-align(flex-start, center);
 
-	margin-right: 5px;
-	padding: 20px;
-	text-decoration: none;
-	color: $lightcolor;
-	background-color: $lambdaRed;
-	cursor: pointer;
-	text-align: center;
-	transition-duration: 0.3s;
+  margin-right: 5px;
+  padding: 20px;
+  text-decoration: none;
+  color: $lightcolor;
+  background-color: $lambdaRed;
+  cursor: pointer;
+  text-align: center;
+  transition-duration: 0.3s;
 
-	&:hover {
-		background-color: darken($lambdaRed, 10%);
-	}
+  &:hover {
+    background-color: darken($lambdaRed, 10%);
+  }
 
-	@media (max-width: 767px) {
-		justify-content: center;
-	}
-
+  @media (max-width: 767px) {
+    justify-content: center;
+  }
 }
 
 .contact-form-header-container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	padding: 0 0 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 10px;
 }
 
 .contact-form-header-message {
-	font-size: 2.6rem;
-	text-align: center;
-	line-height: 1.25;
+  font-size: 2.6rem;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .input-div {
-	width: 100%;
+  width: 100%;
 }
 
-.email-label, .subject-label, .message-label {
-	width: 100%;
+.email-label,
+.subject-label,
+.message-label {
+  width: 100%;
+  margin: 15px;
 }
 
 .email-label {
-	margin: 20px auto 10px;
+  margin: 20px auto 10px;
 }
 
-.email-input, .message-input, .subject-input  {
-	width: 100%;
-	font-size: 1.8rem;
-	padding: 5px 5px 5px 10px;
+.email-input,
+.message-input,
+.subject-input {
+  width: 100%;
+  margin: 15px;
+  font-size: 1.8rem;
+  padding: 5px 5px 5px 10px;
 }
 
-.email-input, .subject-input  {
-	height: 4.0rem;
+.email-input,
+.subject-input {
+  height: 4rem;
 }
 
 .message-input {
-	height: 200px;
-	margin: 10px auto;
+  height: 200px;
+  margin: 10px auto;
 }
