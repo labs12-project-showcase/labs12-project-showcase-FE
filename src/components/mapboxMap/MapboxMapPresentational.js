@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { render } from "react-dom";
-// import zipcodes from "zipcodes";
+import zipcodes from "zipcodes";
 
 import ReactMapGL, {
   Marker,
@@ -48,27 +48,32 @@ class MapboxMapPresentational extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // console.log(this.props.mapData);
-    let mapData = this.props.mapData;
+  async componentDidMount() {
+    let { mapData } = this.props.mapData;
 
-    // mapData = mapData.reduce((arr, student) => {
-    //   const location = zipcodes.lookupByName(this.props.mapboxMap.location);
-    //   if (location) {
-    //     arr = [
-    //       ...arr,
-    //       {
-    //         ...location,
-    //         ...student
-    //       }
-    //     ];
-    //   }
-    //   return arr;
-    // }, []);
-    // this.setState({
-    //   students: mapData
-    // });
+    mapData = mapData.reduce((arr, student) => {
+      const location = zipcodes.lookupByName(this.props.mapboxMap.location);
+      if (location) {
+        arr = [
+          ...arr,
+          {
+            ...location,
+            ...student
+          }
+        ];
+      }
+      return arr;
+    }, []);
+    this.setState({
+      students: mapData
+    });
   }
+
+  // _getStudentLongAndLat = () => {
+  //   this.props.mapData.map(student => {
+  //     return student;
+  //   });
+  // };
 
   _updateViewport = viewport => {
     this.setState({ viewport });
@@ -109,7 +114,6 @@ class MapboxMapPresentational extends React.Component {
   }
 
   render() {
-    console.log(this.props.mapData);
     const { viewport } = this.state;
     return (
       <ReactMapGL

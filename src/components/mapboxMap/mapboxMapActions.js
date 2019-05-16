@@ -8,7 +8,8 @@ export const FETCHED_MAP_DATA_FAILURE = "FETCHED_MAP_DATA_FAILURE";
 export const fetchMapData = () => dispatch => {
   dispatch({ type: FETCHED_MAP_DATA_START });
   axios
-    .get(`${backendUrl}/api/students/cards`)
+    .get("http://localhost:5000/api/students/locations")
+    // .get(`${backendUrl}/api/students/locations`)
     .then(res => res.data)
 
     .then(mapData =>
