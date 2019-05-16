@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 import { getProject } from '../projectqs/projectqsActions';
 import ProjectSkills from '../projectSkills/ProjectSkills';
@@ -23,6 +23,9 @@ const ProjectView = ({
 		dispatch(getProject(id));
 	}, [id, dispatch]);
 
+	if (projectData.emptyReturn) {
+		return <Redirect to="/404" />
+	}
 	return (
 		<div className="project-view">
 			<NotApproved approved={projectData.approved} />
