@@ -2,29 +2,11 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { render } from "react-dom";
 
-import ReactMapGL, {
-  Marker,
-  FullscreenControl,
-  NavigationControl
-} from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
 
 import StudentPin from "./student-pin";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
-
-const fullscreenControlStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  padding: "10px"
-};
-
-const navStyle = {
-  position: "absolute",
-  top: 36,
-  left: 0,
-  padding: "10px"
-};
 
 class MapboxMapPresentational extends React.Component {
   constructor(props) {
@@ -84,16 +66,6 @@ class MapboxMapPresentational extends React.Component {
         id="map"
       >
         {this.state.students.map(this._renderStudentMarker)}
-
-        {/* {this._renderPopup()} */}
-
-        <div className="fullscreen" style={fullscreenControlStyle}>
-          <FullscreenControl />
-        </div>
-
-        <div className="nav" style={navStyle}>
-          <NavigationControl onViewportChange={this._updateViewport} />
-        </div>
       </ReactMapGL>
     );
   }
