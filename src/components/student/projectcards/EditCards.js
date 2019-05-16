@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { isMobile } from "react-device-detect";
 
 const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
   const [dragged, updateDragged] = useState({});
@@ -84,6 +85,13 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
         </div>
       </div>
     ));
+  if (isMobile) {
+    return (
+      <div>
+        <span>This content can only be viewed on a desktop browser.</span>
+      </div>
+    );
+  }
   return (
     <div className="projects-wrapper edit-wrapper">
       <span className="input-label">Projects</span>
