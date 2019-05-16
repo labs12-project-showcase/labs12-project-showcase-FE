@@ -13,7 +13,9 @@ const Cards = ({ cards }) => {
 					</Link>
 				</div>
 				<div className="details">
-					<h2>{cards.name}</h2>
+					<Link to={`/student/profile/${cards.id}`}>
+						<h2>{cards.name}</h2>
+					</Link>
 					<h3>{cards.track}</h3>
 					<span>
 						<i className="fas fa-map-marker-alt" />
@@ -29,7 +31,7 @@ const Cards = ({ cards }) => {
 					</div>
 				</div>
 				<div className="projects-box">
-					<h2>My top 3 projects</h2>
+					<h2>Top projects</h2>
 					{cards.top_projects.map(proj => (
 						<Link
 							key={proj.project_id}

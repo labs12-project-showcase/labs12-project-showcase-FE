@@ -1,19 +1,17 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getData } from './studentProfileActions';
-import badge from '../../../assets/lambda-badge.png';
-import Projects from '../projectcards/ProjectCards';
-import NotEndorsed from '../notEndorsed/NotEndorsed';
-import AboutMe from '../aboutMe/AboutMe';
-import Endorsements from '../endorsements/Endorsements';
-import Share from '../share/Share';
-import Status from '../status/Status';
-import Skills from '../skills/Skills';
-import Progress from '../progress/Progress';
-import ContactForm from '../contactForm/ContactForm';
-
-// yarn add react-id-swiper@latest swiper@latest
+import React from "react";
+import { withRouter, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { getData } from "./studentProfileActions";
+import badge from "../../../assets/lambda-badge.png";
+import Projects from "../projectcards/ProjectCards";
+import NotEndorsed from "../notEndorsed/NotEndorsed";
+import AboutMe from "../aboutMe/AboutMe";
+import Endorsements from "../endorsements/Endorsements";
+import Share from "../share/Share";
+import Status from "../status/Status";
+import Skills from "../skills/Skills";
+import Progress from "../progress/Progress";
+import ContactForm from "../contactForm/ContactForm";
 
 class StudentProfile extends React.Component {
   componentDidMount() {
@@ -26,6 +24,15 @@ class StudentProfile extends React.Component {
   }
 
   render() {
+    let profile;
+    if (
+      this.props.loggedInProfile &&
+      this.props.loggedInProfile.id === Number(this.props.match.params.id)
+    ) {
+      profile = this.props.loggedInProfile;
+    } else {
+      profile = this.props.studentProfile.profile;
+    }
     const {
       id,
       name,
@@ -47,11 +54,15 @@ class StudentProfile extends React.Component {
       top_projects,
       track,
       profile_pic
-    } = this.props.studentProfile.profile;
+    } = profile;
     const sameUser = id === this.props.loggedInProfile.id;
     const profilePicture =
       profile_pic ||
       "https://res.cloudinary.com/hirelambdastudents/image/upload/v1556814928/pictures/avatar.png";
+
+    if (this.props.studentProfile.emptyReturn) {
+      return <Redirect to="/404" />
+    }
     return (
       <div className="student-dashboard">
         {sameUser && !approved && <NotEndorsed />}
@@ -74,7 +85,7 @@ class StudentProfile extends React.Component {
               </div>
 
               <div className="social-links">
-                <ContactForm student={this.props.studentProfile.profile}/>
+                <ContactForm student={this.props.studentProfile.profile} />
                 <a
                   className="portfolio-btn"
                   rel="noopener noreferrer"

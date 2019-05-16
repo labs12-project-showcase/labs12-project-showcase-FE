@@ -7,7 +7,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 
-
 const styles = theme => ({
   paper: {
     position: "absolute",
@@ -43,14 +42,13 @@ class DeleteModal extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className="sc-modal-buttons">
+      <div className="sc-modal-buttons-delete">
         <Button
           onClick={this.handleOpen}
           variant="outlined"
-          color="secondary"
           classnames={classes.button}
         >
-          <i class="fas fa-trash"></i>
+          <i className="fas fa-trash" />
           Delete Account
         </Button>
         <Modal
@@ -83,7 +81,7 @@ class DeleteModal extends React.Component {
                 color="primary"
                 classnames={classes.button}
               >
-                <i class="fas fa-check"></i>
+                <i class="fas fa-check" />
                 Delete Profile
               </Button>
               <Button
@@ -92,7 +90,7 @@ class DeleteModal extends React.Component {
                 color="secondary"
                 classnames={classes.button}
               >
-                <i class="fas fa-ban"></i>
+                <i class="fas fa-ban" />
                 Cancel
               </Button>
             </form>

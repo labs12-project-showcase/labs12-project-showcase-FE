@@ -1,15 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import DeleteModal from '../profile/DeleteModal.js';
-import EditImage from '../../EditImage/EditImage';
+import React from "react";
+import { connect } from "react-redux";
+import DeleteModal from "../profile/DeleteModal.js";
+import EditImage from "../../EditImage/EditImage";
 import {
   deleteProfilePicture,
   getProfileData,
   updateProfile,
   uploadProfilePicture
-} from './profileqsActions';
-import avatar from '../../../assets/avatar.jpg';
-import ProfileqsForm from './ProfileqsForm';
+} from "./profileqsActions";
+import avatar from "../../../assets/avatar.jpg";
+import ProfileqsForm from "./ProfileqsForm";
 
 class Profileqs extends React.Component {
   userExists = this.props.profile.profileData.exists || false;
@@ -52,6 +52,7 @@ class Profileqs extends React.Component {
             </>
           )}
           <div className="profile-picture">
+            <DeleteModal />
             <span className="input-label">Profile Picture</span>
             <EditImage
               initialImageList={[this.props.profile.profileData.profile_pic]}
@@ -65,13 +66,12 @@ class Profileqs extends React.Component {
               suggestedUrl={
                 this.props.profile.profileData.github
                   ? `${this.props.profile.profileData.github}.png`
-                  : ''
+                  : ""
               }
               uploadButtonText="Upload file"
             />
           </div>
           <ProfileqsForm initialFormValues={this.props.profile.profileData} />
-          <DeleteModal />
         </div>
       </div>
     );

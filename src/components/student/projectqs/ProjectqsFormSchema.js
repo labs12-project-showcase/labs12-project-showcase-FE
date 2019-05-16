@@ -226,27 +226,29 @@ export const FormSchema = ({
         <ErrorMessage name="short_description" component="div" />
       </label>
 
-      <label>
+      {/*
+        <label>
         <span className="input-label">Customer Sales Pitch</span>
         <br />
         <Field
-          name="customer_pitch"
-          component="textarea"
-          className="pitch-text-area"
+        name="customer_pitch"
+        component="textarea"
+        className="pitch-text-area"
         />
         <ErrorMessage name="customer_pitch" component="div" />
-      </label>
-
-      <label>
+        </label>
+        
+        <label>
         <span className="input-label">Technical Sales Pitch</span>
         <br />
         <Field
-          name="tech_pitch"
-          component="textarea"
-          className="pitch-text-area"
+        name="tech_pitch"
+        component="textarea"
+        className="pitch-text-area"
         />
         <ErrorMessage name="tech_pitch" component="div" />
-      </label>
+        </label>
+      */}
 
       <button type="submit" disabled={isSubmitting}>
         {project_id ? "Update Project" : "Create Project"}
@@ -298,11 +300,13 @@ export const ProjectQsSchema = Yup.object().shape({
     .nullable(),
   short_description: Yup.string()
     .trim()
-    .required("Please provide a short description."),
+    .required("Please provide a short description.")
+  /*
   customer_pitch: Yup.string()
     .trim()
     .nullable(),
   tech_pitch: Yup.string()
     .trim()
     .nullable()
+    */
 });

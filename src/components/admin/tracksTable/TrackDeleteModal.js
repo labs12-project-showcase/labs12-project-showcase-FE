@@ -48,7 +48,7 @@ class TrackDeleteModal extends React.Component {
           color="secondary"
           className={classes.button}
         >
-          <i class="fas fa-trash"></i>
+          <i className="fas fa-trash" />
           Delete
         </Button>
         <Modal
@@ -81,7 +81,7 @@ class TrackDeleteModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
-                <i class="fas fa-check"></i>
+                <i className="fas fa-check" />
                 Delete Track
               </Button>
               <Button
@@ -90,7 +90,7 @@ class TrackDeleteModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
-                <i class="fas fa-ban"></i>
+                <i className="fas fa-ban" />
                 Cancel
               </Button>
             </form>
