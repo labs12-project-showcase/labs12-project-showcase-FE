@@ -1,23 +1,32 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getData } from './studentProfileActions';
-import badge from '../../../assets/lambda-badge.png';
-import Projects from '../projectcards/ProjectCards';
-import NotEndorsed from '../notEndorsed/NotEndorsed';
-import AboutMe from '../aboutMe/AboutMe';
-import Endorsements from '../endorsements/Endorsements';
-import Share from '../share/Share';
-import Status from '../status/Status';
-import Skills from '../skills/Skills';
-import Progress from '../progress/Progress';
-import ContactForm from '../contactForm/ContactForm';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { getData } from "./studentProfileActions";
+import badge from "../../../assets/lambda-badge.png";
+import Projects from "../projectcards/ProjectCards";
+import NotEndorsed from "../notEndorsed/NotEndorsed";
+import AboutMe from "../aboutMe/AboutMe";
+import Endorsements from "../endorsements/Endorsements";
+import Share from "../share/Share";
+import Status from "../status/Status";
+import Skills from "../skills/Skills";
+import Progress from "../progress/Progress";
+import ContactForm from "../contactForm/ContactForm";
 
 // yarn add react-id-swiper@latest swiper@latest
 
 class StudentProfile extends React.Component {
   componentDidMount() {
-    this.props.getData(this.props.match.params.id);
+    console.log(this.props.match.params.id, "params id");
+    console.log(this.loggedInProfile, "profile id");
+    if (
+      this.props.loggedInProfile &&
+      this.props.loggedInProfile.id === this.props.match.params.id
+    ) {
+      this.props.getData();
+    } else {
+      this.props.getData(this.props.match.params.id);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -74,7 +83,7 @@ class StudentProfile extends React.Component {
               </div>
 
               <div className="social-links">
-                <ContactForm student={this.props.studentProfile.profile}/>
+                <ContactForm student={this.props.studentProfile.profile} />
                 <a
                   className="portfolio-btn"
                   rel="noopener noreferrer"

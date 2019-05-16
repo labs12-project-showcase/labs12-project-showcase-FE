@@ -1,0 +1,26 @@
+.no-match {
+  height: 40rem;
+  margin: 3.2rem auto;
+  max-height: 60vh;
+  overflow: hidden;
+  max-width: 40rem;
+  
+  h1 {
+    margin: 3.2rem;
+    font-size: 4rem;
+  }
+
+  p {
+    margin: 3.2rem;
+
+    .bad-route {
+      background: rgba($color: #000000, $alpha: 0.1);
+      font-family: monospace;
+      padding: 0.4rem;
+    }
+  }
+
+  .strong {
+    font-weight: bold;
+  }
+}

@@ -5,11 +5,7 @@ import CohortEditModal from "./CohortEditModal";
 import CohortDeleteModal from "./CohortDeleteModal";
 import CohortAddModal from "./CohortAddModal";
 
-import {
-  getCohorts,
-  updateCohort,
-  deleteCohort
-} from "../adminActions.js";
+import { getCohorts, updateCohort, deleteCohort } from "../adminActions.js";
 
 class CohortsTable extends React.Component {
   componentDidMount() {
@@ -26,7 +22,8 @@ class CohortsTable extends React.Component {
           sort: true,
           customBodyRender: value => {
             return <p>{value.cohort_name}</p>;
-          }
+          },
+          customSortValue: value => value.cohort_name
         }
       },
       {
