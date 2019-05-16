@@ -11,8 +11,6 @@ import {
 import avatar from "../../../assets/avatar.jpg";
 import ProfileqsForm from "./ProfileqsForm";
 
-import DragDropScript from "../../../config/mobiledragdrop";
-
 class Profileqs extends React.Component {
   userExists = this.props.profile.profileData.exists || false;
 
@@ -27,10 +25,6 @@ class Profileqs extends React.Component {
       // the `true` argument pulls `cohort` and `track` info
       this.props.getProfileData(true);
     }
-    const script = document.createElement("script");
-    script.src = DragDropScript;
-
-    document.body.appendChild(script);
   }
 
   render() {
