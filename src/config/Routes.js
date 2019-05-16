@@ -16,6 +16,7 @@ import Callback from '../auth/Callback.js';
 import PrivateRoute from './PrivateRoute.js';
 // Public Routes
 import ContactForm from '../components/student/contactForm/ContactForm';
+import FilterSearch from '../components/FilterSearch/FilterSearch';
 import Home from '../components/home/Home.js';
 import NoMatch from '../components/404/NoMatch';
 // Student Routes
@@ -40,6 +41,7 @@ class Routes extends Component {
 						path="/contact-me/:id"
 						render={props => <ContactForm auth={props.auth} {...props} />}
 					/>
+          <Route path="/discover/:search?" component={FilterSearch} />
 										
 					{/* Admin Routes */}
           <Route path="/admin-login" component={AdminLogin} />
