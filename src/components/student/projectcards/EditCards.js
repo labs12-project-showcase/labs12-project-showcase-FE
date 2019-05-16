@@ -86,11 +86,7 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
       </div>
     ));
   if (isMobile) {
-    return (
-      <div>
-        <span>This content can only be viewed on a desktop browser.</span>
-      </div>
-    );
+    return null;
   }
   return (
     <div className="projects-wrapper edit-wrapper">
