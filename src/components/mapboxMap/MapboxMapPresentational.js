@@ -1,9 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { render } from "react-dom";
-
 import ReactMapGL, { Marker } from "react-map-gl";
-
 import StudentPin from "./student-pin";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
@@ -37,7 +35,6 @@ class MapboxMapPresentational extends React.Component {
   };
 
   _renderStudentMarker = (student, index) => {
-    console.log(student.latitude);
     return (
       <Marker
         key={`marker-${index}`}
