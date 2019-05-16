@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { addTrack, getTracks } from '../adminActions.js';
@@ -63,7 +62,7 @@ class TrackAddModal extends React.Component {
 					aria-label="Delete"
 					className={classes.fab}
 				>
-					<AddIcon className={classes.extendedIcon} />
+					<i class="fas fa-plus"></i>
 					Add a Track
 				</Fab>
 				<Modal

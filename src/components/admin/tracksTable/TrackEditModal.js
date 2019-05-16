@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
-import EditIcon from "@material-ui/icons/Edit";
-import CheckIcon from "@material-ui/icons/Check";
-import CancelIcon from "@material-ui/icons/Cancel";
 import { updateTrack } from "../adminActions.js";
 
 
@@ -66,8 +63,8 @@ class TrackEditModal extends React.Component {
           color="primary"
           className={classes.button}
         >
+          <i class="fas fa-edit"></i>
           Edit
-          <EditIcon className={classes.rightIcon} />
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
@@ -105,8 +102,8 @@ class TrackEditModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
+                <i class="fas fa-check"></i>
                 Update Track
-                <CheckIcon className={classes.rightIcon} />
               </Button>
               <Button
                 onClick={this.handleClose}
@@ -114,8 +111,8 @@ class TrackEditModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
+                <i class="fas fa-ban"></i>
                 Cancel
-                <CancelIcon className={classes.rightIcon} />
               </Button>
             </form>
           </div>

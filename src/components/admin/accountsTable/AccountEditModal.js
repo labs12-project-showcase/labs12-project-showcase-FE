@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import EditIcon from '@material-ui/icons/Edit';
-import CheckIcon from '@material-ui/icons/Check';
-import CancelIcon from '@material-ui/icons/Cancel';
 import { updateAccount } from "../adminActions";
 
 const styles = theme => ({
@@ -57,8 +54,8 @@ class AccountEditModal extends React.Component {
 					color="primary"
 					classnames={classes.button}
 				>
+					<i class="fas fa-edit"></i>
 					Edit
-					<EditIcon classnames={classes.rightIcon} />
 				</Button>
 				<Modal
 					aria-labelledby="simple-modal-title"
@@ -107,8 +104,8 @@ class AccountEditModal extends React.Component {
 								color="primary"
 								classnames={classes.button}
 							>
+								<i class="fas fa-check"></i>
 								Update Account
-								<CheckIcon classnames={classes.rightIcon} />
 							</Button>
 							<Button
 								onClick={this.handleClose}
@@ -116,8 +113,8 @@ class AccountEditModal extends React.Component {
 								color="secondary"
 								classnames={classes.button}
 							>
+								<i class="fas fa-ban"></i>
 								Cancel
-								<CancelIcon classnames={classes.rightIcon} />
 							</Button>
 						</form>
 					</div>
