@@ -6,7 +6,6 @@ export const FETCHED_MAP_DATA_SUCCESS = "FETCHED_MAP_DATA_SUCCESS";
 export const FETCHED_MAP_DATA_FAILURE = "FETCHED_MAP_DATA_FAILURE";
 
 export const fetchMapData = () => dispatch => {
-  console.log("Fetching Map Data...");
   dispatch({ type: FETCHED_MAP_DATA_START });
   axios
     .get(`${backendUrl}/api/students/cards`)
