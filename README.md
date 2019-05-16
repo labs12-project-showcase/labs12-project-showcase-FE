@@ -53,7 +53,7 @@ You can find the project at https://lambdashowcase.netlify.com/.
 
 #### Data Model
 
-<div align="center"><img src="./src/assets/db_schema.png"></div>
+<div align="center"><img src="./assets/db_schema.png"></div>
 
 ### Backend deployed to Heroku
 
