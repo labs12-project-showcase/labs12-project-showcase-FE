@@ -6,7 +6,6 @@ import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import { updateTrack } from "../adminActions.js";
 
-
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit
@@ -46,14 +45,15 @@ class TrackEditModal extends React.Component {
   };
 
   handleSubmit = e => {
-	e.stopPropagation();
-	e.preventDefault();
-	this.props.updateTrack(this.props.value.id, { name: this.state.name })
-	.then(this.handleClose);
+    e.stopPropagation();
+    e.preventDefault();
+    this.props
+      .updateTrack(this.props.value.id, { name: this.state.name })
+      .then(this.handleClose);
   };
 
   render() {
-	const { classes } = this.props;
+    const { classes } = this.props;
 
     return (
       <div className="sc-modal">
@@ -63,7 +63,7 @@ class TrackEditModal extends React.Component {
           color="primary"
           className={classes.button}
         >
-          <i class="fas fa-edit"></i>
+          <i className="fas fa-edit" />
           Edit
         </Button>
         <Modal
@@ -82,10 +82,7 @@ class TrackEditModal extends React.Component {
             }}
             className={classes.paper}
           >
-            <form
-              onSubmit={this.handleSubmit}
-              className="sc-modal-buttons"
-            >
+            <form onSubmit={this.handleSubmit} className="sc-modal-buttons">
               <div className="sc-input">
                 <label>Updated Track Name: </label>
                 <input
@@ -102,7 +99,7 @@ class TrackEditModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
-                <i class="fas fa-check"></i>
+                <i className="fas fa-check" />
                 Update Track
               </Button>
               <Button
@@ -111,7 +108,7 @@ class TrackEditModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
-                <i class="fas fa-ban"></i>
+                <i className="fas fa-ban" />
                 Cancel
               </Button>
             </form>
