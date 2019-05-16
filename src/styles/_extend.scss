@@ -120,15 +120,70 @@
 			display: block;
 		}
 		.control-checkbox .control_indicator:after {
-			left: 8px;
-			top: 4px;
-			width: 3px;
-			height: 8px;
+			left: 6px;
+			top: 2px;
+			width: 7px;
+			height: 13px;
 			border: solid #ffffff;
 			border-width: 0 2px 2px 0;
 			transform: rotate(45deg);
 		}
 		.control-checkbox input:disabled ~ .control_indicator:after {
+			border-color: #7b7b7b;
+		}
+
+		// Radio
+
+		.control_indicator-radio {
+			position: absolute;
+			top: 2px;
+			border-radius: 50%;
+			left: 0;
+			height: 20px;
+			width: 20px;
+			background: #e6e6e6;
+			border: 0px solid #000000;
+		}
+		.control-radio .control_indicator-radio {
+			border-radius: 0;
+		}
+
+		.control:hover input ~ .control_indicator-radio,
+		.control input:focus ~ .control_indicator-radio {
+			background: #cccccc;
+		}
+
+		.control input:checked ~ .control_indicator-radio {
+			background: $lambdaTeal;
+		}
+		.control:hover input:not([disabled]):checked ~ .control_indicator-radio,
+		.control input:checked:focus ~ .control_indicator-radio {
+			background: $lambdaTeal;
+		}
+		.control input:disabled ~ .control_indicator-radio {
+			background: #e6e6e6;
+			opacity: 0.6;
+			pointer-events: none;
+		}
+		.control_indicator-radio:after {
+			box-sizing: unset;
+			content: '';
+			position: absolute;
+			display: none;
+		}
+		.control input:checked ~ .control_indicator-radio:after {
+			display: block;
+		}
+		.control-checkbox .control_indicator-radio:after {
+			left: 6px;
+			top: 6px;
+			width: 8px;
+			height: 8px;
+			background-color: $lightcolor;
+			border: solid $lightcolor;
+			border-radius: 50%;
+		}
+		.control-checkbox input:disabled ~ .control_indicator-radio:after {
 			border-color: #7b7b7b;
 		}
 

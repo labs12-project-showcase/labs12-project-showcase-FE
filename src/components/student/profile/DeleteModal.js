@@ -42,11 +42,10 @@ class DeleteModal extends React.Component {
 		const { classes } = this.props;
 
 		return (
-			<div className="sc-modal-buttons">
+			<div className="sc-modal-buttons-delete">
 				<Button
 					onClick={this.handleOpen}
 					variant="outlined"
-					color="secondary"
 					classnames={classes.button}
 				>
 					<i class="fas fa-trash" />
