@@ -61,14 +61,9 @@ class DeleteModal extends React.Component {
 
 		return (
 			<div className="sc-modal-buttons">
-				<Button
-					onClick={this.handleOpen}
-					variant="outlined"
-					color="secondary"
-					classNames={classes.button}
-				>
+				<Button onClick={this.handleOpen} variant="outlined" color="secondary">
+					<i className="fas fa-trash" />
 					Delete Account
-					<DeleteIcon classNames={classes.rightIcon} />
 				</Button>
 				<Modal
 					aria-labelledby="simple-modal-title"
@@ -87,23 +82,13 @@ class DeleteModal extends React.Component {
 							<div className="sc-input">
 								<label>Are you sure you want to delete your profile?</label>
 							</div>
-							<Button
-								type="submit"
-								variant="outlined"
-								color="primary"
-								classNames={classes.button}
-							>
+							<Button type="submit" variant="outlined" color="primary">
+								<CheckIcon className={classes.rightIcon} />
 								Delete Profile
-								<CheckIcon classNames={classes.rightIcon} />
 							</Button>
-							<Button
-								onClick={this.handleClose}
-								variant="outlined"
-								color="secondary"
-								classNames={classes.button}
-							>
+							<Button onClick={this.handleClose} variant="outlined">
+								<CancelIcon className={classes.rightIcon} />
 								Cancel
-								<CancelIcon classNames={classes.rightIcon} />
 							</Button>
 						</form>
 					</div>
