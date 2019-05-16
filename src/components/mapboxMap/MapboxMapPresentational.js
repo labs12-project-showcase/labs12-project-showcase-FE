@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { render } from "react-dom";
 import ReactMapGL, { Marker } from "react-map-gl";
 import StudentPin from "./student-pin";
+import "mapbox-gl/src/css/mapbox-gl.css";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
