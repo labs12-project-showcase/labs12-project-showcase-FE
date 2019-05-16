@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchMapData } from "../mapboxMap/mapboxMapActions";
 import { render } from "react-dom";
-import zipcodes from "zipcodes";
+// import zipcodes from "zipcodes";
+
 import ReactMapGL, {
   Marker,
   Popup,
@@ -30,30 +30,30 @@ const navStyle = {
   padding: "10px"
 };
 
-class MapboxMap extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  state = {
-    viewport: {
-      width: "100vw",
-      height: "100vh",
-      latitude: 39.788260590328576,
-      longitude: -97.77255674948162,
-      zoom: 4,
-      bearing: 0,
-      pitch: 0
-    },
-    popupInfo: null,
-    students: []
-  };
+class MapboxMapPresentational extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewport: {
+        width: "100vw",
+        height: "100vh",
+        latitude: 39.788260590328576,
+        longitude: -97.77255674948162,
+        zoom: 4,
+        bearing: 0,
+        pitch: 0
+      },
+      popupInfo: null,
+      students: []
+    };
+  }
 
   componentDidMount() {
-    let data = this.props.fetchMapData();
-    // let { data } = await axios.get(`${backendUrl}/api/students/cards/filter`);
-    // let { data } = this.props.cards;
+    // console.log(this.props.mapData);
+    let mapData = this.props.mapData;
 
-    // data = data.reduce((arr, student) => {
-    //   const location = zipcodes.lookupByName(this.props.cards.location);
+    // mapData = mapData.reduce((arr, student) => {
+    //   const location = zipcodes.lookupByName(this.props.mapboxMap.location);
     //   if (location) {
     //     arr = [
     //       ...arr,
@@ -66,7 +66,7 @@ class MapboxMap extends React.Component {
     //   return arr;
     // }, []);
     // this.setState({
-    //   students: data
+    //   students: mapData
     // });
   }
 
@@ -109,7 +109,7 @@ class MapboxMap extends React.Component {
   }
 
   render() {
-    console.log("Map Data: ", this.props.mapboxMap);
+    console.log(this.props.mapData);
     const { viewport } = this.state;
     return (
       <ReactMapGL
@@ -140,16 +140,11 @@ class MapboxMap extends React.Component {
 
 const mapStateToProps = state => ({
   ...state,
-  mapboxMap: state.mapboxMap
+  mapData: state.mapboxMap
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { fetchMapData }
-  )(MapboxMap)
-);
+export default withRouter(connect(mapStateToProps)(MapboxMapPresentational));
 
 export function renderToDom(container) {
-  render(<MapboxMap />, container);
+  render(<MapboxMapPresentational />, container);
 }
