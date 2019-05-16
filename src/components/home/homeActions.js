@@ -7,7 +7,6 @@ export const UPDATE_FILTERED_CARDS = "UPDATE_FILTERED_CARDS";
 export const UPDATE_FILTERED_CARDS_FAILURE = "UPDATE_FILTERED_CARDS_FAILURE";
 
 export const homeData = () => dispatch => {
-  console.log("fetching");
   axios
     .get(`${backendUrl}/api/students/cards`)
     .then(res => res.data)
