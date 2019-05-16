@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getData } from "./studentProfileActions";
 import badge from "../../../assets/lambda-badge.png";
@@ -59,6 +59,10 @@ class StudentProfile extends React.Component {
     const profilePicture =
       profile_pic ||
       "https://res.cloudinary.com/hirelambdastudents/image/upload/v1556814928/pictures/avatar.png";
+
+    if (this.props.studentProfile.emptyReturn) {
+      return <Redirect to="/404" />
+    }
     return (
       <div className="student-dashboard">
         {sameUser && !approved && <NotEndorsed />}

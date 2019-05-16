@@ -7,7 +7,8 @@ import {
 const initialState = {
 	profile: [],
 	error: null,
-	isFetchingProfile: false
+	isFetchingProfile: false,
+	emptyReturn: false
 };
 
 const studentProfileReducer = (state = initialState, action) => {
@@ -20,12 +21,22 @@ const studentProfileReducer = (state = initialState, action) => {
 				error: null
 			};
 		case FETCH_PROFILE_SUCCESS:
-			return {
-				...state,
-				profile: action.payload,
-				isFetchingProfile: false,
-				error: null
-			};
+			const p = action.payload;
+			if (action.payload && Object.keys(p).length === 4 && p.desired_locations.length === 0 && p.endorsements.length === 0 && p.projects.length === 0 && p.top_projects.length === 0) {
+				return {
+					...state,
+					emptyReturn: true
+				}
+			} else {
+				return {
+					...state,
+					profile: action.payload,
+					isFetchingProfile: false,
+					emptyReturn: false,
+					error: null
+				};
+			}
+
 		case FETCH_PROFILE_FAILURE:
 			return {
 				...state,
