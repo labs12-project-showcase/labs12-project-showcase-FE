@@ -1,19 +1,21 @@
 import { combineReducers } from "redux";
 
-import authReducer from "../auth/authReducer.js";
-import homeReducer from "../components/home/homeReducer.js";
+import adminReducer from "../components/admin/adminReducer";
 import adminDashboardReducer from "../components/admin/dashboard/adminDashboardReducer.js";
-import studentProfileReducer from "../components/student/profile/studentProfileReducer.js";
+import authReducer from "../auth/authReducer.js";
+import filterSearchReducer from '../components/FilterSearch/FilterSearchReducer';
+import homeReducer from "../components/home/homeReducer.js";
 import profileReducer from "../components/student/profileqs/profileqsReducer";
 import projectReducer from "../components/student/projectqs/projectqsReducer";
-import adminReducer from "../components/admin/adminReducer";
+import studentProfileReducer from "../components/student/profile/studentProfileReducer.js";
 
 export default combineReducers({
+  admin: adminReducer,
   adminDashboard: adminDashboardReducer,
   auth: authReducer,
   home: homeReducer,
+  filterSearch: filterSearchReducer,
   profile: profileReducer,
   project: projectReducer,
-  studentProfile: studentProfileReducer,
-  admin: adminReducer
+  studentProfile: studentProfileReducer
 });
