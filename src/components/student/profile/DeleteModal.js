@@ -53,8 +53,8 @@ class DeleteModal extends React.Component {
           color="secondary"
           classnames={classes.button}
         >
+          <i class="fas fa-trash"></i>
           Delete Account
-          <DeleteIcon classnames={classes.rightIcon} />
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
@@ -86,8 +86,8 @@ class DeleteModal extends React.Component {
                 color="primary"
                 classnames={classes.button}
               >
+                <i class="fas fa-check"></i>
                 Delete Profile
-                <CheckIcon classnames={classes.rightIcon} />
               </Button>
               <Button
                 onClick={this.handleClose}
@@ -95,8 +95,8 @@ class DeleteModal extends React.Component {
                 color="secondary"
                 classnames={classes.button}
               >
+                <i class="fas fa-ban"></i>
                 Cancel
-                <CancelIcon classnames={classes.rightIcon} />
               </Button>
             </form>
           </div>
