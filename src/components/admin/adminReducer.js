@@ -96,7 +96,6 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
         projects: state.projects.reduce((arr, cur) => {
-          console.log(cur.id, action.payload.id);
           if (cur.id === action.payload.id) {
             arr.push({ ...cur, ...action.payload });
             return arr;
@@ -143,7 +142,6 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
         students: state.students.reduce((arr, cur) => {
-          console.log(cur.id, action.payload.id);
           if (cur.id === action.payload.id) {
             arr.push({ ...cur, ...action.payload });
             return arr;

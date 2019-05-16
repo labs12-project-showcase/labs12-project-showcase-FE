@@ -22,7 +22,7 @@ const ProjectViewHome = () => {
 	const params = {
 		effect: 'coverflow',
 		autoplay: {
-			delay: 2000
+			delay: 3500
 		},
 		grabCursor: true,
 		centeredSlides: true,
@@ -34,9 +34,15 @@ const ProjectViewHome = () => {
 			modifier: 1,
 			slideShadows: true
 		},
-		pagination: {
-			el: '.swiper-pagination'
-		},
+		// pagination: {
+		// 	el: '.swiper-pagination',
+		// 	type: 'bullets',
+		// 	clickable: true
+		//   },
+		  navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev'
+		  },
 		loop: true
 	};
 

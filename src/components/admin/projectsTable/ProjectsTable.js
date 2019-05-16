@@ -17,7 +17,7 @@ class ProjectsTable extends React.Component {
 				name: 'Title',
 				field: 'name',
 				options: {
-					filter: true,
+					filter: false,
 					sort: true,
 					customBodyRender: project => {
 						return (
@@ -39,15 +39,17 @@ class ProjectsTable extends React.Component {
 			{
 				name: 'Description',
 				field: 'short_description',
-				filter: true,
-				sort: true
+				options: {
+					filter: false,
+					sort: false,
+				}
 			},
 			{
 				name: 'Contributors',
 				field: 'students',
 				options: {
-					filter: true,
-					sort: true,
+					filter: false,
+					sort: false,
 					customBodyRender: value => {
 						return <ProjectTableRow value={value} />;
 					}
