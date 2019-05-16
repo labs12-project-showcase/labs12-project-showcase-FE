@@ -5,18 +5,17 @@ import { fetchMapData } from "./mapboxMapActions";
 import MapboxMapPresentational from "./MapboxMapPresentational";
 
 class MapboxMapContainer extends React.Component {
-  componentDidMount() {
+  async componentDidMount() {
     this.props.fetchMapData();
   }
 
   render() {
-    return <MapboxMapPresentational mapData={this.props.mapboxMap} />;
+    return <MapboxMapPresentational mapData={this.props.mapData} />;
   }
 }
 
 const mapStateToProps = state => ({
-  ...state,
-  mapData: state.mapboxMap
+  mapData: state.mapboxMap.mapData
 });
 
 export default withRouter(

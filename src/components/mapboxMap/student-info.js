@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { backendUrl } from "../../config/urls.js";
+import { Link } from "react-router-dom";
 
 export default class StudentInfo extends PureComponent {
   render() {
@@ -13,10 +13,7 @@ export default class StudentInfo extends PureComponent {
         <div>
           {`${student_name}`} | {`${student_info.location}`}
         </div>
-        <a
-          target="_new"
-          href={`${backendUrl}/api/students/profile/${student_id}`}
-        >
+        <a target="_new">
           <img width={200} src={student_image} alt={student_name} />
         </a>
         <div>
