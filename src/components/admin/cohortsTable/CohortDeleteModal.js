@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
-import CheckIcon from "@material-ui/icons/Check";
-import CancelIcon from "@material-ui/icons/Cancel";
 import { deleteCohort } from "../adminActions.js";
 
 const styles = theme => ({
@@ -51,8 +48,8 @@ class CohortDeleteModal extends React.Component {
           color="secondary"
           className={classes.button}
         >
+          <i class="fas fa-trash"></i>
           Delete
-          <DeleteIcon className={classes.rightIcon} />
         </Button>
         <Modal
           aria-labelledby="simple-modal-title"
@@ -84,8 +81,8 @@ class CohortDeleteModal extends React.Component {
                 color="primary"
                 className={classes.button}
               >
+                <i class="fas fa-check"></i>
                 Delete Cohort
-                <CheckIcon className={classes.rightIcon} />
               </Button>
               <Button
                 onClick={this.handleClose}
@@ -93,8 +90,8 @@ class CohortDeleteModal extends React.Component {
                 color="secondary"
                 className={classes.button}
               >
+                <i class="fas fa-ban"></i>
                 Cancel
-                <CancelIcon className={classes.rightIcon} />
               </Button>
             </form>
           </div>

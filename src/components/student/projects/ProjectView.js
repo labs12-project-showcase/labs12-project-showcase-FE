@@ -9,7 +9,7 @@ import ProgressProject from "../progressProject/ProgressProject";
 import MediaGallery from "./MediaGallery";
 import ProjectLinkButton from "./ProjectLinkButton";
 import ProjectStudents from "./ProjectStudents";
-import ProjectPitches from "./ProjectPitches";
+//import ProjectPitches from "./ProjectPitches";
 import ProjectLeftHeader from "./ProjectLeftHeader";
 
 const ProjectView = ({
@@ -43,10 +43,10 @@ const ProjectView = ({
       </header>
       <main>
         <div className="pitch-and-projectURL-container">
-          <ProjectPitches
+          {/* <ProjectPitches
             tech_pitch={projectData.tech_pitch}
             customer_pitch={projectData.customer_pitch}
-          />
+          /> */}
           <div className="project-urls-container">
             <ProjectLinkButton
               link={projectData.github}
