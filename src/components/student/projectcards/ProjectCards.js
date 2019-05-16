@@ -23,6 +23,7 @@ const ProjectCards = ({ top_projects, projects, media }) => {
 		));
 	return (
 		<div className="projects-wrapper">
+			<hr className="hrTop" />
 			<h2> My Projects</h2>
 			<div className="projects-inner-wrapper">
 				{top_projects.length ? map(top_projects) : <AddProjectCard />}

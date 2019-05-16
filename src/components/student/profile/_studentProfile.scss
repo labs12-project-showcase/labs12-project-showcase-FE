@@ -5,7 +5,7 @@
 		background-image: url(./assets/profile-background.png);
 		background-repeat: no-repeat;
 		background-position: bottom right;
-		min-height: 655px;
+		// min-height: 655px;
 
 		.profile-container {
 			width: 100%;
@@ -235,7 +235,7 @@
 				}
 			}
 			.header-boxes {
-				margin-top: 20px;
+				margin-top: 10px;
 				@include box-align(space-between, flex-start);
 				@media (max-width: 768px) {
 					@include box-align();

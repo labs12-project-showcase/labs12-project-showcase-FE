@@ -14,7 +14,7 @@
 	.TopBar-container {
 		width: 100%;
 		padding: 5px;
-		max-width: 1000px;
+		max-width: 1168px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -22,6 +22,20 @@
 
 		.TopBar-hire-lambda-logo {
 			height: 30px;
+		}
+
+		.search-link {
+			padding: 5px 10px;
+			background-color: darken($color: $lambdaRed, $amount: 10);
+			color: $lightcolor;
+			@include box-align();
+			flex-direction: column;
+			h4 {
+				margin: 2px;
+			}
+			h6 {
+				margin: 3px;
+			}
 		}
 
 		.TopBar-btn-container {
@@ -67,7 +81,7 @@
 	nav {
 		@include box-align(flex-end, center);
 		width: 100%;
-		max-width: 1024px;
+		max-width: 1168px;
 		@media (max-width: 768px) {
 			flex-direction: column;
 			flex-basis: auto;

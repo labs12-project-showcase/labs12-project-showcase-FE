@@ -267,7 +267,7 @@
 
 		.students-names {
 			width: 100%;
-			margin-bottom: 50px;
+			margin-bottom: 20px;
 			@include box-align();
 
 			.s-link {
@@ -281,7 +281,7 @@
 					height: 150px;
 					width: 150px;
 					overflow: hidden;
-					border-radius: 50%;
+					// border-radius: 50%;
 					img {
 						width: 100%;
 						height: auto;
