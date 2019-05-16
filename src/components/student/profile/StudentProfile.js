@@ -17,7 +17,12 @@ import ContactForm from "../contactForm/ContactForm";
 
 class StudentProfile extends React.Component {
   componentDidMount() {
-    if (this.props.loggedInProfile.id) {
+    console.log(this.props.match.params.id, "params id");
+    console.log(this.loggedInProfile, "profile id");
+    if (
+      this.props.loggedInProfile &&
+      this.props.loggedInProfile.id === this.props.match.params.id
+    ) {
       this.props.getData();
     } else {
       this.props.getData(this.props.match.params.id);
