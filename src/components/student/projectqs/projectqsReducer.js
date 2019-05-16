@@ -23,6 +23,7 @@ const initialState = {
   gettingProjectData: false,
   updatingProjectData: false,
   projectData: {
+    emptyReturn: false,
     name: "",
     github: "",
     fe_link: "",
@@ -83,6 +84,7 @@ const projectqsReducer = (state = initialState, action) => {
     case GET_PROJECT_FAILURE:
       return {
         ...state,
+        projectData: {emptyReturn: true},
         error: action.payload,
         gettingProjectData: false
       };

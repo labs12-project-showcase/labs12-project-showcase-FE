@@ -1,6 +1,6 @@
-import React from 'react';
-import AsyncSelect from 'react-select/lib/Async';
-import axios from 'axios';
+import React from "react";
+import AsyncSelect from "react-select/lib/Async";
+import axios from "axios";
 
 const LocationSelect = ({
   fieldValue,
@@ -31,14 +31,14 @@ const LocationSelect = ({
 };
 
 LocationSelect.defaultProps = {
-  fieldValue: 'You need to add a state variable here',
+  fieldValue: "You need to add a state variable here",
   isClearable: false,
   isMulti: false,
-  name: 'location',
+  name: "location",
   onBlur: () => {},
   onChange: () => {},
-  noOptionsMessage: () => 'Type to begin searching...',
-  placeholder: 'Type to search...',
+  noOptionsMessage: () => "Type to begin searching...",
+  placeholder: "Type to search...",
   styles: {}
 };
 
@@ -53,7 +53,7 @@ LocationSelect.defaultProps = {
  */
 function fixedEncodeURIComponent(str) {
   return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
-    return '%' + c.charCodeAt(0).toString(16);
+    return "%" + c.charCodeAt(0).toString(16);
   });
 }
 
@@ -68,7 +68,7 @@ function getLocationOptions(inputValue) {
 
   // @TODO: restrict the accessToken in account.mapbox.com to only our URL
   const accessToken =
-    'pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ';
+    "pk.eyJ1IjoiaGlyZWxhbWJkYSIsImEiOiJjanV5NWxpYngwdHhrNDRzZGZ5bGpuajF1In0.PaoVriw9FhbRdhyDjHnwTQ";
   const encodedInput = fixedEncodeURIComponent(inputValue);
   return axios
     .get(
@@ -90,9 +90,9 @@ function mapboxToOptions(response) {
   return response.features.map(feature => ({
     label: feature.place_name,
     value: {
-      lat: feature.geometry.coordinates[0],
+      lat: feature.geometry.coordinates[1],
       locationName: feature.place_name,
-      lon: feature.geometry.coordinates[1]
+      lon: feature.geometry.coordinates[0]
     }
   }));
 }
