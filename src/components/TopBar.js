@@ -8,7 +8,6 @@ import { validateJwt, getJwtRole } from '../config/utilities.js';
 import { deleteStudent } from './student/profile/studentProfileActions.js';
 import JoinProject from './student/projectqs/JoinProject';
 import LeaveProject from './student/projectqs/LeaveProject';
-import DeleteModal from '../components/student/profile/DeleteModal.js';
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 class TopBar extends Component {
@@ -56,6 +55,12 @@ class TopBar extends Component {
 							alt="white lambda logo"
 						/>
 					</NavLink>
+					<NavLink exact to="/search" className="search-link">
+						<h6>The best asset for your business</h6>
+						<h4>
+							<i className="fas fa-search" /> Start your search here!
+						</h4>
+					</NavLink>
 
 					<div className="TopBar-btn-container">
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
@@ -76,6 +81,12 @@ class TopBar extends Component {
 					loggedInRole === 'student' && (
 						<div className="subNav">
 							<nav>
+								<NavLink exact to={`/student/profile/${this.props.id}`}>
+									<i className="far fa-id-card" /> Your Profile
+								</NavLink>
+								<NavLink exact to="/profile-quick-start">
+									<i className="fas fa-user-edit" /> Edit Profile
+								</NavLink>
 								<NavLink exact to="/student/new-project">
 									<i className="fas fa-plus" /> Add New Project
 								</NavLink>
@@ -84,25 +95,18 @@ class TopBar extends Component {
 								) ? (
 									this.checkOwner(this.props.project_students) ? (
 										<React.Fragment>
+											<LeaveProject project_id={this.props.project_id} />
 											<NavLink
 												exact
 												to={`/student/edit-project/${this.props.project_id}`}
 											>
 												<i className="fas fa-edit" /> Edit Project
 											</NavLink>
-											<LeaveProject project_id={this.props.project_id} />
 										</React.Fragment>
 									) : (
 										<JoinProject project_id={this.props.project_id} />
 									)
 								) : null}
-								<NavLink exact to={`/student/profile/${this.props.id}`}>
-									<i className="far fa-id-card" /> Your Profile
-								</NavLink>
-								<NavLink exact to="/profile-quick-start">
-									<i className="fas fa-user-edit" /> Edit Profile
-								</NavLink>
-								<DeleteModal />
 							</nav>
 						</div>
 					)}

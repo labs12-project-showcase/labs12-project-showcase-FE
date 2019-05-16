@@ -6,24 +6,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CheckIcon from '@material-ui/icons/Check';
-import CancelIcon from '@material-ui/icons/Cancel';
-
-function rand() {
-	return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-	const top = 50 + rand();
-	const left = 50 + rand();
-
-	return {
-		top: `${top}%`,
-		left: `${left}%`,
-		transform: `translate(-${top}%, -${left}%)`
-	};
-}
 
 const styles = theme => ({
 	paper: {
@@ -60,15 +42,14 @@ class DeleteModal extends React.Component {
 		const { classes } = this.props;
 
 		return (
-			<div className="sc-modal-buttons">
+			<div className="sc-modal-buttons-delete">
 				<Button
 					onClick={this.handleOpen}
 					variant="outlined"
-					color="secondary"
-					classNames={classes.button}
+					classnames={classes.button}
 				>
+					<i class="fas fa-trash" />
 					Delete Account
-					<DeleteIcon classNames={classes.rightIcon} />
 				</Button>
 				<Modal
 					aria-labelledby="simple-modal-title"
@@ -78,7 +59,14 @@ class DeleteModal extends React.Component {
 					onSubmit={this.handleSubmit}
 					onClick={e => e.stopPropagation()}
 				>
-					<div style={getModalStyle()} className={classes.paper}>
+					<div
+						style={{
+							top: '50%',
+							left: '50%',
+							transform: 'translate(-50%, -50%)'
+						}}
+						className={classes.paper}
+					>
 						<form
 							onSubmit={this.handleSubmit}
 							method="PUT"
@@ -91,19 +79,19 @@ class DeleteModal extends React.Component {
 								type="submit"
 								variant="outlined"
 								color="primary"
-								classNames={classes.button}
+								classnames={classes.button}
 							>
+								<i class="fas fa-check" />
 								Delete Profile
-								<CheckIcon classNames={classes.rightIcon} />
 							</Button>
 							<Button
 								onClick={this.handleClose}
 								variant="outlined"
 								color="secondary"
-								classNames={classes.button}
+								classnames={classes.button}
 							>
+								<i class="fas fa-ban" />
 								Cancel
-								<CancelIcon classNames={classes.rightIcon} />
 							</Button>
 						</form>
 					</div>
