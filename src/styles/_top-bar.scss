@@ -21,7 +21,10 @@
 		margin: 5px 0;
 
 		.TopBar-hire-lambda-logo {
-			height: 30px;
+			width: 200px;
+			@media (max-width: 500px) {
+				width: 120px;
+			}
 		}
 
 		.search-link {
@@ -45,12 +48,14 @@
 
 			.TopBar-login-btn,
 			.TopBar-logout-btn {
+				text-transform: uppercase;
 				padding: 5px 5px 5px 10px;
 				border: none;
 				background: none;
 				color: $lightcolor;
 				@include box-align();
 				transition-duration: 0.3s;
+
 				cursor: pointer;
 				.fa-sign-out-alt,
 				.fa-user {
