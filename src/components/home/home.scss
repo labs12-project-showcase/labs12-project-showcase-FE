@@ -229,7 +229,7 @@
 			@include box-align(flex-start, flex-start);
 
 			@media (max-width: 768px) {
-				max-width: 100%;
+				width: 100%;
 			}
 
 			h2 {
