@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 export default function Footer() {
