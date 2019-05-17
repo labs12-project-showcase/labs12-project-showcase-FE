@@ -14,6 +14,10 @@ import Progress from "../progress/Progress";
 import ContactForm from "../contactForm/ContactForm";
 
 class StudentProfile extends React.Component {
+  state = {
+    fetchedNew: false
+  };
+
   componentDidMount() {
     this.props.getData(this.props.match.params.id);
   }
@@ -26,9 +30,11 @@ class StudentProfile extends React.Component {
   render() {
     if (
       this.props.loggedInProfile &&
-      this.props.loggedInProfile.id === Number(this.props.match.params.id)
+      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
+      this.state.fetchedNew === false
     ) {
       this.props.getData();
+      this.setState({ fetchedNew: true });
     }
     const {
       id,

@@ -299,6 +299,7 @@ export const ProjectQsSchema = Yup.object().shape({
     .url("Must be a valid URL")
     .nullable(),
   short_description: Yup.string()
+    .max(255, `Maximum 255 characters`)
     .trim()
     .required("Please provide a short description.")
   /*
