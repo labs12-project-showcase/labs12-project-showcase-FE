@@ -63,7 +63,6 @@ class FilterSearch extends React.Component {
           this.props
             .getFilteredCards(this.state)
             .then(queryString => {
-              console.log(queryString);
               this.props.history.push({
                 pathname: "/discover",
                 search: queryString
@@ -106,7 +105,6 @@ class FilterSearch extends React.Component {
     this.props
       .getFilteredCards(this.state)
       .then(queryString => {
-        console.log(queryString);
         this.props.history.push({
           pathname: "/discover",
           search: queryString
