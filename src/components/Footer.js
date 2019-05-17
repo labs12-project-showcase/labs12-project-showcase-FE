@@ -18,21 +18,19 @@ export default function Footer() {
 						FREE CODE BOOTCAMP
 					</a>
 					<a href="https://lambdaschool.com/referral/">REFERRAL</a>
-					<div className="smm-links">
-						<a href="https://twitter.com/lambdaschool">
-							<i className="fab fa-twitter" />
-						</a>
-						<a href="https://www.facebook.com/LambdaSchoolOnline/">
-							<i className="fab fa-facebook" />
-						</a>
-						<a href="https://github.com/LambdaSchool">
-							<i className="fab fa-github" />
-						</a>
-					</div>
+					<a href="https://twitter.com/lambdaschool">
+						<i className="fab fa-twitter" />
+					</a>
+					<a href="https://www.facebook.com/LambdaSchoolOnline/">
+						<i className="fab fa-facebook" />
+					</a>
+					<a href="https://github.com/LambdaSchool">
+						<i className="fab fa-github" />
+					</a>
 				</nav>
 				<NavLink exact to="/">
 					<img
-						className="TopBar-hire-lambda-logo"
+						className="Footer-hire-lambda-logo"
 						src={whiteLambdaLogo}
 						alt="white lambda logo"
 					/>

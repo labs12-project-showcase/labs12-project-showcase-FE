@@ -12,14 +12,6 @@
 		-moz-transform: translateY(-270px);
 		-o-transform: translateY(-270px);
 
-		@media (min-height: 60vh) {
-			transform: translateY(0);
-			-ms-transform: translateY(0);
-			-webkit-transform: translateY(0);
-			-moz-transform: translateY(0);
-			-o-transform: translateY(0);
-		}
-
 		.map-overlay {
 			position: absolute;
 			top: 0;
@@ -39,27 +31,17 @@
 				align-items: center;
 				align-content: center;
 				z-index: 99999;
-				// transform: translateY(50px);
-				// -ms-transform: translateY(50px);
-				// -webkit-transform: translateY(50px);
-				// -moz-transform: translateY(50px);
-				// -o-transform: translateY(50px);
-				// @media (min-height: 60vh) {
-				// 	transform: translateY(0);
-				// 	-ms-transform: translateY(0);
-				// 	-webkit-transform: translateY(0);
-				// 	-moz-transform: translateY(0);
-				// 	-o-transform: translateY(0);
-				// }
+				transform: translateY(50px);
+				-ms-transform: translateY(50px);
+				-webkit-transform: translateY(50px);
+				-moz-transform: translateY(50px);
+				-o-transform: translateY(50px);
 
 				h2 {
 					color: white;
 					margin-bottom: 15px;
 					font-size: 3rem;
 					font-weight: 700;
-					@media (max-width: 500px) {
-						font-size: 2.2rem;
-					}
 				}
 
 				.css-pgw907-container {
