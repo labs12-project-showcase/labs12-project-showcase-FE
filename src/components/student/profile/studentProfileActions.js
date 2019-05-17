@@ -10,7 +10,7 @@ export const getData = id => dispatch => {
   const headers = {
     authorization: localStorage.getItem("backendToken")
   };
-  axios
+  return axios
     .get(`${backendUrl}/api/students/profile${id ? `/${id}` : ""}`, {
       headers
     })

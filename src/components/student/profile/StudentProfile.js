@@ -27,14 +27,25 @@ class StudentProfile extends React.Component {
       this.props.getData(this.props.match.params.id);
   }
 
+  updateFetched = () => {
+    if (
+      this.props.loggedInProfile &&
+      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
+      this.state.fetchedNew === false
+    ) {
+      this.props.getData().then(() => {
+        this.setState({ fetchedNew: true });
+      });
+    }
+  };
+
   render() {
     if (
       this.props.loggedInProfile &&
       this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
       this.state.fetchedNew === false
     ) {
-      this.props.getData();
-      this.setState({ fetchedNew: true });
+      this.updateFetched();
     }
     const {
       id,
