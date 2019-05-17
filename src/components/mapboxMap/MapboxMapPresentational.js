@@ -73,8 +73,8 @@ class MapboxMapPresentational extends React.Component {
       <div className="react-map">
         <ReactMapGL
           {...viewport}
-          // mapStyle="mapbox://styles/mapbox/dark-v10"
-          mapStyle="mapbox://styles/mapbox/streets-v11"
+          mapStyle="mapbox://styles/mapbox/dark-v10"
+          // mapStyle="mapbox://styles/mapbox/streets-v11"
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={MAPBOX_TOKEN}
           scrollZoom={false}
