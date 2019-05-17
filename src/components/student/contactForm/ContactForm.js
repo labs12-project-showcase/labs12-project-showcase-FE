@@ -27,7 +27,7 @@ class ContactForm extends React.Component {
       from: "<YOUR_EMAIL_HERE>@gmail.com",
       subject: "A Lambda Showcase User is Interested in you!",
       text: `Hi!
-        I stumbled across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and skills! Let's schedule a time to chat about your future with us! You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
+        I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and skills! Let's schedule a time to chat about your future with us! You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
                 
 I look forward to speaking with you soon!
 
