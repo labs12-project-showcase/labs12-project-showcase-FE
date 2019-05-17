@@ -339,6 +339,7 @@
 					text-align: center;
 					background-color: $lightcolor;
 					@include box-align();
+
 					@media (max-width: 768px) {
 						width: 100%;
 					}

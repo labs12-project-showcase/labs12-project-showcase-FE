@@ -26,7 +26,7 @@ const Cards = ({ cards }) => {
           <ul>{map(cards.top_skills)}</ul>
           <div className="contact-links">
             <Link to={`/student/profile/${cards.id}`}>
-              <button className="prof-link">Profile &amp; Projects</button>
+              <button className="prof-link">VIEW FULL PROFILE</button>
             </Link>
           </div>
         </div>
