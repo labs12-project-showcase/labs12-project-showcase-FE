@@ -22,7 +22,8 @@ const ProjectViewHome = () => {
 	const params = {
 		effect: 'coverflow',
 		autoplay: {
-			delay: 3500
+			// delay: 3500
+			delay: 7500
 		},
 		grabCursor: true,
 		centeredSlides: true,
@@ -38,11 +39,11 @@ const ProjectViewHome = () => {
 		// 	el: '.swiper-pagination',
 		// 	type: 'bullets',
 		// 	clickable: true
-		//   },
-		  navigation: {
+		// },
+		navigation: {
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev'
-		  },
+		},
 		loop: true
 	};
 
@@ -60,9 +61,12 @@ const ProjectViewHome = () => {
 								className="project-card"
 								href={`/student/project-view/${x.id}`}
 							>
-								<img src={x.project_media[0]} alt="Project media" />
+								<div className="img-container">
+									<img src={x.project_media[0]} alt="Project media" />
+								</div>
 								<div className="carousel-detail">
 									<h3>{x.name}</h3>
+									<p>{x.short_description}</p>
 									<button>See More</button>
 								</div>
 							</a>

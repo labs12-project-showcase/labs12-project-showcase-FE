@@ -8,7 +8,12 @@ import LocationSelect from "../location/LocationSelect";
 import { reactSelectStyles } from "../../styles/ReactSelectStyles";
 import "mapbox-gl/src/css/mapbox-gl.css";
 
-const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+// const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+
+const newtoken =
+  "pk.eyJ1IjoidGljb3RoZXBzIiwiYSI6ImNqdnBlZDM2bjB4ODE0OXFrNXpzbWh0ZXEifQ.vBNSTUmy4Xk7NbkBY3Kuwg";
+
+const MAPBOX_TOKEN = newtoken;
 
 class MapboxMapPresentational extends React.Component {
   constructor(props) {
@@ -84,15 +89,19 @@ class MapboxMapPresentational extends React.Component {
         </ReactMapGL>
         <div className="map-overlay">
           <form onSubmit={this.handleSubmit}>
-            <h2>Find students in your area</h2>
+            <h2>
+              <i className="fas fa-search-location" /> Find Engineers in Your
+              Area
+            </h2>
             <LocationSelect
               isClearable
               styles={reactSelectStyles}
               onChange={this.handleChange}
               fieldValue={this.state.location}
-              placeholder="Type a location to search"
             />
-            <button type="submit">Find students</button>
+            <button type="submit">
+              Start here <i className="fas fa-arrow-alt-circle-right" />
+            </button>
           </form>
         </div>
       </div>

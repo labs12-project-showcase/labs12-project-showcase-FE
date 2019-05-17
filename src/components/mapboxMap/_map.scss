@@ -1,45 +1,75 @@
-.react-map {
-  position: relative;
+.map-container {
+  max-height: 600px;
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-bottom: 5px solid $lambdaRed;
+  .react-map {
+    position: relative;
+    transform: translateY(-270px);
+    -ms-transform: translateY(-270px);
+    -webkit-transform: translateY(-270px);
+    -moz-transform: translateY(-270px);
+    -o-transform: translateY(-270px);
 
-  .map-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    // background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-    form {
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      align-content: center;
 
-      h2 {
-        color: white;
-        margin-bottom: 15px;
-        font-size: 3.6rem;
-      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        z-index: 99999;
+        transform: translateY(50px);
+        -ms-transform: translateY(50px);
+        -webkit-transform: translateY(50px);
+        -moz-transform: translateY(50px);
+        -o-transform: translateY(50px);
 
-      button {
-        text-decoration: none;
-        border: none;
-        color: #ffffff;
-        padding: 10px;
-        margin: 10px auto;
-        background-color: $lambdaRed;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: 0.2s;
+        h2 {
+          color: white;
+          margin-bottom: 15px;
+          font-size: 3rem;
+          font-weight: 700;
+        }
 
-        &:hover {
-          background-color: darken($lambdaRed, 10%);
+        .css-pgw907-container {
+          width: 300px;
+        }
+
+        button {
+          text-decoration: none;
+          border: none;
+          color: #ffffff;
+          padding: 10px;
+          margin: 10px auto;
+          background-color: $lambdaRed;
+          cursor: pointer;
+          margin-top: 15px;
+          transition: 0.2s;
+          font-size: 1.6rem;
+          font-weight: 400;
+          @include box-align();
+          text-transform: capitalize;
+          i {
+            color: darken($lambdaRed, 15%);
+            font-size: 1.8rem;
+            margin-left: 10px;
+          }
+          &:hover {
+            background-color: darken($lambdaRed, 10%);
+          }
         }
       }
     }
