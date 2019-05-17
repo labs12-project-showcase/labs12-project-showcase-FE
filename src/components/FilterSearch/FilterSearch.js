@@ -83,9 +83,16 @@ class FilterSearch extends React.Component {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    this.setState({
-      [name]: value
-    });
+    this.setState(
+      {
+        [name]: value
+      },
+      () => {
+        if (target.type === "checkbox") {
+          this.handleSubmit();
+        }
+      }
+    );
   };
 
   handleLocation = location => {
@@ -93,7 +100,7 @@ class FilterSearch extends React.Component {
   };
 
   handleSubmit = event => {
-    event.preventDefault();
+    event && event.preventDefault();
     this.props
       .getFilteredCards(this.state)
       .then(queryString => {
