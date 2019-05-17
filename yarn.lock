@@ -5919,27 +5919,27 @@ jest-cli@^24.7.1:
     realpath-native "^1.1.0"
     yargs "^12.0.2"
 
-jest-config@^24.8.0:
-  version "24.8.0"
-  resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-24.8.0.tgz#77db3d265a6f726294687cbbccc36f8a76ee0f4f"
-  integrity sha512-Czl3Nn2uEzVGsOeaewGWoDPD8GStxCpAe0zOYs2x2l0fZAgPbCr3uwUkgNKV3LwE13VXythM946cd5rdGkkBZw==
+jest-config@^24.7.1:
+  version "24.7.1"
+  resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-24.7.1.tgz#6c1dd4db82a89710a3cf66bdba97827c9a1cf052"
+  integrity sha512-8FlJNLI+X+MU37j7j8RE4DnJkvAghXmBWdArVzypW6WxfGuxiL/CCkzBg0gHtXhD2rxla3IMOSUAHylSKYJ83g==
   dependencies:
     "@babel/core" "^7.1.0"
-    "@jest/test-sequencer" "^24.8.0"
-    "@jest/types" "^24.8.0"
+    "@jest/test-sequencer" "^24.7.1"
+    "@jest/types" "^24.7.0"
     babel-jest "^24.7.1"
     chalk "^2.0.1"
     glob "^7.1.1"
-    jest-environment-jsdom "^24.8.0"
-    jest-environment-node "^24.8.0"
-    jest-get-type "^24.8.0"
-    jest-jasmine2 "^24.8.0"
+    jest-environment-jsdom "^24.7.1"
+    jest-environment-node "^24.7.1"
+    jest-get-type "^24.3.0"
+    jest-jasmine2 "^24.7.1"
     jest-regex-util "^24.3.0"
-    jest-resolve "^24.8.0"
-    jest-util "^24.8.0"
-    jest-validate "^24.8.0"
+    jest-resolve "^24.7.1"
+    jest-util "^24.7.1"
+    jest-validate "^24.7.0"
     micromatch "^3.1.10"
-    pretty-format "^24.8.0"
+    pretty-format "^24.7.0"
     realpath-native "^1.1.0"
 
 jest-diff@^24.8.0:
