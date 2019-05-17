@@ -24,19 +24,15 @@ class ContactForm extends React.Component {
   state = {
     open: false,
     email: {
-      from: "YOUR_EMAIL@gmail.com",
-      subject: `Message from an Interested Hiring Partner!`,
-      text: `Hello, ${this.props.student.name}!
+      from: `YOUR_EMAIL_HERE@gmail.com`,
+      subject: `A Lambda Showcase User is Interested in you!`,
+      text: `Hello!
+        I stumbled across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and skills! Let's schedule a time to chat about your future with us! You can reach me at YOUR_EMAIL_HERE@gmail.com.
+                
+I look forward to speaking with you soon!
 
-        My name is YOUR_NAME and I stumbled across your student profile on
-        the Lambda Showcase Web App. I'm very impressed with your projects and skills! 
-        Let's schedule a time to chat about your future with us! You can reach me at 
-        YOUR_EMAIL@gmail.com.
-
-        I look forward to speaking with you soon!
-
-        Sincerely,
-        YOUR_NAME
+Sincerely,
+YOUR_NAME_HERE
       `
     }
   };
@@ -113,7 +109,7 @@ class ContactForm extends React.Component {
         >
           <div
             style={{
-              top: "50vh",
+              top: "55vh",
               left: "50vw",
               transform: "translate(-50%, -50%)",
               width: "50vw"
