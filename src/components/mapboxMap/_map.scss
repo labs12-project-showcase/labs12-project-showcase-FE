@@ -34,6 +34,9 @@
 					margin-bottom: 15px;
 					font-size: 3rem;
 					font-weight: 700;
+					@media (max-width: 500px) {
+						font-size: 2.2rem;
+					}
 				}
 
 				.css-pgw907-container {
