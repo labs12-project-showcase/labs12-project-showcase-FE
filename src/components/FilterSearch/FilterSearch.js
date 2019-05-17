@@ -96,7 +96,9 @@ class FilterSearch extends React.Component {
   };
 
   handleLocation = location => {
-    this.setState({ location: location });
+    this.setState({ location: location }, () => {
+      this.handleSubmit();
+    });
   };
 
   handleSubmit = event => {
@@ -139,6 +141,11 @@ class FilterSearch extends React.Component {
                 onChange={this.handleChange}
                 className="search-class"
               />
+              <div className="search-button">
+                <button className="bnt-search" type="submit">
+                  Search
+                </button>
+              </div>
               <hr />
               <h2>Filters</h2>
               <div className="control-group">
@@ -250,11 +257,6 @@ class FilterSearch extends React.Component {
                     <div className="control_indicator-radio" />
                   </label>
                 </div>
-              </div>
-              <div className="search-button">
-                <button className="bnt-search" type="submit">
-                  Search
-                </button>
               </div>
             </form>
           </section>
