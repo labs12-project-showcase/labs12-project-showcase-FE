@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { Route, withRouter } from "react-router-dom";
 
-import Results from './Results';
-import { getFilteredCards, getInitialCards } from './FilterSearchActions';
-import LocationSelect from '../location/LocationSelect.js';
-import { reactSelectStyles } from '../../styles/ReactSelectStyles';
+import Results from "./Results";
+import { getFilteredCards, getInitialCards } from "./FilterSearchActions";
+import LocationSelect from "../location/LocationSelect.js";
+import { reactSelectStyles } from "../../styles/ReactSelectStyles";
 
 class FilterSearch extends React.Component {
   state = {
@@ -16,20 +16,72 @@ class FilterSearch extends React.Component {
     fullStack: false,
     ios: false,
     location: null,
-    search: '',
+    search: "",
     uiux: false,
     within: 50
   };
 
   componentDidMount() {
-    if (!this.props.initialCards.length) {
+    const params = new URLSearchParams(this.props.location.search);
+    if (params.toString()) {
+      this.setState(
+        {
+          android: params.get("tracks")
+            ? params.get("tracks").includes("4")
+            : false,
+          badge: params.get("badge") || false,
+          dataScience: params.get("tracks")
+            ? params.get("tracks").includes("3")
+            : false,
+          filterDesLoc: params.get("filterDesLoc")
+            ? params.get("filterDesLoc").match(/false/)
+            : true,
+          fullStack: params.get("tracks")
+            ? params.get("tracks").includes("1")
+            : false,
+          ios: params.get("tracks")
+            ? params.get("tracks").includes("2")
+            : false,
+          location:
+            params.get("lat") && params.get("lon") && params.get("location")
+              ? {
+                  label: decodeURIComponent(params.get("location")),
+                  value: {
+                    locationName: decodeURIComponent(params.get("location")),
+                    lat: params.get("lat"),
+                    lon: params.get("lon")
+                  }
+                }
+              : null,
+          search: params.get("search") || "",
+          uiux: params.get("tracks")
+            ? params.get("tracks").includes("5")
+            : false,
+          within: Number(params.get("within")) || 50
+        },
+        () => {
+          this.props
+            .getFilteredCards(this.state)
+            .then(queryString => {
+              console.log(queryString);
+              this.props.history.push({
+                pathname: "/discover",
+                search: queryString
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      );
+    } else {
       this.props.getInitialCards();
     }
   }
 
   handleChange = event => {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
     this.setState({
       [name]: value
@@ -42,7 +94,18 @@ class FilterSearch extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.getFilteredCards(this.state);
+    this.props
+      .getFilteredCards(this.state)
+      .then(queryString => {
+        console.log(queryString);
+        this.props.history.push({
+          pathname: "/discover",
+          search: queryString
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -168,7 +231,7 @@ class FilterSearch extends React.Component {
                     <div className="control_indicator-radio" />
                   </label>
                   <label className="control control-checkbox">
-                    {'Currently Located & Will Relocate'}{' '}
+                    {"Currently Located & Will Relocate"}{" "}
                     {/* Wrapped in {} because of the ampersand */}
                     <input
                       onChange={e => this.setState({ filterDesLoc: true })}
@@ -191,13 +254,7 @@ class FilterSearch extends React.Component {
 
           <Route
             path=":search?"
-            render={props => (
-              <Results
-                filteredCards={this.props.filteredCards}
-                initialCards={this.props.initialCards}
-                {...props}
-              />
-            )}
+            render={props => <Results cards={this.props.cards} {...props} />}
           />
         </main>
       </div>
@@ -206,9 +263,7 @@ class FilterSearch extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state,
-  filteredCards: state.filterSearch.filteredCards,
-  initialCards: state.filterSearch.initialCards
+  cards: state.filterSearch.cards
 });
 
 export default withRouter(

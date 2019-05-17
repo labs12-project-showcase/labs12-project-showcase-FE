@@ -5,11 +5,10 @@ import {
   GET_INITIAL_CARDS_FAILURE,
   GET_INITIAL_CARDS_START,
   GET_INITIAL_CARDS_SUCCESS
-} from './FilterSearchActions';
+} from "./FilterSearchActions";
 
 const initialState = {
-  filteredCards: [],
-  initialCards: [],
+  cards: [],
   error: null,
   isFetchingCards: false
 };
@@ -24,7 +23,7 @@ const FilterSearchReducer = (state = initialState, action) => {
     case GET_FILTERED_CARDS_SUCCESS:
       return {
         ...state,
-        filteredCards: action.payload,
+        cards: action.payload,
         error: null,
         isFetchingCards: false
       };
@@ -43,7 +42,7 @@ const FilterSearchReducer = (state = initialState, action) => {
     case GET_INITIAL_CARDS_SUCCESS:
       return {
         ...state,
-        initialCards: action.payload,
+        cards: action.payload,
         error: null,
         isFetchingCards: false
       };

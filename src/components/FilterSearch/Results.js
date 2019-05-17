@@ -1,7 +1,5 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-
-import Cards from './Cards';
+import React from "react";
+import Cards from "./Cards";
 
 class Results extends React.Component {
   render() {
@@ -9,29 +7,21 @@ class Results extends React.Component {
       <div className="cards-display">
         <hr className="hrTop" />
         {this.props.location.search ? (
-          <>
-            <h2>Matching Candidates</h2>
-            {this.props.filteredCards.map((cards, index) => (
-              <Cards {...this.props} cards={cards} key={index} />
-            ))}
-            <button className="btn-show-more">
-              Show More <i className="fas fa-chevron-down" />
-            </button>
-          </>
+          <h2>Matching Candidates</h2>
         ) : (
-          <>
-            <h2>Featured Alumni</h2>
-            {this.props.initialCards.map((cards, index) => (
-              <Cards {...this.props} cards={cards} key={index} />
-            ))}
-            <button className="btn-show-more">
-              Show More <i className="fas fa-chevron-down" />
-            </button>
-          </>
+          <h2>Featured Alumni</h2>
         )}
+        <React.Fragment>
+          {this.props.cards.map((cards, index) => (
+            <Cards {...this.props} cards={cards} key={index} />
+          ))}
+          <button className="btn-show-more">
+            Show More <i className="fas fa-chevron-down" />
+          </button>
+        </React.Fragment>
       </div>
     );
   }
 }
 
-export default withRouter(Results);
+export default Results;
