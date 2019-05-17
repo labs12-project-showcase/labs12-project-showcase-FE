@@ -1,0 +1,22 @@
+.legal {
+  margin: auto;
+  max-width: 1024px;
+  padding: 2.4rem 0;
+
+  h1 {
+    font-size: 3.6rem;
+    font-weight: bold;
+    margin: 2.4rem 0;
+  }
+  h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 1.8rem 0;
+  }
+  p {
+    margin: 1.2rem 0;
+    strong {
+      font-weight: bold;
+    }
+  }
+}
