@@ -22,14 +22,6 @@ export const clearProjectData = () => dispatch => {
  * in `ProjectqsForm.js` to API endpoint
  */
 export const createProject = formValues => dispatch => {
-  const url = formValues.youtube_url;
-  let videoid = url.match(
-    /(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/
-  );
-  if (!videoid) {
-    videoid = ["", "gLdXxFS8BV4"];
-  }
-
   // *** Match form values to the shape the backend API expects
   const send = {
     student_id: formValues.student_id,
@@ -42,9 +34,7 @@ export const createProject = formValues => dispatch => {
       mobile_link: formValues.mobile_link,
       market_link: formValues.market_link,
       design_link: formValues.design_link,
-      youtube_url: `https://www.youtube.com/embed/${
-        videoid[1]
-      }?autoplay=0&showinfo=0&controls=0`,
+      youtube_url: formValues.youtube_url,
       website: formValues.website,
       medium: formValues.medium,
       short_description: formValues.short_description,
