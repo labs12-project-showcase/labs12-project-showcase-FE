@@ -64,8 +64,8 @@
 						border-radius: 50%;
 						background-size: 16px;
 						background-color: $lightcolor;
-						-webkit-box-shadow: 3px 3px 3px 3px #ebebeb;
-						box-shadow: 3px 3px 3px 3px #ebebeb;
+						-webkit-box-shadow: 0px 1px 3px 3px #ebebeb;
+						box-shadow: 0px 1px 3px 3px #ebebeb;
 						cursor: pointer;
 						&:hover {
 							background-color: $newBorder;
@@ -107,7 +107,7 @@
 									flex-direction: column;
 									overflow: hidden;
 									width: 100%;
-									border-top: 2px solid $lambdaGray;
+									border-top: 5px solid $lambdaTeal;
 									background-color: $lightcolor;
 									height: 250px;
 									background-color: $lightcolor;

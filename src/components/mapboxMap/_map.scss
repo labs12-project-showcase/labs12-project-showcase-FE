@@ -3,8 +3,7 @@
 	max-width: 1920px;
 	margin: 0 auto;
 	overflow: hidden;
-	-webkit-box-shadow: 3px 3px 3px 3px #d6d6d6;
-	box-shadow: 3px 3px 3px 3px #d6d6d6;
+	border-bottom: 5px solid $lambdaRed;
 	.react-map {
 		position: relative;
 		transform: translateY(-270px);
@@ -53,6 +52,13 @@
 					transition: 0.2s;
 					font-size: 1.6rem;
 					font-weight: 400;
+					@include box-align();
+					text-transform: capitalize;
+					i {
+						color: darken($lambdaRed, 15%);
+						font-size: 1.8rem;
+						margin-left: 10px;
+					}
 					&:hover {
 						background-color: darken($lambdaRed, 10%);
 					}
