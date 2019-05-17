@@ -239,6 +239,7 @@
 				@include box-align(space-between, flex-start);
 				@media (max-width: 768px) {
 					@include box-align();
+					margin: 10px;
 				}
 			}
 		}

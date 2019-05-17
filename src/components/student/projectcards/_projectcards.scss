@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 10px 0;
+	padding: 10px;
 	width: 100%;
 
 	h2 {
@@ -34,6 +34,9 @@
 		background-color: $lightcolor;
 		cursor: pointer;
 		border: 1px solid $newBorder;
+		@media (max-width: 500px) {
+			padding: 20px;
+		}
 
 		&:hover {
 			background: $lambdaTeal;
@@ -56,6 +59,9 @@
 
 		.react-reveal {
 			@include box-align(flex-start, center);
+			@media (max-width: 768px) {
+				@include box-align();
+			}
 		}
 		.project-card {
 			display: flex;
