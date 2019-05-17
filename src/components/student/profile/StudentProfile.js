@@ -24,14 +24,11 @@ class StudentProfile extends React.Component {
   }
 
   render() {
-    let profile;
     if (
       this.props.loggedInProfile &&
       this.props.loggedInProfile.id === Number(this.props.match.params.id)
     ) {
-      profile = this.props.loggedInProfile;
-    } else {
-      profile = this.props.studentProfile.profile;
+      this.props.getData();
     }
     const {
       id,
@@ -54,7 +51,7 @@ class StudentProfile extends React.Component {
       top_projects,
       track,
       profile_pic
-    } = profile;
+    } = this.props.studentProfile.profile;
     const sameUser = id === this.props.loggedInProfile.id;
     const profilePicture =
       profile_pic ||

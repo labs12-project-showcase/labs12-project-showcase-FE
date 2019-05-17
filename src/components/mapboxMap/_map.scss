@@ -6,7 +6,7 @@
 	border-bottom: 5px solid $lambdaRed;
 	.react-map {
 		position: relative;
-		// transform: translateY(-270px);
+		transform: translateY(-270px);
 
 		.map-overlay {
 			position: absolute;
@@ -27,7 +27,7 @@
 				align-items: center;
 				align-content: center;
 				z-index: 99999;
-				// transform: translateY(50px);
+				transform: translateY(50px);
 
 				h2 {
 					color: white;

@@ -56,6 +56,10 @@ class TopBar extends Component {
 						/>
 					</NavLink>
 					<div className="TopBar-btn-container">
+						<NavLink to="/discover" className="TopBar-search-btn">
+							Discover <i className="fas fa-search-location" />
+						</NavLink>
+						{/* <button className="TopBar-search-btn" onClick={() => this.props.history.push('/discover')}>Discover <i className="fas fa-search-location" /></button> */}
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
 							<>
 								<button className="TopBar-login-btn" onClick={login}>
