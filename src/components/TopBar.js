@@ -55,13 +55,6 @@ class TopBar extends Component {
 							alt="white lambda logo"
 						/>
 					</NavLink>
-					<NavLink exact to="/search" className="search-link">
-						<h6>The best asset for your business</h6>
-						<h4>
-							<i className="fas fa-search" /> Start your search here!
-						</h4>
-					</NavLink>
-
 					<div className="TopBar-btn-container">
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
 							<>

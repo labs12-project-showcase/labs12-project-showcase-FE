@@ -1,7 +1,6 @@
 .home {
 	min-height: 85vh;
 	header {
-		height: 713px;
 		background-image: url(./assets/profile-background.png);
 		background-repeat: no-repeat;
 		background-position: bottom right;
@@ -19,7 +18,7 @@
 			@include box-align();
 			flex-direction: column;
 			z-index: 1;
-
+			padding: 23px 10px;
 			@media (max-width: 768px) {
 				width: 100%;
 				order: 2;
@@ -28,11 +27,10 @@
 			h1 {
 				width: 100%;
 				text-align: center;
-				max-width: 700px;
 				font-size: 4.8rem;
 				font-weight: 900;
 				padding: 10px;
-				color: $darkcolor;
+				color: $lambdaPink;
 				margin-bottom: 30px;
 				@media (max-width: 768px) {
 					font-size: 3rem;
@@ -45,7 +43,6 @@
 				font-size: 1.9rem;
 				line-height: 34px;
 				color: $darkcolor;
-				margin-bottom: 32px;
 				@media (max-width: 768px) {
 					line-height: 1.5;
 				}
@@ -58,8 +55,22 @@
 					margin: 0 auto;
 					max-width: 1024px;
 					width: 100%;
-					padding: 10px 10px;
+					padding: 10px 32px;
 					color: $lightcolor;
+					.swiper-button-prev,
+					.swiper-button-next {
+						width: 40px;
+						height: 40px;
+						border-radius: 50%;
+						background-size: 16px;
+						background-color: $lightcolor;
+						-webkit-box-shadow: 3px 3px 3px 3px #ebebeb;
+						box-shadow: 3px 3px 3px 3px #ebebeb;
+						cursor: pointer;
+						&:hover {
+							background-color: $newBorder;
+						}
+					}
 
 					h2 {
 						font-weight: 300;
@@ -68,7 +79,6 @@
 					}
 
 					p {
-						margin-bottom: 60px;
 						line-height: 1.5;
 					}
 
@@ -78,31 +88,43 @@
 						border: 1px solid $newBorder;
 						background-color: $lightcolor;
 						.bottom-card {
-							background-color: $lightcolor;
-							min-height: 395px;
 							position: relative;
 
 							a {
 								text-decoration: none;
-
-								img {
+								.img-container {
 									width: 100%;
-									height: auto;
+									height: 200px;
+									overflow: hidden;
+									img {
+										width: 100%;
+										height: auto;
+									}
 								}
 								.carousel-detail {
-									position: absolute;
-									bottom: 0;
-									@include box-align();
+									@include box-align(flex-start, center);
+									flex-wrap: nowrap;
 									flex-direction: column;
+									overflow: hidden;
 									width: 100%;
+									border-top: 2px solid $lambdaGray;
+									background-color: $lightcolor;
+									height: 250px;
+									background-color: $lightcolor;
 
 									h3 {
 										font-size: 2rem;
 										font-weight: 500;
 										color: $darkcolor;
-										font-weight: 500;
+										font-weight: 700;
 										text-transform: capitalize;
 										padding: 10px 3px;
+										color: $lambdaPink;
+									}
+									p {
+										height: 120px;
+										font-size: 1.4rem;
+										overflow: hidden;
 									}
 
 									button {
