@@ -14,6 +14,7 @@ const Progress = ({ profile }) => {
       hired,
       graduated,
       account_id,
+      cloudinary_id,
       cohort_id,
       cohort_options,
       cohort_name,
