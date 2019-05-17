@@ -59,7 +59,7 @@ class TopBar extends Component {
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
 							<>
 								<button className="TopBar-login-btn" onClick={login}>
-									Register / Sign in <i className="fas fa-user" />
+									Create an account / Sign in <i className="fas fa-user" />
 								</button>
 							</>
 						)}
