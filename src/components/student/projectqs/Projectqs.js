@@ -8,7 +8,7 @@ import {
 } from "./projectqsActions";
 
 import EditImage from "../../EditImage/EditImage";
-import avatar from "../../../assets/avatar.jpg";
+import projectPlaceholder from "../../../assets/projectplaceholder.jpg";
 
 const Projectqs = props => {
   return (
@@ -35,7 +35,7 @@ const Projectqs = props => {
                   .catch(err => console.log(err))
               }
               onUrlAdd={url => props.updateProject({ profile_pic: url }, false)}
-              placeholder={avatar}
+              placeholder={projectPlaceholder}
               uploadButtonText="Upload file"
             />
           </div>
