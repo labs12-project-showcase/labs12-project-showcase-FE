@@ -24,16 +24,15 @@ class ContactForm extends React.Component {
   state = {
     open: false,
     email: {
-      from: `YOUR_EMAIL_HERE@gmail.com`,
-      subject: `A Lambda Showcase User is Interested in you!`,
-      text: `Hello!
-        I stumbled across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and skills! Let's schedule a time to chat about your future with us! You can reach me at YOUR_EMAIL_HERE@gmail.com.
+      from: "<YOUR_EMAIL_HERE>@gmail.com",
+      subject: "A Lambda Showcase User is Interested in you!",
+      text: `Hi!
+        I stumbled across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and skills! Let's schedule a time to chat about your future with us! You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
                 
 I look forward to speaking with you soon!
 
 Sincerely,
-YOUR_NAME_HERE
-      `
+<YOUR_NAME_HERE>`
     }
   };
 
@@ -195,7 +194,8 @@ ContactForm.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    ...state
+    ...state,
+    studentProfile: state.studentProfile
   };
 };
 
