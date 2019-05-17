@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import whiteLambdaLogo from '../assets/Hire-lambda-logo-white.png';
 
 export default function Footer() {
@@ -22,9 +22,12 @@ export default function Footer() {
 					<a href="https://lambdaschool.com/careers/">
 						CAREERS
 					</a>
-					<a href="https://lambdaschool.com/privacy/">
-						LEGAL
-					</a>
+					<Link to="/privacy">
+						PRIVACY
+					</Link>
+					<Link to="/terms">
+						TERMS
+					</Link>
 					<a href="https://lambdaschool.com/contact/">
 						CONTACT
 					</a>
