@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { frontendUrl } from '../../config/urls';
+
 const PrivacyPolicy = () => {
   return (
     <div className="legal privacy-policy">
@@ -7,13 +9,11 @@ const PrivacyPolicy = () => {
       <p>Updated: May 2019</p>
       <p>
         Hire Lambda makes available services, including our web site{' '}
-        <a href="https://lambdashowcase.netlify.com/">
-          https://lambdashowcase.netlify.com/
-        </a>{' '}
-        and any other software, sites, and services offered by Hire Lambda in
-        connection to any of those (taken together, the "Service"). It is Hire
-        Lambda's policy to respect your privacy regarding any information we may
-        collect while operating our websites.
+        <a href={frontendUrl}>{frontendUrl}</a> and any other software, sites, and
+        services offered by Hire Lambda in connection to any of those (taken
+        together, the "Service"). It is Hire Lambda's policy to respect your
+        privacy regarding any information we may collect while operating our
+        websites.
       </p>
 
       <h2>Contact</h2>

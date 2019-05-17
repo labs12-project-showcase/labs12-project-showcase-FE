@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { frontendUrl } from '../../config/urls';
+
 const TermsOfUse = () => {
   return (
     <div className="legal terms-of-use">
@@ -7,14 +9,11 @@ const TermsOfUse = () => {
       <p>Updated: May 2019</p>
       <p>
         Please read these Terms of Use ("Terms", "Terms of Use") carefully
-        before using the{' '}
-        <a href="https://lambdashowcase.netlify.com/">
-          https://lambdashowcase.netlify.com/
-        </a>{' '}
-        website (the "Service") operated by Hire Lambda ("us", "we", or "our").
-        Your access to and use of the Service is conditioned on your acceptance
-        of and compliance with these Terms. These Terms apply to all visitors,
-        users and others who access or use the Service.
+        before using the <a href={frontendUrl}>{frontendUrl}</a> website (the
+        "Service") operated by Hire Lambda ("us", "we", or "our"). Your access
+        to and use of the Service is conditioned on your acceptance of and
+        compliance with these Terms. These Terms apply to all visitors, users
+        and others who access or use the Service.
       </p>
 
       <p>
