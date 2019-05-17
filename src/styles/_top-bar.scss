@@ -21,39 +21,20 @@
 		margin: 5px 0;
 
 		.TopBar-hire-lambda-logo {
-			width: 200px;
-			@media (max-width: 500px) {
-				width: 140px;
-			}
+			height: 30px;
 		}
 
 		.search-link {
-			padding: 5px 10px 5px 10px;
-			border: none;
-			background: none;
-			color: $lightcolor;
-			//   @include box-align();
-			transition-duration: 0.3s;
-			cursor: pointer;
-			//   background-color: darken($color: $lambdaRed, $amount: 10);
+			padding: 5px 10px;
+			background-color: darken($color: $lambdaRed, $amount: 10);
 			color: $lightcolor;
 			@include box-align();
 			flex-direction: column;
 			h4 {
-				font-size: 1.4rem;
 				margin: 2px;
-
-				.fa-search {
-					font-size: 2.2rem;
-					color: $lightcolor;
-					padding: 7px;
-				}
 			}
 			h6 {
 				margin: 3px;
-			}
-			&:hover {
-				background: darken(($lambdaRed), 10%);
 			}
 		}
 
@@ -64,8 +45,7 @@
 
 			.TopBar-login-btn,
 			.TopBar-logout-btn {
-				font-size: 1.4rem;
-				padding: 5px 10px 5px 10px;
+				padding: 5px 5px 5px 10px;
 				border: none;
 				background: none;
 				color: $lightcolor;
@@ -74,7 +54,7 @@
 				cursor: pointer;
 				.fa-sign-out-alt,
 				.fa-user {
-					font-size: 2.2rem;
+					font-size: 2rem;
 					color: $lightcolor;
 					padding: 10px;
 				}
