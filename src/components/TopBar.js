@@ -55,13 +55,6 @@ class TopBar extends Component {
 							alt="white lambda logo"
 						/>
 					</NavLink>
-					<NavLink exact to="/search" className="search-link">
-						<h6>The best asset for your business</h6>
-						<h4>
-							<i className="fas fa-search" /> Start your search here!
-						</h4>
-					</NavLink>
-
 					<div className="TopBar-btn-container">
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
 							<>
@@ -85,7 +78,7 @@ class TopBar extends Component {
 									<i className="far fa-id-card" /> Your Profile
 								</NavLink>
 								<NavLink exact to="/profile-quick-start">
-									<i className="fas fa-user-edit" /> Edit Profile
+									<i className="fas fa-user-edit" /> Edit Your Profile
 								</NavLink>
 								<NavLink exact to="/student/new-project">
 									<i className="fas fa-plus" /> Add New Project
