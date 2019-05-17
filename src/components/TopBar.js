@@ -85,7 +85,7 @@ class TopBar extends Component {
 									<i className="far fa-id-card" /> Your Profile
 								</NavLink>
 								<NavLink exact to="/profile-quick-start">
-									<i className="fas fa-user-edit" /> Edit Profile
+									<i className="fas fa-user-edit" /> Edit Your Profile
 								</NavLink>
 								<NavLink exact to="/student/new-project">
 									<i className="fas fa-plus" /> Add New Project
