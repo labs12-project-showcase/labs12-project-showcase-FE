@@ -1,5 +1,5 @@
 .map-container {
-	max-height: 550px;
+	max-height: 600px;
 	max-width: 1920px;
 	margin: 0 auto;
 	overflow: hidden;
@@ -7,6 +7,10 @@
 	.react-map {
 		position: relative;
 		transform: translateY(-270px);
+		-ms-transform: translateY(-270px);
+		-webkit-transform: translateY(-270px);
+		-moz-transform: translateY(-270px);
+		-o-transform: translateY(-270px);
 
 		.map-overlay {
 			position: absolute;
@@ -28,6 +32,10 @@
 				align-content: center;
 				z-index: 99999;
 				transform: translateY(50px);
+				-ms-transform: translateY(50px);
+				-webkit-transform: translateY(50px);
+				-moz-transform: translateY(50px);
+				-o-transform: translateY(50px);
 
 				h2 {
 					color: white;

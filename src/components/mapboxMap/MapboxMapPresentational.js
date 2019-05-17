@@ -8,7 +8,12 @@ import LocationSelect from '../location/LocationSelect';
 import { reactSelectStyles } from '../../styles/ReactSelectStyles';
 import 'mapbox-gl/src/css/mapbox-gl.css';
 
-const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+// const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+
+const newtoken =
+	'pk.eyJ1IjoidGljb3RoZXBzIiwiYSI6ImNqdnBlZDM2bjB4ODE0OXFrNXpzbWh0ZXEifQ.vBNSTUmy4Xk7NbkBY3Kuwg';
+
+const MAPBOX_TOKEN = newtoken;
 
 class MapboxMapPresentational extends React.Component {
 	constructor(props) {
