@@ -90,6 +90,7 @@ class MapboxMapPresentational extends React.Component {
               styles={reactSelectStyles}
               onChange={this.handleChange}
               fieldValue={this.state.location}
+              placeholder="Type a location to search"
             />
             <button type="submit">Find students</button>
           </form>
