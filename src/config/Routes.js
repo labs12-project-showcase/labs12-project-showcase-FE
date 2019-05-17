@@ -15,9 +15,10 @@ import TracksTable from "../components/admin/tracksTable/TracksTable";
 import Callback from "../auth/Callback.js";
 import PrivateRoute from "./PrivateRoute.js";
 // Public Routes
-import ContactForm from "../components/student/contactForm/ContactForm";
-import Home from "../components/home/Home.js";
-import NoMatch from "../components/404/NoMatch";
+import ContactForm from '../components/student/contactForm/ContactForm';
+import FilterSearch from '../components/FilterSearch/FilterSearch';
+import Home from '../components/home/Home.js';
+import NoMatch from '../components/404/NoMatch';
 // Student Routes
 import Projectqs from "../components/student/projectqs/Projectqs";
 import ProjectView from "../components/student/projects/ProjectView";
@@ -35,13 +36,14 @@ class Routes extends Component {
       <>
         <Switch>
           {/* Public Routes */}
-          <Route exact path="/" render={props => <Home {...props} />} />
-          <Route
-            path="/contact-me/:id"
-            render={props => <ContactForm auth={props.auth} {...props} />}
-          />
-
-          {/* Admin Routes */}
+					<Route exact path="/" render={props => <Home {...props} />} />
+					<Route
+						path="/contact-me/:id"
+						render={props => <ContactForm auth={props.auth} {...props} />}
+					/>
+          <Route path="/discover/:search?" component={FilterSearch} />
+										
+					{/* Admin Routes */}
           <Route path="/admin-login" component={AdminLogin} />
           <Route path="/admin/accounts-table" component={AccountsTable} />
           <Route path="/admin/cohorts-table" component={CohortsTable} />
