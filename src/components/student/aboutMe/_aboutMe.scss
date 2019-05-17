@@ -3,9 +3,11 @@
 	width: 55%;
 	min-height: 215px;
 	padding: 20px 5px;
+	min-width: 500px;
 
 	@media (max-width: 768px) {
 		width: 100%;
+		min-width: 350px;
 		margin: 20px;
 	}
 
