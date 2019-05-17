@@ -129,6 +129,9 @@
         overflow: hidden;
         img {
           width: 100%;
+          &.placeholder {
+            border: 1px solid #e8e8e8;
+          }
         }
       }
       .gallery-caption {
