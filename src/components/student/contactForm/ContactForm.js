@@ -24,20 +24,14 @@ class ContactForm extends React.Component {
   state = {
     open: false,
     email: {
-      from: "<YOUR_EMAIL_HERE>@gmail.com",
-      subject: "A Lambda Showcase User is Interested in you!",
-      text: `Hi!
-        I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and skills! Let's schedule a time to chat about your future with us! You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
-                
-I look forward to speaking with you soon!
-
-Sincerely,
-<YOUR_NAME_HERE>`
+      from: "",
+      subject: "",
+	  text: ""
     }
   };
 
   sendEmail = _ => {
-    const { email } = this.state;
+	const { email } = this.state;
 
     axios
       .post(
@@ -47,30 +41,24 @@ Sincerely,
         email
       )
       .then(res => {
-        alert(
-          `Your message was sent successfully to ${this.props.student.name}!`
-        );
-        this.handleClose();
+		alert(`Your message was sent successfully to ${this.props.student.name}!`);
+		this.handleClose();
       })
       .catch(err => {
-        console.log(err);
-        alert(
-          `Sorry, but something went wrong while trying to send your message to ${
-            this.props.student.name
-          }! Please try again.`
-        );
+		console.log(err);
+		alert(`Sorry, but something went wrong while trying to send your message to ${this.props.student.name}! Please try again.`);
       });
   };
 
   handleInputChange = e => {
-    e.stopPropagation();
-    this.setState({
-      email: {
-        ...this.state.email,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
+	e.stopPropagation();
+	this.setState({ 
+		email: {
+			...this.state.email, 
+			[e.target.name]: e.target.value
+		}
+	})
+  }
 
   handleOpen = e => {
     e.stopPropagation();
@@ -83,22 +71,24 @@ Sincerely,
 
   handleSubmit = e => {
     e.stopPropagation();
-    e.preventDefault();
-    this.sendEmail();
+	e.preventDefault();
+	this.sendEmail();
   };
 
   render() {
-    // console.log(this.props.student.id);
-    const { email } = this.state;
-    const { classes } = this.props;
+	// console.log(this.props.student.id);
+	const { email } = this.state;
+	const { classes } = this.props;
 
     return (
-      <div className="sc-modal-buttons contact-form-container">
-        <div onClick={this.handleOpen} className="contact-btn">
-          Contact Me
+      <div className="sc-modal-buttons">
+		<div 
+			onClick={this.handleOpen}
+			className="contact-btn"
+		>
+            Contact Me
         </div>
         <Modal
-          className="contact-form-modal"
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={this.state.open}
@@ -108,10 +98,9 @@ Sincerely,
         >
           <div
             style={{
-              top: "55vh",
-              left: "50vw",
-              transform: "translate(-50%, -50%)",
-              width: "50vw"
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)"
             }}
             className={classes.paper}
           >
@@ -120,46 +109,55 @@ Sincerely,
               method="POST"
               className="sc-modal-buttons contact-form"
             >
-              <div className="contact-form-header-container">
-                <h2 className="contact-form-header-message">
-                  Send a Message to {this.props.student.name}!
-                </h2>
-              </div>
-
+				<div className="contact-form-header-container">
+					<h2 className="contact-form-header-message">Send a Message to {this.props.student.name}!</h2>
+				</div>
+				
               <div className="sc-input input-div">
-                <label className="email-label">Your Email Address:</label>
+				<label 
+				  className="email-label"
+				>
+				  Your Email Address: 
+				  </label>
                 <input
-                  className="email-input"
+				  className="email-input"
                   name="from"
                   value={email.from}
                   onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="email"
-                  required
+				  type="email"
+				  required
                 />
               </div>
-              <div className="sc-input input-div">
-                <label className="subject-label">Subject:</label>
+			  <div className="sc-input input-div">
+                <label
+					className="subject-label"
+				>
+					Subject: 
+				</label>
                 <input
-                  className="subject-input"
+				  className="subject-input"
                   name="subject"
                   value={email.subject}
                   onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="text"
-                  required
+				  type="text"
+				  required
                 />
               </div>
-              <div className="sc-input input-div">
-                <label className="message-label">Message:</label>
+			  <div className="sc-input input-div">
+			  	<label
+					className="message-label"
+					>Message: 
+				</label>
                 <textarea
-                  className="message-input input-div"
+				  className="message-input input-div"
                   name="text"
                   value={email.text}
                   onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="text"
-                  required
+				  type="text"
+				  required
                 />
               </div>
               <Button
@@ -194,12 +192,10 @@ ContactForm.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    ...state,
-    studentProfile: state.studentProfile
+	...state
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getData }
+export default connect(mapStateToProps, 
+	{ getData }
 )(withStyles(styles)(ContactForm));

@@ -1,350 +1,349 @@
 .project-view {
-  .subNav {
-    padding: 10px 0;
+	.subNav {
+		padding: 10px 0;
+		.NavLinks-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 
-    .NavLinks-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+			.NavLinks-container-left {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				color: white;
 
-      .NavLinks-container-left {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        color: white;
+				.arrow-circle {
+					padding: 7px;
+					border-radius: 50%;
+					margin-right: 10px;
+					background-color: $lambdaRed;
+					cursor: pointer;
+				}
 
-        .arrow-circle {
-          padding: 7px;
-          border-radius: 50%;
-          margin-right: 10px;
-          background-color: $lambdaRed;
-          cursor: pointer;
-        }
+				.fa-arrow-left {
+					font-size: 2rem;
+					color: $lightcolor;
+				}
+			}
 
-        .fa-arrow-left {
-          font-size: 2rem;
-          color: $lightcolor;
-        }
-      }
+			.NavLinks-container-right {
+				.edit-project-btn {
+					margin-right: 25px;
+				}
 
-      .NavLinks-container-right {
-        .edit-project-btn {
-          margin-right: 25px;
-        }
+				.edit-profile-btn {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
 
-        .edit-profile-btn {
-          margin-right: 10px;
-        }
-      }
-    }
-  }
+	header {
+		@include box-align(space-between, flex-start);
+		max-width: 1200px;
+		width: 100%;
+		margin: 0 auto;
+		padding-top: 30px;
+		@media (max-width: 768px) {
+			@include box-align();
+			flex-direction: column;
+		}
+		.img-des {
+			max-width: 42%;
+			width: 100%;
+			height: 516px;
+			padding: 20px;
+			background-color: $lambdaDarkBlue;
+			@include box-align(center, flex-start);
+			flex-direction: column;
+			@media (max-width: 768px) {
+				order: 2;
+				padding: 20px;
+				max-width: 95%;
+				@include box-align();
+				height: auto;
+			}
 
-  header {
-    @include box-align(space-between, flex-start);
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding-top: 30px;
-    @media (max-width: 768px) {
-      @include box-align();
-      flex-direction: column;
-    }
-    .img-des {
-      max-width: 42%;
-      width: 100%;
-      height: 516px;
-      padding: 20px;
-      background-color: $lambdaDarkBlue;
-      @include box-align(center, flex-start);
-      flex-direction: column;
-      @media (max-width: 768px) {
-        order: 2;
-        padding: 20px;
-        max-width: 95%;
-        @include box-align();
-        height: auto;
-      }
+			h1 {
+				font-size: 3.4rem;
+				font-weight: 700;
+				top: 110px;
+				padding: 10px;
+				color: $lightcolor;
+			}
 
-      h1 {
-        font-size: 3.4rem;
-        font-weight: 700;
-        top: 110px;
-        padding: 10px;
-        color: $lightcolor;
-      }
+			h2 {
+				font-size: 1.6rem;
+				font-weight: 500;
+				padding: 10px;
+				margin-bottom: 30px;
+				line-height: 1.5;
+				color: $lightcolor;
+			}
 
-      h2 {
-        font-size: 1.6rem;
-        font-weight: 500;
-        padding: 10px;
-        margin-bottom: 30px;
-        line-height: 1.5;
-        color: $lightcolor;
-      }
+			a {
+				text-decoration: none;
+				background-color: $lightcolor;
+				color: $lambdaDarkBlue;
+				border: 2px solid $lightcolor;
+				margin: 10px;
+				font-size: 2.2rem;
+				padding: 20px;
+				cursor: pointer;
+				&:nth-last-child(1) {
+					background-color: $lambdaDarkBlue;
+					color: $lightcolor;
+					border: 2px solid $lightcolor;
 
-      a {
-        text-decoration: none;
-        background-color: $lightcolor;
-        color: $lambdaDarkBlue;
-        border: 2px solid $lightcolor;
-        margin: 10px;
-        font-size: 2.2rem;
-        padding: 20px;
-        cursor: pointer;
-        &:nth-last-child(1) {
-          background-color: $lambdaDarkBlue;
-          color: $lightcolor;
-          border: 2px solid $lightcolor;
+					&:hover {
+						background-color: $lightcolor;
+						color: $lambdaDarkBlue;
+					}
+				}
 
-          &:hover {
-            background-color: $lightcolor;
-            color: $lambdaDarkBlue;
-          }
-        }
+				&:hover {
+					border: 2px solid $lightcolor;
+					color: $lightcolor;
+					background-color: $lambdaDarkBlue;
+				}
+			}
+		}
 
-        &:hover {
-          border: 2px solid $lightcolor;
-          color: $lightcolor;
-          background-color: $lambdaDarkBlue;
-        }
-      }
-    }
+		.media-display {
+			margin: 0 auto;
+			@include box-align();
+			max-width: 55%;
+			width: 100%;
+			@media (max-width: 768px) {
+				max-width: 100%;
+				flex-direction: column;
+			}
 
-    .media-display {
-      margin: 0 auto;
-      @include box-align();
-      max-width: 55%;
-      width: 100%;
-      @media (max-width: 768px) {
-        max-width: 100%;
-        flex-direction: column;
-      }
+			.big-gallery {
+				width: 100%;
+				max-height: 352px;
+				max-width: 647px;
+				overflow: hidden;
+				img {
+					width: 100%;
+					&.placeholder {
+						border: 1px solid #e8e8e8;
+					}
+				}
+			}
+			.gallery-caption {
+				width: 100%;
+				padding: 0 6px;
+				p {
+					padding: 10px;
+					background-color: #fbf7f7;
+				}
+			}
 
-      .big-gallery {
-        width: 100%;
-        max-height: 352px;
-        max-width: 647px;
-        overflow: hidden;
-        img {
-          width: 100%;
-          &.placeholder {
-            border: 1px solid #e8e8e8;
-          }
-        }
-      }
-      .gallery-caption {
-        width: 100%;
-        padding: 0 6px;
-        p {
-          padding: 10px;
-          background-color: #fbf7f7;
-        }
-      }
+			.img-one,
+			.img-two,
+			.img-three {
+				position: relative;
+				width: 32%;
+				margin: 4px auto;
+				height: 160px;
+				overflow: hidden;
+				border: 1px solid $newBorder;
+				cursor: pointer;
 
-      .img-one,
-      .img-two,
-      .img-three {
-        position: relative;
-        width: 32%;
-        margin: 4px auto;
-        height: 160px;
-        overflow: hidden;
-        border: 1px solid $newBorder;
-        cursor: pointer;
+				@media (max-width: 768px) {
+					width: 100%;
+					margin: 10px;
+					max-width: 300px;
+					height: 260px;
+				}
 
-        @media (max-width: 768px) {
-          width: 100%;
-          margin: 10px;
-          max-width: 300px;
-          height: 260px;
-        }
+				.capture-click {
+					// display: block;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+					// z-index: 0;
+				}
 
-        .capture-click {
-          // display: block;
-          height: 100%;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 100%;
-          // z-index: 0;
-        }
+				img {
+					width: 100%;
+				}
+			}
 
-        img {
-          width: 100%;
-        }
-      }
+			.img-two {
+				margin: 5px;
+			}
+		}
+	}
 
-      .img-two {
-        margin: 5px;
-      }
-    }
-  }
+	main {
+		width: 100%;
+		max-width: 1024px;
+		margin: 0 auto;
+		padding: 20px 20px 50px;
+		@include box-align();
 
-  main {
-    width: 100%;
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 20px 20px 50px;
-    @include box-align();
+		hr {
+			margin: 20px auto;
+			border: 1px solid $lambdaRed;
+			width: 100%;
+		}
 
-    hr {
-      margin: 20px auto;
-      border: 1px solid $lambdaRed;
-      width: 100%;
-    }
+		.pitch-and-projectURL-container {
+			@include box-align(center, flex-start);
 
-    .pitch-and-projectURL-container {
-      @include box-align(center, flex-start);
+			@media (max-width: 768px) {
+				flex-direction: column;
+			}
 
-      @media (max-width: 768px) {
-        flex-direction: column;
-      }
+			.sales-pitch {
+				width: 100%;
+				max-width: 50%;
+				background-color: $lightcolor;
+				padding: 30px 20px;
+				margin: 30px auto;
 
-      .sales-pitch {
-        width: 100%;
-        max-width: 50%;
-        background-color: $lightcolor;
-        padding: 30px 20px;
-        margin: 30px auto;
+				@media (max-width: 768px) {
+					max-width: 100%;
+				}
 
-        @media (max-width: 768px) {
-          max-width: 100%;
-        }
+				h2 {
+					color: $lambdaTeal;
+					font-size: 2.2rem;
+					text-align: left;
+					font-weight: 700;
+					margin-bottom: 24px;
+					letter-spacing: 1.7px;
+				}
+				p {
+					line-height: 1.5;
+					color: $lambdaGray;
+				}
+			}
 
-        h2 {
-          color: $lambdaTeal;
-          font-size: 2.2rem;
-          text-align: left;
-          font-weight: 700;
-          margin-bottom: 24px;
-          letter-spacing: 1.7px;
-        }
-        p {
-          line-height: 1.5;
-          color: $lambdaGray;
-        }
-      }
+			.project-urls-container {
+				min-height: 100px;
+				@include box-align();
 
-      .project-urls-container {
-        min-height: 100px;
-        @include box-align();
+				a {
+					text-decoration: none;
+					color: $lambdaTeal;
+					margin: 5px;
+					background-color: $lightcolor;
+					cursor: pointer;
+					border: 1px solid $newBorder;
+					padding: 25px 28px;
 
-        a {
-          text-decoration: none;
-          color: $lambdaTeal;
-          margin: 5px;
-          background-color: $lightcolor;
-          cursor: pointer;
-          border: 1px solid $newBorder;
-          padding: 25px 28px;
+					&:hover {
+						background-color: $lambdaTeal;
+						color: $lightcolor;
+						border: 1px solid $lightcolor;
+					}
+				}
 
-          &:hover {
-            background-color: $lambdaTeal;
-            color: $lightcolor;
-            border: 1px solid $lightcolor;
-          }
-        }
+				.github-chip {
+					// border-radius: 50%;
 
-        .github-chip {
-          // border-radius: 50%;
+					.fa-github {
+						font-size: 1.8rem;
+						// padding: 1px;
+					}
+				}
+			}
+		}
 
-          .fa-github {
-            font-size: 1.8rem;
-            // padding: 1px;
-          }
-        }
-      }
-    }
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 3.9rem;
+			font-weight: 900;
+			margin-top: 20px;
+			margin-bottom: 30px;
+			letter-spacing: 2.7px;
+		}
 
-    h2 {
-      width: 100%;
-      text-align: center;
-      font-size: 3.9rem;
-      font-weight: 900;
-      margin-top: 20px;
-      margin-bottom: 30px;
-      letter-spacing: 2.7px;
-    }
+		.students-names {
+			width: 100%;
+			margin-bottom: 20px;
+			@include box-align();
 
-    .students-names {
-      width: 100%;
-      margin-bottom: 20px;
-      @include box-align();
+			.s-link {
+				color: black;
+				text-decoration: none;
+				margin: 20px;
+				@include box-align();
+				flex-direction: column;
 
-      .s-link {
-        color: black;
-        text-decoration: none;
-        margin: 20px;
-        @include box-align();
-        flex-direction: column;
+				.s-pic {
+					height: 150px;
+					width: 150px;
+					overflow: hidden;
+					// border-radius: 50%;
+					img {
+						width: 100%;
+						height: auto;
 
-        .s-pic {
-          height: 150px;
-          width: 150px;
-          overflow: hidden;
-          // border-radius: 50%;
-          img {
-            width: 100%;
-            height: auto;
-
-            &:hover {
-              -webkit-animation: kenburns-top 5s ease-out both;
-              animation: kenburns-top 5s ease-out both;
-              /* ----------------------------------------------
+						&:hover {
+							-webkit-animation: kenburns-top 5s ease-out both;
+							animation: kenburns-top 5s ease-out both;
+							/* ----------------------------------------------
 						* Generated by Animista on 2019-5-17 1:38:55
 						* w: http://animista.net, t: @cssanimista
 						* ---------------------------------------------- */
 
-              /**
+							/**
 						* ----------------------------------------
 						* animation kenburns-top
 						* ----------------------------------------
 						*/
-              @-webkit-keyframes kenburns-top {
-                0% {
-                  -webkit-transform: scale(1) translateY(0);
-                  transform: scale(1) translateY(0);
-                  -webkit-transform-origin: 50% 16%;
-                  transform-origin: 50% 16%;
-                }
-                100% {
-                  -webkit-transform: scale(1.25) translateY(-15px);
-                  transform: scale(1.25) translateY(-15px);
-                  -webkit-transform-origin: top;
-                  transform-origin: top;
-                }
-              }
-              @keyframes kenburns-top {
-                0% {
-                  -webkit-transform: scale(1) translateY(0);
-                  transform: scale(1) translateY(0);
-                  -webkit-transform-origin: 50% 16%;
-                  transform-origin: 50% 16%;
-                }
-                100% {
-                  -webkit-transform: scale(1.25) translateY(-15px);
-                  transform: scale(1.25) translateY(-15px);
-                  -webkit-transform-origin: top;
-                  transform-origin: top;
-                }
-              }
-            }
-          }
-        }
+							@-webkit-keyframes kenburns-top {
+								0% {
+									-webkit-transform: scale(1) translateY(0);
+									transform: scale(1) translateY(0);
+									-webkit-transform-origin: 50% 16%;
+									transform-origin: 50% 16%;
+								}
+								100% {
+									-webkit-transform: scale(1.25) translateY(-15px);
+									transform: scale(1.25) translateY(-15px);
+									-webkit-transform-origin: top;
+									transform-origin: top;
+								}
+							}
+							@keyframes kenburns-top {
+								0% {
+									-webkit-transform: scale(1) translateY(0);
+									transform: scale(1) translateY(0);
+									-webkit-transform-origin: 50% 16%;
+									transform-origin: 50% 16%;
+								}
+								100% {
+									-webkit-transform: scale(1.25) translateY(-15px);
+									transform: scale(1.25) translateY(-15px);
+									-webkit-transform-origin: top;
+									transform-origin: top;
+								}
+							}
+						}
+					}
+				}
 
-        p {
-          font-weight: 700;
-          text-align: center;
-          padding: 10px;
-        }
+				p {
+					font-weight: 700;
+					text-align: center;
+					padding: 10px;
+				}
 
-        &:visited {
-          text-decoration: none;
-          color: black;
-        }
-      }
-    }
-  }
+				&:visited {
+					text-decoration: none;
+					color: black;
+				}
+			}
+		}
+	}
 }

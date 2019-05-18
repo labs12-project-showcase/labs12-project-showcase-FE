@@ -75,7 +75,7 @@ class StudentProfile extends React.Component {
       "https://res.cloudinary.com/hirelambdastudents/image/upload/v1556814928/pictures/avatar.png";
 
     if (this.props.studentProfile.emptyReturn) {
-      return <Redirect to="/404" />;
+      return <Redirect to="/404" />
     }
     return (
       <div className="student-dashboard">
