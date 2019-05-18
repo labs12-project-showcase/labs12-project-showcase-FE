@@ -1,12 +1,12 @@
 .map-container {
-	height: 520px;
+	max-height: 600px;
 	max-width: 1920px;
 	margin: 0 auto;
 	overflow: hidden;
 	border-bottom: 5px solid $lambdaRed;
+
 	.react-map {
 		position: relative;
-		transform: translateY(-270px);
 
 		.map-overlay {
 			position: absolute;
@@ -19,6 +19,7 @@
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
+			@include box-align();
 
 			form {
 				display: flex;
@@ -27,7 +28,6 @@
 				align-items: center;
 				align-content: center;
 				z-index: 99999;
-				transform: translateY(50px);
 
 				h2 {
 					color: white;
