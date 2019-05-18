@@ -75,6 +75,9 @@
 						order: 2;
 					}
 				}
+				&:hover {
+					background: darken(($lambdaRed), 10%);
+				}
 			}
 			.fa-search-location,
 			.fa-sign-out-alt,
@@ -99,6 +102,7 @@
 				@include box-align();
 				transition-duration: 0.3s;
 				cursor: pointer;
+
 				@media (max-width: 500px) {
 					flex-direction: column;
 				}
@@ -127,10 +131,9 @@
 						width: 30px;
 						height: auto;
 					}
-
-					&:hover {
-						background: darken(($lambdaRed), 10%);
-					}
+				}
+				&:hover {
+					background: darken(($lambdaRed), 10%);
 				}
 			}
 		}

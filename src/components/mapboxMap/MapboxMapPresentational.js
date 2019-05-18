@@ -22,9 +22,9 @@ class MapboxMapPresentational extends React.Component {
 			viewport: {
 				width: '100vw',
 				height: '100vh',
-				latitude: 39.788260590328576,
+				latitude: 30.788260590328576,
 				longitude: -97.77255674948162,
-				zoom: 4,
+				zoom: 3.5,
 				bearing: 0,
 				pitch: 0
 			},
