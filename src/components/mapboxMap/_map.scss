@@ -7,6 +7,9 @@
 	.react-map {
 		position: relative;
 		transform: translateY(-270px);
+		@media (max-height: 520px) {
+			transform: translateY(0);
+		}
 
 		.map-overlay {
 			position: absolute;
