@@ -107,10 +107,11 @@ Sincerely,
         >
           <div
             style={{
-              top: "50vh",
+              top: "55vh",
               left: "50vw",
               transform: "translate(-50%, -50%)",
-              width: "70vw"
+              width: "80vw",
+              height: "75vh"
             }}
             className={classes.paper}
           >

@@ -23,23 +23,6 @@
   }
 }
 
-// .paper {
-//   @media (max-width: 767px) {
-//     top: 55vh;
-//     left: 50vw;
-//     transform: translate(-50%, -50%);
-//     width: 50vw;
-//   }
-
-//   @media (max-width: 375px) {
-//     top: 50vh;
-//     left: 50vw;
-//     transform: translate(-52%, -42%);
-//     width: 433px;
-//     height: 400px;
-//   }
-// }
-
 .contact-form-header-container {
   display: flex;
   flex-direction: row;
@@ -65,24 +48,16 @@
   width: 100%;
 
   @media (max-width: 767px) {
-    width: 95%;
+    margin: 0 auto;
   }
 
   @media (max-width: 375px) {
-    width: 90%;
+    margin: 0 auto;
   }
 }
 
 .email-label {
-  margin: 20px auto 10px;
-
-  @media (max-width: 767px) {
-    margin: 10px auto;
-  }
-
-  @media (max-width: 375px) {
-    margin: 0px auto;
-  }
+  margin-top: 20px;
 }
 
 .email-input,
@@ -91,6 +66,14 @@
   width: 100%;
   font-size: 1.8rem;
   padding: 5px 5px 5px 10px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 }
 
 .email-input,
@@ -99,15 +82,17 @@
 }
 
 .message-input {
-  height: 215px;
-  margin: 10px auto;
+  height: 30.5rem;
+  margin-bottom: 20px;
+  width: 100%;
 
   @media (max-width: 767px) {
-    height: 100px;
+    height: 20.5rem;
+    width: 100%;
   }
 
   @media (max-width: 375px) {
-    max-height: 75px;
-    margin: 0px auto;
+    height: 20.5rem;
+    width: 100%;
   }
 }
