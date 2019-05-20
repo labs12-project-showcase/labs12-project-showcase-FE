@@ -1,236 +1,240 @@
 th {
-	font-size: 2rem !important;
+  font-size: 2rem !important;
 }
 
 td {
-	font-size: 1.6rem !important;
+  font-size: 1.6rem !important;
 }
 
 .tableContainer {
-	margin: 50px auto;
-	justify-content: center;
-	min-height: 60vh;
-	max-width: 1000px;
-	width: 100%;
-	line-height: 1.2;
-	thead > tr > th {
-		color: $darkcolor !important;
-		font-weight: 700;
-		.MaterialDatatableHeadCell-sortAction-126 {
-			display: none;
-		}
-	}
-	td {
-		color: $lambdaGray !important;
-	}
+  margin: 50px auto;
+  justify-content: center;
+  min-height: 60vh;
+  max-width: 1000px;
+  width: 100%;
+  line-height: 1.2;
+  thead > tr > th {
+    color: $darkcolor !important;
+    font-weight: 700;
+    .MaterialDatatableHeadCell-sortAction-126 {
+      display: none;
+    }
+  }
+  td {
+    color: $lambdaGray !important;
+  }
 
-	a {
-		text-decoration: none;
-		color: $lambdaLightBlue;
+  a {
+    text-decoration: none;
+    color: $lambdaLightBlue;
 
-		&:visited {
-			text-decoration: none;
-			color: $lambdaLightBlue;
-		}
-	}
+    &:visited {
+      text-decoration: none;
+      color: $lambdaLightBlue;
+    }
+  }
 
-	span {
-		font-size: 1.4rem;
-	}
+  span {
+    font-size: 1.4rem;
+  }
 
-	h6 {
-		font-weight: 700 !important;
-		font-size: 1.8rem !important;
-		text-transform: uppercase !important;
-	}
-	a {
-		color: $lambdaDarkBlue;
-		font-weight: 500;
-		&:visited {
-			color: $lambdaDarkBlue;
-		}
-	}
+  h6 {
+    font-weight: 700 !important;
+    font-size: 1.8rem !important;
+    text-transform: uppercase !important;
+  }
+  a {
+    color: $lambdaDarkBlue;
+    font-weight: 500;
+    &:visited {
+      color: $lambdaDarkBlue;
+    }
+  }
 }
 
 .MuiSwitch-switchBase-173 {
-	@media (max-width: 600px) {
-		height: 14px !important;
-	}
+  @media (max-width: 600px) {
+    height: 14px !important;
+  }
 }
 
 .MaterialDatatableBodyCell-cellStacked-168 {
-	@media (max-width: 600px) {
-		min-width: 160px;
-	}
+  @media (max-width: 600px) {
+    min-width: 160px;
+  }
 }
 
 .MaterialDatatableBodyCell-responsiveStacked-169 {
-	@media (max-width: 600px) {
-		min-width: 160px;
-	}
+  @media (max-width: 600px) {
+    min-width: 160px;
+  }
 }
 
 .MuiButtonBase-root-95 {
-	@media (max-width: 960px) {
-		height: 21px !important;
-	}
+  @media (max-width: 960px) {
+    height: 21px !important;
+  }
 }
 
-.MuiTableRow-root-117 {
-	@media (max-width: 600px) {
-		text-align: center;
-	}
+[class*="MuiTableRow-root"] {
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 }
 
-.MuiTable-root-112 {
-	@media (max-width: 600px) {
-		min-width: 322px;
-	}
+[class*="MuiTable-root"] {
+  @media (max-width: 600px) {
+    min-width: 322px;
+  }
 }
 
-.MuiPaper-root-5 {
-	.MuiTypography-h6-62 {
-		font-size: 1.8rem;
-		font-weight: 500;
-	}
-	.MuiTablePagination-select-188 {
-		padding-right: 30px;
-	}
-	.MaterialDatatableToolbarSelect-title-252 {
-		font-size: 1.4rem;
-	}
-	.MuiTypography-caption-55 {
-		font-size: 1.4rem;
-	}
-	.MaterialDatatableBodyRow-responsiveStacked-164 {
-		@media (max-width: 600px) {
-			border: none;
-			border-bottom: 2px solid rgba(0, 0, 0, 0.15);
-		}
-	}
-	.MuiListItemText-inset-233:first-child {
-		padding-left: 0px;
-	}
-	.MuiListItemText-inset-620:first-child {
-		padding-left: 0px;
-	}
+[class*="MuiPaper-root"] {
+  .MuiTypography-h6-62 {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .MuiTablePagination-select-188 {
+    padding-right: 30px;
+  }
+  .MaterialDatatableToolbarSelect-title-252 {
+    font-size: 1.4rem;
+  }
+  .MuiTypography-caption-55 {
+    font-size: 1.4rem;
+  }
+  .MaterialDatatableBodyRow-responsiveStacked-164 {
+    @media (max-width: 600px) {
+      border: none;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    }
+  }
+  .MuiListItemText-inset-233:first-child {
+    padding-left: 0px;
+  }
+  .MuiListItemText-inset-620:first-child {
+    padding-left: 0px;
+  }
 
-	.MuiTypography-root-45 {
-		font-size: 1.4rem;
-	}
+  .MuiTypography-root-45 {
+    font-size: 1.4rem;
+  }
 
-	.MuiSelect-select-185 {
-		margin-right: 10px;
-	}
-	[class*='MuiSelect-selectMenu'] {
-		font-size: 1.6rem;
-		font-family: Lato;
-	}
-	[class*='MuiFormLabel'] {
-		font-size: 1.6rem;
-		font-family: Lato;
-	}
-	[class*='MuiListItem-root'] {
-		font-size: 1.6rem;
-		font-family: Lato;
-	}
+  .MuiSelect-select-185 {
+    margin-right: 10px;
+  }
+  [class*="MuiSelect-selectMenu"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+  [class*="MuiFormLabel-root"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+  [class*="MuiListItem-root"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
+  [class*="MuiInputBase-root"] {
+    font-size: 1.6rem;
+    font-family: Lato;
+  }
 }
-[class*='MuiTooltip-tooltip'] {
-	font-size: 1.4rem !important;
-	font-family: Lato !important;
+[class*="MuiTooltip-tooltip"] {
+  font-size: 1.4rem !important;
+  font-family: Lato !important;
 }
 
 .sc-modal {
-	button {
-		margin: 3px;
-		border-radius: 0;
-		color: $lightcolor;
-		font-size: 1.4rem;
-		background-color: $lambdaDarkBlue;
-		&:hover {
-			background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
-		}
-	}
+  button {
+    margin: 3px;
+    border-radius: 0;
+    color: $lightcolor;
+    font-size: 1.4rem;
+    background-color: $lambdaDarkBlue;
+    &:hover {
+      background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
+    }
+  }
 }
 
 .sc-add-modal {
-	text-align: right;
-	button {
-		height: 35px;
-		margin: 3px 3px 10px;
-		border-radius: 0;
-		color: $lightcolor;
-		font-size: 1.4rem;
-		background-color: $lambdaDarkBlue;
-		cursor: pointer;
-		&:hover {
-			background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
-		}
-	}
+  text-align: right;
+  button {
+    height: 35px;
+    margin: 3px 3px 10px;
+    border-radius: 0;
+    color: $lightcolor;
+    font-size: 1.4rem;
+    background-color: $lambdaDarkBlue;
+    cursor: pointer;
+    &:hover {
+      background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
+    }
+  }
 }
 
 .bnt-edit {
-	margin: 3px;
-	border-radius: 0;
-	color: $lightcolor;
-	background-color: $lambdaDarkBlue;
-	&:hover {
-		background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
-	}
+  margin: 3px;
+  border-radius: 0;
+  color: $lightcolor;
+  background-color: $lambdaDarkBlue;
+  &:hover {
+    background-color: lighten($color: $lambdaDarkBlue, $amount: 10);
+  }
 }
 .sc-input {
-	@include box-align();
-	label {
-		display: block;
-		margin-bottom: 10px;
-		font-weight: 700;
-	}
+  @include box-align();
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
 
-	input {
-		border: 1px solid $newBorder;
-		margin: 3px 3px 20px;
-		font-size: 1.8rem;
-	}
-	select {
-		margin-left: 5px;
-		margin-top: -9px;
-		width: 80px;
-		padding: 3px;
-		border: 1px solid $newBorder;
-		cursor: pointer;
-	}
+  input {
+    border: 1px solid $newBorder;
+    margin: 3px 3px 20px;
+    font-size: 1.8rem;
+  }
+  select {
+    margin-left: 5px;
+    margin-top: -9px;
+    width: 80px;
+    padding: 3px;
+    border: 1px solid $newBorder;
+    cursor: pointer;
+  }
 }
 
 .mui-tooltip-16095 {
-	font-size: 1rem;
+  font-size: 1rem;
 }
 
 .sc-modal-buttons {
-	@include box-align();
-	button[type='submit'] {
-		font-size: 1.4rem;
-		background-color: $lambdaDarkBlue;
-		color: $lightcolor;
-		border: none;
-		border-radius: 0;
-		margin: 3px;
-		cursor: pointer;
-		&:hover {
-			background-color: darken($color: $lambdaDarkBlue, $amount: 10);
-		}
-	}
+  @include box-align();
+  button[type="submit"] {
+    font-size: 1.4rem;
+    background-color: $lambdaDarkBlue;
+    color: $lightcolor;
+    border: none;
+    border-radius: 0;
+    margin: 3px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($color: $lambdaDarkBlue, $amount: 10);
+    }
+  }
 
-	button {
-		font-size: 1.4rem;
-		background-color: $lambdaRed;
-		color: $lightcolor;
-		border: none;
-		border-radius: 0;
-		margin: 3px;
-		cursor: pointer;
-		&:hover {
-			border: none;
-			background-color: darken($color: $lambdaRed, $amount: 10);
-		}
-	}
+  button {
+    font-size: 1.4rem;
+    background-color: $lambdaRed;
+    color: $lightcolor;
+    border: none;
+    border-radius: 0;
+    margin: 3px;
+    cursor: pointer;
+    &:hover {
+      border: none;
+      background-color: darken($color: $lambdaRed, $amount: 10);
+    }
+  }
 }
