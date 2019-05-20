@@ -34,7 +34,7 @@ class TrackDeleteModal extends React.Component {
   handleSubmit = e => {
     e.stopPropagation();
     e.preventDefault();
-    this.props.deleteTrack(this.props.value.id).then(this.handleClose);
+    this.props.deleteTrack(this.props.value.id);
   };
 
   render() {
