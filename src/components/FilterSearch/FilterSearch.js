@@ -251,6 +251,7 @@ class FilterSearch extends React.Component {
                     Located within
                     <input
                       type="number"
+                      step="10"
                       size="3"
                       placeholder="50"
                       name="within"
