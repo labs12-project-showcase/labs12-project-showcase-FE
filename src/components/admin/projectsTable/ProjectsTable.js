@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
-import { fetchProjects } from "../adminActions.js";
+import { fetchProjects, deleteProject } from "../adminActions.js";
 import { Link } from "react-router-dom";
 import ProjectTableRow from "./ProjectTableRow";
 import ProjectApprovedButton from "./ProjectApprovedButton.js";
@@ -112,5 +112,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchProjects }
+  { fetchProjects, deleteProject }
 )(ProjectsTable);

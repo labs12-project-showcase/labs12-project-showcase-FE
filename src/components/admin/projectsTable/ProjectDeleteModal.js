@@ -1,4 +1,7 @@
 import React from "react";
+import axios from "axios";
+import axiosAuth from "../../../auth/axiosAuth.js";
+import { backendUrl } from "../../../config/urls.js";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -18,8 +21,39 @@ const styles = theme => ({
 });
 
 class ProjectDeleteModal extends React.Component {
+  signal = axios.CancelToken.source();
+
   state = {
+    isDeleting: false,
+    project: {},
     open: false
+  };
+
+  componentDidMount() {
+    this.onDeleteProject();
+  }
+
+  componentWillUnmount() {
+    this.signal.cancel("API is being canceled");
+  }
+
+  onDeleteProject = async () => {
+    try {
+      this.setState({ isDeleting: true });
+      const response = await axiosAuth().get(
+        `${backendUrl}/api/admin/projects`,
+        {
+          cancelToken: this.signal.token
+        }
+      );
+      this.setState({ project: response.data, isDeleting: true });
+    } catch (err) {
+      if (axiosAuth().isCancel(err)) {
+        console.log("Error: ", err.message); // => prints: Api is being canceled
+      } else {
+        this.setState({ isDeleting: false });
+      }
+    }
   };
 
   handleOpen = e => {
