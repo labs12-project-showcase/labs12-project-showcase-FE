@@ -83,13 +83,14 @@ class FilterSearch extends React.Component {
     }
   }
 
-  loadMore = (page = 0) => {
+  loadMore = (page = 1) => {
+    page = page - 1;
     console.log("loadmore fires!");
     if (this.state.hasMore) {
       if (!this.props.cards) {
         this.fetchProjects(page);
       } else {
-        console.log("Set state fires! page:", this.state.page);
+        console.log("Set state fires! page:", page);
         this.fetchProjects(page);
       }
     }
