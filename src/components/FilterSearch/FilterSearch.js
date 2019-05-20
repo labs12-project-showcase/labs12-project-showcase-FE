@@ -22,16 +22,20 @@ class FilterSearch extends React.Component {
     within: 50
   };
 
-  shouldComponentUpdate(nextProps) {
-    if (this.props.cards) {
-      return this.props.cards.length === nextProps.cards.length ? false : true;
-    } else {
-      return true;
-    }
-  }
-
   componentWillUpdate(nextProps) {
-    nextProps.cards.length % 8 > 0 && this.setState({ hasMore: false });
+    if (this.state.hasMore === true) {
+      console.log("hasmore is true");
+      nextProps.cards.length % 8 > 0 &&
+        this.setState({ hasMore: false }, () => {
+          console.log("changed hasmore to false");
+        });
+    } else if (this.state.hasMore === false) {
+      console.log("hasmore is false");
+      nextProps.cards.length % 8 === 0 &&
+        this.setState({ hasMore: true }, () => {
+          console.log("changed hasmore to true");
+        });
+    }
   }
 
   componentDidMount() {
@@ -75,22 +79,24 @@ class FilterSearch extends React.Component {
           within: Number(params.get("within")) || 50
         },
         () => {
+          console.log("CDM Fires Loadmore fires from CDM");
           this.loadMore();
         }
       );
     } else {
+      console.log("CDM else fires");
       this.loadMore();
     }
   }
 
   loadMore = (page = 1) => {
+    console.log("load more function fires page:", page);
     page = page - 1;
-    console.log("loadmore fires!");
+    console.log("altered page:", page);
     if (this.state.hasMore) {
       if (!this.props.cards) {
-        this.fetchProjects(page);
+        this.fetchProjects(0);
       } else {
-        console.log("Set state fires! page:", page);
         this.fetchProjects(page);
       }
     }
@@ -99,11 +105,14 @@ class FilterSearch extends React.Component {
   fetchProjects = page => {
     return this.props
       .getFilteredCards({ ...this.state, page })
-      .then(queryString => {
+      .then(({ queryString, results }) => {
         this.props.history.push({
           pathname: "/discover",
           search: queryString
         });
+        if (results.length === 0) {
+          this.setState({ hasMore: false });
+        }
       })
       .catch(err => {
         console.log(err);
@@ -141,6 +150,7 @@ class FilterSearch extends React.Component {
           pathname: "/discover",
           search: queryString
         });
+        window.scrollTo(0, 0);
       })
       .catch(err => {
         console.log(err);
@@ -149,7 +159,7 @@ class FilterSearch extends React.Component {
 
   render() {
     return (
-      <div className="home">
+      <div className="search-page">
         <main>
           <section className="formSection">
             <form className="search-bar" onSubmit={this.handleSubmit}>

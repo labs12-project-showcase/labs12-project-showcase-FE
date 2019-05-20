@@ -5,6 +5,9 @@ import Cards from "./Cards";
 
 class Results extends React.Component {
   render() {
+    if (!this.props.cards) {
+      return null;
+    }
     return (
       <div className="cards-display">
         <hr className="hrTop" />
@@ -15,6 +18,7 @@ class Results extends React.Component {
         )}
         <React.Fragment>
           <InfiniteScroll
+            initialLoad={false}
             pageStart={0}
             loadMore={this.props.loadMore}
             hasMore={this.props.hasMore}

@@ -15,7 +15,7 @@ export const getFilteredCards = ({
   fullStack,
   ios,
   location,
-  page,
+  page = 0,
   search,
   uiux,
   within
@@ -56,6 +56,7 @@ export const getFilteredCards = ({
       }`
     )
     .then(res => {
+      console.log("page in action", page);
       if (page === 0) {
         dispatch({
           type: GET_FILTERED_CARDS_SUCCESS,
@@ -67,7 +68,10 @@ export const getFilteredCards = ({
           payload: res.data
         });
       }
-      return queryString;
+      return {
+        queryString,
+        results: res.data
+      };
     })
     .catch(err => {
       dispatch({
