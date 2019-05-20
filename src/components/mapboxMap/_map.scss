@@ -4,6 +4,56 @@
 	margin: 0 auto;
 	overflow: hidden;
 	border-bottom: 5px solid $lambdaRed;
+	position: relative;
+	@include box-align();
+
+	form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		z-index: 99999;
+		position: absolute;
+
+		h2 {
+			color: white;
+			margin-bottom: 15px;
+			font-size: 3rem;
+			font-weight: 700;
+			@media (max-width: 500px) {
+				font-size: 2.2rem;
+			}
+		}
+
+		.css-pgw907-container {
+			width: 300px;
+		}
+
+		button {
+			text-decoration: none;
+			border: none;
+			color: #ffffff;
+			padding: 10px;
+			margin: 10px auto;
+			background-color: $lambdaRed;
+			cursor: pointer;
+			margin-top: 15px;
+			transition: 0.2s;
+			font-size: 1.6rem;
+			font-weight: 400;
+			@include box-align();
+			text-transform: capitalize;
+			i {
+				color: darken($lambdaRed, 15%);
+				font-size: 1.8rem;
+				margin-left: 10px;
+			}
+			&:hover {
+				background-color: darken($lambdaRed, 10%);
+			}
+		}
+	}
 
 	.react-map {
 		position: relative;
@@ -20,53 +70,6 @@
 			justify-content: center;
 			align-items: center;
 			@include box-align();
-
-			form {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				align-content: center;
-				z-index: 99999;
-
-				h2 {
-					color: white;
-					margin-bottom: 15px;
-					font-size: 3rem;
-					font-weight: 700;
-					@media (max-width: 500px) {
-						font-size: 2.2rem;
-					}
-				}
-
-				.css-pgw907-container {
-					width: 300px;
-				}
-
-				button {
-					text-decoration: none;
-					border: none;
-					color: #ffffff;
-					padding: 10px;
-					margin: 10px auto;
-					background-color: $lambdaRed;
-					cursor: pointer;
-					margin-top: 15px;
-					transition: 0.2s;
-					font-size: 1.6rem;
-					font-weight: 400;
-					@include box-align();
-					text-transform: capitalize;
-					i {
-						color: darken($lambdaRed, 15%);
-						font-size: 1.8rem;
-						margin-left: 10px;
-					}
-					&:hover {
-						background-color: darken($lambdaRed, 10%);
-					}
-				}
-			}
 		}
 	}
 }
