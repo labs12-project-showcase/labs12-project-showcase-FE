@@ -23,12 +23,16 @@ const styles = theme => ({
 class ContactForm extends React.Component {
   state = {
     open: false,
+    student_name: "",
     email: {
       from: "<YOUR_EMAIL_HERE>@gmail.com",
-      subject: "A Lambda Showcase User is Interested in you!",
-      text: `Hi!
-        I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and skills! Let's schedule a time to chat about your future with us! You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
-                
+      subject: "A Lambda Showcase User is Interested in You!",
+      text: `Hello!
+
+      I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and your skills! Could we schedule a time to chat about your future with us?
+
+You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
+              
 I look forward to speaking with you soon!
 
 Sincerely,
@@ -72,9 +76,24 @@ Sincerely,
     });
   };
 
-  handleOpen = e => {
-    e.stopPropagation();
-    this.setState({ open: true });
+  handleOpen = student_name => {
+    // e.stopPropagation();
+    this.setState({
+      open: true,
+      email: {
+        ...this.state.email,
+        text: `Hi, ${student_name}!
+
+        I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and your skills! Could we schedule a time to chat about your future with us?
+
+You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
+                
+I look forward to speaking with you soon!
+  
+Sincerely,
+<YOUR_NAME_HERE>`
+      }
+    });
   };
 
   handleClose = e => {
@@ -94,7 +113,14 @@ Sincerely,
 
     return (
       <div className="sc-modal-buttons">
-        <div onClick={this.handleOpen} className="contact-btn">
+        <div
+          onClick={e => {
+            const student_name = this.props.student.name;
+            e.stopPropagation();
+            this.handleOpen(student_name);
+          }}
+          className="contact-btn"
+        >
           Contact Me
         </div>
         <Modal

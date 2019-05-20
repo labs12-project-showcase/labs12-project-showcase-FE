@@ -22,9 +22,17 @@
           cursor: pointer;
         }
 
-        .fa-arrow-left {
+        .fa-arrow-left,
+        .fa-arrow-right {
           font-size: 2rem;
           color: $lightcolor;
+        }
+
+        .join-project-button {
+          @media (max-width: 500px) {
+            color: #bb1232;
+            font-size: 3rem;
+          }
         }
       }
 
