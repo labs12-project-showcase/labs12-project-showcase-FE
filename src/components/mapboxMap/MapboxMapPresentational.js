@@ -41,7 +41,7 @@ class MapboxMapPresentational extends React.Component {
     let curChar = 0;
     let forward = true;
 
-    setInterval(() => {
+    this.interval = setInterval(() => {
       if (curChar < curWord.length && forward) {
         this.setState(
           {
@@ -81,7 +81,7 @@ class MapboxMapPresentational extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval();
+    clearInterval(this.interval);
   }
 
   componentDidUpdate(prevProps) {
