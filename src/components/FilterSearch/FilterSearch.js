@@ -106,6 +106,7 @@ class FilterSearch extends React.Component {
     return this.props
       .getFilteredCards({ ...this.state, page })
       .then(({ queryString, results }) => {
+        console.log(queryString);
         this.props.history.push({
           pathname: "/discover",
           search: queryString
@@ -145,11 +146,14 @@ class FilterSearch extends React.Component {
     event && event.preventDefault();
     this.props
       .getFilteredCards(this.state)
-      .then(queryString => {
+      .then(({ queryString, results }) => {
         this.props.history.push({
           pathname: "/discover",
           search: queryString
         });
+        if (results.length === 0) {
+          this.setState({ hasMore: false });
+        }
         window.scrollTo(0, 0);
       })
       .catch(err => {
