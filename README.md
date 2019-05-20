@@ -71,13 +71,15 @@ In order for the app to function correctly, the user must set up their own
 environment variables. 
 
 #### Frontend Environment Variables
-The frontend folder should contain a `.env` file with the following:
+The frontend folder should contain a `.env` file with the following:  
+
 | Variable                 | Comment                                  |
-| ------------------------ | ---------------------------------------- |
+| :----------------------- | :--------------------------------------- |
 | `REACT_APP_MAPBOX_TOKEN` | Mapbox token for use with `react-map-gl` |
 
 #### Backend Environment Variables
-The backend folder should contain a `.env` file with the following:
+The backend folder should contain a `.env` file with the following:  
+
 | Variable                 | Comment                                                        |
 | ------------------------ | -------------------------------------------------------------- |
 | `CLOUD_API_KEY`          | Cloudinary API key                                             |
