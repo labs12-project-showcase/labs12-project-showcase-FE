@@ -15,9 +15,6 @@ const ProgressProject = ({ project, currentUser }) => {
       name,
       website,
       short_description,
-      tech_pitch,
-      customer_pitch,
-      emptyReturn,
       ...rest
     } = project;
     if (project) {

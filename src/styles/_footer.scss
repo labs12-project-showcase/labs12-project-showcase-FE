@@ -1,52 +1,47 @@
 // Footer
 footer {
-  flex-direction: column;
-  width: 100%;
-  background-color: $darkcolor;
-  @include box-align();
-  padding: 20px 10px;
+	flex-direction: column;
+	width: 100%;
+	background-color: $darkcolor;
+	@include box-align();
+	padding: 20px 10px;
 
-  @media screen and (max-width: 350px) {
-    flex-direction: column;
-  }
+	@media screen and (max-width: 350px) {
+		flex-direction: column;
+	}
 
-  nav {
-    @include box-align();
+	nav {
+		@include box-align();
 
-    @media screen and (max-width: 350px) {
-      flex-direction: column;
-      text-align: center;
-    }
+		@media screen and (max-width: 350px) {
+			flex-direction: column;
+			text-align: center;
+		}
 
-    a {
-      text-decoration: none;
-      color: lighten($darkcolor, 20%);
-      margin: 0 15px;
-      font-size: 1.4rem;
-      line-height: 1.5;
+		a {
+			text-decoration: none;
+			color: lighten($darkcolor, 20%);
+			margin: 0 15px 10px;
+			font-size: 1.4rem;
+			line-height: 1.5;
 
-      @media screen and (max-width: 350px) {
-        width: 100%;
-        line-height: 2;
-      }
+			@media screen and (max-width: 350px) {
+				width: 100%;
+				line-height: 2;
+			}
 
-      .fab {
-        font-size: 2.2rem;
-      }
+			.fab {
+				font-size: 2.2rem;
+			}
 
-      &:hover {
-        color: white;
-      }
-    }
-  }
+			&:hover {
+				color: white;
+			}
+		}
+	}
 
-  img {
-    max-width: 200px;
-    margin-top: 30px;
-  }
-
-  .Footer-hire-lambda-logo {
-    height: auto;
-    width: 200px;
-  }
+	img {
+		max-width: 150px;
+		margin-top: 30px;
+	}
 }

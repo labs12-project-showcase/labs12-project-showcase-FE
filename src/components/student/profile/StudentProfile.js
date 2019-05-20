@@ -14,6 +14,10 @@ import Progress from "../progress/Progress";
 import ContactForm from "../contactForm/ContactForm";
 
 class StudentProfile extends React.Component {
+  state = {
+    fetchedNew: false
+  };
+
   componentDidMount() {
     this.props.getData(this.props.match.params.id);
   }
@@ -23,15 +27,25 @@ class StudentProfile extends React.Component {
       this.props.getData(this.props.match.params.id);
   }
 
-  render() {
-    let profile;
+  updateFetched = () => {
     if (
       this.props.loggedInProfile &&
-      this.props.loggedInProfile.id === Number(this.props.match.params.id)
+      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
+      this.state.fetchedNew === false
     ) {
-      profile = this.props.loggedInProfile;
-    } else {
-      profile = this.props.studentProfile.profile;
+      this.props.getData().then(() => {
+        this.setState({ fetchedNew: true });
+      });
+    }
+  };
+
+  render() {
+    if (
+      this.props.loggedInProfile &&
+      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
+      this.state.fetchedNew === false
+    ) {
+      this.updateFetched();
     }
     const {
       id,
@@ -54,14 +68,14 @@ class StudentProfile extends React.Component {
       top_projects,
       track,
       profile_pic
-    } = profile;
+    } = this.props.studentProfile.profile;
     const sameUser = id === this.props.loggedInProfile.id;
     const profilePicture =
       profile_pic ||
       "https://res.cloudinary.com/hirelambdastudents/image/upload/v1556814928/pictures/avatar.png";
 
     if (this.props.studentProfile.emptyReturn) {
-      return <Redirect to="/404" />;
+      return <Redirect to="/404" />
     }
     return (
       <div className="student-dashboard">
