@@ -4,8 +4,10 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { login, logout, adminLogin } from "../auth/authActions.js";
 import { NavLink } from "react-router-dom";
-import { validateJwt } from "../config/utilities.js";
+import { validateJwt, getJwtRole } from "../config/utilities.js";
 import { deleteStudent } from "./student/profile/studentProfileActions.js";
+import JoinProject from "./student/projectqs/JoinProject";
+import LeaveProject from "./student/projectqs/LeaveProject";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -52,6 +54,7 @@ class SimpleMenu extends Component {
 
   render() {
     const renderLoggedIn = validateJwt();
+    const loggedInRole = getJwtRole();
     const { login, logout } = this.props;
     const { anchorEl } = this.state;
 
@@ -64,7 +67,7 @@ class SimpleMenu extends Component {
         >
           <i
             className="fas fa-bars"
-            style={{ fontSize: "3rem", color: "white" }}
+            style={{ fontSize: "4rem", color: "white", margin: "30px" }}
           />
         </Button>
         <Menu
@@ -75,39 +78,356 @@ class SimpleMenu extends Component {
           onClose={this.handleClose}
           style={{ zIndex: "100000" }}
         >
-          <MenuItem onClick={this.handleClose}>
-            <NavLink to="/discover" className="TopBar-search-btn">
-              <i
-                className="fas fa-search-location"
-                style={{ fontSize: "2rem" }}
-              />
-              Discover
+          <MenuItem
+            onClick={this.handleClose}
+            style={{
+              margin: "10px auto",
+              padding: "20px"
+            }}
+          >
+            <NavLink
+              to="/discover"
+              className="TopBar-search-btn"
+              style={{
+                color: "black",
+                fontSize: "3rem",
+                margin: "15px"
+              }}
+            >
+              <div
+                style={{
+                  padding: "15px"
+                }}
+              >
+                <i
+                  className="fas fa-search-location"
+                  style={{ color: "#bb1232", fontSize: "3rem" }}
+                />
+                Discover
+              </div>
             </NavLink>
           </MenuItem>
           {!(this.state.isLoggedIn || renderLoggedIn) && (
             <div>
               <MenuItem
+                style={{
+                  margin: "10px auto",
+                  padding: "20px"
+                }}
                 onClick={() => {
                   login();
                   this.handleClose();
                 }}
               >
-                <i className="fas fa-user" style={{ fontSize: "2rem" }} />
-                Register / Sign in{" "}
+                <div
+                  style={{
+                    color: "black",
+                    fontSize: "3rem",
+                    margin: "15px"
+                  }}
+                >
+                  <i className="fas fa-user" style={{ fontSize: "3rem" }} />
+                  Register / Sign in{" "}
+                </div>
               </MenuItem>
             </div>
           )}
           {(this.state.isLoggedIn || renderLoggedIn) && (
             <MenuItem
+              style={{
+                margin: "20px",
+                padding: "15px"
+              }}
               onClick={() => {
                 logout();
                 this.handleClose();
               }}
             >
-              <i className="fas fa-sign-out-alt" style={{ fontSize: "2rem" }} />{" "}
-              Sign Out
+              <div
+                style={{
+                  color: "black",
+                  fontSize: "3rem",
+                  margin: "15px",
+                  padding: "15px 0"
+                }}
+              >
+                <i
+                  className="fas fa-sign-out-alt hamburger-menu-item"
+                  style={{
+                    color: "#bb1232",
+                    fontSize: "3rem",
+                    padding: "30px 0"
+                  }}
+                />{" "}
+                Sign Out
+              </div>
             </MenuItem>
           )}
+          {(this.state.isLoggedIn || renderLoggedIn) &&
+            loggedInRole === "student" && (
+              <div className="subNav">
+                <nav>
+                  <MenuItem
+                    style={{
+                      margin: "10px",
+                      padding: "20px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      exact
+                      to={`/student/profile/${this.props.id}`}
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "15px"
+                      }}
+                    >
+                      <i
+                        className="far fa-id-card"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Your Profile
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem
+                    style={{
+                      margin: "10px",
+                      padding: "20px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      exact
+                      to="/profile-quick-start"
+                      className="hamburger-menu-item"
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "20px"
+                      }}
+                    >
+                      <i
+                        className="fas fa-user-edit"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Edit Your Profile
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem
+                    style={{
+                      margin: "10px",
+                      padding: "20px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      exact
+                      to="/student/new-project"
+                      className="hamburger-menu-item"
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "20px"
+                      }}
+                    >
+                      <i
+                        className="fas fa-plus"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Add New Project
+                    </NavLink>
+                  </MenuItem>
+                  {this.props.location.pathname.match(
+                    /\/student\/project-view\/\d+/g
+                  ) ? (
+                    this.checkOwner(this.props.project_students) ? (
+                      <MenuItem
+                        style={{
+                          margin: "10px",
+                          padding: "20px"
+                        }}
+                        onClick={() => {
+                          this.handleClose();
+                        }}
+                      >
+                        <React.Fragment>
+                          <LeaveProject project_id={this.props.project_id} />
+                          <NavLink
+                            exact
+                            to={`/student/edit-project/${
+                              this.props.project_id
+                            }`}
+                            className="hamburger-menu-item"
+                            style={{
+                              color: "black",
+                              fontSize: "3rem",
+                              margin: "20px"
+                            }}
+                          >
+                            <i
+                              className="fas fa-edit"
+                              style={{ color: "#bb1232", fontSize: "3rem" }}
+                            />{" "}
+                            Edit Project
+                          </NavLink>
+                        </React.Fragment>
+                      </MenuItem>
+                    ) : (
+                      <MenuItem
+                        style={{
+                          margin: "10px auto",
+                          padding: "20px"
+                        }}
+                        onClick={() => {
+                          this.handleClose();
+                        }}
+                      >
+                        <JoinProject project_id={this.props.project_id} />
+                      </MenuItem>
+                    )
+                  ) : null}
+                </nav>
+              </div>
+            )}
+          {(this.state.isLoggedIn || renderLoggedIn) &&
+            loggedInRole === "staff" && (
+              <div className="subNav">
+                <nav>
+                  <MenuItem
+                    style={{
+                      margin: "10px auto",
+                      padding: "15px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      to="/admin/students-table"
+                      className="hamburger-menu-item"
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "15px"
+                      }}
+                    >
+                      <i
+                        className="fas fa-graduation-cap"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Students
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem
+                    style={{
+                      margin: "10px",
+                      padding: "15px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      to="/admin/projects-table"
+                      className="hamburger-menu-item"
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "15px"
+                      }}
+                    >
+                      <i
+                        className="fas fa-project-diagram"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Projects
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem
+                    style={{
+                      margin: "10px",
+                      padding: "15px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      to="/admin/accounts-table"
+                      className="hamburger-menu-item"
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "15px"
+                      }}
+                    >
+                      <i
+                        className="fas fa-align-left"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Accounts
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem
+                    style={{
+                      margin: "10px",
+                      padding: "15px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      to="/admin/tracks-table"
+                      className="hamburger-menu-item"
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "15px"
+                      }}
+                    >
+                      <i
+                        className="fas fa-code"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Tracks
+                    </NavLink>
+                  </MenuItem>
+                  <MenuItem
+                    style={{
+                      margin: "10px",
+                      padding: "15px"
+                    }}
+                    onClick={() => {
+                      this.handleClose();
+                    }}
+                  >
+                    <NavLink
+                      to="/admin/cohorts-table"
+                      className="hamburger-menu-item"
+                      style={{
+                        color: "black",
+                        fontSize: "3rem",
+                        margin: "15px"
+                      }}
+                    >
+                      <i
+                        className="fas fa-users"
+                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                      />{" "}
+                      Cohorts
+                    </NavLink>
+                  </MenuItem>
+                </nav>
+              </div>
+            )}
         </Menu>
       </div>
     );

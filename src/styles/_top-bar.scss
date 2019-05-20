@@ -26,7 +26,7 @@
     .TopBar-hire-lambda-logo {
       width: 200px;
       @media (max-width: 500px) {
-        width: 225px;
+        width: 250px;
       }
     }
 
@@ -154,6 +154,9 @@
     background-color: $darkcolor;
     padding: 20px 0;
     @include box-align();
+    @media (max-width: 500px) {
+      display: none;
+    }
 
     nav {
       @include box-align(flex-end, center);
