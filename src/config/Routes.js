@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import Loadable from "react-loadable";
-import LoadingComponent from '../components/loading/LoadingComponent';
+//import Loadable from "react-loadable";
+//import LoadingComponent from '../components/loading/LoadingComponent';
 
 import { handleAuth } from "../auth/authActions.js";
 // Admin Routes
