@@ -14,12 +14,25 @@ class FilterSearch extends React.Component {
     dataScience: false,
     filterDesLoc: true,
     fullStack: false,
+    hasMore: true,
     ios: false,
     location: null,
     search: "",
     uiux: false,
     within: 50
   };
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.cards) {
+      return this.props.cards.length === nextProps.cards.length ? false : true;
+    } else {
+      return true;
+    }
+  }
+
+  componentWillUpdate(nextProps) {
+    nextProps.cards.length % 8 > 0 && this.setState({ hasMore: false });
+  }
 
   componentDidMount() {
     const params = new URLSearchParams(this.props.location.search);
@@ -62,23 +75,39 @@ class FilterSearch extends React.Component {
           within: Number(params.get("within")) || 50
         },
         () => {
-          this.props
-            .getFilteredCards(this.state)
-            .then(queryString => {
-              this.props.history.push({
-                pathname: "/discover",
-                search: queryString
-              });
-            })
-            .catch(err => {
-              console.log(err);
-            });
+          this.loadMore();
         }
       );
     } else {
-      this.props.getInitialCards();
+      this.loadMore();
     }
   }
+
+  loadMore = (page = 0) => {
+    console.log("loadmore fires!");
+    if (this.state.hasMore) {
+      if (!this.props.cards) {
+        this.fetchProjects(page);
+      } else {
+        console.log("Set state fires! page:", this.state.page);
+        this.fetchProjects(page);
+      }
+    }
+  };
+
+  fetchProjects = page => {
+    return this.props
+      .getFilteredCards({ ...this.state, page })
+      .then(queryString => {
+        this.props.history.push({
+          pathname: "/discover",
+          search: queryString
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   handleChange = event => {
     const target = event.target;
@@ -89,7 +118,6 @@ class FilterSearch extends React.Component {
         [name]: value
       },
       () => {
-        console.log(target.type);
         if (target.type === "checkbox") {
           this.handleSubmit();
         }
@@ -121,17 +149,6 @@ class FilterSearch extends React.Component {
   render() {
     return (
       <div className="home">
-        <header>
-          {/* <h1>Search</h1>
-					<p>Find your next developer</p>
-					<LocationSelect
-						fieldValue={this.state.location}
-						isClearable
-						onChange={this.handleLocation}
-						styles={reactSelectStyles}
-					/> */}
-        </header>
-
         <main>
           <section className="formSection">
             <form className="search-bar" onSubmit={this.handleSubmit}>
@@ -282,7 +299,14 @@ class FilterSearch extends React.Component {
 
           <Route
             path=":search?"
-            render={props => <Results cards={this.props.cards} {...props} />}
+            render={props => (
+              <Results
+                cards={this.props.cards}
+                loadMore={this.loadMore}
+                hasMore={this.state.hasMore}
+                {...props}
+              />
+            )}
           />
         </main>
       </div>

@@ -5,6 +5,7 @@ import { backendUrl } from "../../config/urls.js";
 export const GET_FILTERED_CARDS_FAILURE = "GET_FILTERED_CARDS_FAILURE";
 export const GET_FILTERED_CARDS_START = "GET_FILTERED_CARDS_START";
 export const GET_FILTERED_CARDS_SUCCESS = "GET_FILTERED_CARDS_SUCCESS";
+export const ADD_FILTERED_CARDS_SUCCESS = "ADD_FILTERED_CARDS_SUCCESS";
 
 export const getFilteredCards = ({
   android,
@@ -14,6 +15,7 @@ export const getFilteredCards = ({
   fullStack,
   ios,
   location,
+  page,
   search,
   uiux,
   within
@@ -48,12 +50,23 @@ export const getFilteredCards = ({
   // console.log('query string', queryString);
 
   return axios
-    .get(`${backendUrl}/api/students/cards/filter${queryString}`)
+    .get(
+      `${backendUrl}/api/students/cards/filter${queryString}${
+        page > 0 ? `&offset=${page * 8}` : ""
+      }`
+    )
     .then(res => {
-      dispatch({
-        type: GET_FILTERED_CARDS_SUCCESS,
-        payload: res.data
-      });
+      if (page === 0) {
+        dispatch({
+          type: GET_FILTERED_CARDS_SUCCESS,
+          payload: res.data
+        });
+      } else {
+        dispatch({
+          type: ADD_FILTERED_CARDS_SUCCESS,
+          payload: res.data
+        });
+      }
       return queryString;
     })
     .catch(err => {
