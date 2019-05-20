@@ -34,7 +34,7 @@ class AccountDeleteModal extends React.Component {
   handleSubmit = e => {
     e.stopPropagation();
     e.preventDefault();
-    this.props.deleteAccount(this.props.value.id).then(this.handleClose);
+    this.props.deleteAccount(this.props.value.id);
   };
 
   render() {
