@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { adminLogin } from './authActions.js';
+import Loading from '../components/utils/Loading.js';
 
 class AdminLogin extends Component {
 	render() {
+		this.props.adminLogin();
 		return (
-			<div className="adminLogin">
-				<h2 className="adminLogin-text">Only an administrator account!</h2>
-				<button className="adminLogin-btn" onClick={this.props.adminLogin}>
-					Log In
-				</button>
-			</div>
+			<Loading />
 		);
 	}
 }
