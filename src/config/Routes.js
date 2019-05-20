@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import Loadable from "react-loadable";
+import LoadingComponent from '../components/loading/LoadingComponent';
 
 import { handleAuth } from "../auth/authActions.js";
 // Admin Routes
@@ -8,7 +10,6 @@ import AdminLogin from "../auth/AdminLogin.js";
 import AccountsTable from "../components/admin/accountsTable/AccountsTable";
 import CohortsTable from "../components/admin/cohortsTable/CohortsTable";
 import ProjectsTable from "../components/admin/projectsTable/ProjectsTable";
-import StudentProfile from "../components/student/profile/StudentProfile";
 import StudentsTable from "../components/admin/studentsTable/StudentsTable";
 import TracksTable from "../components/admin/tracksTable/TracksTable";
 // Auth Routes
@@ -20,11 +21,22 @@ import FilterSearch from '../components/FilterSearch/FilterSearch';
 import Home from '../components/home/Home.js';
 import NoMatch from '../components/404/NoMatch';
 import PrivacyPolicy from '../components/legal/PrivacyPolicy';
+import StudentProfile from "../components/student/profile/StudentProfile";
 import TermsOfUse from '../components/legal/TermsOfUse';
 // Student Routes
 import Projectqs from "../components/student/projectqs/Projectqs";
 import ProjectView from "../components/student/projects/ProjectView";
 import Profileqs from "../components/student/profileqs/Profileqs";
+
+// const StudentProfile = Loadable({
+//   loader: () => import("../components/student/profile/StudentProfile"),
+//   loading: LoadingComponent
+// })
+
+// const ProjectView = Loadable({
+//   loader: () => import("../components/student/projects/ProjectView"),
+//   loading: LoadingComponent
+// })
 
 class Routes extends Component {
   handleAuth = ({ location }) => {
