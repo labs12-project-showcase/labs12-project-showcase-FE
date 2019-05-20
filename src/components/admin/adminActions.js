@@ -207,7 +207,8 @@ export const ADMIN_FETCHED_TRACKS_FAILURE = "ADMIN_FETCHED_TRACKS_FAILURE";
 export const getTracks = () => dispatch => {
   dispatch({ type: ADMIN_FETCHED_TRACKS_START });
   axiosAuth()
-    .get(`${backendUrl}/api/admin/tracks`)
+    // .get(`http://localhost:5000/api/admin/tracks/`)
+    .get(`${backendUrl}/api/admin/tracks/`)
     .then(res => {
       dispatch({
         type: ADMIN_FETCHED_TRACKS_SUCCESS,
@@ -227,17 +228,20 @@ export const ADMIN_ADDED_TRACK_FAILURE = "ADMIN_ADDED_TRACK_FAILURE";
 
 export const addTrack = info => dispatch => {
   dispatch({ type: ADMIN_ADDED_TRACK_START });
-  return axiosAuth()
-    .post(`${backendUrl}/api/admin/tracks`, info)
-    .then(res => {
-      dispatch({
-        type: ADMIN_ADDED_TRACK_SUCCESS,
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      dispatch({ type: ADMIN_ADDED_TRACK_FAILURE, payload: err });
-    });
+  return (
+    axiosAuth()
+      // .post(`http://localhost:5000/api/admin/tracks/`, info)
+      .post(`${backendUrl}/api/admin/tracks/`, info)
+      .then(res => {
+        dispatch({
+          type: ADMIN_ADDED_TRACK_SUCCESS,
+          payload: res.data
+        });
+      })
+      .catch(err => {
+        dispatch({ type: ADMIN_ADDED_TRACK_FAILURE, payload: err });
+      })
+  );
 };
 
 //****UPDATED TRACKS**** */
@@ -269,17 +273,20 @@ export const ADMIN_DELETED_TRACK_FAILURE = "ADMIN_DELETED_TRACK_FAILURE";
 
 export const deleteTrack = id => dispatch => {
   dispatch({ type: ADMIN_DELETED_TRACK_START });
-  return axiosAuth()
-    .delete(`${backendUrl}/api/admin/tracks/${id}`)
-    .then(res => {
-      dispatch({
-        type: ADMIN_DELETED_TRACK_SUCCESS,
-        payload: { id }
-      });
-    })
-    .catch(err => {
-      dispatch({ type: ADMIN_DELETED_TRACK_FAILURE, payload: err });
-    });
+  return (
+    axiosAuth()
+      // .delete(`http://localhost:5000/api/admin/tracks/${id}`)
+      .delete(`${backendUrl}/api/admin/tracks/${id}`)
+      .then(res => {
+        dispatch({
+          type: ADMIN_DELETED_TRACK_SUCCESS,
+          payload: { id }
+        });
+      })
+      .catch(err => {
+        dispatch({ type: ADMIN_DELETED_TRACK_FAILURE, payload: err });
+      })
+  );
 };
 
 //******************************ACCOUNTS TABLE ACTIONS + ACTION TYPES************************** */
