@@ -11,6 +11,7 @@ import ProjectLinkButton from './ProjectLinkButton';
 import ProjectStudents from './ProjectStudents';
 //import ProjectPitches from "./ProjectPitches";
 import ProjectLeftHeader from './ProjectLeftHeader';
+import Loading from '../../utils/Loading.js';
 
 const ProjectView = ({
 	project: { projectData },
@@ -25,6 +26,9 @@ const ProjectView = ({
 
 	if (projectData.emptyReturn) {
 		return <Redirect to="/404" />
+	}
+	if (projectData.id !== Number(id)) {
+		return <Loading />
 	}
 	return (
 		<div className="project-view">
