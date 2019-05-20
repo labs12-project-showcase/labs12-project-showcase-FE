@@ -189,7 +189,7 @@ export const FormSchema = ({
           }
         }))
       );
-    } 
+    }
     // else {
     //   setDesiredLocations([]);
     // }
@@ -333,6 +333,7 @@ export const FormSchema = ({
           render={({ field, form }) => (
             <>
               <LocationSelect
+                isClearable
                 fieldValue={currentLocation}
                 name={field.name}
                 onBlur={field.onBlur}

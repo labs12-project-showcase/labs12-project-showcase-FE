@@ -66,8 +66,6 @@ export const handleAuth = () => dispatch => {
     .post(`${backendUrl}/api/auth/login`, send)
     .then(resLogin => {
 
-      console.log('login stuff from the backend', resLogin);
-
       localStorage.setItem('backendToken', resLogin.data);
 
       if (whichRole === 2) {
@@ -83,9 +81,9 @@ export const handleAuth = () => dispatch => {
             }
           }
           dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
-          if (resLogin.status === 200) {
+          if (resGetProf.data.exists) {
             history.replace(`/student/profile/${resGetProf.data.id}`);
-          } else if (resLogin.status === 201) {
+          } else {
             history.replace('/profile-quick-start');
           }
         })

@@ -24,7 +24,7 @@ const JoinProject = ({ dispatch, student_id, project_id }) => {
   };
   return (
     <Link to="#" onClick={join}>
-      <i className="fas fa-arrow-right" />
+      <i className="fas fa-arrow-right join-project-button" />
       Join Project
     </Link>
   );

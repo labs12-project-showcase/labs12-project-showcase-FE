@@ -9,6 +9,7 @@ import { deleteStudent } from "./student/profile/studentProfileActions.js";
 import JoinProject from "./student/projectqs/JoinProject";
 import LeaveProject from "./student/projectqs/LeaveProject";
 import whiteLambdaLogo from "../assets/Hire-lambda-logo-white.png";
+import SimpleMenu from "./SimpleMenu";
 
 class TopBar extends Component {
   state = {
@@ -56,19 +57,25 @@ class TopBar extends Component {
             />
           </NavLink>
           <div className="TopBar-btn-container">
+            <NavLink to="/discover" className="TopBar-search-btn">
+              <strong>Discover</strong> <i className="fas fa-search-location" />
+            </NavLink>
+            {/* <button className="TopBar-search-btn" onClick={() => this.props.history.push('/discover')}>Discover <i className="fas fa-search-location" /></button> */}
             {!(this.state.isLoggedIn || renderLoggedIn) && (
               <>
                 <button className="TopBar-login-btn" onClick={login}>
-                  Register / Sign in <i className="fas fa-user" />
+                  <strong>Register / Sign in</strong>{" "}
+                  <i className="fas fa-user" />
                 </button>
               </>
             )}
             {(this.state.isLoggedIn || renderLoggedIn) && (
               <button className="TopBar-logout-btn" onClick={logout}>
-                Sign Out <i className="fas fa-sign-out-alt" />
+                <strong>Sign Out</strong> <i className="fas fa-sign-out-alt" />
               </button>
             )}
           </div>
+          <SimpleMenu isLoggedIn={this.state.isLoggedIn} />
         </div>
         {(this.state.isLoggedIn || renderLoggedIn) &&
           loggedInRole === "student" && (

@@ -8,12 +8,7 @@ import LocationSelect from "../location/LocationSelect";
 import { reactSelectStyles } from "../../styles/ReactSelectStyles";
 import "mapbox-gl/src/css/mapbox-gl.css";
 
-// const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
-
-const newtoken =
-  "pk.eyJ1IjoidGljb3RoZXBzIiwiYSI6ImNqdnBlZDM2bjB4ODE0OXFrNXpzbWh0ZXEifQ.vBNSTUmy4Xk7NbkBY3Kuwg";
-
-const MAPBOX_TOKEN = newtoken;
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 class MapboxMapPresentational extends React.Component {
   constructor(props) {
@@ -22,9 +17,9 @@ class MapboxMapPresentational extends React.Component {
       viewport: {
         width: "100vw",
         height: "100vh",
-        latitude: 39.788260590328576,
+        latitude: 30.788260590328576,
         longitude: -97.77255674948162,
-        zoom: 4,
+        zoom: 3.5,
         bearing: 0,
         pitch: 0
       },
@@ -98,6 +93,7 @@ class MapboxMapPresentational extends React.Component {
               styles={reactSelectStyles}
               onChange={this.handleChange}
               fieldValue={this.state.location}
+              placeholder="Type a U.S. city to search..."
             />
             <button type="submit">
               Start here <i className="fas fa-arrow-alt-circle-right" />

@@ -19,6 +19,8 @@ import ContactForm from '../components/student/contactForm/ContactForm';
 import FilterSearch from '../components/FilterSearch/FilterSearch';
 import Home from '../components/home/Home.js';
 import NoMatch from '../components/404/NoMatch';
+import PrivacyPolicy from '../components/legal/PrivacyPolicy';
+import TermsOfUse from '../components/legal/TermsOfUse';
 // Student Routes
 import Projectqs from "../components/student/projectqs/Projectqs";
 import ProjectView from "../components/student/projects/ProjectView";
@@ -75,7 +77,10 @@ class Routes extends Component {
           />
           <Route path="/student/project-view/:id" component={ProjectView} />
           <Route path="/404" component={NoMatch} />
-          {/* No Match */}
+          
+          {/* Misc */}
+          <Route path="/privacy" component={PrivacyPolicy} />
+          <Route path="/terms" component={TermsOfUse} />
           <Route component={NoMatch} />
         </Switch>
       </>

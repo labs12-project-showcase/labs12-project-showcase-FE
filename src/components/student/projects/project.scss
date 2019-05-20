@@ -1,7 +1,6 @@
 .project-view {
   .subNav {
     padding: 10px 0;
-
     .NavLinks-container {
       display: flex;
       flex-direction: row;
@@ -23,9 +22,17 @@
           cursor: pointer;
         }
 
-        .fa-arrow-left {
+        .fa-arrow-left,
+        .fa-arrow-right {
           font-size: 2rem;
           color: $lightcolor;
+        }
+
+        .join-project-button {
+          @media (max-width: 500px) {
+            color: #bb1232;
+            font-size: 3rem;
+          }
         }
       }
 
@@ -129,6 +136,9 @@
         overflow: hidden;
         img {
           width: 100%;
+          &.placeholder {
+            border: 1px solid #e8e8e8;
+          }
         }
       }
       .gallery-caption {
@@ -225,6 +235,7 @@
       }
 
       .project-urls-container {
+        width: 100%;
         min-height: 100px;
         @include box-align();
 
