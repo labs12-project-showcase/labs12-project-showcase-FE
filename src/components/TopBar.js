@@ -9,7 +9,7 @@ import { deleteStudent } from "./student/profile/studentProfileActions.js";
 import JoinProject from "./student/projectqs/JoinProject";
 import LeaveProject from "./student/projectqs/LeaveProject";
 import whiteLambdaLogo from "../assets/Hire-lambda-logo-white.png";
-import SimpleMenu from "./SimpleMenu";
+import MobileMenuButton from "./MobileMenuButton";
 
 class TopBar extends Component {
   state = {
@@ -75,7 +75,7 @@ class TopBar extends Component {
               </button>
             )}
           </div>
-          <SimpleMenu isLoggedIn={this.state.isLoggedIn} />
+          <MobileMenuButton isLoggedIn={this.state.isLoggedIn} />
         </div>
         {(this.state.isLoggedIn || renderLoggedIn) &&
           loggedInRole === "student" && (

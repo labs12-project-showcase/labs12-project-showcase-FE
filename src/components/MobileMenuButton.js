@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-class SimpleMenu extends Component {
+class MobileMenuButton extends Component {
   state = {
     anchorEl: null,
     isLoggedIn: this.props.isLoggedIn
@@ -490,5 +490,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     { login, logout, adminLogin, deleteStudent }
-  )(SimpleMenu)
+  )(MobileMenuButton)
 );
