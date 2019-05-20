@@ -23,6 +23,7 @@ import NoMatch from '../components/404/NoMatch';
 import PrivacyPolicy from '../components/legal/PrivacyPolicy';
 import StudentProfile from "../components/student/profile/StudentProfile";
 import TermsOfUse from '../components/legal/TermsOfUse';
+import Loading from '../components/utils/Loading.js';
 // Student Routes
 import Projectqs from "../components/student/projectqs/Projectqs";
 import ProjectView from "../components/student/projects/ProjectView";
@@ -93,6 +94,7 @@ class Routes extends Component {
           {/* Misc */}
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/terms" component={TermsOfUse} />
+          <Route path="/loading" component={Loading} />
           <Route component={NoMatch} />
         </Switch>
       </>
