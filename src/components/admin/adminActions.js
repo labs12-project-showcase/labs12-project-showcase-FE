@@ -3,7 +3,7 @@ import { backendUrl } from "../../config/urls.js";
 
 //******************************PROJECTS TABLE ACTIONS************************** */
 
-//****FETCHED PROJECTS**** */
+//****FETCH PROJECTS**** */
 
 export const ADMIN_FETCHED_PROJECTS_START = "ADMIN_FETCHED_PROJECTS_START";
 export const ADMIN_FETCHED_PROJECTS_SUCCESS = "ADMIN_FETCHED_PROJECTS_SUCCESS";
@@ -24,7 +24,7 @@ export const fetchProjects = () => dispatch => {
     });
 };
 
-//****UPDATED PROJECTS**** */
+//****UPDATE PROJECT**** */
 
 export const ADMIN_UPDATED_PROJECT_START = "ADMIN_UPDATED_PROJECT_START";
 export const ADMIN_UPDATED_PROJECT_SUCCESS = "ADMIN_UPDATED_PROJECT_SUCCESS";
@@ -42,6 +42,27 @@ export const updateProject = (id, info) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: ADMIN_UPDATED_PROJECT_FAILURE, payload: err });
+    });
+};
+
+//****DELETE PROJECT**** */
+
+export const ADMIN_DELETED_PROJECT_START = "ADMIN_DELETED_PROJECT_START";
+export const ADMIN_DELETED_PROJECT_SUCCESS = "ADMIN_DELETED_PROJECT_SUCCESS";
+export const ADMIN_DELETED_PROJECT_FAILURE = "ADMIN_DELETED_PROJECT_FAILURE";
+
+export const deleteProject = id => dispatch => {
+  dispatch({ type: ADMIN_DELETED_PROJECT_START });
+  return axiosAuth()
+    .delete(`${backendUrl}/api/admin/projects/${id}`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_DELETED_PROJECT_SUCCESS,
+        payload: { id }
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_DELETED_PROJECT_FAILURE, payload: err });
     });
 };
 
@@ -186,7 +207,8 @@ export const ADMIN_FETCHED_TRACKS_FAILURE = "ADMIN_FETCHED_TRACKS_FAILURE";
 export const getTracks = () => dispatch => {
   dispatch({ type: ADMIN_FETCHED_TRACKS_START });
   axiosAuth()
-    .get(`${backendUrl}/api/admin/tracks`)
+    // .get(`http://localhost:5000/api/admin/tracks/`)
+    .get(`${backendUrl}/api/admin/tracks/`)
     .then(res => {
       dispatch({
         type: ADMIN_FETCHED_TRACKS_SUCCESS,
@@ -206,17 +228,20 @@ export const ADMIN_ADDED_TRACK_FAILURE = "ADMIN_ADDED_TRACK_FAILURE";
 
 export const addTrack = info => dispatch => {
   dispatch({ type: ADMIN_ADDED_TRACK_START });
-  return axiosAuth()
-    .post(`${backendUrl}/api/admin/tracks`, info)
-    .then(res => {
-      dispatch({
-        type: ADMIN_ADDED_TRACK_SUCCESS,
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      dispatch({ type: ADMIN_ADDED_TRACK_FAILURE, payload: err });
-    });
+  return (
+    axiosAuth()
+      // .post(`http://localhost:5000/api/admin/tracks/`, info)
+      .post(`${backendUrl}/api/admin/tracks/`, info)
+      .then(res => {
+        dispatch({
+          type: ADMIN_ADDED_TRACK_SUCCESS,
+          payload: res.data
+        });
+      })
+      .catch(err => {
+        dispatch({ type: ADMIN_ADDED_TRACK_FAILURE, payload: err });
+      })
+  );
 };
 
 //****UPDATED TRACKS**** */
