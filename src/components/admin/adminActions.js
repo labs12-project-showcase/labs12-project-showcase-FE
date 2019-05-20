@@ -273,20 +273,17 @@ export const ADMIN_DELETED_TRACK_FAILURE = "ADMIN_DELETED_TRACK_FAILURE";
 
 export const deleteTrack = id => dispatch => {
   dispatch({ type: ADMIN_DELETED_TRACK_START });
-  return (
-    axiosAuth()
-      // .delete(`http://localhost:5000/api/admin/tracks/${id}`)
-      .delete(`${backendUrl}/api/admin/tracks/${id}`)
-      .then(res => {
-        dispatch({
-          type: ADMIN_DELETED_TRACK_SUCCESS,
-          payload: { id }
-        });
-      })
-      .catch(err => {
-        dispatch({ type: ADMIN_DELETED_TRACK_FAILURE, payload: err });
-      })
-  );
+  return axiosAuth()
+    .delete(`${backendUrl}/api/admin/tracks/${id}`)
+    .then(res => {
+      dispatch({
+        type: ADMIN_DELETED_TRACK_SUCCESS,
+        payload: { id }
+      });
+    })
+    .catch(err => {
+      dispatch({ type: ADMIN_DELETED_TRACK_FAILURE, payload: err });
+    });
 };
 
 //******************************ACCOUNTS TABLE ACTIONS + ACTION TYPES************************** */

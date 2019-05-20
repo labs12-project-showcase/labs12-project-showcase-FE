@@ -34,7 +34,7 @@ class CohortDeleteModal extends React.Component {
   handleSubmit = e => {
     e.stopPropagation();
     e.preventDefault();
-    this.props.deleteCohort(this.props.value.id).then(this.handleClose);
+    this.props.deleteCohort(this.props.value.id);
   };
 
   render() {
