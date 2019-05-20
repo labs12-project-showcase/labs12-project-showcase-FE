@@ -28,7 +28,7 @@ class SimpleMenu extends React.Component {
         >
           <i
             className="fas fa-bars"
-            style={{ fontSize: "3rem", color: "white" }}
+            style={{ fontSize: "4rem", color: "white" }}
           />
         </Button>
         <Menu

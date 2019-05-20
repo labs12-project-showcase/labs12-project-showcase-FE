@@ -74,8 +74,8 @@ class TopBar extends Component {
                 <strong>Sign Out</strong> <i className="fas fa-sign-out-alt" />
               </button>
             )}
-            <SimpleMenu isLoggedIn={this.state.isLoggedIn} />
           </div>
+          <SimpleMenu isLoggedIn={this.state.isLoggedIn} />
         </div>
         {(this.state.isLoggedIn || renderLoggedIn) &&
           loggedInRole === "student" && (

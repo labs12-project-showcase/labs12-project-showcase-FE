@@ -20,7 +20,7 @@
     justify-content: space-between;
     margin: 5px 0;
     @media (max-width: 500px) {
-      flex-direction: column;
+      flex-direction: row;
     }
 
     .TopBar-hire-lambda-logo {
@@ -48,6 +48,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      @media (max-width: 500px) {
+        display: none;
+      }
 
       .TopBar-search-btn {
         font-size: 1.4rem;
@@ -59,9 +62,9 @@
         @include box-align();
         transition-duration: 0.3s;
 
-        @media (max-width: 500px) {
-          flex-direction: column;
-        }
+        // @media (max-width: 500px) {
+        //   flex-direction: column;
+        // }
 
         i {
           font-size: 1.6rem;
@@ -136,13 +139,13 @@
           background: darken(($lambdaRed), 10%);
         }
       }
+    }
+    .simple-menu-container {
+      display: none;
 
-      .simple-menu-container {
-        display: none;
-
-        @media (max-width: 500px) {
-          display: inline-block;
-        }
+      @media (max-width: 500px) {
+        display: inline-block;
+        margin: 0 25px;
       }
     }
   }
