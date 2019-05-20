@@ -1,8 +1,13 @@
 import React from "react";
+import InfiniteScroll from "react-infinite-scroller";
+
 import Cards from "./Cards";
 
 class Results extends React.Component {
   render() {
+    if (!this.props.cards) {
+      return null;
+    }
     return (
       <div className="cards-display">
         <hr className="hrTop" />
@@ -12,12 +17,16 @@ class Results extends React.Component {
           <h2>Featured Alumni</h2>
         )}
         <React.Fragment>
-          {this.props.cards.map((cards, index) => (
-            <Cards {...this.props} cards={cards} key={index} />
-          ))}
-          <button className="btn-show-more">
-            Show More <i className="fas fa-chevron-down" />
-          </button>
+          <InfiniteScroll
+            initialLoad={false}
+            pageStart={0}
+            loadMore={this.props.loadMore}
+            hasMore={this.props.hasMore}
+          >
+            {this.props.cards.map((cards, index) => (
+              <Cards {...this.props} cards={cards} key={index} />
+            ))}
+          </InfiniteScroll>
         </React.Fragment>
       </div>
     );

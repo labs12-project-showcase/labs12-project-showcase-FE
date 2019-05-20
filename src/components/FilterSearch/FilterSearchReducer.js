@@ -2,6 +2,7 @@ import {
   GET_FILTERED_CARDS_FAILURE,
   GET_FILTERED_CARDS_START,
   GET_FILTERED_CARDS_SUCCESS,
+  ADD_FILTERED_CARDS_SUCCESS,
   GET_INITIAL_CARDS_FAILURE,
   GET_INITIAL_CARDS_START,
   GET_INITIAL_CARDS_SUCCESS
@@ -24,6 +25,13 @@ const FilterSearchReducer = (state = initialState, action) => {
       return {
         ...state,
         cards: action.payload,
+        error: null,
+        isFetchingCards: false
+      };
+    case ADD_FILTERED_CARDS_SUCCESS:
+      return {
+        ...state,
+        cards: [...state.cards, ...action.payload],
         error: null,
         isFetchingCards: false
       };

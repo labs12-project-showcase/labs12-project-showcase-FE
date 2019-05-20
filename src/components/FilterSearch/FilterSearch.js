@@ -14,12 +14,24 @@ class FilterSearch extends React.Component {
     dataScience: false,
     filterDesLoc: true,
     fullStack: false,
+    hasMore: true,
     ios: false,
     location: null,
+    page: 0,
     search: "",
     uiux: false,
     within: 50
   };
+
+  componentWillUpdate(nextProps) {
+    if (this.state.hasMore === true) {
+      nextProps.cards.length % 8 > 0 &&
+        this.setState({ hasMore: false }, () => {});
+    } else if (this.state.hasMore === false) {
+      nextProps.cards.length % 8 === 0 &&
+        this.setState({ hasMore: true }, () => {});
+    }
+  }
 
   componentDidMount() {
     const params = new URLSearchParams(this.props.location.search);
@@ -62,23 +74,41 @@ class FilterSearch extends React.Component {
           within: Number(params.get("within")) || 50
         },
         () => {
-          this.props
-            .getFilteredCards(this.state)
-            .then(queryString => {
-              this.props.history.push({
-                pathname: "/discover",
-                search: queryString
-              });
-            })
-            .catch(err => {
-              console.log(err);
-            });
+          this.handleSubmit();
         }
       );
     } else {
-      this.props.getInitialCards();
+      this.handleSubmit();
     }
   }
+
+  loadMore = () => {
+    if (this.state.hasMore) {
+      this.fetchProjects();
+    }
+  };
+
+  fetchProjects = () => {
+    return this.props
+      .getFilteredCards({ ...this.state })
+      .then(({ queryString, results }) => {
+        this.props.history.push({
+          pathname: "/discover",
+          search: queryString
+        });
+        if (results.length === 0) {
+          this.setState(prevState => ({
+            page: prevState.page + 1,
+            hasMore: false
+          }));
+        } else {
+          this.setState(prevState => ({ page: prevState.page + 1 }));
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   handleChange = event => {
     const target = event.target;
@@ -89,7 +119,6 @@ class FilterSearch extends React.Component {
         [name]: value
       },
       () => {
-        console.log(target.type);
         if (target.type === "checkbox") {
           this.handleSubmit();
         }
@@ -106,12 +135,18 @@ class FilterSearch extends React.Component {
   handleSubmit = event => {
     event && event.preventDefault();
     this.props
-      .getFilteredCards(this.state)
-      .then(queryString => {
+      .getFilteredCards({ ...this.state, page: 0 })
+      .then(({ queryString, results }) => {
         this.props.history.push({
           pathname: "/discover",
           search: queryString
         });
+        if (results.length === 0) {
+          this.setState(prevState => ({ page: 0, hasMore: false }));
+        } else {
+          this.setState(prevState => ({ page: 0 }));
+        }
+        window.scrollTo(0, 0);
       })
       .catch(err => {
         console.log(err);
@@ -120,18 +155,7 @@ class FilterSearch extends React.Component {
 
   render() {
     return (
-      <div className="home">
-        <header>
-          {/* <h1>Search</h1>
-					<p>Find your next developer</p>
-					<LocationSelect
-						fieldValue={this.state.location}
-						isClearable
-						onChange={this.handleLocation}
-						styles={reactSelectStyles}
-					/> */}
-        </header>
-
+      <div className="search-page">
         <main>
           <section className="formSection">
             <form className="search-bar" onSubmit={this.handleSubmit}>
@@ -227,6 +251,7 @@ class FilterSearch extends React.Component {
                     Located within
                     <input
                       type="number"
+                      step="10"
                       size="3"
                       placeholder="50"
                       name="within"
@@ -282,7 +307,14 @@ class FilterSearch extends React.Component {
 
           <Route
             path=":search?"
-            render={props => <Results cards={this.props.cards} {...props} />}
+            render={props => (
+              <Results
+                cards={this.props.cards}
+                loadMore={this.loadMore}
+                hasMore={this.state.hasMore}
+                {...props}
+              />
+            )}
           />
         </main>
       </div>
