@@ -126,8 +126,11 @@ class SimpleMenu extends Component {
                     margin: "15px"
                   }}
                 >
-                  <i className="fas fa-user" style={{ fontSize: "3rem" }} />
-                  Register / Sign in{" "}
+                  <i
+                    className="fas fa-user"
+                    style={{ color: "#bb1232", fontSize: "3rem" }}
+                  />
+                  Register / Sign In{" "}
                 </div>
               </MenuItem>
             </div>
@@ -136,7 +139,7 @@ class SimpleMenu extends Component {
             <MenuItem
               style={{
                 margin: "20px",
-                padding: "15px"
+                padding: "20px"
               }}
               onClick={() => {
                 logout();
@@ -148,7 +151,7 @@ class SimpleMenu extends Component {
                   color: "black",
                   fontSize: "3rem",
                   margin: "15px",
-                  padding: "15px 0"
+                  padding: "20px 0"
                 }}
               >
                 <i
@@ -248,17 +251,38 @@ class SimpleMenu extends Component {
                     /\/student\/project-view\/\d+/g
                   ) ? (
                     this.checkOwner(this.props.project_students) ? (
-                      <MenuItem
-                        style={{
-                          margin: "10px",
-                          padding: "20px"
-                        }}
-                        onClick={() => {
-                          this.handleClose();
-                        }}
-                      >
-                        <React.Fragment>
-                          <LeaveProject project_id={this.props.project_id} />
+                      <div>
+                        <MenuItem
+                          style={{
+                            margin: "10px",
+                            padding: "20px",
+                            color: "black"
+                          }}
+                          onClick={() => {
+                            this.handleClose();
+                          }}
+                        >
+                          <NavLink
+                            exact
+                            to={`/student/edit-project/${
+                              this.props.project_id
+                            }`}
+                            style={{
+                              color: "black",
+                              fontSize: "3rem",
+                              margin: "20px"
+                            }}
+                          >
+                            <i style={{ color: "#bb1232", fontSize: "3rem" }} />{" "}
+                            <LeaveProject project_id={this.props.project_id} />
+                          </NavLink>
+                        </MenuItem>
+                        <MenuItem
+                          style={{
+                            margin: "10px",
+                            padding: "20px"
+                          }}
+                        >
                           <NavLink
                             exact
                             to={`/student/edit-project/${
@@ -277,8 +301,8 @@ class SimpleMenu extends Component {
                             />{" "}
                             Edit Project
                           </NavLink>
-                        </React.Fragment>
-                      </MenuItem>
+                        </MenuItem>
+                      </div>
                     ) : (
                       <MenuItem
                         style={{
@@ -289,6 +313,7 @@ class SimpleMenu extends Component {
                           this.handleClose();
                         }}
                       >
+                        <i style={{ color: "#bb1232", fontSize: "3rem" }} />{" "}
                         <JoinProject project_id={this.props.project_id} />
                       </MenuItem>
                     )
@@ -303,7 +328,7 @@ class SimpleMenu extends Component {
                   <MenuItem
                     style={{
                       margin: "10px auto",
-                      padding: "15px"
+                      padding: "20px"
                     }}
                     onClick={() => {
                       this.handleClose();
@@ -315,12 +340,16 @@ class SimpleMenu extends Component {
                       style={{
                         color: "black",
                         fontSize: "3rem",
-                        margin: "15px"
+                        padding: "15px"
                       }}
                     >
                       <i
                         className="fas fa-graduation-cap"
-                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                        style={{
+                          color: "#bb1232",
+                          fontSize: "3rem",
+                          margin: "10px"
+                        }}
                       />{" "}
                       Students
                     </NavLink>
@@ -328,7 +357,7 @@ class SimpleMenu extends Component {
                   <MenuItem
                     style={{
                       margin: "10px",
-                      padding: "15px"
+                      padding: "20px"
                     }}
                     onClick={() => {
                       this.handleClose();
@@ -340,12 +369,16 @@ class SimpleMenu extends Component {
                       style={{
                         color: "black",
                         fontSize: "3rem",
-                        margin: "15px"
+                        padding: "15px"
                       }}
                     >
                       <i
                         className="fas fa-project-diagram"
-                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                        style={{
+                          color: "#bb1232",
+                          fontSize: "3rem",
+                          margin: "10px"
+                        }}
                       />{" "}
                       Projects
                     </NavLink>
@@ -353,7 +386,7 @@ class SimpleMenu extends Component {
                   <MenuItem
                     style={{
                       margin: "10px",
-                      padding: "15px"
+                      padding: "20px"
                     }}
                     onClick={() => {
                       this.handleClose();
@@ -365,12 +398,16 @@ class SimpleMenu extends Component {
                       style={{
                         color: "black",
                         fontSize: "3rem",
-                        margin: "15px"
+                        padding: "15px"
                       }}
                     >
                       <i
                         className="fas fa-align-left"
-                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                        style={{
+                          color: "#bb1232",
+                          fontSize: "3rem",
+                          margin: "10px"
+                        }}
                       />{" "}
                       Accounts
                     </NavLink>
@@ -378,7 +415,7 @@ class SimpleMenu extends Component {
                   <MenuItem
                     style={{
                       margin: "10px",
-                      padding: "15px"
+                      padding: "20px"
                     }}
                     onClick={() => {
                       this.handleClose();
@@ -390,12 +427,16 @@ class SimpleMenu extends Component {
                       style={{
                         color: "black",
                         fontSize: "3rem",
-                        margin: "15px"
+                        padding: "15px"
                       }}
                     >
                       <i
                         className="fas fa-code"
-                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                        style={{
+                          color: "#bb1232",
+                          fontSize: "3rem",
+                          margin: "10px"
+                        }}
                       />{" "}
                       Tracks
                     </NavLink>
@@ -403,7 +444,7 @@ class SimpleMenu extends Component {
                   <MenuItem
                     style={{
                       margin: "10px",
-                      padding: "15px"
+                      padding: "20px"
                     }}
                     onClick={() => {
                       this.handleClose();
@@ -415,12 +456,15 @@ class SimpleMenu extends Component {
                       style={{
                         color: "black",
                         fontSize: "3rem",
-                        margin: "15px"
+                        padding: "15px"
                       }}
                     >
                       <i
                         className="fas fa-users"
-                        style={{ color: "#bb1232", fontSize: "3rem" }}
+                        style={{
+                          color: "#bb1232",
+                          fontSize: "3rem"
+                        }}
                       />{" "}
                       Cohorts
                     </NavLink>
