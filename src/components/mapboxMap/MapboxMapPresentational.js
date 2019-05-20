@@ -30,7 +30,7 @@ class MapboxMapPresentational extends React.Component {
       location: null,
       students: this.props.mapData,
       term: "",
-      words: ["Engineers__", "Candidates__", "Designers__", "Developers__"]
+      words: ["Engineers", "Candidates", "Designers", "Developers"]
     };
   }
 
@@ -49,12 +49,12 @@ class MapboxMapPresentational extends React.Component {
           },
           () => {
             curChar = curChar + 1;
-            if (curChar === curWord.length - 1) {
+            if (curChar === curWord.length) {
               forward = false;
             }
           }
         );
-      } else if (curChar < curWord.length && !forward) {
+      } else if (curChar <= curWord.length && !forward) {
         this.setState(
           {
             term: curWord.slice(0, curChar)
