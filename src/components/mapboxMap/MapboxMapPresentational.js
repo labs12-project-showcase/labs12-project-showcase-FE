@@ -1,112 +1,168 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import { render } from "react-dom";
-import ReactMapGL, { Marker } from "react-map-gl";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { render } from 'react-dom';
+import ReactMapGL, { Marker } from 'react-map-gl';
 
-import StudentPin from "./student-pin";
-import LocationSelect from "../location/LocationSelect";
-import { reactSelectStyles } from "../../styles/ReactSelectStyles";
-import "mapbox-gl/src/css/mapbox-gl.css";
+import StudentPin from './student-pin';
+import LocationSelect from '../location/LocationSelect';
+import { reactSelectStyles } from '../../styles/ReactSelectStyles';
+import 'mapbox-gl/src/css/mapbox-gl.css';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 class MapboxMapPresentational extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewport: {
-        width: "100vw",
-        height: "100vh",
-        latitude: 30.788260590328576,
-        longitude: -97.77255674948162,
-        zoom: 3.5,
-        bearing: 0,
-        pitch: 0
-      },
-      popupInfo: null,
-      location: null,
-      students: this.props.mapData
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			viewport: {
+				width: '100vw',
+				height: '100vh',
+				latitude: 30.788260590328576,
+				longitude: -97.77255674948162,
+				zoom: 3.5,
+				bearing: 0,
+				pitch: 0
+			},
+			popupInfo: null,
+			location: null,
+			students: this.props.mapData,
+			term: '',
+			words: [
+				'Engineers',
+				'UX Designers',
+				'UI Developers',
+				'iOS Developers',
+				'Android Developers',
+				'Data Science'
+			]
+		};
+	}
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.mapData !== this.props.mapData) {
-      this.setState({ students: this.props.mapData });
-    }
-  }
+	componentDidMount() {
+		const { words } = this.state;
+		let index = 0;
+		let curWord = words[index];
+		let curChar = 0;
+		let forward = true;
 
-  _updateViewport = viewport => {
-    this.setState({ viewport });
-  };
+		this.interval = setInterval(() => {
+			if (curChar < curWord.length && forward) {
+				this.setState(
+					{
+						term: curWord.slice(0, curChar)
+					},
+					() => {
+						curChar = curChar + 1;
+						if (curChar === curWord.length) {
+							forward = false;
+						}
+					}
+				);
+			} else if (curChar <= curWord.length && !forward) {
+				this.setState(
+					{
+						term: curWord.slice(0, curChar)
+					},
+					() => {
+						if (curChar > 0) {
+							curChar = curChar - 1;
+						}
+						if (curChar === 0) {
+							curChar = 0;
+							forward = true;
+							if (index === words.length - 1) {
+								index = 0;
+								curWord = words[index];
+							} else {
+								index = index + 1;
+								curWord = words[index];
+							}
+						}
+					}
+				);
+			}
+		}, 160);
+	}
 
-  _renderStudentMarker = (student, index) => {
-    return (
-      <Marker
-        key={`marker-${index}`}
-        longitude={parseFloat(student.longitude)}
-        latitude={parseFloat(student.latitude)}
-      >
-        <StudentPin
-          size={20}
-          onClick={() => this.setState({ popupInfo: student })}
-        />
-      </Marker>
-    );
-  };
+	componentWillUnmount() {
+		clearInterval(this.interval);
+	}
 
-  handleChange = location => {
-    this.setState({ location });
-  };
+	componentDidUpdate(prevProps) {
+		if (prevProps.mapData !== this.props.mapData) {
+			this.setState({ students: this.props.mapData });
+		}
+	}
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.history.push(
-      `/discover?lat=${this.state.location.value.lat}&lon=${
-        this.state.location.value.lon
-      }&location=${encodeURIComponent(this.state.location.label)}&within=50`
-    );
-  };
+	_updateViewport = viewport => {
+		this.setState({ viewport });
+	};
 
-  render() {
-    const { viewport } = this.state;
-    return (
-      <div className="react-map">
-        <ReactMapGL
-          {...viewport}
-          mapStyle="mapbox://styles/mapbox/dark-v10"
-          // mapStyle="mapbox://styles/mapbox/streets-v11"
-          onViewportChange={this._updateViewport}
-          mapboxApiAccessToken={MAPBOX_TOKEN}
-          scrollZoom={false}
-          id="map"
-        >
-          {this.state.students.map(this._renderStudentMarker)}
-        </ReactMapGL>
-        <div className="map-overlay">
-          <form onSubmit={this.handleSubmit}>
-            <h2>
-              <i className="fas fa-search-location" /> Find Engineers in Your
-              Area
-            </h2>
-            <LocationSelect
-              isClearable
-              styles={reactSelectStyles}
-              onChange={this.handleChange}
-              fieldValue={this.state.location}
-              placeholder="Type a U.S. city to search..."
-            />
-            <button type="submit">
-              Start here <i className="fas fa-arrow-alt-circle-right" />
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
+	_renderStudentMarker = (student, index) => {
+		return (
+			<Marker
+				key={`marker-${index}`}
+				longitude={parseFloat(student.longitude)}
+				latitude={parseFloat(student.latitude)}
+			>
+				<StudentPin
+					size={20}
+					onClick={() => this.setState({ popupInfo: student })}
+				/>
+			</Marker>
+		);
+	};
+
+	handleChange = location => {
+		this.setState({ location });
+	};
+
+	handleSubmit = e => {
+		e.preventDefault();
+		this.props.history.push(
+			`/discover?lat=${this.state.location.value.lat}&lon=${
+				this.state.location.value.lon
+			}&location=${encodeURIComponent(this.state.location.label)}&within=50`
+		);
+	};
+
+	render() {
+		const { viewport } = this.state;
+		return (
+			<>
+				<form onSubmit={this.handleSubmit}>
+					<h2>Find {this.state.term}</h2>
+					<LocationSelect
+						isClearable
+						styles={reactSelectStyles}
+						onChange={this.handleChange}
+						fieldValue={this.state.location}
+						placeholder="Type a U.S. city to search..."
+					/>
+					<button type="submit">
+						<i className="fas fa-search-location" /> Search
+					</button>
+				</form>
+				<div className="react-map">
+					<ReactMapGL
+						{...viewport}
+						mapStyle="mapbox://styles/mapbox/light-v10"
+						onViewportChange={this._updateViewport}
+						mapboxApiAccessToken={MAPBOX_TOKEN}
+						scrollZoom={false}
+						id="map"
+					>
+						{this.state.students.map(this._renderStudentMarker)}
+					</ReactMapGL>
+					<div className="map-overlay" />
+				</div>
+			</>
+		);
+	}
 }
 
 export default withRouter(MapboxMapPresentational);
 
 export function renderToDom(container) {
-  render(<MapboxMapPresentational />, container);
+	render(<MapboxMapPresentational />, container);
 }

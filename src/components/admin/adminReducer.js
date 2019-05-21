@@ -13,6 +13,9 @@ import {
   ADMIN_UPDATED_PROJECT_START,
   ADMIN_UPDATED_PROJECT_SUCCESS,
   ADMIN_UPDATED_PROJECT_FAILURE,
+  ADMIN_DELETED_PROJECT_START,
+  ADMIN_DELETED_PROJECT_SUCCESS,
+  ADMIN_DELETED_PROJECT_FAILURE,
   //****COHORTS ACTION TYPES**** */
   ADMIN_FETCHED_COHORTS_START,
   ADMIN_FETCHED_COHORTS_SUCCESS,
@@ -107,6 +110,28 @@ const adminReducer = (state = initialState, action) => {
         updatingProjectData: false
       };
     case ADMIN_UPDATED_PROJECT_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingProjectData: false
+      };
+
+    //****DELETED PROJECTS**** */
+
+    case ADMIN_DELETED_PROJECT_START:
+      return {
+        ...state,
+        updatingProjectData: true
+      };
+    case ADMIN_DELETED_PROJECT_SUCCESS:
+      return {
+        ...state,
+        projects: state.projects.filter(cur => {
+          return cur.id !== action.payload.id;
+        }),
+        updatingProjectData: false
+      };
+    case ADMIN_DELETED_PROJECT_FAILURE:
       return {
         ...state,
         error: action.payload,

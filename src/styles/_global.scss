@@ -29,13 +29,14 @@ textarea {
 
 .hrTop {
 	border: 3px solid $lambdaRed !important;
+	background-color: $lambdaRed;
 	width: 59px !important;
 	margin: 0 auto 24px 0 !important;
 }
 
 hr {
 	border: none;
-	border-top: 1px solid lightgray;
+	border-top: 1px solid rgba(0, 0, 0, 0.12);
 	width: 100%;
 }
 

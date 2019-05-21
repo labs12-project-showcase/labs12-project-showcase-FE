@@ -12,41 +12,27 @@ import Status from "../status/Status";
 import Skills from "../skills/Skills";
 import Progress from "../progress/Progress";
 import ContactForm from "../contactForm/ContactForm";
+import Loading from '../../utils/Loading.js';
 
 class StudentProfile extends React.Component {
   state = {
+    infoCorrect: false,
     fetchedNew: false
   };
 
   componentDidMount() {
-    this.props.getData(this.props.match.params.id);
+    this.props.getData(this.props.match.params.id)
+    .then(() => this.setState({ infoCorrect: true }));
   }
 
   componentDidUpdate(prevProps) {
-    prevProps.match.params.id !== this.props.match.params.id &&
-      this.props.getData(this.props.match.params.id);
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.props.getData(this.props.match.params.id)
+      .then(() => this.setState({ infoCorrect: true }));
+    }
   }
 
-  updateFetched = () => {
-    if (
-      this.props.loggedInProfile &&
-      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
-      this.state.fetchedNew === false
-    ) {
-      this.props.getData().then(() => {
-        this.setState({ fetchedNew: true });
-      });
-    }
-  };
-
   render() {
-    if (
-      this.props.loggedInProfile &&
-      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
-      this.state.fetchedNew === false
-    ) {
-      this.updateFetched();
-    }
     const {
       id,
       name,
@@ -76,6 +62,9 @@ class StudentProfile extends React.Component {
 
     if (this.props.studentProfile.emptyReturn) {
       return <Redirect to="/404" />
+    }
+    if (this.state.infoCorrect === false) {
+      return <Loading />
     }
     return (
       <div className="student-dashboard">

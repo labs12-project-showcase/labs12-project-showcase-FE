@@ -81,10 +81,12 @@ export const handleAuth = () => dispatch => {
             }
           }
           dispatch({ type: GET_PROFILE_DATA_SUCCESS, payload: noNulls });
-          if (resGetProf.data.exists) {
+          if (resLogin.status === 200) {
             history.replace(`/student/profile/${resGetProf.data.id}`);
-          } else {
+          } else if (resLogin.status === 201) {
             history.replace('/profile-quick-start');
+          } else {
+            history.replace('/');
           }
         })
         .catch(err => {

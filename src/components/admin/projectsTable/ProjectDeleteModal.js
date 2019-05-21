@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
-import { deleteCohort } from "../adminActions.js";
+import { deleteProject } from "../adminActions.js";
 
 const styles = theme => ({
   paper: {
@@ -17,7 +17,7 @@ const styles = theme => ({
   }
 });
 
-class CohortDeleteModal extends React.Component {
+class ProjectDeleteModal extends React.Component {
   state = {
     open: false
   };
@@ -34,19 +34,19 @@ class CohortDeleteModal extends React.Component {
   handleSubmit = e => {
     e.stopPropagation();
     e.preventDefault();
-    this.props.deleteCohort(this.props.value.id);
+    this.props.deleteProject(this.props.value.id);
   };
 
   render() {
     const { classes } = this.props;
 
     return (
-      <div className="sc-modal-buttons">
+      <div className="sc-modal sc-modal-buttons">
         <Button
           onClick={this.handleOpen}
           variant="outlined"
-          color="secondary"
-          className={classes.button}
+          color="primary"
+          classnames={classes.button}
         >
           <i className="fas fa-trash" />
           Delete
@@ -73,22 +73,22 @@ class CohortDeleteModal extends React.Component {
               className="sc-modal-buttons"
             >
               <div className="sc-input">
-                <label>Are you sure you want to delete this cohort?</label>
+                <label>Are you sure you want to delete this project?</label>
               </div>
               <Button
                 type="submit"
                 variant="outlined"
                 color="primary"
-                className={classes.button}
+                classnames={classes.button}
               >
                 <i className="fas fa-check" />
-                Delete Cohort
+                Delete Project
               </Button>
               <Button
                 onClick={this.handleClose}
                 variant="outlined"
                 color="secondary"
-                className={classes.button}
+                classnames={classes.button}
               >
                 <i className="fas fa-ban" />
                 Cancel
@@ -101,17 +101,17 @@ class CohortDeleteModal extends React.Component {
   }
 }
 
-CohortDeleteModal.propTypes = {
+ProjectDeleteModal.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    cohorts: state.admin.cohorts
+    projects: state.admin.projects
   };
 };
 
 export default connect(
   mapStateToProps,
-  { deleteCohort }
-)(withStyles(styles)(CohortDeleteModal));
+  { deleteProject }
+)(withStyles(styles)(ProjectDeleteModal));
