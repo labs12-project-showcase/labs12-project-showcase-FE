@@ -40,7 +40,9 @@ class TracksTable extends React.Component {
 			filterType: 'dropdown',
 			selectableRows: false,
 			showSelectedRowsToolbar: false,
-			responsive: 'stacked'
+			responsive: 'stacked',
+			print: false,
+          	download: false,
 		};
 
 		return (
