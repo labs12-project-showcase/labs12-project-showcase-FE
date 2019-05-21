@@ -82,9 +82,9 @@ class StudentProfile extends React.Component {
                 <h3>{location}</h3>
               </div>
               <div className="badge">
-                <a rel="noopener noreferrer" href={acclaim} target="_blank">
+                {acclaim && <a rel="noopener noreferrer" href={acclaim} target="_blank">
                   <img src={badge} alt="Lambda Badge" />
-                </a>
+                </a>}
               </div>
 
               <div className="social-links">
