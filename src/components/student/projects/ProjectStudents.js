@@ -21,7 +21,6 @@ const ProjectStudents = ({ students }) => {
 					</Link>
 				))}
 			</div>
-			<h2>Who Built This?</h2>
 		</React.Fragment>
 	);
 };
