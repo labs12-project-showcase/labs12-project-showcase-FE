@@ -8,21 +8,23 @@ const Cards = ({ cards }) => {
 		<>
 			<Link to={`/student/profile/${cards.id}`}>
 				<div className="cards">
-					<div className="profile-pic">
-						<img src={cards.profile_pic} alt="Profile" />
-					</div>
-					<div className="details">
-						<h2>{cards.name}</h2>
+					<div className="cards-description">
+						<div className="profile-pic">
+							<img src={cards.profile_pic} alt="Profile" />
+						</div>
+						<div className="details">
+							<h2>{cards.name}</h2>
 
-						<h3>
-							{cards.track}
-							<br />
-							{cards.location}
-						</h3>
-
-						<h4>Skills:</h4>
-						<ul>{map(cards.top_skills)}</ul>
+							<h3>{cards.desired_title}</h3>
+							<h3> {cards.location}</h3>
+						</div>
+						<div className="details-skills">
+							<h4>Skills</h4>
+							<ul className="topSkills">{map(cards.top_skills)}</ul>
+							<ul className="moreSkills">{map(cards.skills)}</ul>
+						</div>
 					</div>
+
 					<div className="projects-box">
 						<h2>Top projects</h2>
 						{cards.top_projects.map(proj => (

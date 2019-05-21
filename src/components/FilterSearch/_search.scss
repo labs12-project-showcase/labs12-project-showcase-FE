@@ -75,127 +75,158 @@
 			.cards {
 				width: 100%;
 				margin: 20px 5px;
+				padding: 20px;
 				background-color: $lightcolor;
 				border: 1px solid $border-color;
 				overflow: hidden;
 				@extend %box-shadow;
 				@include box-align(center, flex-start);
 				transition-duration: 0.4s;
+
 				&:hover {
 					-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
 					box-shadow: -2px 5px 16px 2px#d3d3d3;
-					transform: translateY(-10px);
+					transform: translateY(-6px);
 				}
 
 				@media (max-width: 768px) {
 					width: 100%;
 				}
 
-				.profile-pic {
-					max-width: 180px;
-					width: 112px;
-					height: 112px;
-					border-radius: 50%;
-					overflow: hidden;
-					margin: 10px;
-					@extend %box-shadow;
-					border: 1px solid $border-color;
-					@media (max-width: 768px) {
-						width: 160px;
-						height: 160px;
-					}
+				.cards-description {
+					width: 75%;
+					@include box-align(flex-start, center);
+					.profile-pic {
+						max-width: 180px;
+						width: 112px;
+						height: 112px;
+						border-radius: 50%;
+						overflow: hidden;
+						margin: 10px;
+						@extend %box-shadow;
+						border: 1px solid $border-color;
+						@media (max-width: 768px) {
+							width: 160px;
+							height: 160px;
+						}
 
-					img {
-						width: 100%;
-						height: auto;
-					}
-				}
-				.details {
-					width: 48%;
-					max-width: 450px;
-					padding: 0 20px 5px;
-					text-transform: capitalize;
-					text-align: left;
-					background-color: $lightcolor;
-					@include box-align();
-					@media (max-width: 768px) {
-						width: 100%;
-					}
-					@media (min-width: 768px) and (max-width: 854px) {
-						width: 100%;
-						margin: 0 auto;
-					}
-
-					h2 {
-						text-transform: capitalize;
-						font-weight: 900;
-						font-size: 3.2rem;
-						width: 100%;
-						margin-top: 20px;
-						margin-bottom: 10px;
-						text-align: left;
-						color: $darkcolor;
-					}
-					a > h2 {
-						text-decoration: none;
-						text-transform: capitalize;
-						font-weight: 900;
-						font-size: 3.2rem;
-						width: 100%;
-						margin-top: 20px;
-						margin-bottom: 10px;
-						text-align: left;
-						color: $darkcolor;
-					}
-
-					h3 {
-						text-transform: capitalize;
-						color: $lambdaGray;
-						width: 100%;
-						font-size: 1.6rem;
-						font-weight: 400;
-						margin-bottom: 10px;
-						letter-spacing: 1.14px;
-					}
-					h4 {
-						width: 100%;
-						font-size: 1.6rem;
-						font-weight: 700;
-					}
-
-					p {
-						width: 100%;
-						margin: 5px auto 0;
-						font-weight: 500;
-					}
-					ul {
-						@include box-align();
-						li {
-							margin: 5px;
-							background-color: $lambdaRed;
-							color: $lightcolor;
-							padding: 3px 7px;
-							font-size: 1.4rem;
+						img {
+							width: 100%;
+							height: auto;
 						}
 					}
-					.fa-map-marker-alt {
-						color: $lambdaPink;
-						margin-right: 5px;
-						margin-bottom: 10px;
+					.details {
+						width: 70%;
+						max-width: 450px;
+						padding: 0 20px 5px;
+						text-transform: capitalize;
+						text-align: left;
+						background-color: $lightcolor;
+						@include box-align();
+						@media (max-width: 768px) {
+							width: 100%;
+						}
+						@media (min-width: 768px) and (max-width: 854px) {
+							width: 100%;
+							margin: 0 auto;
+						}
+
+						h2 {
+							text-transform: capitalize;
+							font-weight: 900;
+							font-size: 3.2rem;
+							width: 100%;
+							margin-top: 20px;
+							margin-bottom: 10px;
+							text-align: left;
+							color: $darkcolor;
+						}
+						a > h2 {
+							text-decoration: none;
+							text-transform: capitalize;
+							font-weight: 900;
+							font-size: 3.2rem;
+							width: 100%;
+							margin-top: 20px;
+							margin-bottom: 10px;
+							text-align: left;
+							color: $darkcolor;
+						}
+
+						h3 {
+							text-transform: capitalize;
+							color: $lambdaGray;
+							width: 100%;
+							font-size: 1.6rem;
+							font-weight: 400;
+							margin-bottom: 10px;
+							letter-spacing: 1.14px;
+						}
+						h4 {
+							width: 100%;
+							font-size: 1.6rem;
+							font-weight: 700;
+						}
+
+						p {
+							width: 100%;
+							margin: 5px auto 0;
+							font-weight: 500;
+						}
+
+						.fa-map-marker-alt {
+							color: $lambdaPink;
+							margin-right: 5px;
+							margin-bottom: 10px;
+						}
+
+						.contact-links {
+							width: 100%;
+							max-width: 300px;
+							padding: 5px;
+							a {
+								font-size: 2rem;
+								color: lighten($darkcolor, 50%);
+								cursor: pointer;
+								margin: 5px;
+
+								&:hover {
+									color: $darkcolor;
+								}
+							}
+						}
 					}
-
-					.contact-links {
+					.details-skills {
 						width: 100%;
-						max-width: 300px;
-						padding: 5px;
-						a {
-							font-size: 2rem;
-							color: lighten($darkcolor, 50%);
-							cursor: pointer;
+						h4 {
+							color: $lambdaGray;
 							margin: 5px;
+							line-height: 19px;
+						}
+						.topSkills {
+							@include box-align(flex-start, center);
+							li {
+								margin: 5px;
+								background-color: $lambdaRed;
+								color: $lightcolor;
+								padding: 8px 12px;
+								font-size: 1.6rem;
+								letter-spacing: 1.14px;
+								line-height: 19px;
+							}
+						}
+						.moreSkills {
+							@include box-align(flex-start, center);
 
-							&:hover {
-								color: $darkcolor;
+							li {
+								margin: 5px;
+								background-color: $lightcolor;
+								border: 1px solid $lambdaRed;
+								color: $lambdaRed;
+								padding: 8px 12px;
+								font-size: 1.6rem;
+								letter-spacing: 1.14px;
+								line-height: 19px;
 							}
 						}
 					}
@@ -240,14 +271,14 @@
 						}
 						.proj-box-container {
 							width: 125px;
-							height: 94px;
+							height: 74px;
 							overflow: hidden;
 							position: relative;
 							transition-duration: 0.4s;
 
 							&:hover {
-								width: 153px;
-								height: 115px;
+								width: 151px;
+								height: 97px;
 								-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
 								box-shadow: -2px 5px 16px 2px#d3d3d3;
 								transform: translateY(-5px);
