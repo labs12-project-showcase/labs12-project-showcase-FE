@@ -6,46 +6,40 @@ const Cards = ({ cards }) => {
 
 	return (
 		<>
-			<div className="cards">
-				<div className="profile-pic">
-					<Link to={`/student/profile/${cards.id}`}>
+			<Link to={`/student/profile/${cards.id}`}>
+				<div className="cards">
+					<div className="profile-pic">
 						<img src={cards.profile_pic} alt="Profile" />
-					</Link>
-				</div>
-				<div className="details">
-					<Link to={`/student/profile/${cards.id}`}>
+					</div>
+					<div className="details">
 						<h2>{cards.name}</h2>
-					</Link>
-					<h3>{cards.track}</h3>
-					<span>
-						<i className="fas fa-map-marker-alt" />
-						{cards.location}
-					</span>
-					<br />
-					<h4>Skills:</h4>
-					<ul>{map(cards.top_skills)}</ul>
-					<div className="contact-links">
-						<Link to={`/student/profile/${cards.id}`}>
-							<button className="prof-link">Profile &amp; Projects</button>
-						</Link>
+
+						<h3>
+							{cards.track}
+							<br />
+							{cards.location}
+						</h3>
+
+						<h4>Skills:</h4>
+						<ul>{map(cards.top_skills)}</ul>
+					</div>
+					<div className="projects-box">
+						<h2>Top projects</h2>
+						{cards.top_projects.map(proj => (
+							<Link
+								key={proj.project_id}
+								to={`/student/project-view/${proj.project_id}`}
+								className="display-box"
+							>
+								<div className="proj-box-container">
+									<img src={proj.media} alt="Project" />
+									<h3>{proj.name}</h3>
+								</div>
+							</Link>
+						))}
 					</div>
 				</div>
-				<div className="projects-box">
-					<h2>Top projects</h2>
-					{cards.top_projects.map(proj => (
-						<Link
-							key={proj.project_id}
-							to={`/student/project-view/${proj.project_id}`}
-							className="display-box"
-						>
-							<div className="proj-box-container">
-								<img src={proj.media} alt="Project" />
-								<h3>{proj.name}</h3>
-							</div>
-						</Link>
-					))}
-				</div>
-			</div>
+			</Link>
 		</>
 	);
 };

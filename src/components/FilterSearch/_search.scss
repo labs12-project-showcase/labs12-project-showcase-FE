@@ -79,7 +79,13 @@
 				border: 1px solid $border-color;
 				overflow: hidden;
 				@extend %box-shadow;
-				@include box-align(center, center);
+				@include box-align(center, flex-start);
+				transition-duration: 0.4s;
+				&:hover {
+					-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
+					box-shadow: -2px 5px 16px 2px#d3d3d3;
+					transform: translateY(-10px);
+				}
 
 				@media (max-width: 768px) {
 					width: 100%;
@@ -87,8 +93,9 @@
 
 				.profile-pic {
 					max-width: 180px;
-					width: 30%;
-					height: 170px;
+					width: 112px;
+					height: 112px;
+					border-radius: 50%;
 					overflow: hidden;
 					margin: 10px;
 					@extend %box-shadow;
@@ -104,11 +111,11 @@
 					}
 				}
 				.details {
-					width: 68%;
+					width: 48%;
 					max-width: 450px;
 					padding: 0 20px 5px;
 					text-transform: capitalize;
-					text-align: center;
+					text-align: left;
 					background-color: $lightcolor;
 					@include box-align();
 					@media (max-width: 768px) {
@@ -120,32 +127,35 @@
 					}
 
 					h2 {
-						text-transform: uppercase;
-						font-weight: 700;
-						font-size: 2.2rem;
+						text-transform: capitalize;
+						font-weight: 900;
+						font-size: 3.2rem;
 						width: 100%;
 						margin-top: 20px;
 						margin-bottom: 10px;
-						text-align: center;
+						text-align: left;
+						color: $darkcolor;
 					}
 					a > h2 {
 						text-decoration: none;
-						text-transform: uppercase;
-						font-weight: 700;
-						font-size: 2.2rem;
+						text-transform: capitalize;
+						font-weight: 900;
+						font-size: 3.2rem;
 						width: 100%;
 						margin-top: 20px;
 						margin-bottom: 10px;
-						text-align: center;
+						text-align: left;
 						color: $darkcolor;
 					}
 
 					h3 {
+						text-transform: capitalize;
 						color: $lambdaGray;
 						width: 100%;
-						font-size: 1.4rem;
-						font-weight: 500;
+						font-size: 1.6rem;
+						font-weight: 400;
 						margin-bottom: 10px;
+						letter-spacing: 1.14px;
 					}
 					h4 {
 						width: 100%;
@@ -191,8 +201,11 @@
 					}
 				}
 				.projects-box {
-					width: 100%;
+					margin: 10px auto;
+					border-left: 1px solid rgba(0, 0, 0, 0.12);
+					width: 200px;
 					@include box-align();
+					flex-direction: column;
 					padding: 0 10px 10px;
 					@media (max-width: 768px) {
 						width: 100%;
@@ -204,10 +217,10 @@
 
 					h2 {
 						text-align: center;
-						font-size: 1.6rem;
-						margin-bottom: 20px;
+						font-size: 1.4rem;
+						margin: 27px auto 5px;
 						font-weight: 700;
-						color: $darkcolor;
+						color: $lambdaGray;
 						text-transform: capitalize;
 					}
 					.display-box {
@@ -215,8 +228,7 @@
 						color: black;
 						border: 1px solid rgba(0, 0, 0, 0.12);
 						background-color: $lightcolor;
-						margin: 0 3%;
-						width: 150px;
+						margin-bottom: 2px;
 						font-size: 0.8rem;
 						cursor: pointer;
 						transition: box-shadow 0.3s;
@@ -227,9 +239,19 @@
 							box-shadow: 0 0 6px 1px #cccccc;
 						}
 						.proj-box-container {
-							width: 100%;
-							height: 180px;
+							width: 125px;
+							height: 94px;
+							overflow: hidden;
 							position: relative;
+							transition-duration: 0.4s;
+
+							&:hover {
+								width: 153px;
+								height: 115px;
+								-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
+								box-shadow: -2px 5px 16px 2px#d3d3d3;
+								transform: translateY(-5px);
+							}
 							img {
 								width: 100%;
 								height: auto;
@@ -272,7 +294,6 @@
 					}
 					.details {
 						max-width: 100%;
-						text-align: center;
 					}
 					.projects-box {
 						margin: 0 auto;
