@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 
-import { ProfileQsSchema, FormSchema } from './ProfileqsFormSchema';
-import { updateProfile } from './profileqsActions';
+import { FormSchema } from './FormSchema';
+import { updateProfile } from '../profileqsActions';
+import { ProfileQsSchema } from './ValidationSchema';
 
-const ProfileqsForm = ({ dispatch, ...props }) => {
+const FormContainer = ({ dispatch, ...props }) => {
   const [desiredLocations, setDesiredLocations] = useState([]);
   const [formSkillsList, setFormSkillsList] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [top_projects, setTopProjects] = useState([]);
+  const [projectsList, setProjectsList] = useState([]);
+  const [topProjectsList, setTopProjectsList] = useState([]);
 
   return (
     <Formik
@@ -24,13 +25,13 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
                   location: location.value.locationName,
                   lon: location.value.lon
                 }))
-              : [null],
-            projects: projects.map(proj => ({
+              : [null], // `[null]` tells backend to clear data
+            projects: projectsList.map(proj => ({
               project_id: proj.id,
               student_id: props.initialFormValues.id
             })),
             skills: formSkillsList.map(item => item.value),
-            top_projects: top_projects.map(proj => ({
+            top_projects: topProjectsList.map(proj => ({
               project_id: proj.id,
               student_id: props.initialFormValues.id
             }))
@@ -42,13 +43,13 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
       render={props => (
         <FormSchema
           desiredLocations={desiredLocations}
-          projects={projects}
-          skillsList={formSkillsList}
           setDesiredLocations={setDesiredLocations}
-          setProjects={setProjects}
+          projectsList={projectsList}
+          setProjectsList={setProjectsList}
           setSkillsList={setFormSkillsList}
-          setTopProjects={setTopProjects}
-          top_projects={top_projects}
+          skillsList={formSkillsList}
+          topProjectsList={topProjectsList}
+          setTopProjectsList={setTopProjectsList}
           {...props}
         />
       )}
@@ -56,4 +57,4 @@ const ProfileqsForm = ({ dispatch, ...props }) => {
   );
 };
 
-export default connect()(ProfileqsForm);
+export default connect()(FormContainer);
