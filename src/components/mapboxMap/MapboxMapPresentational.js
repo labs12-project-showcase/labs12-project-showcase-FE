@@ -8,10 +8,7 @@ import LocationSelect from '../location/LocationSelect';
 import { reactSelectStyles } from '../../styles/ReactSelectStyles';
 import 'mapbox-gl/src/css/mapbox-gl.css';
 
-// const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
-const newtoken =
-	'pk.eyJ1IjoidGljb3RoZXBzIiwiYSI6ImNqdnBlZDM2bjB4ODE0OXFrNXpzbWh0ZXEifQ.vBNSTUmy4Xk7NbkBY3Kuwg';
-const MAPBOX_TOKEN = newtoken;
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 class MapboxMapPresentational extends React.Component {
 	constructor(props) {
@@ -28,8 +25,67 @@ class MapboxMapPresentational extends React.Component {
 			},
 			popupInfo: null,
 			location: null,
-			students: this.props.mapData
+			students: this.props.mapData,
+			term: '',
+			words: [
+				'Engineers',
+				'UX Designers',
+				'UI Developers',
+				'iOS Developers',
+				'Android Developers',
+				'Data Science'
+			]
 		};
+	}
+
+	componentDidMount() {
+		const { words } = this.state;
+		let index = 0;
+		let curWord = words[index];
+		let curChar = 0;
+		let forward = true;
+
+		this.interval = setInterval(() => {
+			if (curChar < curWord.length && forward) {
+				this.setState(
+					{
+						term: curWord.slice(0, curChar)
+					},
+					() => {
+						curChar = curChar + 1;
+						if (curChar === curWord.length) {
+							forward = false;
+						}
+					}
+				);
+			} else if (curChar <= curWord.length && !forward) {
+				this.setState(
+					{
+						term: curWord.slice(0, curChar)
+					},
+					() => {
+						if (curChar > 0) {
+							curChar = curChar - 1;
+						}
+						if (curChar === 0) {
+							curChar = 0;
+							forward = true;
+							if (index === words.length - 1) {
+								index = 0;
+								curWord = words[index];
+							} else {
+								index = index + 1;
+								curWord = words[index];
+							}
+						}
+					}
+				);
+			}
+		}, 160);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.interval);
 	}
 
 	componentDidUpdate(prevProps) {
@@ -75,9 +131,7 @@ class MapboxMapPresentational extends React.Component {
 		return (
 			<>
 				<form onSubmit={this.handleSubmit}>
-					<h2>
-						<i className="fas fa-search-location" /> Find Engineers in Your Area
-					</h2>
+					<h2>Find {this.state.term}</h2>
 					<LocationSelect
 						isClearable
 						styles={reactSelectStyles}
@@ -86,14 +140,13 @@ class MapboxMapPresentational extends React.Component {
 						placeholder="Type a U.S. city to search..."
 					/>
 					<button type="submit">
-						Start here <i className="fas fa-arrow-alt-circle-right" />
+						<i className="fas fa-search-location" /> Search
 					</button>
 				</form>
 				<div className="react-map">
 					<ReactMapGL
 						{...viewport}
-						mapStyle="mapbox://styles/mapbox/dark-v10"
-						// mapStyle="mapbox://styles/mapbox/streets-v11"
+						mapStyle="mapbox://styles/mapbox/light-v10"
 						onViewportChange={this._updateViewport}
 						mapboxApiAccessToken={MAPBOX_TOKEN}
 						scrollZoom={false}
