@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getJwtRole } from '../../config/utilities.js';
 
 const Cards = ({ cards }) => {
 	const map = arr => arr.map(skill => <li key={skill}>{skill}</li>);
-
+	const role = getJwtRole();
 	return (
 		<>
 			<Link to={`/student/profile/${cards.id}`}>
@@ -11,6 +12,7 @@ const Cards = ({ cards }) => {
 					<div className="cards-description">
 						<div className="profile-pic">
 							<img src={cards.profile_pic} alt="Profile" />
+							{cards.highlighted && role === "staff" && <i className="highlighted fas fa-dumpster-fire"></i>}
 						</div>
 						<div className="details">
 							<h2>{cards.name}</h2>
