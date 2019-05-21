@@ -74,8 +74,10 @@
 			}
 			.cards {
 				width: 100%;
+				max-width: 765px;
+				min-height: 340px;
 				margin: 20px 5px;
-				padding: 20px;
+				padding: 10px;
 				background-color: $lightcolor;
 				border: 1px solid $border-color;
 				overflow: hidden;
@@ -83,9 +85,9 @@
 				@include box-align(center, flex-start);
 				transition-duration: 0.4s;
 
-				a {
-					width: 75%;
-				}
+				// a {
+				// 	width: 75%;
+				// }
 
 				&:hover {
 					-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
@@ -98,7 +100,8 @@
 				}
 
 				.cards-description {
-					width: 75%;
+					width: 100%;
+					max-width: 550px;
 					@include box-align(flex-start, center);
 					.profile-pic-container {
 						position: relative;
@@ -132,9 +135,9 @@
 						}
 					}
 					.details {
-						width: 70%;
-						max-width: 450px;
-						padding: 0 20px 5px;
+						width: 100%;
+						max-width: 418px;
+						padding: 0 10px 5px;
 						text-transform: capitalize;
 						text-align: left;
 						background-color: $lightcolor;
@@ -248,9 +251,8 @@
 					}
 				}
 				.projects-box {
-					margin: 10px auto;
 					border-left: 1px solid rgba(0, 0, 0, 0.12);
-					width: 200px;
+					width: 192px;
 					@include box-align();
 					flex-direction: column;
 					padding: 0 10px 10px;
@@ -331,26 +333,26 @@
 					}
 				}
 			}
-			@media (max-width: 768px) {
-				.cards {
-					flex-direction: column;
-					justify-content: center;
+			// @media (max-width: 768px) {
+			// 	.cards {
+			// 		flex-direction: column;
+			// 		justify-content: center;
 
-					.profile-pic {
-						margin: 10px auto;
-					}
-					.details {
-						max-width: 100%;
-					}
-					.projects-box {
-						margin: 0 auto;
-						a {
-							width: 100%;
-							display: block;
-						}
-					}
-				}
-			}
+			// 		.profile-pic {
+			// 			margin: 10px auto;
+			// 		}
+			// 		.details {
+			// 			max-width: 100%;
+			// 		}
+			// 		.projects-box {
+			// 			margin: 0 auto;
+			// 			a {
+			// 				width: 100%;
+			// 				display: block;
+			// 			}
+			// 		}
+			// 	}
+			// }
 		}
 	}
 }
