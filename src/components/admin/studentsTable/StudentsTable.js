@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
 import { fetchStudents, updateStudent } from "../adminActions.js";
 import { Link } from "react-router-dom";
-import GraduatedButton from "./StudentGraduatedButton";
-import HiredButton from "./StudentHiredButton";
-import EndorsedButton from "./StudentEndorsedButton";
+import StudentGraduatedButton from "./StudentGraduatedButton";
+import StudentHiredButton from "./StudentHiredButton";
+import StudentEndorsedButton from "./StudentEndorsedButton";
+import StudentHighlightedButton from "./StudentHighlightedButton";
 
 class StudentsTable extends React.Component {
   constructor(props) {
@@ -69,7 +70,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <GraduatedButton student={student} />;
+            return <StudentGraduatedButton student={student} />;
           },
           customValue: student =>
             student.graduated
@@ -86,7 +87,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <HiredButton student={student} />;
+            return <StudentHiredButton student={student} />;
           },
           customValue: student =>
             student.hired
@@ -103,7 +104,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <EndorsedButton student={student} />;
+            return <StudentEndorsedButton student={student} />;
           },
           customValue: student =>
             student.approved
@@ -111,6 +112,23 @@ class StudentsTable extends React.Component {
               .charAt(0)
               .toUpperCase() + student.approved.toString().slice(1),
           customSortValue: student => Number(student.approved)
+        }
+      },
+      {
+        name: "Highlighted",
+        field: "highlighted",
+        options: {
+          filter: true,
+          sort: true,
+          customBodyRender: student => {
+            return <StudentHighlightedButton student={student} />;
+          },
+          customValue: student =>
+            student.highlighted
+              .toString()
+              .charAt(0)
+              .toUpperCase() + student.highlighted.toString().slice(1),
+          customSortValue: student => Number(student.highlighted)
         }
       }
     ];
