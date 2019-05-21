@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getJwtRole } from "../../config/utilities.js";
 
 import avatar from "../../assets/avatar.jpg";
+import projectImg from "../../assets/projectplaceholder.jpg";
 import fire from "../../assets/fire.png";
 
 const Cards = ({ cards }) => {
@@ -46,7 +47,7 @@ const Cards = ({ cards }) => {
               className="display-box"
             >
               <div className="proj-box-container">
-                <img src={proj.media} alt="Project" />
+                <img src={proj.media || projectImg} alt="Project" />
                 <h3>{proj.name}</h3>
               </div>
             </Link>
