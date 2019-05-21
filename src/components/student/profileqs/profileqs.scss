@@ -12,10 +12,20 @@
   background-color: $lightcolor;
   padding: 20px;
 
-  h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
+  header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 10px;
+    
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+  }
+
+  p {
+    margin-bottom: 1rem;
   }
 
   .profile-picture {
