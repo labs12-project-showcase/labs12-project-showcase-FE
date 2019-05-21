@@ -219,7 +219,9 @@
 		}
 		hr {
 			margin: 20px auto;
-			border: 2px solid $border-color;
+			border: none;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
 			@media (max-width: 877px) and (min-width: 500px) {
 				display: none;
 			}

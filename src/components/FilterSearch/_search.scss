@@ -1,287 +1,288 @@
 .search-page {
-  main {
-    @include box-align(space-around, flex-start);
-    width: 100%;
-    max-width: 1366px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-bottom: 100px;
-    box-sizing: border-box;
+	main {
+		@include box-align(space-around, flex-start);
+		width: 100%;
+		max-width: 1366px;
+		margin: 0 auto;
+		padding: 20px;
+		padding-bottom: 100px;
+		box-sizing: border-box;
 
-    .formSection {
-      position: sticky;
-      top: 0px;
-      width: 100%;
-      max-width: 250px;
-      padding-top: 20px;
-      @media (max-width: 877px) and (min-width: 500px) {
-        max-width: 100%;
-        margin: 20px;
-      }
-      .search-bar {
-        width: 100%;
-        .search-class {
-          border-radius: 0;
-          margin-bottom: 10px;
-          border: 1px solid $newBorder;
-          height: 38px;
-          min-height: 38px;
-          padding: 0 10px;
-          cursor: text;
-          width: 100%;
-          font-size: 1.6rem;
-        }
-        hr {
-          margin: 20px auto;
-          border: 2px solid $newBorder;
-        }
+		.formSection {
+			position: sticky;
+			top: 0px;
+			width: 100%;
+			max-width: 250px;
+			padding-top: 20px;
+			@media (max-width: 877px) and (min-width: 500px) {
+				max-width: 100%;
+				margin: 20px;
+			}
+			.search-bar {
+				width: 100%;
+				.search-class {
+					border-radius: 0;
+					margin: 30px 0 10px;
+					border: 1px solid rgba(0, 0, 0, 0.12);
+					height: 38px;
+					min-height: 38px;
+					padding: 0 10px;
+					cursor: text;
+					width: 100%;
+					font-size: 1.6rem;
+				}
+				hr {
+					margin: 20px auto;
+					border: none;
+					border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+				}
 
-        @extend %search-section;
-        @media (max-width: 768px) {
-          width: 100%;
-          flex-direction: column;
-        }
+				@extend %search-section;
+				@media (max-width: 768px) {
+					width: 100%;
+					flex-direction: column;
+				}
 
-        h2 {
-          font-size: 2.8rem;
-          font-weight: 900;
-          width: 100%;
-          text-align: left;
-          margin-bottom: 10px;
-        }
-        @media (max-width: 768px) {
-          padding: 20px;
-        }
-      }
-    }
-    .cards-display {
-      width: 100%;
-      max-width: 68%;
-      padding: 20px 0;
-      @include box-align(flex-start, flex-start);
+				h2 {
+					font-size: 2.8rem;
+					font-weight: 900;
+					width: 100%;
+					text-align: left;
+					margin-bottom: 10px;
+				}
+				@media (max-width: 768px) {
+					padding: 20px;
+				}
+			}
+		}
+		.cards-display {
+			width: 100%;
+			max-width: 68%;
+			padding: 20px 0;
+			@include box-align(flex-start, flex-start);
 
-      @media (max-width: 768px) {
-        max-width: 100%;
-      }
+			@media (max-width: 768px) {
+				max-width: 100%;
+			}
 
-      h2 {
-        font-size: 2.8rem;
-        font-weight: 900;
-        width: 100%;
-        text-align: left;
-        margin-bottom: 20px;
-      }
-      .cards {
-        width: 100%;
-        margin: 20px 5px;
-        background-color: $lightcolor;
-        border: 1px solid $border-color;
-        overflow: hidden;
-        @extend %box-shadow;
-        @include box-align(center, center);
+			h2 {
+				font-size: 2.8rem;
+				font-weight: 900;
+				width: 100%;
+				text-align: left;
+				margin-bottom: 20px;
+			}
+			.cards {
+				width: 100%;
+				margin: 20px 5px;
+				background-color: $lightcolor;
+				border: 1px solid $border-color;
+				overflow: hidden;
+				@extend %box-shadow;
+				@include box-align(center, center);
 
-        @media (max-width: 768px) {
-          width: 100%;
-        }
+				@media (max-width: 768px) {
+					width: 100%;
+				}
 
-        .profile-pic {
-          max-width: 180px;
-          width: 30%;
-          height: 170px;
-          overflow: hidden;
-          margin: 10px;
-          @extend %box-shadow;
-          border: 1px solid $border-color;
-          @media (max-width: 768px) {
-            width: 160px;
-            height: 160px;
-          }
+				.profile-pic {
+					max-width: 180px;
+					width: 30%;
+					height: 170px;
+					overflow: hidden;
+					margin: 10px;
+					@extend %box-shadow;
+					border: 1px solid $border-color;
+					@media (max-width: 768px) {
+						width: 160px;
+						height: 160px;
+					}
 
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
-        .details {
-          width: 68%;
-          max-width: 450px;
-          padding: 0 20px 5px;
-          text-transform: capitalize;
-          text-align: center;
-          background-color: $lightcolor;
-          @include box-align();
-          @media (max-width: 768px) {
-            width: 100%;
-          }
-          @media (min-width: 768px) and (max-width: 854px) {
-            width: 100%;
-            margin: 0 auto;
-          }
+					img {
+						width: 100%;
+						height: auto;
+					}
+				}
+				.details {
+					width: 68%;
+					max-width: 450px;
+					padding: 0 20px 5px;
+					text-transform: capitalize;
+					text-align: center;
+					background-color: $lightcolor;
+					@include box-align();
+					@media (max-width: 768px) {
+						width: 100%;
+					}
+					@media (min-width: 768px) and (max-width: 854px) {
+						width: 100%;
+						margin: 0 auto;
+					}
 
-          h2 {
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 2.2rem;
-            width: 100%;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            text-align: center;
-          }
-          a > h2 {
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 2.2rem;
-            width: 100%;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            text-align: center;
-            color: $darkcolor;
-          }
+					h2 {
+						text-transform: uppercase;
+						font-weight: 700;
+						font-size: 2.2rem;
+						width: 100%;
+						margin-top: 20px;
+						margin-bottom: 10px;
+						text-align: center;
+					}
+					a > h2 {
+						text-decoration: none;
+						text-transform: uppercase;
+						font-weight: 700;
+						font-size: 2.2rem;
+						width: 100%;
+						margin-top: 20px;
+						margin-bottom: 10px;
+						text-align: center;
+						color: $darkcolor;
+					}
 
-          h3 {
-            color: $lambdaGray;
-            width: 100%;
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 10px;
-          }
-          h4 {
-            width: 100%;
-            font-size: 1.6rem;
-            font-weight: 700;
-          }
+					h3 {
+						color: $lambdaGray;
+						width: 100%;
+						font-size: 1.4rem;
+						font-weight: 500;
+						margin-bottom: 10px;
+					}
+					h4 {
+						width: 100%;
+						font-size: 1.6rem;
+						font-weight: 700;
+					}
 
-          p {
-            width: 100%;
-            margin: 5px auto 0;
-            font-weight: 500;
-          }
-          ul {
-            @include box-align();
-            li {
-              margin: 5px;
-              background-color: $lambdaRed;
-              color: $lightcolor;
-              padding: 3px 7px;
-              font-size: 1.4rem;
-            }
-          }
-          .fa-map-marker-alt {
-            color: $lambdaPink;
-            margin-right: 5px;
-            margin-bottom: 10px;
-          }
+					p {
+						width: 100%;
+						margin: 5px auto 0;
+						font-weight: 500;
+					}
+					ul {
+						@include box-align();
+						li {
+							margin: 5px;
+							background-color: $lambdaRed;
+							color: $lightcolor;
+							padding: 3px 7px;
+							font-size: 1.4rem;
+						}
+					}
+					.fa-map-marker-alt {
+						color: $lambdaPink;
+						margin-right: 5px;
+						margin-bottom: 10px;
+					}
 
-          .contact-links {
-            width: 100%;
-            max-width: 300px;
-            padding: 5px;
-            a {
-              font-size: 2rem;
-              color: lighten($darkcolor, 50%);
-              cursor: pointer;
-              margin: 5px;
+					.contact-links {
+						width: 100%;
+						max-width: 300px;
+						padding: 5px;
+						a {
+							font-size: 2rem;
+							color: lighten($darkcolor, 50%);
+							cursor: pointer;
+							margin: 5px;
 
-              &:hover {
-                color: $darkcolor;
-              }
-            }
-          }
-        }
-        .projects-box {
-          width: 100%;
-          @include box-align();
-          padding: 0 10px 10px;
-          @media (max-width: 768px) {
-            width: 100%;
-          }
-          @media (min-width: 768px) and (max-width: 854px) {
-            width: 100%;
-            margin: 0 auto;
-          }
+							&:hover {
+								color: $darkcolor;
+							}
+						}
+					}
+				}
+				.projects-box {
+					width: 100%;
+					@include box-align();
+					padding: 0 10px 10px;
+					@media (max-width: 768px) {
+						width: 100%;
+					}
+					@media (min-width: 768px) and (max-width: 854px) {
+						width: 100%;
+						margin: 0 auto;
+					}
 
-          h2 {
-            text-align: center;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: $darkcolor;
-            text-transform: capitalize;
-          }
-          .display-box {
-            text-decoration: none;
-            color: black;
-            border: 1px solid $newBorder;
-            background-color: $lightcolor;
-            margin: 0 3%;
-            width: 150px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: box-shadow 0.3s;
-            -webkit-transition: box-shadow 0.3s; /* Safari */
-            // transition-duration: 0.3s;
+					h2 {
+						text-align: center;
+						font-size: 1.6rem;
+						margin-bottom: 20px;
+						font-weight: 700;
+						color: $darkcolor;
+						text-transform: capitalize;
+					}
+					.display-box {
+						text-decoration: none;
+						color: black;
+						border: 1px solid rgba(0, 0, 0, 0.12);
+						background-color: $lightcolor;
+						margin: 0 3%;
+						width: 150px;
+						font-size: 0.8rem;
+						cursor: pointer;
+						transition: box-shadow 0.3s;
+						-webkit-transition: box-shadow 0.3s; /* Safari */
+						// transition-duration: 0.3s;
 
-            &:hover {
-              box-shadow: 0 0 6px 1px #cccccc;
-            }
-            .proj-box-container {
-              width: 100%;
-              height: 180px;
-              position: relative;
-              img {
-                width: 100%;
-                height: auto;
-              }
-              h3 {
-                position: absolute;
-                background-color: $lightcolor;
-                width: 100%;
-                bottom: 0;
-                padding: 3px 2px;
-                text-align: center;
-                font-size: 1.4rem;
-                text-transform: capitalize;
-              }
-            }
-          }
-        }
-        .prof-link {
-          border: none;
-          background-color: $lambdaTeal;
-          color: $lightcolor;
-          padding: 5px 10px;
-          margin: 10px auto;
-          width: 100%;
-          font-size: 1.4rem;
-          cursor: pointer;
-          transition-duration: 0.3s;
-          &:hover {
-            background-color: $lambdaGray;
-          }
-        }
-      }
-      @media (max-width: 768px) {
-        .cards {
-          flex-direction: column;
-          justify-content: center;
+						&:hover {
+							box-shadow: 0 0 6px 1px #cccccc;
+						}
+						.proj-box-container {
+							width: 100%;
+							height: 180px;
+							position: relative;
+							img {
+								width: 100%;
+								height: auto;
+							}
+							h3 {
+								position: absolute;
+								background-color: $lightcolor;
+								width: 100%;
+								bottom: 0;
+								padding: 3px 2px;
+								text-align: center;
+								font-size: 1.4rem;
+								text-transform: capitalize;
+							}
+						}
+					}
+				}
+				.prof-link {
+					border: none;
+					background-color: $lambdaTeal;
+					color: $lightcolor;
+					padding: 5px 10px;
+					margin: 10px auto;
+					width: 100%;
+					font-size: 1.4rem;
+					cursor: pointer;
+					transition-duration: 0.3s;
+					&:hover {
+						background-color: $lambdaGray;
+					}
+				}
+			}
+			@media (max-width: 768px) {
+				.cards {
+					flex-direction: column;
+					justify-content: center;
 
-          .profile-pic {
-            margin: 10px auto;
-          }
-          .details {
-            max-width: 100%;
-            text-align: center;
-          }
-          .projects-box {
-            margin: 0 auto;
-            a {
-              width: 100%;
-              display: block;
-            }
-          }
-        }
-      }
-    }
-  }
+					.profile-pic {
+						margin: 10px auto;
+					}
+					.details {
+						max-width: 100%;
+						text-align: center;
+					}
+					.projects-box {
+						margin: 0 auto;
+						a {
+							width: 100%;
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
 }
