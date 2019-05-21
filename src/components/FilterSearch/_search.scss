@@ -82,7 +82,7 @@
 				border: 1px solid $border-color;
 				overflow: hidden;
 				@extend %box-shadow;
-				@include box-align(center, flex-start);
+				@include box-align(center, center);
 				transition-duration: 0.4s;
 
 				// a {
@@ -267,7 +267,7 @@
 					h2 {
 						text-align: center;
 						font-size: 1.4rem;
-						margin: 27px auto 5px;
+						margin: 15px auto;
 						font-weight: 700;
 						color: $lambdaGray;
 						text-transform: capitalize;
