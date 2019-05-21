@@ -93,31 +93,32 @@
 
 			a {
 				text-decoration: none;
-
-				background-color: $lambdaTeal;
-				color: $lightcolor;
+				background-color: $lightcolor;
+				color: $lambdaTeal;
 				border: 2px solid $lambdaTeal;
+
 				margin: 10px;
 				font-size: 2.2rem;
 				padding: 20px;
 				cursor: pointer;
 				transition-duration: 0.3s;
 				&:nth-last-child(1) {
-					background-color: $lightcolor;
-					color: $lambdaTeal;
-					border: 2px solid $lambdaTeal;
+					border: 2px solid $lightcolor;
+					color: $lightcolor;
+					background-color: $lambdaTeal;
+
 					transition-duration: 0.3s;
 
 					&:hover {
-						border: 2px solid $lightcolor;
-						color: $lightcolor;
-						background-color: $lambdaTeal;
+						background-color: $lightcolor;
+						color: $lambdaTeal;
+						border: 2px solid $lambdaTeal;
 					}
 				}
 
 				&:hover {
-					background-color: $lightcolor;
-					color: $lambdaTeal;
+					background-color: $lambdaTeal;
+					color: $lightcolor;
 					border: 2px solid $lambdaTeal;
 				}
 			}

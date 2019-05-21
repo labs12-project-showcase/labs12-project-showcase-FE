@@ -19,8 +19,7 @@
 
 		h2 {
 			width: 100%;
-			display: flex;
-			text-align: left;
+			@include box-align();
 
 			color: $darkcolor;
 			margin-bottom: 15px;

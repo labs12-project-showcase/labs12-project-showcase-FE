@@ -3,14 +3,17 @@ import { withRouter } from 'react-router-dom';
 import { render } from 'react-dom';
 import ReactMapGL, { Marker } from 'react-map-gl';
 
+import FlipWord from './FlipWord';
 import StudentPin from './student-pin';
 import LocationSelect from '../location/LocationSelect';
 import { reactSelectStyles } from '../../styles/ReactSelectStyles';
 import 'mapbox-gl/src/css/mapbox-gl.css';
 
 // const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+
 const newtoken =
 	'pk.eyJ1IjoidGljb3RoZXBzIiwiYSI6ImNqdnBlZDM2bjB4ODE0OXFrNXpzbWh0ZXEifQ.vBNSTUmy4Xk7NbkBY3Kuwg';
+
 const MAPBOX_TOKEN = newtoken;
 
 class MapboxMapPresentational extends React.Component {
@@ -36,55 +39,33 @@ class MapboxMapPresentational extends React.Component {
 				'UI Developers',
 				'iOS Developers',
 				'Android Developers',
-				'Data Science'
-			]
+				'Data Scientists'
+			],
+			transitionTime: 5000
 		};
 	}
 
 	componentDidMount() {
-		const { words } = this.state;
+		const { words, transitionTime } = this.state;
 		let index = 0;
-		let curWord = words[index];
-		let curChar = 0;
-		let forward = true;
+
+		this.setState({
+			term: words[index]
+		});
 
 		this.interval = setInterval(() => {
-			if (curChar < curWord.length && forward) {
-				this.setState(
-					{
-						term: curWord.slice(0, curChar)
-					},
-					() => {
-						curChar = curChar + 1;
-						if (curChar === curWord.length) {
-							forward = false;
-						}
-					}
-				);
-			} else if (curChar <= curWord.length && !forward) {
-				this.setState(
-					{
-						term: curWord.slice(0, curChar)
-					},
-					() => {
-						if (curChar > 0) {
-							curChar = curChar - 1;
-						}
-						if (curChar === 0) {
-							curChar = 0;
-							forward = true;
-							if (index === words.length - 1) {
-								index = 0;
-								curWord = words[index];
-							} else {
-								index = index + 1;
-								curWord = words[index];
-							}
-						}
-					}
-				);
+			if (index < words.length - 1) {
+				index = index + 1;
+				this.setState({
+					term: words[index]
+				});
+			} else {
+				index = 0;
+				this.setState({
+					term: words[index]
+				});
 			}
-		}, 160);
+		}, transitionTime);
 	}
 
 	componentWillUnmount() {
@@ -134,7 +115,13 @@ class MapboxMapPresentational extends React.Component {
 		return (
 			<>
 				<form onSubmit={this.handleSubmit}>
-					<h2>Find {this.state.term}</h2>
+					<h2>
+						Find
+						<FlipWord
+							transitionTime={this.state.transitionTime}
+							term={this.state.term}
+						/>
+					</h2>
 					<LocationSelect
 						isClearable
 						styles={reactSelectStyles}
