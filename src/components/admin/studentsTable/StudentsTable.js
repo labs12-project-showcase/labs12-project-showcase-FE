@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
 import { fetchStudents, updateStudent } from "../adminActions.js";
 import { Link } from "react-router-dom";
-import GraduatedButton from "./StudentGraduatedButton";
-import HiredButton from "./StudentHiredButton";
-import EndorsedButton from "./StudentEndorsedButton";
-import HighlightedButton from './StudentHighlightedButton';
+import StudentGraduatedButton from "./StudentGraduatedButton";
+import StudentHiredButton from "./StudentHiredButton";
+import StudentEndorsedButton from "./StudentEndorsedButton";
+import StudentHighlightedButton from './StudentHighlightedButton';
 
 class StudentsTable extends React.Component {
   constructor(props) {
@@ -55,13 +55,15 @@ class StudentsTable extends React.Component {
         name: "Track",
         field: "track",
         filter: true,
-        sort: true
+        sort: true,
       },
       {
         name: "Cohort",
         field: "cohort_name",
         filter: true,
-        sort: true
+        sort: true,
+        print: false,
+          download: false,
       },
       {
         name: "Highlighted",
@@ -70,7 +72,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <HighlightedButton student={student} />;
+            return <StudentHighlightedButton student={student} />;
           },
           customValue: student =>
             student.highlighted
@@ -87,7 +89,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <GraduatedButton student={student} />;
+            return <StudentGraduatedButton student={student} />;
           },
           customValue: student =>
             student.graduated
@@ -104,7 +106,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <HiredButton student={student} />;
+            return <StudentHiredButton student={student} />;
           },
           customValue: student =>
             student.hired
@@ -121,7 +123,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <EndorsedButton student={student} />;
+            return <StudentEndorsedButton student={student} />;
           },
           customValue: student =>
             student.approved
@@ -130,14 +132,16 @@ class StudentsTable extends React.Component {
               .toUpperCase() + student.approved.toString().slice(1),
           customSortValue: student => Number(student.approved)
         }
-      }
+      },
     ];
 
     const options = {
       filterType: "dropdown",
       selectableRows: false,
       showSelectedRowsToolbar: false,
-      responsive: "stacked"
+      responsive: "stacked",
+      print: false,
+      download: false,
     };
 
     return (
