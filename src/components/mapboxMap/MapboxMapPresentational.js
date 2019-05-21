@@ -35,12 +35,13 @@ class MapboxMapPresentational extends React.Component {
         "iOS Developers",
         "Android Developers",
         "Data Scientists"
-      ]
+      ],
+      transitionTime: 5000
     };
   }
 
   componentDidMount() {
-    const { words } = this.state;
+    const { words, transitionTime } = this.state;
     let index = 0;
 
     this.setState({
@@ -59,7 +60,7 @@ class MapboxMapPresentational extends React.Component {
           term: words[index]
         });
       }
-    }, 5000);
+    }, transitionTime);
   }
 
   componentWillUnmount() {
@@ -111,7 +112,10 @@ class MapboxMapPresentational extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <h2>
             Find
-            <FlipWord term={this.state.term} />
+            <FlipWord
+              transitionTime={this.state.transitionTime}
+              term={this.state.term}
+            />
           </h2>
           <LocationSelect
             isClearable

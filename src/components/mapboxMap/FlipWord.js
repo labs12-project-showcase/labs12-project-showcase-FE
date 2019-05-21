@@ -3,7 +3,8 @@ import Flip from "react-reveal/Flip";
 
 class FlipWord extends React.Component {
   state = {
-    display: true
+    display: true,
+    duration: 1000
   };
 
   componentDidUpdate(prevProps) {
@@ -15,15 +16,15 @@ class FlipWord extends React.Component {
         this.setState({
           display: false
         });
-      }, 4000);
+      }, this.props.transitionTime - this.state.duration);
     }
   }
 
   render() {
-    const { display } = this.state;
+    const { display, duration } = this.state;
     const { term } = this.props;
     return (
-      <Flip when={display} spy={term} opposite duration={1000} top>
+      <Flip when={display} spy={term} opposite duration={duration} top>
         &nbsp; {term}
       </Flip>
     );
