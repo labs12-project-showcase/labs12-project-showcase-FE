@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import StudentGraduatedButton from "./StudentGraduatedButton";
 import StudentHiredButton from "./StudentHiredButton";
 import StudentEndorsedButton from "./StudentEndorsedButton";
-import StudentHighlightedButton from "./StudentHighlightedButton";
+import HighlightedButton from './StudentHighlightedButton';
 
 class StudentsTable extends React.Component {
   constructor(props) {
@@ -62,6 +62,23 @@ class StudentsTable extends React.Component {
         field: "cohort_name",
         filter: true,
         sort: true
+      },
+      {
+        name: "Highlighted",
+        field: "highlighted",
+        options: {
+          filter: true,
+          sort: true,
+          customBodyRender: student => {
+            return <HighlightedButton student={student} />;
+          },
+          customValue: student =>
+            student.highlighted
+              .toString()
+              .charAt(0)
+              .toUpperCase() + student.highlighted.toString().slice(1),
+          customSortValue: student => Number(student.highlighted)
+        }
       },
       {
         name: "Graduated",
