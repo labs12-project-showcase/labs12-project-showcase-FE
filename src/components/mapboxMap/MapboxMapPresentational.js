@@ -48,8 +48,6 @@ class MapboxMapPresentational extends React.Component {
     });
 
     this.interval = setInterval(() => {
-      console.log("INDEX", index);
-      console.log("WORD", this.state.term);
       if (index < words.length - 1) {
         index = index + 1;
         this.setState({
@@ -61,7 +59,7 @@ class MapboxMapPresentational extends React.Component {
           term: words[index]
         });
       }
-    }, 2500);
+    }, 5000);
   }
 
   componentWillUnmount() {
