@@ -58,21 +58,19 @@ class TopBar extends Component {
 					</NavLink>
 					<div className="TopBar-btn-container">
 						<NavLink to="/discover" className="TopBar-search-btn">
-							<strong>All Candidates</strong>{' '}
-							<i className="fas fa-search-location" />
+							All Candidates
 						</NavLink>
 						{/* <button className="TopBar-search-btn" onClick={() => this.props.history.push('/discover')}>Discover <i className="fas fa-search-location" /></button> */}
 						{!(this.state.isLoggedIn || renderLoggedIn) && (
 							<>
 								<button className="TopBar-login-btn" onClick={login}>
-									<strong>Register / Sign in</strong>{' '}
-									<i className="fas fa-user" />
+									Register / Sign in
 								</button>
 							</>
 						)}
 						{(this.state.isLoggedIn || renderLoggedIn) && (
 							<button className="TopBar-logout-btn" onClick={logout}>
-								<strong>Sign Out</strong> <i className="fas fa-sign-out-alt" />
+								Sign Out
 							</button>
 						)}
 					</div>
