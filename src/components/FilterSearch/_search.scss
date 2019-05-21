@@ -125,9 +125,10 @@
             .highlighted {
               color: $lambdaRed;
               position: absolute;
-              font-size: 3rem;
+              max-width: 50px;
+              height: auto;
               bottom: 10px;
-              right: 5px;
+              right: -5px;
             }
           }
           .details {

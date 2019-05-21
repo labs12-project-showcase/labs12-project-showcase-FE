@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getJwtRole } from "../../config/utilities.js";
 
+import avatar from "../../assets/avatar.jpg";
+import projectImg from "../../assets/projectplaceholder.jpg";
+import fire from "../../assets/fire.png";
+
 const Cards = ({ cards }) => {
   const map = arr => arr.map(skill => <li key={skill}>{skill}</li>);
   const role = getJwtRole();
@@ -14,9 +18,9 @@ const Cards = ({ cards }) => {
           <div className="cards-description">
             <div className="profile-pic-container">
               <div className="profile-pic">
-                <img src={cards.profile_pic} alt="Profile" />
+                <img src={cards.profile_pic || avatar} alt="Profile" />
                 {cards.highlighted && role === "staff" && (
-                  <i className="fas fa-dumpster-fire highlighted" />
+                  <img src={fire} className="highlighted" alt="fire" />
                 )}
               </div>
             </div>
@@ -43,7 +47,7 @@ const Cards = ({ cards }) => {
               className="display-box"
             >
               <div className="proj-box-container">
-                <img src={proj.media} alt="Project" />
+                <img src={proj.media || projectImg} alt="Project" />
                 <h3>{proj.name}</h3>
               </div>
             </Link>
