@@ -112,6 +112,23 @@ class StudentsTable extends React.Component {
               .toUpperCase() + student.approved.toString().slice(1),
           customSortValue: student => Number(student.approved)
         }
+      },
+      {
+        name: "Highlighted",
+        field: "highlighted",
+        options: {
+          filter: true,
+          sort: true,
+          customBodyRender: student => {
+            return <HighlightedButton student={student} />;
+          },
+          customValue: student =>
+            student.highlighted
+              .toString()
+              .charAt(0)
+              .toUpperCase() + student.highlighted.toString().slice(1),
+          customSortValue: student => Number(student.highlighted)
+        }
       }
     ];
 
