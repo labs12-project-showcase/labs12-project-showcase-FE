@@ -96,14 +96,18 @@
 				background-color: $lightcolor;
 				color: $lambdaTeal;
 				border: 2px solid $lambdaTeal;
+
 				margin: 10px;
 				font-size: 2.2rem;
 				padding: 20px;
 				cursor: pointer;
+				transition-duration: 0.3s;
 				&:nth-last-child(1) {
-					background-color: $lambdaTeal;
+					border: 2px solid $lightcolor;
 					color: $lightcolor;
-					border: 2px solid $lambdaTeal;
+					background-color: $lambdaTeal;
+
+					transition-duration: 0.3s;
 
 					&:hover {
 						background-color: $lightcolor;
@@ -113,9 +117,9 @@
 				}
 
 				&:hover {
-					border: 2px solid $lightcolor;
-					color: $lightcolor;
 					background-color: $lambdaTeal;
+					color: $lightcolor;
+					border: 2px solid $lambdaTeal;
 				}
 			}
 		}
@@ -248,7 +252,7 @@
 					cursor: pointer;
 					border: 1px solid $newBorder;
 					padding: 25px 28px;
-
+					transition-duration: 0.3s;
 					&:hover {
 						background-color: $lambdaTeal;
 						color: $lightcolor;
@@ -288,19 +292,14 @@
 				margin: 20px;
 				@include box-align();
 				flex-direction: column;
-				
 
 				.s-pic {
-					height: 150px;
-					width: 150px;
-					overflow: hidden;
 					max-width: 180px;
-					width: 112px;
-					height: 112px;
+					width: 121px;
+					height: 121px;
 					border-radius: 50%;
 					overflow: hidden;
 					margin: 10px;
-					// border-radius: 50%;
 					img {
 						width: 100%;
 						height: auto;
