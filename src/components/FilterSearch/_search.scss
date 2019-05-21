@@ -255,7 +255,6 @@
 					width: 192px;
 					@include box-align();
 					flex-direction: column;
-					padding: 0 10px 10px;
 					@media (max-width: 768px) {
 						width: 100%;
 					}
