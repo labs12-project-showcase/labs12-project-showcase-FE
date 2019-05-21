@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import StudentGraduatedButton from "./StudentGraduatedButton";
 import StudentHiredButton from "./StudentHiredButton";
 import StudentEndorsedButton from "./StudentEndorsedButton";
-import HighlightedButton from './StudentHighlightedButton';
+import StudentHighlightedButton from './StudentHighlightedButton';
 
 class StudentsTable extends React.Component {
   constructor(props) {
@@ -55,13 +55,15 @@ class StudentsTable extends React.Component {
         name: "Track",
         field: "track",
         filter: true,
-        sort: true
+        sort: true,
       },
       {
         name: "Cohort",
         field: "cohort_name",
         filter: true,
-        sort: true
+        sort: true,
+        print: false,
+          download: false,
       },
       {
         name: "Highlighted",
@@ -70,7 +72,7 @@ class StudentsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <HighlightedButton student={student} />;
+            return <StudentHighlightedButton student={student} />;
           },
           customValue: student =>
             student.highlighted
@@ -131,30 +133,15 @@ class StudentsTable extends React.Component {
           customSortValue: student => Number(student.approved)
         }
       },
-      {
-        name: "Highlighted",
-        field: "highlighted",
-        options: {
-          filter: true,
-          sort: true,
-          customBodyRender: student => {
-            return <StudentHighlightedButton student={student} />;
-          },
-          customValue: student =>
-            student.highlighted
-              .toString()
-              .charAt(0)
-              .toUpperCase() + student.highlighted.toString().slice(1),
-          customSortValue: student => Number(student.highlighted)
-        }
-      }
     ];
 
     const options = {
       filterType: "dropdown",
       selectableRows: false,
       showSelectedRowsToolbar: false,
-      responsive: "stacked"
+      responsive: "stacked",
+      print: false,
+      download: false,
     };
 
     return (
