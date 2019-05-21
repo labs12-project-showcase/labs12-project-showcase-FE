@@ -41,11 +41,14 @@ class Profileqs extends React.Component {
               <h3>Profile Quick Start</h3>
               <p>Use the fields below to build your profile.</p>
               {this.props.profile.profileData.github ? (
-                <>
+                <><br/>
                   <p>
-                    We have prepopulated some of the fields with information
-                    from GitHub. That information will only be saved after you
-                    submit the form.
+                    We have prepopulated your name, GutHub profile URL, and GitHub picture URL. <br/>
+                    <ul>
+                      <li> - To keep your GitHub picture, click "Add URL".</li>
+                    <li> - The information will only be saved after you
+                    submit the form.</li>
+                    </ul>
                   </p>
                 </>
               ) : null}
