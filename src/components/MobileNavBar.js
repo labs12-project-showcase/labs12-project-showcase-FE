@@ -107,18 +107,20 @@ class SwipeableTemporaryDrawer extends Component {
           </NavLink>
         </List>
         <Divider />
-        <List className="login-list">
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Login/Register"
-            // onClick={e => login()}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Login/Register
-            </Typography>
-          </ListItem>
-        </List>
+        {!(this.state.isLoggedIn || renderLoggedIn) && (
+          <List className="login-list">
+            <ListItem
+              button
+              style={{ margin: "10px 15px" }}
+              value="Login/Register"
+              onClick={() => login()}
+            >
+              <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                Login/Register
+              </Typography>
+            </ListItem>
+          </List>
+        )}
         <Divider />
         <List className="loggedIn-student-list">
           <ListItem
