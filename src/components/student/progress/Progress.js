@@ -26,6 +26,7 @@ const Progress = ({ profile }) => {
       name,
       track_id,
       track_options,
+      highlighted,
       ...rest
     } = profile;
     if (profile) {

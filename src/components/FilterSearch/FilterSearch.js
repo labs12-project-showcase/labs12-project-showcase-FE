@@ -201,6 +201,64 @@ class FilterSearch extends React.Component {
               <h2>Filters</h2>
               <div className="control-group">
                 <div className="search-box">
+                  <h3>Location</h3>
+                  <label className="input-location">
+                    Located within
+                    <input
+                      type="number"
+                      step="10"
+                      size="3"
+                      placeholder="50"
+                      name="within"
+                      value={this.state.within}
+                      onChange={this.handleChange}
+                    />
+                    miles of:
+                  </label>
+                  <LocationSelect
+                    fieldValue={this.state.location}
+                    isClearable
+                    onChange={this.handleLocation}
+                    styles={reactSelectStyles}
+                  />
+                  <label className="control control-checkbox">
+                    Currently Located Only
+                    <input
+                      onChange={e =>
+                        this.setState({ filterDesLoc: false }, () => {
+                          if (this.state.location) {
+                            this.handleSubmit();
+                          }
+                        })
+                      }
+                      checked={this.state.filterDesLoc ? false : true}
+                      name="filterDesLoc"
+                      type="radio"
+                      value={false}
+                    />
+                    <div className="control_indicator-radio" />
+                  </label>
+                  <label className="control control-checkbox">
+                    {"Currently Located & Will Relocate"}{" "}
+                    {/* Wrapped in {} because of the ampersand */}
+                    <input
+                      onChange={e =>
+                        this.setState({ filterDesLoc: true }, () => {
+                          if (this.state.location) {
+                            this.handleSubmit();
+                          }
+                        })
+                      }
+                      checked={this.state.filterDesLoc}
+                      name="filterDesLoc"
+                      type="radio"
+                      value={true}
+                    />
+                    <div className="control_indicator-radio" />
+                  </label>
+                </div>
+                <hr />
+                <div className="search-box">
                   <label className="control control-checkbox">
                     Full Stack
                     <input
@@ -264,64 +322,6 @@ class FilterSearch extends React.Component {
                   </label>
                 </div>
 
-                <div className="search-box">
-                  <hr />
-                  <h3>Location</h3>
-                  <label className="input-location">
-                    Located within
-                    <input
-                      type="number"
-                      step="10"
-                      size="3"
-                      placeholder="50"
-                      name="within"
-                      value={this.state.within}
-                      onChange={this.handleChange}
-                    />
-                    miles of:
-                  </label>
-                  <LocationSelect
-                    fieldValue={this.state.location}
-                    isClearable
-                    onChange={this.handleLocation}
-                    styles={reactSelectStyles}
-                  />
-                  <label className="control control-checkbox">
-                    Currently Located Only
-                    <input
-                      onChange={e =>
-                        this.setState({ filterDesLoc: false }, () => {
-                          if (this.state.location) {
-                            this.handleSubmit();
-                          }
-                        })
-                      }
-                      checked={this.state.filterDesLoc ? false : true}
-                      name="filterDesLoc"
-                      type="radio"
-                      value={false}
-                    />
-                    <div className="control_indicator-radio" />
-                  </label>
-                  <label className="control control-checkbox">
-                    {"Currently Located & Will Relocate"}{" "}
-                    {/* Wrapped in {} because of the ampersand */}
-                    <input
-                      onChange={e =>
-                        this.setState({ filterDesLoc: true }, () => {
-                          if (this.state.location) {
-                            this.handleSubmit();
-                          }
-                        })
-                      }
-                      checked={this.state.filterDesLoc}
-                      name="filterDesLoc"
-                      type="radio"
-                      value={true}
-                    />
-                    <div className="control_indicator-radio" />
-                  </label>
-                </div>
               </div>
             </form>
           </section>
