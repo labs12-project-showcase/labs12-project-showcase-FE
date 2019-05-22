@@ -4,7 +4,7 @@
 		width: 100%;
 		max-width: 1366px;
 		margin: 0 auto;
-		padding: 20px;
+		padding: 10px;
 		padding-bottom: 100px;
 		box-sizing: border-box;
 
@@ -12,12 +12,12 @@
 			position: sticky;
 			top: 0px;
 			width: 100%;
-			max-width: 250px;
+			max-width: 235px;
 			padding-top: 20px;
-			@media (max-width: 877px) and (min-width: 500px) {
-				max-width: 100%;
-				margin: 20px;
-			}
+			// @media (max-width: 877px) and (min-width: 500px) {
+			// 	max-width: 100%;
+			// 	margin: 20px;
+			// }
 			.search-bar {
 				width: 100%;
 				.search-class {
@@ -57,12 +57,12 @@
 		}
 		.cards-display {
 			width: 100%;
-			max-width: 68%;
+			max-width: 765px;
 			padding: 20px 0;
 			@include box-align(flex-start, flex-start);
 
-			@media (max-width: 768px) {
-				max-width: 100%;
+			@media (max-width: 980px) {
+				max-width: 708px;
 			}
 
 			h2 {
@@ -85,9 +85,9 @@
 				@include box-align(center, center);
 				transition-duration: 0.4s;
 
-				// a {
-				// 	width: 75%;
-				// }
+				@media (max-width: 500px) {
+					flex-direction: column;
+				}
 
 				&:hover {
 					-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
@@ -95,16 +95,24 @@
 					transform: translateY(-6px);
 				}
 
-				@media (max-width: 768px) {
-					width: 100%;
-				}
-
 				.cards-description {
 					width: 100%;
 					max-width: 550px;
 					@include box-align(flex-start, center);
+
+					@media (max-width: 980px) {
+						max-width: 488px;
+					}
+
+					@media (max-width: 500px) {
+						flex-direction: column;
+					}
+
 					.profile-pic-container {
 						position: relative;
+						@media (max-width: 768px) {
+							margin: 0 auto;
+						}
 					}
 					.profile-pic {
 						max-width: 180px;
@@ -142,12 +150,13 @@
 						text-align: left;
 						background-color: $lightcolor;
 						@include box-align();
+
+						@media (max-width: 980px) {
+							max-width: 356px;
+						}
+
 						@media (max-width: 768px) {
 							width: 100%;
-						}
-						@media (min-width: 768px) and (max-width: 854px) {
-							width: 100%;
-							margin: 0 auto;
 						}
 
 						h2 {
@@ -159,6 +168,9 @@
 							margin-bottom: 10px;
 							text-align: left;
 							color: $darkcolor;
+							@media (max-width: 980px) {
+								font-size: 2.8rem;
+							}
 						}
 						a > h2 {
 							text-decoration: none;
@@ -170,6 +182,9 @@
 							margin-bottom: 10px;
 							text-align: left;
 							color: $darkcolor;
+							@media (max-width: 980px) {
+								font-size: 2.8rem;
+							}
 						}
 
 						h3 {
@@ -180,6 +195,9 @@
 							font-weight: 400;
 							margin-bottom: 10px;
 							letter-spacing: 1.14px;
+							@media (max-width: 980px) {
+								font-size: 1.4rem;
+							}
 						}
 						h4 {
 							width: 100%;
@@ -257,12 +275,16 @@
 					width: 192px;
 					@include box-align();
 					flex-direction: column;
+
 					@media (max-width: 768px) {
 						width: 100%;
+						flex-direction: row;
+						border-left: none;
 					}
-					@media (min-width: 768px) and (max-width: 854px) {
+
+					@media (max-width: 600px) {
 						width: 100%;
-						margin: 0 auto;
+						flex-direction: column;
 					}
 
 					h2 {
@@ -272,6 +294,9 @@
 						font-weight: 700;
 						color: $lambdaGray;
 						text-transform: capitalize;
+						@media (max-width: 768px) {
+							font-size: 1.6rem;
+						}
 					}
 					.display-box {
 						text-decoration: none;
@@ -283,7 +308,6 @@
 						cursor: pointer;
 						transition: box-shadow 0.3s;
 						-webkit-transition: box-shadow 0.3s; /* Safari */
-						// transition-duration: 0.3s;
 
 						&:hover {
 							box-shadow: 0 0 6px 1px #cccccc;
@@ -295,12 +319,21 @@
 							position: relative;
 							transition-duration: 0.4s;
 
+							@media (max-width: 768px) {
+								width: 200px;
+								height: 120px;
+							}
+
 							&:hover {
 								width: 151px;
 								height: 97px;
 								-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
 								box-shadow: -2px 5px 16px 2px#d3d3d3;
 								transform: translateY(-5px);
+								@media (max-width: 768px) {
+									width: 251px;
+									height: 200px;
+								}
 							}
 							img {
 								width: 100%;
