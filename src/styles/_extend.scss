@@ -22,7 +22,7 @@
 		@include box-align(flex-start, flex-start);
 		flex-direction: column;
 
-		@media (max-width: 877px) and (min-width: 500px) {
+		@media (max-width: 980px) and (min-width: 500px) {
 			flex-direction: row;
 			@include box-align();
 		}
@@ -31,7 +31,7 @@
 			width: 100%;
 			flex-direction: column;
 			@include box-align(flex-start, flex-start);
-			@media (max-width: 877px) and (min-width: 500px) {
+			@media (max-width: 980px) and (min-width: 500px) {
 				width: 48%;
 				@include box-align(center, flex-start);
 			}
@@ -222,7 +222,7 @@
 			border: none;
 			border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
-			@media (max-width: 877px) and (min-width: 500px) {
+			@media (max-width: 980px) and (min-width: 500px) {
 				display: none;
 			}
 		}
