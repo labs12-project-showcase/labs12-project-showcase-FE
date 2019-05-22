@@ -119,6 +119,10 @@
 				p {
 					margin-bottom: 10px;
 					color: $lambdaGray;
+					width: 275px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
 				}
 			}
 			.fa-grip-lines {
