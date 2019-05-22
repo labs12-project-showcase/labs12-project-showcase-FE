@@ -75,7 +75,7 @@ class TopBar extends Component {
               </button>
             )}
           </div>
-          <MobileMenuButton isLoggedIn={this.state.isLoggedIn} />
+          {/* <MobileMenuButton isLoggedIn={this.state.isLoggedIn} /> */}
           <MobileNavBar isLoggedIn={this.state.isLoggedIn} />
         </div>
         {(this.state.isLoggedIn || renderLoggedIn) &&

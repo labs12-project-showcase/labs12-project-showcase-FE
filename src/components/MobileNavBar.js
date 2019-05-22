@@ -10,7 +10,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 const styles = {
   list: {
-    width: 240
+    width: 240,
+    marginTop: 75
   }
 };
 
@@ -282,7 +283,7 @@ class SwipeableTemporaryDrawer extends React.Component {
         <Button onClick={this.toggleDrawer("right", true)}>
           <i
             className="fas fa-bars"
-            style={{ fontSize: "2.5rem", color: "blue" }}
+            style={{ fontSize: "3.5rem", color: "white" }}
           />
         </Button>
         <SwipeableDrawer
