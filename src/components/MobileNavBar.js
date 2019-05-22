@@ -1,6 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { login, logout, adminLogin } from "../auth/authActions.js";
+import { NavLink } from "react-router-dom";
+import { validateJwt, getJwtRole } from "../config/utilities.js";
+import { deleteStudent } from "./student/profile/studentProfileActions.js";
 import { withStyles } from "@material-ui/core/styles";
+import history from "../history.js";
+import JoinProject from "./student/projectqs/JoinProject";
+import LeaveProject from "./student/projectqs/LeaveProject";
+import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
@@ -15,9 +24,36 @@ const styles = {
   }
 };
 
-class SwipeableTemporaryDrawer extends React.Component {
+class SwipeableTemporaryDrawer extends Component {
   state = {
-    right: false
+    right: false,
+    isLoggedIn: this.props.isLoggedIn
+  };
+
+  componentWillMount() {
+    this.unlisten = history.listen((location, action) => {
+      const update = validateJwt();
+      this.setState({ isLoggedIn: update });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unlisten();
+  }
+
+  checkOwner = arr => {
+    if (arr) {
+      const owner = arr.filter(member => {
+        return member.student_id === this.props.id;
+      });
+      if (owner && owner.length) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   };
 
   toggleDrawer = (side, open) => () => {
@@ -27,6 +63,9 @@ class SwipeableTemporaryDrawer extends React.Component {
   };
 
   render() {
+    const renderLoggedIn = validateJwt();
+    const loggedInRole = getJwtRole();
+    const { login, logout } = this.props;
     const { classes } = this.props;
 
     const sideList = (
@@ -275,4 +314,17 @@ SwipeableTemporaryDrawer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SwipeableTemporaryDrawer);
+const mapStateToProps = state => {
+  return {
+    id: state.profile.profileData.id,
+    project_students: state.project.projectData.students,
+    project_id: state.project.projectData.id
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { login, logout, adminLogin, deleteStudent }
+  )(withStyles(styles)(SwipeableTemporaryDrawer))
+);
