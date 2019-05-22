@@ -14,10 +14,10 @@
 			width: 100%;
 			max-width: 235px;
 			padding-top: 20px;
-			// @media (max-width: 877px) and (min-width: 500px) {
-			// 	max-width: 100%;
-			// 	margin: 20px;
-			// }
+			@media (max-width: 877px) and (min-width: 500px) {
+				max-width: 100%;
+				margin: 20px;
+			}
 			.search-bar {
 				width: 100%;
 				.search-class {
