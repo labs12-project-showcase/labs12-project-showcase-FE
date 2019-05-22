@@ -19,9 +19,17 @@ import ListItem from "@material-ui/core/ListItem";
 
 const styles = {
   list: {
-    width: 240,
-    marginTop: 80
+    width: 240
   }
+};
+
+const zIndex = {
+  mobileStepper: 1000,
+  appBar: 1100,
+  drawer: 1200,
+  modal: 1300,
+  snackbar: 1400,
+  tooltip: 1500
 };
 
 class SwipeableTemporaryDrawer extends Component {
@@ -70,7 +78,7 @@ class SwipeableTemporaryDrawer extends Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List className="public-list" zIndex="modal">
+        <List className="public-list" zIndex={zIndex.drawer}>
           <NavLink exact to="/">
             <ListItem
               button

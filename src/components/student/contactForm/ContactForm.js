@@ -144,6 +144,7 @@ Sincerely,
               onSubmit={this.handleSubmit}
               method="POST"
               className="sc-modal-buttons contact-form"
+              zIndex="tooltip"
             >
               <div className="contact-form-header-container">
                 <h2 className="contact-form-header-message">
