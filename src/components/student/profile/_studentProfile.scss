@@ -53,8 +53,9 @@
 					color: $darkcolor;
 					transform: translateY(19px);
 					@media (max-width: 767px) {
-						transform: translateY(60px);
+						// transform: translateY(60px);
 						text-align: center;
+						margin-bottom: 30px;
 					}
 
 					h1 {
