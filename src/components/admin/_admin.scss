@@ -34,13 +34,14 @@ td {
 		}
 	}
 
-	span {
-		font-size: 1.4rem;
+	span,
+	input,
+	li {
+		font-size: 1.4rem !important;
 	}
 
 	h6 {
 		font-weight: 700 !important;
-		font-size: 1.8rem !important;
 		text-transform: uppercase !important;
 	}
 	a {
