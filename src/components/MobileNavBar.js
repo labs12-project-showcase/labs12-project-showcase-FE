@@ -151,7 +151,10 @@ class SwipeableTemporaryDrawer extends Component {
                   console.log(`The my-profile button was clicked!`);
                 }}
               >
-                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
                   My Profile
                 </Typography>
               </ListItem>
@@ -163,7 +166,10 @@ class SwipeableTemporaryDrawer extends Component {
                   console.log(`The edit-profile button was clicked!`);
                 }}
               >
-                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
                   Edit Profile
                 </Typography>
               </ListItem>
@@ -175,7 +181,10 @@ class SwipeableTemporaryDrawer extends Component {
                   console.log(`The add-project button was clicked!`);
                 }}
               >
-                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
                   Add Project
                 </Typography>
               </ListItem>
@@ -187,7 +196,10 @@ class SwipeableTemporaryDrawer extends Component {
                   console.log(`The edit-project button was clicked!`);
                 }}
               >
-                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
                   Edit Project
                 </Typography>
               </ListItem>
@@ -199,7 +211,10 @@ class SwipeableTemporaryDrawer extends Component {
                   console.log(`The join-project button was clicked!`);
                 }}
               >
-                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
                   Join Project
                 </Typography>
               </ListItem>
@@ -211,7 +226,10 @@ class SwipeableTemporaryDrawer extends Component {
                   console.log(`The leave-project button was clicked!`);
                 }}
               >
-                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
                   Leave Project
                 </Typography>
               </ListItem>
@@ -228,7 +246,10 @@ class SwipeableTemporaryDrawer extends Component {
                 console.log(`The students-table button was clicked!`);
               }}
             >
-              <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
+              >
                 Students Table
               </Typography>
             </ListItem>
@@ -240,7 +261,10 @@ class SwipeableTemporaryDrawer extends Component {
                 console.log(`The projects-table button was clicked!`);
               }}
             >
-              <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
+              >
                 Projects Table
               </Typography>
             </ListItem>
@@ -252,7 +276,10 @@ class SwipeableTemporaryDrawer extends Component {
                 console.log(`The accounts-table button was clicked!`);
               }}
             >
-              <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
+              >
                 Accounts Table
               </Typography>
             </ListItem>
@@ -264,7 +291,10 @@ class SwipeableTemporaryDrawer extends Component {
                 console.log(`The tracks-table button was clicked!`);
               }}
             >
-              <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
+              >
                 Tracks Table
               </Typography>
             </ListItem>
@@ -276,7 +306,10 @@ class SwipeableTemporaryDrawer extends Component {
                 console.log(`The cohorts-table button was clicked!`);
               }}
             >
-              <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
+              >
                 Cohorts Table
               </Typography>
             </ListItem>
