@@ -112,25 +112,25 @@ class StudentProfile extends React.Component {
 
               <div className="social-links">
                 <ContactForm student={this.props.studentProfile.profile} />
-                <a
+                {website && <a
                   className="portfolio-btn"
                   rel="noopener noreferrer"
                   href={website}
                   target="_blank"
                 >
                   Portfolio
-                </a>
+                </a>}
                 <div className="social-media">
                   <Share studentId={id} name={name} />
-                  <a rel="noopener noreferrer" href={linkedin} target="_blank">
+                  {linkedin && <a rel="noopener noreferrer" href={linkedin} target="_blank">
                     <i className="fab fa-linkedin-in" />
-                  </a>
-                  <a rel="noopener noreferrer" href={github} target="_blank">
+                  </a>}
+                  {github && <a rel="noopener noreferrer" href={github} target="_blank">
                     <i className="fab fa-github" />
-                  </a>
-                  <a rel="noopener noreferrer" href={twitter} target="_blank">
+                  </a>}
+                  {twitter && <a rel="noopener noreferrer" href={twitter} target="_blank">
                     <i className="fab fa-twitter" />
-                  </a>
+                  </a>}
                 </div>
               </div>
             </div>
