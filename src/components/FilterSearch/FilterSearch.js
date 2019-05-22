@@ -6,6 +6,7 @@ import Results from './Results';
 import { getFilteredCards, getInitialCards } from './FilterSearchActions';
 import LocationSelect from '../location/LocationSelect.js';
 import { reactSelectStyles } from '../../styles/ReactSelectStyles';
+import $ from 'jquery';
 
 class FilterSearch extends React.Component {
 	state = {
@@ -153,12 +154,23 @@ class FilterSearch extends React.Component {
 			});
 	};
 
+	//jQuery
+
 	render() {
+		$(document).ready(function() {
+			$('#someElement').toggle();
+		});
 		return (
 			<div className="search-page">
 				<main>
 					<section className="formSection">
-						<form className="search-bar" onSubmit={this.handleSubmit}>
+						<button id="someButton">Click Me!</button>
+
+						<form
+							className="search-bar"
+							id="someElement"
+							onSubmit={this.handleSubmit}
+						>
 							{/* <hr className="hrTop" /> */}
 							<h2>
 								<label htmlFor="search">Search</label>
