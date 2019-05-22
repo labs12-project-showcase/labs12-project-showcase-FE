@@ -82,7 +82,7 @@ class SwipeableTemporaryDrawer extends Component {
             >
               <Typography
                 variant="h4"
-                style={{ marginLeft: "20px", color: "#bb1333" }}
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
               >
                 Home
               </Typography>
@@ -99,12 +99,27 @@ class SwipeableTemporaryDrawer extends Component {
             >
               <Typography
                 variant="h4"
-                style={{ marginLeft: "20px", color: "#bb1333" }}
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
               >
                 Search
               </Typography>
             </ListItem>
           </NavLink>
+          <ListItem
+            button
+            style={{ margin: "10px 15px" }}
+            value="Close Menu"
+            onClick={e => {
+              console.log(`The close-menu button was clicked!`);
+            }}
+          >
+            <Typography
+              variant="h4"
+              style={{ marginLeft: "20px", color: "#bb1333" }}
+            >
+              Close Menu
+            </Typography>
+          </ListItem>
         </List>
         <Divider />
         {!(this.state.isLoggedIn || renderLoggedIn) && (
@@ -260,35 +275,23 @@ class SwipeableTemporaryDrawer extends Component {
           </ListItem>
         </List>
         <Divider />
-        <List className="logout-list">
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Logout"
-            onClick={e => {
-              console.log(`The logout button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Logout
-            </Typography>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Close Menu"
-            onClick={e => {
-              console.log(`The close-menu button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Close Menu
-            </Typography>
-          </ListItem>
-        </List>
+        {(this.state.isLoggedIn || renderLoggedIn) && (
+          <List className="logout-list">
+            <ListItem
+              button
+              style={{ margin: "10px 15px" }}
+              value="Logout"
+              onClick={() => logout()}
+            >
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#bb1333" }}
+              >
+                Logout
+              </Typography>
+            </ListItem>
+          </List>
+        )}
       </div>
     );
 
