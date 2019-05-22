@@ -22,6 +22,7 @@ td {
 	}
 	td {
 		color: $lambdaGray !important;
+		font-size: 1.4rem !important;
 	}
 
 	a {
@@ -34,8 +35,10 @@ td {
 		}
 	}
 
-	span {
-		font-size: 1.4rem;
+	span,
+	input,
+	li {
+		font-size: 1.4rem !important;
 	}
 
 	h6 {

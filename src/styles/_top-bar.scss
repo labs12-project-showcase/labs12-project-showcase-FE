@@ -1,209 +1,222 @@
 // Top bar - logo and Navigation
 
 .TopBar {
-  padding: 10px 0 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $lambdaRed;
-  z-index: 1250;
-  position: relative;
+	padding: 10px 0 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: $lambdaRed;
+	z-index: 1250;
+	position: relative;
 
-  .TopBar-container {
-    width: 100%;
-    padding: 5px;
-    max-width: 1168px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 5px 0;
-    @media (max-width: 500px) {
-      flex-direction: row;
-    }
+	.TopBar-container {
+		width: 100%;
+		padding: 5px;
+		max-width: 1168px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 5px 0;
+		@media (max-width: 500px) {
+			flex-direction: row;
+		}
 
-    .TopBar-hire-lambda-logo {
-      width: 200px;
-      @media (max-width: 500px) {
-        width: 250px;
-      }
-    }
+		.TopBar-hire-lambda-logo {
+			width: 200px;
+			@media (max-width: 500px) {
+				width: 250px;
+			}
+		}
 
-    .search-link {
-      padding: 5px 10px;
-      background-color: darken($color: $lambdaRed, $amount: 10);
-      color: $lightcolor;
-      @include box-align();
-      flex-direction: column;
-      h4 {
-        margin: 2px;
-      }
-      h6 {
-        margin: 3px;
-      }
-    }
+		.search-link {
+			padding: 5px 10px;
+			background-color: darken($color: $lambdaRed, $amount: 10);
+			color: $lightcolor;
+			@include box-align();
+			flex-direction: column;
+			h4 {
+				margin: 2px;
+			}
+			h6 {
+				margin: 3px;
+			}
+		}
 
-    .TopBar-btn-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      @media (max-width: 500px) {
-        display: none;
-      }
+		.TopBar-btn-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			@media (max-width: 500px) {
+				display: none;
+			}
 
-      .TopBar-search-btn {
-        text-transform: uppercase;
-        padding: 5px 10px;
-        border: none;
-        background: none;
-        color: $lightcolor;
-        @include box-align();
-        transition-duration: 0.3s;
-        font-size: 1.3rem;
-        line-height: 20px;
-        font-weight: 300;
-        font-family: "Lato", sans-serif;
+			.TopBar-search-btn {
+				text-transform: uppercase;
+				padding: 5px 10px;
+				border: none;
+				background: none;
+				color: $lightcolor;
+				@include box-align();
+				transition-duration: 0.3s;
+				font-size: 1.3rem;
+				line-height: 20px;
+				font-weight: 300;
+				font-family: 'Lato', sans-serif;
 
-        // @media (max-width: 500px) {
-        //   flex-direction: column;
-        // }
+				// @media (max-width: 500px) {
+				//   flex-direction: column;
+				// }
 
-        i {
-          font-size: 1.6rem;
-          @media (max-width: 500px) {
-            order: 1;
-            font-size: 3.2rem;
-          }
-        }
-        strong {
-          @media (max-width: 500px) {
-            order: 2;
-          }
-        }
-        &:hover {
-          background: darken(($lambdaRed), 10%);
-        }
-      }
-      .fa-search-location,
-      .fa-sign-out-alt,
-      .fa-user {
-        font-size: 1.6rem;
-        color: $lightcolor;
-        padding: 10px;
-        line-height: 20px;
-        cursor: pointer;
-        @media (max-width: 500px) {
-          order: 1;
-          font-size: 3.2rem;
-        }
-      }
+				i {
+					font-size: 1.6rem;
+					@media (max-width: 500px) {
+						order: 1;
+						font-size: 3.2rem;
+					}
+				}
+				strong {
+					@media (max-width: 500px) {
+						order: 2;
+					}
+				}
+				&:hover {
+					background: darken(($lambdaRed), 10%);
+				}
+			}
+			.fa-search-location,
+			.fa-sign-out-alt,
+			.fa-user {
+				font-size: 1.6rem;
+				color: $lightcolor;
+				padding: 10px;
+				line-height: 20px;
+				cursor: pointer;
+				@media (max-width: 500px) {
+					order: 1;
+					font-size: 3.2rem;
+				}
+			}
 
-      .TopBar-login-btn,
-      .TopBar-logout-btn {
-        text-transform: uppercase;
-        padding: 5px 10px;
-        border: none;
-        background: none;
-        color: $lightcolor;
-        @include box-align();
-        transition-duration: 0.3s;
-        cursor: pointer;
-        font-size: 1.3rem;
-        font-weight: 300;
-        font-family: "Lato", sans-serif;
-        line-height: 20px;
-        @media (max-width: 500px) {
-          flex-direction: column;
-        }
+			.TopBar-login-btn,
+			.TopBar-logout-btn {
+				text-transform: uppercase;
+				padding: 5px 10px;
+				border: none;
+				background: none;
+				color: $lightcolor;
+				@include box-align();
+				transition-duration: 0.3s;
+				cursor: pointer;
+				font-size: 1.3rem;
+				font-weight: 300;
+				font-family: 'Lato', sans-serif;
+				line-height: 20px;
+				@media (max-width: 500px) {
+					flex-direction: column;
+				}
 
-        strong {
-          @media (max-width: 500px) {
-            order: 2;
-          }
-        }
+				strong {
+					@media (max-width: 500px) {
+						order: 2;
+					}
+				}
 
-        .TopBar-login-btn,
-        .TopBar-logout-btn {
-          font-size: 1.4rem;
-          padding: 5px 10px;
-          border: none;
-          background: none;
-          color: $lightcolor;
-          @include box-align();
-          transition-duration: 0.3s;
-          cursor: pointer;
-          @media (max-width: 500px) {
-            order: 1;
-          }
+				.TopBar-login-btn,
+				.TopBar-logout-btn {
+					font-size: 1.4rem;
+					padding: 5px 10px;
+					border: none;
+					background: none;
+					color: $lightcolor;
+					@include box-align();
+					transition-duration: 0.3s;
+					cursor: pointer;
+					@media (max-width: 500px) {
+						order: 1;
+					}
 
-          img {
-            width: 30px;
-            height: auto;
-          }
-        }
-        &:hover {
-          background: darken(($lambdaRed), 10%);
-        }
-      }
-    }
-    .MobileNavBar {
-      display: none;
+					img {
+						width: 30px;
+						height: auto;
+					}
+				}
+				&:hover {
+					background: darken(($lambdaRed), 10%);
+				}
+			}
+		}
+		.MobileNavBar {
+			display: none;
 
-      @media (max-width: 500px) {
-        display: inline-block;
-      }
-    }
-  }
+			@media (max-width: 500px) {
+				display: inline-block;
+			}
+		}
+	}
 
-  .subNav {
-    width: 100%;
-    background-color: $darkcolor;
-    padding: 20px 0;
-    @include box-align();
-    @media (max-width: 500px) {
-      display: none;
-    }
+	.subNav {
+		width: 100%;
+		background-color: $darkcolor;
+		padding: 20px 0;
+		@include box-align();
+		@media (max-width: 500px) {
+			display: none;
+		}
 
-    nav {
-      @include box-align(flex-end, center);
-      width: 100%;
-      max-width: 1168px;
-      @media (max-width: 768px) {
-        flex-direction: column;
-        flex-basis: auto;
-        padding: 20px;
-      }
+		nav {
+			@include box-align(flex-end, center);
+			width: 100%;
+			max-width: 1168px;
+			@media (max-width: 768px) {
+				flex-direction: column;
+				flex-basis: auto;
+				padding: 20px;
+			}
 
-      a {
-        text-decoration: none;
-        background-color: darken($darkcolor, 10%);
-        padding: 5px 7px;
-        color: $lightcolor;
-        margin: 3px 7px;
-        transition-duration: 0.3s;
-        @media (max-width: 768px) {
-          margin: 3px 0;
-          padding: 12px 10px;
-          width: 100%;
-          min-height: 40px;
-        }
-        i {
-          margin-right: 5px;
-        }
+			a {
+				text-decoration: none;
+				background-color: darken($darkcolor, 10%);
+				padding: 5px 7px;
+				color: $lightcolor;
+				margin: 3px 7px;
+				transition-duration: 0.3s;
+				@media (max-width: 768px) {
+					margin: 3px 0;
+					padding: 12px 10px;
+					width: 100%;
+					min-height: 40px;
+				}
+				i {
+					margin-right: 5px;
+				}
 
-        &:hover {
-          background-color: $lightcolor;
-          color: $darkcolor;
-        }
-      }
-      .sc-modal-buttons {
-        .MuiButton-root-2 {
-          text-decoration: none;
-          padding: 1px 7px;
-          color: #ffffff;
-        }
-      }
-    }
-  }
+				&:hover {
+					background-color: $lightcolor;
+					color: $darkcolor;
+				}
+			}
+			.sc-modal-buttons {
+				.MuiButton-root-2 {
+					text-decoration: none;
+					padding: 1px 7px;
+					color: #ffffff;
+				}
+			}
+		}
+	}
+}
+
+.public-list,
+.loggedIn-student-list,
+.logout-list {
+	h4 {
+		font-size: 1.6rem !important;
+		font-weight: 400 !important;
+	}
+	.fa-times {
+		font-size: 2.8rem;
+		padding: 20px 5px;
+	}
 }
