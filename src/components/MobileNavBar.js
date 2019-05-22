@@ -71,23 +71,23 @@ class SwipeableTemporaryDrawer extends Component {
     const sideList = (
       <div className={classes.list}>
         <List className="public-list" zIndex="modal">
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Home"
-            onClick={e => {
-              console.log(`The home button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              <NavLink
-                to="/"
-                style={{ textDecoration: "none", color: "#bb1333" }}
+          <NavLink exact to="/">
+            <ListItem
+              button
+              style={{ margin: "10px 15px" }}
+              value="Home"
+              onClick={e => {
+                console.log(`The home button was clicked!`);
+              }}
+            >
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#bb1333" }}
               >
                 Home
-              </NavLink>
-            </Typography>
-          </ListItem>
+              </Typography>
+            </ListItem>
+          </NavLink>
           <ListItem
             button
             style={{ margin: "10px 15px" }}
@@ -98,6 +98,7 @@ class SwipeableTemporaryDrawer extends Component {
           >
             <Typography variant="h4" style={{ marginLeft: "20px" }}>
               <NavLink
+                exact
                 to="/discover"
                 style={{ textDecoration: "none", color: "#bb1333" }}
               >
@@ -112,9 +113,7 @@ class SwipeableTemporaryDrawer extends Component {
             button
             style={{ margin: "10px 15px" }}
             value="Login/Register"
-            onClick={e => {
-              console.log(`The login/register button was clicked!`);
-            }}
+            // onClick={e => login()}
           >
             <Typography variant="h4" style={{ marginLeft: "20px" }}>
               Login/Register
