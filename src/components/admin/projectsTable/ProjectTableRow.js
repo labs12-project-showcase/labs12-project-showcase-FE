@@ -21,7 +21,10 @@ class ProjectTableRow extends React.Component {
     return (
       <List component="nav">
         <ListItem button onClick={e => this.handleClick(e)}>
-          <ListItemText offset primary="Contributors" />
+          <ListItemText
+            primary="Contributors"
+            style={{ paddingRight: "60px" }}
+          />
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
