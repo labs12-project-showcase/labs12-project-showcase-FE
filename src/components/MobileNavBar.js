@@ -79,9 +79,8 @@ class SwipeableTemporaryDrawer extends Component {
     const sideList = (
       <div className={classes.list}>
         <List className="public-list" zIndex={zIndex.drawer}>
-        <ListItem
+          <ListItem
             button
-            
             value="Close Menu"
             onClick={e => {
               console.log(`The close-menu button was clicked!`);
@@ -89,7 +88,11 @@ class SwipeableTemporaryDrawer extends Component {
           >
             <Typography
               variant="h4"
-              style={{ marginLeft: "20px", color: "#000000", fontSize: "2.8rem" }}
+              style={{
+                marginLeft: "20px",
+                color: "#000000",
+                fontSize: "2.8rem"
+              }}
             >
               <i className="fas fa-times" />
             </Typography>
@@ -97,7 +100,6 @@ class SwipeableTemporaryDrawer extends Component {
           <NavLink exact to="/">
             <ListItem
               button
-              
               value="Home"
               onClick={e => {
                 console.log(`The home button was clicked!`);
@@ -114,7 +116,6 @@ class SwipeableTemporaryDrawer extends Component {
           <NavLink exact to="/discover">
             <ListItem
               button
-              
               value="Search"
               onClick={e => {
                 console.log(`The search button was clicked!`);
@@ -128,17 +129,11 @@ class SwipeableTemporaryDrawer extends Component {
               </Typography>
             </ListItem>
           </NavLink>
-          
         </List>
         <Divider />
         {!(this.state.isLoggedIn || renderLoggedIn) && (
           <List className="login-list">
-            <ListItem
-              button
-              
-              value="Login/Register"
-              onClick={() => login()}
-            >
+            <ListItem button value="Login/Register" onClick={() => login()}>
               <Typography
                 variant="h4"
                 style={{ marginLeft: "20px", color: "#000000" }}
@@ -155,7 +150,6 @@ class SwipeableTemporaryDrawer extends Component {
               <NavLink exact to={`/student/profile/${this.props.id}`}>
                 <ListItem
                   button
-                  
                   value="My Profile"
                   onClick={e => {
                     console.log(`The my-profile button was clicked!`);
@@ -172,7 +166,6 @@ class SwipeableTemporaryDrawer extends Component {
               <NavLink exact to="/profile-quick-start">
                 <ListItem
                   button
-                  
                   value="Edit Profile"
                   onClick={e => {
                     console.log(`The edit-profile button was clicked!`);
@@ -189,7 +182,6 @@ class SwipeableTemporaryDrawer extends Component {
               <NavLink exact to="/student/new-project">
                 <ListItem
                   button
-                  
                   value="Add Project"
                   onClick={e => {
                     console.log(`The add-project button was clicked!`);
@@ -214,7 +206,6 @@ class SwipeableTemporaryDrawer extends Component {
                     >
                       <ListItem
                         button
-                        
                         value="Leave Project"
                         onClick={e => {
                           console.log(`The leave-project button was clicked!`);
@@ -237,7 +228,6 @@ class SwipeableTemporaryDrawer extends Component {
                     >
                       <ListItem
                         button
-                        
                         value="Edit Project"
                         onClick={e => {
                           console.log(`The edit-project button was clicked!`);
@@ -255,7 +245,6 @@ class SwipeableTemporaryDrawer extends Component {
                 ) : (
                   <ListItem
                     button
-                    
                     value="Join Project"
                     onClick={e => {
                       console.log(`The join-project button was clicked!`);
@@ -279,7 +268,6 @@ class SwipeableTemporaryDrawer extends Component {
             <NavLink to="/admin/students-table">
               <ListItem
                 button
-                
                 value="Students Table"
                 onClick={e => {
                   console.log(`The students-table button was clicked!`);
@@ -296,7 +284,6 @@ class SwipeableTemporaryDrawer extends Component {
             <NavLink to="/admin/projects-table">
               <ListItem
                 button
-                
                 value="Projects Table"
                 onClick={e => {
                   console.log(`The projects-table button was clicked!`);
@@ -313,7 +300,6 @@ class SwipeableTemporaryDrawer extends Component {
             <NavLink to="/admin/accounts-table">
               <ListItem
                 button
-                
                 value="Accounts Table"
                 onClick={e => {
                   console.log(`The accounts-table button was clicked!`);
@@ -330,7 +316,6 @@ class SwipeableTemporaryDrawer extends Component {
             <NavLink to="/admin/tracks-table">
               <ListItem
                 button
-                
                 value="Tracks Table"
                 onClick={e => {
                   console.log(`The tracks-table button was clicked!`);
@@ -347,7 +332,6 @@ class SwipeableTemporaryDrawer extends Component {
             <NavLink to="/admin/cohorts-table">
               <ListItem
                 button
-                
                 value="Cohorts Table"
                 onClick={e => {
                   console.log(`The cohorts-table button was clicked!`);
@@ -366,12 +350,7 @@ class SwipeableTemporaryDrawer extends Component {
         <Divider />
         {(this.state.isLoggedIn || renderLoggedIn) && (
           <List className="logout-list">
-            <ListItem
-              button
-              
-              value="Logout"
-              onClick={() => logout()}
-            >
+            <ListItem button value="Logout" onClick={() => logout()}>
               <Typography
                 variant="h4"
                 style={{ marginLeft: "20px", color: "#bb1333" }}
@@ -383,6 +362,8 @@ class SwipeableTemporaryDrawer extends Component {
         )}
       </div>
     );
+
+    const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     return (
       <div className="MobileNavBar">
@@ -397,6 +378,8 @@ class SwipeableTemporaryDrawer extends Component {
           open={this.state.right}
           onClose={this.toggleDrawer("right", false)}
           onOpen={this.toggleDrawer("right", true)}
+          disableBackdropTransition={!iOS}
+          disableDiscovery={iOS}
         >
           <div
             tabIndex={0}
