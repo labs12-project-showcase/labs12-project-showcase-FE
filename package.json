@@ -17,6 +17,7 @@
 		"jwt-decode": "^2.2.0",
 		"mapbox-gl-controls": "^1.1.1",
 		"material-datatable": "^0.3.8",
+		"mui-datatables": "^2.2.0",
 		"node-sass": "^4.12.0",
 		"react": "^16.8.6",
 		"react-animated-slider": "^1.1.4",
