@@ -130,7 +130,10 @@ class SwipeableTemporaryDrawer extends Component {
               value="Login/Register"
               onClick={() => login()}
             >
-              <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#1e50ee" }}
+              >
                 Login/Register
               </Typography>
             </ListItem>
