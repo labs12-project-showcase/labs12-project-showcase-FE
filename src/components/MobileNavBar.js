@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 
 const styles = {
   list: {
     width: 240,
-    marginTop: 75
+    marginTop: 80
   }
 };
 
@@ -34,245 +34,210 @@ class SwipeableTemporaryDrawer extends React.Component {
         <List className="public-list" zIndex="modal">
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Home"
             onClick={e => {
               console.log(`The home button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-home"
-              style={{
-                fontSize: "1.8rem",
-                color: "blue"
-              }}
-            />
-            <ListItemText primary="Home" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Home
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Search"
             onClick={e => {
               console.log(`The search button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-search-location"
-              style={{ fontSize: "1.8rem", color: "brown" }}
-            />
-            <ListItemText primary="Search" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Search
+            </Typography>
           </ListItem>
         </List>
         <Divider />
         <List className="login-list">
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Login/Register"
             onClick={e => {
               console.log(`The login/register button was clicked!`);
             }}
           >
-            <i
-              className="fas fa-sign-in-alt"
-              style={{ fontSize: "1.8rem", color: "green" }}
-            />
-            <ListItemText primary="Login/Register" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Login/Register
+            </Typography>
           </ListItem>
         </List>
         <Divider />
         <List className="loggedIn-student-list">
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="My Profile"
             onClick={e => {
               console.log(`The my-profile button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-id-card"
-              style={{ fontSize: "1.8rem", color: "teal" }}
-            />
-            <ListItemText primary="My Profile" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              My Profile
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Edit Profile"
             onClick={e => {
               console.log(`The edit-profile button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-user-edit"
-              style={{ fontSize: "1.8rem", color: "aqua" }}
-            />
-            <ListItemText primary="Edit Profile" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Edit Profile
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Add Project"
             onClick={e => {
               console.log(`The add-project button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-plus"
-              style={{ fontSize: "1.8rem", color: "darkorange" }}
-            />
-            <ListItemText primary="Add Project" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Add Project
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Edit Project"
             onClick={e => {
               console.log(`The edit-project button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-edit"
-              style={{ fontSize: "1.8rem", color: "purple" }}
-            />
-            <ListItemText primary="Edit Project" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Edit Project
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Join Project"
             onClick={e => {
               console.log(`The join-project button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-user-plus"
-              style={{ fontSize: "1.8rem", color: "light-blue" }}
-            />
-            <ListItemText primary="Join Project" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Join Project
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Leave Project"
             onClick={e => {
               console.log(`The leave-project button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-user-minus"
-              style={{ fontSize: "1.8rem", color: "darkred" }}
-            />
-            <ListItemText primary="Leave Project" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Leave Project
+            </Typography>
           </ListItem>
         </List>
         <Divider />
         <List className="loggedIn-admin-list">
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Students Table"
             onClick={e => {
               console.log(`The students-table button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-graduation-cap"
-              style={{ fontSize: "1.8rem", color: "teal" }}
-            />
-            <ListItemText primary="Students Table" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Students Table
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Projects Table"
             onClick={e => {
               console.log(`The projects-table button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-project-diagram"
-              style={{ fontSize: "1.8rem", color: "aqua" }}
-            />
-            <ListItemText primary="Projects Table" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Projects Table
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Accounts Table"
             onClick={e => {
               console.log(`The accounts-table button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-align-left"
-              style={{ fontSize: "1.8rem", color: "darkorange" }}
-            />
-            <ListItemText primary="Accounts Table" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Accounts Table
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Tracks Table"
             onClick={e => {
               console.log(`The tracks-table button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-code"
-              style={{ fontSize: "1.8rem", color: "purple" }}
-            />
-            <ListItemText primary="Tracks Table" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Tracks Table
+            </Typography>
           </ListItem>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Cohorts Table"
             onClick={e => {
               console.log(`The cohorts-table button was clicked!`);
             }}
           >
-            <i
-              class="fas fa-users"
-              style={{ fontSize: "1.8rem", color: "light-blue" }}
-            />
-            <ListItemText primary="Cohorts Table" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Cohorts Table
+            </Typography>
           </ListItem>
         </List>
         <Divider />
         <List className="logout-list">
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Logout"
             onClick={e => {
               console.log(`The logout button was clicked!`);
             }}
           >
-            <i
-              className="fas fa-sign-out-alt"
-              style={{ fontSize: "1.8rem", color: "red" }}
-            />
-            <ListItemText primary="Logout" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Logout
+            </Typography>
           </ListItem>
         </List>
         <Divider />
         <List>
           <ListItem
             button
-            style={{ margin: "15px 20px" }}
+            style={{ margin: "10px 15px" }}
             value="Close Menu"
             onClick={e => {
               console.log(`The close-menu button was clicked!`);
             }}
           >
-            <i
-              className="fas fa-window-close"
-              style={{ fontSize: "1.8rem", color: "red" }}
-            />
-            <ListItemText primary="Close Menu" />
+            <Typography variant="h4" style={{ marginLeft: "20px" }}>
+              Close Menu
+            </Typography>
           </ListItem>
         </List>
       </div>
