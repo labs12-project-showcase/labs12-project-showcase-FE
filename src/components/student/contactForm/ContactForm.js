@@ -25,13 +25,13 @@ class ContactForm extends React.Component {
     open: false,
     student_name: "",
     email: {
-      from: "<YOUR_EMAIL_HERE>@gmail.com",
+      from: "<YOUR_EMAIL_HERE>",
       subject: "A Lambda Showcase User is Interested in You!",
       text: `Hello!
 
       I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and your skills! Could we schedule a time to chat about your future with us?
 
-You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
+You can reach me at <YOUR_EMAIL_HERE>.
               
 I look forward to speaking with you soon!
 
@@ -86,7 +86,7 @@ Sincerely,
 
         I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and your skills! Could we schedule a time to chat about your future with us?
 
-You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
+You can reach me at <YOUR_EMAIL_HERE>.
                 
 I look forward to speaking with you soon!
   
@@ -133,11 +133,10 @@ Sincerely,
         >
           <div
             style={{
-              top: "55vh",
+              top: "50vh",
               left: "50vw",
               transform: "translate(-50%, -50%)",
-              width: "80vw",
-              height: "75vh"
+              width: "80vw"
             }}
             className={classes.paper}
           >
