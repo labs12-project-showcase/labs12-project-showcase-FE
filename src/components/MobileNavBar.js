@@ -31,7 +31,7 @@ class SwipeableTemporaryDrawer extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        <List className="public-list">
+        <List className="public-list" zIndex="modal">
           <ListItem
             button
             style={{ margin: "15px 20px" }}
