@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import StudentGraduatedButton from "./StudentGraduatedButton";
 import StudentHiredButton from "./StudentHiredButton";
 import StudentEndorsedButton from "./StudentEndorsedButton";
-import StudentHighlightedButton from './StudentHighlightedButton';
+import StudentHighlightedButton from "./StudentHighlightedButton";
 
 class StudentsTable extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class StudentsTable extends React.Component {
         name: "Track",
         field: "track",
         filter: true,
-        sort: true,
+        sort: true
       },
       {
         name: "Cohort",
@@ -63,7 +63,7 @@ class StudentsTable extends React.Component {
         filter: true,
         sort: true,
         print: false,
-          download: false,
+        download: false
       },
       {
         name: "Highlighted",
@@ -132,16 +132,16 @@ class StudentsTable extends React.Component {
               .toUpperCase() + student.approved.toString().slice(1),
           customSortValue: student => Number(student.approved)
         }
-      },
+      }
     ];
 
     const options = {
       filterType: "dropdown",
       selectableRows: false,
       showSelectedRowsToolbar: false,
-      responsive: "stacked",
+      responsive: "scroll",
       print: false,
-      download: false,
+      download: false
     };
 
     return (
