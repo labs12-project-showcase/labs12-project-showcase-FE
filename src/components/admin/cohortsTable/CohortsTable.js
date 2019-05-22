@@ -47,9 +47,9 @@ class CohortsTable extends React.Component {
       filterType: "dropdown",
       selectableRows: false,
       showSelectedRowsToolbar: false,
-      responsive: "stacked",
+      responsive: "scroll",
       print: false,
-      download: false,
+      download: false
     };
 
     return (

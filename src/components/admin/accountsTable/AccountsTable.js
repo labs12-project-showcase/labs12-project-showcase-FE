@@ -35,9 +35,7 @@ class AccountsTable extends React.Component {
           filter: true,
           sort: true,
           customBodyRender: account =>
-            account.role
-              .charAt(0)
-              .toUpperCase() + account.role.slice(1)
+            account.role.charAt(0).toUpperCase() + account.role.slice(1)
         }
       },
       {
@@ -61,9 +59,9 @@ class AccountsTable extends React.Component {
       filterType: "dropdown",
       selectableRows: false,
       showSelectedRowsToolbar: false,
-      responsive: "stacked",
+      responsive: "scroll",
       print: false,
-      download: false,
+      download: false
     };
 
     return (
