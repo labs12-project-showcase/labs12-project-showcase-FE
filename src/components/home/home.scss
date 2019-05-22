@@ -89,6 +89,7 @@
 						background-color: $lightcolor;
 						.bottom-card {
 							position: relative;
+							transition-duration: 0.3s;
 							&:hover {
 								-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
 								box-shadow: -2px 5px 16px 2px#d3d3d3;
