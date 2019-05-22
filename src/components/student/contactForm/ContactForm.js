@@ -86,7 +86,7 @@ Sincerely,
 
         I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and your skills! Could we schedule a time to chat about your future with us?
 
-You can reach me at <YOUR_EMAIL_HERE>@gmail.com.
+You can reach me at <YOUR_EMAIL_HERE>.
                 
 I look forward to speaking with you soon!
   
