@@ -160,21 +160,23 @@ class SwipeableTemporaryDrawer extends Component {
                   </Typography>
                 </ListItem>
               </NavLink>
-              <ListItem
-                button
-                style={{ margin: "10px 15px" }}
-                value="Edit Profile"
-                onClick={e => {
-                  console.log(`The edit-profile button was clicked!`);
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+              <NavLink exact to="/profile-quick-start">
+                <ListItem
+                  button
+                  style={{ margin: "10px 15px" }}
+                  value="Edit Profile"
+                  onClick={e => {
+                    console.log(`The edit-profile button was clicked!`);
+                  }}
                 >
-                  Edit Profile
-                </Typography>
-              </ListItem>
+                  <Typography
+                    variant="h4"
+                    style={{ marginLeft: "20px", color: "#1e50ee" }}
+                  >
+                    Edit Profile
+                  </Typography>
+                </ListItem>
+              </NavLink>
               <ListItem
                 button
                 style={{ margin: "10px 15px" }}
