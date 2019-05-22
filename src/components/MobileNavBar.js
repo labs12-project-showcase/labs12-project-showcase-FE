@@ -80,7 +80,12 @@ class SwipeableTemporaryDrawer extends Component {
             }}
           >
             <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Home
+              <NavLink
+                to="/"
+                style={{ textDecoration: "none", color: "#bb1333" }}
+              >
+                Home
+              </NavLink>
             </Typography>
           </ListItem>
           <ListItem
@@ -92,7 +97,12 @@ class SwipeableTemporaryDrawer extends Component {
             }}
           >
             <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Search
+              <NavLink
+                to="/discover"
+                style={{ textDecoration: "none", color: "#bb1333" }}
+              >
+                Search
+              </NavLink>
             </Typography>
           </ListItem>
         </List>
