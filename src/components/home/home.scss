@@ -1,171 +1,176 @@
 .home {
-  min-height: 85vh;
-  header {
-    background-image: url(./assets/profile-background.png);
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    position: relative;
-    text-align: center;
-    @include box-align(space-between, center);
-    padding: 10px;
-    @media (max-width: 768px) {
-      padding: 0;
-      height: auto;
-    }
-    .header-text {
-      margin: 0 auto;
-      width: 100%;
-      @include box-align();
-      flex-direction: column;
-      z-index: 1;
-      padding: 23px 10px;
-      @media (max-width: 768px) {
-        width: 100%;
-        order: 2;
-        padding: 10px;
-      }
-      h1 {
-        width: 100%;
-        text-align: center;
-        font-size: 4.8rem;
-        font-weight: 900;
-        padding: 10px;
-        color: $lambdaPink;
-        margin-bottom: 30px;
-        @media (max-width: 768px) {
-          font-size: 3rem;
-        }
-      }
-      p {
-        padding: 10px;
-        text-align: left;
-        max-width: 700px;
-        font-size: 1.9rem;
-        line-height: 34px;
-        color: $darkcolor;
-        @media (max-width: 768px) {
-          line-height: 1.5;
-        }
-      }
+	min-height: 85vh;
+	header {
+		background-image: url(./assets/profile-background.png);
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		position: relative;
+		text-align: center;
+		@include box-align(space-between, center);
+		padding: 10px;
+		@media (max-width: 768px) {
+			padding: 0;
+			height: auto;
+		}
+		.header-text {
+			margin: 0 auto;
+			width: 100%;
+			@include box-align();
+			flex-direction: column;
+			z-index: 1;
+			padding: 23px 10px;
+			@media (max-width: 768px) {
+				width: 100%;
+				order: 2;
+				padding: 10px;
+			}
+			h1 {
+				width: 100%;
+				text-align: center;
+				font-size: 4.8rem;
+				font-weight: 900;
+				padding: 10px;
+				color: $lambdaPink;
+				margin-bottom: 30px;
+				@media (max-width: 768px) {
+					font-size: 3rem;
+				}
+			}
+			p {
+				padding: 10px;
+				text-align: left;
+				max-width: 700px;
+				font-size: 1.9rem;
+				line-height: 34px;
+				color: $darkcolor;
+				@media (max-width: 768px) {
+					line-height: 1.5;
+				}
+			}
 
-      section {
-        max-width: 1000px;
-        width: 100%;
-        .carousel-section {
-          margin: 0 auto;
-          max-width: 1024px;
-          width: 100%;
-          padding: 10px 32px;
-          color: $lightcolor;
-          .swiper-button-prev,
-          .swiper-button-next {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-size: 16px;
-            background-color: $lightcolor;
-            -webkit-box-shadow: 0px 1px 3px 3px #ebebeb;
-            box-shadow: 0px 1px 3px 3px #ebebeb;
-            cursor: pointer;
-            &:hover {
-              background-color: $newBorder;
-            }
-          }
+			section {
+				max-width: 1000px;
+				width: 100%;
+				.carousel-section {
+					margin: 0 auto;
+					max-width: 1024px;
+					width: 100%;
+					padding: 10px 32px;
+					color: $lightcolor;
+					.swiper-button-prev,
+					.swiper-button-next {
+						width: 40px;
+						height: 40px;
+						border-radius: 50%;
+						background-size: 16px;
+						background-color: $lightcolor;
+						-webkit-box-shadow: 0px 1px 3px 3px #ebebeb;
+						box-shadow: 0px 1px 3px 3px #ebebeb;
+						cursor: pointer;
+						&:hover {
+							background-color: $newBorder;
+						}
+					}
 
-          h2 {
-            font-weight: 300;
-            font-size: 3.8rem;
-            margin-bottom: 20px;
-          }
+					h2 {
+						font-weight: 300;
+						font-size: 3.8rem;
+						margin-bottom: 20px;
+					}
 
-          p {
-            line-height: 1.5;
-          }
+					p {
+						line-height: 1.5;
+					}
 
-          .cover-img {
-            width: 300px;
-            text-align: center;
-            border: 1px solid $newBorder;
-            background-color: $lightcolor;
-            .bottom-card {
-              position: relative;
+					.cover-img {
+						width: 300px;
+						text-align: center;
+						border: 1px solid $newBorder;
+						background-color: $lightcolor;
+						.bottom-card {
+							position: relative;
+							&:hover {
+								-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
+								box-shadow: -2px 5px 16px 2px#d3d3d3;
+								transform: translateY(-6px);
+							}
 
-              a {
-                text-decoration: none;
-                .img-container {
-                  width: 100%;
-                  height: 200px;
-                  overflow: hidden;
-                  img {
-                    width: 100%;
-                    height: auto;
-                  }
-                }
-                .carousel-detail {
-                  @include box-align(flex-start, center);
-                  flex-wrap: nowrap;
-                  flex-direction: column;
-                  overflow: hidden;
-                  width: 100%;
-                  border-top: 5px solid $lambdaTeal;
-                  background-color: $lightcolor;
-                  height: 250px;
-                  background-color: $lightcolor;
+							a {
+								text-decoration: none;
+								.img-container {
+									width: 100%;
+									height: 200px;
+									overflow: hidden;
+									img {
+										width: 100%;
+										height: auto;
+									}
+								}
+								.carousel-detail {
+									@include box-align(flex-start, center);
+									flex-wrap: nowrap;
+									flex-direction: column;
+									overflow: hidden;
+									width: 100%;
+									border-top: 5px solid $lambdaTeal;
+									background-color: $lightcolor;
+									height: 250px;
+									background-color: $lightcolor;
 
-                  h3 {
-                    font-size: 2rem;
-                    font-weight: 500;
-                    color: $darkcolor;
-                    font-weight: 700;
-                    text-transform: capitalize;
-                    padding: 10px 3px;
-                    color: $lambdaPink;
-                  }
-                  p {
-                    height: 120px;
-                    font-size: 1.4rem;
-                    overflow: hidden;
-                  }
+									h3 {
+										font-size: 2rem;
+										font-weight: 500;
+										color: $darkcolor;
+										font-weight: 700;
+										text-transform: capitalize;
+										padding: 10px 3px;
+										color: $lambdaPink;
+									}
+									p {
+										height: 120px;
+										font-size: 1.4rem;
+										overflow: hidden;
+									}
 
-                  button {
-                    text-decoration: none;
-                    border: none;
-                    color: #ffffff;
-                    padding: 10px;
-                    margin: 10px auto;
-                    background-color: $lambdaTeal;
-                    cursor: pointer;
+									button {
+										text-decoration: none;
+										border: none;
+										color: #ffffff;
+										padding: 10px;
+										margin: 10px auto;
+										background-color: $lambdaTeal;
+										cursor: pointer;
 
-                    &:hover {
-                      background: darken($lambdaTeal, 10%);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    .hero-girl {
-      position: absolute;
-      z-index: 0;
-      right: 0;
-      width: 40%;
-      min-height: 713px;
-      -webkit-clip-path: polygon(100% 0, 100% 22%, 70% 100%, 1% 100%, 44% 0);
-      clip-path: polygon(100% 0, 100% 22%, 70% 100%, 1% 100%, 44% 0);
-      background-image: url("./assets/herogirl.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: 34% 50%;
-      @media (max-width: 768px) {
-        position: relative;
-        order: 1;
-        width: 100%;
-        min-height: 350px;
-        margin-bottom: 30px;
-      }
-    }
-  }
+										&:hover {
+											background: darken($lambdaTeal, 10%);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.hero-girl {
+			position: absolute;
+			z-index: 0;
+			right: 0;
+			width: 40%;
+			min-height: 713px;
+			-webkit-clip-path: polygon(100% 0, 100% 22%, 70% 100%, 1% 100%, 44% 0);
+			clip-path: polygon(100% 0, 100% 22%, 70% 100%, 1% 100%, 44% 0);
+			background-image: url('./assets/herogirl.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: 34% 50%;
+			@media (max-width: 768px) {
+				position: relative;
+				order: 1;
+				width: 100%;
+				min-height: 350px;
+				margin-bottom: 30px;
+			}
+		}
+	}
 }
