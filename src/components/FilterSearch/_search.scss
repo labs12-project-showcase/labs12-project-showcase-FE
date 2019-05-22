@@ -16,10 +16,12 @@
 			width: 100%;
 			max-width: 235px;
 			padding-top: 20px;
-			@media (max-width: 980px) and (min-width: 500px) {
+			@media (max-width: 980px) {
 				max-width: 100%;
 				margin: 20px;
+				position: relative;
 			}
+
 			.search-bar {
 				width: 100%;
 				.search-class {
@@ -66,6 +68,9 @@
 			@media (max-width: 980px) {
 				max-width: 708px;
 			}
+			@media (max-width: 1100px) and (min-width: 981px) {
+				max-width: 700px;
+			}
 
 			h2 {
 				font-size: 2.8rem;
@@ -101,6 +106,10 @@
 					width: 100%;
 					max-width: 550px;
 					@include box-align(flex-start, center);
+
+					@media (max-width: 1100px) and (min-width: 981px) {
+						max-width: 495px;
+					}
 
 					@media (max-width: 980px) {
 						max-width: 488px;
@@ -152,6 +161,10 @@
 						text-align: left;
 						background-color: $lightcolor;
 						@include box-align();
+
+						@media (max-width: 1100px) and (min-width: 981px) {
+							max-width: 360px;
+						}
 
 						@media (max-width: 980px) {
 							max-width: 356px;
@@ -277,6 +290,9 @@
 					width: 192px;
 					@include box-align();
 					flex-direction: column;
+					@media (max-width: 1100px) and (min-width: 981px) {
+						max-width: 182px;
+					}
 
 					@media (max-width: 768px) {
 						width: 100%;
