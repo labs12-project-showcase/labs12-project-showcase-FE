@@ -84,14 +84,15 @@
 .message-input {
   margin-bottom: 10px;
   width: 100%;
-  height: 150px;
+  height: 275px;
 
   @media (max-width: 767px) {
     width: 100%;
+    height: 300px;
   }
 
   @media (max-width: 375px) {
-    height: 20.5rem;
     width: 100%;
+    height: 300px;
   }
 }

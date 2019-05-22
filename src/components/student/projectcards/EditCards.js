@@ -97,7 +97,7 @@ const EditCards = ({ top_projects, projects, setProjects, setTopProjects }) => {
 				<p className="edit-project-message">
 					Please drag projects from below to the top projects section.
 				</p>
-				<i className="fas fa-hand-point-up" />
+				<i className="fas fa-angle-up" />
 				{draggableMap(projects)}
 			</div>
 		</div>
