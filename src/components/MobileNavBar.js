@@ -143,21 +143,23 @@ class SwipeableTemporaryDrawer extends Component {
         {(this.state.isLoggedIn || renderLoggedIn) &&
           loggedInRole === "student" && (
             <List className="loggedIn-student-list">
-              <ListItem
-                button
-                style={{ margin: "10px 15px" }}
-                value="My Profile"
-                onClick={e => {
-                  console.log(`The my-profile button was clicked!`);
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+              <NavLink exact to={`/student/profile/${this.props.id}`}>
+                <ListItem
+                  button
+                  style={{ margin: "10px 15px" }}
+                  value="My Profile"
+                  onClick={e => {
+                    console.log(`The my-profile button was clicked!`);
+                  }}
                 >
-                  My Profile
-                </Typography>
-              </ListItem>
+                  <Typography
+                    variant="h4"
+                    style={{ marginLeft: "20px", color: "#1e50ee" }}
+                  >
+                    My Profile
+                  </Typography>
+                </ListItem>
+              </NavLink>
               <ListItem
                 button
                 style={{ margin: "10px 15px" }}
