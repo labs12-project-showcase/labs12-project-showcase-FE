@@ -16,23 +16,46 @@ import Loading from '../../utils/Loading.js';
 
 class StudentProfile extends React.Component {
   state = {
-    infoCorrect: false,
-    fetchedNew: false
+    fetchedNew: false,
+    ready: false
   };
 
   componentDidMount() {
-    this.props.getData(this.props.match.params.id)
-    .then(() => this.setState({ infoCorrect: true }));
+    console.log('component mounting');
+    this.props.getData(this.props.match.params.id).then(() => this.setState({ready:true}));
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.props.getData(this.props.match.params.id)
-      .then(() => this.setState({ infoCorrect: true }));
-    }
+    console.log('component updating');
+    prevProps.match.params.id !== this.props.match.params.id &&
+    this.props.getData(this.props.match.params.id).then(() => this.setState({ready:true}));
   }
 
+  componentWillUnmount() {
+    
+  }
+
+  updateFetched = () => {
+    console.log('updating fetch');
+    if (
+      this.props.loggedInProfile &&
+      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
+      this.state.fetchedNew === false
+    ) {
+      this.props.getData().then(() => {
+        this.setState({ fetchedNew: true });
+      });
+    }
+  };
+
   render() {
+    if (
+      this.props.loggedInProfile &&
+      this.props.loggedInProfile.id === Number(this.props.match.params.id) &&
+      this.state.fetchedNew === false
+    ) {
+      this.updateFetched();
+    }
     const {
       id,
       name,
@@ -63,7 +86,7 @@ class StudentProfile extends React.Component {
     if (this.props.studentProfile.emptyReturn) {
       return <Redirect to="/404" />
     }
-    if (this.state.infoCorrect === false) {
+    if (this.state.ready === false) {
       return <Loading />
     }
     return (
@@ -82,9 +105,9 @@ class StudentProfile extends React.Component {
                 <h3>{location}</h3>
               </div>
               <div className="badge">
-                {acclaim && <a rel="noopener noreferrer" href={acclaim} target="_blank">
+                <a rel="noopener noreferrer" href={acclaim} target="_blank">
                   <img src={badge} alt="Lambda Badge" />
-                </a>}
+                </a>
               </div>
 
               <div className="social-links">
