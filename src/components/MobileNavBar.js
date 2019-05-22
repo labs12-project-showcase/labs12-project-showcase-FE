@@ -279,7 +279,7 @@ class SwipeableTemporaryDrawer extends React.Component {
     );
 
     return (
-      <div>
+      <div className="MobileNavBar">
         <Button onClick={this.toggleDrawer("right", true)}>
           <i
             className="fas fa-bars"
