@@ -267,81 +267,91 @@ class SwipeableTemporaryDrawer extends Component {
         <Divider />
         {(this.state.isLoggedIn || renderLoggedIn) && loggedInRole === "staff" && (
           <List className="loggedIn-admin-list">
-            <ListItem
-              button
-              style={{ margin: "10px 15px" }}
-              value="Students Table"
-              onClick={e => {
-                console.log(`The students-table button was clicked!`);
-              }}
-            >
-              <Typography
-                variant="h4"
-                style={{ marginLeft: "20px", color: "#1e50ee" }}
+            <NavLink to="/admin/students-table">
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Students Table"
+                onClick={e => {
+                  console.log(`The students-table button was clicked!`);
+                }}
               >
-                Students Table
-              </Typography>
-            </ListItem>
-            <ListItem
-              button
-              style={{ margin: "10px 15px" }}
-              value="Projects Table"
-              onClick={e => {
-                console.log(`The projects-table button was clicked!`);
-              }}
-            >
-              <Typography
-                variant="h4"
-                style={{ marginLeft: "20px", color: "#1e50ee" }}
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
+                  Students Table
+                </Typography>
+              </ListItem>
+            </NavLink>
+            <NavLink to="/admin/projects-table">
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Projects Table"
+                onClick={e => {
+                  console.log(`The projects-table button was clicked!`);
+                }}
               >
-                Projects Table
-              </Typography>
-            </ListItem>
-            <ListItem
-              button
-              style={{ margin: "10px 15px" }}
-              value="Accounts Table"
-              onClick={e => {
-                console.log(`The accounts-table button was clicked!`);
-              }}
-            >
-              <Typography
-                variant="h4"
-                style={{ marginLeft: "20px", color: "#1e50ee" }}
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
+                  Projects Table
+                </Typography>
+              </ListItem>
+            </NavLink>
+            <NavLink to="/admin/accounts-table">
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Accounts Table"
+                onClick={e => {
+                  console.log(`The accounts-table button was clicked!`);
+                }}
               >
-                Accounts Table
-              </Typography>
-            </ListItem>
-            <ListItem
-              button
-              style={{ margin: "10px 15px" }}
-              value="Tracks Table"
-              onClick={e => {
-                console.log(`The tracks-table button was clicked!`);
-              }}
-            >
-              <Typography
-                variant="h4"
-                style={{ marginLeft: "20px", color: "#1e50ee" }}
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
+                  Accounts Table
+                </Typography>
+              </ListItem>
+            </NavLink>
+            <NavLink to="/admin/tracks-table">
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Tracks Table"
+                onClick={e => {
+                  console.log(`The tracks-table button was clicked!`);
+                }}
               >
-                Tracks Table
-              </Typography>
-            </ListItem>
-            <ListItem
-              button
-              style={{ margin: "10px 15px" }}
-              value="Cohorts Table"
-              onClick={e => {
-                console.log(`The cohorts-table button was clicked!`);
-              }}
-            >
-              <Typography
-                variant="h4"
-                style={{ marginLeft: "20px", color: "#1e50ee" }}
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
+                  Tracks Table
+                </Typography>
+              </ListItem>
+            </NavLink>
+            <NavLink to="/admin/cohorts-table">
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Cohorts Table"
+                onClick={e => {
+                  console.log(`The cohorts-table button was clicked!`);
+                }}
               >
-                Cohorts Table
-              </Typography>
-            </ListItem>
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
+                  Cohorts Table
+                </Typography>
+              </ListItem>
+            </NavLink>
           </List>
         )}
         <Divider />
