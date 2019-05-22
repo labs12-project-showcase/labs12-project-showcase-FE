@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./App.scss";
-import { withRouter } from "react-router-dom";
 
 import { getProfileData } from "./components/student/profileqs/profileqsActions";
 import { validateJwt, getJwtRole } from "./config/utilities.js";
@@ -30,4 +29,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default withRouter(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App);

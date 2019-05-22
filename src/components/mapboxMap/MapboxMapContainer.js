@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import { fetchMapData } from "./mapboxMapActions";
 import MapboxMapPresentational from "./MapboxMapPresentational";
 
@@ -18,9 +17,4 @@ const mapStateToProps = state => ({
   mapData: state.mapboxMap.mapData
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { fetchMapData }
-  )(MapboxMapContainer)
-);
+export default connect(mapStateToProps, { fetchMapData })(MapboxMapContainer);
