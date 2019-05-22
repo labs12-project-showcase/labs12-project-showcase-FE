@@ -140,80 +140,83 @@ class SwipeableTemporaryDrawer extends Component {
           </List>
         )}
         <Divider />
-        <List className="loggedIn-student-list">
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="My Profile"
-            onClick={e => {
-              console.log(`The my-profile button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              My Profile
-            </Typography>
-          </ListItem>
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Edit Profile"
-            onClick={e => {
-              console.log(`The edit-profile button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Edit Profile
-            </Typography>
-          </ListItem>
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Add Project"
-            onClick={e => {
-              console.log(`The add-project button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Add Project
-            </Typography>
-          </ListItem>
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Edit Project"
-            onClick={e => {
-              console.log(`The edit-project button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Edit Project
-            </Typography>
-          </ListItem>
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Join Project"
-            onClick={e => {
-              console.log(`The join-project button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Join Project
-            </Typography>
-          </ListItem>
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Leave Project"
-            onClick={e => {
-              console.log(`The leave-project button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              Leave Project
-            </Typography>
-          </ListItem>
-        </List>
+        {(this.state.isLoggedIn || renderLoggedIn) &&
+          loggedInRole === "student" && (
+            <List className="loggedIn-student-list">
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="My Profile"
+                onClick={e => {
+                  console.log(`The my-profile button was clicked!`);
+                }}
+              >
+                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                  My Profile
+                </Typography>
+              </ListItem>
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Edit Profile"
+                onClick={e => {
+                  console.log(`The edit-profile button was clicked!`);
+                }}
+              >
+                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                  Edit Profile
+                </Typography>
+              </ListItem>
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Add Project"
+                onClick={e => {
+                  console.log(`The add-project button was clicked!`);
+                }}
+              >
+                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                  Add Project
+                </Typography>
+              </ListItem>
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Edit Project"
+                onClick={e => {
+                  console.log(`The edit-project button was clicked!`);
+                }}
+              >
+                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                  Edit Project
+                </Typography>
+              </ListItem>
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Join Project"
+                onClick={e => {
+                  console.log(`The join-project button was clicked!`);
+                }}
+              >
+                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                  Join Project
+                </Typography>
+              </ListItem>
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
+                value="Leave Project"
+                onClick={e => {
+                  console.log(`The leave-project button was clicked!`);
+                }}
+              >
+                <Typography variant="h4" style={{ marginLeft: "20px" }}>
+                  Leave Project
+                </Typography>
+              </ListItem>
+            </List>
+          )}
         <Divider />
         <List className="loggedIn-admin-list">
           <ListItem
