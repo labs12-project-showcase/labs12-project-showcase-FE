@@ -194,51 +194,74 @@ class SwipeableTemporaryDrawer extends Component {
                   </Typography>
                 </ListItem>
               </NavLink>
-              <ListItem
-                button
-                style={{ margin: "10px 15px" }}
-                value="Leave Project"
-                onClick={e => {
-                  console.log(`The leave-project button was clicked!`);
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  style={{ marginLeft: "20px", color: "#1e50ee" }}
-                >
-                  Leave Project
-                </Typography>
-              </ListItem>
-              <ListItem
-                button
-                style={{ margin: "10px 15px" }}
-                value="Edit Project"
-                onClick={e => {
-                  console.log(`The edit-project button was clicked!`);
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  style={{ marginLeft: "20px", color: "#1e50ee" }}
-                >
-                  Edit Project
-                </Typography>
-              </ListItem>
-              <ListItem
-                button
-                style={{ margin: "10px 15px" }}
-                value="Join Project"
-                onClick={e => {
-                  console.log(`The join-project button was clicked!`);
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  style={{ marginLeft: "20px", color: "#1e50ee" }}
-                >
-                  Join Project
-                </Typography>
-              </ListItem>
+              {this.props.location.pathname.match(
+                /\/student\/project-view\/\d+/g
+              ) ? (
+                this.checkOwner(this.props.project_students) ? (
+                  <div>
+                    <NavLink
+                      exact
+                      to={`/student/edit-project/${this.props.project_id}`}
+                    >
+                      <ListItem
+                        button
+                        style={{ margin: "10px 15px" }}
+                        value="Leave Project"
+                        onClick={e => {
+                          console.log(`The leave-project button was clicked!`);
+                          return (
+                            <LeaveProject project_id={this.props.project_id} />
+                          );
+                        }}
+                      >
+                        <Typography
+                          variant="h4"
+                          style={{ marginLeft: "20px", color: "#1e50ee" }}
+                        >
+                          Leave Project
+                        </Typography>
+                      </ListItem>
+                    </NavLink>
+                    <NavLink
+                      exact
+                      to={`/student/edit-project/${this.props.project_id}`}
+                    >
+                      <ListItem
+                        button
+                        style={{ margin: "10px 15px" }}
+                        value="Edit Project"
+                        onClick={e => {
+                          console.log(`The edit-project button was clicked!`);
+                        }}
+                      >
+                        <Typography
+                          variant="h4"
+                          style={{ marginLeft: "20px", color: "#1e50ee" }}
+                        >
+                          Edit Project
+                        </Typography>
+                      </ListItem>
+                    </NavLink>
+                  </div>
+                ) : (
+                  <ListItem
+                    button
+                    style={{ margin: "10px 15px" }}
+                    value="Join Project"
+                    onClick={e => {
+                      console.log(`The join-project button was clicked!`);
+                      return <JoinProject project_id={this.props.project_id} />;
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      style={{ marginLeft: "20px", color: "#1e50ee" }}
+                    >
+                      Join Project
+                    </Typography>
+                  </ListItem>
+                )
+              ) : null}
             </List>
           )}
         <Divider />
