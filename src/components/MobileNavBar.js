@@ -88,24 +88,23 @@ class SwipeableTemporaryDrawer extends Component {
               </Typography>
             </ListItem>
           </NavLink>
-          <ListItem
-            button
-            style={{ margin: "10px 15px" }}
-            value="Search"
-            onClick={e => {
-              console.log(`The search button was clicked!`);
-            }}
-          >
-            <Typography variant="h4" style={{ marginLeft: "20px" }}>
-              <NavLink
-                exact
-                to="/discover"
-                style={{ textDecoration: "none", color: "#bb1333" }}
+          <NavLink exact to="/discover">
+            <ListItem
+              button
+              style={{ margin: "10px 15px" }}
+              value="Search"
+              onClick={e => {
+                console.log(`The search button was clicked!`);
+              }}
+            >
+              <Typography
+                variant="h4"
+                style={{ marginLeft: "20px", color: "#bb1333" }}
               >
                 Search
-              </NavLink>
-            </Typography>
-          </ListItem>
+              </Typography>
+            </ListItem>
+          </NavLink>
         </List>
         <Divider />
         <List className="login-list">
