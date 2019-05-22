@@ -7,10 +7,10 @@ const Status = ({ cohort, desired_locations, desired_title }) => {
       <h2>Status</h2>
       <section className="status-section">
         <div>
-          <p>Graduate of:</p>
+          <p>Lambda School Cohort:</p>
         </div>
         <div>
-          <p className="colorTeal">{cohort}</p>
+          <p>{cohort}</p>
         </div>
       </section>
       <section className="status-section">
