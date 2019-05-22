@@ -136,8 +136,7 @@ Sincerely,
               top: "55vh",
               left: "50vw",
               transform: "translate(-50%, -50%)",
-              width: "80vw",
-              height: "75vh"
+              width: "80vw"
             }}
             className={classes.paper}
           >
