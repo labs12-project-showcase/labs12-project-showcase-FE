@@ -197,6 +197,21 @@ class SwipeableTemporaryDrawer extends Component {
               <ListItem
                 button
                 style={{ margin: "10px 15px" }}
+                value="Leave Project"
+                onClick={e => {
+                  console.log(`The leave-project button was clicked!`);
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  style={{ marginLeft: "20px", color: "#1e50ee" }}
+                >
+                  Leave Project
+                </Typography>
+              </ListItem>
+              <ListItem
+                button
+                style={{ margin: "10px 15px" }}
                 value="Edit Project"
                 onClick={e => {
                   console.log(`The edit-project button was clicked!`);
@@ -222,21 +237,6 @@ class SwipeableTemporaryDrawer extends Component {
                   style={{ marginLeft: "20px", color: "#1e50ee" }}
                 >
                   Join Project
-                </Typography>
-              </ListItem>
-              <ListItem
-                button
-                style={{ margin: "10px 15px" }}
-                value="Leave Project"
-                onClick={e => {
-                  console.log(`The leave-project button was clicked!`);
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  style={{ marginLeft: "20px", color: "#1e50ee" }}
-                >
-                  Leave Project
                 </Typography>
               </ListItem>
             </List>
