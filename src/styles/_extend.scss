@@ -195,10 +195,18 @@
 		.input-location {
 			input {
 				text-align: center;
+				font-size: 1.5rem;
 				max-width: 53px;
 				margin: 3px;
 				padding: 3px 4px;
 				border: 1px solid $newBorder;
+				&[type=number]::-webkit-outer-spin-button { 
+					-webkit-appearance: none; 
+					margin: 0; 
+				}
+				&[type=number] {
+					-moz-appearance:textfield;
+				}
 			}
 		}
 		.search-location {
