@@ -33,6 +33,8 @@ You can find the deployed project at https://lambdashowcase.netlify.com/.
 * Admins can add, update or delete tracks and cohorts so that students always have access to the most current school structure
 * Admins can delete accounts as needed and also upgrade non-admin accounts to an admin role
 
+---
+
 ## Tech Stack
 
 ### Frontend
@@ -43,8 +45,6 @@ You can find the deployed project at https://lambdashowcase.netlify.com/.
 * Redux
 
 #### Frontend deployed to Netlify
-
---- 
 
 ### Backend
 [Repository Link](https://github.com/labs12-project-showcase/labs12-project-showcase-BE/)
@@ -62,6 +62,22 @@ You can find the deployed project at https://lambdashowcase.netlify.com/.
 *Please see the files in the `migrations` [folder](https://github.com/labs12-project-showcase/labs12-project-showcase-BE/tree/master/data/migrations) in the backend repository for more details.*
 
 #### Backend deployed to Heroku
+
+---
+
+## APIs
+
+### Authentication — *Auth0*
+
+All accounts use [Auth0](https://auth0.com) for authentication.
+* **Candidate** accounts use GitHub as their Identity Provider. All students learning programming should have already have a GitHub account – that will need to be expanded as candidates grow into other industries – and the site can pre-populate a candidate's profile with GitHub data.
+* **Admin** accounts use email/password to authenticate through Auth0.
+
+### Geocoding & Maps — *Mapbox*
+The site uses [Mapbox](https://www.mapbox.com/) for all its location needs.
+* Users can search for locations – either to set their current location or to search for candidates near a location – using the Mapbox [Forward Geocoding](https://docs.mapbox.com/api/search/#forward-geocoding) API. The latitude and longitude for the searched point can be used to calculate distances between locations.
+* Distances between points are calculated using PostgreSQL's [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) module as part of database queries.
+* The landing page uses [react-map-gl](https://uber.github.io/react-map-gl/#/), which is Uber's library for creating Mapbox maps in React applications, to display candidate locations.
 
 ---
 
