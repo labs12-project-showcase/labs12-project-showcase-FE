@@ -45,7 +45,7 @@ class ProjectsTable extends React.Component {
         }
       },
       {
-        name: "Team",
+        name: "Project Team",
         field: "students",
         options: {
           filter: false,
