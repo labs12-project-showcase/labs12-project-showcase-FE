@@ -81,7 +81,7 @@ class DeleteModal extends React.Component {
                 color="primary"
                 classnames={classes.button}
               >
-                <i class="fas fa-check" />
+                <i className="fas fa-check" />
                 Delete Profile
               </Button>
               <Button
@@ -90,7 +90,7 @@ class DeleteModal extends React.Component {
                 color="secondary"
                 classnames={classes.button}
               >
-                <i class="fas fa-ban" />
+                <i className="fas fa-ban" />
                 Cancel
               </Button>
             </form>
