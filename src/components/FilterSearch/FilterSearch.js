@@ -187,7 +187,7 @@ class FilterSearch extends React.Component {
                 type="text"
                 name="search"
                 aria-labelledby="search"
-                placeholder="Search by name or skill"
+                placeholder="Search by name or top skill"
                 value={this.state.search}
                 onChange={this.handleChange}
                 className="search-class"
