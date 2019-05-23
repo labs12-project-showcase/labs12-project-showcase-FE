@@ -13,11 +13,11 @@ const Skills = ({ top_skills, skills }) => {
 			<hr className="hrTop" />
 			<h2>Skills</h2>
 			<section className="top-skills">
-				<h3>Top Three:</h3>
+				<h3>Top Skills:</h3>
 				<ul>{map(top_skills)}</ul>
 			</section>
 			<section className="skills">
-				<h3>Additional:</h3>
+				<h3>All Skills:</h3>
 				<ul>{map(skills)}</ul>
 			</section>
 		</div>
