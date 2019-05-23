@@ -57,6 +57,7 @@ export const getProfileData = (queryUpdate = false) => dispatch => {
 export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
 export const UPDATE_PROFILE_START = 'UPDATE_PROFILE_START';
 export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
+export const UPDATE_PROFILE_PIC_URL_SUCCESS = 'UPDATE_PROFILE_PIC_URL_SUCCESS';
 
 /**
  * Submits values from Create/Edit Profile form
@@ -96,11 +97,16 @@ export const updateProfile = (formValues, redirect = true) => dispatch => {
     .then(res => {
       if (redirect) {
         history.push(`/student/profile/${formValues.id}`);
+        dispatch({
+          type: UPDATE_PROFILE_SUCCESS,
+          payload: removeNulls(res.data)
+        });
+      } else {
+        dispatch({
+          type: UPDATE_PROFILE_PIC_URL_SUCCESS,
+          payload: res.data.profile_pic
+        });
       }
-      dispatch({
-        type: UPDATE_PROFILE_SUCCESS,
-        payload: removeNulls(res.data)
-      });
     })
     .catch(error => {
       dispatch({ type: UPDATE_PROFILE_FAILURE, payload: error });
@@ -175,24 +181,6 @@ export const uploadProfilePicture = (dataObject, setImageList) => dispatch => {
       dispatch({ type: UPLOAD_PROFILE_PICTURE_FAILURE, payload: error });
     });
 };
-
-/**
- * Accepts an Object literal and returns a new object
- * with all false-y values removed. Uses recursion to handle
- * nested objects, too.
- * @param {Object} obj Object literal to be trimmed
- */
-// function removeEmptyValues(obj) {
-//   return Object.keys(obj)
-//     .filter(f => Boolean(obj[f]))
-//     .reduce(
-//       (r, i) =>
-//         typeof obj[i] === 'object' && !Array.isArray(obj[i])
-//           ? { ...r, [i]: removeEmptyValues(obj[i]) } // recurse if nested Object
-//           : { ...r, [i]: obj[i] },
-//       {}
-//     );
-// }
 
 function removeNulls(obj) {
   let noNulls = {};

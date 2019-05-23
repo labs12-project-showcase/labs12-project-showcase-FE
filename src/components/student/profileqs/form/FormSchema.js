@@ -57,7 +57,7 @@ export const FormSchema = ({
       <label>
         <span className="input-label">Portfolio URL</span>
         <br />
-        <Field name="website" type="text" />
+        <Field name="website" type="text" placeholder="https://..." />
         <ErrorMessage
           name="website"
           render={msg => <div className="inline-error">{msg}</div>}
@@ -67,7 +67,7 @@ export const FormSchema = ({
       <label>
         <span className="input-label">GitHub Profile URL</span>
         <br />
-        <Field name="github" type="text" />
+        <Field name="github" type="text" placeholder="https://..." />
         <ErrorMessage
           name="github"
           render={msg => <div className="inline-error">{msg}</div>}
@@ -77,7 +77,7 @@ export const FormSchema = ({
       <label>
         <span className="input-label">LinkedIn Profile URL</span>
         <br />
-        <Field name="linkedin" type="text" />
+        <Field name="linkedin" type="text" placeholder="https://..."/>
         <ErrorMessage
           name="linkedin"
           render={msg => <div className="inline-error">{msg}</div>}
@@ -87,7 +87,7 @@ export const FormSchema = ({
       <label>
         <span className="input-label">Twitter Profile URL</span>
         <br />
-        <Field type="text" name="twitter" />
+        <Field type="text" name="twitter" placeholder="https://..."/>
         <ErrorMessage
           name="twitter"
           render={msg => <div className="inline-error">{msg}</div>}
@@ -97,7 +97,7 @@ export const FormSchema = ({
       <label>
         <span className="input-label">Acclaim Badge URL</span>
         <br />
-        <Field name="acclaim" type="text" />
+        <Field name="acclaim" type="text" placeholder="https://..."/>
         <ErrorMessage
           name="acclaim"
           render={msg => <div className="inline-error">{msg}</div>}

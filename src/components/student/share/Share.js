@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import {
   LinkedinShareButton,
   TwitterShareButton,
-  EmailShareButton,
   LinkedinIcon,
   TwitterIcon,
-  EmailIcon
 } from "react-share";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-router-dom";
