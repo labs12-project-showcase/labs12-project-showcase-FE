@@ -222,7 +222,7 @@ class FilterSearch extends React.Component {
                     styles={reactSelectStyles}
                   />
                   <label className="control control-checkbox">
-                    Currently Located Only
+                    Current Residents
                     <input
                       onChange={e =>
                         this.setState({ filterDesLoc: false }, () => {
@@ -239,8 +239,7 @@ class FilterSearch extends React.Component {
                     <div className="control_indicator-radio" />
                   </label>
                   <label className="control control-checkbox">
-                    {"Currently Located & Will Relocate"}{" "}
-                    {/* Wrapped in {} because of the ampersand */}
+                    Residents or Will Relocate
                     <input
                       onChange={e =>
                         this.setState({ filterDesLoc: true }, () => {
@@ -321,7 +320,6 @@ class FilterSearch extends React.Component {
                     <div className="control_indicator" />
                   </label>
                 </div>
-
               </div>
             </form>
           </section>
