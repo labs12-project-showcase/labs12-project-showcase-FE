@@ -1,10 +1,12 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
+import { getJwtRole } from '../../config/utilities.js';
 
 import Cards from './Cards';
 
 class Results extends React.Component {
 	render() {
+		const role = getJwtRole();
 		if (!this.props.cards) {
 			return null;
 		}
@@ -24,7 +26,7 @@ class Results extends React.Component {
 						hasMore={this.props.hasMore}
 					>
 						{this.props.cards.map((cards, index) => (
-							<Cards {...this.props} cards={cards} key={index} />
+							<Cards {...this.props} cards={cards} key={index} role={role} />
 						))}
 					</InfiniteScroll>
 				</React.Fragment>

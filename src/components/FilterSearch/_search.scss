@@ -4,22 +4,31 @@
 		width: 100%;
 		max-width: 1366px;
 		margin: 0 auto;
-		padding: 20px;
+		padding: 10px;
 		padding-bottom: 100px;
 		box-sizing: border-box;
 
 		.formSection {
+			z-index: 3;
+			background-color: $lightcolor;
 			position: sticky;
 			top: 0px;
 			width: 100%;
-			max-width: 250px;
+			max-width: 235px;
 			padding-top: 20px;
-			@media (max-width: 877px) and (min-width: 500px) {
+			@media (max-width: 980px) {
 				max-width: 100%;
 				margin: 20px;
+				position: relative;
 			}
+
 			.search-bar {
 				width: 100%;
+
+				.location-or-h4 {
+					margin: 0 auto;
+				}
+
 				.search-class {
 					border-radius: 0;
 					margin: 30px 0 10px;
@@ -57,12 +66,15 @@
 		}
 		.cards-display {
 			width: 100%;
-			max-width: 68%;
+			max-width: 765px;
 			padding: 20px 0;
 			@include box-align(flex-start, flex-start);
 
-			@media (max-width: 768px) {
-				max-width: 100%;
+			@media (max-width: 980px) {
+				max-width: 708px;
+			}
+			@media (max-width: 1100px) and (min-width: 981px) {
+				max-width: 700px;
 			}
 
 			h2 {
@@ -74,14 +86,20 @@
 			}
 			.cards {
 				width: 100%;
+				max-width: 765px;
+				min-height: 340px;
 				margin: 20px 5px;
-				padding: 20px;
+				padding: 10px;
 				background-color: $lightcolor;
 				border: 1px solid $border-color;
 				overflow: hidden;
 				@extend %box-shadow;
-				@include box-align(center, flex-start);
+				@include box-align(center, center);
 				transition-duration: 0.4s;
+
+				@media (max-width: 500px) {
+					flex-direction: column;
+				}
 
 				&:hover {
 					-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
@@ -89,19 +107,35 @@
 					transform: translateY(-6px);
 				}
 
-				@media (max-width: 768px) {
-					width: 100%;
-				}
-
 				.cards-description {
-					width: 75%;
+					width: 100%;
+					max-width: 550px;
 					@include box-align(flex-start, center);
+
+					@media (max-width: 1100px) and (min-width: 981px) {
+						max-width: 495px;
+					}
+
+					@media (max-width: 980px) {
+						max-width: 488px;
+					}
+
+					@media (max-width: 500px) {
+						flex-direction: column;
+					}
+
+					.profile-pic-container {
+						position: relative;
+						@media (max-width: 768px) {
+							margin: 0 auto;
+						}
+					}
 					.profile-pic {
 						max-width: 180px;
 						width: 112px;
 						height: 112px;
-						border-radius: 50%;
 						overflow: hidden;
+						border-radius: 50%;
 						margin: 10px;
 						@extend %box-shadow;
 						border: 1px solid $border-color;
@@ -114,21 +148,35 @@
 							width: 100%;
 							height: auto;
 						}
+
+						.highlighted {
+							color: $lambdaPink;
+							position: absolute;
+							max-width: 35px;
+							height: auto;
+							bottom: 10px;
+							right: 15px;
+						}
 					}
 					.details {
-						width: 70%;
-						max-width: 450px;
-						padding: 0 20px 5px;
+						width: 100%;
+						max-width: 418px;
+						padding: 0 10px 5px;
 						text-transform: capitalize;
 						text-align: left;
 						background-color: $lightcolor;
 						@include box-align();
+
+						@media (max-width: 1100px) and (min-width: 981px) {
+							max-width: 360px;
+						}
+
+						@media (max-width: 980px) {
+							max-width: 356px;
+						}
+
 						@media (max-width: 768px) {
 							width: 100%;
-						}
-						@media (min-width: 768px) and (max-width: 854px) {
-							width: 100%;
-							margin: 0 auto;
 						}
 
 						h2 {
@@ -140,6 +188,9 @@
 							margin-bottom: 10px;
 							text-align: left;
 							color: $darkcolor;
+							@media (max-width: 980px) {
+								font-size: 2.8rem;
+							}
 						}
 						a > h2 {
 							text-decoration: none;
@@ -151,6 +202,9 @@
 							margin-bottom: 10px;
 							text-align: left;
 							color: $darkcolor;
+							@media (max-width: 980px) {
+								font-size: 2.8rem;
+							}
 						}
 
 						h3 {
@@ -161,6 +215,9 @@
 							font-weight: 400;
 							margin-bottom: 10px;
 							letter-spacing: 1.14px;
+							@media (max-width: 980px) {
+								font-size: 1.4rem;
+							}
 						}
 						h4 {
 							width: 100%;
@@ -213,6 +270,7 @@
 								font-size: 1.6rem;
 								letter-spacing: 1.14px;
 								line-height: 19px;
+								text-transform: capitalize;
 							}
 						}
 						.moreSkills {
@@ -227,32 +285,41 @@
 								font-size: 1.6rem;
 								letter-spacing: 1.14px;
 								line-height: 19px;
+								text-transform: capitalize;
 							}
 						}
 					}
 				}
 				.projects-box {
-					margin: 10px auto;
 					border-left: 1px solid rgba(0, 0, 0, 0.12);
-					width: 200px;
+					width: 192px;
 					@include box-align();
 					flex-direction: column;
-					padding: 0 10px 10px;
+					@media (max-width: 1100px) and (min-width: 981px) {
+						max-width: 182px;
+					}
+
 					@media (max-width: 768px) {
 						width: 100%;
+						flex-direction: row;
+						border-left: none;
 					}
-					@media (min-width: 768px) and (max-width: 854px) {
+
+					@media (max-width: 600px) {
 						width: 100%;
-						margin: 0 auto;
+						flex-direction: column;
 					}
 
 					h2 {
 						text-align: center;
 						font-size: 1.4rem;
-						margin: 27px auto 5px;
+						margin: 15px auto;
 						font-weight: 700;
 						color: $lambdaGray;
 						text-transform: capitalize;
+						@media (max-width: 768px) {
+							font-size: 1.6rem;
+						}
 					}
 					.display-box {
 						text-decoration: none;
@@ -264,7 +331,6 @@
 						cursor: pointer;
 						transition: box-shadow 0.3s;
 						-webkit-transition: box-shadow 0.3s; /* Safari */
-						// transition-duration: 0.3s;
 
 						&:hover {
 							box-shadow: 0 0 6px 1px #cccccc;
@@ -276,18 +342,28 @@
 							position: relative;
 							transition-duration: 0.4s;
 
+							@media (max-width: 768px) {
+								width: 200px;
+								height: 120px;
+							}
+
 							&:hover {
 								width: 151px;
 								height: 97px;
 								-webkit-box-shadow: -2px 5px 16px 2px#d3d3d3;
 								box-shadow: -2px 5px 16px 2px#d3d3d3;
 								transform: translateY(-5px);
+								@media (max-width: 768px) {
+									width: 251px;
+									height: 200px;
+								}
 							}
 							img {
 								width: 100%;
 								height: auto;
 							}
 							h3 {
+								max-height: 33px;
 								position: absolute;
 								background-color: $lightcolor;
 								width: 100%;
@@ -315,26 +391,26 @@
 					}
 				}
 			}
-			@media (max-width: 768px) {
-				.cards {
-					flex-direction: column;
-					justify-content: center;
+			// @media (max-width: 768px) {
+			// 	.cards {
+			// 		flex-direction: column;
+			// 		justify-content: center;
 
-					.profile-pic {
-						margin: 10px auto;
-					}
-					.details {
-						max-width: 100%;
-					}
-					.projects-box {
-						margin: 0 auto;
-						a {
-							width: 100%;
-							display: block;
-						}
-					}
-				}
-			}
+			// 		.profile-pic {
+			// 			margin: 10px auto;
+			// 		}
+			// 		.details {
+			// 			max-width: 100%;
+			// 		}
+			// 		.projects-box {
+			// 			margin: 0 auto;
+			// 			a {
+			// 				width: 100%;
+			// 				display: block;
+			// 			}
+			// 		}
+			// 	}
+			// }
 		}
 	}
 }

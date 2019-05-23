@@ -1,5 +1,5 @@
 th {
-  font-size: 2rem !important;
+  font-size: 1.6rem !important;
 }
 
 td {
@@ -22,6 +22,7 @@ td {
   }
   td {
     color: $lambdaGray !important;
+    font-size: 1.4rem !important;
   }
 
   a {
@@ -34,8 +35,10 @@ td {
     }
   }
 
-  span {
-    font-size: 1.4rem;
+  span,
+  input,
+  li {
+    font-size: 1.6rem !important;
   }
 
   h6 {

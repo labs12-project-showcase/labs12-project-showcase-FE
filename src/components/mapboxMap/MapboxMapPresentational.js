@@ -99,7 +99,7 @@ class MapboxMapPresentational extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.history.push(
-      `/discover?lat=${this.state.location.value.lat}&lon=${
+      `/discover?filterDesLoc=true&lat=${this.state.location.value.lat}&lon=${
         this.state.location.value.lon
       }&location=${encodeURIComponent(this.state.location.label)}&within=50`
     );

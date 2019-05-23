@@ -4,7 +4,6 @@ import MaterialDatatable from "material-datatable";
 import CohortEditModal from "./CohortEditModal";
 import CohortDeleteModal from "./CohortDeleteModal";
 import CohortAddModal from "./CohortAddModal";
-
 import { getCohorts, updateCohort, deleteCohort } from "../adminActions.js";
 
 class CohortsTable extends React.Component {
@@ -18,6 +17,7 @@ class CohortsTable extends React.Component {
         name: "Cohort",
         field: "cohort_name",
         options: {
+          width: 100,
           filter: true,
           sort: true,
           customBodyRender: value => {
@@ -29,6 +29,7 @@ class CohortsTable extends React.Component {
       {
         name: "",
         options: {
+          width: 200,
           filter: false,
           sort: false,
           customBodyRender: value => {
@@ -47,7 +48,9 @@ class CohortsTable extends React.Component {
       filterType: "dropdown",
       selectableRows: false,
       showSelectedRowsToolbar: false,
-      responsive: "stacked"
+      responsive: "scroll",
+      print: false,
+      download: false
     };
 
     return (

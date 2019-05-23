@@ -20,21 +20,20 @@ const ProjectViewHome = () => {
 	}, [projects]);
 
 	const params = {
-		effect: 'coverflow',
+		// effect: 'coverflow',
 		autoplay: {
-			// delay: 3500
-			delay: 19500
+			delay: 3500
 		},
-		grabCursor: true,
-		centeredSlides: true,
-		slidesPerView: 'auto',
-		coverflowEffect: {
-			rotate: 50,
-			stretch: 0,
-			depth: 100,
-			modifier: 1
-			// slideShadows: true
-		},
+		// grabCursor: true,
+		// centeredSlides: true,
+		// slidesPerView: 'auto',
+		// coverflowEffect: {
+		// 	rotate: 50,
+		// 	stretch: 0,
+		// 	depth: 100,
+		// 	modifier: 1
+		// 	// slideShadows: true
+		// },
 		// pagination: {
 		// 	el: '.swiper-pagination',
 		// 	type: 'bullets',
@@ -44,7 +43,29 @@ const ProjectViewHome = () => {
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev'
 		},
-		loop: true
+		pagination: '.swiper-pagination',
+		paginationClickable: true,
+		slidesPerView: 3,
+		spaceBetween: 50,
+		loop: true,
+		breakpoints: {
+			1024: {
+				slidesPerView: 3,
+				spaceBetween: 40
+			},
+			768: {
+				slidesPerView: 2,
+				spaceBetween: 30
+			},
+			640: {
+				slidesPerView: 1,
+				spaceBetween: 20
+			},
+			320: {
+				slidesPerView: 1,
+				spaceBetween: 10
+			}
+		}
 	};
 
 	if (!projects.length) {

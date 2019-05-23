@@ -54,12 +54,8 @@ class Profileqs extends React.Component {
               </header>
               <p>Use the fields below to build your profile.</p>
               {this.props.profile.profileData.github ? (
-                <>
-                  <p>
-                    We have prepopulated some of the fields with information
-                    from GitHub. That information will only be saved after you
-                    submit the form.
-                  </p>
+                <><br/>
+                  
                   {this.props.profile.profileData.profile_pic ? null : (
                     <p>
                       To use your GitHub profile picture, click the "Add URL"

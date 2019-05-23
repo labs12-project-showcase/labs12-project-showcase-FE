@@ -12,12 +12,16 @@ class FlipWord extends React.Component {
       this.setState({
         display: true
       });
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.setState({
           display: false
         });
       }, this.props.transitionTime - this.state.duration);
     }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
 
   render() {

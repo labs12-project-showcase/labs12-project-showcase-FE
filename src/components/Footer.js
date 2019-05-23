@@ -19,7 +19,7 @@ export default function Footer() {
 						FREE CODE BOOTCAMP
 					</a>
 					<a href="https://lambdaschool.com/referral/">REFERRAL</a>
-					<div>
+					<div className="sm-links-mobile">
 						<a href="https://twitter.com/lambdaschool">
 							<i className="fab fa-twitter" />
 						</a>

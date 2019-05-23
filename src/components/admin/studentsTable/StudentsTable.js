@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import MaterialDatatable from "material-datatable";
 import { fetchStudents, updateStudent } from "../adminActions.js";
 import { Link } from "react-router-dom";
-import GraduatedButton from "./StudentGraduatedButton";
-import HiredButton from "./StudentHiredButton";
-import EndorsedButton from "./StudentEndorsedButton";
+import StudentGraduatedButton from "./StudentGraduatedButton";
+import StudentHiredButton from "./StudentHiredButton";
+import StudentEndorsedButton from "./StudentEndorsedButton";
+import StudentHighlightedButton from "./StudentHighlightedButton";
 
 class StudentsTable extends React.Component {
   constructor(props) {
@@ -32,6 +33,8 @@ class StudentsTable extends React.Component {
         name: "Name",
         field: "name",
         options: {
+          width: 100,
+          headerNoWrap: true,
           filter: false,
           sort: true,
           customBodyRender: student => {
@@ -53,23 +56,50 @@ class StudentsTable extends React.Component {
       {
         name: "Track",
         field: "track",
-        filter: true,
-        sort: true
+        options: {
+          width: 100,
+          filter: true,
+          sort: true
+        }
       },
       {
         name: "Cohort",
         field: "cohort_name",
-        filter: true,
-        sort: true
+        options: {
+          width: 100,
+          filter: true,
+          sort: true,
+          print: false,
+          download: false
+        }
+      },
+      {
+        name: "Highlighted",
+        field: "highlighted",
+        options: {
+          width: 130,
+          filter: true,
+          sort: true,
+          customBodyRender: student => {
+            return <StudentHighlightedButton student={student} />;
+          },
+          customValue: student =>
+            student.highlighted
+              .toString()
+              .charAt(0)
+              .toUpperCase() + student.highlighted.toString().slice(1),
+          customSortValue: student => Number(student.highlighted)
+        }
       },
       {
         name: "Graduated",
         field: "graduated",
         options: {
+          width: 130,
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <GraduatedButton student={student} />;
+            return <StudentGraduatedButton student={student} />;
           },
           customValue: student =>
             student.graduated
@@ -83,10 +113,11 @@ class StudentsTable extends React.Component {
         name: "Hired",
         field: "hired",
         options: {
+          width: 50,
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <HiredButton student={student} />;
+            return <StudentHiredButton student={student} />;
           },
           customValue: student =>
             student.hired
@@ -100,10 +131,11 @@ class StudentsTable extends React.Component {
         name: "Endorsed",
         field: "endorsed",
         options: {
+          width: 140,
           filter: true,
           sort: true,
           customBodyRender: student => {
-            return <EndorsedButton student={student} />;
+            return <StudentEndorsedButton student={student} />;
           },
           customValue: student =>
             student.approved
@@ -117,9 +149,12 @@ class StudentsTable extends React.Component {
 
     const options = {
       filterType: "dropdown",
+      resizableColumns: true,
       selectableRows: false,
       showSelectedRowsToolbar: false,
-      responsive: "stacked"
+      responsive: "scroll",
+      print: true,
+      download: false
     };
 
     return (

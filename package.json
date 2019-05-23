@@ -1,65 +1,65 @@
 {
-  "name": "lambdashowcase",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^3.9.3",
-    "@material-ui/icons": "^3.0.2",
-    "@material/fab": "^2.1.1",
-    "auth0-js": "^9.10.2",
-    "axios": "^0.18.0",
-    "classnames": "^2.2.6",
-    "dotenv": "^7.0.0",
-    "draft-js": "^0.10.5",
-    "eslint-plugin-react-hooks": "^1.5.0",
-    "formik": "^1.5.3",
-    "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^2.2.0",
-    "mapbox-gl-controls": "^1.1.1",
-    "material-datatable": "^0.3.8",
-    "node-sass": "^4.11.0",
-    "react": "^16.8.6",
-    "react-animated-slider": "^1.1.4",
-    "react-device-detect": "^1.6.2",
-    "react-dom": "^16.8.6",
-    "react-id-swiper": "^2.1.2",
-    "react-infinite-scroller": "^1.2.4",
-    "react-map-gl": "^4.1.2",
-    "react-redux": "^7.0.2",
-    "react-reveal": "^1.2.2",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.1",
-    "react-select": "^2.4.3",
-    "react-share": "^2.4.0",
-    "react-sweet-progress": "^1.1.2",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "swiper": "^4.5.0",
-    "yup": "^0.27.0",
-    "zipcodes": "^8.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "redux-logger": "^3.0.6"
-  }
+	"name": "lambdashowcase",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@material-ui/core": "^3.9.3",
+		"@material-ui/icons": "^3.0.2",
+		"@material/fab": "^2.1.1",
+		"auth0-js": "^9.10.2",
+		"axios": "^0.18.0",
+		"classnames": "^2.2.6",
+		"dotenv": "^7.0.0",
+		"draft-js": "^0.10.5",
+		"eslint-plugin-react-hooks": "^1.5.0",
+		"formik": "^1.5.7",
+		"jsonwebtoken": "^8.5.1",
+		"jwt-decode": "^2.2.0",
+		"mapbox-gl-controls": "^1.1.1",
+		"material-datatable": "^0.3.8",
+		"node-sass": "^4.12.0",
+		"react": "^16.8.6",
+		"react-animated-slider": "^1.1.4",
+		"react-device-detect": "^1.6.2",
+		"react-dom": "^16.8.6",
+		"react-id-swiper": "^2.1.2",
+		"react-infinite-scroller": "^1.2.4",
+		"react-map-gl": "^4.1.2",
+		"react-redux": "^7.0.3",
+		"react-reveal": "^1.2.2",
+		"react-router-dom": "^5.0.0",
+		"react-scripts": "3.0.1",
+		"react-select": "^2.4.3",
+		"react-share": "^2.4.0",
+		"react-sweet-progress": "^1.1.2",
+		"redux": "^4.0.1",
+		"redux-thunk": "^2.3.0",
+		"swiper": "^4.5.0",
+		"yup": "^0.27.0",
+		"zipcodes": "^8.0.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"redux-logger": "^3.0.6"
+	}
 }
