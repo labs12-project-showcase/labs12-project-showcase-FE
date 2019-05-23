@@ -60,7 +60,7 @@ class ProjectsTable extends React.Component {
         field: "approved",
         options: {
           filter: true,
-          sort: true,
+          sort: false,
           customBodyRender: project => {
             return <ProjectApprovedButton project={project} />;
           },
