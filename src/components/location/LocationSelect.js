@@ -38,7 +38,7 @@ LocationSelect.defaultProps = {
 	onBlur: () => {},
 	onChange: () => {},
 	noOptionsMessage: () => 'Type to begin searching...',
-	placeholder: 'Type location to search...',
+	placeholder: 'Type to search...',
 	styles: {}
 };
 
