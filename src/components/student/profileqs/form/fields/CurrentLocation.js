@@ -31,10 +31,20 @@ const CurrentLocation = ({ formValues, lat, location, lon }) => {
               name={field.name}
               onBlur={field.onBlur}
               onChange={option => {
-                setCurrentLocation(option);
-                formValues.lat = option.value.lat;
-                formValues.location = option.value.locationName;
-                formValues.lon = option.value.lon;
+                // if the user clears the field, `option` equals `null`,
+                // and `null` makes the React Select component complain
+                const selection = option || {
+                  label: '',
+                  value: {
+                    lat: '',
+                    locationName: '',
+                    lon: ''
+                  }
+                };
+                setCurrentLocation(selection);
+                formValues.lat = selection.value.lat;
+                formValues.location = selection.value.locationName;
+                formValues.lon = selection.value.lon;
               }}
               styles={reactSelectStyles}
             />
