@@ -33,6 +33,8 @@ class StudentsTable extends React.Component {
         name: "Name",
         field: "name",
         options: {
+          width: 100,
+          headerNoWrap: true,
           filter: false,
           sort: true,
           customBodyRender: student => {
@@ -54,21 +56,28 @@ class StudentsTable extends React.Component {
       {
         name: "Track",
         field: "track",
-        filter: true,
-        sort: true
+        options: {
+          width: 100,
+          filter: true,
+          sort: true
+        }
       },
       {
         name: "Cohort",
         field: "cohort_name",
-        filter: true,
-        sort: true,
-        print: false,
-        download: false
+        options: {
+          width: 100,
+          filter: true,
+          sort: true,
+          print: false,
+          download: false
+        }
       },
       {
         name: "Highlighted",
         field: "highlighted",
         options: {
+          width: 130,
           filter: true,
           sort: true,
           customBodyRender: student => {
@@ -86,6 +95,7 @@ class StudentsTable extends React.Component {
         name: "Graduated",
         field: "graduated",
         options: {
+          width: 130,
           filter: true,
           sort: true,
           customBodyRender: student => {
@@ -103,6 +113,7 @@ class StudentsTable extends React.Component {
         name: "Hired",
         field: "hired",
         options: {
+          width: 50,
           filter: true,
           sort: true,
           customBodyRender: student => {
@@ -120,6 +131,7 @@ class StudentsTable extends React.Component {
         name: "Endorsed",
         field: "endorsed",
         options: {
+          width: 140,
           filter: true,
           sort: true,
           customBodyRender: student => {
@@ -137,10 +149,11 @@ class StudentsTable extends React.Component {
 
     const options = {
       filterType: "dropdown",
+      resizableColumns: true,
       selectableRows: false,
       showSelectedRowsToolbar: false,
       responsive: "scroll",
-      print: false,
+      print: true,
       download: false
     };
 

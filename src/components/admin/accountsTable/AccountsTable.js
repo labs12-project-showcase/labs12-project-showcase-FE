@@ -16,6 +16,7 @@ class AccountsTable extends React.Component {
         name: "Name",
         field: "name",
         options: {
+          width: 300,
           filter: false,
           sort: true
         }
@@ -24,6 +25,7 @@ class AccountsTable extends React.Component {
         name: "Email",
         field: "email",
         options: {
+          width: 300,
           filter: false,
           sort: true
         }
@@ -57,6 +59,7 @@ class AccountsTable extends React.Component {
 
     const options = {
       filterType: "dropdown",
+      resizableColumns: true,
       selectableRows: false,
       showSelectedRowsToolbar: false,
       responsive: "scroll",
