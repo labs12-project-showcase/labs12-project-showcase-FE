@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { validateJwt } from './utilities.js';
+import { validateJwt, getJwtRole } from './utilities.js';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  if (validateJwt()) {
+const PrivateRoute = ({ component: Component, userRole, ...rest }) => {
+  console.log('props.role in PrivateRoute', userRole);
+  if (validateJwt() && getJwtRole() === userRole) {
     return (
       <Route {...rest} render={(props) => (
           true
