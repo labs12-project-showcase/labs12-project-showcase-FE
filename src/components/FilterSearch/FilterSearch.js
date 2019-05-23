@@ -179,7 +179,6 @@ class FilterSearch extends React.Component {
         <main>
           <section className="formSection">
             <form className="search-bar" onSubmit={this.handleSubmit}>
-              {/* <hr className="hrTop" /> */}
               <h2>
                 <label htmlFor="search">Search</label>
               </h2>
