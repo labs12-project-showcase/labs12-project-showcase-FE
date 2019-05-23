@@ -10,7 +10,9 @@ const Cards = ({ cards }) => {
   const map = arr => arr.map(skill => <li key={skill}>{skill}</li>);
   const role = getJwtRole();
   const toFilter = new Set(cards.top_skills);
-  const skills = cards.skills.filter(skill => !toFilter.has(skill));
+  const skills = cards.skills
+    .slice(0, 11)
+    .filter(skill => !toFilter.has(skill));
   return (
     <>
       <div className="cards">
