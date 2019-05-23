@@ -51,6 +51,7 @@
 			.css-bhdpim-control {
 				border-radius: 0;
 				font-size: 1.4rem;
+				min-height: auto;
 			}
 
 			.css-gxal88-control {
@@ -200,12 +201,12 @@
 				margin: 3px;
 				padding: 3px 4px;
 				border: 1px solid $newBorder;
-				&[type=number]::-webkit-outer-spin-button { 
-					-webkit-appearance: none; 
-					margin: 0; 
+				&[type='number']::-webkit-outer-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
 				}
-				&[type=number] {
-					-moz-appearance:textfield;
+				&[type='number'] {
+					-moz-appearance: textfield;
 				}
 			}
 		}
