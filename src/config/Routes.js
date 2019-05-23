@@ -60,11 +60,11 @@ class Routes extends Component {
 										
 					{/* Admin Routes */}
           <Route path="/admin-login" component={AdminLogin} />
-          <Route path="/admin/accounts-table" component={AccountsTable} />
-          <Route path="/admin/cohorts-table" component={CohortsTable} />
-          <Route path="/admin/projects-table" component={ProjectsTable} />
-          <Route path="/admin/students-table" component={StudentsTable} />
-          <Route path="/admin/tracks-table" component={TracksTable} />
+          <PrivateRoute userRole="staff" path="/admin/accounts-table" component={AccountsTable} />
+          <PrivateRoute userRole="staff" path="/admin/cohorts-table" component={CohortsTable} />
+          <PrivateRoute userRole="staff" path="/admin/projects-table" component={ProjectsTable} />
+          <PrivateRoute userRole="staff" path="/admin/students-table" component={StudentsTable} />
+          <PrivateRoute userRole="staff" path="/admin/tracks-table" component={TracksTable} />
 
           {/* Auth Routes */}
           <Route
@@ -76,14 +76,16 @@ class Routes extends Component {
           />
 
           {/* Student Routes */}
-          <PrivateRoute path="/profile-quick-start" component={Profileqs} />
+          <PrivateRoute userRole="student" path="/profile-quick-start" component={Profileqs} />
           <Route exact path="/student/profile/:id" component={StudentProfile} />
           <PrivateRoute
+            userRole="student"
             exact
             path="/student/edit-project/:id"
             component={Projectqs}
           />
           <PrivateRoute
+          userRole="student"
             exact
             path="/student/new-project"
             component={Projectqs}
