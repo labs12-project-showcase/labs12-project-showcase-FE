@@ -10,7 +10,8 @@ import {
   UPDATE_PROFILE_SUCCESS,
   UPLOAD_PROFILE_PICTURE_FAILURE,
   UPLOAD_PROFILE_PICTURE_START,
-  UPLOAD_PROFILE_PICTURE_SUCCESS
+  UPLOAD_PROFILE_PICTURE_SUCCESS,
+  UPDATE_PROFILE_PIC_URL_SUCCESS
 } from "./profileqsActions.js";
 
 const initialState = {
@@ -123,7 +124,14 @@ const profileqsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
-        profileData: { ...state.profileData, ...action.payload },
+        profileData: { ...state.profileData, ...action.payload, exists: true },
+        updatingProfileData: false
+      };
+      case UPDATE_PROFILE_PIC_URL_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        profileData: { ...state.profileData, profile_pic: action.payload },
         updatingProfileData: false
       };
     case UPDATE_PROFILE_FAILURE:
