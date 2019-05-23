@@ -4,19 +4,7 @@ import MaterialDatatable from "material-datatable";
 import CohortEditModal from "./CohortEditModal";
 import CohortDeleteModal from "./CohortDeleteModal";
 import CohortAddModal from "./CohortAddModal";
-
 import { getCohorts, updateCohort, deleteCohort } from "../adminActions.js";
-
-const styles = theme => ({
-  paper: {
-    position: "absolute",
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-    outline: "none"
-  }
-});
 
 class CohortsTable extends React.Component {
   componentDidMount() {
