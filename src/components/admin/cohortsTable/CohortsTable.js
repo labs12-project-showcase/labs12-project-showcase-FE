@@ -7,6 +7,17 @@ import CohortAddModal from "./CohortAddModal";
 
 import { getCohorts, updateCohort, deleteCohort } from "../adminActions.js";
 
+const styles = theme => ({
+  paper: {
+    position: "absolute",
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    outline: "none"
+  }
+});
+
 class CohortsTable extends React.Component {
   componentDidMount() {
     this.props.getCohorts();
@@ -18,6 +29,7 @@ class CohortsTable extends React.Component {
         name: "Cohort",
         field: "cohort_name",
         options: {
+          width: 100,
           filter: true,
           sort: true,
           customBodyRender: value => {
@@ -29,6 +41,7 @@ class CohortsTable extends React.Component {
       {
         name: "",
         options: {
+          width: 200,
           filter: false,
           sort: false,
           customBodyRender: value => {
