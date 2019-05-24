@@ -391,6 +391,15 @@
 					}
 				}
 			}
+
+			.empty-state {
+				color: $lambdaGray;
+				font-size: 2rem;
+				margin: 25vh 0;
+				text-align: center;
+				width: 100%;
+			}
+
 			// @media (max-width: 768px) {
 			// 	.cards {
 			// 		flex-direction: column;
