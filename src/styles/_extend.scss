@@ -36,6 +36,11 @@
 				@include box-align(center, flex-start);
 			}
 
+			.css-pgw907-container {
+				max-width: 224px;
+				width: 100%;
+			}
+
 			label {
 				margin: 5px;
 			}
@@ -214,7 +219,7 @@
 			border: 1px solid $border-color;
 			margin-top: 10px;
 			min-height: 48px;
-			width: 224px;
+			max-width: 224px;
 
 			background-color: $lightcolor;
 			@include box-align(flex-start, center) .fa-search {
