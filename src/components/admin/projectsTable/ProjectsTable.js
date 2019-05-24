@@ -50,7 +50,7 @@ class ProjectsTable extends React.Component {
         name: "Engineering Team",
         field: "students",
         options: {
-          width: 150,
+          width: 100,
           filter: false,
           sort: false,
           customBodyRender: value => {
@@ -62,7 +62,7 @@ class ProjectsTable extends React.Component {
         name: "Approved",
         field: "approved",
         options: {
-          width: 70,
+          width: 130,
           filter: true,
           sort: true,
           customBodyRender: project => {
@@ -75,7 +75,7 @@ class ProjectsTable extends React.Component {
       {
         name: "",
         options: {
-          width: 100,
+          width: 150,
           filter: false,
           sort: false,
           customBodyRender: value => {
