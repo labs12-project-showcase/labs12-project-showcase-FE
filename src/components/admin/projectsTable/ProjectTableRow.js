@@ -23,7 +23,7 @@ class ProjectTableRow extends React.Component {
         <ListItem button onClick={e => this.handleClick(e)}>
           <ListItemText
             primary="Contributors"
-            // style={{ paddingRight: "40px" }}
+            style={{ paddingRight: "40px" }}
           />
           {this.state.open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
