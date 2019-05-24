@@ -18,7 +18,7 @@ class ProjectsTable extends React.Component {
         name: "Title",
         field: "name",
         options: {
-          width: 350,
+          width: 100,
           filter: false,
           sort: true,
           customBodyRender: project => {
@@ -41,7 +41,7 @@ class ProjectsTable extends React.Component {
         name: "Description",
         field: "short_description",
         options: {
-          width: 300,
+          width: 150,
           filter: false,
           sort: false
         }
@@ -50,7 +50,7 @@ class ProjectsTable extends React.Component {
         name: "Engineering Team",
         field: "students",
         options: {
-          width: 275,
+          width: 150,
           filter: false,
           sort: false,
           customBodyRender: value => {
@@ -62,7 +62,7 @@ class ProjectsTable extends React.Component {
         name: "Approved",
         field: "approved",
         options: {
-          width: 200,
+          width: 70,
           filter: true,
           sort: true,
           customBodyRender: project => {
@@ -75,7 +75,7 @@ class ProjectsTable extends React.Component {
       {
         name: "",
         options: {
-          width: 150,
+          width: 100,
           filter: false,
           sort: false,
           customBodyRender: value => {
@@ -91,7 +91,6 @@ class ProjectsTable extends React.Component {
 
     const options = {
       filterType: "dropdown",
-      resizableColumns: true,
       selectableRows: false,
       showSelectedRowsToolbar: false,
       responsive: "scroll",
