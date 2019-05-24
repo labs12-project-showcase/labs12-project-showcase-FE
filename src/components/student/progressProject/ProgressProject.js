@@ -9,12 +9,13 @@ const ProgressProject = ({ project, currentUser }) => {
   const [empty, updateEmpty] = useState([]);
   useEffect(() => {
     const {
-      id,
       approved,
-      students,
+      emptyReturn,
+      id,
       name,
-      website,
       short_description,
+      students,
+      website,
       ...rest
     } = project;
     if (project) {
