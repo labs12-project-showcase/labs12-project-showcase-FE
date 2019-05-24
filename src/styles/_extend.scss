@@ -222,7 +222,8 @@
 			max-width: 224px;
 
 			background-color: $lightcolor;
-			@include box-align(flex-start, center) .fa-search {
+			@include box-align(flex-start, center);
+			.fa-search {
 				color: lightgray;
 				margin: 5px 10px;
 			}
@@ -259,6 +260,7 @@
 			border: none;
 			background-color: $lambdaTeal;
 			color: $lightcolor;
+			font-size: 1.5rem;
 			padding: 5px 10px;
 			margin: 0 auto;
 			max-width: 250px;
