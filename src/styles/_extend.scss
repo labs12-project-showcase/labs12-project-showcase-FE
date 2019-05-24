@@ -36,6 +36,11 @@
 				@include box-align(center, flex-start);
 			}
 
+			.css-pgw907-container {
+				max-width: 224px;
+				width: 100%;
+			}
+
 			label {
 				margin: 5px;
 			}
@@ -46,6 +51,12 @@
 
 			h3 {
 				font-weight: 700;
+			}
+
+			.css-bhdpim-control {
+				border-radius: 0;
+				font-size: 1.4rem;
+				min-height: auto;
 			}
 
 			.css-gxal88-control {
@@ -195,12 +206,12 @@
 				margin: 3px;
 				padding: 3px 4px;
 				border: 1px solid $newBorder;
-				&[type=number]::-webkit-outer-spin-button { 
-					-webkit-appearance: none; 
-					margin: 0; 
+				&[type='number']::-webkit-outer-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
 				}
-				&[type=number] {
-					-moz-appearance:textfield;
+				&[type='number'] {
+					-moz-appearance: textfield;
 				}
 			}
 		}
@@ -208,7 +219,7 @@
 			border: 1px solid $border-color;
 			margin-top: 10px;
 			min-height: 48px;
-			width: 224px;
+			max-width: 224px;
 
 			background-color: $lightcolor;
 			@include box-align(flex-start, center) .fa-search {

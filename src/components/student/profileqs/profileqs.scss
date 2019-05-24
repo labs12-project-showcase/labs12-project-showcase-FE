@@ -1,127 +1,129 @@
 .profileqs-container {
-  min-height: 85vh;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 50px auto; // will likely need to be changed later
+	min-height: 85vh;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin: 50px auto; // will likely need to be changed later
 }
 
 .profileqs {
-  width: 100%;
-  max-width: 600px;
-  background-color: $lightcolor;
-  padding: 20px;
+	width: 100%;
+	max-width: 600px;
+	background-color: $lightcolor;
+	padding: 20px;
 
-  header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    
-    h3 {
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-  }
+	header {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 10px;
 
-  p {
-    margin-bottom: 1rem;
-  }
+		h3 {
+			font-size: 1.8rem;
+			font-weight: 700;
+		}
+	}
 
-  .profile-picture {
-    margin: 1rem 0;
-  }
+	p {
+		margin-bottom: 1rem;
+	}
 
-  .profile-quick-start-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 30px;
+	.profile-picture {
+		margin: 1rem 0;
+	}
 
-    button {
-      background-color: $lambdaRed;
-      border: 1px solid $lambdaRed;
-      color: $lightcolor;
-      font-size: 1.6rem;
-      margin: 2rem auto;
-      padding: 10px 15px;
-      cursor: pointer;
+	.profile-quick-start-form {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 30px;
 
-      &:hover {
-        background-color: darken($lambdaRed, 10%);
-      }
-    }
+		button {
+			background-color: $lambdaRed;
+			border: 1px solid $lambdaRed;
+			color: $lightcolor;
+			font-size: 1.6rem;
+			margin: 2rem auto;
+			padding: 10px 15px;
+			cursor: pointer;
 
-    label {
-      margin: 0.4rem 0;
-      @media (max-width: 499px) {
-        width: 100%;
-      }
+			&:hover {
+				background-color: darken($lambdaRed, 10%);
+			}
+		}
 
-      // this styles the inline error
-      // e.g. "Name is required"
-      div.inline-error {
-        color: $lambdaRed;
-        padding: 0.8rem;
-        text-align: center;
-      }
+		label {
+			margin: 0.4rem 0;
+			@media (max-width: 499px) {
+				width: 100%;
+			}
 
-      input {
-        border: 1px solid lightgray;
-        font-size: 1.6rem;
-        padding: 1.4rem 1rem 1.2rem 2rem;
-        width: 22.4rem;
-        @media (max-width: 499px) {
-          width: 100%;
-        }
-      }
+			// this styles the inline error
+			// e.g. "Name is required"
+			div.inline-error {
+				color: $lambdaRed;
+				padding: 0.8rem;
+				text-align: center;
+			}
 
-      &.stretch-input {
-        margin: 1.6rem 0;
-        width: 100%;
-        .css-1sr4j5r-container {
-          @media (max-width: 600px) {
-            width: 100%;
-          }
-        }
+			input {
+				border: 1px solid lightgray;
+				font-size: 1.6rem;
+				padding: 1.4rem 1rem 1.2rem 2rem;
+				width: 22.4rem;
+				@media (max-width: 499px) {
+					width: 100%;
+				}
+			}
 
-        p {
-          margin-bottom: -2rem;
-        }
+			&.stretch-input {
+				margin: 1.6rem 0;
+				width: 100%;
+				.css-1sr4j5r-container {
+					@media (max-width: 600px) {
+						width: 100%;
+					}
+				}
 
-        textarea {
-          margin-top: 20px;
-          height: 16rem;
-          font-size: 1.6rem;
-          padding: 1.6rem;
-          width: 100%;
-          border: 1px solid lightgray;
-        }
-      }
-      .css-pgw907-container {
-        @media (max-width: 499px) {
-          width: 100%;
-        }
-      }
-    }
-  }
+				p {
+					margin-bottom: -2rem;
+				}
+
+				textarea {
+					margin-top: 20px;
+					height: 16rem;
+					font-size: 1.6rem;
+					padding: 1.6rem;
+					width: 100%;
+					border: 1px solid lightgray;
+				}
+			}
+			.css-pgw907-container {
+				@media (max-width: 499px) {
+					width: 100%;
+				}
+			}
+		}
+	}
 }
 
 .input-label {
-  color: gray;
-  background: $lightcolor;
-  font-size: 1.4rem;
-  left: 1rem;
-  padding: 0.4rem 0.4rem 0;
-  position: relative;
-  top: 0.8rem;
-  z-index: 1;
-  &.about-label {
-    top: 2.7rem;
-  }
+	color: gray;
+	background: $lightcolor;
+	font-size: 1.4rem;
+	left: 1rem;
+	padding: 0.4rem 0.4rem 0;
+	position: relative;
+	top: 0.8rem;
+	z-index: 1;
+	&.about-label {
+		top: 2.7rem;
+	}
 }
 
 .css-1s4n2az-control {
-  border-radius: 0 !important;
+	border-radius: 0 !important;
 }
-i {margin-right: 5px;}
+i {
+	margin-right: 5px;
+}
