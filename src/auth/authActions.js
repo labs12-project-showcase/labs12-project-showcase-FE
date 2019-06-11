@@ -15,7 +15,7 @@ const auth = new auth0.WebAuth({
   redirectUri: `${frontendUrl}/callback`,
   responseType: 'token id_token',
   scope: 'openid email profile',
-  audience: 'https://hirelambdastudents.auth0.com/api/v2/',
+  audience: 'https://lambdashowcase.auth0.com/api/v2/',
 });
 
 export const LOGOUT = 'LOGOUT';
