@@ -22,7 +22,7 @@
 Lambda Showcase is a capstone project built for Lambda School to create a central place for
 prospective employers to discover Lambda School candidates and the projects they've built.
 
-You can find the deployed project at https://hirelambdastudents.com/.
+You can find the deployed project at https://hirelambdastudents.com
 
 ### Key Features
 
