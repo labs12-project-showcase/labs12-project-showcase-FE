@@ -10,7 +10,7 @@ import {
 } from '../components/student/profileqs/profileqsActions.js';
 
 const auth = new auth0.WebAuth({
-  domain: 'hirelambdastudents.auth0.com',
+  domain: 'lambdashowcase.auth0.com',
   clientID: 'o3k0Zn0QhhLv7KdWupY8I9j9uAIlqwDQ',
   redirectUri: `${frontendUrl}/callback`,
   responseType: 'token id_token',
