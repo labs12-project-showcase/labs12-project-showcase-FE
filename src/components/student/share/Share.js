@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   LinkedinShareButton,
   TwitterShareButton,
   LinkedinIcon,
   TwitterIcon,
-} from "react-share";
-import Fade from "react-reveal/Fade";
-import { Link } from "react-router-dom";
+} from 'react-share';
+import Fade from 'react-reveal/Fade';
+import { Link } from 'react-router-dom';
 
 const Share = ({ studentId, name, about }) => {
   const [hide, toggleHide] = useState(true);
-  const url = `https://lambdashowcase.netlify.com/student/profile/${studentId}`;
-  about = "about string";
+  const url = `https://hirelambdastudents.com/student/profile/${studentId}`;
+  about = 'about string';
   return (
-    <div className="share-wrapper">
+    <div className='share-wrapper'>
       <Link
-        className="share-btn"
+        className='share-btn'
         onClick={() => {
           toggleHide(!hide);
         }}
-        to="#"
+        to='#'
       >
         Share
       </Link>
-      <div className="share-links">
+      <div className='share-links'>
         <Fade when={!hide}>
-          <div className="share-button">
+          <div className='share-button'>
             <LinkedinShareButton
               url={url}
               title={`Hire Lambda Students: ${name}`}
@@ -33,11 +33,11 @@ const Share = ({ studentId, name, about }) => {
               <LinkedinIcon size={32} round />
             </LinkedinShareButton>
           </div>
-          <div className="share-button">
+          <div className='share-button'>
             <TwitterShareButton
               url={url}
               title={`Hire Lambda Students: ${name}`}
-              hashtags={["lambda", "developers", "hirelambda"]}
+              hashtags={['lambda', 'developers', 'hirelambda']}
             >
               <TwitterIcon size={32} round />
             </TwitterShareButton>
