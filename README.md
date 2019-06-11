@@ -22,16 +22,16 @@
 Lambda Showcase is a capstone project built for Lambda School to create a central place for
 prospective employers to discover Lambda School candidates and the projects they've built.
 
-You can find the deployed project at https://lambdashowcase.netlify.com/.
+You can find the deployed project at https://hirelambdastudents.com/.
 
 ### Key Features
 
-* Candidates can create a personal profile to highlight their skills, interests, location, and other important details
-* Students can create project breakdowns to showcase their work and expertise to prospective employers
-* Employers can quickly and easily search profiles by skills, location, Lambda track, name, and more to discover candidates that match their needs
-* Admins can mark candidates as approved for public viewing, hired, or graduated to keep profiles updated and the site curated with the best candidates
-* Admins can add, update or delete tracks and cohorts so that students always have access to the most current school structure
-* Admins can delete accounts as needed and also upgrade non-admin accounts to an admin role
+- Candidates can create a personal profile to highlight their skills, interests, location, and other important details
+- Students can create project breakdowns to showcase their work and expertise to prospective employers
+- Employers can quickly and easily search profiles by skills, location, Lambda track, name, and more to discover candidates that match their needs
+- Admins can mark candidates as approved for public viewing, hired, or graduated to keep profiles updated and the site curated with the best candidates
+- Admins can add, update or delete tracks and cohorts so that students always have access to the most current school structure
+- Admins can delete accounts as needed and also upgrade non-admin accounts to an admin role
 
 ---
 
@@ -40,16 +40,19 @@ You can find the deployed project at https://lambdashowcase.netlify.com/.
 ### Frontend
 
 #### Frontend Built using:
-* React
-* React Hooks
-* Redux
+
+- React
+- React Hooks
+- Redux
 
 #### Frontend deployed to Netlify
 
 ### Backend
+
 [Repository Link](https://github.com/labs12-project-showcase/labs12-project-showcase-BE/)
 
 #### Backend built using:
+
 - Node.JS
 - PostgreSQL
 - Express
@@ -59,7 +62,7 @@ You can find the deployed project at https://lambdashowcase.netlify.com/.
 
 <div align="center"><img src="./assets/db_schema.png"></div>
 
-*Please see the files in the `migrations` [folder](https://github.com/labs12-project-showcase/labs12-project-showcase-BE/tree/master/data/migrations) in the backend repository for more details.*
+_Please see the files in the `migrations` [folder](https://github.com/labs12-project-showcase/labs12-project-showcase-BE/tree/master/data/migrations) in the backend repository for more details._
 
 #### Backend deployed to Heroku
 
@@ -67,34 +70,39 @@ You can find the deployed project at https://lambdashowcase.netlify.com/.
 
 ## APIs
 
-### Authentication — *Auth0*
+### Authentication — _Auth0_
 
 All accounts use [Auth0](https://auth0.com) for authentication.
-* **Candidate** accounts use GitHub as their Identity Provider. All students learning programming should have already have a GitHub account – that will need to be expanded as candidates grow into other industries – and the site can pre-populate a candidate's profile with GitHub data.
-* **Admin** accounts use email/password to authenticate through Auth0.
 
-### Geocoding & Maps — *Mapbox*
+- **Candidate** accounts use GitHub as their Identity Provider. All students learning programming should have already have a GitHub account – that will need to be expanded as candidates grow into other industries – and the site can pre-populate a candidate's profile with GitHub data.
+- **Admin** accounts use email/password to authenticate through Auth0.
+
+### Geocoding & Maps — _Mapbox_
+
 The site uses [Mapbox](https://www.mapbox.com/) for all its location needs.
-* Users can search for locations – either to set their current location or to search for candidates near a location – using the Mapbox [Forward Geocoding](https://docs.mapbox.com/api/search/#forward-geocoding) API. The latitude and longitude for the searched point can be used to calculate distances between locations.
-* Distances between points are calculated using PostgreSQL's [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) module as part of database queries.
-* The landing page uses [react-map-gl](https://uber.github.io/react-map-gl/#/), which is Uber's library for creating Mapbox maps in React applications, to display candidate locations.
+
+- Users can search for locations – either to set their current location or to search for candidates near a location – using the Mapbox [Forward Geocoding](https://docs.mapbox.com/api/search/#forward-geocoding) API. The latitude and longitude for the searched point can be used to calculate distances between locations.
+- Distances between points are calculated using PostgreSQL's [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) module as part of database queries.
+- The landing page uses [react-map-gl](https://uber.github.io/react-map-gl/#/), which is Uber's library for creating Mapbox maps in React applications, to display candidate locations.
 
 ---
 
 ## Environment Variables
 
 In order for the app to function correctly, the user must set up their own
-environment variables. 
+environment variables.
 
 #### Frontend Environment Variables
-The frontend folder should contain a `.env` file with the following:  
+
+The frontend folder should contain a `.env` file with the following:
 
 | Variable                 | Comment                                  |
 | :----------------------- | :--------------------------------------- |
 | `REACT_APP_MAPBOX_TOKEN` | Mapbox token for use with `react-map-gl` |
 
 #### Backend Environment Variables
-The backend folder should contain a `.env` file with the following:  
+
+The backend folder should contain a `.env` file with the following:
 
 | Variable                 | Comment                                                        |
 | ------------------------ | -------------------------------------------------------------- |
@@ -117,10 +125,11 @@ The backend folder should contain a `.env` file with the following:
 ### Issue/Bug Request
 
 If you are having an issue with the existing project code, please submit a bug report under the following guidelines:
-* Please check to see if your issue has already been reported.
-* Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
-* Create a live example of the problem. Online code editors like [codesandbox](https://codesandbox.io/) and [codepen](http://codepen.io/) are ideal for this step.
-* Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
+
+- Please check to see if your issue has already been reported.
+- Check to see if the issue has recently been fixed by attempting to reproduce the issue using the latest master branch in the repository.
+- Create a live example of the problem. Online code editors like [codesandbox](https://codesandbox.io/) and [codepen](http://codepen.io/) are ideal for this step.
+- Submit a detailed bug report including your environment & browser, steps to reproduce the issue, actual and expected outcomes, where you believe the issue is originating from, and any potential solutions you have considered.
 
 ### Feature Requests
 
@@ -140,7 +149,7 @@ a pull request, you agree that your work will be, too.
 
 #### Pull Request Guidelines
 
-  * Ensure any install or build dependencies are removed before the end of the layer when doing a build.
-  * Update the `README.md` with details of changes to the interface, including new environment variables, exposed ports, useful file locations and container parameters.
-  * Ensure that your code conforms to our existing code conventions and test coverage.
-  * Include the relevant issue number, if applicable.
+- Ensure any install or build dependencies are removed before the end of the layer when doing a build.
+- Update the `README.md` with details of changes to the interface, including new environment variables, exposed ports, useful file locations and container parameters.
+- Ensure that your code conforms to our existing code conventions and test coverage.
+- Include the relevant issue number, if applicable.
