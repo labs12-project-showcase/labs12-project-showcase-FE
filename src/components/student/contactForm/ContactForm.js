@@ -1,43 +1,45 @@
-import React from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Button from "@material-ui/core/Button";
-import CheckIcon from "@material-ui/icons/Check";
-import CancelIcon from "@material-ui/icons/Cancel";
-import { getData } from "../profile/studentProfileActions";
+import React from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
+import CheckIcon from '@material-ui/icons/Check';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { getData } from '../profile/studentProfileActions';
 
 const styles = theme => ({
   paper: {
-    position: "absolute",
+    position: 'absolute',
     width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
-    outline: "none"
-  }
+    outline: 'none',
+  },
 });
 
 class ContactForm extends React.Component {
   state = {
     open: false,
-    student_name: "",
+    student_name: '',
     email: {
-      from: "<YOUR_EMAIL_HERE>",
-      subject: "A Lambda Showcase User is Interested in You!",
+      from: '<YOUR_EMAIL_HERE>',
+      subject: "A 'Hire Lambda' User is Interested in You!",
       text: `Hello!
 
-      I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and your skills! Could we schedule a time to chat about your future with us?
-
+     I came across your student profile on the "Hire Lambda" App and I'm very impressed with your projects & skills!
+        
+Could we schedule a time to chat about your possible future with us?
+            
 You can reach me at <YOUR_EMAIL_HERE>.
-              
-I look forward to speaking with you soon!
+                          
+I look forward to speaking with you soon.
 
 Sincerely,
-<YOUR_NAME_HERE>`
-    }
+<YOUR_NAME_HERE>`,
+    },
   };
 
   sendEmail = _ => {
@@ -71,8 +73,8 @@ Sincerely,
     this.setState({
       email: {
         ...this.state.email,
-        [e.target.name]: e.target.value
-      }
+        [e.target.name]: e.target.value,
+      },
     });
   };
 
@@ -82,17 +84,19 @@ Sincerely,
       open: true,
       email: {
         ...this.state.email,
-        text: `Hi, ${student_name}!
+        text: `Hello, ${student_name}!
 
-        I came across your student profile on the Lambda Showcase Web App. I'm very impressed with your projects and your skills! Could we schedule a time to chat about your future with us?
-
+     I came across your student profile on the "Hire Lambda" App and I'm very impressed with your projects & skills!
+        
+Could we schedule a time to chat about your possible future with us?
+        
 You can reach me at <YOUR_EMAIL_HERE>.
-                
-I look forward to speaking with you soon!
+                      
+I look forward to speaking with you soon.
   
 Sincerely,
-<YOUR_NAME_HERE>`
-      }
+<YOUR_NAME_HERE>`,
+      },
     });
   };
 
@@ -112,20 +116,20 @@ Sincerely,
     const { classes } = this.props;
 
     return (
-      <div className="sc-modal-buttons">
+      <div className='sc-modal-buttons'>
         <div
           onClick={e => {
             const student_name = this.props.student.name;
             e.stopPropagation();
             this.handleOpen(student_name);
           }}
-          className="contact-btn"
+          className='contact-btn'
         >
           Contact Me
         </div>
         <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
+          aria-labelledby='simple-modal-title'
+          aria-describedby='simple-modal-description'
           open={this.state.open}
           onClose={this.handleClose}
           onSubmit={this.handleSubmit}
@@ -133,65 +137,65 @@ Sincerely,
         >
           <div
             style={{
-              top: "50vh",
-              left: "50vw",
-              transform: "translate(-50%, -50%)",
-              width: "80vw"
+              top: '50vh',
+              left: '50vw',
+              transform: 'translate(-50%, -50%)',
+              width: '80vw',
             }}
             className={classes.paper}
           >
             <form
               onSubmit={this.handleSubmit}
-              method="POST"
-              className="sc-modal-buttons contact-form"
-              zIndex="tooltip"
+              method='POST'
+              className='sc-modal-buttons contact-form'
+              zIndex='tooltip'
             >
-              <div className="contact-form-header-container">
-                <h2 className="contact-form-header-message">
+              <div className='contact-form-header-container'>
+                <h2 className='contact-form-header-message'>
                   Send a Message to {this.props.student.name}!
                 </h2>
               </div>
 
-              <div className="sc-input input-div">
-                <label className="email-label">Your Email Address:</label>
+              <div className='sc-input input-div'>
+                <label className='email-label'>Your Email Address:</label>
                 <input
-                  className="email-input"
-                  name="from"
+                  className='email-input'
+                  name='from'
                   value={email.from}
                   onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="email"
+                  type='email'
                   required
                 />
               </div>
-              <div className="sc-input input-div">
-                <label className="subject-label">Subject:</label>
+              <div className='sc-input input-div'>
+                <label className='subject-label'>Subject:</label>
                 <input
-                  className="subject-input"
-                  name="subject"
+                  className='subject-input'
+                  name='subject'
                   value={email.subject}
                   onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="text"
+                  type='text'
                   required
                 />
               </div>
-              <div className="sc-input input-div">
-                <label className="message-label">Message:</label>
+              <div className='sc-input input-div'>
+                <label className='message-label'>Message:</label>
                 <textarea
-                  className="message-input input-div"
-                  name="text"
+                  className='message-input input-div'
+                  name='text'
                   value={email.text}
                   onChange={this.handleInputChange}
                   onClick={e => e.stopPropagation()}
-                  type="text"
+                  type='text'
                   required
                 />
               </div>
               <Button
-                type="submit"
-                variant="outlined"
-                color="primary"
+                type='submit'
+                variant='outlined'
+                color='primary'
                 classnames={classes.button}
               >
                 Send
@@ -199,8 +203,8 @@ Sincerely,
               </Button>
               <Button
                 onClick={this.handleClose}
-                variant="outlined"
-                color="secondary"
+                variant='outlined'
+                color='secondary'
                 classnames={classes.button}
               >
                 Cancel
@@ -215,12 +219,12 @@ Sincerely,
 }
 
 ContactForm.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
-    ...state
+    ...state,
   };
 };
 
