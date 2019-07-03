@@ -1,4 +1,4 @@
-# Lambda Showcase
+# Hire Lambda
 
 <div align="center"><img src="./src/assets/Hire-lambda-logo.png" alt="logo"></div>
 
@@ -19,7 +19,7 @@
 
 ## Project Overview
 
-Lambda Showcase is a capstone project built for Lambda School to create a central place for
+"Hire Lambda" is a capstone project built for Lambda School to create a central place for
 prospective employers to discover Lambda School candidates and the projects they've built.
 
 You can find the deployed project at https://hirelambdastudents.com
